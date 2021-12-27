@@ -1,0 +1,1088 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1. One Compartment Pharmacokinetics &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Properties of Scalar First Order Linear Systems" href="02.02-Properties-of-Scalar-First-Order-Linear-Systems.html" />
+    <link rel="prev" title="2. Process Modeling" href="02.00-Process-Modeling.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Introduction.html">
+   1. Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Schedule.html">
+     1.1. Schedule and Course Organization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-What-is-Process-Control.html">
+     1.2. What is Process Control?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-TCLab.html">
+     1.3. The Temperature Control Laboratory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-TCLab-Python-Package.html">
+     1.4. The TCLab Python Package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.05-Assignment-1.html">
+     1.5. Assignment 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.1. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.2. Properties of Scalar First Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Model-Identification.html">
+     2.4. Model Identification for the Temperature Control Lab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.03-Relay-Control.html">
+     3.3. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.04-Implementing-Controllers.html">
+     3.4. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
+     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
+     3.6. Lab Assignment 3: Relay and PI Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
+     3.8. Lab Assignment 4: Cascade Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
+     3.9. Lab Assignment 4: Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-State-Estimation-Copy1.html">
+     4.6. Estimation and Anamoly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.7. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.07-Observer-Synthesis-LMI.html">
+     4.8. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.08-State-Estimation-Envrironmental-Application.html">
+     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Linear-Blending-Problem.html">
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Homework_4.html">
+     5.3. Homework Assignment 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Gasoline-Blending.html">
+     5.4. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.05-Linear-Programming.html">
+     5.5. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.6. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
+     5.7. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.99-Pyomo-Examples.html">
+     5.8. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08.00-Projects.html">
+   8. Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A.00-Appendices.html">
+   9. Appendices
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/02.01-One-Compartment-Pharmacokinetics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02.01-One-Compartment-Pharmacokinetics.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/02.01-One-Compartment-Pharmacokinetics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   2.1.1. Learning Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pharamacokinetics">
+   2.1.2. Pharamacokinetics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-compartment-model">
+     2.1.2.1. One-Compartment Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#antimicrobials">
+     2.1.2.2. Antimicrobials
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-questions-can-we-ask-and-answer-with-this-model">
+     2.1.2.3. What questions can we ask and answer with this model?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulation">
+   2.1.3. Simulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-from-a-known-initial-condition">
+     2.1.3.1. Simulation from a Known Initial Condition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#problem-statement">
+       2.1.3.1.1. Problem Statement
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-import-libraries">
+       2.1.3.1.2. Step 1. Import libraries
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-enter-parameter-values">
+       2.1.3.1.3. Step 2. Enter Parameter Values
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-write-the-differential-equation-in-standard-form">
+       2.1.3.1.4. Step 3. Write the differential equation in standard form
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-4-solution-and-visualization">
+       2.1.3.1.5. Step 4. Solution and Visualization
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-5-analysis-of-the-results">
+       2.1.3.1.6. Step 5. Analysis of the Results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-improving-simulation-using-time-dependent-input">
+     2.1.3.2. Example 2: Improving Simulation using Time-Dependent Input
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#analysis-of-the-results">
+       2.1.3.2.1. Analysis of the Results
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-periodic-dosng">
+     2.1.3.3. Example 2: Periodic Dosng
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#solution">
+       2.1.3.3.1. Solution
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assignment-2">
+   2.1.4. Assignment 2
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     2.1.4.1. Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     2.1.4.2. Exercise 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="one-compartment-pharmacokinetics">
+<h1><span class="section-number">2.1. </span>One Compartment Pharmacokinetics<a class="headerlink" href="#one-compartment-pharmacokinetics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-goals">
+<h2><span class="section-number">2.1.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<p>The notebook introduces a single, linear, first-order differential equation in the general form</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = a x + b u\]</div>
+<p>as mathematical model to describe the dynamic response of a system to a changing input.</p>
+<p>In any particular application, the <strong>state variable</strong> <span class="math notranslate nohighlight">\(x\)</span> corresponds to a process variable such as temperature, pressure, concentration, or position. The <strong>input variable</strong> <span class="math notranslate nohighlight">\(u(t)\)</span> corresponds to a changing input such as heater power, flowrate, or valve position. This notebook uses this equation to describe a one-compartment model for a pharmacokinetics in the which the state is the concentration of an antimicrobrial, and the input is a rate of intraveneous administration.</p>
+<p>This notebook demonstrates features of this model that can be used in a wide range of process applications:</p>
+<ul class="simple">
+<li><p>Simulate response from a known initial condition.</p></li>
+<li><p>Simulate response to a changinig input.</p></li>
+</ul>
+</div>
+<div class="section" id="pharamacokinetics">
+<h2><span class="section-number">2.1.2. </span>Pharamacokinetics<a class="headerlink" href="#pharamacokinetics" title="Permalink to this headline">¶</a></h2>
+<p>Pharmacokinetics is a branch of pharmacology that studies the fate of chemical species in living organisms. The diverse range of applications includes the administration of drugs and anesthesia in humans. This notebook introduces a one compartment model for pharmacokinetics and shows how it can be used to determine strategies for the intravenous administration of an antimicrobial.</p>
+<div class="section" id="one-compartment-model">
+<h3><span class="section-number">2.1.2.1. </span>One-Compartment Model<a class="headerlink" href="#one-compartment-model" title="Permalink to this headline">¶</a></h3>
+<p>For the purposes of drug administration, for a one-compartment model of the human body is assumed to consist of a single compartment of a constant volume <span class="math notranslate nohighlight">\(V\)</span> containing all the plasma of the body. The plasma is assumed to be sufficiently well mixed that any drug is uniformly distributed with concentration <span class="math notranslate nohighlight">\(C(t)\)</span>. The drug enters the plasma by direct injection into the plasma at rate <span class="math notranslate nohighlight">\(u(t)\)</span>. The drug leaves the body as a component of the plasma where <span class="math notranslate nohighlight">\(Q\)</span> is the constant plasma clearance rate.</p>
+<p><img alt="" src="../_images/PK-one-compartment.png" /></p>
+<p>A generic mass balance for a single species is given by</p>
+<div class="math notranslate nohighlight">
+\[\fbox{Rate of Accumulation} = \fbox{Inflow} - \fbox{Outflow} + \fbox{Production by reaction} - \fbox{Consumption by reaction}\]</div>
+<p>Assuming the drug is neither produced or consumed by reaction in the body, this generic mass balance can be translated to differential equation</p>
+<div class="math notranslate nohighlight">
+\[\begin{align*}
+\underbrace{\fbox{Rate of Accumulation}}_{V \frac{dC}{dt}} &amp; = \underbrace{\fbox{Inflow}}_{u(t)} - \underbrace{\fbox{Outflow}}_{Q C} + \underbrace{\fbox{Production by reaction}}_0 - \underbrace{\fbox{Consumption by reaction}}_0
+\end{align*}\]</div>
+<p>or, summarizing,</p>
+<div class="math notranslate nohighlight">
+\[V \frac{dC}{dt} = u(t) - Q C(t)\]</div>
+<p>This model is characterized by two parameters, the plasma volume <span class="math notranslate nohighlight">\(V\)</span> and the clearance rate <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+</div>
+<div class="section" id="antimicrobials">
+<h3><span class="section-number">2.1.2.2. </span>Antimicrobials<a class="headerlink" href="#antimicrobials" title="Permalink to this headline">¶</a></h3>
+<p>Let’s consider the administration of an antimicrobial to a patient. Concentration <span class="math notranslate nohighlight">\(C(t)\)</span> refers to the concentration of the antibiotic in blood plasma in units of [mg/L or <span class="math notranslate nohighlight">\(\mu\)</span>g/mL]. There are two concentration levels of interest in the medical use of an antimicrobrial:</p>
+<p><strong>Minimum Inhibitory Concentration (MIC)</strong> The minimum concentration of the antibiotic that prevents visible growth of a particular microorganism after overnight incubation. This is generally not enough to kill the microorganism, only enough to prevent further growth.</p>
+<p><strong>Minimum Bactricidal Concentration (MBC)</strong> The lowest concentration of the antimicrobrial that prevents the growth of the microorganism after subculture to antimicrobrial-free media. MBC is generally the concentration needed “kill” the microorganism.</p>
+<p>Extended exposure to an antimicrobrial at levels below MBC leads to <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4378521/">antimicrobrial resistance</a>.</p>
+</div>
+<div class="section" id="what-questions-can-we-ask-and-answer-with-this-model">
+<h3><span class="section-number">2.1.2.3. </span>What questions can we ask and answer with this model?<a class="headerlink" href="#what-questions-can-we-ask-and-answer-with-this-model" title="Permalink to this headline">¶</a></h3>
+<p>There are multiple reasons to create mathematical models. In research and development, for example, a mathematical model forms a testable hypothesis of one’s understanding of a system. The model guides the design of experiments to either validate or falsify the assumptions incorporated in the model.</p>
+<p>In the present context of control systems, a model is used to answer operating questions. In pharmacokinetics, for example, the operational questions might include:</p>
+<ul class="simple">
+<li><p>What values for the parameters <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> provide accurate predictions of system response?</p></li>
+<li><p>How long will it take to clear the antimicrobial from the body?</p></li>
+<li><p>What rate of antimicrobial addition is required to achieve the minimum bactricidal concentration?</p></li>
+<li><p>If doses are administered periodically, how large should each dose be, and how frequently should the doses be administered?</p></li>
+</ul>
+<p>Questions like these can be answered through simulation, regression to experimental data, and mathematical analysis. We’ll explore several of these techniques below.</p>
+<ul class="simple">
+<li><p>Simulation</p>
+<ul>
+<li><p>Known initial condition</p></li>
+<li><p>Time dependent input</p></li>
+</ul>
+</li>
+<li><p>Steady state analysis</p></li>
+<li><p>Alternative model formulations</p>
+<ul>
+<li><p>State space model</p></li>
+<li><p>Gain and Time Constant</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="simulation">
+<h2><span class="section-number">2.1.3. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simulation-from-a-known-initial-condition">
+<h3><span class="section-number">2.1.3.1. </span>Simulation from a Known Initial Condition<a class="headerlink" href="#simulation-from-a-known-initial-condition" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="problem-statement">
+<h4><span class="section-number">2.1.3.1.1. </span>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h4>
+<p>Assume the minimum inhibitory concentration (MIC) of a particular organism to a particular antimicrobial is 5 mg/liter, and the minimum bactricidal concentration (MBC) is 8 mg/liter. Further assume the plasma volume <span class="math notranslate nohighlight">\(V\)</span> is 4 liters with a clearance rate <span class="math notranslate nohighlight">\(Q\)</span> of 0.5 liters/hour.</p>
+<p>An initial intravenous antimicrobial dose of 64 mg in 4 liters of plasm results in a plasma concentration <span class="math notranslate nohighlight">\(C_{initial}\)</span> of 16 mg/liter.  How long will the concentration stay above MBC?  Above MIC?</p>
+</div>
+<div class="section" id="step-1-import-libraries">
+<h4><span class="section-number">2.1.3.1.2. </span>Step 1. Import libraries<a class="headerlink" href="#step-1-import-libraries" title="Permalink to this headline">¶</a></h4>
+<p>For this first simulation we compute the response of the one compartment model due starting with an initial condition <span class="math notranslate nohighlight">\(C_{initial}\)</span>, and assuming input <span class="math notranslate nohighlight">\(u(t) = 0\)</span>. We will use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html"><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></a> function for solving differential equations from the <code class="docutils literal notranslate"><span class="pre">scipy.integrate</span></code> library.</p>
+<p>The first steps to a solution are:</p>
+<ol class="simple">
+<li><p>Initialize the plotting system.</p></li>
+<li><p>Import the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library for basic mathematical functions.</p></li>
+<li><p>Import the <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> library for plotting.</p></li>
+<li><p>Import the any needed mathematical functions or libraries.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-enter-parameter-values">
+<h4><span class="section-number">2.1.3.1.3. </span>Step 2. Enter Parameter Values<a class="headerlink" href="#step-2-enter-parameter-values" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="mi">4</span>           <span class="c1"># liters</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># liters/hour</span>
+<span class="n">MIC</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># mg/liter</span>
+<span class="n">MBC</span> <span class="o">=</span> <span class="mi">8</span>         <span class="c1"># mg/liter</span>
+
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1"># mg/liter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-write-the-differential-equation-in-standard-form">
+<h4><span class="section-number">2.1.3.1.4. </span>Step 3. Write the differential equation in standard form<a class="headerlink" href="#step-3-write-the-differential-equation-in-standard-form" title="Permalink to this headline">¶</a></h4>
+<p>The most commonly solvers for systems of differential equations require a function evaluating the right hand sides of the differential equations when written in a standard form</p>
+<div class="math notranslate nohighlight">
+\[\frac{dC}{dt} = \frac{1}{V}u(t) - \frac{Q}{V}C\]</div>
+<p>Here we write two functions. One function returns values of the input <span class="math notranslate nohighlight">\(u(t)\)</span> for a specified point in time, the second returns values of the right hand side as a function of time and state.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="n">C</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-solution-and-visualization">
+<h4><span class="section-number">2.1.3.1.5. </span>Step 4. Solution and Visualization<a class="headerlink" href="#step-4-solution-and-visualization" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
+
+<span class="c1"># add events</span>
+<span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MBC</span>
+<span class="n">cross_mbc</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+
+<span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">MIC</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">cross_mic</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># compute solution</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">])</span>
+
+<span class="c1"># display solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: &#39;A termination event occurred.&#39;
+     nfev: 26
+     njev: 0
+      nlu: 0
+      sol: None
+   status: 1
+  success: True
+        t: array([0.        , 0.48979592, 0.97959184, 1.46938776, 1.95918367,
+       2.44897959, 2.93877551, 3.42857143, 3.91836735, 4.40816327,
+       4.89795918, 5.3877551 , 5.87755102, 6.36734694, 6.85714286,
+       7.34693878, 7.83673469, 8.32653061, 8.81632653, 9.30612245])
+ t_events: [array([5.53942584]), array([9.31072423])]
+        y: array([[16.        , 15.049792  , 14.15601545, 13.31532006, 12.5243503 ,
+        11.779541  , 11.07848539, 10.41894155,  9.79872358,  9.21570167,
+         8.66780203,  8.15300696,  7.6693548 ,  7.21493994,  6.78791284,
+         6.38648   ,  6.00890398,  5.65350342,  5.31865298,  5.00287861]])
+ y_events: [array([[8.]]), array([[5.]])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The decision on how to display or visualize a solution is problem dependent. Here we create a simple function to visualize the solution and relevant problem specifications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="p">[</span><span class="n">MIC</span><span class="p">,</span> <span class="n">MIC</span><span class="p">],</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">(),</span> <span class="p">[</span><span class="n">MBC</span><span class="p">,</span> <span class="n">MBC</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Antibiotic Concentration&#39;</span><span class="p">,</span><span class="s1">&#39;MIC&#39;</span><span class="p">,</span><span class="s1">&#39;MBC&#39;</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time [hrs]&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Concentration [mg/liter]&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;One Compartment Model with Known Initial Condition&#39;</span><span class="p">);</span>
+    
+<span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+
+<span class="c1"># save solution to a file for reuse in documents and reports</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics1.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_18_0.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="step-5-analysis-of-the-results">
+<h4><span class="section-number">2.1.3.1.6. </span>Step 5. Analysis of the Results<a class="headerlink" href="#step-5-analysis-of-the-results" title="Permalink to this headline">¶</a></h4>
+<p>Let’s compare our results to a typical experimental result.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p></p></th>
+<th class="text-align:center head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../_images/Pharmaockinetics1.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../_images/nihms-475924-f0001.jpg" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>We see that that the assumption of a fixed initial condition is questionable. Can we fix this?</p>
+<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></p>
+</div>
+</div>
+<div class="section" id="example-2-improving-simulation-using-time-dependent-input">
+<h3><span class="section-number">2.1.3.2. </span>Example 2: Improving Simulation using Time-Dependent Input<a class="headerlink" href="#example-2-improving-simulation-using-time-dependent-input" title="Permalink to this headline">¶</a></h3>
+<p>For the next simulation we will assume the dosing takes place over a short period of time <span class="math notranslate nohighlight">\(\delta t\)</span>. To obtain a total dose <span class="math notranslate nohighlight">\(U_{dose}\)</span> in a time period <span class="math notranslate nohighlight">\(\delta t\)</span>, the mass flow rate rate must be</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}u(t) = 
+\begin{cases}
+U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
+0 \qquad \mbox{for } t \geq \delta t
+\end{cases}
+\end{split}\]</div>
+<p>Before doing a simulation, we will write a Python function for <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameter values</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1.5</span>         <span class="c1"># length hours</span>
+<span class="n">Udose</span> <span class="o">=</span> <span class="mi">64</span>       <span class="c1"># mg</span>
+
+<span class="c1"># function defintion</span>
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="n">dt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Udose</span><span class="o">/</span><span class="n">dt</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This code cell demonstrates the use of a list comprehension to apply a function to each value in a list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualization</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>              <span class="c1"># create a list of time steps</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">u</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span>       <span class="c1"># list comprehension</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time [hrs]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Administration Rate [mg/hr]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dosing function u(t) for of total dose </span><span class="si">{0}</span><span class="s1"> mg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Udose</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Dosing function u(t) for of total dose 64 mg&#39;)
+</pre></div>
+</div>
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_23_1.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_23_1.png" />
+</div>
+</div>
+<p>Simulation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
+
+<span class="c1"># compute solution</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># display solution</span>
+<span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_25_0.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_25_0.png" />
+</div>
+</div>
+<div class="section" id="analysis-of-the-results">
+<h4><span class="section-number">2.1.3.2.1. </span>Analysis of the Results<a class="headerlink" href="#analysis-of-the-results" title="Permalink to this headline">¶</a></h4>
+<p>Let’s compare our results to a typical experimental result.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p></p></th>
+<th class="text-align:center head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="../_images/Pharmaockinetics2.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="../_images/nihms-475924-f0001.jpg" /></p></td>
+</tr>
+</tbody>
+</table>
+<p>While it isn’t perfect, this is a closer facsimile of actual physiological response.</p>
+<p><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/">Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.</a></p>
+</div>
+</div>
+<div class="section" id="example-2-periodic-dosng">
+<h3><span class="section-number">2.1.3.3. </span>Example 2: Periodic Dosng<a class="headerlink" href="#example-2-periodic-dosng" title="Permalink to this headline">¶</a></h3>
+<p>The minimum inhibitory concentration (MIC) of a particular organism to a particular antibiotic is 5 mg/liter, the minimum bactricidal concentration (MBC) is 8 mg/liter. Assume the plasma volume <span class="math notranslate nohighlight">\(V\)</span> is 4 liters with a clearance rate <span class="math notranslate nohighlight">\(Q\)</span> of 0.5 liters/hour.</p>
+<p>Design an antibiotic therapy to keep the plasma concentration above the MIC level for a period of 96 hours.</p>
+<div class="section" id="solution">
+<h4><span class="section-number">2.1.3.3.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h4>
+<p>We consider the case of repetitive dosing where a new dose is administered every <span class="math notranslate nohighlight">\(t_{dose}\)</span> hours. A simple Python “trick” for this calculation is the <code class="docutils literal notranslate"><span class="pre">%</span></code> operator which returns the remainder following division. This is a useful tool worth remembering whenever you need to functions that repeat in time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameter values</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">2</span>           <span class="c1"># length of administration for a single dose</span>
+<span class="n">tdose</span> <span class="o">=</span> <span class="mi">8</span>        <span class="c1"># time between doses</span>
+<span class="n">Udose</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1"># mg</span>
+
+<span class="c1"># function defintion</span>
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">t</span> <span class="o">%</span> <span class="n">tdose</span> <span class="o">&lt;=</span> <span class="n">dt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Udose</span><span class="o">/</span><span class="n">dt</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualization</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>              <span class="c1"># create a list of time steps</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">u</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">t</span><span class="p">])</span>       <span class="c1"># list comprehension</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time [hrs]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Administration Rate [mg/hr]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dosing function u(t) for of total dose </span><span class="si">{0}</span><span class="s1"> mg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Udose</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Dosing function u(t) for of total dose 42 mg&#39;)
+</pre></div>
+</div>
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_30_1.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_30_1.png" />
+</div>
+</div>
+<p>The dosing function <span class="math notranslate nohighlight">\(u(t)\)</span> is now applied to the simulation of drug concentration in the blood plasma. A fourth argument is added to <code class="docutils literal notranslate"><span class="pre">odeint(deriv,</span> <span class="pre">Cinitial,</span> <span class="pre">t,</span> <span class="pre">tcrit=t)</span></code> indicating that special care must be used for every time step. This is needed in order to get a high fidelity simulation that accounts for the rapidly varying values of <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
+
+<span class="c1"># compute solution</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># display solution</span>
+<span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics3.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_32_1.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_32_1.png" />
+</div>
+</div>
+<p>This looks like a unevem. The problem here is that the solver may be using time steps that are larger than the dosing interval, and missing important changes in the input. The fix is to specify the <code class="docutils literal notranslate"><span class="pre">max_step</span></code> option for the solver. As a rule of thumb, your simulations should always specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> shorter than the minimum feature in the input sequence. In this case, we will specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> of 0.1 hr which is short enough to not miss a change in the input.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
+
+<span class="c1"># compute solution</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># display solution</span>
+<span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics4.png&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+<img alt="../_images/02.01-One-Compartment-Pharmacokinetics_34_1.png" src="../_images/02.01-One-Compartment-Pharmacokinetics_34_1.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="assignment-2">
+<h2><span class="section-number">2.1.4. </span>Assignment 2<a class="headerlink" href="#assignment-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3><span class="section-number">2.1.4.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>The purpose of the dosing regime is to maintain the plasma concentration above the MBC level for at least 96 hours. Assuming that each dose is 64 mg, modify the simulation and find a value of <span class="math notranslate nohighlight">\(t_{dose}\)</span> that satisfies the MBC objective for a 96 hour period.  Show a plot concentration versus time, and include Python code to compute the total amount of antibiotic administered for the whole treatment.</p>
+</div>
+<div class="section" id="exercise-2">
+<h3><span class="section-number">2.1.4.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Consider a continous antibiotic injection at a constant rate designed to maintain the plasma concentration at minimum bactricidal level. Your solution should proceed in three steps:</p>
+<ol class="simple">
+<li><p>First, by hand, set up and solve the steady state equation to find the desired constant dosage rate.</p></li>
+<li><p>Modify the Python function for <span class="math notranslate nohighlight">\(u(t)\)</span> to simulate the desired flowrate.</p></li>
+<li><p>Verify your result by repeating the above simulation using your function for <span class="math notranslate nohighlight">\(u(t)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02.00-Process-Modeling.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Process Modeling</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02.02-Properties-of-Scalar-First-Order-Linear-Systems.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Properties of Scalar First Order Linear Systems</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jeffrey Kantor<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<mxfile host="app.diagrams.net" modified="2021-03-11T21:43:22.063Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.192 Safari/537.36" etag="-HM2tX8HA7BPA2F7I7XN" version="14.2.9" type="github">
+  <diagram id="AVplFrhjmOA1uYq0ZHS3" name="Page-1">
+    <mxGraphModel dx="778" dy="570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DF5DNwXkerp-qt44dfpi-3" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;def PI(Kp, Ki, MV_bar=0):&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; MV = MV_bar&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; e_prev = 0&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; while True:&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; t_step, SP, PV = yield MV&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; e = PV - SP&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; MV += -Kp*(e - e_prev) - t_step*Ki*e&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; e_prev = e&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="450" y="160" width="340" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-4" value="&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;for t in clock(t_final, t_step):&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; T1 = lab.T1&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; U1 = controller.send((t_step, SP(t), T1))&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; lab.Q1(U1)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; lab.Q2(DV(t))&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;Courier New&quot;&gt;&amp;nbsp; &amp;nbsp; p.update(t)&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="30" y="160" width="340" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-9" value="" style="endArrow=classic;html=1;exitX=1.012;exitY=0.317;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.012;entryY=0.317;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="DF5DNwXkerp-qt44dfpi-4" target="DF5DNwXkerp-qt44dfpi-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="140" as="sourcePoint" />
+            <mxPoint x="450" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-10" value="" style="shape=message;html=1;outlineConnect=0;" vertex="1" parent="DF5DNwXkerp-qt44dfpi-9">
+          <mxGeometry width="20" height="14" relative="1" as="geometry">
+            <mxPoint x="-10" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-11" value="" style="endArrow=classic;html=1;exitX=-0.015;exitY=0.633;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="DF5DNwXkerp-qt44dfpi-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="140" as="sourcePoint" />
+            <mxPoint x="380" y="274" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-12" value="" style="shape=message;html=1;outlineConnect=0;" vertex="1" parent="DF5DNwXkerp-qt44dfpi-11">
+          <mxGeometry width="20" height="14" relative="1" as="geometry">
+            <mxPoint x="-10" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-13" value="Event Loop" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="150" y="170" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="DF5DNwXkerp-qt44dfpi-14" value="Controller Co-routine" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="562.5" y="170" width="115" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

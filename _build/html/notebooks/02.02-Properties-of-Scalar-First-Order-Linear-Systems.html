@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2. Properties of Scalar First Order Linear Systems &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3. First Order Model for a Single Heater" href="02.03-First-Order-Model-for-a-Single-Heater.html" />
+    <link rel="prev" title="2.1. One Compartment Pharmacokinetics" href="02.01-One-Compartment-Pharmacokinetics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-Introduction.html">
+   1. Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Schedule.html">
+     1.1. Schedule and Course Organization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-What-is-Process-Control.html">
+     1.2. What is Process Control?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-TCLab.html">
+     1.3. The Temperature Control Laboratory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-TCLab-Python-Package.html">
+     1.4. The TCLab Python Package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.05-Assignment-1.html">
+     1.5. Assignment 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-One-Compartment-Pharmacokinetics.html">
+     2.1. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. Properties of Scalar First Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Model-Identification.html">
+     2.4. Model Identification for the Temperature Control Lab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.03-Relay-Control.html">
+     3.3. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.04-Implementing-Controllers.html">
+     3.4. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
+     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
+     3.6. Lab Assignment 3: Relay and PI Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
+     3.8. Lab Assignment 4: Cascade Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
+     3.9. Lab Assignment 4: Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-State-Estimation-Copy1.html">
+     4.6. Estimation and Anamoly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.7. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.07-Observer-Synthesis-LMI.html">
+     4.8. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.08-State-Estimation-Envrironmental-Application.html">
+     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Linear-Blending-Problem.html">
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Homework_4.html">
+     5.3. Homework Assignment 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Gasoline-Blending.html">
+     5.4. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.05-Linear-Programming.html">
+     5.5. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.6. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
+     5.7. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.99-Pyomo-Examples.html">
+     5.8. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08.00-Projects.html">
+   8. Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A.00-Appendices.html">
+   9. Appendices
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-order-linear-systems">
+   2.2.1. First order linear systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steady-state-gain">
+   2.2.2. Steady-State Gain
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dynamic-response">
+   2.2.3. Dynamic Response
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#response-to-an-initial-condition">
+     2.2.3.1. Response to an Initial Condition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-constant">
+     2.2.3.2. Time constant
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#half-life">
+     2.2.3.3. Half-life
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-inputs">
+     2.2.3.4. Step Inputs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#response-to-a-step-input">
+   2.2.4. Response to a step input
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
+   2.2.5. Alternative forms for scalar first-order linear systems
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="properties-of-scalar-first-order-linear-systems">
+<h1><span class="section-number">2.2. </span>Properties of Scalar First Order Linear Systems<a class="headerlink" href="#properties-of-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="first-order-linear-systems">
+<h2><span class="section-number">2.2.1. </span>First order linear systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
+<p>A simple, generic model for a first-order linear system with one state is given in the form</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = ax + bu\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is a <strong>state variable</strong> such as temperature, pressure, composition, and <span class="math notranslate nohighlight">\(u\)</span> is a time-varying <strong>input</strong> that causes changes in the state. Despite its simplicity, a single first-order model captures some essential characteristics of simple systems that are often a starting point for control systems design.</p>
+<p>This notebook reviews the dynamics and behavior of these systems.</p>
+</div>
+<div class="section" id="steady-state-gain">
+<h2><span class="section-number">2.2.2. </span>Steady-State Gain<a class="headerlink" href="#steady-state-gain" title="Permalink to this headline">¶</a></h2>
+<p>The steady-state response of a system is the value of the state variable ultimately attained when the input is held constant. If we denote the steady-state values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\bar{x} &amp; = \lim_{t\rightarrow\infty} x(t) \\
+\bar{u} &amp; = \lim_{t\rightarrow\infty} u(t)
+\end{align*}\end{split}\]</div>
+<p>The state is steady if the state variable is not changing, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\bar{x}}{dt} = 0\]</div>
+<p>which provides an equation to define the relationship between the steady input and the steady state,</p>
+<div class="math notranslate nohighlight">
+\[0 = a \bar{x} + b \bar{u} \implies \bar{x} = -\frac{b}{a}\bar{u}\]</div>
+<p>The value <span class="math notranslate nohighlight">\(-\frac{b}{a}\)</span> is sometimes called the <strong>gain</strong>, which is a coefficient showing how much the steady state <span class="math notranslate nohighlight">\(\bar{x}\)</span> changes due to a change <span class="math notranslate nohighlight">\(\bar{u}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = K \bar{u} \qquad\text{where}\qquad K = -\frac{b}{a}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(K\)</span> may have units in many process applications. For example, if <span class="math notranslate nohighlight">\(x\)</span> denotes concentration of a chemical species in mg/liter and <span class="math notranslate nohighlight">\(u\)</span> denotes a input flow in units of mg/hour, then the units of <span class="math notranslate nohighlight">\(K\)</span> would be hours/liter.</p>
+<p>In many electrical engineering applications, however, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span>  refer to electrical potential measured in volts or current measured in amperes. In these cases the gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of thie, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, and is something to document carefully when working in cross-disciplinary teams.</p>
+<hr>
+<p><strong>Example:</strong> The velocity of a car, <span class="math notranslate nohighlight">\(x\)</span>, in response to a throttle setting <span class="math notranslate nohighlight">\(u\)</span> has been found to satisfy the equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = - 0.12 x + 0.096 u\]</div>
+<p>where the units of <span class="math notranslate nohighlight">\(t\)</span> are in seconds. Speed is measured in miles per hour and throttle position in percent of full scale.</p>
+<ul class="simple">
+<li><p>a. What are the units of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span>?</p></li>
+<li><p>b. What are the units of the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coeffients?</p></li>
+<li><p>c. What is value and units of the steady-state gain?</p></li>
+<li><p>d. What is the maximum speed of the car?</p></li>
+</ul>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.096</span>
+<span class="n">K</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="n">a</span>
+
+<span class="c1"># plot steady state response</span>
+<span class="n">u_ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x_ss</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="n">u_ss</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u_ss</span><span class="p">,</span> <span class="n">x_ss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed at steady state&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;throttle setting [percent]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ua</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">ub</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ua</span><span class="p">,</span> <span class="n">ub</span><span class="p">,</span> <span class="n">ub</span><span class="p">],</span> <span class="p">[</span><span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ub</span><span class="p">],</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">ub</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;K = </span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(60, 32.0, &#39;K = 0.80&#39;)
+</pre></div>
+</div>
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_4_1.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_4_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="dynamic-response">
+<h2><span class="section-number">2.2.3. </span>Dynamic Response<a class="headerlink" href="#dynamic-response" title="Permalink to this headline">¶</a></h2>
+<p>The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input. Let’s consider each of these separately.</p>
+<div class="section" id="response-to-an-initial-condition">
+<h3><span class="section-number">2.2.3.1. </span>Response to an Initial Condition<a class="headerlink" href="#response-to-an-initial-condition" title="Permalink to this headline">¶</a></h3>
+<p>For the case when <span class="math notranslate nohighlight">\(u(t) = 0\)</span>, the scalar first order system becomes</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = ax\]</div>
+<p>If the value <span class="math notranslate nohighlight">\(x_0 = x(t_0)\)</span> is known at <span class="math notranslate nohighlight">\(t_0\)</span>, then the solution to this differential equation is</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0 e^{a(t - t_0)}\]</div>
+<p>There are three important cases:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a \leq 0\)</span>: <strong>exponential decay</strong> to zero.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a = 0\)</span>: x(t) <strong>constant</strong> with a value <span class="math notranslate nohighlight">\(x(t_0)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a \geq 0\)</span>: <strong>exponential increase</strong> to either <span class="math notranslate nohighlight">\(+\infty\)</span> or <span class="math notranslate nohighlight">\(-\infty\)</span>, depending on the sign of <span class="math notranslate nohighlight">\(x(t_0)\)</span>.</p></li>
+</ul>
+<hr>
+<p><strong>Example:</strong> Let’s continue with the example of the car. Suppose you are driving at a steady speed of 60 mph then take your foot off the throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
+<ul class="simple">
+<li><p>a.) What was the initial throttle setting before 20 seconds?</p></li>
+<li><p>b.) What is the throttle setting after 20 seconds?</p></li>
+<li><p>c.) For the purposes for determining the response after 20 seconds, what is the initial condition?</p></li>
+<li><p>d.) Is the response exponentially decaying, constant, or exponentially increasing?</p></li>
+</ul>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">60.0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed after throttle set to zero&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial condition&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time [seconds]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="time-constant">
+<h3><span class="section-number">2.2.3.2. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">¶</a></h3>
+<p>The system parameter <span class="math notranslate nohighlight">\(a\)</span> has units of inverse time. There is a <strong>characteristic time constant</strong> that can be defined as</p>
+<div class="math notranslate nohighlight">
+\[\tau = -\frac{1}{a} \qquad\iff\qquad a = -\frac{1}{\tau}\]</div>
+<p>With this definition, an alternative formulation of the model and response can be given by</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}\]</div>
+<hr>
+<p><strong>Example:</strong> For the car example, what is the value of the time constant?</p>
+<hr><p>Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change. The following table shows the response of a first order system as a fraction of the initial condition.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\frac{x(t)}{x_0}\)</span></p></th>
+<th class="text-align:center head"><p>1 - <span class="math notranslate nohighlight">\(\frac{x(t)}{x_0}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t_0\)</span></p></td>
+<td class="text-align:center"><p>1.000</p></td>
+<td class="text-align:center"><p>0.000</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t_0 + \tau\)</span></p></td>
+<td class="text-align:center"><p>0.368</p></td>
+<td class="text-align:center"><p>0.632</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t_0 + 2\tau\)</span></p></td>
+<td class="text-align:center"><p>0.135</p></td>
+<td class="text-align:center"><p>0.865</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t_0 + 3\tau\)</span></p></td>
+<td class="text-align:center"><p>0.050</p></td>
+<td class="text-align:center"><p>0.950</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(t_0 + 4\tau\)</span></p></td>
+<td class="text-align:center"><p>0.018</p></td>
+<td class="text-align:center"><p>0.982</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">a</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">60.0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed after throttle set to zero&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial condition&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time [seconds]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;time constant = </span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="k">for</span>  <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)],</span> <span class="s2">&quot;b--&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.02</span><span class="o">*</span><span class="n">x0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">t&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau</span><span class="p">,</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">tau</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_13_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_13_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="half-life">
+<h3><span class="section-number">2.2.3.3. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">¶</a></h3>
+<p>The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span> defined above has a natural relationship with the parameters appearing in the problem statement and model. That time constant is equal to time <span class="math notranslate nohighlight">\(t - t_0 = \tau\)</span> necessary for the response to decay to a fraction <span class="math notranslate nohighlight">\(e^{-\frac{(t-t_0)}{\tau}} = e^{-1} = 1/e = 0.368\)</span> of the starting value.</p>
+<p>Another commonly used benchmark is to define a period of time necessary for the response to decay to 1/2 of the starting value.  This is called the <strong>half-life</strong>, or <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span>. To find the relationship to <span class="math notranslate nohighlight">\(\tau\)</span>, w</p>
+<div class="math notranslate nohighlight">
+\[ 0.5 = e^{-\frac{\tau_{1/2}}{\tau}} \implies \tau_{1/2} = - \tau \ln(0.5)\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\tau_{1/2} = 0.693\tau\]</div>
+<p>The half-life is an easy benchmark to identify from a sketch of experimental data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">a</span>
+<span class="n">tau_half</span> <span class="o">=</span> <span class="mf">0.693</span><span class="o">*</span><span class="n">tau</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">60.0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed after throttle set to zero&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial condition&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time [seconds]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;half-life = </span><span class="si">{</span><span class="n">tau_half</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="o">/</span><span class="n">tau</span><span class="p">)],</span> <span class="s2">&quot;b--&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="p">,</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">tau_half</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
+</div>
+</div>
+<hr>
+<p><strong>Example:</strong> The following cell simulates an experimental measurement of the response of car. From this data, estimate:</p>
+<ul class="simple">
+<li><p>a.) The half-life <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span></p></li>
+<li><p>b.) The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
+<li><p>c.) The parameter <span class="math notranslate nohighlight">\(a\)</span> for the model <span class="math notranslate nohighlight">\(\frac{dx}{dt} = ax\)</span></p></li>
+</ul>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">)</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+
+<span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">a</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed after throttle set to zero&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time [seconds]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;time constant = </span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="step-inputs">
+<h3><span class="section-number">2.2.3.4. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>Heaviside step function</strong> is a function of time that changes discontinuously from 0 to 1 at <span class="math notranslate nohighlight">\(t=0\)</span>. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library provides a useful implementation that is demonstrated in the following cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
+</div>
+</div>
+<p>This function is easily adapted to create a step function of arbitrary size, offset, and location in time.</p>
+<hr>
+<p><strong>Example:</strong> Create a step input for the car throttle corresponding to change from 25% throttle to 75% throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">20.0</span>
+<span class="n">ua</span> <span class="o">=</span> <span class="mf">25.0</span>
+<span class="n">ub</span> <span class="o">=</span> <span class="mf">75.0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">ua</span> <span class="o">+</span> <span class="p">(</span><span class="n">ub</span> <span class="o">-</span> <span class="n">ua</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">heaviside</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time / seconds&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;throttle / percent&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_22_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_22_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="response-to-a-step-input">
+<h2><span class="section-number">2.2.4. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s consider the response of a linear first order system</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = a x + b u\]</div>
+<p>to a time-varying input <span class="math notranslate nohighlight">\(u(t)\)</span> given an initial value <span class="math notranslate nohighlight">\(x_0\)</span> known at time 0. The general solution to our equation is</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0 e^{at} + \int_{0}^t e^{a(t - t')} b u(t') dt'\]</div>
+<p>where <span class="math notranslate nohighlight">\(t'\)</span> is the variable on integration.</p>
+<p>If <span class="math notranslate nohighlight">\(u(t) = U\)</span> is constant for <span class="math notranslate nohighlight">\(t \geq 0\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0 e^{at} - \frac{b}{a} U \left[1 - e^{a t}\right]\]</div>
+<p>Translating in time to <span class="math notranslate nohighlight">\(t_0\)</span>, for any <span class="math notranslate nohighlight">\(t &gt; t_0\)</span></p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># system data</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.12</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.096</span>
+<span class="n">U</span> <span class="o">=</span> <span class="mf">75.0</span>
+
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">20.0</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">U</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;initial condition&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time / seconds]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed / mph&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">a</span>
+<span class="k">for</span>  <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">tau</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">))</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">U</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">t0</span><span class="p">)))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="s2">&quot;b--&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x0</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">t&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">))</span><span class="si">:</span><span class="s2">5.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="alternative-forms-for-scalar-first-order-linear-systems">
+<h2><span class="section-number">2.2.5. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
+<p>We started with a scalar, linear first-order system in the form</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = a x + b u\]</div>
+<p>with initial condition <span class="math notranslate nohighlight">\(x_0 = x(t_0)\)</span>. For a step input with value <span class="math notranslate nohighlight">\(U\)</span> for <span class="math notranslate nohighlight">\(t &gt; t_0\)</span>, we found a general solution</p>
+<div class="math notranslate nohighlight">
+\[x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]\]</div>
+<p>We also found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant <span class="math notranslate nohighlight">\(\tau\)</span> and gain <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\tau &amp; = -1/a \\
+K &amp; = - \frac{b}{a}
+\end{align*}\end{split}\]</div>
+<p>Obviously, once <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(tau\)</span> are estimated, values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are easily computed. But sometimes it is more transparent simply to write the linear system using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> directly, as</p>
+<div class="math notranslate nohighlight">
+\[\tau\frac{dx}{dt} = -x + K u\]</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="02.01-One-Compartment-Pharmacokinetics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>One Compartment Pharmacokinetics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02.03-First-Order-Model-for-a-Single-Heater.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.3. </span>First Order Model for a Single Heater</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jeffrey Kantor<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

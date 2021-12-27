@@ -1,0 +1,1426 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.1. Schedule and Course Organization &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.2. What is Process Control?" href="01.02-What-is-Process-Control.html" />
+    <link rel="prev" title="1. Introduction" href="01.00-Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01.00-Introduction.html">
+   1. Introduction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.1. Schedule and Course Organization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-What-is-Process-Control.html">
+     1.2. What is Process Control?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-TCLab.html">
+     1.3. The Temperature Control Laboratory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-TCLab-Python-Package.html">
+     1.4. The TCLab Python Package
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.05-Assignment-1.html">
+     1.5. Assignment 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-One-Compartment-Pharmacokinetics.html">
+     2.1. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.2. Properties of Scalar First Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Model-Identification.html">
+     2.4. Model Identification for the Temperature Control Lab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.03-Relay-Control.html">
+     3.3. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.04-Implementing-Controllers.html">
+     3.4. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
+     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
+     3.6. Lab Assignment 3: Relay and PI Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
+     3.8. Lab Assignment 4: Cascade Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
+     3.9. Lab Assignment 4: Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-State-Estimation-Copy1.html">
+     4.6. Estimation and Anamoly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.7. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.07-Observer-Synthesis-LMI.html">
+     4.8. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.08-State-Estimation-Envrironmental-Application.html">
+     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Linear-Blending-Problem.html">
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Homework_4.html">
+     5.3. Homework Assignment 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Gasoline-Blending.html">
+     5.4. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.05-Linear-Programming.html">
+     5.5. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.6. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
+     5.7. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.99-Pyomo-Examples.html">
+     5.8. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08.00-Projects.html">
+   8. Projects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A.00-Appendices.html">
+   9. Appendices
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/01.01-Schedule.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/01.01-Schedule.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/01.01-Schedule.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-started">
+   1.1.1. Getting Started
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-the-course-and-process-control">
+   1.1.2. Introduction to the Course and Process Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-1">
+     1.1.2.1. Week 1
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-and-parameter-estimation">
+   1.1.3. Modeling and Parameter Estimation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-2">
+     1.1.3.1. Week 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-3">
+     1.1.3.2. Week 3
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-control">
+   1.1.4. Feedback Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-4">
+     1.1.4.1. Week 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-5">
+     1.1.4.2. Week 5
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-6">
+     1.1.4.3. Week 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-analytics">
+   1.1.5. Process Analytics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-7">
+     1.1.5.1. Week 7
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-8">
+     1.1.5.2. Week 8
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimization">
+   1.1.6. Optimization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-9">
+     1.1.6.1. Week 9
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-10">
+     1.1.6.2. Week 10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predictive-control">
+   1.1.7. Predictive Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-11">
+     1.1.7.1. Week 11
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-12">
+     1.1.7.2. Week 12
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#final-project">
+   1.1.8. Final Project
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-13">
+     1.1.8.1. Week 13
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#week-14">
+     1.1.8.2. Week 14
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finals-week">
+     1.1.8.3. Finals Week
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="schedule-and-course-organization">
+<h1><span class="section-number">1.1. </span>Schedule and Course Organization<a class="headerlink" href="#schedule-and-course-organization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-started">
+<h2><span class="section-number">1.1.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p><strong>CBE 30338/32338 Chemical Process Control</strong> will be conducted as a fully on-line course for the 2021 Spring semeter. For this to be effective, each student, instuctor, and teaching assistant will need access to the required technology and keep their systems and software in good working order for the duration of the semester.</p>
+<p><strong>Please let the instructors know immediately if you don’t have access to a laptop, or you don’t have adequate internet connectivity. The University has resources available to assist with these situations.</strong></p>
+<p>Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:</p>
+<ul class="simple">
+<li><p>We will be making extensive use of Zoom for office hours, on-classes, and laboratory sessions. Please verify that you can access Zoom by joining the test meeting <strong>with video</strong> at <a class="reference external" href="https://zoom.us/test">https://zoom.us/test</a>.</p></li>
+<li><p>Please confirm that you have a working installation of the latest Anaconda distribution of Python. If in doubt, reinstall a fresh download available from <a class="reference external" href="https://www.anaconda.com/">Anaconda.com</a>.</p></li>
+<li><p>A major component of the course is hands-on use of real hardware to implement working control systems. For this purpose wyou will need to purchase an individual copy of the <strong>Temperature Control Labortory</strong> available through <a class="reference external" href="https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY">Amazon</a>, the Notre Dame Bookstore, and <a class="reference external" href="https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit">apmonitor.com</a>. Please allow time for ordering, shipping, and for you to install and test the device using your laptop.</p></li>
+<li><p>The Temperature Control Lab requires a USB type A port. If your laptop is a newer model with only USB-C ports then you will need to purchase a USB-C to USB-A adaptor (<a class="reference external" href="https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/">such as this device for an Apple Mac</a>) or USB-C docking station (<a class="reference external" href="https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/">such as this</a> from LENTION).</p></li>
+</ul>
+</div>
+<div class="section" id="introduction-to-the-course-and-process-control">
+<h2><span class="section-number">1.1.2. </span>Introduction to the Course and Process Control<a class="headerlink" href="#introduction-to-the-course-and-process-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-1">
+<h3><span class="section-number">1.1.2.1. </span>Week 1<a class="headerlink" href="#week-1" title="Permalink to this headline">¶</a></h3>
+<p>Class meetings begin on week 1. Each of the sessions scheduled below will be done as a Zoom meeting. To protect privacy, the specific Zoom meeting links are available through the course management system. Attendance will be monitored for each session with required attendance.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>2/4(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Introductions <br> Course Resources <br> Syllabus  <br> Introduction to TCLab <br> What is Process Control?</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://docs.google.com/document/d/1nyId3IqaRej6zYwJ-HlFvR8lfqszkLH7OWzamw-vI-E/edit?usp=sharing">Syllabus</a> <br> <a class="reference external" href="https://fbswiki.org/wiki/index.php/Feedback_Systems:_An_Introduction_for_Scientists_and_Engineers">FBS 1.2-1.4</a> <br> <a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.1</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/5(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p><strong>No meeting for week 1</strong></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="modeling-and-parameter-estimation">
+<h2><span class="section-number">1.1.3. </span>Modeling and Parameter Estimation<a class="headerlink" href="#modeling-and-parameter-estimation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-2">
+<h3><span class="section-number">1.1.3.1. </span>Week 2<a class="headerlink" href="#week-2" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>2/8(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/9(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>System Modeling <br> Pharmacokinetics</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://fbswiki.org/wiki/index.php/System_Modeling">FBS 3.1, 3.2</a> <br> <a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.1</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>HW Assignment 1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2/11(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>First Order Systems <br> Degrees of Freedom</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.2</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/12(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>TCLab Operation <br> First Order Model ID</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.3</a> <br> <a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 1.4</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-3">
+<h3><span class="section-number">1.1.3.2. </span>Week 3<a class="headerlink" href="#week-3" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>2/15(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/16(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>First-Order Model TCLab</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.3</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>HW Assignment 2</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2/18(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Identifying Linear Dynamics</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 2.4</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/19(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Dynamic Model Identification</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="feedback-control">
+<h2><span class="section-number">1.1.4. </span>Feedback Control<a class="headerlink" href="#feedback-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-4">
+<h3><span class="section-number">1.1.4.1. </span>Week 4<a class="headerlink" href="#week-4" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>2/22(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/23(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Case Study: PCR Thermal Cycling <br> Setpoints</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.1 &amp; 3.2</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>HW Assignment 3</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>2/25(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Relay, Proportional, and PI Control</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.3</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Quiz 1: Modeling &amp; Identification</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>2/26(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Single Variable Relay Control <br> PI Control</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.6</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-5">
+<h3><span class="section-number">1.1.4.2. </span>Week 5<a class="headerlink" href="#week-5" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>3/1(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/2(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><strong>University Mini-break</strong></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>3/4(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>PI Implementation &amp; Co-routines</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.4</a></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/5(F)</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p><strong>Junior Parents Weekend</strong></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p>Lab Assignment 3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-6">
+<h3><span class="section-number">1.1.4.3. </span>Week 6<a class="headerlink" href="#week-6" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>3/8(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/9(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Practical PI Control</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://jckantor.github.io/cbe30338-2021/">cbe30338-2021 Section 3.5</a> <br> Astrom and Murray, Chapter 11</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>No assignment (JPW)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>3/11(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Advanced PI and PID Control</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/12(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Advanced PID Control</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="process-analytics">
+<h2><span class="section-number">1.1.5. </span>Process Analytics<a class="headerlink" href="#process-analytics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-7">
+<h3><span class="section-number">1.1.5.1. </span>Week 7<a class="headerlink" href="#week-7" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>3/15(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/16(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Guest: Katie Gates ND’10 <br> What is Process Analytics?</p></td>
+<td class="text-align:left"><p>Data Historian <br> Anamoly Detection</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>3/18(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Quiz 2: Feedback Control</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/19(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Using the Data Historian</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-8">
+<h3><span class="section-number">1.1.5.2. </span>Week 8<a class="headerlink" href="#week-8" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>3/22(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/23(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Anamoly Detection</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>3/25(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Machine Learning</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/26(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Machine Learning</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 5</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="optimization">
+<h2><span class="section-number">1.1.6. </span>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-9">
+<h3><span class="section-number">1.1.6.1. </span>Week 9<a class="headerlink" href="#week-9" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>3/29(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>3/30(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Introduction to Semester Project <br></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/1(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Linear Production Problem <br> CVXPY</p></td>
+<td class="text-align:left"><p>Section 5.1</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Quiz 3: Process Analytics</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/2(F)</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p><strong>Good Friday</strong></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-10">
+<h3><span class="section-number">1.1.6.2. </span>Week 10<a class="headerlink" href="#week-10" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>4/5(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/6(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Linear Blending</p></td>
+<td class="text-align:left"><p>Section 5.2</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/8(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p>Blending</p></td>
+<td class="text-align:left"><p>Section 5.3</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/9(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Static Operability Analysis</p></td>
+<td class="text-align:left"><p>Section 6.1</p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="predictive-control">
+<h2><span class="section-number">1.1.7. </span>Predictive Control<a class="headerlink" href="#predictive-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-11">
+<h3><span class="section-number">1.1.7.1. </span>Week 11<a class="headerlink" href="#week-11" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>4/12(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/13(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>HW Assignment 4 <br> Project Proposal</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/15(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/16(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>State Estimation</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-12">
+<h3><span class="section-number">1.1.7.2. </span>Week 12<a class="headerlink" href="#week-12" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>4/19(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/20(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>HW Assignment 4</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/22(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/23(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p>Model Predictive Control</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 8</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="final-project">
+<h2><span class="section-number">1.1.8. </span>Final Project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="week-13">
+<h3><span class="section-number">1.1.8.1. </span>Week 13<a class="headerlink" href="#week-13" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>4/26(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>–</p></td>
+<td class="text-align:left"><p>—</p></td>
+<td class="text-align:left"><p>Office hours by appointment</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/27(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>4/29(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>4/30(F)</p></td>
+<td class="text-align:left"><p>11:40am-12:30pm <br> 1:00-1:50pm</p></td>
+<td class="text-align:left"><p>Lab Session 1 <br> Lab Session 2</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Lab Assignment 9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="week-14">
+<h3><span class="section-number">1.1.8.2. </span>Week 14<a class="headerlink" href="#week-14" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5/3(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Drop-in office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>–</p></td>
+<td class="text-align:left"><p>—</p></td>
+<td class="text-align:left"><p>Office hours by appointment</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>5/4(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Progress Report</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>5/6(Th)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p>Quiz 4: Predictive Control</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>5/7(F)</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p>no lab - Final Project</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="finals-week">
+<h3><span class="section-number">1.1.8.3. </span>Finals Week<a class="headerlink" href="#finals-week" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Date</p></th>
+<th class="text-align:left head"><p>Time (EDT)</p></th>
+<th class="text-align:left head"><p>Activity</p></th>
+<th class="text-align:left head"><p>Topic</p></th>
+<th class="text-align:left head"><p>Reading</p></th>
+<th class="text-align:center head"><p>Req’d?</p></th>
+<th class="text-align:left head"><p>Assignment Due</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>5/11(M)</p></td>
+<td class="text-align:left"><p>1:30-3pm</p></td>
+<td class="text-align:left"><p>Office hours</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>–</p></td>
+<td class="text-align:left"><p>—</p></td>
+<td class="text-align:left"><p>Office hours by appointment</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>5/11(T)</p></td>
+<td class="text-align:left"><p>11:10am-12:25pm</p></td>
+<td class="text-align:left"><p><a class="reference external" href="https://notredame.zoom.us/j/98411704304?pwd=Yk1GYjlkRjZnR3UxV0Q2V0RRRXJiUT09">Class Meeting</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>5/14(F)</p></td>
+<td class="text-align:left"><p>10:30am - 12:30pm</p></td>
+<td class="text-align:left"><p>Project Presentations</p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:center"><p>✓</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="01.00-Introduction.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="01.02-What-is-Process-Control.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>What is Process Control?</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jeffrey Kantor<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
