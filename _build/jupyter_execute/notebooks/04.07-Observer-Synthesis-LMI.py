@@ -25,11 +25,13 @@
 # 
 # where $e = \hat{x}-x$ is the difference between the estimated and process states. Given a symmetric positive definite matrix $P$, define the **Lyapunov** frunction $V(e)$ as $V(e) = e^TPe$. 
 # 
+# $$
 # \begin{align}
 # \frac{dV}{dt} & = \dot{e}^TP e + e^TP\dot{e} \\
 # & = e^T(A - LC)^T Pe + e^T P (A - LC) e \\ 
 # & = e^T(A^TP + PA - C^TL^TP - P L C)e\\
 # \end{align}
+# $$
 # 
 # A sufficient condition for the global asympototic stability of observer is the left-hand side of this equation be negative for all $e \ne 0$. This will be true if and only if $A^TP + PA - C^TL^TP - P L C$ is negative definite, i.e;,
 # 
@@ -37,9 +39,11 @@
 # 
 # To provide some margin for robustness relative to model error, we will specify
 # 
+# $$
 # \begin{align}
 # \frac{dV}{dt} \leq -\gamma V
 # \end{align}
+# $$
 # 
 # for some $\gamma > 0$. When recast as a linear matrix inequality, we obtain
 # 

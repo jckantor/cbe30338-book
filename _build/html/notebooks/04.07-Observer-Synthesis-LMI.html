@@ -655,18 +655,24 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 <div class="math notranslate nohighlight">
 \[\frac{de}{dt} = (A - LC)e\]</div>
 <p>where <span class="math notranslate nohighlight">\(e = \hat{x}-x\)</span> is the difference between the estimated and process states. Given a symmetric positive definite matrix <span class="math notranslate nohighlight">\(P\)</span>, define the <strong>Lyapunov</strong> frunction <span class="math notranslate nohighlight">\(V(e)\)</span> as <span class="math notranslate nohighlight">\(V(e) = e^TPe\)</span>.</p>
-<p>\begin{align}
-\frac{dV}{dt} &amp; = \dot{e}^TP e + e^TP\dot{e} \
-&amp; = e^T(A - LC)^T Pe + e^T P (A - LC) e \
-&amp; = e^T(A^TP + PA - C^TL^TP - P L C)e\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dV}{dt} &amp; = \dot{e}^TP e + e^TP\dot{e} \\
+&amp; = e^T(A - LC)^T Pe + e^T P (A - LC) e \\ 
+&amp; = e^T(A^TP + PA - C^TL^TP - P L C)e\\
+\end{align}
+\end{split}\]</div>
 <p>A sufficient condition for the global asympototic stability of observer is the left-hand side of this equation be negative for all <span class="math notranslate nohighlight">\(e \ne 0\)</span>. This will be true if and only if <span class="math notranslate nohighlight">\(A^TP + PA - C^TL^TP - P L C\)</span> is negative definite, i.e;,</p>
 <div class="math notranslate nohighlight">
 \[e^T(A^TP + PA - C^TL^TP - P L C)e &lt; 0 \qquad\forall e \ne 0\]</div>
 <p>To provide some margin for robustness relative to model error, we will specify</p>
-<p>\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 \frac{dV}{dt} \leq -\gamma V
-\end{align}</p>
+\end{align}
+\]</div>
 <p>for some <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>. When recast as a linear matrix inequality, we obtain</p>
 <div class="math notranslate nohighlight">
 \[A^TP + PA - C^TL^TP - P L C  \prec -\gamma P\]</div>

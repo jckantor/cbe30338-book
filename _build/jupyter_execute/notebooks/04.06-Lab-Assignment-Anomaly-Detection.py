@@ -23,6 +23,7 @@ from tclab import setup, Historian, Plotter, clock
 
 # The state-space model for the Temperature Control Laboratory was previously developed and included here for reference.
 # 
+# $$
 # \begin{align}
 # \frac{d}{dt}\underbrace{\left[\begin{array}{c} T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2} \end{array}\right]}_x
 # & = 
@@ -40,20 +41,25 @@ from tclab import setup, Historian, Plotter, clock
 # \underbrace{\left[\begin{array}{c}\frac{U_a}{C^H_p} \\ 0 \\ \frac{U_a}{C^H_p} \\ 0 \end{array}\right]}_{B_d}
 # \underbrace{\left[\begin{array}{c}T_{amb}\end{array}\right]}_{d}
 # \end{align}
+# $$
 # 
+# $$
 # \begin{align}
 # \underbrace{\left[\begin{array}{c} T_1 \\ T_2 \end{array}\right]}_y
 # & = 
 # \underbrace{\left[\begin{array}{cccc} 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{array}\right]}_C
 # \underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
 # \end{align}
+# $$
 
 # where
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_u u + B_d d \\
 # y & = C x
 # \end{align}
+# $$
 # 
 # The process variables are gathered and organized into the state vector $x$, manipulable inputs $u$, disturbance inputs $d$, and measured process variables $y$.
 # 
@@ -126,10 +132,12 @@ x_initial = np.array([Tamb, Tamb, Tamb, Tamb])
 # 
 # * **Model Prediction:** Use the model to update the state to the next time step, i.e., $\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}$ with the equation
 # 
+# $$
 # \begin{align}
 # \hat{x}_k^{pred} & = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 # \hat{y}_k^{pred} & = C \hat{x}_k^{pred}
 # \end{align}
+# $$
 # 
 # * **Measurement Correction:** Use measurement $y_k$ to update $\hat{x}_{k}^{pred} \rightarrow \hat{x}_{k}$ with the equation
 # 
@@ -321,10 +329,12 @@ experiment(observer, u1, u2)
 # 
 # Our model for the Temperature Control Lab is given by
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_u u + B_d d \\
 # y & = C x
 # \end{align}
+# $$
 # 
 # where $d$ is an unmeasured disturbance. Up to this point we have used an apriori constant estimate $\hat{d}$ for real-time control calculations. Here we show how, in principle, $d$ can be estimated in real-time.
 # 
@@ -334,11 +344,12 @@ experiment(observer, u1, u2)
 # 
 # where $w_d$ is a external signal causiing changes in $d$. This additional model equation can be incorporated into the state space framework.
 # 
+# $$
 # \begin{align}
 # \begin{bmatrix}\frac{dx}{dt} \\ \frac{dd}{dt} \end{bmatrix} & = \underbrace{\begin{bmatrix} A & B_d \\ 0 & 0 \end{bmatrix}}_{A^{aug}} \underbrace{\begin{bmatrix}x \\ d \end{bmatrix}}_{x^{aug}} + \underbrace{\begin{bmatrix}B_u \\ 0 \end{bmatrix}}_{B_u^{aug}} u + \underbrace{\begin{bmatrix} 0 \\ 1\end{bmatrix}}_{B_d^{aug}} w_d\\
 # y & = \underbrace{\begin{bmatrix}C & 0 \end{bmatrix}}_{C^{aug}} \begin{bmatrix}x \\ d \end{bmatrix}
 # \end{align}
-# 
+# $$
 # 
 
 # In[32]:
