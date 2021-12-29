@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains course material from [CBE30338](https://jckantor.github.io/CBE30338)
-# by Jeffrey Kantor (jeff at nd.edu); the content is available [on Github](https://github.com/jckantor/CBE30338.git).
-# The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
-# and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
-
-# <!--NAVIGATION-->
-# < [Linear Programming in Pyomo](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.04-Linear-Programming-in-Pyomo.ipynb) | [Contents](toc.ipynb) | [Design of a Cold Weather Fuel](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.07-Design-of-a-Cold-Weather-Fuel.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/notebooks/06.06-Linear-Blending-Problem.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/06.06-Linear-Blending-Problem.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # Linear Blending Problems
 # 
 # This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using CVXPY.
@@ -118,9 +109,9 @@ abv = 0.040
 # 
 # The customer requirement is produce a total volume $V$. Assuming ideal solutions, the constraint is given by
 # 
-# \begin{align}
+# $$\begin{align}
 # V &  = \sum_{c\in C} x_c
-# \end{align}
+# \end{align}$$
 # 
 # where $x_c$ denotes the volume of component $c$ used in the blend.
 
@@ -134,27 +125,27 @@ constraints = [volume == sum(x[c] for c in components)]
 # 
 # The product composition is specified as requiring at least 4% alchohol by volume. Denoting the specification as $\bar{A}$, the constraint may be written as
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{A} & \leq \frac{\sum_{c\in C}x_c A_c}{\sum_{c\in C} x_c}
-# \end{align}
+# \end{align}$$
 # 
 # where $A_c$ is the alcohol by volume for component $c$. As written, this is a nonlinear constraint. Multiplying both sides of the equation by the denominator yields a linear constraint
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{A}\sum_{c\in C} x_c & \leq \sum_{c\in C}x_c A_c
-# \end{align}
+# \end{align}$$
 # 
 # A final form for this constraint can be given in either of two versions. In the first version we subtract the left-hand side from the right to give
 # 
-# \begin{align}
+# $$\begin{align}
 # 0 & \leq \sum_{c\in C}x_c \left(A_c - \bar{A}\right) & \mbox{ Version 1 of the linear blending constraint}
-# \end{align}
+# \end{align}$$
 # 
 # Alternatively, the summation on the left-hand side corresponds to total volume. Since that is known as part of the problem specification, the blending constraint could also be written as
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{A}V & \leq \sum_{c\in C}x_c A_c  & \mbox{ Version 2 of the linear blending constraint}
-# \end{align}
+# \end{align}$$
 # 
 # Which should you use? Normally either will work well. The advantage of version 1 is that it is fully specified by a single product requirement $\bar{A}$, and doesn't require knowledge of the other product requirement $V$. This may be helpful in writing elegant Python code.
 
@@ -409,9 +400,6 @@ ax[1].set_ylabel('gallons')
 ax[1].legend()
 ax[1].grid(True)
 
-
-# <!--NAVIGATION-->
-# < [Linear Programming in Pyomo](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.04-Linear-Programming-in-Pyomo.ipynb) | [Contents](toc.ipynb) | [Design of a Cold Weather Fuel](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.07-Design-of-a-Cold-Weather-Fuel.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/notebooks/06.06-Linear-Blending-Problem.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/06.06-Linear-Blending-Problem.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
 
 # In[52]:
 

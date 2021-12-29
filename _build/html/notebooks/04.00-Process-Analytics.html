@@ -42,8 +42,6 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -53,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.2. Data/Process/Operational Historian" href="04.01-Process-Historians.html" />
+    <link rel="next" title="4.1. Learning Goals" href="04.01-Learning-Goals.html" />
     <link rel="prev" title="3.9. Lab Assignment 4: Solution" href="03.09-Lab-Assignment-Solution.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -98,6 +96,23 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01.01-Schedule.html">
+   Schedule and Course Organization
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="01.00-Introduction.html">
@@ -110,28 +125,23 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Schedule.html">
-     1.1. Schedule and Course Organization
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="01.02-What-is-Process-Control.html">
-     1.2. What is Process Control?
+     1.1. What is Process Control?
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.03-TCLab.html">
-     1.3. The Temperature Control Laboratory
+     1.2. The Temperature Control Laboratory
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.04-TCLab-Python-Package.html">
-     1.4. The TCLab Python Package
+     1.3. The TCLab Python Package
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.05-Assignment-1.html">
-     1.5. Assignment 1
+     1.4. Assignment 1
     </a>
    </li>
   </ul>
@@ -236,28 +246,33 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Process-Historians.html">
+    <a class="reference internal" href="04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Process-Historians.html">
      4.2. Data/Process/Operational Historian
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.02-State-Estimation.html">
-     4.3. State Estimation
+    <a class="reference internal" href="04.03-State-Estimation-Copy1.html">
+     4.3. Estimation and Anamoly Detection
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.03-Lab-Assigment-State-Estimation.html">
-     4.4. Lab Assignment 5: State Estimation
+    <a class="reference internal" href="04.03-State-Estimation.html">
+     4.4. State Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Anomaly-Detection.html">
-     4.5. Anomaly Detection
+    <a class="reference internal" href="04.04-Lab-Assigment-State-Estimation.html">
+     4.5. Lab Assignment 5: State Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.04-State-Estimation-Copy1.html">
-     4.6. Estimation and Anamoly Detection
+    <a class="reference internal" href="04.05-Anomaly-Detection.html">
+     4.6. Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
@@ -271,8 +286,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.08-State-Estimation-Envrironmental-Application.html">
+    <a class="reference internal" href="04.08-Envrironmental-Application.html">
      4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.09-Study-Questions.html">
+     4.10. Study Questions
     </a>
    </li>
   </ul>
@@ -329,25 +349,118 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="06.00-Predictive-Control.html">
    6. Predictive Control
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="07.00-Discrete-Event-Systems.html">
    7. Discrete Event Systems
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="08.00-Projects.html">
    8. Projects
   </a>
  </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="A.00-Appendices.html">
-   9. Appendices
+  <a class="reference internal" href="A.00-Bibliography.html">
+   Bibliography
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="B.00-TCLab.html">
+   Temperature Control Laboratory
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="C.00-Python.html">
+   Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="C.10-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -390,9 +503,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/04.00-Process-Analytics.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/04.00-Process-Analytics.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -406,11 +519,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.00-Process-Analytics.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.00-Process-Analytics.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -426,58 +539,11 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/notebooks/04.00-Process-Analytics.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-goals">
-   4.1. Learning Goals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#process-historians">
-     4.1.1. Process Historians
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#state-space-models">
-     4.1.2. State-Space Models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#state-estimation">
-     4.1.3. State Estimation
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -488,109 +554,6 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="process-analytics">
 <h1><span class="section-number">4. </span>Process Analytics<a class="headerlink" href="#process-analytics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="learning-goals">
-<h2><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="process-historians">
-<h3><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this headline">¶</a></h3>
-<p><strong>Process historians</strong> are widely used throughout the process industries. The core function is to record and provide access to <strong>time series data</strong> for <strong>process tags</strong>.</p>
-<p>The tclab library includes the basic functions of a process historian implemented using <code class="docutils literal notranslate"><span class="pre">SQLite</span></code>, a widely used database for web applications and internet connected devices.</p>
-<ul class="simple">
-<li><p>An instance of the tclab historian requires a list of <strong>data sources</strong>. There is no limit on the number of data sources.</p></li>
-<li><p>The default data sources record T1, T2, Q1, and Q2</p></li>
-<li><p>Each data source consists of <strong>(tag, function) pair</strong>, where the <strong>tag</strong> is a string that uniquely identifies a time series, and <strong>function</strong>, with no arguments, returns the current value of the tag.</p></li>
-<li><p>The tclab historian always records time with the tag “Time”</p></li>
-<li><p>Data from the historian can be stored in .csv files, converted to Pandas data frames, or accessed directly from the historian data log.</p></li>
-</ul>
-<p>What you should be able to do:</p>
-<ul class="simple">
-<li><p>Read a list of data sources, and describe what data is recorded.</p></li>
-<li><p>Add a tag and a function to a list of data sources.</p></li>
-<li><p>Save data from the historian to a .csv file, then load the saved data for analysis.</p></li>
-</ul>
-<hr>
-<p><strong>Study Question.</strong> The following list of data sources has been specified for the tclab historian. <code class="docutils literal notranslate"><span class="pre">lab.T1</span></code> and <code class="docutils literal notranslate"><span class="pre">lab.T1</span></code> are current values of temperatures T1 and T2.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`sources = [[&quot;T1&quot;, lambda: lab.T1], [&quot;T_ave&quot;, lambda: (lab.T1 + lab.T1)/2], [&quot;T2&quot;, lab.T2]]`
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>How many sources are specifiied?</p></li>
-<li><p>One of these specification will result in an error. Which one. What is wrong? How would you fix it?</p></li>
-<li><p>Explain what is being done with the second data source.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lab.Q2</span></code> is a function defined so that executinig <code class="docutils literal notranslate"><span class="pre">lab.Q2()</span></code> returns a value. Specify a data source incorporating this function.</p></li>
-</ul>
-<p><strong>Study Question.</strong> Suppose you’ve written a novel control algorithm. The algorithm generates a floating point value that is denoted by the Python variable <code class="docutils literal notranslate"><span class="pre">y_est</span></code>. Given a list of data sources <code class="docutils literal notranslate"><span class="pre">sources</span></code>, add a source for this quantity with the tag “Y_EST”.</p>
-<p><strong>Study Question.</strong> Suppose you have implemented a contrrol algorithm for a bioreactor application that utilizes a state space model. The state vector <code class="docutils literal notranslate"><span class="pre">x</span></code> has two elements representing temperature T and concentration C. Create a list of sources for the historian to record this data with tags “T” and “C”.</p>
-<hr></div>
-<div class="section" id="state-space-models">
-<h3><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">¶</a></h3>
-<p>A linear state-space model is written in the form</p>
-<p>\begin{align}
-\frac{dx}{dt} &amp; = A x + B_u u + B_d d \
-y &amp; = C x
-\end{align}</p>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is the <strong>state vector</strong> with <span class="math notranslate nohighlight">\(n\)</span> elements, <span class="math notranslate nohighlight">\(u\)</span> is a vector of manipulable inputs, <span class="math notranslate nohighlight">\(d\)</span> is a vector of disturbance inputs, and <span class="math notranslate nohighlight">\(y\)</span> is a vector of process measurements.</p>
-<ul class="simple">
-<li><p>A state-space system is stable if all eigenvalues have negative real parts.</p></li>
-<li><p>If any eigenvalue has a positive real part, then the system is unstable.</p></li>
-<li><p>Eigenvalues can be computed with <code class="docutils literal notranslate"><span class="pre">eigenvalues,</span> <span class="pre">_</span> <span class="pre">=</span> <span class="pre">np.linalg.eig(A)</span></code></p></li>
-<li><p>The negative inverse of an eigenvalue corresponds to a system time constant.</p></li>
-</ul>
-<p>What you should be able to do:</p>
-<ul class="simple">
-<li><p>Convert systems of linear differential equations into state-space form, identifying all relevant vectors and matrices.</p></li>
-<li><p>For a given problem, determine if the vectors and matrices are of compatiable dimensions.</p></li>
-<li><p>Compute eigenvalues and determine stability.</p></li>
-<li><p>Simulate the response of a state-space model to inputs and disturbances.</p></li>
-</ul>
-<hr>
-<p><strong>Study Question.</strong> Suppose <span class="math notranslate nohighlight">\(x\)</span> has five elements, <span class="math notranslate nohighlight">\(u\)</span> has two elements, and <span class="math notranslate nohighlight">\(d\)</span> has 1 element, and there is one process measurement. What are the dimensions of matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B_u\)</span>, <span class="math notranslate nohighlight">\(B_d\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>?</p>
-<p><strong>Study Question.</strong> Someone has proposed a different model a temperature control device that includes heat transfer to the surround assembly. The model is written</p>
-<p>\begin{align}
-C_{p,1}\frac{dT_1}{dt} &amp; = U_a(T_2 - T_1) + Q_1  \
-C_{p,2}\frac{dT_2}{dt} &amp; = U_a(T_1 - T_2) + U_b(T_{amb} - T_2)
-\end{align}</p>
-<p>where <span class="math notranslate nohighlight">\(Q_1\)</span> is the manipulable input, <span class="math notranslate nohighlight">\(T_2\)</span> is measured, and <span class="math notranslate nohighlight">\(T_{amb}\)</span> is an unmeasured external disturbance.</p>
-<ul class="simple">
-<li><p>Rewrite this model in state space form. Identify the components of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(d\)</span>, and <span class="math notranslate nohighlight">\(y\)</span>. Write out matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B_u\)</span>, <span class="math notranslate nohighlight">\(B_d\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> specifying all of the coefficients.</p></li>
-<li><p>What are the units of <span class="math notranslate nohighlight">\(Q_1\)</span> in this model?</p></li>
-</ul>
-<hr></div>
-<div class="section" id="state-estimation">
-<h3><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">¶</a></h3>
-<p>State estimation is a form of real-time process analytics employed in control systems. State estimation combines process models with real-time process measurements to provide estimates of process variables that may not be directly measureable.</p>
-<p>At each time step <span class="math notranslate nohighlight">\(t_k\)</span> there are two calculations to perform:</p>
-<ul class="simple">
-<li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
-</ul>
-<p>\begin{align}
-\hat{x}<em>k^{pred} &amp; = \hat{x}</em>{k-1} + (t_k - t_{k-1}) ( A \hat{x}<em>{k-1} + B_u u</em>{k-1} + B_d \hat{d}_{k-1}) \
-\hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
-\end{align}</p>
-<ul class="simple">
-<li><p><strong>Measurement Correction:</strong> Use measurement <span class="math notranslate nohighlight">\(y_k\)</span> to update <span class="math notranslate nohighlight">\(\hat{x}_{k}^{pred} \rightarrow \hat{x}_{k}\)</span> with the equation</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\hat{x}_{k} = \hat{x}_{k}^{pred} - (t_k - t_{k-1})L (\hat{y}_{k}^{pred} - y_k)\]</div>
-<p><span class="math notranslate nohighlight">\(L\)</span> is a matrix of observer gains.</p>
-<p>The estimation error is given by <span class="math notranslate nohighlight">\(e = \hat{x} - {x}\)</span> which satisfies the differential equations</p>
-<p>\begin{align}
-\frac{de}{dt} &amp; = (A - LC) e + B_d (\hat{d}-d)
-\end{align}</p>
-<p>where <span class="math notranslate nohighlight">\(d\)</span> is the unmeasured disturbance, and <span class="math notranslate nohighlight">\(\hat{d}\)</span> is an apriori estimate of <span class="math notranslate nohighlight">\(d\)</span>. If the estimate is accurate, then <span class="math notranslate nohighlight">\(d = \hat{d}\)</span>.</p>
-<hr>
-<p><strong>Study Question.</strong> For a system with 2 states and 1 measurement, what is the dimension of the matrix <span class="math notranslate nohighlight">\(L\)</span>?</p>
-<p><strong>Study Question.</strong> For the same system, what is the dimension of the product <span class="math notranslate nohighlight">\(LC\)</span>?</p>
-<p><strong>Study Question.</strong> Suppose you are given numerical values for <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(L\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>, how could you determine if the observer will be stable?</p>
-<p><strong>Study Question.</strong> The following charts test the performance of two different observers for the same system consisting of a single heater/sensor assembly. T1 is the measured temperature, Ts is the estimated sensor temperature, Th is the estimated heater temperature.</p>
-<p><img alt="" src="../_images/state_estimation_1.png" /></p>
-<p><img alt="" src="../_images/state_estimation_2.png" /></p>
-<ul class="simple">
-<li><p>Which of these is showing the useful result? Be sure you can explain why one is acceptable and one is not.</p></li>
-<li><p>For the one that is not performing, what has gone wrong? How you propose to fix the problem?</p></li>
-<li><p>Data for A, L, and C are available. What calculation would you perform to verify your analysis?  What calculation would you perform to remedy the problem? Be sure you can write out the code (no more than five lines required) to do these calculations.</p></li>
-</ul>
-<hr></div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -627,10 +590,10 @@ C_{p,2}\frac{dT_2}{dt} &amp; = U_a(T_1 - T_2) + U_b(T_{amb} - T_2)
             <p class="prev-next-title"><span class="section-number">3.9. </span>Lab Assignment 4: Solution</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="04.01-Process-Historians.html" title="next page">
+    <a class='right-next' id="next-link" href="04.01-Learning-Goals.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.2. </span>Data/Process/Operational Historian</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Learning Goals</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

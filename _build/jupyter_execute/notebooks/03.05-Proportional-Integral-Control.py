@@ -47,21 +47,21 @@
 # 
 # **Proportional control** adjusts the manipulated variable in proportion to the error between the setpoint and measured process variable.
 # 
-# \begin{align}
+# $$\begin{align}
 # MV_k & = \bar{MV} - K_P(PV_k - SP_k)
-# \end{align}
+# \end{align}$$
 # 
 # The constant of proportionality, $K_p$, is called the **proportional control gain**. The **error signal** is the difference between the the measured process variable and setpoint,
 # 
-# \begin{align}
+# $$\begin{align}
 # e_k & = PV_k - SP_k
-# \end{align}
+# \end{align}$$
 # 
 # for which the proportional control becomes
 # 
-# \begin{align}
+# $$\begin{align}
 # MV_k & = \bar{MV} - K_P e_k
-# \end{align}
+# \end{align}$$
 # 
 # The negative sign results in **negative feedback control**. 
 # 

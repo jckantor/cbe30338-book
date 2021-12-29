@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains course material from [CBE30338](https://jckantor.github.io/CBE30338)
-# by Jeffrey Kantor (jeff at nd.edu); the content is available [on Github](https://github.com/jckantor/CBE30338.git).
-# The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
-# and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
-
-# <!--NAVIGATION-->
-# < [Unconstrained Scalar Optimization](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.01-Unconstrained-Scalar-Optimization.ipynb) | [Contents](toc.ipynb) | [Linear Programming](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.03-Linear-Programming.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/notebooks/06.02-Linear-Production-Model.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/06.02-Linear-Production-Model.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # Linear Production Model
 
 # This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses [Pyomo](http://www.pyomo.org/) to represent the model with the [glpk](https://en.wikibooks.org/wiki/GLPK) solver to calculate solutions.
@@ -52,13 +43,13 @@
 # 
 # The mathematical representation consists of a single non-negative decision variable, $x$, an objective function, and a set of linear constraints.  Here we include all constraints even though we know only one of them -- the most 'constraining constraint' -- will be active.
 # 
-# \begin{align}
+# $$\begin{align}
 # \max_{x \geq 0} &\ 40\ x  & \mbox{objective}\\
 # \mbox{subject to:}\qquad \\
 # x & \leq 40  & \mbox{demand constraint} \\
 # x & \leq 80  & \mbox{labor A constraint} \\
 # 2\ x & \leq 100 & \mbox{labor B constraint}
-# \end{align}
+# \end{align}$$
 # 
 # All of these constraints must be satisfied, therefore the demand constraint is the 'most constrainting'. Again, the maximum value of $x$ is 40, so the maximum profit is $\$ 40 \times 40 = \$1,600$.
 
@@ -85,21 +76,21 @@
 #     
 # The gross profit is thn
 # 
-# \begin{eqnarray}\mbox{Profit} & = & \mbox{Revenue} - \mbox{Cost} \\
+# $$\begin{eqnarray}\mbox{Profit} & = & \mbox{Revenue} - \mbox{Cost} \\
 # & = & \$210x - \$180x \\
 # & = & \$30 x
-# \end{eqnarray}
+# \end{eqnarray}$$
 # 
 # We see the profit per unit of Y is smaller. So a decision to produce Y instead of X must be based on the ability to make Y in larger quantities.
 # 
 # The mathematical formulation of this problem becomes
 # 
-# \begin{align}
+# $$\begin{align}
 # \max_{y \geq 0} &\ 30\ y  & \mbox{objective}\\
 # \mbox{subject to:}\qquad \\
 # y & \leq 80  & \mbox{labor A constraint} \\
 # y & \leq 100 & \mbox{labor B constraint}
-# \end{align}
+# \end{align}$$
 
 # Compared to product X, we can manufacture and sell up 80 units per week for a total profit of \$2,400. This is very welcome news. 
 
@@ -119,19 +110,19 @@
 
 # Mathematical formulation
 # 
-# \begin{align}
+# $$\begin{align}
 # \max_{x,y \geq 0} &\ 40\ x + 30\ y  & \mbox{objective}\\
 # \mbox{subject to:}\qquad \\
 # x & \leq 40  & \mbox{demand constraint} \\
 # x + y & \leq 80  & \mbox{labor A constraint} \\
 # 2x + y & \leq 100 & \mbox{labor B constraint}
-# \end{align}
+# \end{align}$$
 
 # ## Solution using CVXPY
 # 
 # Here we will demonstrate the elementary use of [CVXPY](https://www.cvxpy.org/), a optimization modeling language that is embedded in Python using the cvxpy library.
 
-# In[23]:
+# In[ ]:
 
 
 import numpy as np
@@ -165,12 +156,12 @@ print(f"y = {y.value:4.2f}")
 # 
 # In particular, the function `scipy.optimize.linprog` solves linear programming problems represented in the form
 # 
-# \begin{align}
+# $$\begin{align}
 # \min_{x \geq 0} &\ c^T x \\
 # \mbox{subject to:}\qquad \\
 # A_{ub} & \leq b_{ub} \\
 # A_{eq} & = b_{eq} \\
-# \end{align}
+# \end{align}$$
 # 
 # where $c$ is a vector of coefficients in the objective function to be minimized, $A_{ub}$ and $b_{ub}$ are the coefficients and right-hand-sides of problem constraints written as upper bounds, and $A_{eq}$ and $b_{eq}$ are coefficients and right-hand-sides for equality constraints.
 
@@ -315,6 +306,3 @@ if results.success:
 # * For $n$ decisions you should expect to find $n$ 'active' constraints.
 # * Each inactive constraint has an associated 'slack.'  The associated resources have no incremental value.
 # * Each active constraint has an associated 'shadow price'.  This is additional value of additional resources.
-
-# <!--NAVIGATION-->
-# < [Unconstrained Scalar Optimization](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.01-Unconstrained-Scalar-Optimization.ipynb) | [Contents](toc.ipynb) | [Linear Programming](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.03-Linear-Programming.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/notebooks/06.02-Linear-Production-Model.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/06.02-Linear-Production-Model.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>

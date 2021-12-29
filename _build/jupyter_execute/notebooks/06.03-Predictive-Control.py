@@ -166,7 +166,6 @@ plt.tight_layout()
 # * Future values of the setpoint are equal to the current setpoint.
 # * Future values of the disturbance are equal to the current setpoint.
 # 
-# 
 
 # ## TCLab Event Loop
 # 

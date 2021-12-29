@@ -92,9 +92,9 @@
 # 
 # Putting these terms together in the energy balance yields a first-order model for the response of the heater/sensor assembly on the Temperature Control Laboratory.
 # 
-# \begin{align}
+# $$\begin{align}
 # C_p\frac{dT_1}{dt} & = U_a(T_{amb} - T_1) + \alpha P_1u_1 \\
-# \end{align}
+# \end{align}$$
 
 # ### Estimating $\alpha$
 # 
@@ -148,9 +148,9 @@ else:
 # 
 # We'll begin our analysis by investigating the steady-state response of this system to a steady-state input $\bar{u}_{1}$.  At steady-state all variables are constant so $\frac{dT_1}{dt} = 0$, which leaves 
 # 
-# \begin{align}
+# $$\begin{align}
 # 0 = U_a(T_{amb} - \bar{T}_1) + \alpha P_1\bar{u}_{1}
-# \end{align}
+# \end{align}$$
 # 
 # Solving for $\bar{T}_{1}$
 # 
@@ -174,41 +174,41 @@ else:
 # 
 # In examining the response of the temperature control laboratory, we see the temperature is a deviation from ambient temperature, i.e.,
 # 
-# \begin{align}
+# $$\begin{align}
 # T_1' = T_1 - T_{amb}
-# \end{align}
+# \end{align}$$
 # 
 # For process control purposes, we are often interested in the deviation of a process variable from a nominal value. In this case the choice of deviation variable is clearly obvious which is designated $T_1'$. From the steady state equation we see
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{T}_1' = \bar{T}_1 - T_{amb} = \frac{\alpha P_1}{U_a}\bar{u}_1
-# \end{align}
+# \end{align}$$
 # 
 # which is a somewhat simpler expression.
 # 
 # Let's see what happens to the transient model. Substituting $T_1 = T_{amb} + T_1'$ into the differential equation gives
 # 
-# \begin{align}
+# $$\begin{align}
 # C_p\frac{d(T_{amb}+T_1')}{dt} & = U_a(T_{amb} - (T_{amb} + T_1')) + \alpha P_1u_1
-# \end{align}
+# \end{align}$$
 # 
 # Expanding these terms
 # 
-# \begin{align}
+# $$\begin{align}
 # C_p\underbrace{\frac{dT_{amb}}{dt}}_{0} + C_p\frac{dT_1'}{dt} & = U_a(\underbrace{T_{amb} - T_{amb}}_{0} - T_1') + \alpha P_1u_1
-# \end{align}
+# \end{align}$$
 # 
 # we see several terms drop out. The derivative of any constant is zero, and see a cancelation on the right hand side, leaving
 # 
-# \begin{align}
+# $$\begin{align}
 # C_p\frac{dT_1'}{dt} & = - U_aT_1' + \alpha P_1u_1
-# \end{align}
+# \end{align}$$
 # 
 # One last manipulation will bring this model into a commonly used standard form
 # 
-# \begin{align}
+# $$\begin{align}
 # \frac{dT_1'}{dt} & = - \frac{U_a}{C_p}T_1' + \frac{\alpha P_1}{C_p}u_1
-# \end{align}
+# \end{align}$$
 # 
 # <hr>
 # 
@@ -220,54 +220,54 @@ else:
 # 
 # A standard form for a single differential equation is
 # 
-# \begin{align}
+# $$\begin{align}
 # \frac{dx}{dt} & = ax + bu
-# \end{align}
+# \end{align}$$
 # 
 # where $a$ and $b$ are model constants, $x$ is the dependent variable, and $u$ is an exogeneous input.  
-# 
+
 # #### Steady State Response
 # 
 # For a constant value $\bar{u}$, the steady state response $\bar{x}$ is given by solution to the equation
 # 
-# \begin{align}
+# $$\begin{align}
 # 0 & = a\bar{x} + b\bar{u}
-# \end{align}
+# \end{align}$$
 # 
 # which is
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{x} & = -\frac{b}{a} \bar{u}
-# \end{align}
-# 
+# \end{align}$$
+
 # #### Transient Response
 # 
 # The transient response is given by
 # 
-# \begin{align}
+# $$\begin{align}
 # x(t) & = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
-# \end{align}
+# \end{align}$$
 # 
 # which is an exact, analytical solution.
-# 
+
 # #### Apply to Model Equation
 # 
 # We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications
 # 
-# \begin{align}
+# $$\begin{align}
 # T_1' \sim x \\
 # -\frac{U_a}{C_p} \sim a \\
 # \frac{\alpha P_1}{C_p} \sim b \\
 # u_1 \sim u
-# \end{align}
+# \end{align}$$
 # 
 # Substituting these terms into the standard solution we confirm the steady-state solution found above, and provides a solution for the transient response of the deviation variables.
 # 
-# \begin{align}
+# $$\begin{align}
 # \bar{x} = -\frac{b}{a}\bar{u} \qquad & \Rightarrow \qquad \bar{T}_{1}' = \frac{\alpha P_1}{U_a}\bar{u}_{1} \\
 # x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad & \Rightarrow \qquad
 # T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
-# \end{align}
+# \end{align}$$
 
 # ### Plotting the Analytical Solution
 # 
