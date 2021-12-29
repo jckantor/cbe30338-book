@@ -3,8 +3,6 @@
 
 # # Examples of Process Control
 
-# ![](./figures/FeedbackControlDiagram.png)
-
 # ## Biomedical: Automated Insulin Therapy
 # 
 # Over the last decade, due to the research work by chemical and biomedical engineers, automated insulin therapies are now commercially available from several manufacturers. The following links and illusration show the major components of these systems. 
@@ -41,7 +39,7 @@
 # 
 # (If found this interesting,  you might also check out an animation of a [2005 incident at the BP Texas City Refinery](https://youtu.be/goSEyGNfiPM?t=43))
 
-# In[4]:
+# In[1]:
 
 
 from IPython.display import HTML
@@ -55,7 +53,7 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/JplAKJ
 # 
 # As you watch the following video, try to identify the many levels of control required to realize this automated manufacturing system. For example, what sensors and actuators are required for each robot to do their tasks?  How is quality control maintained? How are operations coordinated among the assembly stations in the manufacturing line?
 
-# In[4]:
+# In[2]:
 
 
 from IPython.display import HTML

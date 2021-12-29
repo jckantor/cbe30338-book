@@ -5,12 +5,7 @@
 
 # ## Feedback Control
 # 
-# ![](./figures/FeedbackControlDiagram.png)
-
-# ## Reference Materials
-# 
-# * {cite}`seborg2016process`
-# * {cite}`love2007process`
+# ![](./figures/FeedbackControlDiagram2.png)
 
 # In[ ]:
 
