@@ -34,4 +34,4 @@ The models encountered in this include basic models for heat and mass transfer e
 
 **Office:** 257 Nieuwland Hall
 
-**Virtual Office Hours:** Mondays, 11 am - 1:30 pm on Zoom, or by appointment. In-person office hours may be offered later in the semester after the current COVID outbreak has subsided. 
+**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm on Zoom, or by appointment. In-person office hours will be offered after the current COVID outbreak has subsided. 
