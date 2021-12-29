@@ -105,7 +105,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01.01-Schedule.html">
+  <a class="reference internal" href="00.01-Schedule.html">
    Schedule and Course Organization
   </a>
  </li>
@@ -117,8 +117,8 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Introduction.html">
-   1. Introduction
+  <a class="reference internal" href="01.00-What-is-Process-Control.html">
+   1. What is Process Control?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -127,23 +127,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.02-What-is-Process-Control.html">
-     1.1. What is Process Control?
+    <a class="reference internal" href="01.01-Elements-of-Feedback-Control.html">
+     1.1. Elements of Process Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.03-TCLab.html">
-     1.2. The Temperature Control Laboratory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-TCLab-Python-Package.html">
-     1.3. The TCLab Python Package
+    <a class="reference internal" href="01.02-Examples-of-Process-Control.html">
+     1.2. Examples of Process Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.05-Assignment-1.html">
-     1.4. Assignment 1
+     1.3. Assignment 1
     </a>
    </li>
   </ul>
@@ -430,26 +425,21 @@
    8. Projects
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Reference
+  Control Laboratory
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="A.00-Bibliography.html">
-   Bibliography
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="B.00-TCLab.html">
-   Temperature Control Laboratory
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="C.00-Python.html">
-   Python
+  <a class="reference internal" href="A.00-TCLab.html">
+   Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -458,7 +448,29 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="C.10-Animation-in-Jupyter-Notebooks.html">
+    <a class="reference internal" href="A.01-TCLab.html">
+     The Temperature Control Laboratory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A.02-TCLab-Python-Package.html">
+     The TCLab Python Package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="B.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="B.10-Animation-in-Jupyter-Notebooks.html">
      Animation in Jupyter Notebooks
     </a>
    </li>
@@ -656,34 +668,43 @@
 <div class="section" id="state-space-model">
 <h2><span class="section-number">6.1.1. </span>State Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The state-space model for the Temperature Control Laboratory is given by</p>
-<p>\begin{align}
-\frac{dx}{dt} &amp; = A x + B_u u + B_d d \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>where the structure of the matrix parameters and vector variables is given by</p>
-<p>\begin{align}
-\frac{d}{dt}\underbrace{\left[\begin{array}{c} T_{H,1} \ T_{S,1} \ T_{H,2} \ T_{S,2} \end{array}\right]}<em>x
-&amp; =
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d}{dt}\underbrace{\left[\begin{array}{c} T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2} \end{array}\right]}_x
+&amp; = 
 \underbrace{\left[\begin{array}{cccc}
--(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} &amp; \frac{U_c}{C^H_p} &amp; 0 \
-\frac{U_b}{C^S_p} &amp; -\frac{U_b}{C^S_p} &amp; 0 &amp; 0 \
-\frac{U_c}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} \
+-(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} &amp; \frac{U_c}{C^H_p} &amp; 0 \\
+\frac{U_b}{C^S_p} &amp; -\frac{U_b}{C^S_p} &amp; 0 &amp; 0 \\
+\frac{U_c}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_b}{C^H_p} \\
 0 &amp; 0 &amp; \frac{U_b}{C^S_p} &amp; -\frac{U_b}{C^S_p}
-\end{array}\right]}<em>A
-\underbrace{\left[\begin{array}{c}T</em>{H,1} \ T</em>{S,1} \ T_{H,2} \ T_{S,2}\end{array}\right]}<em>x
+\end{array}\right]}_A
+\underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
 +
-\underbrace{\left[\begin{array}{cc}\frac{\alpha P_1}{C_p} &amp; 0 \ 0 &amp; 0 \ 0 &amp; \frac{\alpha P_2}{C_p} \ 0 &amp; 0 \end{array}\right]}</em>{B_u}
-\underbrace{\left[\begin{array}{c}u_1 \ u_2\end{array}\right]}<em>u
+\underbrace{\left[\begin{array}{cc}\frac{\alpha P_1}{C_p} &amp; 0 \\ 0 &amp; 0 \\ 0 &amp; \frac{\alpha P_2}{C_p} \\ 0 &amp; 0 \end{array}\right]}_{B_u}
+\underbrace{\left[\begin{array}{c}u_1 \\ u_2\end{array}\right]}_u
 +
-\underbrace{\left[\begin{array}{c}\frac{U_a}{C^H_p} \ 0 \ \frac{U_a}{C^H_p} \ 0 \end{array}\right]}</em>{B_d}
+\underbrace{\left[\begin{array}{c}\frac{U_a}{C^H_p} \\ 0 \\ \frac{U_a}{C^H_p} \\ 0 \end{array}\right]}_{B_d}
 \underbrace{\left[\begin{array}{c}T_{amb}\end{array}\right]}_{d}
-\end{align}</p>
-<p>\begin{align}
-\underbrace{\left[\begin{array}{c} T_1 \ T_2 \end{array}\right]}<em>y
-&amp; =
-\underbrace{\left[\begin{array}{cccc} 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right]}<em>C
-\underbrace{\left[\begin{array}{c}T</em>{H,1} \ T</em>{S,1} \ T_{H,2} \ T_{S,2}\end{array}\right]}_x
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\underbrace{\left[\begin{array}{c} T_1 \\ T_2 \end{array}\right]}_y
+&amp; = 
+\underbrace{\left[\begin{array}{cccc} 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{array}\right]}_C
+\underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
+\end{align}
+\end{split}\]</div>
 </div>
 <div class="section" id="steady-state-operability">
 <h2><span class="section-number">6.1.2. </span>Steady State Operability<a class="headerlink" href="#steady-state-operability" title="Permalink to this headline">¶</a></h2>
@@ -691,41 +712,56 @@ y &amp; = C x
 <div class="section" id="steady-state-model">
 <h2><span class="section-number">6.1.3. </span>Steady State Model<a class="headerlink" href="#steady-state-model" title="Permalink to this headline">¶</a></h2>
 <p>At steady-state our becomes</p>
-<p>\begin{align}
-0 &amp; = A \bar{x} + B_u\bar{u} + B_d\bar{d} \
-\bar{y} &amp; = C \bar{x} \
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+0 &amp; = A \bar{x} + B_u\bar{u} + B_d\bar{d} \\
+\bar{y} &amp; = C \bar{x} \\
+\end{align}
+\end{split}\]</div>
 <p>where the overbar <span class="math notranslate nohighlight">\(\bar{u}\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, and <span class="math notranslate nohighlight">\(\bar{y}\)</span> denote the steady-state value of <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(y\)</span>, respectively. We assume <span class="math notranslate nohighlight">\(\bar{d}\)</span> is known.</p>
 <div class="section" id="steady-state-input-constraints">
 <h3><span class="section-number">6.1.3.1. </span>Steady-State input constraints<a class="headerlink" href="#steady-state-input-constraints" title="Permalink to this headline">¶</a></h3>
 <p>The constraints on <span class="math notranslate nohighlight">\(\bar{u}\)</span> are given by upper and lower bounds</p>
-<p>\begin{align}
-0 &amp; \leq \bar{u}_1 \leq 100 \
-0 &amp; \leq \bar{u}_2 \leq 100
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+0 &amp; \leq \bar{u}_1 \leq 100 \\
+0 &amp; \leq \bar{u}_2 \leq 100 
+\end{align}
+\end{split}\]</div>
 <p>when the values of <span class="math notranslate nohighlight">\(u_1\)</span> and <span class="math notranslate nohighlight">\(u_2\)</span> correspond to percentage of maximum power.</p>
 </div>
 <div class="section" id="steady-state-output-constraints">
 <h3><span class="section-number">6.1.3.2. </span>Steady-State output constraints<a class="headerlink" href="#steady-state-output-constraints" title="Permalink to this headline">¶</a></h3>
 <p>We will assume there are upper limits for each of the temperature outputs</p>
-<p>\begin{align}
-\bar{y}_1 &amp; \leq \bar{y}_1^{max} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\bar{y}_1 &amp; \leq \bar{y}_1^{max} \\
 \bar{y}_2 &amp; \leq \bar{y}_2^{max}
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>when the values of <span class="math notranslate nohighlight">\(u_1\)</span> and <span class="math notranslate nohighlight">\(u_2\)</span> correspond to percentage of maximum power.</p>
 </div>
 <div class="section" id="steady-state-setpoint-targets-or-ranges">
 <h3><span class="section-number">6.1.3.3. </span>Steady-State setpoint targets or ranges<a class="headerlink" href="#steady-state-setpoint-targets-or-ranges" title="Permalink to this headline">¶</a></h3>
 <p>The purpose of control is to find inputs <span class="math notranslate nohighlight">\(\bar{u}_1\)</span> and <span class="math notranslate nohighlight">\(\bar{u}_2\)</span> that cause the outputs to take on desired values. Those values could be specified as specific setpoints <span class="math notranslate nohighlight">\(\bar{r}_1^{SP}\)</span> and <span class="math notranslate nohighlight">\(\bar{r}_2^{SP}\)</span> in the form</p>
-<p>\begin{align}
-\bar{y}_1 &amp; = \bar{r}_1^{SP} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\bar{y}_1 &amp; = \bar{r}_1^{SP} \\
 \bar{y}_2 &amp; = \bar{r}_2^{SP}
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>Alternatively, the desired operation could be specified by a range of values</p>
-<p>\begin{align}
-\bar{r}_1^{min} &amp; \leq \bar{y}_1 \leq \bar{r}_1^{max} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\bar{r}_1^{min} &amp; \leq \bar{y}_1 \leq \bar{r}_1^{max} \\
 \bar{r}_2^{min} &amp; \leq \bar{y}_2 \leq \bar{r}_2^{max}
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 </div>
 </div>
 <div class="section" id="cvxpy-solution">

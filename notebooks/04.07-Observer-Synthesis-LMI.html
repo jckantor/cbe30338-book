@@ -105,7 +105,7 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01.01-Schedule.html">
+  <a class="reference internal" href="00.01-Schedule.html">
    Schedule and Course Organization
   </a>
  </li>
@@ -117,8 +117,8 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Introduction.html">
-   1. Introduction
+  <a class="reference internal" href="01.00-What-is-Process-Control.html">
+   1. What is Process Control?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -127,23 +127,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.02-What-is-Process-Control.html">
-     1.1. What is Process Control?
+    <a class="reference internal" href="01.01-Elements-of-Feedback-Control.html">
+     1.1. Elements of Process Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.03-TCLab.html">
-     1.2. The Temperature Control Laboratory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-TCLab-Python-Package.html">
-     1.3. The TCLab Python Package
+    <a class="reference internal" href="01.02-Examples-of-Process-Control.html">
+     1.2. Examples of Process Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.05-Assignment-1.html">
-     1.4. Assignment 1
+     1.3. Assignment 1
     </a>
    </li>
   </ul>
@@ -430,26 +425,21 @@
    8. Projects
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Reference
+  Control Laboratory
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="A.00-Bibliography.html">
-   Bibliography
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="B.00-TCLab.html">
-   Temperature Control Laboratory
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="C.00-Python.html">
-   Python
+  <a class="reference internal" href="A.00-TCLab.html">
+   Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -458,7 +448,29 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="C.10-Animation-in-Jupyter-Notebooks.html">
+    <a class="reference internal" href="A.01-TCLab.html">
+     The Temperature Control Laboratory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A.02-TCLab-Python-Package.html">
+     The TCLab Python Package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="B.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="B.10-Animation-in-Jupyter-Notebooks.html">
      Animation in Jupyter Notebooks
     </a>
    </li>
@@ -643,18 +655,24 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 <div class="math notranslate nohighlight">
 \[\frac{de}{dt} = (A - LC)e\]</div>
 <p>where <span class="math notranslate nohighlight">\(e = \hat{x}-x\)</span> is the difference between the estimated and process states. Given a symmetric positive definite matrix <span class="math notranslate nohighlight">\(P\)</span>, define the <strong>Lyapunov</strong> frunction <span class="math notranslate nohighlight">\(V(e)\)</span> as <span class="math notranslate nohighlight">\(V(e) = e^TPe\)</span>.</p>
-<p>\begin{align}
-\frac{dV}{dt} &amp; = \dot{e}^TP e + e^TP\dot{e} \
-&amp; = e^T(A - LC)^T Pe + e^T P (A - LC) e \
-&amp; = e^T(A^TP + PA - C^TL^TP - P L C)e\
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dV}{dt} &amp; = \dot{e}^TP e + e^TP\dot{e} \\
+&amp; = e^T(A - LC)^T Pe + e^T P (A - LC) e \\ 
+&amp; = e^T(A^TP + PA - C^TL^TP - P L C)e\\
+\end{align}
+\end{split}\]</div>
 <p>A sufficient condition for the global asympototic stability of observer is the left-hand side of this equation be negative for all <span class="math notranslate nohighlight">\(e \ne 0\)</span>. This will be true if and only if <span class="math notranslate nohighlight">\(A^TP + PA - C^TL^TP - P L C\)</span> is negative definite, i.e;,</p>
 <div class="math notranslate nohighlight">
 \[e^T(A^TP + PA - C^TL^TP - P L C)e &lt; 0 \qquad\forall e \ne 0\]</div>
 <p>To provide some margin for robustness relative to model error, we will specify</p>
-<p>\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 \frac{dV}{dt} \leq -\gamma V
-\end{align}</p>
+\end{align}
+\]</div>
 <p>for some <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>. When recast as a linear matrix inequality, we obtain</p>
 <div class="math notranslate nohighlight">
 \[A^TP + PA - C^TL^TP - P L C  \prec -\gamma P\]</div>
