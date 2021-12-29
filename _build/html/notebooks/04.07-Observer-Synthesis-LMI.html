@@ -756,27 +756,39 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 <div class="section" id="cal-h-2-optimal-state-estimation">
 <h2><span class="section-number">4.8.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now consider performance metrics for the observer. In particular, we assume our system is of the form</p>
-<p>\begin{align}
-\frac{dx}{dt} &amp; = A x + B_d d \
-y &amp; = C_y x \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B_d d \\
+y &amp; = C_y x \\
 z &amp; = C_z x
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(d\)</span> are unmeasured disturbances, <span class="math notranslate nohighlight">\(y\)</span> are process measurements, and <span class="math notranslate nohighlight">\(z\)</span> are process variables we are attempting to estimate. Constructing an estimator</p>
-<p>\begin{align}
-\frac{d\hat{x}}{dt} &amp; = A\hat{x} - L(\hat{y} - y) + B_d\hat{d}\
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d\hat{x}}{dt} &amp; = A\hat{x} - L(\hat{y} - y) + B_d\hat{d}\\
 \hat{y} &amp; = C_y\hat{x}
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>and defining the state error in the usual way as <span class="math notranslate nohighlight">\(e_x = \hat{x} - x\)</span> yields error dynamics given by</p>
-<p>\begin{align}
-\frac{de}{dt} &amp; = (A - LC_y) e + B_d(\hat{d} - d) \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{de}{dt} &amp; = (A - LC_y) e + B_d(\hat{d} - d) \\
 e_z &amp; = C_z e
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e_z = C_z e\)</span> denotes the estimator error of interest. The design objective is to find values for <span class="math notranslate nohighlight">\(L\)</span> that minimize the impact of changes in disturbance <span class="math notranslate nohighlight">\(\hat{d} - d\)</span> on <span class="math notranslate nohighlight">\(e_z\)</span>.</p>
-<p>\begin{align}
-\begin{bmatrix} PA + A^TP - YC_y - C_y^TY^T &amp; PB_d \ B_d^T P &amp; -I\end{bmatrix} &amp; \prec 0 \
-\begin{bmatrix} P &amp; C_z^T \ C_z &amp; Z\end{bmatrix} &amp; \succ 0 \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\begin{bmatrix} PA + A^TP - YC_y - C_y^TY^T &amp; PB_d \\ B_d^T P &amp; -I\end{bmatrix} &amp; \prec 0 \\
+\begin{bmatrix} P &amp; C_z^T \\ C_z &amp; Z\end{bmatrix} &amp; \succ 0 \\
 Tr(Z) &amp; &lt; \nu
-\end{align}</p>
+\end{align}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

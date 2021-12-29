@@ -122,33 +122,41 @@ print(L)
 # 
 # Let's now consider performance metrics for the observer. In particular, we assume our system is of the form
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_d d \\
 # y & = C_y x \\
 # z & = C_z x
 # \end{align}
+# $$
 # 
 # where $d$ are unmeasured disturbances, $y$ are process measurements, and $z$ are process variables we are attempting to estimate. Constructing an estimator
 # 
+# $$
 # \begin{align}
 # \frac{d\hat{x}}{dt} & = A\hat{x} - L(\hat{y} - y) + B_d\hat{d}\\
 # \hat{y} & = C_y\hat{x}
 # \end{align}
+# $$
 # 
 # and defining the state error in the usual way as $e_x = \hat{x} - x$ yields error dynamics given by
 # 
+# $$
 # \begin{align}
 # \frac{de}{dt} & = (A - LC_y) e + B_d(\hat{d} - d) \\
 # e_z & = C_z e
 # \end{align}
+# $$
 # 
 # where $e_z = C_z e$ denotes the estimator error of interest. The design objective is to find values for $L$ that minimize the impact of changes in disturbance $\hat{d} - d$ on $e_z$.
 # 
+# $$
 # \begin{align}
 # \begin{bmatrix} PA + A^TP - YC_y - C_y^TY^T & PB_d \\ B_d^T P & -I\end{bmatrix} & \prec 0 \\
 # \begin{bmatrix} P & C_z^T \\ C_z & Z\end{bmatrix} & \succ 0 \\
 # Tr(Z) & < \nu
 # \end{align}
+# $$
 
 # In[268]:
 
