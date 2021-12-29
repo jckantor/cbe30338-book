@@ -25,6 +25,8 @@
 # ## The problem with coding controllers as simple functions
 
 # A function performing the duty of the controller does the calculations necessary to compute a new value of the manipulated variable, $MV_k$. For relay control with a deadzone, for example, the value of $MV_k$ is given 
+# 
+# $$
 # \begin{align}
 # MV_{k} & = \begin{cases} 
 #     MV^{max} &\text{if $PV_k \leq SP_k$} - d\\
@@ -32,6 +34,7 @@
 #     MV_{k-1} & \text{ otherwise}
 #     \end{cases}
 # \end{align}
+# $$
 # 
 # where parameters $MV^{min}$, $MV^{max}$, and $d$ define a particular instance of the control algorithm. With known values for those parameters,  the current value of $MV_k$ is determined from process variable $PV_k$, setpoint $SP_k$, and the prior value $MV_{k-1}$.
 # 

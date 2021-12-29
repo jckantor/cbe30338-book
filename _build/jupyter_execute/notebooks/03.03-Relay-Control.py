@@ -9,12 +9,14 @@
 # 
 # The following code implements relay control for temperature T1 on the Temperature Control Lab. At each time step $t_k$, the value of 
 # 
+# $$
 # \begin{align}
 # U_{k} & = \begin{cases} 
 #     U^{max} &\text{if $T_k \leq T^{SP}_k$}\\
 #     U^{min} & \text{if $T_k \geq T^{SP}_k$}
 #     \end{cases}
 # \end{align}
+# $$
 # 
 # where $ 0\% \leq U_{k} \leq 100\%$ refers to percentage of the maximum heater power, $T_k$ is the measured temperature at time $t_k$, and $T^{SP}_k$ is the temperature setpoint at time $t_k$. Typically $U^{min}$ and $U^{max}$ will be set to 0% and 100%, respectively, but other choices are possible.
 # 
@@ -61,6 +63,7 @@ with TCLab() as lab:
 # 
 # The control algorithm for relay control with a deadzone extending $d$ above and below the setpoint, a closed form is given by
 # 
+# $$
 # \begin{align}
 # U_{k} & = \begin{cases} 
 #     U^{max} &\text{if $T_k \leq T^{SP}_k$} - d\\
@@ -68,6 +71,7 @@ with TCLab() as lab:
 #     U_{k-1} & \text{ otherwise}
 #     \end{cases}
 # \end{align}
+# $$
 # 
 # where $d$ is the *tolerance* or *hysteresis*. 
 # 
@@ -77,9 +81,11 @@ with TCLab() as lab:
 # 
 # The furnance is turned on for temperatures below the range 
 # 
+# $$
 # \begin{align}
 # T^{SP} - d \leq T \leq T^{SP} + d
 # \end{align}
+# $$
 # 
 # and is turned for temperatures above the range. Within the range, however, the furnance may be on or off depending on what happened at the last decision point.
 # 

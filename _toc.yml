@@ -86,7 +86,6 @@ parts:
     - file: notebooks/A.00-TCLab
       sections:
         - file: notebooks/A.01-TCLab.ipynb
-        - file: notebooks/A.02-TCLab-Python-Package
     
     - file: notebooks/B.00-Python-Tutorials
       sections:
