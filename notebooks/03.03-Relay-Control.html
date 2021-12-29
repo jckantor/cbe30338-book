@@ -449,12 +449,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="A.01-TCLab.html">
-     The Temperature Control Laboratory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A.02-TCLab-Python-Package.html">
-     The TCLab Python Package
+     Geting Started with the Temperature Control Laboratory
     </a>
    </li>
   </ul>
@@ -612,12 +607,15 @@
 <h2><span class="section-number">3.3.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
 <p>Relay control is perhaps the simplest form of feedback control that comes to mind for controlling common heaters. This is the on/off control familiar from home thermostats, air conditioners, and other devices where the manipulated variable is in either an “on” state or an “off” state.</p>
 <p>The following code implements relay control for temperature T1 on the Temperature Control Lab. At each time step <span class="math notranslate nohighlight">\(t_k\)</span>, the value of</p>
-<p>\begin{align}
-U_{k} &amp; = \begin{cases}
-U^{max} &amp;\text{if <span class="math notranslate nohighlight">\(T_k \leq T^{SP}_k\)</span>}\
-U^{min} &amp; \text{if <span class="math notranslate nohighlight">\(T_k \geq T^{SP}_k\)</span>}
-\end{cases}
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+U_{k} &amp; = \begin{cases} 
+    U^{max} &amp;\text{if $T_k \leq T^{SP}_k$}\\
+    U^{min} &amp; \text{if $T_k \geq T^{SP}_k$}
+    \end{cases}
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\( 0\% \leq U_{k} \leq 100\%\)</span> refers to percentage of the maximum heater power, <span class="math notranslate nohighlight">\(T_k\)</span> is the measured temperature at time <span class="math notranslate nohighlight">\(t_k\)</span>, and <span class="math notranslate nohighlight">\(T^{SP}_k\)</span> is the temperature setpoint at time <span class="math notranslate nohighlight">\(t_k\)</span>. Typically <span class="math notranslate nohighlight">\(U^{min}\)</span> and <span class="math notranslate nohighlight">\(U^{max}\)</span> will be set to 0% and 100%, respectively, but other choices are possible.</p>
 <p>Relay control can be implemented as a single line of code in the standard clock-driven loop of the Temperature Control Lab.</p>
 <div class="cell docutils container">
@@ -667,20 +665,26 @@ U^{min} &amp; \text{if <span class="math notranslate nohighlight">\(T_k \geq T^{
 <li><p><strong>Deadtime</strong> Following an on-or-off transition in the manipulated variable, no further transition is allowed for a specified period of time called the deadtime.</p></li>
 </ul>
 <p>The control algorithm for relay control with a deadzone extending <span class="math notranslate nohighlight">\(d\)</span> above and below the setpoint, a closed form is given by</p>
-<p>\begin{align}
-U_{k} &amp; = \begin{cases}
-U^{max} &amp;\text{if <span class="math notranslate nohighlight">\(T_k \leq T^{SP}_k\)</span>} - d\
-U^{min} &amp; \text{if <span class="math notranslate nohighlight">\(T_k \geq T^{SP}_k\)</span>} + d\
-U_{k-1} &amp; \text{ otherwise}
-\end{cases}
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+U_{k} &amp; = \begin{cases} 
+    U^{max} &amp;\text{if $T_k \leq T^{SP}_k$} - d\\
+    U^{min} &amp; \text{if $T_k \geq T^{SP}_k$} + d\\
+    U_{k-1} &amp; \text{ otherwise}
+    \end{cases}
+\end{align}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(d\)</span> is the <em>tolerance</em> or <em>hysteresis</em>.</p>
 <p>For home heating systems a typical value is in the range of 0.5 to 1 degree F. This image shows how hystersis was adjusted on a typical home thermostat in common usage in the late 20th century.</p>
 <p><a title="By Vincent de Groot - http://www.videgro.net (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC BY 2.5 (http://creativecommons.org/licenses/by/2.5)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AHoneywell_thermostat_open.jpg"><img width="512" alt="Honeywell thermostat open" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Honeywell_thermostat_open.jpg/512px-Honeywell_thermostat_open.jpg"/></a></p>
 <p>The furnance is turned on for temperatures below the range</p>
-<p>\begin{align}
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
 T^{SP} - d \leq T \leq T^{SP} + d
-\end{align}</p>
+\end{align}
+\]</div>
 <p>and is turned for temperatures above the range. Within the range, however, the furnance may be on or off depending on what happened at the last decision point.</p>
 <p>The following code implements relay control with hystersis.</p>
 <div class="cell docutils container">

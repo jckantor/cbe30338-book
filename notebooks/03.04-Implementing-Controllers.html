@@ -449,12 +449,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="A.01-TCLab.html">
-     The Temperature Control Laboratory
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="A.02-TCLab-Python-Package.html">
-     The TCLab Python Package
+     Geting Started with the Temperature Control Laboratory
     </a>
    </li>
   </ul>
@@ -649,14 +644,17 @@
 <p>This notebook demonstrates these three different approaches to controller implementation. A reader new to Python coding may wish to limit their attention to the first two, nested functions and generators, and leave the more involved aspects of object-oriented coding the Python classes for a later time.</p>
 <div class="section" id="the-problem-with-coding-controllers-as-simple-functions">
 <h2><span class="section-number">3.4.1. </span>The problem with coding controllers as simple functions<a class="headerlink" href="#the-problem-with-coding-controllers-as-simple-functions" title="Permalink to this headline">¶</a></h2>
-<p>A function performing the duty of the controller does the calculations necessary to compute a new value of the manipulated variable, <span class="math notranslate nohighlight">\(MV_k\)</span>. For relay control with a deadzone, for example, the value of <span class="math notranslate nohighlight">\(MV_k\)</span> is given
+<p>A function performing the duty of the controller does the calculations necessary to compute a new value of the manipulated variable, <span class="math notranslate nohighlight">\(MV_k\)</span>. For relay control with a deadzone, for example, the value of <span class="math notranslate nohighlight">\(MV_k\)</span> is given</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{align}
-MV_{k} &amp; = \begin{cases}
-MV^{max} &amp;\text{if <span class="math notranslate nohighlight">\(PV_k \leq SP_k\)</span>} - d\
-MV^{min} &amp; \text{if <span class="math notranslate nohighlight">\(PV_k \geq SP_k\)</span>} + d\
-MV_{k-1} &amp; \text{ otherwise}
-\end{cases}
-\end{align}</p>
+MV_{k} &amp; = \begin{cases} 
+    MV^{max} &amp;\text{if $PV_k \leq SP_k$} - d\\
+    MV^{min} &amp; \text{if $PV_k \geq SP_k$} + d\\
+    MV_{k-1} &amp; \text{ otherwise}
+    \end{cases}
+\end{align}
+\end{split}\]</div>
 <p>where parameters <span class="math notranslate nohighlight">\(MV^{min}\)</span>, <span class="math notranslate nohighlight">\(MV^{max}\)</span>, and <span class="math notranslate nohighlight">\(d\)</span> define a particular instance of the control algorithm. With known values for those parameters,  the current value of <span class="math notranslate nohighlight">\(MV_k\)</span> is determined from process variable <span class="math notranslate nohighlight">\(PV_k\)</span>, setpoint <span class="math notranslate nohighlight">\(SP_k\)</span>, and the prior value <span class="math notranslate nohighlight">\(MV_{k-1}\)</span>.</p>
 <p>Here is a simple Python function implementing relay control with deadzone.</p>
 <div class="cell docutils container">
