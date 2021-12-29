@@ -7,16 +7,15 @@ root: Readme
 parts:
   - caption: Course Information
     chapters:
-    - file: notebooks/01.01-Schedule
+    - file: notebooks/00.01-Schedule
 
-  - caption: Course Materials
+  - caption: Topical Materials
     numbered: true
     chapters:
-    - file: notebooks/01.00-Introduction
+    - file: notebooks/01.00-What-is-Process-Control
       sections:
-      - file: notebooks/01.02-What-is-Process-Control
-      - file: notebooks/01.03-TCLab.ipynb
-      - file: notebooks/01.04-TCLab-Python-Package
+      - file: notebooks/01.01-Elements-of-Feedback-Control
+      - file: notebooks/01.02-Examples-of-Process-Control
       - file: notebooks/01.05-Assignment-1
       
     - file: notebooks/02.00-Process-Modeling
@@ -79,16 +78,19 @@ parts:
       - file: notebooks/07.05-Queuing-Systems-and-Poisson-Processes
 
     - file: notebooks/08.00-Projects
+    
+    - file: notebooks/09.00-Bibliography
 
-  - caption: Appendices
+  - caption: Control Laboratory
     chapters:
-    - file: notebooks/A.00-Bibliography
-    
-    - file: notebooks/B.00-TCLab
-    
-    - file: notebooks/C.00-Python
+    - file: notebooks/A.00-TCLab
       sections:
-      - file: notebooks/C.10-Animation-in-Jupyter-Notebooks
+        - file: notebooks/A.01-TCLab.ipynb
+        - file: notebooks/A.02-TCLab-Python-Package
+    
+    - file: notebooks/B.00-Python-Tutorials
+      sections:
+      - file: notebooks/B.10-Animation-in-Jupyter-Notebooks
       
 
 

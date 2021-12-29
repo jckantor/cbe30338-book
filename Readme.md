@@ -35,8 +35,3 @@ The models encountered in this include basic models for heat and mass transfer. 
 
 **Office Hours:** Mondays, 11 am - 1:30 pm on Zoom. In-person office hours by appointment.
 
-## References
-
-{cite}`seborg2016process`
-
-

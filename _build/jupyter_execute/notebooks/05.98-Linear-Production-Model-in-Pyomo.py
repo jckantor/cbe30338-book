@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains material from [CBE30338](https://jckantor.github.io/CBE30338);
-# content is available [on Github](https://github.com/jckantor/CBE30338.git).*
-# 
-
-# <!--NAVIGATION-->
-# < [6.3 Linear Programming](https://jckantor.github.io/CBE30338/06.03-Linear-Programming.html) | [Contents](toc.html) | [Tag Index](tag_index.html) | [6.4 Linear Programming in Pyomo](https://jckantor.github.io/CBE30338/06.04-Linear-Programming-in-Pyomo.html)<p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/docs/06.04-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/CBE30338/06.04-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # Linear Production Model in Pyomo
 # 
 # [Pyomo](http://www.pyomo.org/) is a state-of-the-art language for solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision **variables**, **constraints**, and an optimization **objective**. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.
@@ -253,6 +245,3 @@ model.constraints.display()
 
 
 
-
-# <!--NAVIGATION-->
-# < [6.3 Linear Programming](https://jckantor.github.io/CBE30338/06.03-Linear-Programming.html) | [Contents](toc.html) | [Tag Index](tag_index.html) | [6.4 Linear Programming in Pyomo](https://jckantor.github.io/CBE30338/06.04-Linear-Programming-in-Pyomo.html)<p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/docs/06.04-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/CBE30338/06.04-Linear-Production-Model-in-Pyomo.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>

@@ -1,14 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains material from [cbe30338-2021](https://jckantor.github.io/cbe30338-2021);
-# content is available [on Github](https://github.com/jckantor/cbe30338-2021.git).*
-# 
-
-# <!--NAVIGATION-->
-# < [6.1 Static Operability](https://jckantor.github.io/cbe30338-2021/06.01-Static-Operability.html) | [Contents](toc.html) | [Tag Index](tag_index.html) | [7.0 Projects](https://jckantor.github.io/cbe30338-2021/07.00-Projects.html) ><p><a href="https://colab.research.google.com/github/jckantor/cbe30338-2021/blob/master/docs/06.02-Simulation-and-Open-Loop-Optimal-Control.ipynb"> <img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://jckantor.github.io/cbe30338-2021/06.02-Simulation-and-Open-Loop-Optimal-Control.ipynb"> <img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # #  Implementing Predictive Control
 # 
 # The goal of this notebook is to demonstrate an implementation of predictive control.
@@ -17,17 +9,21 @@
 # 
 # Once agaiin will use the two-state model for a single heater/sensor assembly to demonstrate the key elements of this notebook.
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
 # \end{align}
+# $$
 # 
 # The model is recast into linear state space form as
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_u u + B_d d \\
 # y & = C x
 # \end{align}
+# $$
 # 
 # where
 # 
@@ -79,23 +75,29 @@ C = np.array([[0, 1]])                   # single row
 # 
 # An optimal control policy minimizes the differences
 # 
+# $$
 # \begin{align*}
 # \min_{u} \int_{t_0}^{t_f} \|T_S(t) - SP(t)\|^2\,dt \\
 # \end{align*}
+# $$
 # 
 # where $SP(t)$ is a setpoint, subject to constraints
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{dT_H}{dt} & = U_a (T_{amb}(t) - T_H) + U_c (T_S - T_H) + P u(t)\\
 # C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
 # \end{align*}
+# $$
 # 
 # initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb}(0) \\
 # T_S(t_0) & = T_{amb}(0)
 # \end{align*}
+# $$
 # 
 # where $T_{amb}(t)$ is a possibly time-varying disturbance.
 

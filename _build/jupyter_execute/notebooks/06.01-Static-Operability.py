@@ -9,13 +9,16 @@
 
 # The state-space model for the Temperature Control Laboratory is given by
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_u u + B_d d \\
 # y & = C x
 # \end{align}
+# $$
 # 
 # where the structure of the matrix parameters and vector variables is given by
 # 
+# $$
 # \begin{align}
 # \frac{d}{dt}\underbrace{\left[\begin{array}{c} T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2} \end{array}\right]}_x
 # & = 
@@ -33,13 +36,16 @@
 # \underbrace{\left[\begin{array}{c}\frac{U_a}{C^H_p} \\ 0 \\ \frac{U_a}{C^H_p} \\ 0 \end{array}\right]}_{B_d}
 # \underbrace{\left[\begin{array}{c}T_{amb}\end{array}\right]}_{d}
 # \end{align}
+# $$
 # 
+# $$
 # \begin{align}
 # \underbrace{\left[\begin{array}{c} T_1 \\ T_2 \end{array}\right]}_y
 # & = 
 # \underbrace{\left[\begin{array}{cccc} 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{array}\right]}_C
 # \underbrace{\left[\begin{array}{c}T_{H,1} \\ T_{S,1} \\ T_{H,2} \\ T_{S,2}\end{array}\right]}_x
 # \end{align}
+# $$
 
 # ## Steady State Operability
 
@@ -47,10 +53,12 @@
 # 
 # At steady-state our becomes
 # 
+# $$
 # \begin{align}
 # 0 & = A \bar{x} + B_u\bar{u} + B_d\bar{d} \\
 # \bar{y} & = C \bar{x} \\
 # \end{align}
+# $$
 # 
 # where the overbar $\bar{u}$, $\bar{x}$, and $\bar{y}$ denote the steady-state value of $u$, $x$, and $y$, respectively. We assume $\bar{d}$ is known.
 
@@ -58,10 +66,12 @@
 # 
 # The constraints on $\bar{u}$ are given by upper and lower bounds
 # 
+# $$
 # \begin{align}
 # 0 & \leq \bar{u}_1 \leq 100 \\
 # 0 & \leq \bar{u}_2 \leq 100 
 # \end{align}
+# $$
 # 
 # when the values of $u_1$ and $u_2$ correspond to percentage of maximum power. 
 
@@ -69,10 +79,12 @@
 # 
 # We will assume there are upper limits for each of the temperature outputs
 # 
+# $$
 # \begin{align}
 # \bar{y}_1 & \leq \bar{y}_1^{max} \\
 # \bar{y}_2 & \leq \bar{y}_2^{max}
 # \end{align}
+# $$
 # 
 # when the values of $u_1$ and $u_2$ correspond to percentage of maximum power. 
 
@@ -80,17 +92,21 @@
 # 
 # The purpose of control is to find inputs $\bar{u}_1$ and $\bar{u}_2$ that cause the outputs to take on desired values. Those values could be specified as specific setpoints $\bar{r}_1^{SP}$ and $\bar{r}_2^{SP}$ in the form
 # 
+# $$
 # \begin{align}
 # \bar{y}_1 & = \bar{r}_1^{SP} \\
 # \bar{y}_2 & = \bar{r}_2^{SP}
 # \end{align}
+# $$
 # 
 # Alternatively, the desired operation could be specified by a range of values
 # 
+# $$
 # \begin{align}
 # \bar{r}_1^{min} & \leq \bar{y}_1 \leq \bar{r}_1^{max} \\
 # \bar{r}_2^{min} & \leq \bar{y}_2 \leq \bar{r}_2^{max}
 # \end{align}
+# $$
 
 # ## CVXPY Solution
 

@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains course material from [CBE32338](https://jckantor.github.io/CBE32338)
-# by Jeffrey Kantor (jeff at nd.edu); the content is available [on Github](https://github.com/jckantor/CBE2338.git).
-# The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
-# and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
-
-# <!--NAVIGATION-->
-# < [Predictive Control and Real Time Optimization](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/05.00-Predictive-Control-and-Real-Time-Optimization.ipynb) | [Contents](toc.ipynb) | [Simulation, Control, and Estimation using Pyomo](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/05.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/05.01-Optimization-Control-and-Estimation-using-Pyomo.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/05.01-Optimization-Control-and-Estimation-using-Pyomo.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # Simulation and Open-Loop Optimal Control
 # 
 # This notebook demonstrates the use of CVXPY for the simulation and computation of open-loop optimal control. The notebook includes a lab exercise.
@@ -20,17 +11,21 @@
 # 
 # We will use the two-state model for a single heater/sensor assembly for the calculations that follow.
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
 # \end{align}
+# $$
 # 
 # The model is recast into linear state space form as
 # 
+# $$
 # \begin{align}
 # \frac{dx}{dt} & = A x + B_u u + B_d d \\
 # y & = C x
 # \end{align}
+# $$
 # 
 # where
 # 
@@ -149,10 +144,12 @@ plt.tight_layout()
 # 
 # Let's see how well our initial guess at a control strategy will work for us subject to initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb} \\
 # T_S(t_0) & = T_{amb}
 # \end{align*}
+# $$
 # 
 # and prior specification of inputs $u(t)$ and $d(t)$.
 
@@ -206,23 +203,29 @@ plt.tight_layout()
 # 
 # An optimal control policy minimizes the differences
 # 
+# $$
 # \begin{align*}
 # \min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
 # \end{align*}
+# $$
 # 
 # subject to constraints
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
 # C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
 # \end{align*}
+# $$
 # 
 # initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb} \\
 # T_S(t_0) & = T_{amb}
 # \end{align*}
+# $$
 # 
 # and prior knowledge of $d(t)$.
 
@@ -267,10 +270,12 @@ plt.tight_layout()
 # 
 # **Study Question:** The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.
 # 
+# $$
 # \begin{align*}
 # \frac{du}{dt} & \leq \dot{u}_{max} \\
 # \frac{du}{dt} & \geq -\dot{u}_{max}
 # \end{align*}
+# $$
 # 
 # where $\dot{u}_{max}$ is the maximum rate of change. Add these rate constraints to the problem above. Specify that the maximum power cannot change more than  1% per second.
 # 
@@ -299,6 +304,3 @@ plt.tight_layout()
 # ### Exercise 3
 # 
 # Apply the functions U1(t) and U2(t) to your hardware and compare the measured sensor temperatures to those predicted in Exercise 2. How did you do?
-
-# <!--NAVIGATION-->
-# < [Predictive Control and Real Time Optimization](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/05.00-Predictive-Control-and-Real-Time-Optimization.ipynb) | [Contents](toc.ipynb) | [Simulation, Control, and Estimation using Pyomo](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/05.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/05.01-Optimization-Control-and-Estimation-using-Pyomo.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/05.01-Optimization-Control-and-Estimation-using-Pyomo.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
