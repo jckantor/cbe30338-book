@@ -4,11 +4,18 @@ This is a repository of class materials for CBE 303338 Chemical Process Control 
 
 ## Course Information
 
-**Section:** CBE 30338-01
+**Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138
 
-**Lab/Tutorial Sections:**  CBE 32338-01; CBE 32338-02. You must be registered for one of these lab/tutorial sections 
+**Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
+* CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
+* CBE 32338-02 Friday, 12:50 am - 1:40 pm, Fitzpatrick A68
 
-**Prerequisites:** CBE 20258 Numerical and Statistical Analysis; MATH 30650 Differential Equations
+**Prerequisites:** This course assumes knowledge of modeling and analysis with differential equations, and procedural programming in Python. Students taking this course will normally have completed
+
+* CBE 20258 Numerical and Statistical Analysis
+* MATH 30650 Differential Equations (or ACMS equivalent)
+
+The models encountered in this include basic models for heat and mass transfer. Students without these prerequisites should consult the instructor before enrolling. Students with background in Matlab, but none in Python, may take the course but need to be ready to crash into Python.
 
 **Required Materials:** 
 * [Temperature Control Lab](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) is an Arduino based device that will be used as a "hands-on" laboratory for learning process control.
@@ -17,20 +24,19 @@ This is a repository of class materials for CBE 303338 Chemical Process Control 
 
 **Dates:** January 11 - April 21, 2022
 
-**Meetings:** 
-* CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138
-* CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
-* CBE 32338-02 Friday, 12:50 am - 1:40 pm, Fitzpatrick A68
 
 ## Instructor Information
 
-**Instructor:** Jeffrey Kantor
-
-**Pronouns:** he/him/his
+**Instructor:** Jeffrey Kantor (he/him/his)
 
 **Email:** j e f f @ n d . e d u
 
 **Office:** 257 Nieuwland Hall
 
 **Office Hours:** Mondays, 11 am - 1:30 pm on Zoom. In-person office hours by appointment.
+
+## References
+
+{cite}`seborg2016process`
+
 
