@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains course material from [CBE32338](https://jckantor.github.io/CBE32338)
-# by Jeffrey Kantor (jeff at nd.edu); the content is available [on Github](https://github.com/jckantor/CBE2338.git).
-# The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
-# and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
-
-# <!--NAVIGATION-->
-# < [Two State Model for a Single Heater](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.05-Two-State-Model-for-a-Single-Heater.ipynb) | [Contents](toc.ipynb) | [TCLab Lab 2: Model Identification](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification-Solutions.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.06-Four-State-Model.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.06-Four-State-Model.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # Four State Model
 
 # ## Multivariable Heater/Sensor System
@@ -161,6 +152,3 @@ def compare(Ua, Ub, Uc, Cp_H, Cp_S):
 
 
 
-
-# <!--NAVIGATION-->
-# < [Two State Model for a Single Heater](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.05-Two-State-Model-for-a-Single-Heater.ipynb) | [Contents](toc.ipynb) | [TCLab Lab 2: Model Identification](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification-Solutions.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.06-Four-State-Model.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.06-Four-State-Model.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>

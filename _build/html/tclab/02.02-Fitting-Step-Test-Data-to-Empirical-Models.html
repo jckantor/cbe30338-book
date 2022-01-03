@@ -105,8 +105,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/00.01-Schedule.html">
-   Schedule and Course Organization
+  <a class="reference internal" href="../Schedule.html">
+   Schedule
   </a>
  </li>
 </ul>
@@ -438,8 +438,8 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Setting-Up-TCLab.html">
-   1. Setting up the Temperature Control Laboratory
+  <a class="reference internal" href="01.00-TCLab.html">
+   1. The Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -463,7 +463,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Lab-Assignment-1.html">
+    <a class="reference internal" href="01.04-Lab-1.html">
      1.4. Lab Assignment: Coding a Relay Controller
     </a>
    </li>
@@ -476,7 +476,7 @@
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
-   2. Model Identification
+   2. Empirical Model Identification
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -502,8 +502,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Parametric-Model-Identification.html">
-   3. Paarametric Model Identification
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -592,9 +592,14 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="06.00-Predictive-Control-and-Real-Time-Optimization.html">
-   6. Predictive Control and Real Time Optimization
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -603,13 +608,13 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.01-Optimization-Control-and-Estimation-using-Pyomo.html">
-     6.1. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
-     6.2. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
   </ul>
@@ -820,14 +825,7 @@
         
               <div>
                 
-  <!--NOTEBOOK_HEADER-->
-<p><em>This notebook contains course material from <a class="reference external" href="https://jckantor.github.io/CBE32338">CBE32338</a>
-by Jeffrey Kantor (jeff at <a class="reference external" href="http://nd.edu">nd.edu</a>); the content is available <a class="reference external" href="https://github.com/jckantor/CBE2338.git">on Github</a>.
-The text is released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">CC-BY-NC-ND-4.0 license</a>,
-and code is released under the <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a>.</em></p>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.01-Step-Testing.ipynb">Step Testing</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb">First Order Model for a Single Heater</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="fitting-step-test-data-to-empirical-models">
+  <div class="tex2jax_ignore mathjax_ignore section" id="fitting-step-test-data-to-empirical-models">
 <h1><span class="section-number">2.2. </span>Fitting Step Test Data to Empirical Models<a class="headerlink" href="#fitting-step-test-data-to-empirical-models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="read-the-data-file">
 <h2><span class="section-number">2.2.1. </span>Read the Data File<a class="headerlink" href="#read-the-data-file" title="Permalink to this headline">¶</a></h2>
@@ -846,7 +844,7 @@ and code is released under the <a class="reference external" href="https://opens
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11efd7350&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_4_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_4_1.png" />
+<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_2_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_2_1.png" />
 </div>
 </div>
 </div>
@@ -874,7 +872,7 @@ and code is released under the <a class="reference external" href="https://opens
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11f23f2d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_8_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_8_1.png" />
+<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_6_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_6_1.png" />
 </div>
 </div>
 </div>
@@ -948,7 +946,7 @@ and code is released under the <a class="reference external" href="https://opens
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Residual Error&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_12_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_12_1.png" />
+<img alt="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_10_1.png" src="../_images/02.02-Fitting-Step-Test-Data-to-Empirical-Models_10_1.png" />
 </div>
 </div>
 <p>A first order model captures certain features, and provides a reasonably good result as the system approaches a new steady-state. The problem, however, is that for control we need a good model during initial transient. This is where the first-order model breaks down and predicts a qualitatively different response from what we observe.</p>
@@ -1090,8 +1088,6 @@ and code is released under the <a class="reference external" href="https://opens
 </div>
 <div class="math notranslate nohighlight">
 \[ G_1(s) = \frac{0.70}{(20s + 1)(141s + 1)} \]</div>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.01-Step-Testing.ipynb">Step Testing</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb">First Order Model for a Single Heater</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 </div>
 </div>
 

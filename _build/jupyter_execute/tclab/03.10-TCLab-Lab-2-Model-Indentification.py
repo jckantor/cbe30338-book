@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <!--NOTEBOOK_HEADER-->
-# *This notebook contains course material from [CBE32338](https://jckantor.github.io/CBE32338)
-# by Jeffrey Kantor (jeff at nd.edu); the content is available [on Github](https://github.com/jckantor/CBE2338.git).
-# The text is released under the [CC-BY-NC-ND-4.0 license](https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode),
-# and code is released under the [MIT license](https://opensource.org/licenses/MIT).*
-
-# <!--NAVIGATION-->
-# < [TCLab Lab 2: Model Identification](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification-Solutions.ipynb) | [Contents](toc.ipynb) | [Model Identification: Fitting models to data](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.11-TCLab-Lab-2-Fitting.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
-
 # # TCLab Lab 2: Model Identification
 
 # For this laboratory session you will collect data from a step test experiment, then fit the data to models derived from first-principles energy balances. Fitting models to data is an engineering skill that links between the real world of engineering systems to the theory you've been learning in the classroom.
@@ -113,6 +104,3 @@ h.to_csv('tclab-data.csv')
 # where the parameter $P$ has, through independent means, been determined as 0.04 watts per percent increase in $Q_1$. Use the results of this experiment to estimate values for $C_p$ and $U_a$. Write your answers in the following cell.
 
 # 
-
-# <!--NAVIGATION-->
-# < [TCLab Lab 2: Model Identification](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification-Solutions.ipynb) | [Contents](toc.ipynb) | [Model Identification: Fitting models to data](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.11-TCLab-Lab-2-Fitting.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.10-TCLab-Lab-2-Model-Indentification.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>

@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.2. Fitting Step Test Data to Empirical Models" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html" />
-    <link rel="prev" title="2. Model Identification" href="02.00-Empirical-Model-Identification.html" />
+    <link rel="prev" title="2. Empirical Model Identification" href="02.00-Empirical-Model-Identification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -103,8 +103,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/00.01-Schedule.html">
-   Schedule and Course Organization
+  <a class="reference internal" href="../Schedule.html">
+   Schedule
   </a>
  </li>
 </ul>
@@ -436,8 +436,8 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Setting-Up-TCLab.html">
-   1. Setting up the Temperature Control Laboratory
+  <a class="reference internal" href="01.00-TCLab.html">
+   1. The Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -461,7 +461,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Lab-Assignment-1.html">
+    <a class="reference internal" href="01.04-Lab-1.html">
      1.4. Lab Assignment: Coding a Relay Controller
     </a>
    </li>
@@ -474,7 +474,7 @@
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
-   2. Model Identification
+   2. Empirical Model Identification
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -500,8 +500,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Parametric-Model-Identification.html">
-   3. Paarametric Model Identification
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -590,9 +590,14 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="06.00-Predictive-Control-and-Real-Time-Optimization.html">
-   6. Predictive Control and Real Time Optimization
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -601,13 +606,13 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.01-Optimization-Control-and-Estimation-using-Pyomo.html">
-     6.1. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
-     6.2. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
   </ul>
@@ -818,14 +823,7 @@
         
               <div>
                 
-  <!--NOTEBOOK_HEADER-->
-<p><em>This notebook contains course material from <a class="reference external" href="https://jckantor.github.io/CBE32338">CBE32338</a>
-by Jeffrey Kantor (jeff at <a class="reference external" href="http://nd.edu">nd.edu</a>); the content is available <a class="reference external" href="https://github.com/jckantor/CBE2338.git">on Github</a>.
-The text is released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">CC-BY-NC-ND-4.0 license</a>,
-and code is released under the <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a>.</em></p>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.00-Model-Identification.ipynb">Model Identification</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb">Fitting Step Test Data to Empirical Models</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.01-Step-Testing.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.01-Step-Testing.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="step-testing">
+  <div class="tex2jax_ignore mathjax_ignore section" id="step-testing">
 <h1><span class="section-number">2.1. </span>Step Testing<a class="headerlink" href="#step-testing" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="reference-materials">
 <h2><span class="section-number">2.1.1. </span>Reference materials<a class="headerlink" href="#reference-materials" title="Permalink to this headline">¶</a></h2>
@@ -888,7 +886,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Step-Testing_7_0.png" src="../_images/02.01-Step-Testing_7_0.png" />
+<img alt="../_images/02.01-Step-Testing_5_0.png" src="../_images/02.01-Step-Testing_5_0.png" />
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">OSError</span><span class="g g-Whitespace">                                   </span>Traceback (most recent call last)
 <span class="nn">~/opt/anaconda3/lib/python3.7/site-packages/serial/serialposix.py</span> in <span class="ni">read</span><span class="nt">(self, size)</span>
@@ -1006,7 +1004,7 @@ TCLab disconnected successfully.
 <span class="ne">SerialException</span>: write failed: [Errno 6] Device not configured
 </pre></div>
 </div>
-<img alt="../_images/02.01-Step-Testing_7_2.png" src="../_images/02.01-Step-Testing_7_2.png" />
+<img alt="../_images/02.01-Step-Testing_5_2.png" src="../_images/02.01-Step-Testing_5_2.png" />
 </div>
 </div>
 </div>
@@ -1028,7 +1026,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Step-Testing_9_0.png" src="../_images/02.01-Step-Testing_9_0.png" />
+<img alt="../_images/02.01-Step-Testing_7_0.png" src="../_images/02.01-Step-Testing_7_0.png" />
 </div>
 </div>
 </div>
@@ -1049,7 +1047,7 @@ TCLab disconnected successfully.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x10fc2b748&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.01-Step-Testing_11_1.png" src="../_images/02.01-Step-Testing_11_1.png" />
+<img alt="../_images/02.01-Step-Testing_9_1.png" src="../_images/02.01-Step-Testing_9_1.png" />
 </div>
 </div>
 </div>
@@ -1077,7 +1075,7 @@ TCLab disconnected successfully.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11615e208&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.01-Step-Testing_15_1.png" src="../_images/02.01-Step-Testing_15_1.png" />
+<img alt="../_images/02.01-Step-Testing_13_1.png" src="../_images/02.01-Step-Testing_13_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1222,8 +1220,6 @@ TCLab disconnected successfully.
 </table>
 </div></div></div>
 </div>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.00-Model-Identification.ipynb">Model Identification</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb">Fitting Step Test Data to Empirical Models</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.01-Step-Testing.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.01-Step-Testing.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 </div>
 </div>
 </div>
@@ -1257,7 +1253,7 @@ TCLab disconnected successfully.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Model Identification</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Empirical Model Identification</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html" title="next page">

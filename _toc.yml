@@ -7,7 +7,7 @@ root: Readme
 parts:
   - caption: Course Information
     chapters:
-    - file: notebooks/00.01-Schedule
+    - file: Schedule
 
   - caption: Topical Materials
     numbered: true
@@ -84,12 +84,12 @@ parts:
   - caption: Control Laboratory
     numbered: true
     chapters:
-    - file: tclab/01.00-Setting-Up-TCLab
+    - file: tclab/01.00-TCLab
       sections:
       - file: tclab/01.01-TCLab-Hardware
       - file: tclab/01.02-TCLab-Software
       - file: tclab/01.03-TCLab-Usage
-      - file: tclab/01.04-Lab-Assignment-1
+      - file: tclab/01.04-Lab-1
       - file: tclab/A.01-TCLab
         
     - file: tclab/02.00-Empirical-Model-Identification
@@ -98,7 +98,7 @@ parts:
       - file: tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models
       - file: tclab/02.03-First-Order-Model-for-a-Single-Heater
       
-    - file: tclab/03.00-Parametric-Model-Identification
+    - file: tclab/03.00-Estimating-Model-Parameters
       sections:
       - file: tclab/03.04-Two-Input-Two-Output-Model
       - file: tclab/03.05-Two-State-Model-for-a-Single-Heater
@@ -117,11 +117,13 @@ parts:
     - file: tclab/05.00-State-Estimation
       sections:
       - file: tclab/05.01-Open-and-Closed-Loop-Estimation
+      
+    - file: tclab/06.00-Optimal-Control
     
-    - file: tclab/06.00-Predictive-Control-and-Real-Time-Optimization
+    - file: tclab/07.00-Predictive-Control-and-Real-Time-Optimization
       sections:
-      - file: tclab/06.01-Optimization-Control-and-Estimation-using-Pyomo
-      - file: tclab/06.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt
+      - file: tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo
+      - file: tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt
         
   - caption: Python Tutorials
     chapters:
