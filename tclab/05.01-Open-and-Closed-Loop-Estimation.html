@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6. Predictive Control and Real Time Optimization" href="06.00-Predictive-Control-and-Real-Time-Optimization.html" />
+    <link rel="next" title="6. Optimization" href="06.00-Optimal-Control.html" />
     <link rel="prev" title="5. State Estimation" href="05.00-State-Estimation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -105,8 +105,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/00.01-Schedule.html">
-   Schedule and Course Organization
+  <a class="reference internal" href="../Schedule.html">
+   Schedule
   </a>
  </li>
 </ul>
@@ -438,8 +438,8 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-Setting-Up-TCLab.html">
-   1. Setting up the Temperature Control Laboratory
+  <a class="reference internal" href="01.00-TCLab.html">
+   1. The Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -463,7 +463,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Lab-Assignment-1.html">
+    <a class="reference internal" href="01.04-Lab-1.html">
      1.4. Lab Assignment: Coding a Relay Controller
     </a>
    </li>
@@ -476,7 +476,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
-   2. Model Identification
+   2. Empirical Model Identification
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -502,8 +502,8 @@
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Parametric-Model-Identification.html">
-   3. Paarametric Model Identification
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -592,9 +592,14 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="06.00-Predictive-Control-and-Real-Time-Optimization.html">
-   6. Predictive Control and Real Time Optimization
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -603,13 +608,13 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.01-Optimization-Control-and-Estimation-using-Pyomo.html">
-     6.1. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="06.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
-     6.2. Simulation, Control, and Estimation using Pyomo
+    <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
   </ul>
@@ -820,14 +825,7 @@
         
               <div>
                 
-  <!--NOTEBOOK_HEADER-->
-<p><em>This notebook contains course material from <a class="reference external" href="https://jckantor.github.io/CBE32338">CBE32338</a>
-by Jeffrey Kantor (jeff at <a class="reference external" href="http://nd.edu">nd.edu</a>); the content is available <a class="reference external" href="https://github.com/jckantor/CBE2338.git">on Github</a>.
-The text is released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode">CC-BY-NC-ND-4.0 license</a>,
-and code is released under the <a class="reference external" href="https://opensource.org/licenses/MIT">MIT license</a>.</em></p>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/03.00-State-Estimation.ipynb">State Estimation</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/04.00-Feedback-Control.ipynb">Feedback Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
-<div class="tex2jax_ignore mathjax_ignore section" id="open-and-closed-loop-estimation">
+  <div class="tex2jax_ignore mathjax_ignore section" id="open-and-closed-loop-estimation">
 <h1><span class="section-number">5.2. </span>Open and Closed Loop Estimation<a class="headerlink" href="#open-and-closed-loop-estimation" title="Permalink to this headline">¶</a></h1>
 <p>This notebook outlines three experiments to be performed using the TCLab hardware. This first cell imports necessary libraries, defines a relay control as a Python generator, and a temperature setpoint corresponding to a ramp/soak cycle.</p>
 <div class="cell docutils container">
@@ -859,7 +857,7 @@ and code is released under the <a class="reference external" href="https://opens
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_3_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_3_0.png" />
+<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_1_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_1_0.png" />
 </div>
 </div>
 <div class="section" id="experiment-1-open-loop-state-estimation-and-relay-control">
@@ -946,11 +944,11 @@ and code is released under the <a class="reference external" href="https://opens
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_8_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_8_0.png" />
+<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_6_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_6_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_8_2.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_8_2.png" />
+<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_6_2.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_6_2.png" />
 </div>
 </div>
 </div>
@@ -1126,11 +1124,11 @@ y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_16_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_16_0.png" />
+<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_14_0.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_14_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_16_2.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_16_2.png" />
+<img alt="../_images/05.01-Open-and-Closed-Loop-Estimation_14_2.png" src="../_images/05.01-Open-and-Closed-Loop-Estimation_14_2.png" />
 </div>
 </div>
 </div>
@@ -1138,10 +1136,6 @@ y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \
 <div class="section" id="question">
 <h2><span class="section-number">5.2.3. </span>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h2>
 <p>Be sure to review the code given above to understand how this code is working. Then, in the cells below, implement a proportional controller with a proportional control gain Kp = 0.8. Test the controller in simulation mode.</p>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/03.00-State-Estimation.ipynb">State Estimation</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/04.00-Feedback-Control.ipynb">Feedback Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
-<!--NAVIGATION-->
-<p>&lt; <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/03.00-State-Estimation.ipynb">State Estimation</a> | <span class="xref myst">Contents</span> | <a class="reference external" href="http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/04.00-Feedback-Control.ipynb">Feedback Control</a> &gt;<p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/03.01-Open-and-Closed-Loop-Estimation.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a></p>
 </div>
 </div>
 
@@ -1177,10 +1171,10 @@ y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \
             <p class="prev-next-title"><span class="section-number">5. </span>State Estimation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="06.00-Predictive-Control-and-Real-Time-Optimization.html" title="next page">
+    <a class='right-next' id="next-link" href="06.00-Optimal-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>Predictive Control and Real Time Optimization</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Optimization</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
