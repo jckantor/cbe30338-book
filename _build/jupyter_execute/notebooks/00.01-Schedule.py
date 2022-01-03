@@ -5,21 +5,19 @@
 
 # ## Getting Started
 # 
-# **CBE 30338/32338 Chemical Process Control** will be conducted as a fully on-line course for the 2021 Spring semeter. For this to be effective, each student, instuctor, and teaching assistant will need access to the required technology and keep their systems and software in good working order for the duration of the semester.
+# **CBE 30338/32338 Chemical Process Control** will be conducted as an in-person course for the 2022 Spring semeter. Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:
 # 
-# **Please let the instructors know immediately if you don't have access to a laptop, or you don't have adequate internet connectivity. The University has resources available to assist with these situations.**
+# * A major component of the course is hands-on use of real hardware to implement working control systems. You will need to purchase an individual copy of the **Temperature Control Labortory** available through [Amazon](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) and [apmonitor.com](https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit). You will need the device no later than the first Friday of the first week of class.
 # 
-# Please use the period before the start of the semester to prepare your systems and technology. Pay attention to the following the following details:
+# * The Temperature Control Lab uses a USB-A port. If your laptop is a newer model with only USB-C ports then you will need to purchase a USB-C to USB-A adaptor ([such as this for an Apple Mac](https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/)), or USB-C docking station ([like this](https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/) from LENTION).
 # 
-# * We will be making extensive use of Zoom for office hours, on-classes, and laboratory sessions. Please verify that you can access Zoom by joining the test meeting **with video** at [https://zoom.us/test](https://zoom.us/test). 
-# 
-# * Please confirm that you have a working installation of the latest Anaconda distribution of Python. If in doubt, reinstall a fresh download available from [Anaconda.com](https://www.anaconda.com/).
-# 
-# * A major component of the course is hands-on use of real hardware to implement working control systems. For this purpose wyou will need to purchase an individual copy of the **Temperature Control Labortory** available through [Amazon](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY), the Notre Dame Bookstore, and [apmonitor.com](https://apmonitor.com/pdc/index.php/Main/PurchaseLabKit). Please allow time for ordering, shipping, and for you to install and test the device using your laptop.
-# 
-# * The Temperature Control Lab requires a USB type A port. If your laptop is a newer model with only USB-C ports then you will need to purchase a USB-C to USB-A adaptor ([such as this device for an Apple Mac](https://www.amazon.com/Apple-USB-C-to-USB-Adapter/dp/B00VU2OID2/)) or USB-C docking station ([such as this](https://www.amazon.com/LENTION-Multi-Port-Compatible-2020-2016-Chromebook/dp/B07FNH5Y84/) from LENTION).
+# * Course materials will be available through this repository and from open-source materials avaiable throught the web.
 
 # ## Introduction to the Course and Process Control
+
+# ### Week 1: January 10 - 14.
+
+# ### Week 2: January 10 - 14.
 
 # ### Week 1
 # 

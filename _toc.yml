@@ -20,8 +20,8 @@ parts:
       
     - file: notebooks/02.00-Process-Modeling
       sections:
-      - file: notebooks/02.01-One-Compartment-Pharmacokinetics
-      - file: notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems
+      - file: notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems
+      - file: notebooks/02.02-One-Compartment-Pharmacokinetics
       - file: notebooks/02.03-First-Order-Model-for-a-Single-Heater
       - file: notebooks/02.04-Model-Identification
   
@@ -82,14 +82,56 @@ parts:
     - file: notebooks/09.00-Bibliography
 
   - caption: Control Laboratory
+    numbered: true
     chapters:
-    - file: notebooks/A.00-TCLab
+    - file: tclab/01.00-Setting-Up-TCLab
       sections:
-        - file: notebooks/A.01-TCLab.ipynb
+      - file: tclab/01.01-TCLab-Hardware
+      - file: tclab/01.02-TCLab-Software
+      - file: tclab/01.03-TCLab-Usage
+      - file: tclab/01.04-Lab-Assignment-1
+      - file: tclab/A.01-TCLab
+        
+    - file: tclab/02.00-Empirical-Model-Identification
+      sections:
+      - file: tclab/02.01-Step-Testing
+      - file: tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models
+      - file: tclab/02.03-First-Order-Model-for-a-Single-Heater
+      
+    - file: tclab/03.00-Parametric-Model-Identification
+      sections:
+      - file: tclab/03.04-Two-Input-Two-Output-Model
+      - file: tclab/03.05-Two-State-Model-for-a-Single-Heater
+      - file: tclab/03.06-Four-State-Model
+      - file: tclab/03.10-TCLab-Lab-2-Model-Indentification-Solutions
+      - file: tclab/03.10-TCLab-Lab-2-Model-Indentification
+      - file: tclab/03.11-TCLab-Lab-2-Fitting
     
-    - file: notebooks/B.00-Python-Tutorials
+    - file: tclab/04.00-Feedback-Control
       sections:
-      - file: notebooks/B.10-Animation-in-Jupyter-Notebooks
+      - file: tclab/04.01-Relay-Control
+      - file: tclab/04.03-PID_Control
+      - file: tclab/04.10-Lab-Assignment-PID-Control
+      - file: tclab/04.11-Lab-Assignment-PI-Control
+      
+    - file: tclab/05.00-State-Estimation
+      sections:
+      - file: tclab/05.01-Open-and-Closed-Loop-Estimation
+    
+    - file: tclab/06.00-Predictive-Control-and-Real-Time-Optimization
+      sections:
+      - file: tclab/06.01-Optimization-Control-and-Estimation-using-Pyomo
+      - file: tclab/06.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt
+        
+  - caption: Python Tutorials
+    chapters:
+    - file: python/B.00-Python-Tutorials
+      sections:
+      - file: python/B.10-Animation-in-Jupyter-Notebooks
+      - file: python/A.01-Coding-Controllers-with-Python-Generators
+      - file: python/A.02-Modular-Approach-to-Simulation-using-Python-Generators
+      - file: python/A.03-Modular-Simulation-using-Python-Generators
+      - file: python/A.04-Animation-in-Jupyter-Notebooks
       
 
 

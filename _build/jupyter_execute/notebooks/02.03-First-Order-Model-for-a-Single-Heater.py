@@ -3,7 +3,7 @@
 
 # # First Order Model for a Single Heater
 
-# ![Comsol model of Temperature Control Laboratory](https://jckantor.github.io/cbe30338-2021/figures/arduino_comsol.png)
+# ![Comsol model of Temperature Control Laboratory](figures/arduino_comsol.png)
 
 # ## Learning Goals
 # 
@@ -23,11 +23,11 @@
 # 
 # We'll be begin by developing a model for one of the heater/sensor assemblies located on the Temperature Control Laboratory. The basic outline of an energy balaance is given by
 # 
-# $$\fbox{Rate of energy accumulation} = \fbox{Rate of energy in flow} - \fbox{Rate of energy outflow}$$
+# $$\text{Rate of energy accumulation} = \text{Rate of energy in flow} - \text{Rate of energy outflow}$$
 # 
 # In the absence of any material flows, changes in kinetic or potential energy, or any chemical changes, changes in sensible temperature is the only form of energy accumulation. If we assume the heater/sensor assembly is at single uniform temperature $T_1$, has mass $m$, and a constant and average specific heat capacity $\hat{C}_p$,
 # 
-# $$\fbox{Rate of energy accumulation} = m \hat{C}_p \frac{dT_1}{dt}$$
+# $$\text{Rate of energy accumulation} = m \hat{C}_p \frac{dT_1}{dt}$$
 # 
 # For the purposes of this model we will lump the mass and specific heat capacity into a single parameter representing the overall heat capacity of the assembly
 # 
@@ -35,7 +35,7 @@
 # 
 # The final expression for the rate of energy accumulation becomes
 # 
-# $$\fbox{Rate of energy accumulation} = C_p \frac{dT_1}{dt}$$
+# $$\text{Rate of energy accumulation} = C_p \frac{dT_1}{dt}$$
 # 
 # <hr>
 # 
