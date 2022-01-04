@@ -103,6 +103,11 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../Schedule.html">
    Schedule
   </a>
@@ -462,7 +467,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/01.04-Lab-1.html">
-     1.4. Lab Assignment: Coding a Relay Controller
+     1.4. Lab Assignment 1: Coding a Thermostat
     </a>
    </li>
    <li class="toctree-l2">
@@ -753,6 +758,58 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="what-is-process-control">
 <h1><span class="section-number">1. </span>What is Process Control?<a class="headerlink" href="#what-is-process-control" title="Permalink to this headline">¶</a></h1>
+<p>Readings …</p>
+<ul class="simple">
+<li><p>These notes</p></li>
+<li><p>Brian Douglas, Chapter 1.</p></li>
+<li><p>Astrom and Murray, Chapter 1.</p></li>
+</ul>
+<p>The beats …</p>
+<ol class="simple">
+<li><p>Important courses in engineering teach universal concepts that can be applied to many situations. Thermodynamics, for example, shows how to use the principles of energy conservation and entropy to analyze and design engines, power systems, chemical equilibrium, biological systems, among many other things. The core concept in this course is <strong>Feedback</strong>.</p></li>
+<li><p><strong>Systems</strong> are a collection of interconnected physical and compututional  parts that form a larger and more complex whole.</p></li>
+<li><p>For any system there are three basic tasks:</p>
+<ul class="simple">
+<li><p><strong>System Identification</strong>.  Whaat type of system is this? Can it be modeled mathematically? Can first principles knowledge be incorporated in the model? How can the parameters of the model be determined?</p></li>
+<li><p><strong>Simulation</strong>. Predict system behavior for given inputs and disturances. Does the system reproduce test data? Does the system reproduce data that wasn’t used to identify the model?</p></li>
+<li><p><strong>Control</strong>. Given current measurements and uncertainities, determine system inputs needed to achieve a desired response in real time. Control can be computed using control laws ‘tuned’ to the system, or by optimiziing some measure of system performance.</p></li>
+</ul>
+</li>
+<li><p><strong>Feedback</strong> is the use of sensors to regulate the behavior of a system. Feedback is evident in many natural systems, a universal feature of biological systems at all scales, and key to engineering autonomous, self-regulating devices and processes.</p></li>
+<li><p><strong>Process control</strong> is the design and application of feedback control to chemical and biomolecular systems to achieve desired behaviors.</p></li>
+<li><p>Examples of feedback …</p>
+<ul class="simple">
+<li><p><strong>Biological Systems:</strong> Insulin/Glucose <img alt="" src="https://bio.libretexts.org/&#64;api/deki/files/15807/glucose_feedback.png?revision=1" /> <br>Image Credit: <a class="reference external" href="http://bio.libretexts.org">bio.libretexts.org</a></p></li>
+<li><p><strong>Biological Systems:</strong> Iron and Oxygen Sensing<img alt="" src="https://els-jbs-prod-cdn.jbs.elsevierhealth.com/cms/attachment/0ea1b4a8-5f44-4b64-a40d-11c8ebd6cdee/gr1.jpg" /> <br> Image Credit: <a class="reference external" href="https://doi.org/10.1016/j.kint.2019.01.003">https://doi.org/10.1016/j.kint.2019.01.003</a></p></li>
+<li><p><strong>Aerospace Systems:</strong> SpaceX Falcon 9 <img alt="" src="https://zlsadesign.com/infographic/vehicle/spacex-falcon9-control.png" /> <br> Image Credit: John Ross, <a class="reference external" href="https://zlsadesign.com/">ZLSA Design</a></p></li>
+<li><p><strong>Pharmaceuticals:</strong> Fermentation <img alt="" src="https://support.industry.siemens.com/cs/images/109478439/fermentation_process.png" /> <br> Image Credit: <a class="reference external" href="https://support.industry.siemens.com/cs/document/109478439/simatic-pcs-7-in-the-pharmaceutical-industry-%E2%80%9Cfermentation%E2%80%9D-(demo-project)?dti=0&amp;lc=en-WW">Siemens</a></p></li>
+<li><p><strong>Automotive:</strong> Autonomous Driving</p></li>
+</ul>
+</li>
+<li><p>There are two fundamental and potentially conflicting goals of feedback control:</p>
+<ul class="simple">
+<li><p><strong>Setpoint Tracking:</strong> Cause a system variable of interest to achieve and track an externally specified value.</p></li>
+<li><p><strong>Disturbance Rejection:</strong> Maintain a system variable at a desired value regardless of external influences on the system.</p></li>
+</ul>
+</li>
+<li><p>Setpoints generally come from other control systems. Complex systems usually involve <strong>control heirarchies</strong> to manage complexity and reduce the impact of uncertainty. <img alt="" src="https://i1.wp.com/www.hisour.com/wp-content/uploads/2018/11/Hierarchical-control-system.jpg" /> <br> Image Credit: HiSour</p></li>
+<li><p>Disturbances are the uncertainties which control systems are designed to mitigate. Uncertainties are not always subject to classical mathematics.</p>
+<ul class="simple">
+<li><p><strong>Measured Disturbances:</strong> Disturbances which can be measured or estimated in advance of their effect on a process system.</p></li>
+<li><p><strong>Unmeasured Disturbancs:</strong> Disturbances which are not measured.</p></li>
+<li><p><strong>Resolvable Uncertainty:</strong> Uncertainties that can be quantitatively characterized using probabilistic or other methods. Often “long tails”. The “known unknowns”.</p></li>
+<li><p><strong>Radical Uncertainty:</strong> Cannot be described by probabilistic models. The “unknown unknowns”. Outcomes of political events, modes of software failure, changes in customer requirements. This is the human condition.</p></li>
+</ul>
+</li>
+<li><p>Consequences of feedback.</p>
+<ul class="simple">
+<li><p>The dynamics of systems under active control are often difficult to understand. Cause and effect may not be what you expect.</p></li>
+<li><p>Feedback control reduces the need for highly accurate or detailed models. Systems become as accurate as their sensors.</p></li>
+<li><p>The role of feedback is often not understood in social and economic settings.</p></li>
+</ul>
+</li>
+<li><p>Control is a large interdisciplineary field of ever-growing technical importance. This course will introduce many of the topics in the “Map of Control Theory” by Brian Douglas. <img alt="" src="../_images/Control_Map_ver5.png" /> <br> Image Credit: Brian Douglas <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id12">Douglas, 2017</a>]</span></p></li>
+</ol>
 <div class="toctree-wrapper compound">
 </div>
 </div>

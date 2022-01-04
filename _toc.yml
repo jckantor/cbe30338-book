@@ -7,6 +7,7 @@ root: Readme
 parts:
   - caption: Course Information
     chapters:
+    - file: Syllabus
     - file: Schedule
 
   - caption: Topical Materials
