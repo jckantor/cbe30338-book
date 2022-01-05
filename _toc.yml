@@ -79,6 +79,8 @@ parts:
       - file: notebooks/07.05-Queuing-Systems-and-Poisson-Processes
 
     - file: notebooks/08.00-Projects
+      sections:
+      - file: notebooks/08.01-Project-Ideas
     
     - file: notebooks/09.00-Bibliography
 
