@@ -1,4 +1,4 @@
-# Syllabus
+# CBE 30338/32338 Syllabus
 
 ## Course Description
 
