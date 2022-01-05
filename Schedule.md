@@ -1,4 +1,4 @@
-# Schedule
+# CBE 30338/32338 Schedule
 
 #### Week 1: Jan 11 - Jan 14
 
