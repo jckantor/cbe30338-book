@@ -49,7 +49,7 @@ Students completing this course will be able to …
 
 **Instructor:** Jeffrey Kantor (he/him/his)
 
-**Email:** j e f f @ n d . e d u
+**Email:** jeff
 
 **Office:** 257 Nieuwland Hall
 
@@ -64,6 +64,13 @@ Teaching assistants assist with
 * Prepare solutions to homework assignments.
 * Assist with grading assignments and quizzes.
 * Be present to help assess student project presentations during regular class periods.
+
+| Teaching Assistant | Email
+| :----------------- | :----
+| Damian Agi         | dagi
+| Kyla Jones         | kjones29
+| Ke Wang (2)        | kwang5
+| Nina Wang (2)      | nwang2
 
 ## Textbook
 
