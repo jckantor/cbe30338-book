@@ -59,10 +59,11 @@ Students completing this course will be able to …
 
 Teaching assistants assist with 
 
-* instruction during the Friday lab sessions, 
-* are available to answer questions regarding homework and assignments,
-* prepare solutions to homework problems,
-* assist with course grading.
+* Instruction during the Friday lab sessions.
+* Are available to answer questions regarding Python coding, and the content homework and assignments.
+* Prepare solutions to homework assignments.
+* Assist with grading assignments and quizzes.
+* Be present to help assess student project presentations during regular class periods.
 
 ## Textbook
 
