@@ -202,3 +202,9 @@ def drawframe(n):
 anim = animation.FuncAnimation(fig, drawframe, frames=len(t), interval=20, blit=True)
 HTML(anim.to_html5_video())
 
+
+# In[ ]:
+
+
+
+
