@@ -132,7 +132,6 @@ parts:
     chapters:
     - file: python/B.00-Python-Tutorials
       sections:
-      - file: python/B.00-Python-Tutorials
       - file: python/B.10-Animation-in-Jupyter-Notebooks
       - file: python/A.01-Coding-Controllers-with-Python-Generators
       - file: python/A.02-Modular-Approach-to-Simulation-using-Python-Generators
