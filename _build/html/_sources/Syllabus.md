@@ -34,6 +34,8 @@ Students completing this course will be able to …
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
 * CBE 32338-02 Friday, 12:50 am - 1:40 pm, Fitzpatrick A68
 
+**Final Exam:** Tuesday, May 3 10:30 am - 12:30 pm
+
 **Prerequisites:** This course assumes knowledge of modeling and analysis with differential equations, procedural programming in Python, mass and energy balances. Students taking this course will normally have completed
 
 * CBE 20258 Numerical and Statistical Analysis
