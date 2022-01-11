@@ -15,8 +15,8 @@ parts:
     chapters:
     - file: notebooks/01.00-What-is-Process-Control
       sections:
-      - file: notebooks/01.01-Elements-of-Feedback-Control
-      - file: notebooks/01.02-Examples-of-Process-Control
+      - file: notebooks/01.01-What-is-Feedback
+      - file: notebooks/01.02-Elements-of-Feedback-Control
       - file: notebooks/01.05-Assignment-1
       
     - file: notebooks/02.00-Process-Modeling

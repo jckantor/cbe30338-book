@@ -6,8 +6,22 @@
 # Queuing theory is one of the foundations for the analysis of discrete-event systems. This notebook introduces the nomenclature and terminology of queuing theory that will be used in later applications.
 
 # ## Examples of Queues
-# 
+
 # ### Manufacturing Lines
+
+# ## Manufacturing: Tesla Shanghai Gigafactory
+# 
+# Telsa has recently been outfitting factories with very large scale automated casting ('megacasting') to signficantly reduce the complexity of its manufacturiing processes.
+# 
+# As you watch the following video, try to identify the many levels of control required to realize this automated manufacturing system. For example, what sensors and actuators are required for each robot to do their tasks?  How is quality control maintained? How are operations coordinated among the assembly stations in the manufacturing line?
+
+# In[1]:
+
+
+from IPython.display import HTML
+s = '<blockquote class="twitter-tweet"><p lang="en" dir="ltr">' +     'Giga Shanghai is becoming a production powerhouse. Watch ' +     'mega castings for Model Y coming out of 6k-ton Giga presses. ' +     'The whole process is fully automated, including quality check. ' +     'Pretty mind blowing to say the least. ' +     '<a href="https://t.co/PBMUpDjnD8">pic.twitter.com/PBMUpDjnD8</a>' +     '</p>&mdash; Ray4Tesla⚡️🚘☀️🔋 (@ray4tesla) ' +     '<a href="https://twitter.com/ray4tesla/status/1356639381549846529?ref_src=twsrc%5Etfw">February 2, 2021</a>' +     '</blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>'
+HTML(s)
+
 
 # In[109]:
 

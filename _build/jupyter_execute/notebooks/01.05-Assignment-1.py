@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Assignment 1
+# # Assignment 1 (2021)
 # 
 # The first assignment is to prepare you with the tools you will need for this course. These are simple tasks, but will require some time to complete. (So don't leave this to the last minute!). The assignment is due no later than 11:00 am, Tuesday, February 9th.
 # 
