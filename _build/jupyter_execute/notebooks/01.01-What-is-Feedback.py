@@ -6,6 +6,8 @@
 # The principle theme of this course is the use of feedback to create useful engineering systems. So what is feedback?
 
 # ## Biomedical Example: Artificial Pancreas
+# 
+# [NIH: Artificial pancreas system better controls blood glucose levels than current technology](https://www.nih.gov/news-events/news-releases/artificial-pancreas-system-better-controls-blood-glucose-levels-current-technology)
 
 # ### Insulin/Glucose/Glucagon Dynamics
 # 
@@ -105,3 +107,9 @@ HTML('<iframe width="560" height="315" src="https://www.youtube.com/embed/JplAKJ
 # 
 # 1. Control is a large interdisciplineary field of ever-growing technical importance. This course will introduce many of the topics in the "Map of Control Theory" by Brian Douglas. ![](figures/Control_Map_ver5.png) <br> Image Credit: Brian Douglas {cite}`douglas2017fundamentals`
 # 
+
+# In[ ]:
+
+
+
+
