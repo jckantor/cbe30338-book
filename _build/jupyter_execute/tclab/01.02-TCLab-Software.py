@@ -5,7 +5,7 @@
 # 
 # The accompanying diagram shows how to access the temperature contol laboratory using the TCLab library.
 # 
-# ![](figures/B.00-TCLabOverview.png)
+# ![](figures/TClab.jpg)
 # 
 # **_Jupyter notebooks and Python scripts:_**
 # The highest level consists of the you code you write to implement control algorithms. This can be done in Jupyter/Python notebooks, directly from Python using a development environment such as Spyder or PyCharm. This repository contains several examples, lessons, and student projects.

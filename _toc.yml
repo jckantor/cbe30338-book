@@ -89,12 +89,10 @@ parts:
     chapters:
     - file: tclab/01.00-TCLab
       sections:
-      - file: tclab/01.01-TCLab-Hardware
-      - file: tclab/01.02-TCLab-Software
-      - file: tclab/01.03-TCLab-Usage
-      - file: tclab/01.04-Lab-1
-      - file: tclab/A.01-TCLab
-        
+      - file: tclab/01.01-Setting-Up-TCLab
+      - file: tclab/01.02-Using-TCLab
+      - file: tclab/01.03-Lab-1
+   
     - file: tclab/02.00-Empirical-Model-Identification
       sections:
       - file: tclab/02.01-Step-Testing

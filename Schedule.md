@@ -4,7 +4,7 @@
 
 |        | Day   | Activity     | Topic                                                   | Pre-reading   | Assignment       |
 |:-------|:------|:-------------|:--------------------------------------------------------|:--------------|:-----------------|
-| Jan 11 | Tue   | Class        | Course organization and Introduction to Process Control |               | Assignment 1     |
+| Jan 11 | Tue   | Class        | Course organization and Introduction to Process Control |               |                  |
 | Jan 12 | Wed   | Office Hours |                                                         |               |                  |
 | Jan 13 | Thu   | Class        | Introduction to the Temperature Control Laboratory      |               |                  |
 | Jan 14 | Fri   | Lab          | Lab 1: Coding a Simple Thermostat                       | Lab Chapter 1 | Lab Assignment 1 |

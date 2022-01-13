@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # TCLab Hardware Setup
+# # Setting up the Temperature Control Lab
 # 
-# The [Temperature Control Laboratory](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl) provides a hands-on learning environment for traditional courses in process control. The Arduino-based device consists of a two-input, two-output system of heaters and sensors. [TCLab](https://github.com/jckantor/TCLab) is a Python library providing the software tools to create and test control algorithms ranging from simple step testing to sophisticated multivarible predictive control.
+# The [Temperature Control Laboratory](http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl) provides a low-cost, hands-on learning environment for process control. The Arduino-based device comprises a two-input, two-output system of heaters and sensors. [TCLab](https://github.com/jckantor/TCLab) is a Python library providing the software tools to create and test control algorithms ranging from simple step testing to sophisticated multivarible predictive control.
 # 
 # ![](figures/B.00-arduino_lab_kit.png)
 # 
@@ -18,6 +18,8 @@
 # 4. 5.5mm to USB power supply cable.
 # 
 # 5. USB 2.0 data cable. (w/mini-USB connector for Arduino Uno, or micro-USB cable for Arduino Leonardo.)
+# 
+# 
 # 
 # Before going further, be sure to complete the steps outlined under *Hardware setup* as described in TCLab [README](https://github.com/jckantor/TCLab/blob/master/README.rst). 
 # 
