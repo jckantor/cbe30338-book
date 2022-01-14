@@ -944,14 +944,14 @@
 <h3><span class="section-number">5.7.1.1. </span>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
 <p>These instructions assume you have previously installed a suitable Python development environment, in particular the <a class="reference external" href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a>.</p>
 <p>The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge pyomo
-conda install -c conda-forge pyomo.extras
-conda install -c conda-forge glpk
-conda install -c conda-forge ipopt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">extras</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">glpk</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipopt</span>
 </pre></div>
 </div>
 <p>Optionally, you may also wish to install the COIN-OR cbc solvers.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge coincbc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">coincbc</span>
 </pre></div>
 </div>
 <p>This installation provides a capable open-source optimization suite with multiple solvers well suited a wide range of process applications. The solvers are</p>
@@ -963,7 +963,7 @@ conda install -c conda-forge ipopt
 <p>This suite can be further augmented by installing additional solvers from open-source and commercial sources.</p>
 <p>NOTE: If command window procedure fails on your laptop, you might try running these commands in a Jupyter notebook. In that case, each command needs to be prefixed with the shell escape <code class="docutils literal notranslate"><span class="pre">!</span></code>, and followed by the <code class="docutils literal notranslate"><span class="pre">-y</span></code> option to handle the y/n
 interaction. For example, the basic pyomo install command would read</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!conda install -c conda-forge pyomo -y
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!conda install -c conda-forge pyomo -y
 </pre></div>
 </div>
 <p>To provide timely feedback, each install command should be executed in a separate cell.</p>
@@ -1018,14 +1018,14 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \
 <div class="section" id="step-1-import-pyomo">
 <h3><span class="section-number">5.7.4.1. </span>Step 1. Import Pyomo.<a class="headerlink" href="#step-1-import-pyomo" title="Permalink to this headline">¶</a></h3>
 <p>The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from pyomo.environ import *
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="step-2-create-the-model-object">
 <h3><span class="section-number">5.7.4.2. </span>Step 2. Create the model object.<a class="headerlink" href="#step-2-create-the-model-object" title="Permalink to this headline">¶</a></h3>
 <p>Pyomo provides two distinct methods to create models. Here we use <code class="docutils literal notranslate"><span class="pre">ConcreteModel()</span></code> to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model = ConcreteModel()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The Python variable <code class="docutils literal notranslate"><span class="pre">model</span></code> stores the model instance. This could be any valid Python variable name.</p>
@@ -1033,29 +1033,29 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \
 <div class="section" id="step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
 <h3><span class="section-number">5.7.4.3. </span>Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="headerlink" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object" title="Permalink to this headline">¶</a></h3>
 <p>The first major component of a Pyomo model are decision variables which are added as fields to <code class="docutils literal notranslate"><span class="pre">model</span></code>. In the case we name the fields <code class="docutils literal notranslate"><span class="pre">model.x</span></code> and <code class="docutils literal notranslate"><span class="pre">model.y</span></code> corresponding to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in the process model. The Python class <code class="docutils literal notranslate"><span class="pre">Var()</span></code> is used to specify these as real numbers that must be greater than or equal to zero.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model.x = Var(domain=NonNegativeReals)
-model.y = Var(domain=NonNegativeReals)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>As we will see in other examples, the <code class="docutils literal notranslate"><span class="pre">domain</span></code> can specify other types of decision variables including reals, integers, and booleans.</p>
 <p>The objective is specified as an algebraic expression involving the decision variables. Here we store the objective in <code class="docutils literal notranslate"><span class="pre">model.profit</span></code>, and use the optional keyword <code class="docutils literal notranslate"><span class="pre">sense</span></code> to specify a maximization problem.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model.profit = Objective(expr = 40*model.x + 30*model.y, sense=maximize)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Constraints are added as fields to the model, each constraint created using the <code class="docutils literal notranslate"><span class="pre">Constraint()</span></code> class. The constraints are specified using the <code class="docutils literal notranslate"><span class="pre">expr</span></code> keywork in the form of linear algebraic expressions of the decision variables.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>model.demand = Constraint(expr = model.x &lt;= 40)
-model.laborA = Constraint(expr = model.x + model.y &lt;= 80)
-model.laborB = Constraint(expr = 2*model.x + model.y &lt;= 100)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="step-4-create-a-solver-object-and-solve">
 <h3><span class="section-number">5.7.4.4. </span>Step 4.  Create a solver object and solve.<a class="headerlink" href="#step-4-create-a-solver-object-and-solve" title="Permalink to this headline">¶</a></h3>
 <p>The Pyomo libary includes a <code class="docutils literal notranslate"><span class="pre">SolverFactory()</span></code> class used to specify a solver. In this case, because the problem is a linear programming problem, we use the <code class="docutils literal notranslate"><span class="pre">glpk</span></code> solver.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>results = SolverFactory(&#39;glpk&#39;).solve(model)
-results.write()
-if results.solver.status == &#39;ok&#39;:
-    model.pprint()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method attempts to solve the model using the specified solver, and returns <code class="docutils literal notranslate"><span class="pre">results</span></code> which can be inspected to see if, in fact, a solution was found. If a solution is found, then <code class="docutils literal notranslate"><span class="pre">model</span></code> will have a pretty-print method <code class="docutils literal notranslate"><span class="pre">pprint()</span></code> that creates a summary of the problem solution.</p>
@@ -1063,16 +1063,16 @@ if results.solver.status == &#39;ok&#39;:
 <div class="section" id="step-5-display-the-solution">
 <h3><span class="section-number">5.7.4.5. </span>Step 5. Display the solution.<a class="headerlink" href="#step-5-display-the-solution" title="Permalink to this headline">¶</a></h3>
 <p>Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print(&#39;Profit = &#39;, model.profit())
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
 
-print(&#39;\nDecision Variables&#39;)
-print(&#39;x = &#39;, model.x())
-print(&#39;y = &#39;, model.y())
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 
-print(&#39;\nConstraints&#39;)
-print(&#39;Demand  = &#39;, model.demand())
-print(&#39;Labor A = &#39;, model.laborA())
-print(&#39;Labor B = &#39;, model.laborB())
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
