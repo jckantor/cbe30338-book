@@ -13,14 +13,18 @@
 # 
 # The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.
 # 
-#     conda install -c conda-forge pyomo
-#     conda install -c conda-forge pyomo.extras
-#     conda install -c conda-forge glpk
-#     conda install -c conda-forge ipopt
-#     
+# ```
+# conda install -c conda-forge pyomo
+# conda install -c conda-forge pyomo.extras
+# conda install -c conda-forge glpk
+# conda install -c conda-forge ipopt
+# ```
+# 
 # Optionally, you may also wish to install the COIN-OR cbc solvers.
 # 
-#     conda install -c conda-forge coincbc
+# ```
+# conda install -c conda-forge coincbc
+# ```
 # 
 # This installation provides a capable open-source optimization suite with multiple solvers well suited a wide range of process applications. The solvers are
 # 
@@ -33,7 +37,9 @@
 # NOTE: If command window procedure fails on your laptop, you might try running these commands in a Jupyter notebook. In that case, each command needs to be prefixed with the shell escape `!`, and followed by the `-y` option to handle the y/n 
 # interaction. For example, the basic pyomo install command would read
 # 
-#     !conda install -c conda-forge pyomo -y
+# ```
+# !conda install -c conda-forge pyomo -y
+# ```
 # 
 # To provide timely feedback, each install command should be executed in a separate cell.
 
@@ -90,14 +96,18 @@ get_ipython().run_cell_magic('capture', '', '!pip install -q pyomo\n!apt-get ins
 # 
 # The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.
 # 
-#     from pyomo.environ import *
+# ```python
+# from pyomo.environ import *
+# ```
 #     
 
 # ### Step 2. Create the model object.
 # 
 # Pyomo provides two distinct methods to create models. Here we use `ConcreteModel()` to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.
 # 
-#     model = ConcreteModel()
+# ```python
+# model = ConcreteModel()
+# ```
 #     
 # The Python variable `model` stores the model instance. This could be any valid Python variable name.
 #     
@@ -106,29 +116,37 @@ get_ipython().run_cell_magic('capture', '', '!pip install -q pyomo\n!apt-get ins
 # 
 # The first major component of a Pyomo model are decision variables which are added as fields to `model`. In the case we name the fields `model.x` and `model.y` corresponding to $x$ and $y$ in the process model. The Python class `Var()` is used to specify these as real numbers that must be greater than or equal to zero.
 # 
-#     model.x = Var(domain=NonNegativeReals)
-#     model.y = Var(domain=NonNegativeReals)
+# ```python
+# model.x = Var(domain=NonNegativeReals)
+# model.y = Var(domain=NonNegativeReals)
+# ```
 #     
 # As we will see in other examples, the `domain` can specify other types of decision variables including reals, integers, and booleans.
 # 
 # The objective is specified as an algebraic expression involving the decision variables. Here we store the objective in `model.profit`, and use the optional keyword `sense` to specify a maximization problem.
 # 
-#     model.profit = Objective(expr = 40*model.x + 30*model.y, sense=maximize)
+# ```python
+# model.profit = Objective(expr = 40*model.x + 30*model.y, sense=maximize)
+# ```
 # 
 # Constraints are added as fields to the model, each constraint created using the `Constraint()` class. The constraints are specified using the `expr` keywork in the form of linear algebraic expressions of the decision variables.
 # 
-#     model.demand = Constraint(expr = model.x <= 40)
-#     model.laborA = Constraint(expr = model.x + model.y <= 80)
-#     model.laborB = Constraint(expr = 2*model.x + model.y <= 100)
+# ```python
+# model.demand = Constraint(expr = model.x <= 40)
+# model.laborA = Constraint(expr = model.x + model.y <= 80)
+# model.laborB = Constraint(expr = 2*model.x + model.y <= 100)
+# ```
 
 # ### Step 4.  Create a solver object and solve.
 # 
 # The Pyomo libary includes a `SolverFactory()` class used to specify a solver. In this case, because the problem is a linear programming problem, we use the `glpk` solver. 
 # 
-#     results = SolverFactory('glpk').solve(model)
-#     results.write()
-#     if results.solver.status == 'ok':
-#         model.pprint()
+# ```python
+# results = SolverFactory('glpk').solve(model)
+# results.write()
+# if results.solver.status == 'ok':
+#     model.pprint()
+# ```
 #     
 # The `solve()` method attempts to solve the model using the specified solver, and returns `results` which can be inspected to see if, in fact, a solution was found. If a solution is found, then `model` will have a pretty-print method `pprint()` that creates a summary of the problem solution.
 
@@ -136,16 +154,18 @@ get_ipython().run_cell_magic('capture', '', '!pip install -q pyomo\n!apt-get ins
 # 
 # Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.
 # 
-#     print('Profit = ', model.profit())
+# ```python
+# print('Profit = ', model.profit())
 # 
-#     print('\nDecision Variables')
-#     print('x = ', model.x())
-#     print('y = ', model.y())
+# print('\nDecision Variables')
+# print('x = ', model.x())
+# print('y = ', model.y())
 # 
-#     print('\nConstraints')
-#     print('Demand  = ', model.demand())
-#     print('Labor A = ', model.laborA())
-#     print('Labor B = ', model.laborB())
+# print('\nConstraints')
+# print('Demand  = ', model.demand())
+# print('Labor A = ', model.laborA())
+# print('Labor B = ', model.laborB())
+# ```
 
 # In[ ]:
 

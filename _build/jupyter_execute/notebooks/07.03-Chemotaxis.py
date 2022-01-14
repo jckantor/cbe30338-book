@@ -3,11 +3,14 @@
 
 # # Chemotaxis
 # 
-# [Chemotaxis]() is a behavior exhibited by single organisms in response to gradients of certain chemicals. In the presence of gradient of an attractant or repellant, the normally random motion of cells changes causing a net movement towards or away from the source of the chemical. This behavior is contributes to foraging for feed, fleeing from poisons, or to serve the needs of a large organism in development, injury, infection, and reproduction.
+# **Chemotaxis** is a behavior exhibited by single organisms in response to gradients of certain chemicals. In the presence of gradient of an attractant or repellant, the normally random motion of cells changes causing a net movement towards or away from the source of the chemical. This behavior is contributes to foraging for feed, fleeing from poisons, or to serve the needs of a large organism in development, injury, infection, and reproduction.
 # 
-# <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Chemotaxis1.jpg" alt="Chemotaxis1.jpg" height="480" width="621">
+# ![](https://upload.wikimedia.org/wikipedia/commons/2/23/Chemotaxis1.jpg)
 # 
-# By &lt;a href="//commons.wikimedia.org/w/index.php?title=User:Fortinda&amp;amp;action=edit&amp;amp;redlink=1" class="new" title="User:Fortinda (page does not exist)"&gt;Fortinda&lt;/a&gt; - &lt;span class="int-own-work" lang="en"&gt;Own work&lt;/span&gt;, <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=53871041">Link</a>
+# Attribution: By User:Fortinda
+# <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>, 
+#  <a href="https://commons.wikimedia.org/w/index.php?curid=53871041">Link</a>
+# 
 # 
 # For many organisms such as *E. coli*, the movement consists of alternating tumbling and swimming phases. The tumbling results in a new random direction. If cell senses that it is moving in the 'right' direction (i.e., towards an attractant or away from a repellant), the swimming phase will last somewhat longer. The biochemical mechanisms for this behavior is part of a signal transduction pathways for chemotactic organisms.
 
@@ -34,7 +37,7 @@
 # 
 # where $\nabla C_0$ is the threshold gradient at which the maximum run time is reached, and $\nabla_{\|}C$ is a projection of the concentration gradient in the direction of swimming. We will assume *E. coli* swim at an average speed of 25$\mu$/s, and $\tau_0$ is one second.
 
-# In[21]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -94,7 +97,7 @@ for n in range(1000):
 env.run(until=1000)
 
 
-# In[22]:
+# In[ ]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 10))

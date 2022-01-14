@@ -100,7 +100,7 @@
 # 
 # As it happens, the parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in rgw arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
 
-# In[87]:
+# In[1]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -132,7 +132,7 @@ else:
     ax.set_title(f"Peak Temperature = {df['T1'].max()}")
 
 
-# ![](https://jckantor.github.io/cbe30338-2021/figures/Model_Data_Image.jpg)
+# ![](figures/Model_Data_Image.jpg)
 # 
 # Under these conditions, starting with an ambient temperature of 21 C, when the system reached steady-state the measured voltage was 5.10 volts with a current of 0.315 amps, or 1.61 watts, resulting in a peak temperature of 53 C
 # 
@@ -275,7 +275,7 @@ else:
 # 
 # The steady state analysis provided an estimate for the gross heat transfer coefficient $U_a$. Rerun this cell for different values of gross heat capacity $C_p$. Try to find a value that at least mimics the experimental response shown above.
 
-# In[85]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -312,7 +312,7 @@ ax.grid(True)
 # 
 # The following cell provides an interactive tool for 'tuning' the model to fit the experimental data. Work with the sliders to find good choices for each of the parameters. 
 
-# In[88]:
+# In[3]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')

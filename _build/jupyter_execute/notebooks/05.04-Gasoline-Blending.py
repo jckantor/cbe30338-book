@@ -451,6 +451,3 @@ print("Profit =", round(100*m.profit()/vol,1), "cents per gallon.")
 
 
 
-
-# <!--NAVIGATION-->
-# < [Design of a Cold Weather Fuel](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.07-Design-of-a-Cold-Weather-Fuel.ipynb) | [Contents](toc.ipynb) | [Pyomo Examples](http://nbviewer.jupyter.org/github/jckantor/CBE30338/blob/master/notebooks/06.99-Pyomo-Examples.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE30338/blob/master/notebooks/06.08-Gasoline-Blending.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/06.08-Gasoline-Blending.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>
