@@ -30,7 +30,7 @@ Students completing this course will be able to …
 
 **Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138
 
-**Virtual Office Hours (Zoom):** [https://notredame.zoom.us/s/96378092750](https://notredame.zoom.us/s/96378092750)
+**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm, or by appointment. In-person office hours will be offered after the current COVID outbreak has subsided. Zoom link: [https://notredame.zoom.us/s/96378092750](https://notredame.zoom.us/s/96378092750)
 
 **Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
@@ -57,7 +57,6 @@ Students completing this course will be able to …
 
 **Office:** 257 Nieuwland Hall
 
-**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm on [Zoom](https://notredame.zoom.us/s/96378092750), or by appointment. In-person office hours will be offered after the current COVID outbreak has subsided. 
 
 ## Teaching Assistants
 
