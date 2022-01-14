@@ -17,7 +17,7 @@ parts:
       sections:
       - file: notebooks/01.01-What-is-Feedback
       - file: notebooks/01.02-Elements-of-Feedback-Control
-      - file: notebooks/01.05-Assignment-1
+#      - file: notebooks/01.05-Assignment-1
       
     - file: notebooks/02.00-Process-Modeling
       sections:
