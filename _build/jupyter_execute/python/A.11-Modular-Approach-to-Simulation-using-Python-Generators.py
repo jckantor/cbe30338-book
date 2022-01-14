@@ -4,11 +4,11 @@
 # # Modular Simulation using Python Generators
 # 
 # 
-# ### Summary
+# ## Summary
 # 
 # This notebook demonstrates shows how to use the Python generators for simulation. This technique implements simulation blocks as Python generators, and shows how to piece blocks together to simulate more complex systems. This is an advanced technique that may be useful in certain projects and a convenient alternative to block diagram simulators.
 # 
-# ### Table of Contents
+# ## Table of Contents
 # 
 # 1. [Simulation using scipy.integrate.odeint()](#section1)
 #     1. [Typical Usage](#section1-1)
