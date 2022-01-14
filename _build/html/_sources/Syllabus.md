@@ -57,6 +57,8 @@ Students completing this course will be able to …
 
 **Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm on Zoom, or by appointment. In-person office hours will be offered after the current COVID outbreak has subsided. 
 
+**Zoom Link** [https://notredame.zoom.us/s/96378092750](https://notredame.zoom.us/s/96378092750)
+
 ## Teaching Assistants
 
 Teaching assistants assist with 
