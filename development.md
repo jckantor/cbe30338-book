@@ -10,13 +10,11 @@ jupyterbuild clean ../cbe30338-book
 
 Rebuild the book by executing the following command from the terminal window while 
 
-
 ```
 jupyterbuild build ../cbe30338-book
 ```
 
 Commit and push changes to the remote git repository.
-
 
 ```
 git add --all
