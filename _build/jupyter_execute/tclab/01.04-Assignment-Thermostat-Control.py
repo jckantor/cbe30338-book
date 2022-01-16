@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Lab 1: Thermostat Control
+# # Assignment: Thermostat Control
 
 # The purpose of this first laboratory session is to verify that you can interface and interact with the TCLab hardware, and familiarize you with the TCLab library. The first exercise will be to code a rudimentary relay (also called 'on-off' or thermostat) controller for one of the two heaters.
 # 
