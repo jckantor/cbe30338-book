@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. The Temperature Control Laboratory &#8212; CBE 30338 Chemical Process Control</title>
+    <title>1.4. Lab 1: Thermostat Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Setting up TCLab" href="01.01-Setting-Up-TCLab.html" />
-    <link rel="prev" title="9. References" href="../notebooks/09.00-Bibliography.html" />
+    <link rel="next" title="2. Empirical Model Identification" href="02.00-Empirical-Model-Identification.html" />
+    <link rel="prev" title="1.3. Using TCLab" href="01.03-Using-TCLab.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -448,7 +448,7 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="01.00-TCLab.html">
    1. The Temperature Control Laboratory
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -456,7 +456,7 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
      1.1. Setting up TCLab
@@ -472,8 +472,8 @@
      1.3. Using TCLab
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Lab-1.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      1.4. Lab 1: Thermostat Control
     </a>
    </li>
@@ -699,9 +699,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/tclab/01.00-TCLab.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/tclab/01.04-Lab-1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -719,7 +719,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/01.00-TCLab.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/01.04-Lab-1.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -735,11 +735,71 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/tclab/01.04-Lab-1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/tclab/01.04-Lab-1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procedures">
+   1.4.1. Procedures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-download-and-install-tclab-py">
+   1.4.2. Step 1. Download and install TCLab.py
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-verify-that-your-hardware-and-software-are-working-correctly">
+   1.4.3. Step 2.  Verify that your hardware and software are working correctly.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response">
+   1.4.4. Step 3. Turn on the heaters for 120 seconds and log temperature response.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-code-an-on-off-controller">
+   1.4.5. Step 4. Code an on-off controller.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-analysis">
+   1.4.6. Step 5. Analysis
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -747,32 +807,144 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The Temperature Control Laboratory</h1>
+                <h1>Lab 1: Thermostat Control</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#procedures">
+   1.4.1. Procedures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-1-download-and-install-tclab-py">
+   1.4.2. Step 1. Download and install TCLab.py
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-2-verify-that-your-hardware-and-software-are-working-correctly">
+   1.4.3. Step 2.  Verify that your hardware and software are working correctly.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response">
+   1.4.4. Step 3. Turn on the heaters for 120 seconds and log temperature response.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-4-code-an-on-off-controller">
+   1.4.5. Step 4. Code an on-off controller.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-5-analysis">
+   1.4.6. Step 5. Analysis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-temperature-control-laboratory">
-<h1><span class="section-number">1. </span>The Temperature Control Laboratory<a class="headerlink" href="#the-temperature-control-laboratory" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="http://apmonitor.com/pdc/index.php/Main/ArduinoTemperatureControl">Temperature Control Laboratory</a> provides a low-cost, hands-on learning environment for process control. The Arduino-based device comprises a two-input, two-output system of heaters and sensors.</p>
-<p><a class="reference external" href="https://github.com/jckantor/TCLab">TCLab</a> is a Python library providing the software tools to create and test control algorithms ranging from simple step testing to sophisticated multivarible predictive control.</p>
-<p><img alt="" src="../_images/TCLab.jpg" /></p>
-<p>Temperature Control Laboratory hardware consists of five parts:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-1-thermostat-control">
+<h1><span class="section-number">1.4. </span>Lab 1: Thermostat Control<a class="headerlink" href="#lab-1-thermostat-control" title="Permalink to this headline">¶</a></h1>
+<p>The purpose of this first laboratory session is to verify that you can interface and interact with the TCLab hardware, and familiarize you with the TCLab library. The first exercise will be to code a rudimentary relay (also called ‘on-off’ or thermostat) controller for one of the two heaters.</p>
+<p>For background on on-off control, consult</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.cds.caltech.edu/~murray/books/AM08/pdf/fbs-intro_07Aug2019.pdf#page=19">On-Off Control in Section 1.6 of <em>Feedback Control for Scientists and Engineers</em></a></p></li>
+</ul>
+<div class="section" id="procedures">
+<h2><span class="section-number">1.4.1. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Arduino Leonardo microcontroller board with preinstalled firmware.</p></li>
-<li><p>The Temperature Control Laboratory plug-in board (also known as a shield).</p></li>
-<li><p>Ten watt USB power supply.</p></li>
-<li><p>USB to 5.5mm to USB power supply cable.</p></li>
-<li><p>USB to micro-USB data cable.</p></li>
+<li><p>Download a copy of this notebook to your laptop and complete the exercises shown below. Under each exercise heading, add as many text and code cells as needed to complete the exercise. The results should be embedded in the notebook. ‘Save-as-you-go’ to avoid losing your work.</p></li>
+<li><p>Submit your completed lab notebook via Canvas. All submissions must be pdf format.</p></li>
 </ol>
-<p>Check your kit to be sure you have all parts.</p>
-<div class="toctree-wrapper compound">
+</div>
+<div class="section" id="step-1-download-and-install-tclab-py">
+<h2><span class="section-number">1.4.2. </span>Step 1. Download and install <a class="reference external" href="http://TCLab.py">TCLab.py</a><a class="headerlink" href="#step-1-download-and-install-tclab-py" title="Permalink to this headline">¶</a></h2>
+<p>Execute the following cell to download and install the <a class="reference external" href="http://TCLab.py">TCLab.py</a> python library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install tclab --upgrade
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting tclab
+  Using cached tclab-0.4.9-py2.py3-none-any.whl (28 kB)
+Collecting pyserial
+  Using cached pyserial-3.5-py2.py3-none-any.whl (90 kB)
+Installing collected packages: pyserial, tclab
+Successfully installed pyserial-3.5 tclab-0.4.9
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-verify-that-your-hardware-and-software-are-working-correctly">
+<h2><span class="section-number">1.4.3. </span>Step 2.  Verify that your hardware and software are working correctly.<a class="headerlink" href="#step-2-verify-that-your-hardware-and-software-are-working-correctly" title="Permalink to this headline">¶</a></h2>
+<p>The following cell should cause the LED on the TCLab shield to light up to 50% maximum brightness. The output of this cell should indicate successful connection and disconnect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span>
+
+<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">LED</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem144101 at 115200 baud.
+TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
+TCLab disconnected successfully.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response">
+<h2><span class="section-number">1.4.4. </span>Step 3. Turn on the heaters for 120 seconds and log temperature response.<a class="headerlink" href="#step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response" title="Permalink to this headline">¶</a></h2>
+<p>For this exercise, write a code cell that turns on heater 1 at 100% power, then log the temperature response once per second for 120 seconds. The output of the cell should report the time, power level, and temperature for each measurement. You will need the <code class="docutils literal notranslate"><span class="pre">clock</span></code> function from <code class="docutils literal notranslate"><span class="pre">tclab</span></code> for this exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-code-an-on-off-controller">
+<h2><span class="section-number">1.4.5. </span>Step 4. Code an on-off controller.<a class="headerlink" href="#step-4-code-an-on-off-controller" title="Permalink to this headline">¶</a></h2>
+<p>Code an on-off controller for a setpoint of 30 degrees C using heater 1 as the manipulated variable, and temperature 1 as the measured variable. Operate the controller for at least 5 minutes (600 seconds) reporting time/power/temperature measurements every 2 seconds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put your code here.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-5-analysis">
+<h2><span class="section-number">1.4.6. </span>Step 5. Analysis<a class="headerlink" href="#step-5-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Examine the results of the previous exercise and answer the following questions.</p>
+<ol class="simple">
+<li><p>After the initial transients decay and the system is in continuous cycling mode, how much time elapses between power on and power off events?</p></li>
+<li><p>What is the approximate duty cycle (i.e, fraction of time the heater is in the ‘on’ state) once the initial start-up period has passed.</p></li>
+<li><p>What is the peak-to-peak magnitude of the temperature oscillation around the setpoint?  Why does this occur?</p></li>
+</ol>
+<p>Type your answers in the markdown cell below.</p>
+<p>Write your answers in this markdown cell.</p>
 </div>
 </div>
 
@@ -801,17 +973,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../notebooks/09.00-Bibliography.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01.03-Using-TCLab.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>References</p>
+            <p class="prev-next-title"><span class="section-number">1.3. </span>Using TCLab</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01.01-Setting-Up-TCLab.html" title="next page">
+    <a class='right-next' id="next-link" href="02.00-Empirical-Model-Identification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.1. </span>Setting up TCLab</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Empirical Model Identification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
