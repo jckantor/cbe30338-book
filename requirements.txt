@@ -1,8 +1,12 @@
-jupyter-book
 matplotlib
 numpy
 pandas
 
+# to run jupter book
+jupyter-book
 tabulate
+ipytest
 
+# control and simulation libraries
 simpy
+
