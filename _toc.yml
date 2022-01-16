@@ -92,7 +92,7 @@ parts:
       - file: tclab/01.01-Setting-Up-TCLab
       - file: tclab/01.02-Troubleshooting-TCLab
       - file: tclab/01.03-Using-TCLab
-      - file: tclab/01.04-Lab-1
+      - file: tclab/01.04-Assignment-Thermostat-Control
    
     - file: tclab/02.00-Empirical-Model-Identification
       sections:
