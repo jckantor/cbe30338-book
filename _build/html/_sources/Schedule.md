@@ -11,12 +11,12 @@
 
 ## Week 2: Jan 18 - Jan 21
 
-|        | Day   | Activity     | Topic                                 | Pre-reading   | Assignment       |
-|:-------|:------|:-------------|:--------------------------------------|:--------------|:-----------------|
-| Jan 18 | Tue   | Class        | First and Second Order Linear Systems |               |                  |
-| Jan 19 | Wed   | Office Hours |                                       |               |                  |
-| Jan 20 | Thu   | Class        | Step Responses and Model Fitting      |               |                  |
-| Jan 21 | Fri   | Lab          | Lab 2: Empirical Model Fitting        | Lab Chapter 2 | Lab Assignment 2 |
+|        | Day   | Activity     | Topic                            | Pre-reading   | Assignment       |
+|:-------|:------|:-------------|:---------------------------------|:--------------|:-----------------|
+| Jan 18 | Tue   | Class        | First Linear Systems             | Section 2.1   | HW Assignment 1  |
+| Jan 19 | Wed   | Office Hours |                                  |               |                  |
+| Jan 20 | Thu   | Class        | Step Responses and Model Fitting |               |                  |
+| Jan 21 | Fri   | Lab          | Lab 2: Empirical Model Fitting   | Lab Chapter 2 | Lab Assignment 2 |
 
 ## Week 3: Jan 25 - Jan 28
 

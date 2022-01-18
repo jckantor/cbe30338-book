@@ -459,17 +459,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
-     1.1. Setting Up TCLab
+     1.1. Setting up TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Using-TCLab.html">
-     1.2. Using TCLab
+    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Lab-1.html">
-     1.3. Lab 1: Thermostat Control
+    <a class="reference internal" href="01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
@@ -763,43 +768,38 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference-materials">
-   2.1.1. Reference materials
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#executing-the-step-test">
-   2.1.2. Executing the Step Test
+   2.1.1. Executing the Step Test
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-an-initial-steady-state">
-     2.1.2.1. Verify an Initial Steady State
+     2.1.1.1. Verify an Initial Steady State
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conduct-the-experiment">
-     2.1.2.2. Conduct the Experiment
+     2.1.1.2. Conduct the Experiment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-the-experimental-data">
-     2.1.2.3. Verify the Experimental Data
+     2.1.1.3. Verify the Experimental Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#convert-to-a-dataframe">
-     2.1.2.4. Convert to a DataFrame
+     2.1.1.4. Convert to a DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#save-dataframe-as-a-csv-file">
-     2.1.2.5. Save DataFrame as a .csv file
+     2.1.1.5. Save DataFrame as a .csv file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-the-data-file">
-     2.1.2.6. Verify the Data File
+     2.1.1.6. Verify the Data File
     </a>
    </li>
   </ul>
@@ -825,43 +825,38 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#reference-materials">
-   2.1.1. Reference materials
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#executing-the-step-test">
-   2.1.2. Executing the Step Test
+   2.1.1. Executing the Step Test
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-an-initial-steady-state">
-     2.1.2.1. Verify an Initial Steady State
+     2.1.1.1. Verify an Initial Steady State
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conduct-the-experiment">
-     2.1.2.2. Conduct the Experiment
+     2.1.1.2. Conduct the Experiment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-the-experimental-data">
-     2.1.2.3. Verify the Experimental Data
+     2.1.1.3. Verify the Experimental Data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#convert-to-a-dataframe">
-     2.1.2.4. Convert to a DataFrame
+     2.1.1.4. Convert to a DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#save-dataframe-as-a-csv-file">
-     2.1.2.5. Save DataFrame as a .csv file
+     2.1.1.5. Save DataFrame as a .csv file
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#verify-the-data-file">
-     2.1.2.6. Verify the Data File
+     2.1.1.6. Verify the Data File
     </a>
    </li>
   </ul>
@@ -877,11 +872,6 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="step-testing">
 <h1><span class="section-number">2.1. </span>Step Testing<a class="headerlink" href="#step-testing" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="reference-materials">
-<h2><span class="section-number">2.1.1. </span>Reference materials<a class="headerlink" href="#reference-materials" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Alizadeh, Esmaeil. “A Guide to Non-Minimum Phase Systems.” <em>Towards Data Science.</em> <a class="reference external" href="https://towardsdatascience.com/a-guide-to-non-minimum-phase-systems-1403350917a0">https://towardsdatascience.com/a-guide-to-non-minimum-phase-systems-1403350917a0</a>. Accessed 6 Decewmber 2020.</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -893,11 +883,10 @@
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="executing-the-step-test">
-<h2><span class="section-number">2.1.2. </span>Executing the Step Test<a class="headerlink" href="#executing-the-step-test" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.1. </span>Executing the Step Test<a class="headerlink" href="#executing-the-step-test" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="verify-an-initial-steady-state">
-<h3><span class="section-number">2.1.2.1. </span>Verify an Initial Steady State<a class="headerlink" href="#verify-an-initial-steady-state" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.1. </span>Verify an Initial Steady State<a class="headerlink" href="#verify-an-initial-steady-state" title="Permalink to this headline">¶</a></h3>
 <p>A step test assumes the system is initially at steady state. In the case of the Temperature Control Lab, the initial steady with no power input would be room temperature. It generally takes 10 minutes or more to reach steady state. We’ll do a measurement to confirm the initial temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -919,7 +908,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="section" id="conduct-the-experiment">
-<h3><span class="section-number">2.1.2.2. </span>Conduct the Experiment<a class="headerlink" href="#conduct-the-experiment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.2. </span>Conduct the Experiment<a class="headerlink" href="#conduct-the-experiment" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># experimental parameters</span>
@@ -1061,7 +1050,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="section" id="verify-the-experimental-data">
-<h3><span class="section-number">2.1.2.3. </span>Verify the Experimental Data<a class="headerlink" href="#verify-the-experimental-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.3. </span>Verify the Experimental Data<a class="headerlink" href="#verify-the-experimental-data" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">t</span>
@@ -1083,7 +1072,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="section" id="convert-to-a-dataframe">
-<h3><span class="section-number">2.1.2.4. </span>Convert to a DataFrame<a class="headerlink" href="#convert-to-a-dataframe" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.4. </span>Convert to a DataFrame<a class="headerlink" href="#convert-to-a-dataframe" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1104,7 +1093,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="section" id="save-dataframe-as-a-csv-file">
-<h3><span class="section-number">2.1.2.5. </span>Save DataFrame as a .csv file<a class="headerlink" href="#save-dataframe-as-a-csv-file" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.5. </span>Save DataFrame as a .csv file<a class="headerlink" href="#save-dataframe-as-a-csv-file" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span>
@@ -1114,7 +1103,7 @@ TCLab disconnected successfully.
 </div>
 </div>
 <div class="section" id="verify-the-data-file">
-<h3><span class="section-number">2.1.2.6. </span>Verify the Data File<a class="headerlink" href="#verify-the-data-file" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1.6. </span>Verify the Data File<a class="headerlink" href="#verify-the-data-file" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline

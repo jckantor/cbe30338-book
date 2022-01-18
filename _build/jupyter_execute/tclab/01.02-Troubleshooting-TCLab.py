@@ -35,7 +35,7 @@ get_ipython().run_cell_magic('ipytest', '--verbosity=1', '\n# Verify tclab has b
 
 # ### Hardware testing
 # 
-# The following tests check for connectivity and operation of the Temperature Control Lab hardware.
+# The following tests check for connectivity and operation of the Temperature Control Lab hardware. The Temperature Control Lab must be connected to pass these tests.
 
 # In[68]:
 

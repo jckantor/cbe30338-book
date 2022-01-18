@@ -2,10 +2,6 @@
 # coding: utf-8
 
 # # Step Testing
-# 
-# ## Reference materials
-# 
-# * Alizadeh, Esmaeil. "A Guide to Non-Minimum Phase Systems." *Towards Data Science.* https://towardsdatascience.com/a-guide-to-non-minimum-phase-systems-1403350917a0. Accessed 6 Decewmber 2020.
 
 # In[2]:
 

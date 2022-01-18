@@ -1,62 +1,73 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Properties of Scalar First Order Linear Systems
+# # First-Order Linear Systems
 
 # ## First order linear systems
 # 
-# A simple, generic model for a first-order linear system with one state is given in the form
+# A simple, generic model for a first-order linear system with one state $x$ and and input $u$ can be represented by a block diagram
+# 
+# $$u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)$$
+# 
+# where $a$ and $b$ are constant coefficients. Depending on the application, the time-varying **state variable** $x(t)$ might refer to level, temperature, pressure, or composition.
+# 
+# The time-varying **input** $u(t)$ is a time-varying **input** causing changes in the state. The differential equation
 # 
 # $$\frac{dx}{dt} = ax + bu$$
 # 
-# where $x$ is a **state variable** such as temperature, pressure, composition, and $u$ is a time-varying **input** that causes changes in the state. Despite its simplicity, a single first-order model captures some essential characteristics of simple systems that are often a starting point for control systems design.
+# models the cause-and-effect relationship between $u(t)$ and $x(t)$. Given an **initial condition** $x(t_0)$ and the input $u(t)$ starting at $t_0$, solution of this differential equation gives the value of $x(t)$ at all later times $t > t_0$.
 # 
-# This notebook reviews the dynamics and behavior of these systems.
+# Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as **time-constant** and **gain**. These concepts are critical to your understanding of process control.
+# 
+# The learning goals for this notebook are:
+# 
+# 1. Review the mathematics of first-order linear differential equations.
+# 1. Define time-constant and steady-state gain for input/output systems.
+# 1. Show several different **standard representations** for first order systems including **state-space** and **gain/time-constant**.
 
-# ## Steady-State Gain
+# ## Steady-State
 # 
-# The steady-state response of a system is the value of the state variable ultimately attained when the input is held constant. If we denote the steady-state values of $x$ and $u$ as 
+# The steady-state of a system refers to a constant value of the state variable achieved when the input is set to at a constant value $\bar{u}$. The steady-state is defined by 
 # 
-# $$\begin{align*}
-# \bar{x} & = \lim_{t\rightarrow\infty} x(t) \\
-# \bar{u} & = \lim_{t\rightarrow\infty} u(t)
-# \end{align*}$$
+# $$\bar{x} = \lim_{t\rightarrow\infty} x(t)$$
 # 
 # The state is steady if the state variable is not changing, i.e.,  
 # 
 # $$\frac{d\bar{x}}{dt} = 0$$
 # 
-# which provides an equation to define the relationship between the steady input and the steady state,
+# which provides an equation to define the relationship between the steady input and the steady state.
+
+# ## Gain
+# 
+# When applied to our model of a first-order linear system,
 # 
 # $$0 = a \bar{x} + b \bar{u} \implies \bar{x} = -\frac{b}{a}\bar{u}$$
 # 
-# The value $-\frac{b}{a}$ is sometimes called the **gain**, which is a coefficient showing how much the steady state $\bar{x}$ changes due to a change $\bar{u}$.
+# The value $-\frac{b}{a}$ is called the **gain** which is a coefficient describing the value of the steady state $\bar{x}$ as a multiple of the steady input $\bar{u}$.
 # 
 # $$\bar{x} = K \bar{u} \qquad\text{where}\qquad K = -\frac{b}{a}$$
 # 
-# Note that $K$ may have units in many process applications. For example, if $x$ denotes concentration of a chemical species in mg/liter and $u$ denotes a input flow in units of mg/hour, then the units of $K$ would be hours/liter. 
+# In process applications $K$ will have units in many process applications. For example, if $x$ denotes concentration of a chemical species in mg/liter and $u$ denotes a input flow in units of mg/hour, the units of $K$ are hours/liter. 
 # 
-# In many electrical engineering applications, however, $x$ and $u$  refer to electrical potential measured in volts or current measured in amperes. In these cases the gain $K$ will be dimensionless. Because of thie, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, and is something to document carefully when working in cross-disciplinary teams.
 
-# <hr>
+# :::{admonition} Example
 # 
-# **Example:** The velocity of a car, $x$, in response to a throttle setting $u$ has been found to satisfy the equation
+# Suppose the speed of a car, $x$, in response to a throttle position $u$ has been found to satisfy the equation
 # 
 # $$\frac{dx}{dt} = - 0.12 x + 0.096 u$$
 # 
-# where the units of $t$ are in seconds. Speed is measured in miles per hour and throttle position in percent of full scale. 
+# The units of $t$ are seconds, speed is measured in miles per hour, and throttle position in percent of full scale. 
 # 
 # * a. What are the units of $x$ and $u$?
 # * b. What are the units of the $a$ and $b$ coeffients?
 # * c. What is value and units of the steady-state gain? 
 # * d. What is the maximum speed of the car?
 # 
-# <hr>
+# :::
 
-# In[38]:
+# In[6]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -65,10 +76,11 @@ a = -0.12
 b = 0.096
 K = -b/a
 
-# plot steady state response
+# compute state response
 u_ss = np.linspace(0, 100)
 x_ss = K*u_ss
 
+# plot steady-state response
 fig, ax = plt.subplots(1, 1)
 ax.plot(u_ss, x_ss, label="car speed at steady state", lw=2)
 ax.set_xlabel("throttle setting [percent]")
@@ -76,15 +88,30 @@ ax.set_ylabel("speed [mph]")
 ax.legend()
 ax.grid(True)
 
+# add annotations
 ua = 40
 ub = 60
 ax.plot([ua, ub, ub], [K*ua, K*ua, K*ub], "r--", 2)
-ax.text(ub, K*ua, f"K = {K:4.2f}", va="top")
+ax.text(ub, K*ua, f"K = {K:4.2f} mph/% throttle", va="top")
 
+
+# In electrical engineering circuit analysis, $x$ and $u$ typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain $K$ will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.
+# 
+# ***For this course, values of gain $K$ should always specify units.***
 
 # ## Dynamic Response
+# 
+# The solution to a constant-coefficient, first-order linear differential equation with input $u(t)$
+# 
+# $$\frac{dx}{dt} = a x + b u$$
+# 
+# with initial condition $x(t_0)$ is given by 
+# 
+# $$ x(t) = e^{a (t - t_0)}x(t_0) + \int_{t_0}^t e^{a(t-t')} b u(t') dt'$$
 
-# The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input. Let's consider each of these separately.
+# The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input. 
+# 
+# Let's consider each of these separately.
 
 # ### Response to an Initial Condition
 # 
@@ -100,18 +127,18 @@ ax.text(ub, K*ua, f"K = {K:4.2f}", va="top")
 # 
 # * $a \leq 0$: **exponential decay** to zero.
 # * $a = 0$: x(t) **constant** with a value $x(t_0)$
-# * $a \geq 0$: **exponential increase** to either $+\infty$ or $-\infty$, depending on the sign of $x(t_0)$.
+# * $a \geq 0$: **exponential increase** to either $+\infty$ or $-\infty$, depending on the sign of $a$.
 
-# <hr>
+# :::{admonition} Example (cont.)
 # 
-# **Example:** Let's continue with the example of the car. Suppose you are driving at a steady speed of 60 mph then take your foot off the throttle at $t = 20$ seconds.
+# Let's continue with the example of the car. Suppose you are driving at a steady speed of 60 mph then take your foot off the throttle at $t = 20$ seconds.
 # 
-# * a.) What was the initial throttle setting before 20 seconds?
-# * b.) What is the throttle setting after 20 seconds?
-# * c.) For the purposes for determining the response after 20 seconds, what is the initial condition?
-# * d.) Is the response exponentially decaying, constant, or exponentially increasing?
+# * a. What was the initial throttle setting before 20 seconds?
+# * b. What is the throttle setting after 20 seconds?
+# * c. For the purposes for determining the response after 20 seconds, what is the initial condition?
+# * d. Is the response exponentially decaying, constant, or exponentially increasing?
 # 
-# <hr>
+# :::
 
 # In[37]:
 
@@ -147,14 +174,26 @@ ax.grid(True)
 # 
 # $$\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}$$
 
-# <hr>
+# :::{admonition} Example (cont.)
 # 
 # **Example:** For the car example, what is the value of the time constant?
-# <hr>
-
-# Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change. The following table shows the response of a first order system as a fraction of the initial condition.
 # 
-# | $t$ |  $\frac{x(t)}{x_0}$ | 1 - $\frac{x(t)}{x_0}$ |
+# :::
+
+# Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change. 
+# 
+# Normalize the response as
+# 
+# $$
+# \begin{align}
+# z(t) & = 1 - \frac{x(t)}{x(t_0)} \\
+# & = 1 - e^{a(t-t_0)}
+# \end{align}
+# $$
+# 
+# The following table shows the response of a first order system as a fraction of the initial condition.
+# 
+# | $t$ |  $\frac{x(t)}{x_0}$ | $z$ = 1 - $\frac{x(t)}{x_0}$ |
 # | :---: | :---: | :---: |
 # | $t_0$ | 1.000 | 0.000 |
 # | $t_0 + \tau$ | 0.368 | 0.632 |
@@ -162,7 +201,7 @@ ax.grid(True)
 # | $t_0 + 3\tau$ | 0.050 | 0.950 |
 # | $t_0 + 4\tau$ | 0.018 | 0.982 |
 
-# In[61]:
+# In[7]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -238,15 +277,15 @@ for k in range(0, 5):
 ax.grid(True)
 
 
-# <hr>
+# :::{admonition} Example (cont.)
 # 
 # **Example:** The following cell simulates an experimental measurement of the response of car. From this data, estimate:
 # 
-# * a.) The half-life $\tau_{1/2}$
-# * b.) The characteristic time constant $\tau$.
-# * c.) The parameter $a$ for the model $\frac{dx}{dt} = ax$
+# * a. The half-life $\tau_{1/2}$
+# * b. The characteristic time constant $\tau$.
+# * c. The parameter $a$ for the model $\frac{dx}{dt} = ax$
 # 
-# <hr>
+# :::
 
 # In[79]:
 
