@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.1. Properties of Scalar First Order Linear Systems &#8212; CBE 30338 Chemical Process Control</title>
+    <title>2.1. First-Order Linear Systems &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -155,7 +155,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.1. Properties of Scalar First Order Linear Systems
+     2.1. First-Order Linear Systems
     </a>
    </li>
    <li class="toctree-l2">
@@ -461,17 +461,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/01.01-Setting-Up-TCLab.html">
-     1.1. Setting Up TCLab
+     1.1. Setting up TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/01.02-Using-TCLab.html">
-     1.2. Using TCLab
+    <a class="reference internal" href="../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/01.03-Lab-1.html">
-     1.3. Lab 1: Thermostat Control
+    <a class="reference internal" href="../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
@@ -765,50 +770,55 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-order-linear-systems">
+  <a class="reference internal nav-link" href="#id1">
    2.1.1. First order linear systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steady-state-gain">
-   2.1.2. Steady-State Gain
+  <a class="reference internal nav-link" href="#steady-state">
+   2.1.2. Steady-State
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gain">
+   2.1.3. Gain
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dynamic-response">
-   2.1.3. Dynamic Response
+   2.1.4. Dynamic Response
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#response-to-an-initial-condition">
-     2.1.3.1. Response to an Initial Condition
+     2.1.4.1. Response to an Initial Condition
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#time-constant">
-     2.1.3.2. Time constant
+     2.1.4.2. Time constant
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#half-life">
-     2.1.3.3. Half-life
+     2.1.4.3. Half-life
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-inputs">
-     2.1.3.4. Step Inputs
+     2.1.4.4. Step Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#response-to-a-step-input">
-   2.1.4. Response to a step input
+   2.1.5. Response to a step input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.5. Alternative forms for scalar first-order linear systems
+   2.1.6. Alternative forms for scalar first-order linear systems
   </a>
  </li>
 </ul>
@@ -821,7 +831,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Properties of Scalar First Order Linear Systems</h1>
+                <h1>First-Order Linear Systems</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -832,50 +842,55 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#first-order-linear-systems">
+  <a class="reference internal nav-link" href="#id1">
    2.1.1. First order linear systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steady-state-gain">
-   2.1.2. Steady-State Gain
+  <a class="reference internal nav-link" href="#steady-state">
+   2.1.2. Steady-State
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gain">
+   2.1.3. Gain
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dynamic-response">
-   2.1.3. Dynamic Response
+   2.1.4. Dynamic Response
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#response-to-an-initial-condition">
-     2.1.3.1. Response to an Initial Condition
+     2.1.4.1. Response to an Initial Condition
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#time-constant">
-     2.1.3.2. Time constant
+     2.1.4.2. Time constant
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#half-life">
-     2.1.3.3. Half-life
+     2.1.4.3. Half-life
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-inputs">
-     2.1.3.4. Step Inputs
+     2.1.4.4. Step Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#response-to-a-step-input">
-   2.1.4. Response to a step input
+   2.1.5. Response to a step input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.5. Alternative forms for scalar first-order linear systems
+   2.1.6. Alternative forms for scalar first-order linear systems
   </a>
  </li>
 </ul>
@@ -887,50 +902,61 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="properties-of-scalar-first-order-linear-systems">
-<h1><span class="section-number">2.1. </span>Properties of Scalar First Order Linear Systems<a class="headerlink" href="#properties-of-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="first-order-linear-systems">
-<h2><span class="section-number">2.1.1. </span>First order linear systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
-<p>A simple, generic model for a first-order linear system with one state is given in the form</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="first-order-linear-systems">
+<h1><span class="section-number">2.1. </span>First-Order Linear Systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">2.1.1. </span>First order linear systems<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A simple, generic model for a first-order linear system with one state <span class="math notranslate nohighlight">\(x\)</span> and and input <span class="math notranslate nohighlight">\(u\)</span> can be represented by a block diagram</p>
+<div class="math notranslate nohighlight">
+\[u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant coefficients. Depending on the application, the time-varying <strong>state variable</strong> <span class="math notranslate nohighlight">\(x(t)\)</span> might refer to level, temperature, pressure, or composition.</p>
+<p>The time-varying <strong>input</strong> <span class="math notranslate nohighlight">\(u(t)\)</span> is a time-varying <strong>input</strong> causing changes in the state. The differential equation</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = ax + bu\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> is a <strong>state variable</strong> such as temperature, pressure, composition, and <span class="math notranslate nohighlight">\(u\)</span> is a time-varying <strong>input</strong> that causes changes in the state. Despite its simplicity, a single first-order model captures some essential characteristics of simple systems that are often a starting point for control systems design.</p>
-<p>This notebook reviews the dynamics and behavior of these systems.</p>
+<p>models the cause-and-effect relationship between <span class="math notranslate nohighlight">\(u(t)\)</span> and <span class="math notranslate nohighlight">\(x(t)\)</span>. Given an <strong>initial condition</strong> <span class="math notranslate nohighlight">\(x(t_0)\)</span> and the input <span class="math notranslate nohighlight">\(u(t)\)</span> starting at <span class="math notranslate nohighlight">\(t_0\)</span>, solution of this differential equation gives the value of <span class="math notranslate nohighlight">\(x(t)\)</span> at all later times <span class="math notranslate nohighlight">\(t &gt; t_0\)</span>.</p>
+<p>Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as <strong>time-constant</strong> and <strong>gain</strong>. These concepts are critical to your understanding of process control.</p>
+<p>The learning goals for this notebook are:</p>
+<ol class="simple">
+<li><p>Review the mathematics of first-order linear differential equations.</p></li>
+<li><p>Define time-constant and steady-state gain for input/output systems.</p></li>
+<li><p>Show several different <strong>standard representations</strong> for first order systems including <strong>state-space</strong> and <strong>gain/time-constant</strong>.</p></li>
+</ol>
 </div>
-<div class="section" id="steady-state-gain">
-<h2><span class="section-number">2.1.2. </span>Steady-State Gain<a class="headerlink" href="#steady-state-gain" title="Permalink to this headline">¶</a></h2>
-<p>The steady-state response of a system is the value of the state variable ultimately attained when the input is held constant. If we denote the steady-state values of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> as</p>
+<div class="section" id="steady-state">
+<h2><span class="section-number">2.1.2. </span>Steady-State<a class="headerlink" href="#steady-state" title="Permalink to this headline">¶</a></h2>
+<p>The steady-state of a system refers to a constant value of the state variable achieved when the input is set to at a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>. The steady-state is defined by</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
-\bar{x} &amp; = \lim_{t\rightarrow\infty} x(t) \\
-\bar{u} &amp; = \lim_{t\rightarrow\infty} u(t)
-\end{align*}\end{split}\]</div>
+\[\bar{x} = \lim_{t\rightarrow\infty} x(t)\]</div>
 <p>The state is steady if the state variable is not changing, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\frac{d\bar{x}}{dt} = 0\]</div>
-<p>which provides an equation to define the relationship between the steady input and the steady state,</p>
+<p>which provides an equation to define the relationship between the steady input and the steady state.</p>
+</div>
+<div class="section" id="gain">
+<h2><span class="section-number">2.1.3. </span>Gain<a class="headerlink" href="#gain" title="Permalink to this headline">¶</a></h2>
+<p>When applied to our model of a first-order linear system,</p>
 <div class="math notranslate nohighlight">
 \[0 = a \bar{x} + b \bar{u} \implies \bar{x} = -\frac{b}{a}\bar{u}\]</div>
-<p>The value <span class="math notranslate nohighlight">\(-\frac{b}{a}\)</span> is sometimes called the <strong>gain</strong>, which is a coefficient showing how much the steady state <span class="math notranslate nohighlight">\(\bar{x}\)</span> changes due to a change <span class="math notranslate nohighlight">\(\bar{u}\)</span>.</p>
+<p>The value <span class="math notranslate nohighlight">\(-\frac{b}{a}\)</span> is called the <strong>gain</strong> which is a coefficient describing the value of the steady state <span class="math notranslate nohighlight">\(\bar{x}\)</span> as a multiple of the steady input <span class="math notranslate nohighlight">\(\bar{u}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\bar{x} = K \bar{u} \qquad\text{where}\qquad K = -\frac{b}{a}\]</div>
-<p>Note that <span class="math notranslate nohighlight">\(K\)</span> may have units in many process applications. For example, if <span class="math notranslate nohighlight">\(x\)</span> denotes concentration of a chemical species in mg/liter and <span class="math notranslate nohighlight">\(u\)</span> denotes a input flow in units of mg/hour, then the units of <span class="math notranslate nohighlight">\(K\)</span> would be hours/liter.</p>
-<p>In many electrical engineering applications, however, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span>  refer to electrical potential measured in volts or current measured in amperes. In these cases the gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of thie, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, and is something to document carefully when working in cross-disciplinary teams.</p>
-<hr>
-<p><strong>Example:</strong> The velocity of a car, <span class="math notranslate nohighlight">\(x\)</span>, in response to a throttle setting <span class="math notranslate nohighlight">\(u\)</span> has been found to satisfy the equation</p>
+<p>In process applications <span class="math notranslate nohighlight">\(K\)</span> will have units in many process applications. For example, if <span class="math notranslate nohighlight">\(x\)</span> denotes concentration of a chemical species in mg/liter and <span class="math notranslate nohighlight">\(u\)</span> denotes a input flow in units of mg/hour, the units of <span class="math notranslate nohighlight">\(K\)</span> are hours/liter.</p>
+<div class="admonition-example admonition">
+<p class="admonition-title">Example</p>
+<p>Suppose the speed of a car, <span class="math notranslate nohighlight">\(x\)</span>, in response to a throttle position <span class="math notranslate nohighlight">\(u\)</span> has been found to satisfy the equation</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = - 0.12 x + 0.096 u\]</div>
-<p>where the units of <span class="math notranslate nohighlight">\(t\)</span> are in seconds. Speed is measured in miles per hour and throttle position in percent of full scale.</p>
+<p>The units of <span class="math notranslate nohighlight">\(t\)</span> are seconds, speed is measured in miles per hour, and throttle position in percent of full scale.</p>
 <ul class="simple">
 <li><p>a. What are the units of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span>?</p></li>
 <li><p>b. What are the units of the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coeffients?</p></li>
 <li><p>c. What is value and units of the steady-state gain?</p></li>
 <li><p>d. What is the maximum speed of the car?</p></li>
 </ul>
-<hr><div class="cell docutils container">
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># system data</span>
@@ -938,10 +964,11 @@
 <span class="n">b</span> <span class="o">=</span> <span class="mf">0.096</span>
 <span class="n">K</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="n">a</span>
 
-<span class="c1"># plot steady state response</span>
+<span class="c1"># compute state response</span>
 <span class="n">u_ss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">x_ss</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="n">u_ss</span>
 
+<span class="c1"># plot steady-state response</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u_ss</span><span class="p">,</span> <span class="n">x_ss</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed at steady state&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;throttle setting [percent]&quot;</span><span class="p">)</span>
@@ -949,26 +976,36 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
+<span class="c1"># add annotations</span>
 <span class="n">ua</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">ub</span> <span class="o">=</span> <span class="mi">60</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ua</span><span class="p">,</span> <span class="n">ub</span><span class="p">,</span> <span class="n">ub</span><span class="p">],</span> <span class="p">[</span><span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ub</span><span class="p">],</span> <span class="s2">&quot;r--&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">ub</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;K = </span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">ub</span><span class="p">,</span> <span class="n">K</span><span class="o">*</span><span class="n">ua</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;K = </span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> mph/% throttle&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(60, 32.0, &#39;K = 0.80&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(60, 32.0, &#39;K = 0.80 mph/% throttle&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_4_1.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_4_1.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_5_1.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_5_1.png" />
 </div>
 </div>
+<p>In electrical engineering circuit analysis, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.</p>
+<p><em><strong>For this course, values of gain <span class="math notranslate nohighlight">\(K\)</span> should always specify units.</strong></em></p>
 </div>
 <div class="section" id="dynamic-response">
-<h2><span class="section-number">2.1.3. </span>Dynamic Response<a class="headerlink" href="#dynamic-response" title="Permalink to this headline">¶</a></h2>
-<p>The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input. Let’s consider each of these separately.</p>
+<h2><span class="section-number">2.1.4. </span>Dynamic Response<a class="headerlink" href="#dynamic-response" title="Permalink to this headline">¶</a></h2>
+<p>The solution to a constant-coefficient, first-order linear differential equation with input <span class="math notranslate nohighlight">\(u(t)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = a x + b u\]</div>
+<p>with initial condition <span class="math notranslate nohighlight">\(x(t_0)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[ x(t) = e^{a (t - t_0)}x(t_0) + \int_{t_0}^t e^{a(t-t')} b u(t') dt'\]</div>
+<p>The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input.</p>
+<p>Let’s consider each of these separately.</p>
 <div class="section" id="response-to-an-initial-condition">
-<h3><span class="section-number">2.1.3.1. </span>Response to an Initial Condition<a class="headerlink" href="#response-to-an-initial-condition" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.4.1. </span>Response to an Initial Condition<a class="headerlink" href="#response-to-an-initial-condition" title="Permalink to this headline">¶</a></h3>
 <p>For the case when <span class="math notranslate nohighlight">\(u(t) = 0\)</span>, the scalar first order system becomes</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = ax\]</div>
@@ -979,17 +1016,19 @@
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(a \leq 0\)</span>: <strong>exponential decay</strong> to zero.</p></li>
 <li><p><span class="math notranslate nohighlight">\(a = 0\)</span>: x(t) <strong>constant</strong> with a value <span class="math notranslate nohighlight">\(x(t_0)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(a \geq 0\)</span>: <strong>exponential increase</strong> to either <span class="math notranslate nohighlight">\(+\infty\)</span> or <span class="math notranslate nohighlight">\(-\infty\)</span>, depending on the sign of <span class="math notranslate nohighlight">\(x(t_0)\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a \geq 0\)</span>: <strong>exponential increase</strong> to either <span class="math notranslate nohighlight">\(+\infty\)</span> or <span class="math notranslate nohighlight">\(-\infty\)</span>, depending on the sign of <span class="math notranslate nohighlight">\(a\)</span>.</p></li>
 </ul>
-<hr>
-<p><strong>Example:</strong> Let’s continue with the example of the car. Suppose you are driving at a steady speed of 60 mph then take your foot off the throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
+<p>Let’s continue with the example of the car. Suppose you are driving at a steady speed of 60 mph then take your foot off the throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
 <ul class="simple">
-<li><p>a.) What was the initial throttle setting before 20 seconds?</p></li>
-<li><p>b.) What is the throttle setting after 20 seconds?</p></li>
-<li><p>c.) For the purposes for determining the response after 20 seconds, what is the initial condition?</p></li>
-<li><p>d.) Is the response exponentially decaying, constant, or exponentially increasing?</p></li>
+<li><p>a. What was the initial throttle setting before 20 seconds?</p></li>
+<li><p>b. What is the throttle setting after 20 seconds?</p></li>
+<li><p>c. For the purposes for determining the response after 20 seconds, what is the initial condition?</p></li>
+<li><p>d. Is the response exponentially decaying, constant, or exponentially increasing?</p></li>
 </ul>
-<hr><div class="cell docutils container">
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1014,26 +1053,37 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_9_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_9_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_11_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_11_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="time-constant">
-<h3><span class="section-number">2.1.3.2. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.4.2. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">¶</a></h3>
 <p>The system parameter <span class="math notranslate nohighlight">\(a\)</span> has units of inverse time. There is a <strong>characteristic time constant</strong> that can be defined as</p>
 <div class="math notranslate nohighlight">
 \[\tau = -\frac{1}{a} \qquad\iff\qquad a = -\frac{1}{\tau}\]</div>
 <p>With this definition, an alternative formulation of the model and response can be given by</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}\]</div>
-<hr>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
 <p><strong>Example:</strong> For the car example, what is the value of the time constant?</p>
-<hr><p>Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change. The following table shows the response of a first order system as a fraction of the initial condition.</p>
+</div>
+<p>Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change.</p>
+<p>Normalize the response as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
+&amp; = 1 - e^{a(t-t_0)}
+\end{align}
+\end{split}\]</div>
+<p>The following table shows the response of a first order system as a fraction of the initial condition.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p><span class="math notranslate nohighlight">\(t\)</span></p></th>
 <th class="text-align:center head"><p><span class="math notranslate nohighlight">\(\frac{x(t)}{x_0}\)</span></p></th>
-<th class="text-align:center head"><p>1 - <span class="math notranslate nohighlight">\(\frac{x(t)}{x_0}\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(z\)</span> = 1 - <span class="math notranslate nohighlight">\(\frac{x(t)}{x_0}\)</span></p></th>
 </tr>
 </thead>
 <tbody>
@@ -1091,12 +1141,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_13_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_13_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="half-life">
-<h3><span class="section-number">2.1.3.3. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.4.3. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">¶</a></h3>
 <p>The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span> defined above has a natural relationship with the parameters appearing in the problem statement and model. That time constant is equal to time <span class="math notranslate nohighlight">\(t - t_0 = \tau\)</span> necessary for the response to decay to a fraction <span class="math notranslate nohighlight">\(e^{-\frac{(t-t_0)}{\tau}} = e^{-1} = 1/e = 0.368\)</span> of the starting value.</p>
 <p>Another commonly used benchmark is to define a period of time necessary for the response to decay to 1/2 of the starting value.  This is called the <strong>half-life</strong>, or <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span>. To find the relationship to <span class="math notranslate nohighlight">\(\tau\)</span>, w</p>
 <div class="math notranslate nohighlight">
@@ -1137,17 +1187,19 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" />
 </div>
 </div>
-<hr>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
 <p><strong>Example:</strong> The following cell simulates an experimental measurement of the response of car. From this data, estimate:</p>
 <ul class="simple">
-<li><p>a.) The half-life <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span></p></li>
-<li><p>b.) The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
-<li><p>c.) The parameter <span class="math notranslate nohighlight">\(a\)</span> for the model <span class="math notranslate nohighlight">\(\frac{dx}{dt} = ax\)</span></p></li>
+<li><p>a. The half-life <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span></p></li>
+<li><p>b. The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span>.</p></li>
+<li><p>c. The parameter <span class="math notranslate nohighlight">\(a\)</span> for the model <span class="math notranslate nohighlight">\(\frac{dx}{dt} = ax\)</span></p></li>
 </ul>
-<hr><div class="cell docutils container">
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1175,12 +1227,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="step-inputs">
-<h3><span class="section-number">2.1.3.4. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.4.4. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>Heaviside step function</strong> is a function of time that changes discontinuously from 0 to 1 at <span class="math notranslate nohighlight">\(t=0\)</span>. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library provides a useful implementation that is demonstrated in the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1198,7 +1250,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" />
 </div>
 </div>
 <p>This function is easily adapted to create a step function of arbitrary size, offset, and location in time.</p>
@@ -1226,13 +1278,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_22_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_22_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="response-to-a-step-input">
-<h2><span class="section-number">2.1.4. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.5. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s consider the response of a linear first order system</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1281,12 +1333,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" />
+<img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_26_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_26_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="alternative-forms-for-scalar-first-order-linear-systems">
-<h2><span class="section-number">2.1.5. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.6. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
