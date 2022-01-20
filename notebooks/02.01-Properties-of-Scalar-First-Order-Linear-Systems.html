@@ -794,31 +794,38 @@
      2.1.4.1. Response to an Initial Condition
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-constant">
-     2.1.4.2. Time constant
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-constant">
+   2.1.5. Time constant
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#half-life">
-     2.1.4.3. Half-life
+     2.1.5.1. Half-life
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-inputs">
-     2.1.4.4. Step Inputs
+     2.1.5.2. Step Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#response-to-a-step-input">
-   2.1.5. Response to a step input
+   2.1.6. Response to a step input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.6. Alternative forms for scalar first-order linear systems
+   2.1.7. Alternative forms for scalar first-order linear systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.1.8. Exercises
   </a>
  </li>
 </ul>
@@ -866,31 +873,38 @@
      2.1.4.1. Response to an Initial Condition
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#time-constant">
-     2.1.4.2. Time constant
-    </a>
-   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-constant">
+   2.1.5. Time constant
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#half-life">
-     2.1.4.3. Half-life
+     2.1.5.1. Half-life
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-inputs">
-     2.1.4.4. Step Inputs
+     2.1.5.2. Step Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#response-to-a-step-input">
-   2.1.5. Response to a step input
+   2.1.6. Response to a step input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.6. Alternative forms for scalar first-order linear systems
+   2.1.7. Alternative forms for scalar first-order linear systems
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.1.8. Exercises
   </a>
  </li>
 </ul>
@@ -953,6 +967,7 @@
 <li><p>c. What is value and units of the steady-state gain?</p></li>
 <li><p>d. What is the maximum speed of the car?</p></li>
 </ul>
+<p>Work out the answers before attempting any simulations.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1057,8 +1072,9 @@
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="time-constant">
-<h3><span class="section-number">2.1.4.2. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">¶</a></h3>
+<h2><span class="section-number">2.1.5. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">¶</a></h2>
 <p>The system parameter <span class="math notranslate nohighlight">\(a\)</span> has units of inverse time. There is a <strong>characteristic time constant</strong> that can be defined as</p>
 <div class="math notranslate nohighlight">
 \[\tau = -\frac{1}{a} \qquad\iff\qquad a = -\frac{1}{\tau}\]</div>
@@ -1067,7 +1083,7 @@
 \[\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}\]</div>
 <div class="admonition-example-cont admonition">
 <p class="admonition-title">Example (cont.)</p>
-<p><strong>Example:</strong> For the car example, what is the value of the time constant?</p>
+<p>For the car example, what is the value of the time constant?</p>
 </div>
 <p>Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change.</p>
 <p>Normalize the response as</p>
@@ -1144,9 +1160,8 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <img alt="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.01-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
 </div>
 </div>
-</div>
 <div class="section" id="half-life">
-<h3><span class="section-number">2.1.4.3. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.5.1. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">¶</a></h3>
 <p>The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span> defined above has a natural relationship with the parameters appearing in the problem statement and model. That time constant is equal to time <span class="math notranslate nohighlight">\(t - t_0 = \tau\)</span> necessary for the response to decay to a fraction <span class="math notranslate nohighlight">\(e^{-\frac{(t-t_0)}{\tau}} = e^{-1} = 1/e = 0.368\)</span> of the starting value.</p>
 <p>Another commonly used benchmark is to define a period of time necessary for the response to decay to 1/2 of the starting value.  This is called the <strong>half-life</strong>, or <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span>. To find the relationship to <span class="math notranslate nohighlight">\(\tau\)</span>, w</p>
 <div class="math notranslate nohighlight">
@@ -1220,7 +1235,6 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;car speed after throttle set to zero&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time [seconds]&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;speed [mph]&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;time constant = </span><span class="si">{</span><span class="n">tau</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1232,7 +1246,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="section" id="step-inputs">
-<h3><span class="section-number">2.1.4.4. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.5.2. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">¶</a></h3>
 <p>The <strong>Heaviside step function</strong> is a function of time that changes discontinuously from 0 to 1 at <span class="math notranslate nohighlight">\(t=0\)</span>. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library provides a useful implementation that is demonstrated in the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1254,9 +1268,11 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <p>This function is easily adapted to create a step function of arbitrary size, offset, and location in time.</p>
-<hr>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
 <p><strong>Example:</strong> Create a step input for the car throttle corresponding to change from 25% throttle to 75% throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
-<hr><div class="cell docutils container">
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1284,7 +1300,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="section" id="response-to-a-step-input">
-<h2><span class="section-number">2.1.5. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.6. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s consider the response of a linear first order system</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1338,7 +1354,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="section" id="alternative-forms-for-scalar-first-order-linear-systems">
-<h2><span class="section-number">2.1.6. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1.7. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1354,6 +1370,32 @@ K &amp; = - \frac{b}{a}
 <p>Obviously, once <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(tau\)</span> are estimated, values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are easily computed. But sometimes it is more transparent simply to write the linear system using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> directly, as</p>
 <div class="math notranslate nohighlight">
 \[\tau\frac{dx}{dt} = -x + K u\]</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.1.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>An experiment is performed in which a car is run at constant speed on a test track, and the throttle setting is suddenly changed to zero. The recorded speed is shown in the following plot. From this plot, what is the intial condition? What is the first order time constant?</p></li>
+</ol>
+<p><img alt="" src="../_images/exercise_time_constant.png" /></p>
+<ol class="simple">
+<li><p>A recent paper demonstrated the use of engineered proteins to create a luminescent biosensor for the detection of the COVID-19 virus. The step response of the biosensor is shown in the chart at the center of this figure.</p></li>
+</ol>
+<p><img alt="" src="../_images/Yeh2021_biosensor.png" /></p>
+<p>Assume a first-order model would be used to describe the dynamics. What is the corresponding time constant? How much time should be allowed for the meaasurement to reach 95% of the steady-state response?</p>
+<ol class="simple">
+<li><p>For the same biosensor data, assume the step input of virus has arbitrary units <span class="math notranslate nohighlight">\(U = 10000\)</span>. For a model in the form</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = a x + b u\]</div>
+<p>what the values of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>?</p>
+<ol class="simple">
+<li><p>Again for the same biosensor data and <span class="math notranslate nohighlight">\(U = 10000\)</span>, what are the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> for a model written in the form</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\tau}\frac{dx}{dt} = - x + K u\]</div>
+<ol class="simple">
+<li><p>Prepare a simulation of the model you have created for the biosensor.</p></li>
+</ol>
 </div>
 </div>
 

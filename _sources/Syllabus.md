@@ -12,7 +12,7 @@ CBE 30338 Chemical Process Control introduces students to the analysis and desig
 
 Python and hands-on control experiments are integrated into the course. Applications include chemical and biological reactors, separation processes, autonomous biomedical devices, and examples from other engineering disciplines.
 
-The lab sessions are largely devoted to hands-on coding and experimentation using the Temperature Control Laboratory. Students purchase their own copy of the device from Amazon or apmonitor.com. 
+The lab sessions are largely devoted to hands-on coding and experimentation using the Temperature Control Laboratory. Students purchase their own copy of the device from [Amazon](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) or apmonitor.com. 
 
 ## Learning Objectives
 
@@ -30,13 +30,15 @@ Students completing this course will be able to …
 
 **Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138
 
-**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm, or by appointment. In-person office hours will be offered after the current COVID outbreak has subsided. Zoom link: [https://notredame.zoom.us/s/96378092750](https://notredame.zoom.us/s/96378092750)
+**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm, or by appointment. Password-protected Zoom links for scheduled virtual office hours are located in [Canvas](https://canvas.nd.edu/courses/42595) under the "Zoom" tab. 
 
 **Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
 * CBE 32338-02 Friday, 12:50 am - 1:40 pm, Fitzpatrick A68
 
 **Final Exam:** Tuesday, May 3 10:30 am - 12:30 pm
+
+**Assignments, Grades, and Other Course Information**: [Canvas](https://canvas.nd.edu/courses/42595)
 
 **Prerequisites:** This course assumes knowledge of modeling and analysis with differential equations, procedural programming in Python, mass and energy balances. Students taking this course will normally have completed
 
