@@ -166,7 +166,7 @@ ax.legend()
 ax.grid(True)
 
 
-# ### Time constant
+# ## Time constant
 # 
 # The system parameter $a$ has units of inverse time. There is a **characteristic time constant** that can be defined as
 # 
@@ -289,7 +289,7 @@ ax.grid(True)
 # 
 # :::
 
-# In[5]:
+# In[14]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -311,7 +311,6 @@ fig, ax = plt.subplots(1, 1)
 ax.plot(t, x, 'b.', label="car speed after throttle set to zero")
 ax.set_xlabel("time [seconds]")
 ax.set_ylabel("speed [mph]")
-ax.set_title(f"time constant = {tau:4.2f} seconds")
 ax.legend()
 ax.grid(True)
 
@@ -444,8 +443,31 @@ ax.grid(True)
 
 # ## Exercises
 
-# :::{admonition} Homework Problem
+# 1. An experiment is performed in which a car is run at constant speed on a test track, and the throttle setting is suddenly changed to zero. The recorded speed is shown in the following plot. From this plot, what is the intial condition? What is the first order time constant?
 # 
-# ### Problem A
+# ![](figures/exercise_time_constant.png)
 # 
-# :::
+# 2. A recent paper demonstrated the use of engineered proteins to create a luminescent biosensor for the detection of the COVID-19 virus. The step response of the biosensor is shown in the chart at the center of this figure.
+# 
+# ![](figures/Yeh2021_biosensor.png)
+# 
+# Assume a first-order model would be used to describe the dynamics. What is the corresponding time constant? How much time should be allowed for the meaasurement to reach 95% of the steady-state response?
+# 
+# 3. For the same biosensor data, assume the step input of virus has arbitrary units $U = 10000$. For a model in the form
+# 
+# $$\frac{dx}{dt} = a x + b u$$
+# 
+# what the values of $a$ and $b$?
+# 
+# 4. Again for the same biosensor data and $U = 10000$, what are the values $K$ and $\tau$ for a model written in the form
+# 
+# $$\frac{1}{\tau}\frac{dx}{dt} = - x + K u$$
+# 
+# 5. Prepare a simulation of the model you have created for the biosensor.
+# 
+
+# In[ ]:
+
+
+
+

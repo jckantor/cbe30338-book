@@ -9,23 +9,56 @@
 # 
 # $$\frac{dx}{dt} = a x + b u$$
 # 
-# as mathematical model to describe the dynamic response of a system to a changing input. 
-# 
-# In any particular application, the **state variable** $x$ corresponds to a process variable such as temperature, pressure, concentration, or position. The **input variable** $u(t)$ corresponds to a changing input such as heater power, flowrate, or valve position. This notebook uses this equation to describe a one-compartment model for a pharmacokinetics in the which the state is the concentration of an antimicrobrial, and the input is a rate of intraveneous administration.
-# 
-# This notebook demonstrates features of this model that can be used in a wide range of process applications:
-# 
-# * Simulate response from a known initial condition.
-# * Simulate response to a changinig input.
-# 
+# to describe the dynamic response of a one-compartment model for a pharmacokinetics in the which the state is the concentration of an antimicrobrial, and the input is a rate of intraveneous administration. This notebook demonstrates features and analysis of this model that can be used in a wide range of process applications.
 
 # ## Pharamacokinetics
 # 
-# Pharmacokinetics is a branch of pharmacology that studies the fate of chemical species in living organisms. The diverse range of applications includes the administration of drugs and anesthesia in humans. This notebook introduces a one compartment model for pharmacokinetics and shows how it can be used to determine strategies for the intravenous administration of an antimicrobial.
+# Pharmacokinetics is a branch of pharmacology that studies the fate of chemical species in living organisms. The diverse range of applications includes administration of drugs and anesthesia in humans. 
+# 
+# This notebook introduces a one compartment model for pharmacokinetics and how it used to determine strategies for the intravenous administration of an antimicrobial.
+
+# ### Antimicrobials
+# 
+# Let's consider the administration of an antimicrobial to a patient. Concentration $C(t)$ refers to the concentration of the antibiotic in blood plasma in units of [mg/L or $\mu$g/mL]. There are two concentration levels of interest in the medical use of an antimicrobrial:
+# 
+# **Minimum Inhibitory Concentration (MIC)** The minimum concentration of the antibiotic that prevents visible growth of a particular microorganism after overnight incubation. This enough to prevent further growth but may not be enought to "kill" the microorganism.
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/a/a2/Minimum_Inhibitory_Concentration.jpg)
+# 
+# Image Source: Jenay DeCaussin, CC BY-SA 4.0 <https://creativecommons.org/licenses/by-sa/4.0>, via Wikimedia Commons
+# 
+# 
+# **Minimum Bactricidal Concentration (MBC)** The lowest concentration of the antimicrobrial that prevents the growth of the microorganism after subculture to antimicrobrial-free media. MBC is generally the concentration needed "kill" the microorganism.
+# 
+# Extended exposure to an antimicrobrial at levels below MBC leads to [antimicrobrial resistance](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4378521/).
+# 
+
+# ### Why Model?
+# 
+# There are multiple reasons to create mathematical models. 
+# 
+# In research and development, for example, a mathematical model is a testable hypothesis of one's understanding of a system. The model can guide the design of experiments to validate or falsify the assumptions incorporated in the model.  
+# 
+# In the context of control systems, a model helps to answer operating questions. In pharmacokinetics, for example, the operational questions include:
+# 
+# * How do we find values for the model parameters?
+# * How long will it take to clear the antimicrobial from the body?
+# * What rate of antimicrobial addition is required to achieve the minimum bactricidal concentration?
+# * If doses are administered periodically, how large should each dose be, and how frequently should the doses be administered?
+# 
+# Questions like these can be answered through regression to experimental data, simulation, and analysis. We'll explore several of these techniques below.
+# 
+# 1. Simulation
+#     * Known initial condition
+#     * Time dependent input
+# 1. Steady state analysis
+# 1. Alternative model formulations
+#     * State space model
+#     * Gain and Time Constant
 
 # ### One-Compartment Model
 # 
-# For the purposes of drug administration, for a one-compartment model of the human body is assumed to consist of a single compartment of a constant volume $V$ containing all the plasma of the body. The plasma is assumed to be sufficiently well mixed that any drug is uniformly distributed with concentration $C(t)$. The drug enters the plasma by direct injection into the plasma at rate $u(t)$. The drug leaves the body as a component of the plasma where $Q$ is the constant plasma clearance rate.
+# A one-compartment model assumes the antimicrobial is distributed in a single compartment of the human body with constant volume $V$ of plasma. The plasma is sufficiently well mixed that any drug is uniformly distributed with concentration $C(t)$. The drug enters the plasma by direct injection at rate $u(t)$ meaasured in mg/hour or similar units. The drug leaves the body as a component of the plasma where $Q$ is the constant plasma clearance rate.
 # 
 # ![](./figures/PK-one-compartment.png)
 # 
@@ -36,57 +69,36 @@
 # Assuming the drug is neither produced or consumed by reaction in the body, this generic mass balance can be translated to differential equation
 # 
 # $$\begin{align*}
-# \underbrace{\fbox{Rate of Accumulation}}_{V \frac{dC}{dt}} & = \underbrace{\fbox{Inflow}}_{u(t)} - \underbrace{\fbox{Outflow}}_{Q C} + \underbrace{\fbox{Production by reaction}}_0 - \underbrace{\fbox{Consumption by reaction}}_0
+# \underbrace{\fbox{Rate of Accumulation}}_{V \frac{dC}{dt}} & = \underbrace{\fbox{Inflow}}_{u(t)} - \underbrace{\fbox{Outflow}}_{Q C(t)} + \underbrace{\fbox{Production by reaction}}_0 - \underbrace{\fbox{Consumption by reaction}}_0
 # \end{align*}$$
 # 
-# or, summarizing,
+# Summarizing,
 # 
 # $$V \frac{dC}{dt} = u(t) - Q C(t)$$
 # 
 # This model is characterized by two parameters, the plasma volume $V$ and the clearance rate $Q$.
 
-# ### Antimicrobials
-# 
-# Let's consider the administration of an antimicrobial to a patient. Concentration $C(t)$ refers to the concentration of the antibiotic in blood plasma in units of [mg/L or $\mu$g/mL]. There are two concentration levels of interest in the medical use of an antimicrobrial:
-# 
-# **Minimum Inhibitory Concentration (MIC)** The minimum concentration of the antibiotic that prevents visible growth of a particular microorganism after overnight incubation. This is generally not enough to kill the microorganism, only enough to prevent further growth.
-# 
-# **Minimum Bactricidal Concentration (MBC)** The lowest concentration of the antimicrobrial that prevents the growth of the microorganism after subculture to antimicrobrial-free media. MBC is generally the concentration needed "kill" the microorganism.
-# 
-# Extended exposure to an antimicrobrial at levels below MBC leads to [antimicrobrial resistance](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4378521/).
-
-# ### What questions can we ask and answer with this model?
-# 
-# There are multiple reasons to create mathematical models. In research and development, for example, a mathematical model forms a testable hypothesis of one's understanding of a system. The model guides the design of experiments to either validate or falsify the assumptions incorporated in the model.  
-# 
-# In the present context of control systems, a model is used to answer operating questions. In pharmacokinetics, for example, the operational questions might include:
-# 
-# * What values for the parameters $V$ and $Q$ provide accurate predictions of system response?
-# * How long will it take to clear the antimicrobial from the body?
-# * What rate of antimicrobial addition is required to achieve the minimum bactricidal concentration?
-# * If doses are administered periodically, how large should each dose be, and how frequently should the doses be administered?
-# 
-# Questions like these can be answered through simulation, regression to experimental data, and mathematical analysis. We'll explore several of these techniques below.
-# 
-# * Simulation
-#     * Known initial condition
-#     * Time dependent input
-# * Steady state analysis
-# * Alternative model formulations
-#     * State space model
-#     * Gain and Time Constant
-
-# ## Simulation
-
-# ### Simulation from a Known Initial Condition
-
-# #### Problem Statement 
+# ### Problem Statement 
 # 
 # Assume the minimum inhibitory concentration (MIC) of a particular organism to a particular antimicrobial is 5 mg/liter, and the minimum bactricidal concentration (MBC) is 8 mg/liter. Further assume the plasma volume $V$ is 4 liters with a clearance rate $Q$ of 0.5 liters/hour. 
 # 
 # An initial intravenous antimicrobial dose of 64 mg in 4 liters of plasm results in a plasma concentration $C_{initial}$ of 16 mg/liter.  How long will the concentration stay above MBC?  Above MIC?
 
-# #### Step 1. Import libraries
+# ## Simulation from a Known Initial Condition
+
+# ### Solution Strategy
+# 
+# The questions raised in the problem statement can be answered through simulation. Given the model parameters in the problem statement, the task is to simulate the response and determine when certain conditions are encountered.
+# 
+# We could solve this two different ways:
+# 
+# 1. Numerical solution. The are many alternatives for solving systems of one or more differential equations, but in this case there is the extra consideration of finding when certain events take place. As we will see, [integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) from the [SciPy](https://scipy.org/) library is well suited to this task.
+# 
+# 2. Analytical solution. This is a linear first-order differential equation with constant coefficients with a known analytical solution. The questions can be answered from the closed-form solution.
+# 
+# Below we will demonstrate a numerical solution that could be extended to more complex models and problem statements.
+
+# ### Step 1. Import libraries
 # 
 # For this first simulation we compute the response of the one compartment model due starting with an initial condition $C_{initial}$, and assuming input $u(t) = 0$. We will use the [`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) function for solving differential equations from the `scipy.integrate` library.
 # 
@@ -97,7 +109,7 @@
 # 3. Import the `matplotlib.pyplot` library for plotting.
 # 4. Import the any needed mathematical functions or libraries.
 
-# In[1]:
+# In[7]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -106,9 +118,9 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 
 
-# #### Step 2. Enter Parameter Values
+# ### Step 2. Enter Parameter Values
 
-# In[2]:
+# In[8]:
 
 
 V = 4           # liters
@@ -119,15 +131,15 @@ MBC = 8         # mg/liter
 C_initial = 16  # mg/liter
 
 
-# #### Step 3. Write the differential equation in standard form
+# ### Step 3. Write the differential equation in standard form
 # 
-# The most commonly solvers for systems of differential equations require a function evaluating the right hand sides of the differential equations when written in a standard form
+# The most commonly used solvers for systems of differential equations require a function evaluating the right hand sides of the differential equations when written in a standard form
 # 
 # $$\frac{dC}{dt} = \frac{1}{V}u(t) - \frac{Q}{V}C$$
 # 
-# Here we write two functions. One function returns values of the input $u(t)$ for a specified point in time, the second returns values of the right hand side as a function of time and state.
+# Here we write this as a composition of two functions. The first function returns values of the input $u(t)$ for a specified point in time. The second returns values of the right hand side as a function of time and state.
 
-# In[3]:
+# In[12]:
 
 
 def u(t):
@@ -137,9 +149,11 @@ def deriv(t, C):
     return u(t)/V - (Q/V)*C
 
 
-# #### Step 4. Solution and Visualization
+# ### Step 4. Solution and Visualization
+# 
+# The problem statement seeks information about specific events. The Python function [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) provides a means of tracking events, such as the crossing a value treshhold. Here we will use this capability to find precise answers to when the concentration falls below the MBC and MIC levels.
 
-# In[11]:
+# In[13]:
 
 
 # specify time span and evaluation points
@@ -167,7 +181,7 @@ print(soln)
 
 # The decision on how to display or visualize a solution is problem dependent. Here we create a simple function to visualize the solution and relevant problem specifications. 
 
-# In[12]:
+# In[14]:
 
 
 def plotConcentration(soln):
@@ -186,19 +200,17 @@ plotConcentration(soln)
 plt.savefig('./figures/Pharmaockinetics1.png')
 
 
-# #### Step 5. Analysis of the Results
+# ### Step 5. Analysis of the Results
 # 
-# Let's compare our results to a typical experimental result. 
+# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
 # 
 # | | |
 # | :-: | :-: |
 # |![](./figures/Pharmaockinetics1.png)|![](figures/nihms-475924-f0001.jpg)|
 # 
 # We see that that the assumption of a fixed initial condition is questionable. Can we fix this?
-# 
-# [Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/)
 
-# ### Example 2: Improving Simulation using Time-Dependent Input
+# ## Simulation using Time-Dependent Input
 # 
 # For the next simulation we will assume the dosing takes place over a short period of time $\delta t$. To obtain a total dose $U_{dose}$ in a time period $\delta t$, the mass flow rate rate must be
 # 
@@ -209,9 +221,11 @@ plt.savefig('./figures/Pharmaockinetics1.png')
 # \end{cases}
 # $$
 # 
+# To match results with the prior calculations, we note  a total dose of $U_{dose} = V \times C(0)$ = 64 mg will be injected at a rate $U_{dose}/dt$ over the specified time period $dt$.
+# 
 # Before doing a simulation, we will write a Python function for $u(t)$. 
 
-# In[6]:
+# In[20]:
 
 
 # parameter values
@@ -230,15 +244,14 @@ def u(t):
 
 # This code cell demonstrates the use of a list comprehension to apply a function to each value in a list.
 
-# In[7]:
+# In[21]:
 
 
 # visualization
 t = np.linspace(0, 24, 1000)              # create a list of time steps
-y = np.array([u(tau) for tau in t])       # list comprehension
 
 fig, ax = plt.subplots(1, 1)
-ax.plot(t, y)
+ax.plot(t, [u(tau) for tau in t])
 ax.set_xlabel('Time [hrs]')
 ax.set_ylabel('Administration Rate [mg/hr]')
 ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
@@ -246,7 +259,7 @@ ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 # Simulation
 
-# In[8]:
+# In[22]:
 
 
 # specify time span and evaluation points
@@ -265,29 +278,27 @@ plotConcentration(soln)
 plt.savefig('./figures/Pharmaockinetics2.png')
 
 
-# #### Analysis of the Results
-# 
-# Let's compare our results to a typical experimental result. 
+# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
 # 
 # | | |
 # | :-: | :-: |
 # |![](./figures/Pharmaockinetics2.png)|![](./figures/nihms-475924-f0001.jpg)|
 # 
 # While it isn't perfect, this is a closer facsimile of actual physiological response.
-# 
-# [Levison, Matthew E., and Julie H. Levison. “Pharmacokinetics and Pharmacodynamics of Antibacterial Agents.” Infectious disease clinics of North America 23.4 (2009): 791–vii. PMC. Web. 8 May 2017.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/)
 
-# ### Example 2: Periodic Dosng
+# ## Periodic Dosing
 # 
-# The minimum inhibitory concentration (MIC) of a particular organism to a particular antibiotic is 5 mg/liter, the minimum bactricidal concentration (MBC) is 8 mg/liter. Assume the plasma volume $V$ is 4 liters with a clearance rate $Q$ of 0.5 liters/hour. 
+# ### Problem Statement
+# 
+# The minimum inhibitory concentration (MIC) of a particular organism to an antibiotic is 5 mg/liter, the minimum bactricidal concentration (MBC) is 8 mg/liter. Assume the plasma volume $V$ is 4 liters with a clearance rate $Q$ of 0.5 liters/hour. 
 # 
 # Design an antibiotic therapy to keep the plasma concentration above the MIC level for a period of 96 hours. 
 
-# #### Solution
+# ### Solution
 # 
 # We consider the case of repetitive dosing where a new dose is administered every $t_{dose}$ hours. A simple Python "trick" for this calculation is the `%` operator which returns the remainder following division. This is a useful tool worth remembering whenever you need to functions that repeat in time.
 
-# In[9]:
+# In[23]:
 
 
 # parameter values
@@ -305,15 +316,14 @@ def u(t):
         return 0
 
 
-# In[10]:
+# In[26]:
 
 
 # visualization
 t = np.linspace(0, 96, 1000)              # create a list of time steps
-y = np.array([u(tau) for tau in t])       # list comprehension
 
 fig, ax = plt.subplots(1, 1)
-ax.plot(t, y)
+ax.plot(t, [u(tau) for tau in t])
 ax.set_xlabel('Time [hrs]')
 ax.set_ylabel('Administration Rate [mg/hr]')
 ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
@@ -321,7 +331,7 @@ ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 # The dosing function $u(t)$ is now applied to the simulation of drug concentration in the blood plasma. A fourth argument is added to `odeint(deriv, Cinitial, t, tcrit=t)` indicating that special care must be used for every time step. This is needed in order to get a high fidelity simulation that accounts for the rapidly varying values of $u(t)$.
 
-# In[11]:
+# In[27]:
 
 
 # specify time span and evaluation points
@@ -344,7 +354,7 @@ print(soln.t_events)
 
 # This looks like a unevem. The problem here is that the solver may be using time steps that are larger than the dosing interval, and missing important changes in the input. The fix is to specify the `max_step` option for the solver. As a rule of thumb, your simulations should always specify a `max_step` shorter than the minimum feature in the input sequence. In this case, we will specify a `max_step` of 0.1 hr which is short enough to not miss a change in the input.
 
-# In[13]:
+# In[28]:
 
 
 # specify time span and evaluation points
@@ -365,7 +375,7 @@ plt.savefig('./figures/Pharmaockinetics4.png')
 print(soln.t_events)
 
 
-# ## Assignment 2
+# ## Exercises
 
 # ### Exercise 1
 # 

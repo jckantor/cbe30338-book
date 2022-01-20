@@ -17,17 +17,17 @@
 # * Relate this model to the previously enountered first-order linear systems
 # * Demonstrate how to estimate parameters from step test experiments.
 
-# ## First-order model for one heater/sensor assembly
+# ## First-order model for a single heater/sensor assembly
 
 # ### Energy Balance
 # 
 # We'll be begin by developing a model for one of the heater/sensor assemblies located on the Temperature Control Laboratory. The basic outline of an energy balaance is given by
 # 
-# $$\text{Rate of energy accumulation} = \text{Rate of energy in flow} - \text{Rate of energy outflow}$$
+# $$\fbox{Rate of energy accumulation} = \fbox{Rate of energy in flow} - \fbox{Rate of energy outflow}$$
 # 
 # In the absence of any material flows, changes in kinetic or potential energy, or any chemical changes, changes in sensible temperature is the only form of energy accumulation. If we assume the heater/sensor assembly is at single uniform temperature $T_1$, has mass $m$, and a constant and average specific heat capacity $\hat{C}_p$,
 # 
-# $$\text{Rate of energy accumulation} = m \hat{C}_p \frac{dT_1}{dt}$$
+# $$\fbox{Rate of energy accumulation} = m \hat{C}_p \frac{dT_1}{dt}$$
 # 
 # For the purposes of this model we will lump the mass and specific heat capacity into a single parameter representing the overall heat capacity of the assembly
 # 
@@ -35,13 +35,13 @@
 # 
 # The final expression for the rate of energy accumulation becomes
 # 
-# $$\text{Rate of energy accumulation} = C_p \frac{dT_1}{dt}$$
+# $$\fbox{Rate of energy accumulation} = C_p \frac{dT_1}{dt}$$
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# What are the units of $C_p$?
 # 
-# **Study Question:** What are the units of $C_p$?
-# 
-# <hr>
+# :::
 
 # ### Energy inflow
 # 
@@ -61,32 +61,44 @@
 # An experimentally parameter $\alpha$ is introduced to establish the actual power delivered in units of watts
 # 
 # $$\fbox{Rate of energy in flow} = \alpha P_1 u_1$$
-# 
-# <hr>
-# 
-# **Study Question:** What are the units of $\alpha$, $P_1$, and $U_1$?
-# 
-# **Study Question:** How would determine $\alpha$ experimentally? What experiments would you perform? What equipment would you need in addition to that delivered with the Temperature Control Lab? 
-# 
-# <hr>
 
-# ### Energy Outflow
+# :::{admonition} Study Question
+# 
+# What are the units of $\alpha$, $P_1$, and $U_1$?
+# 
+# :::
+
+# :::{admonition} Study Question
+# 
+# How would determine $\alpha$ experimentally? What experiments would you perform? What equipment would you need in addition to that delivered with the Temperature Control Lab? 
+# 
+# :::
+
+# ### Energy outflow
 # 
 # Energy flows out of the assembly primarily through convective heat transfer to the surrounding environment. At the relatively low operating temperatures of the device, the amount of radiative heat transfer is neglible. 
 # 
 # $$\fbox{Rate of energy outflow} = U_a(T_1 - T_{amb})$$
 # 
 # Parameters $U_a$ and $T_{amb}$ are the overall heat transfer coefficient and ambient temperature, respectively.
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# Do you agree with the assumptions embedded in this equation? What other considerations might apply?
 # 
-# **Study Question:** Do you agree with the assumptions embedded in this equation? What other considerations might apply?
+# :::
+
+# :::{admonition} Study Question
 # 
-# **Study Question:** What are the units of $U_a$?
+# What are the units of $U_a$?
 # 
-# **Study Question:** How can you determine $T_{amb}$ in experiments you do with the Temperature Control Lab?
+# :::
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# How can you determine $T_{amb}$ in experiments you do with the Temperature Control Lab?
+# 
+# :::
 
 # ### One-state model
 # 
@@ -96,9 +108,11 @@
 # C_p\frac{dT_1}{dt} & = U_a(T_{amb} - T_1) + \alpha P_1u_1 \\
 # \end{align}$$
 
+# ## Parameter Estimation
+
 # ### Estimating $\alpha$
 # 
-# As it happens, the parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in rgw arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
+# As it happens, the parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in the arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
 
 # In[1]:
 
@@ -137,12 +151,14 @@ else:
 # Under these conditions, starting with an ambient temperature of 21 C, when the system reached steady-state the measured voltage was 5.10 volts with a current of 0.315 amps, or 1.61 watts, resulting in a peak temperature of 53 C
 # 
 # $$\alpha P_1 u_1 = 1.6 \text{ watts} \implies \alpha = \frac{1.6\text{watts}}{200 \times 50} = 0.00016 \frac{\text{watts}}{\text{units P1} \times \text{percent U1}}$$
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# What is the maximum power that could be delivered to the heater/sensor assembly?
 # 
-# **Study Question:** What is the maximum power that could be delivered to the heater/sensor assembly?
-# 
-# <hr>
+# :::
+
+# ## Modeling Deviations from Steady State
 
 # ### Steady State
 # 
@@ -155,20 +171,18 @@ else:
 # Solving for $\bar{T}_{1}$
 # 
 # $$\bar{T}_{1} = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1}$$
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# In the cell below, write Python code to estimate the value of $U_a$.
 # 
-# **Study Question:** In the cell below, write Python code to estimate the value of $U_a$.
+# :::
+
+# :::{admonition} Study Question
 # 
-# **Study Question:** Using the results of this calculation, estimate the maximum acheivable temperature with this device.
+# Using the results of this calculation, estimate the maximum acheivable temperature with this device.
 # 
-# <hr>
-
-# In[ ]:
-
-
-
-
+# :::
 
 # ### Deviation Variables
 # 
@@ -209,12 +223,12 @@ else:
 # $$\begin{align}
 # \frac{dT_1'}{dt} & = - \frac{U_a}{C_p}T_1' + \frac{\alpha P_1}{C_p}u_1
 # \end{align}$$
+
+# :::{admonition} Study Question
 # 
-# <hr>
+# Previously we estimated $U_a$ and $\alpha$ from steady-state measurements. Can $C_p$ be estimated from steady-state measurements? Why or why not?
 # 
-# **Study Question:** Previously we estimated $U_a$ and $\alpha$ from steady-state measurements. Can $C_p$ be estimated from steady-state measurements? Why or why not?
-# 
-# <hr>
+# :::
 
 # ### First Order Linear Differential Equations
 # 
@@ -357,21 +371,21 @@ def compare(Ua, Cp):
 compare(0.05, 8)
 
 
-# <hr>
+# :::{admonition} Study Question
 # 
-# **Study Question:** By trial and error using the `compare()` function defined above, tetermine values for $U_a$ and $C_p$ that yield a good fit of the model to the data. 
+# 1. By trial and error using the `compare()` function defined above, tetermine values for $U_a$ and $C_p$ that yield a good fit of the model to the data. 
 # 
-# **Study Question:** Are you able to remove all systematic error? If not, why not?
+# 1. Are you able to remove all systematic error? If not, why not?
 # 
-# **Study Question:** The sum of absolute errors is shown on the chart. Try to find values of $U_a$ and $C_p$ that minimize this error criterion. In your opinion, is that the best choice of model parameters? Why or why not?
+# 1. The sum of absolute errors is shown on the chart. Try to find values of $U_a$ and $C_p$ that minimize this error criterion. In your opinion, is that the best choice of model parameters? Why or why not?
 # 
-# **Study Question:** Does this solution make sense? The [specific heat capacity for solids](https://en.wikipedia.org/wiki/Heat_capacity) is typically has values in the range of 0.2 to 0.9 watts/degC/gram. Using a value of 0.9 that is typical of aluminum and plastics used for electronic products, what would be the estimated mass of the heater/sensor combination?
+# 1. Does this solution make sense? The [specific heat capacity for solids](https://en.wikipedia.org/wiki/Heat_capacity) is typically has values in the range of 0.2 to 0.9 watts/degC/gram. Using a value of 0.9 that is typical of aluminum and plastics used for electronic products, what would be the estimated mass of the heater/sensor combination?
 # 
-# **Study Question:** Suppose we want to improve the model. Where should we go from here?  
+# 1. Suppose we want to improve the model. Where should we go from here?  
 # 
-# <hr>
+# :::
 
-# ## Assignment 3
+# ## Exercises
 # 
 # 1. This notebook attempted to fit a first-order model of a heater/sensor assembly to experimental data. In the course of the fit, estimates were derived for parameters $\alpha$, P1, $U_a$, and $C_p$. From these parameter values, estimate a time constant. 
 # 
