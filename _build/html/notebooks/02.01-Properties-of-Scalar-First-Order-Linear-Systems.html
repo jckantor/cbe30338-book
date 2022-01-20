@@ -821,6 +821,18 @@
    2.1.6. Alternative forms for scalar first-order linear systems
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.1.7. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-a">
+     2.1.7.1. Problem A
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -893,6 +905,18 @@
    2.1.6. Alternative forms for scalar first-order linear systems
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   2.1.7. Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-a">
+     2.1.7.1. Problem A
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -953,6 +977,7 @@
 <li><p>c. What is value and units of the steady-state gain?</p></li>
 <li><p>d. What is the maximum speed of the car?</p></li>
 </ul>
+<p>Work out the answers before attempting any simulations.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,7 +1092,7 @@
 \[\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}\]</div>
 <div class="admonition-example-cont admonition">
 <p class="admonition-title">Example (cont.)</p>
-<p><strong>Example:</strong> For the car example, what is the value of the time constant?</p>
+<p>For the car example, what is the value of the time constant?</p>
 </div>
 <p>Knowledge of the time constant provides a simple means of sketching the response of first order linear system subject to a a sudden change.</p>
 <p>Normalize the response as</p>
@@ -1254,9 +1279,11 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <p>This function is easily adapted to create a step function of arbitrary size, offset, and location in time.</p>
-<hr>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
 <p><strong>Example:</strong> Create a step input for the car throttle corresponding to change from 25% throttle to 75% throttle at <span class="math notranslate nohighlight">\(t = 20\)</span> seconds.</p>
-<hr><div class="cell docutils container">
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1354,6 +1381,15 @@ K &amp; = - \frac{b}{a}
 <p>Obviously, once <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(tau\)</span> are estimated, values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are easily computed. But sometimes it is more transparent simply to write the linear system using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> directly, as</p>
 <div class="math notranslate nohighlight">
 \[\tau\frac{dx}{dt} = -x + K u\]</div>
+</div>
+<div class="section" id="exercises">
+<h2><span class="section-number">2.1.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-a">
+<h3><span class="section-number">2.1.7.1. </span>Problem A<a class="headerlink" href="#problem-a" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="admonition-homework-problem admonition">
+<p class="admonition-title">Homework Problem</p>
+</div>
 </div>
 </div>
 

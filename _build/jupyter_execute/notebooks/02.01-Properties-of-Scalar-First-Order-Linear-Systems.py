@@ -63,9 +63,11 @@
 # * c. What is value and units of the steady-state gain? 
 # * d. What is the maximum speed of the car?
 # 
+# Work out the answers before attempting any simulations.
+# 
 # :::
 
-# In[6]:
+# In[1]:
 
 
 import numpy as np
@@ -140,7 +142,7 @@ ax.text(ub, K*ua, f"K = {K:4.2f} mph/% throttle", va="top")
 # 
 # :::
 
-# In[37]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -176,7 +178,7 @@ ax.grid(True)
 
 # :::{admonition} Example (cont.)
 # 
-# **Example:** For the car example, what is the value of the time constant?
+# For the car example, what is the value of the time constant?
 # 
 # :::
 
@@ -201,7 +203,7 @@ ax.grid(True)
 # | $t_0 + 3\tau$ | 0.050 | 0.950 |
 # | $t_0 + 4\tau$ | 0.018 | 0.982 |
 
-# In[7]:
+# In[3]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -246,7 +248,7 @@ ax.grid(True)
 # 
 # The half-life is an easy benchmark to identify from a sketch of experimental data. 
 
-# In[96]:
+# In[4]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -287,7 +289,7 @@ ax.grid(True)
 # 
 # :::
 
-# In[79]:
+# In[5]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -318,7 +320,7 @@ ax.grid(True)
 # 
 # The **Heaviside step function** is a function of time that changes discontinuously from 0 to 1 at $t=0$. The `numpy` library provides a useful implementation that is demonstrated in the following cell.
 
-# In[109]:
+# In[6]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -335,13 +337,13 @@ ax.grid(True)
 
 # This function is easily adapted to create a step function of arbitrary size, offset, and location in time.
 
-# <hr>
+# :::{admonition} Example (cont.)
 # 
 # **Example:** Create a step input for the car throttle corresponding to change from 25% throttle to 75% throttle at $t = 20$ seconds.
 # 
-# <hr>
+# :::
 
-# In[112]:
+# In[7]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -385,7 +387,7 @@ ax.grid(True)
 # 
 # 
 
-# In[126]:
+# In[8]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -440,8 +442,10 @@ ax.grid(True)
 # 
 # $$\tau\frac{dx}{dt} = -x + K u$$
 
-# In[ ]:
+# ## Exercises
 
-
-
-
+# :::{admonition} Homework Problem
+# 
+# ### Problem A
+# 
+# :::
