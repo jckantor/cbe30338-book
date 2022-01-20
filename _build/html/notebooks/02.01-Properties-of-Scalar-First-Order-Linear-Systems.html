@@ -819,8 +819,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.7. Alternative forms for scalar first-order linear systems
+  <a class="reference internal nav-link" href="#gain-time-constant-form-for-a-first-order-linear-system">
+   2.1.7. Gain, time-constant form for a first-order linear system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -898,8 +898,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alternative-forms-for-scalar-first-order-linear-systems">
-   2.1.7. Alternative forms for scalar first-order linear systems
+  <a class="reference internal nav-link" href="#gain-time-constant-form-for-a-first-order-linear-system">
+   2.1.7. Gain, time-constant form for a first-order linear system
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1353,8 +1353,8 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 </div>
-<div class="section" id="alternative-forms-for-scalar-first-order-linear-systems">
-<h2><span class="section-number">2.1.7. </span>Alternative forms for scalar first-order linear systems<a class="headerlink" href="#alternative-forms-for-scalar-first-order-linear-systems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gain-time-constant-form-for-a-first-order-linear-system">
+<h2><span class="section-number">2.1.7. </span>Gain, time-constant form for a first-order linear system<a class="headerlink" href="#gain-time-constant-form-for-a-first-order-linear-system" title="Permalink to this headline">¶</a></h2>
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1370,32 +1370,38 @@ K &amp; = - \frac{b}{a}
 <p>Obviously, once <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(tau\)</span> are estimated, values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are easily computed. But sometimes it is more transparent simply to write the linear system using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> directly, as</p>
 <div class="math notranslate nohighlight">
 \[\tau\frac{dx}{dt} = -x + K u\]</div>
+<p>What is useful about this form is that the gain and time constant are immediately known from coefficients in the model.</p>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">2.1.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>An experiment is performed in which a car is run at constant speed on a test track, and the throttle setting is suddenly changed to zero. The recorded speed is shown in the following plot. From this plot, what is the intial condition? What is the first order time constant?</p></li>
-</ol>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">Exercise 1</p>
+<p>An experiment is performed in which a car is run at constant speed on a test track, and the throttle setting is suddenly changed to zero. The recorded speed is shown in the following plot. From this plot, what is the intial condition? What is the first order time constant?</p>
 <p><img alt="" src="../_images/exercise_time_constant.png" /></p>
-<ol class="simple">
-<li><p>A recent paper demonstrated the use of engineered proteins to create a luminescent biosensor for the detection of the COVID-19 virus. The step response of the biosensor is shown in the chart at the center of this figure.</p></li>
-</ol>
+</div>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title">Exercise 2</p>
+<p>A recent paper demonstrated the use of engineered proteins to create a luminescent biosensor for the detection of the COVID-19 virus. The step response of the biosensor is shown in the chart at the center of this figure.</p>
 <p><img alt="" src="../_images/Yeh2021_biosensor.png" /></p>
 <p>Assume a first-order model would be used to describe the dynamics. What is the corresponding time constant? How much time should be allowed for the meaasurement to reach 95% of the steady-state response?</p>
-<ol class="simple">
-<li><p>For the same biosensor data, assume the step input of virus has arbitrary units <span class="math notranslate nohighlight">\(U = 10000\)</span>. For a model in the form</p></li>
-</ol>
+</div>
+<div class="admonition-exercise-3 admonition">
+<p class="admonition-title">Exercise 3</p>
+<p>For the same biosensor data, assume the step input of virus has arbitrary units <span class="math notranslate nohighlight">\(U = 10000\)</span>. For a model in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
 <p>what the values of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>?</p>
-<ol class="simple">
-<li><p>Again for the same biosensor data and <span class="math notranslate nohighlight">\(U = 10000\)</span>, what are the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> for a model written in the form</p></li>
-</ol>
+</div>
+<div class="admonition-exercise-4 admonition">
+<p class="admonition-title">Exercise 4</p>
+<p>Again for the same biosensor data and <span class="math notranslate nohighlight">\(U = 10000\)</span>, what are the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> for a model written in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{\tau}\frac{dx}{dt} = - x + K u\]</div>
-<ol class="simple">
-<li><p>Prepare a simulation of the model you have created for the biosensor.</p></li>
-</ol>
+</div>
+<div class="admonition-exercise-5 admonition">
+<p class="admonition-title">Exercise 5</p>
+<p>Prepare a simulation of the model you have created for the biosensor.</p>
+</div>
 </div>
 </div>
 
