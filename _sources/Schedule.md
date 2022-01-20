@@ -9,22 +9,21 @@
 | Jan 13 | Thu   | Class        | Introduction to the Temperature Control Laboratory      |               |                  |
 | Jan 14 | Fri   | Lab          | Lab 1: Coding a Simple Thermostat                       | Lab Chapter 1 | Lab Assignment 1 |
 
-## Week 2: Jan 18 - Jan 21
+## Week 2: Jan 18 - Jan 20
 
-|        | Day   | Activity     | Topic                            | Pre-reading   | Assignment       |
-|:-------|:------|:-------------|:---------------------------------|:--------------|:-----------------|
-| Jan 18 | Tue   | Class        | First Linear Systems             | Section 2.1   | HW Assignment 1  |
-| Jan 19 | Wed   | Office Hours |                                  |               |                  |
-| Jan 20 | Thu   | Class        | Step Responses and Model Fitting |               |                  |
-| Jan 21 | Fri   | Lab          | Lab 2: Empirical Model Fitting   | Lab Chapter 2 | Lab Assignment 2 |
+|        | Day   | Activity     | Topic                       | Pre-reading   | Assignment      |
+|:-------|:------|:-------------|:----------------------------|:--------------|:----------------|
+| Jan 18 | Tue   | Class        | First Linear Systems        | Section 2.1   | HW Assignment 1 |
+| Jan 19 | Wed   | Office Hours |                             |               |                 |
+| Jan 20 | Thu   | Class        | Modeling: Pharamakokinetics | Section 2.2   |                 |
 
 ## Week 3: Jan 25 - Jan 28
 
 |        | Day   | Activity     | Topic                             | Pre-reading   | Assignment       |
 |:-------|:------|:-------------|:----------------------------------|:--------------|:-----------------|
-| Jan 25 | Tue   | Class        | Modeling: Pharamakokinetics       |               |                  |
+| Jan 25 | Tue   | Class        | Modeling: Temperature Control Lab | Section 2.3   |                  |
 | Jan 26 | Wed   | Office Hours |                                   |               |                  |
-| Jan 27 | Thu   | Class        | Modeling: Temperature Control Lab |               |                  |
+| Jan 27 | Thu   | Class        | Modeling: Second Order Systems    |               |                  |
 | Jan 28 | Fri   | Lab          | Lab 3: Model Parameter Estimation | Lab Chapter 3 | Lab Assignment 3 |
 
 ## Week 4: Feb 1 - Feb 4
