@@ -5,17 +5,17 @@
 
 # ## Learning Goals
 # 
-# The notebook introduces a single, linear, first-order differential equation in the general form
+# The notebook demonstrates use of a single, linear, first-order differential equation in the general form
 # 
 # $$\frac{dx}{dt} = a x + b u$$
 # 
-# to describe the dynamic response of a one-compartment model for a pharmacokinetics in the which the state is the concentration of an antimicrobrial, and the input is a rate of intraveneous administration. This notebook demonstrates features and analysis of this model that can be used in a wide range of process applications.
+# to describe the dynamic response of a one-compartment model for a pharmacokinetics. The state is the concentration of an antimicrobrial in blood plasma. The input is a rate of intraveneous administration. The demonstrated analysis and simulation coding techniques can be used in a wide range of process applications.
 
 # ## Pharamacokinetics
 # 
-# Pharmacokinetics is a branch of pharmacology that studies the fate of chemical species in living organisms. The diverse range of applications includes administration of drugs and anesthesia in humans. 
+# **Pharmacokinetics** is a branch of pharmacology that studies the fate of chemical species in living organisms. The diverse range of applications includes administration of drugs and anesthesia in humans. A closely related field, **pharmacodynamics**, studies the effect of a chemical species on the body which is beyond the scope of this notebook.
 # 
-# This notebook introduces a one compartment model for pharmacokinetics and how it used to determine strategies for the intravenous administration of an antimicrobial.
+# This notebook describes a one compartment model for pharmacokinetics and how it used to determine strategies for the intravenous administration of an antimicrobial.
 
 # ### Antimicrobials
 # 
@@ -37,9 +37,9 @@
 # 
 # There are multiple reasons to create mathematical models. 
 # 
-# In research and development, for example, a mathematical model is a testable hypothesis of one's understanding of a system. The model can guide the design of experiments to validate or falsify the assumptions incorporated in the model.  
+# In research and development, a **mathematical model forms a testable hypothesis** of one's understanding of a system. The model can guide the design of experiments to validate or falsify the assumptions incorporated in the model.  
 # 
-# In the context of control systems, a model helps to answer operating questions. In pharmacokinetics, for example, the operational questions include:
+# In the context of control systems, a **model can answer operating questions**. In pharmacokinetics the operational questions include:
 # 
 # * How do we find values for the model parameters?
 # * How long will it take to clear the antimicrobial from the body?
@@ -48,17 +48,18 @@
 # 
 # Questions like these can be answered through regression to experimental data, simulation, and analysis. We'll explore several of these techniques below.
 # 
-# 1. Simulation
-#     * Known initial condition
-#     * Time dependent input
 # 1. Steady state analysis
+# 1. Typical simulations
+#     * How does a system respond following an initial condition on the state?
+#     * How does the system respond to time-varying inputs?
+#     * When do important events occur?
 # 1. Alternative model formulations
 #     * State space model
-#     * Gain and Time Constant
+#     * Gain and time constant model
 
 # ### One-Compartment Model
 # 
-# A one-compartment model assumes the antimicrobial is distributed in a single compartment of the human body with constant volume $V$ of plasma. The plasma is sufficiently well mixed that any drug is uniformly distributed with concentration $C(t)$. The drug enters the plasma by direct injection at rate $u(t)$ meaasured in mg/hour or similar units. The drug leaves the body as a component of the plasma where $Q$ is the constant plasma clearance rate.
+# A one-compartment pharmacokinetic model assumes the antimicrobial is distributed in a single compartment of the body with constant plasma volume $V$. The plasma is assumed to be sufficiently well mixed that the drug is uniformly distributed with concentration $C(t)$. The drug enters the plasma by injection at rate $u(t)$ meaasured in mg/hour or similar units. The drug leaves the body as a component of the plasma where $Q$ is the constant plasma clearance rate.
 # 
 # ![](./figures/PK-one-compartment.png)
 # 
@@ -78,49 +79,52 @@
 # 
 # This model is characterized by two parameters, the plasma volume $V$ and the clearance rate $Q$.
 
-# ### Problem Statement 
+# ### A Sample Problem Statement 
 # 
-# Assume the minimum inhibitory concentration (MIC) of a particular organism to a particular antimicrobial is 5 mg/liter, and the minimum bactricidal concentration (MBC) is 8 mg/liter. Further assume the plasma volume $V$ is 4 liters with a clearance rate $Q$ of 0.5 liters/hour. 
+# Assume the minimum inhibitory concentration (MIC) of a microorganism to a antimicrobial is 5 mg/liter, and the minimum bactricidal concentration (MBC) is 8 mg/liter. Assume the plasma volume $V$ is 4 liters with a clearance rate $Q$ of 0.5 liters/hour. 
 # 
-# An initial intravenous antimicrobial dose of 64 mg in 4 liters of plasm results in a plasma concentration $C_{initial}$ of 16 mg/liter.  How long will the concentration stay above MBC?  Above MIC?
+# An initial intravenous antimicrobial dose of 64 mg in a plasma volume of 4 liters gives an initial plasma concentration $C_{initial}$ of 16 mg/liter.  
+# 
+# * How long will the concentration $C(t)$ stay above MBC?  
+# * How long with will $C(t)$ stay above MIC?
 
 # ## Simulation from a Known Initial Condition
 
 # ### Solution Strategy
 # 
-# The questions raised in the problem statement can be answered through simulation. Given the model parameters in the problem statement, the task is to simulate the response and determine when certain conditions are encountered.
+# The questions raised in the problem statement can be answered through simulation. Given the model parameters in the problem statement, the task is to simulate the response and determine when certain events are encountered.
 # 
 # We could solve this two different ways:
 # 
-# 1. Numerical solution. The are many alternatives for solving systems of one or more differential equations, but in this case there is the extra consideration of finding when certain events take place. As we will see, [integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) from the [SciPy](https://scipy.org/) library is well suited to this task.
+# 1. Analytical solution. This is a linear first-order differential equation with constant coefficients with a known analytical solution. The questions above can be answered from the closed-form solution.
 # 
-# 2. Analytical solution. This is a linear first-order differential equation with constant coefficients with a known analytical solution. The questions can be answered from the closed-form solution.
+# 2. Numerical solution. The are many computational alternatives for solving systems of one or more differential equations. In this case there is the extra consideration of finding when certain events take place. As will be shown below, [integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) from the [SciPy](https://scipy.org/) library is well suited to these tasks.
 # 
-# Below we will demonstrate a numerical solution that could be extended to more complex models and problem statements.
+# Below we will develop a numerical solution step-by-step, then consolidate these steps into a single cell that can be extended to more complex applications.
 
 # ### Step 1. Import libraries
 # 
-# For this first simulation we compute the response of the one compartment model due starting with an initial condition $C_{initial}$, and assuming input $u(t) = 0$. We will use the [`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) function for solving differential equations from the `scipy.integrate` library.
+# For this first simulation we compute the response of the one compartment model due starting with an initial condition $C_{initial}$, and assuming input $u(t) = 0$. We will use the [`solve_ivp`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) function for solving differential equations from the `scipy.integrate` library. We will save plots to subdirectories for later reference.
 # 
 # The first steps to a solution are:
 # 
-# 1. Initialize the plotting system.
-# 2. Import the `numpy` library for basic mathematical functions.
-# 3. Import the `matplotlib.pyplot` library for plotting.
-# 4. Import the any needed mathematical functions or libraries.
+# 1. Import the `numpy` library for basic mathematical functions.
+# 2. Import the `matplotlib.pyplot` library for plotting.
+# 3. Import ``solve_ivp` from the `scipy.integraate` library
+# 4. Import `os` for functions needed to save plots to subdirectories.
 
-# In[7]:
+# In[20]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+import os
 
 
 # ### Step 2. Enter Parameter Values
 
-# In[8]:
+# In[21]:
 
 
 V = 4           # liters
@@ -139,7 +143,7 @@ C_initial = 16  # mg/liter
 # 
 # Here we write this as a composition of two functions. The first function returns values of the input $u(t)$ for a specified point in time. The second returns values of the right hand side as a function of time and state.
 
-# In[12]:
+# In[22]:
 
 
 def u(t):
@@ -149,11 +153,119 @@ def deriv(t, C):
     return u(t)/V - (Q/V)*C
 
 
-# ### Step 4. Solution and Visualization
+# ### Step 4. Solution
 # 
 # The problem statement seeks information about specific events. The Python function [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) provides a means of tracking events, such as the crossing a value treshhold. Here we will use this capability to find precise answers to when the concentration falls below the MBC and MIC levels.
 
-# In[13]:
+# In[27]:
+
+
+# specify time span and evaluation points
+t_span = [0, 24]
+t_eval = np.linspace(0, 24)
+
+# initial conditions
+IC = [C_initial]
+
+# compute solution
+soln = solve_ivp(deriv, t_span, IC, t_eval=t_eval)
+
+# display solution
+print(soln)
+
+
+# ### Step 5. Visualization
+# 
+# We wish to determine when the plasma concentration $C(t)$ falls below the MIC and MBC thresholds. We can get an estimate by examing a plot of these concentrations as a function of time. The following code cell presents a function to create a plot from the `soln` object, and save the plot to a file for later comparison to literature results.
+
+# In[39]:
+
+
+def plotConcentration(soln):
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(soln.t, soln.y[0])
+    ax.set_xlim(0, max(soln.t))
+    ax.plot(ax.get_xlim(), [MIC, MIC], 'g--', ax.get_xlim(), [MBC, MBC], 'r--')
+    ax.set_ylim(0, 20)
+    ax.legend(['Antibiotic Concentration','MIC','MBC'])
+    ax.set_xlabel('Time [hrs]')
+    ax.set_ylabel('Concentration [mg/liter]')
+    ax.set_title('One Compartment Model with Known Initial Condition');
+    return ax
+    
+plotConcentration(soln)
+
+# save solution to a file for reuse in documents and reports
+os.makedirs("figures", exist_ok=True)
+plt.savefig('./figures/Pharmaockinetics1.png')
+
+
+# ## Locating Events in a Simulation
+# 
+# At this point we have a complete simulation. But other than an estimtate based on a plot, we  don't yet have a numerical answer to the question of when the concentration of the antimicrobial in the blood plasma falls below the MIC and MBC threshold values.
+# 
+# Locating events, such as a particular variable crossing of a threshold value, or a variable reaching a local maximum or minimum value, is common task in simulation studies. An **event** refers to one or more conditions on the state of a system that may be satisfied at discrete points in time. There can be more than one event specified for a system. The simulation task is compute the time at which the events occur.
+# 
+# In the problem statement for the pharamcokinetic, for example, there are two events of interest:
+# 
+# * An event we will call `cross_mcb` that occurs when the value of $C(t)$ is equal to threshold value of MBC and is falling.
+# 
+# * An event we will call `cross_mic` that occurs when the value of $C(t)$ is equal to threshold value MIC and is falling. We will stop the simulation at this point.
+# 
+# `solve_ivp` provides a simple technique for specifying events using the Python `def` command. An event is specified by a function that returns a value of zero when the state satisfies the conditions of the event, and optional properties that further refine the type of event.
+# 
+# The next cell defines a list of events.
+
+# In[49]:
+
+
+# cross_mbc event
+def cross_mbc(t, y):
+    return y[0] - MBC
+cross_mbc.direction = -1
+
+# cross_mic event. End the simulation when this occurs
+def cross_mic(t, y):
+    return y[0] - MIC
+cross_mic.direction = -1
+cross_mic.terminal = True
+
+events = [cross_mbc, cross_mic]
+
+
+# In[50]:
+
+
+# specify time span and evaluation points
+t_span = [0, 24]
+t_eval = np.linspace(0, 24)
+
+# initial conditions
+IC = [C_initial]
+
+# compute solution
+soln = solve_ivp(deriv, t_span, IC, events=events, t_eval=t_eval)
+
+# display solution
+print(soln)
+
+ax = plotConcentration(soln)
+for t,y in zip(soln.t_events, soln.y_events):
+    ax.plot(t, y[0], 'r.', ms=20)
+    ax.text(t, y[0] + 0.5, 'event', ha="center")
+
+
+# ### Step 5. Analysis of the Results
+# 
+# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
+# 
+# | | |
+# | :-: | :-: |
+# |![](./figures/Pharmaockinetics1.png)|![](figures/nihms-475924-f0001.jpg)|
+# 
+# We see that that the assumption of a fixed initial condition is questionable. Can we fix this?
+
+# In[25]:
 
 
 # specify time span and evaluation points
@@ -180,35 +292,6 @@ print(soln)
 
 
 # The decision on how to display or visualize a solution is problem dependent. Here we create a simple function to visualize the solution and relevant problem specifications. 
-
-# In[14]:
-
-
-def plotConcentration(soln):
-    fig, ax = plt.subplots(1, 1)
-    ax.plot(soln.t, soln.y[0])
-    ax.set_xlim(0, max(soln.t))
-    ax.plot(ax.get_xlim(), [MIC, MIC], 'g--', ax.get_xlim(), [MBC, MBC], 'r--')
-    ax.legend(['Antibiotic Concentration','MIC','MBC'])
-    ax.set_xlabel('Time [hrs]')
-    ax.set_ylabel('Concentration [mg/liter]')
-    ax.set_title('One Compartment Model with Known Initial Condition');
-    
-plotConcentration(soln)
-
-# save solution to a file for reuse in documents and reports
-plt.savefig('./figures/Pharmaockinetics1.png')
-
-
-# ### Step 5. Analysis of the Results
-# 
-# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
-# 
-# | | |
-# | :-: | :-: |
-# |![](./figures/Pharmaockinetics1.png)|![](figures/nihms-475924-f0001.jpg)|
-# 
-# We see that that the assumption of a fixed initial condition is questionable. Can we fix this?
 
 # ## Simulation using Time-Dependent Input
 # 

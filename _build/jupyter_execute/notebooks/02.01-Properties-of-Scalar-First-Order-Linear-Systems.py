@@ -246,7 +246,13 @@ ax.grid(True)
 # 
 # $$\tau_{1/2} = 0.693\tau$$
 # 
-# The half-life is an easy benchmark to identify from a sketch of experimental data. 
+# The half-life is an easy benchmark to identify from a sketch of experimental data.
+# 
+# :::{admonition} Example (cont.)
+# 
+# What is $\tau_{1/2}$ for the car example?  Use $\tau_{1/2}$ to sketch the speed of the car as a function of time given an initial condition of 60 mph and $u(t) = 0$.
+# 
+# :::
 
 # In[4]:
 
@@ -381,10 +387,25 @@ ax.grid(True)
 # 
 # Translating in time to $t_0$, for any $t > t_0$
 # 
-# 
 # $$x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]$$
 # 
+# If $a < 0$ then in the steady-state limit $t\rightarrow\infty$ the term involving $e^{a(t-t_0)} \rightarrow 0$. This leaves
 # 
+# $$\lim_{t\rightarrow\infty} x(t) = -\frac{b}{a} U$$
+# 
+# Earlier we defined the **gain** of a first-order linear systems as $K = -\frac{b}{a}$ which gives us
+# 
+# $$\lim_{t\rightarrow\infty} x(t) = K U $$
+# 
+# as you might expect from the definition of gain and step inputs.
+# 
+# :::{admonition} Example (cont.)
+# 
+# Continuing the car example, consider a step input to the throttle position of 75%. First, sketch the expected response of the car speed. What is the half-life, and what is the car speed at that point? What is the car speed at 1, 2, and 3 time constants?  What is the steady-state car speed?
+# 
+# After doing a manual sketch, write a Python code to produce a plot of the car speed as a result of step change in throttle position.
+# 
+# :::
 
 # In[8]:
 
@@ -426,11 +447,7 @@ ax.grid(True)
 # 
 # $$\frac{dx}{dt} = a x + b u$$
 # 
-# with initial condition $x_0 = x(t_0)$. For a step input with value $U$ for $t > t_0$, we found a general solution
-# 
-# $$x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]$$
-# 
-# We also found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant $\tau$ and gain $K$.
+# We found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant $\tau$ and gain $K$.
 # 
 # $$\begin{align*}
 # \tau & = -1/a \\
@@ -477,7 +494,7 @@ ax.grid(True)
 # 
 # Again for the same biosensor data and $U = 10000$, what are the values $K$ and $\tau$ for a model written in the form
 # 
-# $$\frac{1}{\tau}\frac{dx}{dt} = - x + K u$$
+# $$\tau\frac{dx}{dt} = - x + K u$$
 # 
 # :::
 # 
