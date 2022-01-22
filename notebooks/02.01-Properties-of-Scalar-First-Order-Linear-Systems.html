@@ -1170,6 +1170,10 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <div class="math notranslate nohighlight">
 \[\tau_{1/2} = 0.693\tau\]</div>
 <p>The half-life is an easy benchmark to identify from a sketch of experimental data.</p>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
+<p>What is <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span> for the car example?  Use <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span> to sketch the speed of the car as a function of time given an initial condition of 60 mph and <span class="math notranslate nohighlight">\(u(t) = 0\)</span>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1314,6 +1318,18 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <p>Translating in time to <span class="math notranslate nohighlight">\(t_0\)</span>, for any <span class="math notranslate nohighlight">\(t &gt; t_0\)</span></p>
 <div class="math notranslate nohighlight">
 \[x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]\]</div>
+<p>If <span class="math notranslate nohighlight">\(a &lt; 0\)</span> then in the steady-state limit <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span> the term involving <span class="math notranslate nohighlight">\(e^{a(t-t_0)} \rightarrow 0\)</span>. This leaves</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t\rightarrow\infty} x(t) = -\frac{b}{a} U\]</div>
+<p>Earlier we defined the <strong>gain</strong> of a first-order linear systems as <span class="math notranslate nohighlight">\(K = -\frac{b}{a}\)</span> which gives us</p>
+<div class="math notranslate nohighlight">
+\[\lim_{t\rightarrow\infty} x(t) = K U \]</div>
+<p>as you might expect from the definition of gain and step inputs.</p>
+<div class="admonition-example-cont admonition">
+<p class="admonition-title">Example (cont.)</p>
+<p>Continuing the car example, consider a step input to the throttle position of 75%. First, sketch the expected response of the car speed. What is the half-life, and what is the car speed at that point? What is the car speed at 1, 2, and 3 time constants?  What is the steady-state car speed?</p>
+<p>After doing a manual sketch, write a Python code to produce a plot of the car speed as a result of step change in throttle position.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1358,10 +1374,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
-<p>with initial condition <span class="math notranslate nohighlight">\(x_0 = x(t_0)\)</span>. For a step input with value <span class="math notranslate nohighlight">\(U\)</span> for <span class="math notranslate nohighlight">\(t &gt; t_0\)</span>, we found a general solution</p>
-<div class="math notranslate nohighlight">
-\[x(t) = x_0 e^{a(t-t_0)} - \frac{b}{a} U \left[1 - e^{a (t-t_0)}\right]\]</div>
-<p>We also found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant <span class="math notranslate nohighlight">\(\tau\)</span> and gain <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>We found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant <span class="math notranslate nohighlight">\(\tau\)</span> and gain <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \tau &amp; = -1/a \\
@@ -1396,7 +1409,7 @@ K &amp; = - \frac{b}{a}
 <p class="admonition-title">Exercise 4</p>
 <p>Again for the same biosensor data and <span class="math notranslate nohighlight">\(U = 10000\)</span>, what are the values <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> for a model written in the form</p>
 <div class="math notranslate nohighlight">
-\[\frac{1}{\tau}\frac{dx}{dt} = - x + K u\]</div>
+\[\tau\frac{dx}{dt} = - x + K u\]</div>
 </div>
 <div class="admonition-exercise-5 admonition">
 <p class="admonition-title">Exercise 5</p>
