@@ -839,20 +839,13 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#locating-events-in-a-simulation">
-   2.2.4. Locating Events in a Simulation
+  <a class="reference internal nav-link" href="#finding-events-in-a-simulation">
+   2.2.4. Finding Events in a Simulation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-5-analysis-of-the-results">
-     2.2.4.1. Step 5. Analysis of the Results
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation-using-time-dependent-input">
-   2.2.5. Simulation using Time-Dependent Input
+  <a class="reference internal nav-link" href="#simulation-using-a-time-dependent-input">
+   2.2.5. Simulation using a Time-Dependent Input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -876,18 +869,6 @@
   <a class="reference internal nav-link" href="#exercises">
    2.2.7. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     2.2.7.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     2.2.7.2. Exercise 2
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -979,20 +960,13 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#locating-events-in-a-simulation">
-   2.2.4. Locating Events in a Simulation
+  <a class="reference internal nav-link" href="#finding-events-in-a-simulation">
+   2.2.4. Finding Events in a Simulation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-5-analysis-of-the-results">
-     2.2.4.1. Step 5. Analysis of the Results
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation-using-time-dependent-input">
-   2.2.5. Simulation using Time-Dependent Input
+  <a class="reference internal nav-link" href="#simulation-using-a-time-dependent-input">
+   2.2.5. Simulation using a Time-Dependent Input
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1016,18 +990,6 @@
   <a class="reference internal nav-link" href="#exercises">
    2.2.7. Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-1">
-     2.2.7.1. Exercise 1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise-2">
-     2.2.7.2. Exercise 2
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1239,7 +1201,7 @@
 </div>
 <div class="section" id="step-5-visualization">
 <h3><span class="section-number">2.2.3.6. </span>Step 5. Visualization<a class="headerlink" href="#step-5-visualization" title="Permalink to this headline">¶</a></h3>
-<p>We wish to determine when the plasma concentration <span class="math notranslate nohighlight">\(C(t)\)</span> falls below the MIC and MBC thresholds. We can get an estimate by examing a plot of these concentrations as a function of time. The following code cell presents a function to create a plot from the <code class="docutils literal notranslate"><span class="pre">soln</span></code> object, and save the plot to a file for later comparison to literature results.</p>
+<p>We wish to determine when the plasma concentration <span class="math notranslate nohighlight">\(C(t)\)</span> falls below the MIC and MBC thresholds. We can get an estimate by examing a plot of these concentrations as a function of time. The following code cell presents a function to create a plot from the <code class="docutils literal notranslate"><span class="pre">soln</span></code> object ajd saves the plot to a file for later comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">):</span>
@@ -1268,35 +1230,53 @@
 </div>
 </div>
 </div>
-<div class="section" id="locating-events-in-a-simulation">
-<h2><span class="section-number">2.2.4. </span>Locating Events in a Simulation<a class="headerlink" href="#locating-events-in-a-simulation" title="Permalink to this headline">¶</a></h2>
-<p>At this point we have a complete simulation. But other than an estimtate based on a plot, we  don’t yet have a numerical answer to the question of when the concentration of the antimicrobial in the blood plasma falls below the MIC and MBC threshold values.</p>
-<p>Locating events, such as a particular variable crossing of a threshold value, or a variable reaching a local maximum or minimum value, is common task in simulation studies. An <strong>event</strong> refers to one or more conditions on the state of a system that may be satisfied at discrete points in time. There can be more than one event specified for a system. The simulation task is compute the time at which the events occur.</p>
-<p>In the problem statement for the pharamcokinetic, for example, there are two events of interest:</p>
+<div class="section" id="finding-events-in-a-simulation">
+<h2><span class="section-number">2.2.4. </span>Finding Events in a Simulation<a class="headerlink" href="#finding-events-in-a-simulation" title="Permalink to this headline">¶</a></h2>
+<p>At this point we have a complete simulation. But we  don’t yet have a numerical answer to the question of when the concentration of the antimicrobial in the blood plasma falls below the MIC and MBC threshold values.</p>
+<p>Locating events is a common task for simulation studies. Events might include</p>
 <ul class="simple">
-<li><p>An event we will call <code class="docutils literal notranslate"><span class="pre">cross_mcb</span></code> that occurs when the value of <span class="math notranslate nohighlight">\(C(t)\)</span> is equal to threshold value of MBC and is falling.</p></li>
-<li><p>An event we will call <code class="docutils literal notranslate"><span class="pre">cross_mic</span></code> that occurs when the value of <span class="math notranslate nohighlight">\(C(t)\)</span> is equal to threshold value MIC and is falling. We will stop the simulation at this point.</p></li>
+<li><p>a variable falling below a threshold value,</p></li>
+<li><p>a variable increasing above a threshold value,</p></li>
+<li><p>a variable crossing a threshold value, regardless of direction,</p></li>
+<li><p>reaching a local maximum or minimum value,</p></li>
+<li><p>crossing an upper alarm threshold in a positive going direction,</p></li>
+<li><p>crossing a lower alarm threshold in a negative going direction,</p></li>
+<li><p>a simulation of two objects coming into contact.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> provides a simple technique for specifying events using the Python <code class="docutils literal notranslate"><span class="pre">def</span></code> command. An event is specified by a function that returns a value of zero when the state satisfies the conditions of the event, and optional properties that further refine the type of event.</p>
-<p>The next cell defines a list of events.</p>
+<p>An <strong>event</strong> refers to conditions on the state of a system that may be satisfied at discrete points in time. More than one event can be specified for a system. The simulation task is compute and report the time at which the specified events occur, and possibly to interrupt the simulation to take some action.</p>
+<p>The problem statement for the pharamcokinetics describeds two events of interest:</p>
+<ul class="simple">
+<li><p>An event that occurs when the value of <span class="math notranslate nohighlight">\(C(t)\)</span> is equal to threshold value of MBC and falling. We will call this event <code class="docutils literal notranslate"><span class="pre">cross_mcb</span></code>.</p></li>
+<li><p>An event we will call <code class="docutils literal notranslate"><span class="pre">cross_mic</span></code> occurs when the value of <span class="math notranslate nohighlight">\(C(t)\)</span> is equal to threshold value MIC and falling. The simulation is finished when this event occurs.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> provides a technique for specifying events. Events are specified in two steps. First a Python <code class="docutils literal notranslate"><span class="pre">def</span></code> command defines a function that returns a value of zero when variables take the value corresponding to the event. Next, additional properties are assigned to function to add further specifications to the event.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cross_mbc</span></code> event occurs when (1) the value of <span class="math notranslate nohighlight">\(C(t)\)</span> is equal to MBC and (2) crossing the MBC threshold in a negative going direction. Here’s how to translate these conditions into Python code for use by <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cross_mbc event</span>
-<span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return zero when y[0] is equal to MBC.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MBC</span>
+
+<span class="c1"># specify the event occurs when the value of cross_mbc is in a negative going direction</span>
 <span class="n">cross_mbc</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-
-<span class="c1"># cross_mic event. End the simulation when this occurs</span>
-<span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MIC</span>
-<span class="n">cross_mic</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-<span class="n">cross_mic</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">cross_mic</span></code> event is defined analogously to <code class="docutils literal notranslate"><span class="pre">cross_mbc</span></code>, but with an additional specification that terminates the simulation when the event occurs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return zero when y[0] is equal to MIC.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MIC</span>
+
+<span class="n">cross_mic</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">cross_mic</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The simulation is created by packing all of the event objects into a list and passing that list to <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> as an argument named <code class="docutils literal notranslate"><span class="pre">events</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
@@ -1306,16 +1286,14 @@
 <span class="c1"># initial conditions</span>
 <span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
 
+<span class="c1"># specify a list of events</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">]</span>
+
 <span class="c1"># compute solution</span>
 <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
 
 <span class="c1"># display solution</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1339,12 +1317,36 @@
  y_events: [array([[8.]]), array([[5.]])]
 </pre></div>
 </div>
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_21_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_21_1.png" />
 </div>
 </div>
-<div class="section" id="step-5-analysis-of-the-results">
-<h3><span class="section-number">2.2.4.1. </span>Step 5. Analysis of the Results<a class="headerlink" href="#step-5-analysis-of-the-results" title="Permalink to this headline">¶</a></h3>
-<p>Let’s compare our results to a typical experimental result <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id12">Levison and Levison, 2009</a>]</span>.</p>
+<p>The solution object now constaints lists named <code class="docutils literal notranslate"><span class="pre">t_events</span></code> and <code class="docutils literal notranslate"><span class="pre">y_events</span></code>. Each list contains one array for each event object. Each of those arrays contain the time and values of every occurance of the corresponding event object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+
+<span class="n">t_mbc</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">C_mbc</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mbc</span><span class="p">,</span> <span class="n">C_mbc</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t_mbc</span><span class="p">,</span> <span class="n">C_mbc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t_mbc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+<span class="n">t_mic</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">C_mic</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mic</span><span class="p">,</span> <span class="n">C_mic</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t_mic</span><span class="p">,</span> <span class="n">C_mic</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t_mic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text([10.04375266], [[6.]], &#39;t = 10.04&#39;)
+</pre></div>
+</div>
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_26_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_26_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="simulation-using-a-time-dependent-input">
+<h2><span class="section-number">2.2.5. </span>Simulation using a Time-Dependent Input<a class="headerlink" href="#simulation-using-a-time-dependent-input" title="Permalink to this headline">¶</a></h2>
+<p>Let’s compare the results we saved earlier to a typical experimental result <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id12">Levison and Levison, 2009</a>]</span>.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p></p></th>
@@ -1358,59 +1360,6 @@
 </tbody>
 </table>
 <p>We see that that the assumption of a fixed initial condition is questionable. Can we fix this?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
-<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
-<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-
-<span class="c1"># initial conditions</span>
-<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
-
-<span class="c1"># add events</span>
-<span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MBC</span>
-<span class="n">cross_mbc</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
-
-<span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">MIC</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">cross_mic</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="c1"># compute solution</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">])</span>
-
-<span class="c1"># display solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: &#39;A termination event occurred.&#39;
-     nfev: 26
-     njev: 0
-      nlu: 0
-      sol: None
-   status: 1
-  success: True
-        t: array([0.        , 0.48979592, 0.97959184, 1.46938776, 1.95918367,
-       2.44897959, 2.93877551, 3.42857143, 3.91836735, 4.40816327,
-       4.89795918, 5.3877551 , 5.87755102, 6.36734694, 6.85714286,
-       7.34693878, 7.83673469, 8.32653061, 8.81632653, 9.30612245])
- t_events: [array([5.53942584]), array([9.31072423])]
-        y: array([[16.        , 15.049792  , 14.15601545, 13.31532006, 12.5243503 ,
-        11.779541  , 11.07848539, 10.41894155,  9.79872358,  9.21570167,
-         8.66780203,  8.15300696,  7.6693548 ,  7.21493994,  6.78791284,
-         6.38648   ,  6.00890398,  5.65350342,  5.31865298,  5.00287861]])
- y_events: [array([[8.]]), array([[5.]])]
-</pre></div>
-</div>
-</div>
-</div>
-<p>The decision on how to display or visualize a solution is problem dependent. Here we create a simple function to visualize the solution and relevant problem specifications.</p>
-</div>
-</div>
-<div class="section" id="simulation-using-time-dependent-input">
-<h2><span class="section-number">2.2.5. </span>Simulation using Time-Dependent Input<a class="headerlink" href="#simulation-using-time-dependent-input" title="Permalink to this headline">¶</a></h2>
 <p>For the next simulation we will assume the dosing takes place over a short period of time <span class="math notranslate nohighlight">\(\delta t\)</span>. To obtain a total dose <span class="math notranslate nohighlight">\(U_{dose}\)</span> in a time period <span class="math notranslate nohighlight">\(\delta t\)</span>, the mass flow rate rate must be</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}u(t) = 
@@ -1457,10 +1406,10 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Dosing function u(t) for of total dose 64 mg&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_28_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_28_1.png" />
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_32_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_32_1.png" />
 </div>
 </div>
-<p>Simulation</p>
+<p>For this simulation we add both <code class="docutils literal notranslate"><span class="pre">cross_mbc</span></code> and <code class="docutils literal notranslate"><span class="pre">cross_mic</span></code> events, but without specifying termination.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
@@ -1471,17 +1420,40 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
 
+<span class="c1"># events</span>
+<span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MBC</span>
+<span class="n">cross_mbc</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MIC</span>
+<span class="n">cross_mic</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">]</span>
+
 <span class="c1"># compute solution</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
 
 <span class="c1"># display solution</span>
-<span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+
+<span class="n">t_mbc</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">C_mbc</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mbc</span><span class="p">,</span> <span class="n">C_mbc</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t_mbc</span><span class="p">,</span> <span class="n">C_mbc</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t_mbc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+<span class="n">t_mic</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">C_mic</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_mic</span><span class="p">,</span> <span class="n">C_mic</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t_mic</span><span class="p">,</span> <span class="n">C_mic</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;t = </span><span class="si">{</span><span class="n">t_mic</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics2.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_30_0.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_30_0.png" />
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_34_0.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_34_0.png" />
 </div>
 </div>
 <p>Let’s compare our results to a typical experimental result <span id="id2">[<a class="reference internal" href="09.00-Bibliography.html#id12">Levison and Levison, 2009</a>]</span>.</p>
@@ -1508,7 +1480,7 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 </div>
 <div class="section" id="solution">
 <h3><span class="section-number">2.2.6.2. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
-<p>We consider the case of repetitive dosing where a new dose is administered every <span class="math notranslate nohighlight">\(t_{dose}\)</span> hours. A simple Python “trick” for this calculation is the <code class="docutils literal notranslate"><span class="pre">%</span></code> operator which returns the remainder following division. This is a useful tool worth remembering whenever you need to functions that repeat in time.</p>
+<p>We consider the case of repetitive dosing where a new dose is administered every <span class="math notranslate nohighlight">\(t_{dose}\)</span> hours. A simple Python “trick” for this calculation is the <code class="docutils literal notranslate"><span class="pre">%</span></code> operator which returns the remainder following division. This is a useful tool whenever you need to functions that repeat in time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameter values</span>
@@ -1516,14 +1488,9 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <span class="n">tdose</span> <span class="o">=</span> <span class="mi">8</span>        <span class="c1"># time between doses</span>
 <span class="n">Udose</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1"># mg</span>
 
-<span class="c1"># function defintion</span>
+<span class="c1"># function defintion </span>
 <span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">elif</span> <span class="n">t</span> <span class="o">%</span> <span class="n">tdose</span> <span class="o">&lt;=</span> <span class="n">dt</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Udose</span><span class="o">/</span><span class="n">dt</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">Udose</span><span class="o">/</span><span class="n">dt</span> <span class="k">if</span> <span class="n">t</span> <span class="o">%</span> <span class="n">tdose</span> <span class="o">&lt;=</span> <span class="n">dt</span> <span class="k">else</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
@@ -1545,7 +1512,7 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Dosing function u(t) for of total dose 42 mg&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_35_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_35_1.png" />
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_39_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_39_1.png" />
 </div>
 </div>
 <p>The dosing function <span class="math notranslate nohighlight">\(u(t)\)</span> is now applied to the simulation of drug concentration in the blood plasma. A fourth argument is added to <code class="docutils literal notranslate"><span class="pre">odeint(deriv,</span> <span class="pre">Cinitial,</span> <span class="pre">t,</span> <span class="pre">tcrit=t)</span></code> indicating that special care must be used for every time step. This is needed in order to get a high fidelity simulation that accounts for the rapidly varying values of <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
@@ -1564,6 +1531,7 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 
 <span class="c1"># display solution</span>
 <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics3.png&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">)</span>
@@ -1574,10 +1542,11 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_37_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_37_1.png" />
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_41_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_41_1.png" />
 </div>
 </div>
-<p>This looks like a unevem. The problem here is that the solver may be using time steps that are larger than the dosing interval, and missing important changes in the input. The fix is to specify the <code class="docutils literal notranslate"><span class="pre">max_step</span></code> option for the solver. As a rule of thumb, your simulations should always specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> shorter than the minimum feature in the input sequence. In this case, we will specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> of 0.1 hr which is short enough to not miss a change in the input.</p>
+<p>This looks like a unevem. The problem here is that the solver is using time steps larger than the dosing interval and missing important changes in the input.</p>
+<p>The fix is to specify the <code class="docutils literal notranslate"><span class="pre">max_step</span></code> option for the solver. <code class="docutils literal notranslate"><span class="pre">max_step</span></code> sets the maximum step size for the solver. As a rule of thumb, your simulations should always specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> shorter than the minimum feature in the input sequence. In this case we specify a <code class="docutils literal notranslate"><span class="pre">max_step</span></code> of 0.1 hr which is short enough to not miss detail in <span class="math notranslate nohighlight">\(u(t)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify time span and evaluation points</span>
@@ -1593,6 +1562,7 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 
 <span class="c1"># display solution</span>
 <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics4.png&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">)</span>
@@ -1603,19 +1573,81 @@ U/ \delta t \qquad \mbox{for } 0 \leq t \leq \delta t \\
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
-<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_39_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_39_1.png" />
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_43_1.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_43_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mi">4</span>           <span class="c1"># liters</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># liters/hour</span>
+<span class="n">MIC</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># mg/liter</span>
+<span class="n">MBC</span> <span class="o">=</span> <span class="mi">8</span>         <span class="c1"># mg/liter</span>
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># mg/liter</span>
+
+<span class="c1"># differential equation</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="p">(</span><span class="n">Q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="n">C</span>
+
+<span class="c1"># input parameter values</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mi">2</span>           <span class="c1"># length of administration for a single dose</span>
+<span class="n">tdose</span> <span class="o">=</span> <span class="mi">8</span>        <span class="c1"># time between doses</span>
+<span class="n">Udose</span> <span class="o">=</span> <span class="mi">42</span>       <span class="c1"># mg</span>
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Udose</span><span class="o">/</span><span class="n">dt</span> <span class="k">if</span> <span class="n">t</span> <span class="o">%</span> <span class="n">tdose</span> <span class="o">&lt;=</span> <span class="n">dt</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="c1"># events</span>
+<span class="k">def</span> <span class="nf">cross_mbc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MBC</span>
+<span class="n">cross_mbc</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">cross_mic</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">MIC</span>
+<span class="n">cross_mic</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_mbc</span><span class="p">,</span> <span class="n">cross_mic</span><span class="p">]</span>
+
+<span class="c1"># specify time span and evaluation points</span>
+<span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">]</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">C_initial</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">C_initial</span><span class="p">]</span>
+
+<span class="c1"># compute solution</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">IC</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># display solution</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plotConcentration</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">events</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t_events</span><span class="p">[</span><span class="n">j</span><span class="p">]):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y_events</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;figures&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./figures/Pharmaockinetics5.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.02-One-Compartment-Pharmacokinetics_44_0.png" src="../_images/02.02-One-Compartment-Pharmacokinetics_44_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="exercises">
 <h2><span class="section-number">2.2.7. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="exercise-1">
-<h3><span class="section-number">2.2.7.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">Exercise 1</p>
 <p>The purpose of the dosing regime is to maintain the plasma concentration above the MBC level for at least 96 hours. Assuming that each dose is 64 mg, modify the simulation and find a value of <span class="math notranslate nohighlight">\(t_{dose}\)</span> that satisfies the MBC objective for a 96 hour period.  Show a plot concentration versus time, and include Python code to compute the total amount of antibiotic administered for the whole treatment.</p>
 </div>
-<div class="section" id="exercise-2">
-<h3><span class="section-number">2.2.7.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title">Exercise 2</p>
 <p>Consider a continous antibiotic injection at a constant rate designed to maintain the plasma concentration at minimum bactricidal level. Your solution should proceed in three steps:</p>
 <ol class="simple">
 <li><p>First, by hand, set up and solve the steady state equation to find the desired constant dosage rate.</p></li>
