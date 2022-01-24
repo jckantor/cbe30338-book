@@ -113,7 +113,7 @@
 # 3. Import ``solve_ivp` from the `scipy.integraate` library
 # 4. Import `os` for functions needed to save plots to subdirectories.
 
-# In[20]:
+# In[81]:
 
 
 import numpy as np
@@ -124,7 +124,7 @@ import os
 
 # ### Step 2. Enter Parameter Values
 
-# In[21]:
+# In[82]:
 
 
 V = 4           # liters
@@ -143,7 +143,7 @@ C_initial = 16  # mg/liter
 # 
 # Here we write this as a composition of two functions. The first function returns values of the input $u(t)$ for a specified point in time. The second returns values of the right hand side as a function of time and state.
 
-# In[22]:
+# In[83]:
 
 
 def u(t):
@@ -157,7 +157,7 @@ def deriv(t, C):
 # 
 # The problem statement seeks information about specific events. The Python function [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) provides a means of tracking events, such as the crossing a value treshhold. Here we will use this capability to find precise answers to when the concentration falls below the MBC and MIC levels.
 
-# In[27]:
+# In[84]:
 
 
 # specify time span and evaluation points
@@ -176,9 +176,9 @@ print(soln)
 
 # ### Step 5. Visualization
 # 
-# We wish to determine when the plasma concentration $C(t)$ falls below the MIC and MBC thresholds. We can get an estimate by examing a plot of these concentrations as a function of time. The following code cell presents a function to create a plot from the `soln` object, and save the plot to a file for later comparison to literature results.
+# We wish to determine when the plasma concentration $C(t)$ falls below the MIC and MBC thresholds. We can get an estimate by examing a plot of these concentrations as a function of time. The following code cell presents a function to create a plot from the `soln` object ajd saves the plot to a file for later comparison.
 
-# In[39]:
+# In[85]:
 
 
 def plotConcentration(soln):
@@ -200,40 +200,58 @@ os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics1.png')
 
 
-# ## Locating Events in a Simulation
+# ## Finding Events in a Simulation
 # 
-# At this point we have a complete simulation. But other than an estimtate based on a plot, we  don't yet have a numerical answer to the question of when the concentration of the antimicrobial in the blood plasma falls below the MIC and MBC threshold values.
+# At this point we have a complete simulation. But we  don't yet have a numerical answer to the question of when the concentration of the antimicrobial in the blood plasma falls below the MIC and MBC threshold values.
 # 
-# Locating events, such as a particular variable crossing of a threshold value, or a variable reaching a local maximum or minimum value, is common task in simulation studies. An **event** refers to one or more conditions on the state of a system that may be satisfied at discrete points in time. There can be more than one event specified for a system. The simulation task is compute the time at which the events occur.
+# Locating events is a common task for simulation studies. Events might include
 # 
-# In the problem statement for the pharamcokinetic, for example, there are two events of interest:
+# * a variable falling below a threshold value,
+# * a variable increasing above a threshold value,
+# * a variable crossing a threshold value, regardless of direction,
+# * reaching a local maximum or minimum value,
+# * crossing an upper alarm threshold in a positive going direction,
+# * crossing a lower alarm threshold in a negative going direction,
+# * a simulation of two objects coming into contact.
 # 
-# * An event we will call `cross_mcb` that occurs when the value of $C(t)$ is equal to threshold value of MBC and is falling.
+# An **event** refers to conditions on the state of a system that may be satisfied at discrete points in time. More than one event can be specified for a system. The simulation task is compute and report the time at which the specified events occur, and possibly to interrupt the simulation to take some action.
 # 
-# * An event we will call `cross_mic` that occurs when the value of $C(t)$ is equal to threshold value MIC and is falling. We will stop the simulation at this point.
+# The problem statement for the pharamcokinetics describeds two events of interest:
 # 
-# `solve_ivp` provides a simple technique for specifying events using the Python `def` command. An event is specified by a function that returns a value of zero when the state satisfies the conditions of the event, and optional properties that further refine the type of event.
+# * An event that occurs when the value of $C(t)$ is equal to threshold value of MBC and falling. We will call this event `cross_mcb`.
+# * An event we will call `cross_mic` occurs when the value of $C(t)$ is equal to threshold value MIC and falling. The simulation is finished when this event occurs.
 # 
-# The next cell defines a list of events.
+# `solve_ivp` provides a technique for specifying events. Events are specified in two steps. First a Python `def` command defines a function that returns a value of zero when variables take the value corresponding to the event. Next, additional properties are assigned to function to add further specifications to the event.
+# 
+# The `cross_mbc` event occurs when (1) the value of $C(t)$ is equal to MBC and (2) crossing the MBC threshold in a negative going direction. Here's how to translate these conditions into Python code for use by `solve_ivp`.
 
-# In[49]:
+# In[90]:
 
 
-# cross_mbc event
 def cross_mbc(t, y):
+    """Return zero when y[0] is equal to MBC."""
     return y[0] - MBC
+
+# specify the event occurs when the value of cross_mbc is in a negative going direction
 cross_mbc.direction = -1
 
-# cross_mic event. End the simulation when this occurs
+
+# The `cross_mic` event is defined analogously to `cross_mbc`, but with an additional specification that terminates the simulation when the event occurs.
+
+# In[91]:
+
+
 def cross_mic(t, y):
+    """Return zero when y[0] is equal to MIC."""
     return y[0] - MIC
+
 cross_mic.direction = -1
 cross_mic.terminal = True
 
-events = [cross_mbc, cross_mic]
 
+# The simulation is created by packing all of the event objects into a list and passing that list to `solve_ivp` as an argument named `events`. 
 
-# In[50]:
+# In[92]:
 
 
 # specify time span and evaluation points
@@ -243,21 +261,37 @@ t_eval = np.linspace(0, 24)
 # initial conditions
 IC = [C_initial]
 
+# specify a list of events
+events = [cross_mbc, cross_mic]
+
 # compute solution
 soln = solve_ivp(deriv, t_span, IC, events=events, t_eval=t_eval)
 
 # display solution
 print(soln)
 
+
+# The solution object now constaints lists named `t_events` and `y_events`. Each list contains one array for each event object. Each of those arrays contain the time and values of every occurance of the corresponding event object. 
+
+# In[105]:
+
+
 ax = plotConcentration(soln)
-for t,y in zip(soln.t_events, soln.y_events):
-    ax.plot(t, y[0], 'r.', ms=20)
-    ax.text(t, y[0] + 0.5, 'event', ha="center")
+
+t_mbc = soln.t_events[0]
+C_mbc = soln.y_events[0]
+ax.plot(t_mbc, C_mbc, 'r.', ms=20)
+ax.text(t_mbc, C_mbc + 1, f"t = {t_mbc[0]:.2f}", ha="center")
+
+t_mic = soln.t_events[1]
+C_mic = soln.y_events[1]
+ax.plot(t_mic, C_mic, 'r.', ms=20)
+ax.text(t_mic, C_mic + 1, f"t = {t_mic[0]:.2f}", ha="center")
 
 
-# ### Step 5. Analysis of the Results
-# 
-# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
+# ## Simulation using a Time-Dependent Input
+
+# Let's compare the results we saved earlier to a typical experimental result {cite}`Levison:2009ww`.
 # 
 # | | |
 # | :-: | :-: |
@@ -265,36 +299,6 @@ for t,y in zip(soln.t_events, soln.y_events):
 # 
 # We see that that the assumption of a fixed initial condition is questionable. Can we fix this?
 
-# In[25]:
-
-
-# specify time span and evaluation points
-t_span = [0, 24]
-t_eval = np.linspace(0, 24, 50)
-
-# initial conditions
-IC = [C_initial]
-
-# add events
-def cross_mbc(t, y):
-    return y[0] - MBC
-cross_mbc.direction = -1.0
-
-def cross_mic(t, y):
-    return MIC-y[0]
-cross_mic.terminal = True
-
-# compute solution
-soln = solve_ivp(deriv, t_span, IC, t_eval=t_eval, events=[cross_mbc, cross_mic])
-
-# display solution
-print(soln)
-
-
-# The decision on how to display or visualize a solution is problem dependent. Here we create a simple function to visualize the solution and relevant problem specifications. 
-
-# ## Simulation using Time-Dependent Input
-# 
 # For the next simulation we will assume the dosing takes place over a short period of time $\delta t$. To obtain a total dose $U_{dose}$ in a time period $\delta t$, the mass flow rate rate must be
 # 
 # $$u(t) = 
@@ -308,7 +312,7 @@ print(soln)
 # 
 # Before doing a simulation, we will write a Python function for $u(t)$. 
 
-# In[20]:
+# In[93]:
 
 
 # parameter values
@@ -327,7 +331,7 @@ def u(t):
 
 # This code cell demonstrates the use of a list comprehension to apply a function to each value in a list.
 
-# In[21]:
+# In[94]:
 
 
 # visualization
@@ -340,9 +344,9 @@ ax.set_ylabel('Administration Rate [mg/hr]')
 ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 
-# Simulation
+# For this simulation we add both `cross_mbc` and `cross_mic` events, but without specifying termination.
 
-# In[22]:
+# In[104]:
 
 
 # specify time span and evaluation points
@@ -353,11 +357,34 @@ t_eval = np.linspace(0, 24, 50)
 C_initial = 0
 IC = [C_initial]
 
+# events
+def cross_mbc(t, y):
+    return y[0] - MBC
+cross_mbc.direction = -1
+
+def cross_mic(t, y):
+    return y[0] - MIC
+cross_mic.direction = -1
+
+events = [cross_mbc, cross_mic]
+
 # compute solution
-soln = solve_ivp(deriv, t_span, IC, t_eval=t_eval)
+soln = solve_ivp(deriv, t_span, IC, events=events, t_eval=t_eval)
 
 # display solution
-plotConcentration(soln)
+ax = plotConcentration(soln)
+
+t_mbc = soln.t_events[0]
+C_mbc = soln.y_events[0]
+ax.plot(t_mbc, C_mbc, 'r.', ms=20)
+ax.text(t_mbc, C_mbc + 1, f"t = {t_mbc[0]:.2f}", ha="center")
+
+t_mic = soln.t_events[1]
+C_mic = soln.y_events[1]
+ax.plot(t_mic, C_mic, 'r.', ms=20)
+ax.text(t_mic, C_mic + 1, f"t = {t_mic[0]:.2f}", ha="center")
+
+os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics2.png')
 
 
@@ -379,9 +406,9 @@ plt.savefig('./figures/Pharmaockinetics2.png')
 
 # ### Solution
 # 
-# We consider the case of repetitive dosing where a new dose is administered every $t_{dose}$ hours. A simple Python "trick" for this calculation is the `%` operator which returns the remainder following division. This is a useful tool worth remembering whenever you need to functions that repeat in time.
+# We consider the case of repetitive dosing where a new dose is administered every $t_{dose}$ hours. A simple Python "trick" for this calculation is the `%` operator which returns the remainder following division. This is a useful tool whenever you need to functions that repeat in time.
 
-# In[23]:
+# In[108]:
 
 
 # parameter values
@@ -389,17 +416,12 @@ dt = 2           # length of administration for a single dose
 tdose = 8        # time between doses
 Udose = 42       # mg
 
-# function defintion
+# function defintion 
 def u(t):
-    if t <= 0:
-        return 0
-    elif t % tdose <= dt:
-        return Udose/dt
-    else:
-        return 0
+    return Udose/dt if t % tdose <= dt else 0
 
 
-# In[26]:
+# In[116]:
 
 
 # visualization
@@ -414,7 +436,7 @@ ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 # The dosing function $u(t)$ is now applied to the simulation of drug concentration in the blood plasma. A fourth argument is added to `odeint(deriv, Cinitial, t, tcrit=t)` indicating that special care must be used for every time step. This is needed in order to get a high fidelity simulation that accounts for the rapidly varying values of $u(t)$.
 
-# In[27]:
+# In[117]:
 
 
 # specify time span and evaluation points
@@ -430,14 +452,17 @@ soln = solve_ivp(deriv, t_span, IC, t_eval=t_eval)
 
 # display solution
 plotConcentration(soln)
+os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics3.png')
 
 print(soln.t_events)
 
 
-# This looks like a unevem. The problem here is that the solver may be using time steps that are larger than the dosing interval, and missing important changes in the input. The fix is to specify the `max_step` option for the solver. As a rule of thumb, your simulations should always specify a `max_step` shorter than the minimum feature in the input sequence. In this case, we will specify a `max_step` of 0.1 hr which is short enough to not miss a change in the input.
+# This looks like a unevem. The problem here is that the solver is using time steps larger than the dosing interval and missing important changes in the input. 
+# 
+# The fix is to specify the `max_step` option for the solver. `max_step` sets the maximum step size for the solver. As a rule of thumb, your simulations should always specify a `max_step` shorter than the minimum feature in the input sequence. In this case we specify a `max_step` of 0.1 hr which is short enough to not miss detail in $u(t)$.
 
-# In[28]:
+# In[118]:
 
 
 # specify time span and evaluation points
@@ -453,16 +478,77 @@ soln = solve_ivp(deriv, t_span, IC, t_eval=t_eval, max_step=0.1)
 
 # display solution
 plotConcentration(soln)
+os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics4.png')
 
 print(soln.t_events)
 
 
+# In[140]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+import os
+
+# parameter values
+V = 4           # liters
+Q = 0.5         # liters/hour
+MIC = 5         # mg/liter
+MBC = 8         # mg/liter
+C_initial = 0   # mg/liter
+
+# differential equation
+def deriv(t, C):
+    return u(t)/V - (Q/V)*C
+
+# input parameter values
+dt = 2           # length of administration for a single dose
+tdose = 8        # time between doses
+Udose = 42       # mg
+def u(t):
+    return Udose/dt if t % tdose <= dt else 0
+
+# events
+def cross_mbc(t, y):
+    return y[0] - MBC
+cross_mbc.direction = -1
+
+def cross_mic(t, y):
+    return y[0] - MIC
+cross_mic.direction = -1
+
+events = [cross_mbc, cross_mic]
+
+# specify time span and evaluation points
+t_span = [0, 96]
+t_eval = np.linspace(0, 96, 1000)
+
+# initial conditions
+C_initial = 0
+IC = [C_initial]
+
+# compute solution
+soln = solve_ivp(deriv, t_span, IC, events=events, t_eval=t_eval, max_step=0.1)
+
+# display solution
+ax = plotConcentration(soln)
+for j, event in enumerate(events):
+    for k, t in enumerate(soln.t_events[j]):
+        ax.plot(t, soln.y_events[j][k][0], 'r.', ms=10)
+    
+os.makedirs("figures", exist_ok=True)
+plt.savefig('./figures/Pharmaockinetics5.png')
+
+
 # ## Exercises
 
-# ### Exercise 1
+# :::{admonition} Exercise 1
 # 
 # The purpose of the dosing regime is to maintain the plasma concentration above the MBC level for at least 96 hours. Assuming that each dose is 64 mg, modify the simulation and find a value of $t_{dose}$ that satisfies the MBC objective for a 96 hour period.  Show a plot concentration versus time, and include Python code to compute the total amount of antibiotic administered for the whole treatment.
+# 
+# :::
 
 # In[ ]:
 
@@ -470,13 +556,15 @@ print(soln.t_events)
 
 
 
-# ### Exercise 2
+# :::{admonition} Exercise 2
 # 
 # Consider a continous antibiotic injection at a constant rate designed to maintain the plasma concentration at minimum bactricidal level. Your solution should proceed in three steps:
 # 
 # 1. First, by hand, set up and solve the steady state equation to find the desired constant dosage rate. 
 # 2. Modify the Python function for $u(t)$ to simulate the desired flowrate.
 # 3. Verify your result by repeating the above simulation using your function for $u(t)$. 
+# 
+# :::
 
 # In[ ]:
 
