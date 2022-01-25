@@ -11,9 +11,9 @@
 # 
 # Our purpose here is to demonstrate simple approaches that provide with insight about the qualitative nature of process dynamics. We show how to construct simple models from first-principles understanding of the processes, and how to fit those models to experimental data.
 # 
-# In this notebook we will:
+# In this notebook we:
 # 
-# * Construct a first-order lumped model for a single heater/sensor assembly on the Temperature Control Laboratory/
+# * Construct a first-order lumped model for a single heater/sensor assembly on the Temperature Control Laboratory
 # * Relate this model to the previously enountered first-order linear systems
 # * Demonstrate how to estimate parameters from step test experiments.
 
@@ -25,7 +25,7 @@
 # 
 # $$\fbox{Rate of energy accumulation} = \fbox{Rate of energy in flow} - \fbox{Rate of energy outflow}$$
 # 
-# In the absence of any material flows, changes in kinetic or potential energy, or any chemical changes, changes in sensible temperature is the only form of energy accumulation. If we assume the heater/sensor assembly is at single uniform temperature $T_1$, has mass $m$, and a constant and average specific heat capacity $\hat{C}_p$,
+# In the absence of material flows, kinetic or potential energy, or chemical changes, the changes in sensible temperature is the only form of energy accumulation. If we assume the whole heater/sensor assembly is at uniform temperature $T_1$, with mass $m$, and a constant and average specific heat capacity $\hat{C}_p$,
 # 
 # $$\fbox{Rate of energy accumulation} = m \hat{C}_p \frac{dT_1}{dt}$$
 # 
@@ -104,20 +104,31 @@
 # 
 # Putting these terms together in the energy balance yields a first-order model for the response of the heater/sensor assembly on the Temperature Control Laboratory.
 # 
-# $$\begin{align}
+# $$
+# \begin{align}
 # C_p\frac{dT_1}{dt} & = U_a(T_{amb} - T_1) + \alpha P_1u_1 \\
-# \end{align}$$
+# \end{align}
+# $$
+# 
 
 # ## Parameter Estimation
+# 
+# At steady-state
+# 
+# $$0 = U_a(T_{amb} - T_1) + \alpha P_1u_1$$
+# 
+# which can be solved to give
+# 
+# $$T_1 = T_{amb} + \frac{\alpha}{
+# 
 
 # ### Estimating $\alpha$
 # 
 # As it happens, the parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in the arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
 
-# In[1]:
+# In[5]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import pandas as pd
 
 t_expt = 600
