@@ -12,7 +12,7 @@ CBE 30338 Chemical Process Control introduces students to the analysis and desig
 
 Python and hands-on control experiments are integrated into the course. Applications include chemical and biological reactors, separation processes, autonomous biomedical devices, and examples from other engineering disciplines.
 
-The lab sessions are largely devoted to hands-on coding and experimentation using the Temperature Control Laboratory. Students purchase their own copy of the device from [Amazon](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) or apmonitor.com. 
+The lab sessions provide opportunities for hands-on coding and experimentation using the Temperature Control Laboratory. Students purchase their own copy of the device from [Amazon](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) or apmonitor.com. 
 
 ## Learning Objectives
 
@@ -30,7 +30,7 @@ Students completing this course will be able to …
 
 **Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138
 
-**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm, or by appointment. Password-protected Zoom links for scheduled virtual office hours are located in [Canvas](https://canvas.nd.edu/courses/42595) under the "Zoom" tab. 
+**Virtual Office Hours:** Wednesdays, 11 am - 1:30 pm. Password-protected Zoom links for scheduled virtual office hours are located in [Canvas](https://canvas.nd.edu/courses/42595) under the "Zoom" tab in the left-hand margin. If you can't make that time, send an email with some times convenient for you and I'll send you a Zoom invitation.
 
 **Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
@@ -58,6 +58,8 @@ Students completing this course will be able to …
 **Email:** jeff
 
 **Office:** 257 Nieuwland Hall
+
+The best way to reach me is by email. Phone is a lost cause because of the spammers. If you'd like to chat, the best options are virtual offices (see above), or to send me some times convenient to you and I'll get back to you with either an office appointment or zoom invitation.
 
 
 ## Teaching Assistants
@@ -101,13 +103,13 @@ Additional supplementary materials related to process control will be distribute
 
 ### Class Participation
 
-Students are expected to attend all class sessions.  If you miss class for an official University excused function, it is up to you to find notes for that lecture,  do the  reading, and avail yourself of office hours to catch up on the missed material.
+You are expected to attend all class sessions.  If you miss class for an official University excused function, please find notes for that lecture, do the  reading, and avail yourself of office hours to catch up on the missed material.
 
-Class sessions will include opportunities to respond to instructor questions and other active learning exercises. All interactions will be civil, respectful, and inclusive for all students. If you have any concerns about classroom dynamics, please feel free to speak with the instructor.
+Class sessions will include opportunities to respond to instructor questions and other active learning exercises. All interactions will be civil, respectful, and inclusive. If you have any concerns about classroom dynamics, please feel free to speak with the instructor.
 
 ### Homework Assignments
 
-Weekly homework assignments are scheduled for the course. Assignments are typically released on Tuesday and due before class the following Tuesday.  There will be no homework for the weeks including  Junior Parents’ Weekend,  Easter, and the final weeks when the semester project is underway.
+Weekly homework assignments are typically released on Tuesday and due before class the following Tuesday.  There will be no homework for the weeks including  Junior Parents’ Weekend,  Easter, and the final weeks when the semester project is underway.
 
 Homework assignments are critical to developing the skills needed to succeed in the course and in the major. Accordingly, assignments are a required element of the course. Missing assignments will be scored as zero. Three or more missed assignments will result in an incomplete for the course. Group study is encouraged, but the submitted work must be your own. Students must be able to explain all of their submitted work.
 
@@ -131,7 +133,7 @@ The final project for CBE 30338 is in-depth exploration of a control problem of 
  
 ## Grading
 
-Grades for CBE 30338 and CBE 32338 are consolidated into a single grade assigned to CBE 30338. There is no separate grade or credit assigned to  CBE 32338.
+Grades for CBE 30338 and CBE 32338 are consolidated into a single grade assigned to CBE 30338. There is no separate grade or credit assigned for CBE 32338.
 
 Grades are based on an assessment of performance in four major categories of work: individual homework assignments, quizzes, and laboratory assignments, and the group final project. The lowest homework, quiz, and laboratory assignment will be dropped. 
 

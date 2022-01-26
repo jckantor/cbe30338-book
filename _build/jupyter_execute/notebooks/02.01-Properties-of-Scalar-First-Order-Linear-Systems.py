@@ -174,7 +174,7 @@ ax.grid(True)
 # 
 # With this definition, an alternative formulation of the model and response can be given by
 # 
-# $$\frac{dx}{dt} = -\frac{1}{\tau} \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}$$
+# $$\frac{dx}{dt} = -\frac{1}{\tau}x \implies x(t) = x(t_0) e^{-\frac{(t-t_0)}{\tau}}$$
 
 # :::{admonition} Example (cont.)
 # 
