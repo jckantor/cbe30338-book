@@ -269,6 +269,3 @@ interact(compare, Ua=(0.0,0.10,0.001), Cp=(2.0,11.0))
 
 
 
-
-# <!--NAVIGATION-->
-# < [Fitting Step Test Data to Empirical Models](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.02-Fitting-Step-Test-Data-to-Empirical-Models.ipynb) | [Contents](toc.ipynb) | [Two-Input, Two-Output Model](http://nbviewer.jupyter.org/github/jckantor/CBE32338/blob/master/notebooks/02.04-Two-Input-Two-Output-Model.ipynb) ><p><a href="https://colab.research.google.com/github/jckantor/CBE32338/blob/master/notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a><p><a href="https://raw.githubusercontent.com/jckantor/CBE32338/master/notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb"><img align="left" src="https://img.shields.io/badge/Github-Download-blue.svg" alt="Download" title="Download Notebook"></a>

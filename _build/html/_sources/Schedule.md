@@ -19,12 +19,12 @@
 
 ## Week 3: Jan 25 - Jan 28
 
-|        | Day   | Activity     | Topic                             | Pre-reading   | Assignment       |
-|:-------|:------|:-------------|:----------------------------------|:--------------|:-----------------|
-| Jan 25 | Tue   | Class        | Modeling: Temperature Control Lab | Section 2.3   |                  |
-| Jan 26 | Wed   | Office Hours |                                   |               |                  |
-| Jan 27 | Thu   | Class        | Modeling: Second Order Systems    |               |                  |
-| Jan 28 | Fri   | Lab          | Lab 3: Model Parameter Estimation | Lab Chapter 3 | Lab Assignment 3 |
+|        | Day   | Activity     | Topic                             | Pre-reading          | Assignment       |
+|:-------|:------|:-------------|:----------------------------------|:---------------------|:-----------------|
+| Jan 25 | Tue   | Class        | Modeling: Temperature Control Lab | Section 2.3          |                  |
+| Jan 26 | Wed   | Office Hours |                                   |                      |                  |
+| Jan 27 | Thu   | Class        | Modeling: Second Order Systems    | Sections 2.4 and 2.5 |                  |
+| Jan 28 | Fri   | Lab          | Lab 3: Model Parameter Estimation | Lab Chapter 3        | Lab Assignment 3 |
 
 ## Week 4: Feb 1 - Feb 4
 
