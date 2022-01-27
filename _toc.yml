@@ -24,7 +24,8 @@ parts:
       - file: notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems
       - file: notebooks/02.02-One-Compartment-Pharmacokinetics
       - file: notebooks/02.03-First-Order-Model-for-a-Single-Heater
-      - file: notebooks/02.04-Model-Identification
+      - file: notebooks/02.04-Fitting-a-Model-to-Data
+      - file: notebooks/02.05-Second-Order
   
     - file: notebooks/03.00-Feedback-Control
       sections:
