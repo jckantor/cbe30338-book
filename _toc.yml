@@ -96,10 +96,10 @@ parts:
       - file: tclab/01.04-Assignment-Thermostat-Control
    
     - file: tclab/02.00-Empirical-Model-Identification
-      sections:
-      - file: tclab/02.01-Step-Testing
-      - file: tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models
-      - file: tclab/02.03-First-Order-Model-for-a-Single-Heater
+#      sections:
+#     - file: tclab/02.01-Step-Testing
+#     - file: tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models
+#     - file: tclab/02.03-First-Order-Model-for-a-Single-Heater
       
     - file: tclab/03.00-Estimating-Model-Parameters
       sections:
