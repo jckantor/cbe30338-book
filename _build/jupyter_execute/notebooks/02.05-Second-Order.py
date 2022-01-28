@@ -185,42 +185,6 @@ print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub},  Uc = {Uc}")
 model_energy_fourth_order(results.x, True)
 
 
-# ## Lab Assignment 2: Identification of a Multi-input, Multi-output Model for the Temperature Control Laboratory
-# 
-# Create one or more notebooks to show your results for the following exercises. The model you develop in this exercise will be used in the remainder of the semester for simulation and control design for your copy of the Temperature Control Laboratory.
-
-# ### Exercise 1.
-# 
-# Write two python functions, one called u1(t) and the other u2(t), that create the following input signals that will be used to test the Temperature Control Lab.
-# 
-# * u1(t) and u2(t) are initially zero.
-# * At time t=20, u1(t) jumps to 60% power, u2(t) remains at zero.
-# * At time t=620, u2(t) jumps to 60% power, u1(t) remains at 60.
-# * At time t=1020, u1(t) returns to 0, u2(t) remains at 60.
-# * At time t=1420, u2(t) returns to zero. Experiment is over.
-# 
-# Develop these functions, and plot the results for t=-100 to t=1800 (yes, beyond the end of the experiment) showing correct performance.
-
-# ### Exercise 2.
-# 
-# Use the functions created in Exercise 1 to obtain experimental data for your Temperature Control Lab. This will take some time (about 1/2 hour if everything works perfectly). Record T1, T2, Q1, Q2 using the Historian. Be careful to ...
-# 
-# * Set P1=200, P2=100 before the experiment begins
-# * Let the device reach equilibrium with ambient temperture before starting. Allow at least 10 minutes. Don't shortcut this (as tempting as that may be) since you will only get data that provide headaches later. "Go slow to go fast."
-# * You might use the box the kit came in to put a little "tent" over the device to protect from air currents.
-# * Before starting, be sure the heat sinks are not touching, and that everything looks in good shape.
-# * If your thermal paste looks like it is melting, stop the experiment immediately. Lower P1 and P2 by 25% and start over. Note this in your lab report.
-# 
-# Save this data to a .csv file. 
-
-# ### Exercise 3.
-# 
-# To avoid overwriting or damaging the data you collected in Exercise 2, create a separate notebook for model fitting. Fit two models to your data:
-# 
-# * Fit the first-order plus delay model to the results for "T1" using data up to t=620 (i.e, the data before you turn on the second heater.).  What are the gain, time-constant, and time delay for your device?
-# 
-# * Fit the fourth-order model (alternatively, the state-space model if you're comfortable with that formulation), and report all heat capacities, heat transfer coefficients. Note that you're fitting a two-input, two-output model which is very challenging. So the fit may not look quite as good as those shown above when u2(t) was held constant.
-
 # In[ ]:
 
 
