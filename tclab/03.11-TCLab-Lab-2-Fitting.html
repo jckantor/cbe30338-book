@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.5. Model Identification: Fitting models to data &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.1. Model Identification: Fitting models to data &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Feedback Control" href="04.00-Feedback-Control.html" />
-    <link rel="prev" title="3.4. TCLab Lab 2: Model Identification" href="03.10-TCLab-Lab-2-Model-Indentification.html" />
+    <link rel="prev" title="3. Estimating Model Parameters" href="03.00-Estimating-Model-Parameters.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -523,29 +523,9 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.05-Two-State-Model-for-a-Single-Heater.html">
-     3.1. Two State Model for a Single Heater
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.06-Four-State-Model.html">
-     3.2. Four State Model
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification-Solutions.html">
-     3.3. TCLab Lab 2: Model Identification
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
-     3.4. TCLab Lab 2: Model Identification
-    </a>
-   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.5. Model Identification: Fitting models to data
+     3.1. Model Identification: Fitting models to data
     </a>
    </li>
   </ul>
@@ -771,73 +751,73 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#initializations">
-   3.5.1. Initializations
+   3.1.1. Initializations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-data">
-     3.5.1.1. Reading data
+     3.1.1.1. Reading data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plotting-function">
-     3.5.1.2. Plotting function
+     3.1.1.2. Plotting function
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-models">
-   3.5.2. Empirical Models
+   3.1.2. Empirical Models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-linear-model">
-     3.5.2.1. First-order linear model
+     3.1.2.1. First-order linear model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-linear-model-with-time-delay">
-     3.5.2.2. First-order linear model with time delay
+     3.1.2.2. First-order linear model with time delay
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#first-principles-modeling">
-   3.5.3. First-principles modeling
+   3.1.3. First-principles modeling
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-energy-balance-for-one-heater">
-     3.5.3.1. First-order energy balance for one heater
+     3.1.3.1. First-order energy balance for one heater
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#two-state-model">
-     3.5.3.2. Two State Model
+     3.1.3.2. Two State Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-heater-four-state-model">
-   3.5.4. Two heater, four state model
+   3.1.4. Two heater, four state model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#consequences">
-   3.5.5. Consequences
+   3.1.5. Consequences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space-model">
-   3.5.6. State-Space Model
+   3.1.6. State-Space Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#putting-to-work">
-   3.5.7. Putting to work
+   3.1.7. Putting to work
   </a>
  </li>
 </ul>
@@ -862,73 +842,73 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#initializations">
-   3.5.1. Initializations
+   3.1.1. Initializations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-data">
-     3.5.1.1. Reading data
+     3.1.1.1. Reading data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plotting-function">
-     3.5.1.2. Plotting function
+     3.1.1.2. Plotting function
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-models">
-   3.5.2. Empirical Models
+   3.1.2. Empirical Models
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-linear-model">
-     3.5.2.1. First-order linear model
+     3.1.2.1. First-order linear model
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-linear-model-with-time-delay">
-     3.5.2.2. First-order linear model with time delay
+     3.1.2.2. First-order linear model with time delay
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#first-principles-modeling">
-   3.5.3. First-principles modeling
+   3.1.3. First-principles modeling
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#first-order-energy-balance-for-one-heater">
-     3.5.3.1. First-order energy balance for one heater
+     3.1.3.1. First-order energy balance for one heater
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#two-state-model">
-     3.5.3.2. Two State Model
+     3.1.3.2. Two State Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#two-heater-four-state-model">
-   3.5.4. Two heater, four state model
+   3.1.4. Two heater, four state model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#consequences">
-   3.5.5. Consequences
+   3.1.5. Consequences
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space-model">
-   3.5.6. State-Space Model
+   3.1.6. State-Space Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#putting-to-work">
-   3.5.7. Putting to work
+   3.1.7. Putting to work
   </a>
  </li>
 </ul>
@@ -941,10 +921,10 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="model-identification-fitting-models-to-data">
-<h1><span class="section-number">3.5. </span>Model Identification: Fitting models to data<a class="headerlink" href="#model-identification-fitting-models-to-data" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.1. </span>Model Identification: Fitting models to data<a class="headerlink" href="#model-identification-fitting-models-to-data" title="Permalink to this headline">¶</a></h1>
 <p>Given the data from an identification experiment, the next task is to find one or more models that accurately reproduce the process response to changes in the manipulated variable. This notebook demonsrates a practical approach to fitting low-order models to step response data.</p>
 <div class="section" id="initializations">
-<h2><span class="section-number">3.5.1. </span>Initializations<a class="headerlink" href="#initializations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.1. </span>Initializations<a class="headerlink" href="#initializations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -959,7 +939,7 @@
 </div>
 </div>
 <div class="section" id="reading-data">
-<h3><span class="section-number">3.5.1.1. </span>Reading data<a class="headerlink" href="#reading-data" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.1.1. </span>Reading data<a class="headerlink" href="#reading-data" title="Permalink to this headline">¶</a></h3>
 <p>The following cell reads previously stored experimental step response data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -975,7 +955,7 @@
 </div>
 </div>
 <div class="section" id="plotting-function">
-<h3><span class="section-number">3.5.1.2. </span>Plotting function<a class="headerlink" href="#plotting-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.1.2. </span>Plotting function<a class="headerlink" href="#plotting-function" title="Permalink to this headline">¶</a></h3>
 <p>The following simple data plotting function is used in this notebooke to compare experimental data to model predictions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1014,10 +994,10 @@
 </div>
 </div>
 <div class="section" id="empirical-models">
-<h2><span class="section-number">3.5.2. </span>Empirical Models<a class="headerlink" href="#empirical-models" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.2. </span>Empirical Models<a class="headerlink" href="#empirical-models" title="Permalink to this headline">¶</a></h2>
 <p>Empirical modeling is a process in which we attempt to discover models that accurately describe the input-output behavior of a process without regard to the underlying mechanisms.</p>
 <div class="section" id="first-order-linear-model">
-<h3><span class="section-number">3.5.2.1. </span>First-order linear model<a class="headerlink" href="#first-order-linear-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.2.1. </span>First-order linear model<a class="headerlink" href="#first-order-linear-model" title="Permalink to this headline">¶</a></h3>
 <p>A first-order transfer function is modeled by the differential equation</p>
 <div class="math notranslate nohighlight">
 \[ \tau \frac{dy}{dt} + y = K u\]</div>
@@ -1084,7 +1064,7 @@ u &amp; = Q_1
 </div>
 </div>
 <div class="section" id="first-order-linear-model-with-time-delay">
-<h3><span class="section-number">3.5.2.2. </span>First-order linear model with time delay<a class="headerlink" href="#first-order-linear-model-with-time-delay" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.2.2. </span>First-order linear model with time delay<a class="headerlink" href="#first-order-linear-model-with-time-delay" title="Permalink to this headline">¶</a></h3>
 <p>The code cell below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1144,9 +1124,9 @@ u &amp; = Q_1
 </div>
 </div>
 <div class="section" id="first-principles-modeling">
-<h2><span class="section-number">3.5.3. </span>First-principles modeling<a class="headerlink" href="#first-principles-modeling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.3. </span>First-principles modeling<a class="headerlink" href="#first-principles-modeling" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="first-order-energy-balance-for-one-heater">
-<h3><span class="section-number">3.5.3.1. </span>First-order energy balance for one heater<a class="headerlink" href="#first-order-energy-balance-for-one-heater" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.3.1. </span>First-order energy balance for one heater<a class="headerlink" href="#first-order-energy-balance-for-one-heater" title="Permalink to this headline">¶</a></h3>
 <p>Assuming the heater/sensor assembly can be described as mass at uniform temperature that exchanges heat with the surrounding results in a first-order linear model.</p>
 <div class="math notranslate nohighlight">
 \[C_p\frac{dT_{1}}{dt} = U_a (T_{amb} - T_{1}) + P Q_1\]</div>
@@ -1236,7 +1216,7 @@ Heat capacity = 12.548530552470801 J/deg C
 </div>
 </div>
 <div class="section" id="two-state-model">
-<h3><span class="section-number">3.5.3.2. </span>Two State Model<a class="headerlink" href="#two-state-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1.3.2. </span>Two State Model<a class="headerlink" href="#two-state-model" title="Permalink to this headline">¶</a></h3>
 <p>\begin{align*}
 C_p^H \frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1Q_1 \
 C_p^S \frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1})
@@ -1302,7 +1282,7 @@ C_p^S \frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1})
 </div>
 </div>
 <div class="section" id="two-heater-four-state-model">
-<h2><span class="section-number">3.5.4. </span>Two heater, four state model<a class="headerlink" href="#two-heater-four-state-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.4. </span>Two heater, four state model<a class="headerlink" href="#two-heater-four-state-model" title="Permalink to this headline">¶</a></h2>
 <p>\begin{align*}
 C_p^H \frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2} - T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1Q_1 \
 C_p^S \frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1}) \
@@ -1375,7 +1355,7 @@ C_p^S \frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
 </div>
 </div>
 <div class="section" id="consequences">
-<h2><span class="section-number">3.5.5. </span>Consequences<a class="headerlink" href="#consequences" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.5. </span>Consequences<a class="headerlink" href="#consequences" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">model_complete</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1422,7 +1402,7 @@ C_p^S \frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
 </div>
 </div>
 <div class="section" id="state-space-model">
-<h2><span class="section-number">3.5.6. </span>State-Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.6. </span>State-Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>Recalling the model equations</p>
 <p>\begin{align*}
 C_p^H \frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2} - T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1Q_1 \
@@ -1509,7 +1489,7 @@ y &amp; = C x + D u
 </div>
 </div>
 <div class="section" id="putting-to-work">
-<h2><span class="section-number">3.5.7. </span>Putting to work<a class="headerlink" href="#putting-to-work" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1.7. </span>Putting to work<a class="headerlink" href="#putting-to-work" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">control</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1617,11 +1597,11 @@ D = [[0. 0.]
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03.10-TCLab-Lab-2-Model-Indentification.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03.00-Estimating-Model-Parameters.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.4. </span>TCLab Lab 2: Model Identification</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Estimating Model Parameters</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.00-Feedback-Control.html" title="next page">

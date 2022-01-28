@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -831,38 +833,47 @@
 <div class="section" id="multivariable-heater-sensor-system">
 <h2><span class="section-number">3.2.1. </span>Multivariable Heater/Sensor System<a class="headerlink" href="#multivariable-heater-sensor-system" title="Permalink to this headline">¶</a></h2>
 <p>Model equations</p>
-<p>\begin{align}
-C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2}-T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\
-C^S_p\frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1})  \
-C^H_p\frac{dT_{H,2}}{dt} &amp; = U_a(T_{amb} - T_{H,2}) + U_b(T_{H,1}-T_{H,2}) + U_c(T_{S,2} - T_{H,2}) + P_2u_2\
-C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2}-T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\\
+C^S_p\frac{dT_{S,1}}{dt} &amp; = U_c(T_{H,1} - T_{S,1})  \\
+C^H_p\frac{dT_{H,2}}{dt} &amp; = U_a(T_{amb} - T_{H,2}) + U_b(T_{H,1}-T_{H,2}) + U_c(T_{S,2} - T_{H,2}) + P_2u_2\\
+C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2}) 
+\end{align}
+\end{split}\]</div>
 </div>
 <div class="section" id="deviation-variables">
 <h2><span class="section-number">3.2.2. </span>Deviation variables<a class="headerlink" href="#deviation-variables" title="Permalink to this headline">¶</a></h2>
-<p>\begin{align}
-\frac{dT_{H,1}’}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1}’ + \frac{U_b}{C^H_p}T_{H,2}’ + \frac{U_c}{C^H_p}T_{S,1}’ + \frac{P_1}{C^H_p}u_1\
-\frac{dT_{S,1}’}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,1}’ - T_{S,1}’)  \
-\frac{dT_{H,2}’}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2}’ + \frac{U_b}{C^H_p}T_{H,1}’ + \frac{U_c}{C^H_p}T_{S,2}’ + \frac{P_2}{C^H_p}u_2\
-\frac{dT_{S,2}’}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,2}’ - T_{S,2}’)
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dT_{H,1}'}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1}' + \frac{U_b}{C^H_p}T_{H,2}' + \frac{U_c}{C^H_p}T_{S,1}' + \frac{P_1}{C^H_p}u_1\\
+\frac{dT_{S,1}'}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,1}' - T_{S,1}')  \\
+\frac{dT_{H,2}'}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2}' + \frac{U_b}{C^H_p}T_{H,1}' + \frac{U_c}{C^H_p}T_{S,2}' + \frac{P_2}{C^H_p}u_2\\
+\frac{dT_{S,2}'}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,2}' - T_{S,2}') 
+\end{align}
+\end{split}\]</div>
 </div>
 <div class="section" id="state-space">
 <h2><span class="section-number">3.2.3. </span>State space<a class="headerlink" href="#state-space" title="Permalink to this headline">¶</a></h2>
-<p>\begin{align}
-\left[\begin{array}{c}\frac{dT_{H,1}’}{dt} \ \frac{dT_{S,1}’}{dt} \ \frac{dT_{H,2}’}{dt} \ \frac{dT_{S,2}’}{dt}\end{array}\right]
-&amp; =
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\left[\begin{array}{c}\frac{dT_{H,1}'}{dt} \\ \frac{dT_{S,1}'}{dt} \\ \frac{dT_{H,2}'}{dt} \\ \frac{dT_{S,2}'}{dt}\end{array}\right]
+&amp; = 
 \left[\begin{array}{cccc}
--(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} &amp; \frac{U_b}{C^H_p} &amp; 0 \
-\frac{U_c}{C^S_p} &amp; -\frac{U_c}{C^S_p} &amp; 0 &amp; 0 \
-\frac{U_b}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} \
+-(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} &amp; \frac{U_b}{C^H_p} &amp; 0 \\
+\frac{U_c}{C^S_p} &amp; -\frac{U_c}{C^S_p} &amp; 0 &amp; 0 \\
+\frac{U_b}{C^H_p} &amp; 0 &amp; -(\frac{U_a+U_b+U_c}{C^H_p}) &amp; \frac{U_c}{C^H_p} \\
 0 &amp; 0 &amp; \frac{U_c}{C^H_p} &amp; -\frac{U_c}{C^H_p}
 \end{array}\right]
-\left[\begin{array}{c}T_{H,1}’ \ T_{S,1}’ \ T_{H,2}’ \ T_{S,2}’\end{array}\right]
+\left[\begin{array}{c}T_{H,1}' \\ T_{S,1}' \\ T_{H,2}' \\ T_{S,2}'\end{array}\right]
 +
-\left[\begin{array}{cc}\frac{P_1}{C_p} &amp; 0 \ 0 &amp; 0 \ 0 &amp; \frac{P_2}{C_p} \ 0 &amp; 0 \end{array}\right]
-\left[\begin{array}{c}u_1 \ u_2\end{array}\right]
-\end{align}</p>
+\left[\begin{array}{cc}\frac{P_1}{C_p} &amp; 0 \\ 0 &amp; 0 \\ 0 &amp; \frac{P_2}{C_p} \\ 0 &amp; 0 \end{array}\right]
+\left[\begin{array}{c}u_1 \\ u_2\end{array}\right]
+\end{align}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
