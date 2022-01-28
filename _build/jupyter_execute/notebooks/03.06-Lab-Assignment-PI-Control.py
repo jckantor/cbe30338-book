@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Lab Assignment 3: Relay and PI Control
+# # Lab Assignment: Relay and PI Control
 # 
 # This lab assignment introduces the use of relay, proportional (P), and proportional-integral (PI) control for the Temperature Control Laboratory. In this assignment you will 
 # 
