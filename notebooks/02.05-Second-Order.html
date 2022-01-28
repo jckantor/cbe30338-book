@@ -524,33 +524,28 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/03.04-Two-Input-Two-Output-Model.html">
-     3.1. Two-Input, Two-Output Model
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../tclab/03.05-Two-State-Model-for-a-Single-Heater.html">
-     3.2. Two State Model for a Single Heater
+     3.1. Two State Model for a Single Heater
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/03.06-Four-State-Model.html">
-     3.3. Four State Model
+     3.2. Four State Model
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/03.10-TCLab-Lab-2-Model-Indentification-Solutions.html">
-     3.4. TCLab Lab 2: Model Identification
+     3.3. TCLab Lab 2: Model Identification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
-     3.5. TCLab Lab 2: Model Identification
+     3.4. TCLab Lab 2: Model Identification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/03.11-TCLab-Lab-2-Fitting.html">
-     3.6. Model Identification: Fitting models to data
+     3.5. Model Identification: Fitting models to data
     </a>
    </li>
   </ul>
@@ -930,6 +925,22 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span>  <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># known parameters</span>
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># deg C</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>        <span class="c1"># watts / (units P1 * percent U1)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>               <span class="c1"># P1 units</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="mi">50</span>
+
+
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;data/Model_Data.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://jckantor.github.io/cbe30338-2021/&quot;</span> <span class="o">+</span> <span class="n">data_file</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t_expt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
 
 <span class="c1"># adjustable parameters</span>
 <span class="n">CpH</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># joules/deg C</span>
@@ -966,22 +977,58 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time
-0.0     -0.221000
-10.0     0.371773
-20.0     0.895562
-30.0     1.395004
-40.0     1.774688
-           ...   
-560.0   -0.210368
-570.0   -0.188967
-580.0   -0.148499
-590.0   -0.323733
-600.0    0.093363
-Name: T1, Length: 61, dtype: float64
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">z3t28j296f98jdp1vqyplkz00000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_22612</span><span class="o">/</span><span class="mf">608552792.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">expt</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> 
+<span class="ne">---&gt; </span><span class="mi">52</span> <span class="n">model_energy_second_order</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/ipykernel_22612/608552792.py</span> in <span class="ni">model_energy_second_order</span><span class="nt">(param, plot)</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span> 
+<span class="ne">---&gt; </span><span class="mi">40</span>     <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_expt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_expt</span><span class="p">)],</span> <span class="p">[</span><span class="n">T_amb</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_expt</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> 
+<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="c1"># create dataframe with predictions</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/ivp.py</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, args, **options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="n">method</span> <span class="o">=</span> <span class="n">METHODS</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span> 
+<span class="ne">--&gt; </span><span class="mi">542</span>     <span class="n">solver</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="n">vectorized</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span> 
+<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="k">if</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/rk.py</span> in <span class="ni">__init__</span><span class="nt">(self, fun, t0, y0, t_bound, max_step, rtol, atol, vectorized, first_step, **extraneous)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>         <span class="bp">self</span><span class="o">.</span><span class="n">max_step</span> <span class="o">=</span> <span class="n">validate_max_step</span><span class="p">(</span><span class="n">max_step</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rtol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">atol</span> <span class="o">=</span> <span class="n">validate_tol</span><span class="p">(</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">94</span>         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>         <span class="k">if</span> <span class="n">first_step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span>             <span class="bp">self</span><span class="o">.</span><span class="n">h_abs</span> <span class="o">=</span> <span class="n">select_initial_step</span><span class="p">(</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun</span><span class="nt">(t, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>         <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_single</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span> 
+<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fun</span> <span class="o">=</span> <span class="n">fun</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun_wrapped</span><span class="nt">(t, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">def</span> <span class="nf">fun_wrapped</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">20</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> 
+<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">return</span> <span class="n">fun_wrapped</span><span class="p">,</span> <span class="n">y0</span>
+
+<span class="nn">/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/ipykernel_22612/608552792.py</span> in <span class="ni">deriv</span><span class="nt">(t, y)</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span>         <span class="n">T1H</span><span class="p">,</span> <span class="n">T1S</span> <span class="o">=</span> <span class="n">y</span>
+<span class="ne">---&gt; </span><span class="mi">36</span>         <span class="n">dT1H</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1S</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ua</span><span class="o">*</span><span class="n">T_amb</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>         <span class="n">dT1S</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">T1H</span> <span class="o">-</span> <span class="n">T1S</span><span class="p">)</span><span class="o">/</span><span class="n">CpS</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
+
+<span class="ne">TypeError</span>: &#39;int&#39; object is not callable
 </pre></div>
 </div>
-<img alt="../_images/02.05-Second-Order_2_1.png" src="../_images/02.05-Second-Order_2_1.png" />
 </div>
 </div>
 <div class="section" id="best-fit">

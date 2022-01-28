@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3. Four State Model &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.2. Four State Model &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.4. TCLab Lab 2: Model Identification" href="03.10-TCLab-Lab-2-Model-Indentification-Solutions.html" />
-    <link rel="prev" title="3.2. Two State Model for a Single Heater" href="03.05-Two-State-Model-for-a-Single-Heater.html" />
+    <link rel="next" title="3.3. TCLab Lab 2: Model Identification" href="03.10-TCLab-Lab-2-Model-Indentification-Solutions.html" />
+    <link rel="prev" title="3.1. Two State Model for a Single Heater" href="03.05-Two-State-Model-for-a-Single-Heater.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -522,33 +522,28 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="03.04-Two-Input-Two-Output-Model.html">
-     3.1. Two-Input, Two-Output Model
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="03.05-Two-State-Model-for-a-Single-Heater.html">
-     3.2. Two State Model for a Single Heater
+     3.1. Two State Model for a Single Heater
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.3. Four State Model
+     3.2. Four State Model
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification-Solutions.html">
-     3.4. TCLab Lab 2: Model Identification
+     3.3. TCLab Lab 2: Model Identification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
-     3.5. TCLab Lab 2: Model Identification
+     3.4. TCLab Lab 2: Model Identification
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.11-TCLab-Lab-2-Fitting.html">
-     3.6. Model Identification: Fitting models to data
+     3.5. Model Identification: Fitting models to data
     </a>
    </li>
   </ul>
@@ -774,17 +769,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multivariable-heater-sensor-system">
-   3.3.1. Multivariable Heater/Sensor System
+   3.2.1. Multivariable Heater/Sensor System
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deviation-variables">
-   3.3.2. Deviation variables
+   3.2.2. Deviation variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space">
-   3.3.3. State space
+   3.2.3. State space
   </a>
  </li>
 </ul>
@@ -809,17 +804,17 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multivariable-heater-sensor-system">
-   3.3.1. Multivariable Heater/Sensor System
+   3.2.1. Multivariable Heater/Sensor System
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deviation-variables">
-   3.3.2. Deviation variables
+   3.2.2. Deviation variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space">
-   3.3.3. State space
+   3.2.3. State space
   </a>
  </li>
 </ul>
@@ -832,9 +827,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="four-state-model">
-<h1><span class="section-number">3.3. </span>Four State Model<a class="headerlink" href="#four-state-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.2. </span>Four State Model<a class="headerlink" href="#four-state-model" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="multivariable-heater-sensor-system">
-<h2><span class="section-number">3.3.1. </span>Multivariable Heater/Sensor System<a class="headerlink" href="#multivariable-heater-sensor-system" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>Multivariable Heater/Sensor System<a class="headerlink" href="#multivariable-heater-sensor-system" title="Permalink to this headline">¶</a></h2>
 <p>Model equations</p>
 <p>\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2}-T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\
@@ -844,7 +839,7 @@ C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
 \end{align}</p>
 </div>
 <div class="section" id="deviation-variables">
-<h2><span class="section-number">3.3.2. </span>Deviation variables<a class="headerlink" href="#deviation-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Deviation variables<a class="headerlink" href="#deviation-variables" title="Permalink to this headline">¶</a></h2>
 <p>\begin{align}
 \frac{dT_{H,1}’}{dt} &amp; = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1}’ + \frac{U_b}{C^H_p}T_{H,2}’ + \frac{U_c}{C^H_p}T_{S,1}’ + \frac{P_1}{C^H_p}u_1\
 \frac{dT_{S,1}’}{dt} &amp; = \frac{U_c}{C^S_p}(T_{H,1}’ - T_{S,1}’)  \
@@ -853,7 +848,7 @@ C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
 \end{align}</p>
 </div>
 <div class="section" id="state-space">
-<h2><span class="section-number">3.3.3. </span>State space<a class="headerlink" href="#state-space" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.3. </span>State space<a class="headerlink" href="#state-space" title="Permalink to this headline">¶</a></h2>
 <p>\begin{align}
 \left[\begin{array}{c}\frac{dT_{H,1}’}{dt} \ \frac{dT_{S,1}’}{dt} \ \frac{dT_{H,2}’}{dt} \ \frac{dT_{S,2}’}{dt}\end{array}\right]
 &amp; =
@@ -1016,13 +1011,13 @@ C^S_p\frac{dT_{S,2}}{dt} &amp; = U_c(T_{H,2} - T_{S,2})
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.2. </span>Two State Model for a Single Heater</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Two State Model for a Single Heater</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03.10-TCLab-Lab-2-Model-Indentification-Solutions.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.4. </span>TCLab Lab 2: Model Identification</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>TCLab Lab 2: Model Identification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

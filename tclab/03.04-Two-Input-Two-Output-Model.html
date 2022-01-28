@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.1. Two-Input, Two-Output Model &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.2. Two-Input, Two-Output Model &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.2. Two State Model for a Single Heater" href="03.05-Two-State-Model-for-a-Single-Heater.html" />
-    <link rel="prev" title="3. Estimating Model Parameters" href="03.00-Estimating-Model-Parameters.html" />
+    <link rel="next" title="3.3. Four State Model" href="03.06-Four-State-Model.html" />
+    <link rel="prev" title="3.1. Two State Model for a Single Heater" href="03.05-Two-State-Model-for-a-Single-Heater.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -523,14 +523,14 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     3.1. Two-Input, Two-Output Model
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Two-State-Model-for-a-Single-Heater.html">
-     3.2. Two State Model for a Single Heater
+     3.1. Two State Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.2. Two-Input, Two-Output Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -776,22 +776,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interacting-heaters">
-   3.1.1. Interacting Heaters
+   3.2.1. Interacting Heaters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deviation-variables">
-   3.1.2. Deviation Variables
+   3.2.2. Deviation Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state">
-   3.1.3. Steady State
+   3.2.3. Steady State
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-u-a-and-u-b">
-   3.1.4. Estimating
+   3.2.4. Estimating
    <span class="math notranslate nohighlight">
     \(U_a\)
    </span>
@@ -803,12 +803,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simulation-with-odeint">
-   3.1.5. Simulation with odeint
+   3.2.5. Simulation with odeint
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting-the-model-to-measured-step-response-data">
-   3.1.6. Fitting the Model to Measured Step Response Data
+   3.2.6. Fitting the Model to Measured Step Response Data
   </a>
  </li>
 </ul>
@@ -833,22 +833,22 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interacting-heaters">
-   3.1.1. Interacting Heaters
+   3.2.1. Interacting Heaters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deviation-variables">
-   3.1.2. Deviation Variables
+   3.2.2. Deviation Variables
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state">
-   3.1.3. Steady State
+   3.2.3. Steady State
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimating-u-a-and-u-b">
-   3.1.4. Estimating
+   3.2.4. Estimating
    <span class="math notranslate nohighlight">
     \(U_a\)
    </span>
@@ -860,12 +860,12 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#simulation-with-odeint">
-   3.1.5. Simulation with odeint
+   3.2.5. Simulation with odeint
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fitting-the-model-to-measured-step-response-data">
-   3.1.6. Fitting the Model to Measured Step Response Data
+   3.2.6. Fitting the Model to Measured Step Response Data
   </a>
  </li>
 </ul>
@@ -878,9 +878,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="two-input-two-output-model">
-<h1><span class="section-number">3.1. </span>Two-Input, Two-Output Model<a class="headerlink" href="#two-input-two-output-model" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.2. </span>Two-Input, Two-Output Model<a class="headerlink" href="#two-input-two-output-model" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="interacting-heaters">
-<h2><span class="section-number">3.1.1. </span>Interacting Heaters<a class="headerlink" href="#interacting-heaters" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>Interacting Heaters<a class="headerlink" href="#interacting-heaters" title="Permalink to this headline">¶</a></h2>
 <p>Our next model considers the interaction between the two heaters. From the step response it is obvious that the heaters interact, and we need to understand how that affects the dynamic performance.  Will we see qualitative differences in the step response once we’ve included the second heater?</p>
 <p>\begin{align}
 C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + U_b(T_2 - T_1) + P_1u_1\
@@ -893,7 +893,7 @@ C_p\frac{dT_2}{dt} &amp; = U_a(T_{amb} - T_2) + U_b(T_1 - T_2) + P_2u_2
 \end{align}</p>
 </div>
 <div class="section" id="deviation-variables">
-<h2><span class="section-number">3.1.2. </span>Deviation Variables<a class="headerlink" href="#deviation-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Deviation Variables<a class="headerlink" href="#deviation-variables" title="Permalink to this headline">¶</a></h2>
 <p>As before, the equations appear somewhat simpler if we introduce deviation variables from a nominal state. In this case we’ll use the ambient temperature as the reference, so the deviation variable will express deviation from ambient.</p>
 <p>\begin{align}
 T_1’ &amp; = T_1 - T_{amb} \
@@ -914,7 +914,7 @@ T_2’ &amp; = T_2 - T_{amb}
 \end{align}</p>
 </div>
 <div class="section" id="steady-state">
-<h2><span class="section-number">3.1.3. </span>Steady State<a class="headerlink" href="#steady-state" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.3. </span>Steady State<a class="headerlink" href="#steady-state" title="Permalink to this headline">¶</a></h2>
 <p>The steady state is found by setting the derivatives to zero. We’ll use a bar over the dependent variables to designate steady state values.</p>
 <p>\begin{align}
 0 &amp; = -(U_a+U_b)\bar{T}<em>{1}’ + U_b\bar{T}</em>{2}’ + P_1\bar{u}<em>{1}\
@@ -933,7 +933,7 @@ T_2’ &amp; = T_2 - T_{amb}
 \end{align}</p>
 </div>
 <div class="section" id="estimating-u-a-and-u-b">
-<h2><span class="section-number">3.1.4. </span>Estimating <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span><a class="headerlink" href="#estimating-u-a-and-u-b" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.4. </span>Estimating <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span><a class="headerlink" href="#estimating-u-a-and-u-b" title="Permalink to this headline">¶</a></h2>
 <p>Experimental step response data gives us the information needed to estimate parameters <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span>. Rearranging the steady state equations, we find a pair of linear equations for <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span>.</p>
 <p>\begin{align}
 \bar{T}<em>{1}’U_a  + (\bar{T}</em>{1}’-\bar{T}<em>{2}’)U_b &amp; = P_1\bar{u}</em>{1}\
@@ -970,7 +970,7 @@ U_b &amp; = \frac{\bar{T}_2’P_1\bar{u}_1 - \bar{T}_1’P_2\bar{u}_2}{(\bar{T}_
 <p><strong>Exercise:</strong> Roughly speaking, the has an increase of 35 degrees and T2 and increase of 10 degrees due to a setting u1 to 50% of the maximum power of 4 watts.  Use that information and the above equations to estimate values for <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span>.</p>
 </div>
 <div class="section" id="simulation-with-odeint">
-<h2><span class="section-number">3.1.5. </span>Simulation with odeint<a class="headerlink" href="#simulation-with-odeint" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.5. </span>Simulation with odeint<a class="headerlink" href="#simulation-with-odeint" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1012,7 +1012,7 @@ U_b &amp; = \frac{\bar{T}_2’P_1\bar{u}_1 - \bar{T}_1’P_2\bar{u}_2}{(\bar{T}_
 </div>
 </div>
 <div class="section" id="fitting-the-model-to-measured-step-response-data">
-<h2><span class="section-number">3.1.6. </span>Fitting the Model to Measured Step Response Data<a class="headerlink" href="#fitting-the-model-to-measured-step-response-data" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.6. </span>Fitting the Model to Measured Step Response Data<a class="headerlink" href="#fitting-the-model-to-measured-step-response-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1099,17 +1099,17 @@ U_b &amp; = \frac{\bar{T}_2’P_1\bar{u}_1 - \bar{T}_1’P_2\bar{u}_2}{(\bar{T}_
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03.00-Estimating-Model-Parameters.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03.05-Two-State-Model-for-a-Single-Heater.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>Estimating Model Parameters</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Two State Model for a Single Heater</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03.05-Two-State-Model-for-a-Single-Heater.html" title="next page">
+    <a class='right-next' id="next-link" href="03.06-Four-State-Model.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.2. </span>Two State Model for a Single Heater</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Four State Model</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
