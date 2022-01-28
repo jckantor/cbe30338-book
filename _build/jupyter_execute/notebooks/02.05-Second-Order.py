@@ -27,13 +27,29 @@
 # 
 # $$T_1 = T_{S,1}$$
 
-# In[11]:
+# In[6]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+import  pandas as pd
+
+# known parameters
+T_amb = 21             # deg C
+alpha = 0.00016        # watts / (units P1 * percent U1)
+P1 = 200               # P1 units
+U1 = 50                # steady state value of u1 (percent)
+u1 = 50
+
+
+
+data_file = "data/Model_Data.csv"
+data = pd.read_csv("https://jckantor.github.io/cbe30338-2021/" + data_file).set_index("Time")[1:]
+t_expt = data.index
+T1 = data['T1'].values
+
 
 # adjustable parameters
 CpH = 5                # joules/deg C

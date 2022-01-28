@@ -1,31 +1,24 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # TCLab Lab 2: Model Identification
+# # Assignment: Model Identification
 
-# For this laboratory session you will collect data from a step test experiment, then fit the data to models derived from first-principles energy balances. Fitting models to data is an engineering skill that links between the real world of engineering systems to the theory you've been learning in the classroom.
+# Fitting models to data is an engineering skill that links between the real world of engineering systems to the theory you've been learning in the classroom. For this laboratory session you will collect data from a step test experiments, then fit the data to models derived from first-principles energy balances. 
 
-# ## Procedures
+# ## Procedure
 
-# 1. Please work in groups of two.
+# 1. Download a copy of this notebook to your laptop and complete the the data collection exercises shown below. The results should be embedded in the notebook. Be sure to 'save-as-you-go' to avoid losing your work. 
 # 
-# 2. Check out a TCLab kit. The kit consists of
-#     * plastic container
-#     * Arduino device with the TCLab shield installed
-#     * 5 watt USB power supply
-#     * USB power cable
-#     * USB data cable
-#     * equipment log sheet
-#     
-#    Before going further, sign and date the equipment log sheet. 
+# 2. Use your step test data to fit two versions of a model for the temperature control lab:
 # 
-# 3. Download a copy of this notebook to your laptop, and complete the exercises shown below. Under each exercise heading, add as many text and code cells as needed to complete the exercise. The results should be embedded in the notebook. Be sure to 'save-as-you-go' to avoid losing your work.
+# * One-state model with one input.
+# * Two-state model with one input
 # 
-# 4. Add any relevant notes to the equipment log and return the kit to equipment at the front of the lab. **Return any malfunctioning kit to the instructor for repair.**
-# 
-# 5. Submit your completed lab notebook via Sakai.  The notebook should contain the name of both lab partners. Both partners should submit a copy of the notebook.
+# 5. Submit your completed lab notebook via Canvas.
 
-# ## Exercise 1. Verify operation of the temperature control lab.
+# ## Exercise 1. Step Tests and Data Collection
+
+# ### Step 1. Verify operation.
 # 
 # Execute the following cell to verify that you have a working connection to the temperature control lab hardware. This will test for installation of TCLab.py, connection to the Arduino device, and working firmware within the Arduino.
 
@@ -39,9 +32,9 @@ print("TCLab Temperatures:", lab.T1, lab.T2)
 lab.close()
 
 
-# ## Exercise 2.  Check for steady state
+# ### Step 2.  Check for steady state
 # 
-# As discussed in class, for good model fitting it is essential for the TCLab hardware to be at steady state before proceeding with the step test. Run the following code to verify that the heaters are off and that the temperatures are at a steady ambient temperature.
+# As discussed in class, for step testing the device must be initially at steady state. Run the following code to verify the heaters are off and that the temperatures are at a steady ambient temperature.
 
 # In[ ]:
 
@@ -51,15 +44,17 @@ tfinal = 30
 
 # perform experiment
 with TCLab() as lab:
+    lab.U1 = 0
+    lab.U2 = 0
     h = Historian(lab.sources)
     p = Plotter(h, tfinal)
     for t in clock(tfinal):
         p.update(t)
 
 
-# ## Exercise 3. Step test.
+# ### Step 3. Step Test
 # 
-# The step test consists of turning on one heater at 50% power and recording temperature data for at least 800 seconds. Copy and paste the code from Exercise 2 into the following cell, then modify as needed to accomplish the step test. 
+# The step test consists of turning one heater one at 50% power and recording temperature data for at least 800 seconds. Copy the code from Step 2 into the following cell. Then modify as needed to accomplish the step test with P1 at 200 and using 50% of maximum power.
 
 # In[ ]:
 
@@ -67,14 +62,13 @@ with TCLab() as lab:
 # write your code here
 
 
-# ## Exercise 4. Verify and save data to a .csv file
+# ### Step 4. Save data to a .csv file
 # 
-# Run the following cell to verify and save your data to a '.csv' file. Be sure you can find and locate the data on your laptop before leaving the lab. You will need access to this data for subsequent exercises.
+# Run the following cell to verify and save your data to a '.csv' file. Be sure you can find and locate the data on your laptop before ending your session. You will need access to this data for subsequent exercises.
 
 # In[ ]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 
 t, T1, T2, Q1, Q2 = h.fields
@@ -87,9 +81,19 @@ plt.grid()
 h.to_csv('tclab-data.csv')
 
 
-# ## Exercise 5. Analysis
+# ## Exercise 2. Fitting a First-Order Model
+
+# As discussed in class, a simple energy balance model for T1 is given by
 # 
-# 1.) Approximating the the step test results for T1 as a first order transfer function, estimate the time constant and gain. Write your answer in the following cell.
+# $$C_p \frac{dT_1}{dt} = U_a(T_{amb} - T_1) + \alpha P_1 U_1$$
+# 
+# where the parameter $\alpha$ has, through independent means, been determined as 0.00016 when U1 is given in percent of full power and power is measured in Watts. Following the notes from Section 2.4, use the results of this experiment to estimate values for $C_p$ and $U_a$. Write your answers in the following cell.  
+# 
+# You may cut and paste code from Section 2.4 for this task. You will need to modify the code to read your data file. Be sure to report
+# 
+# 1. Final estimates for $U_a$ and $C_p$
+# 2. An estimate of the time constant computed from $U_a$ and $C_p$.
+# 3. An estimate of the steady-state gain computed from $U_a$.
 
 # In[ ]:
 
@@ -97,10 +101,28 @@ h.to_csv('tclab-data.csv')
 
 
 
-# 2.) As we discussed in class, a simple energy balance model for T1 is given by
+# ## Exercise 3. Fitting a Second-Order Model
 # 
-# $$C_p \frac{dT_1}{dt} = U_a(T_{amb} - T_1) + P Q_1$$
+# A second order model is for the heater/sensor combination is given by
 # 
-# where the parameter $P$ has, through independent means, been determined as 0.04 watts per percent increase in $Q_1$. Use the results of this experiment to estimate values for $C_p$ and $U_a$. Write your answers in the following cell.
+# $$
+# \begin{align}
+# C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + P_1u_1\\
+# C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
+# \end{align}
+# $$
+# 
+# where $T_{H,1}$ is the heater temperature, $T_{S,1}$ is the sensor temperature, and $U_b$ is the heat transfer coefficient between the heater and sensor. 
+# 
+# Modify the code you developed for Exercise 2 to fit this second order model. The code shown in Section 2.5 of the notes may be helpful. 
+# 
+# 1. Report your best fit for $U_a$, $U_b$, $C^H_p$, and $C^S_p$. 
+# 2. What are the time constants for the heater and sensor? Do you see any relationship between these time constants and what you found for the first-order model?
+# 
+# 
 
-# 
+# In[ ]:
+
+
+
+

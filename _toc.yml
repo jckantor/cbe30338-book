@@ -103,12 +103,12 @@ parts:
       
     - file: tclab/03.00-Estimating-Model-Parameters
       sections:
-      - file: tclab/03.04-Two-Input-Two-Output-Model
-      - file: tclab/03.05-Two-State-Model-for-a-Single-Heater
-      - file: tclab/03.06-Four-State-Model
-      - file: tclab/03.10-TCLab-Lab-2-Model-Indentification-Solutions
+#      - file: tclab/03.05-Two-State-Model-for-a-Single-Heater
+#      - file: tclab/03.04-Two-Input-Two-Output-Model
+#      - file: tclab/03.06-Four-State-Model
+#      - file: tclab/03.10-TCLab-Lab-2-Model-Indentification-Solutions
       - file: tclab/03.10-TCLab-Lab-2-Model-Indentification
-      - file: tclab/03.11-TCLab-Lab-2-Fitting
+#      - file: tclab/03.11-TCLab-Lab-2-Fitting
     
     - file: tclab/04.00-Feedback-Control
       sections:

@@ -9,7 +9,7 @@
 # 
 # **Starting with a system at steady state**, record the response of T1 to a step input of 50% power with P1 = 200.
 
-# In[10]:
+# In[1]:
 
 
 import numpy as np
@@ -109,7 +109,7 @@ ax[0].grid(True)
 # 
 # Let's try a guess fit.
 
-# In[18]:
+# In[2]:
 
 
 import numpy as np
@@ -152,7 +152,7 @@ ax[0].grid(True)
 
 # ## Improving the fit
 
-# In[19]:
+# In[11]:
 
 
 import numpy as np
@@ -171,8 +171,8 @@ P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
 
 # model p
-Ua = 0.08              # watts/deg C
-Cp = 8                 # joules/deg C
+Ua = 0.047              # watts/deg C
+Cp = 9                # joules/deg C
 
 # model
 T1_dev_initial = 0
@@ -203,7 +203,7 @@ ax[0].grid(True)
 # 
 # $$SAE = \sum_n |T^{model}_1(t_k) - T^{expt}_1(t_i)|$$
 
-# In[58]:
+# In[13]:
 
 
 import numpy as np
@@ -301,7 +301,7 @@ compare([Ua, Cp], plot=True)
 
 # ## Finding a best fit
 
-# In[59]:
+# In[16]:
 
 
 from scipy.optimize import fmin

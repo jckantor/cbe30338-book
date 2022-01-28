@@ -7,27 +7,29 @@
 # 
 # Model equations
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{H,2}-T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_c(T_{H,1} - T_{S,1})  \\
 # C^H_p\frac{dT_{H,2}}{dt} & = U_a(T_{amb} - T_{H,2}) + U_b(T_{H,1}-T_{H,2}) + U_c(T_{S,2} - T_{H,2}) + P_2u_2\\
 # C^S_p\frac{dT_{S,2}}{dt} & = U_c(T_{H,2} - T_{S,2}) 
 # \end{align}
-# 
-# 
-# 
+# $$
 
 # ## Deviation variables
 # 
+# $$
 # \begin{align}
 # \frac{dT_{H,1}'}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1}' + \frac{U_b}{C^H_p}T_{H,2}' + \frac{U_c}{C^H_p}T_{S,1}' + \frac{P_1}{C^H_p}u_1\\
 # \frac{dT_{S,1}'}{dt} & = \frac{U_c}{C^S_p}(T_{H,1}' - T_{S,1}')  \\
 # \frac{dT_{H,2}'}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2}' + \frac{U_b}{C^H_p}T_{H,1}' + \frac{U_c}{C^H_p}T_{S,2}' + \frac{P_2}{C^H_p}u_2\\
 # \frac{dT_{S,2}'}{dt} & = \frac{U_c}{C^S_p}(T_{H,2}' - T_{S,2}') 
 # \end{align}
+# $$
 
 # ## State space
 # 
+# $$
 # \begin{align}
 # \left[\begin{array}{c}\frac{dT_{H,1}'}{dt} \\ \frac{dT_{S,1}'}{dt} \\ \frac{dT_{H,2}'}{dt} \\ \frac{dT_{S,2}'}{dt}\end{array}\right]
 # & = 
@@ -42,6 +44,7 @@
 # \left[\begin{array}{cc}\frac{P_1}{C_p} & 0 \\ 0 & 0 \\ 0 & \frac{P_2}{C_p} \\ 0 & 0 \end{array}\right]
 # \left[\begin{array}{c}u_1 \\ u_2\end{array}\right]
 # \end{align}
+# $$
 
 # In[8]:
 

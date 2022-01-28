@@ -11,10 +11,12 @@
 # 
 # This motivates a model
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_c(T_{S,1} - T_{H,1}) + P_1u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_c(T_{H,1} - T_{S,1}) 
 # \end{align}
+# $$
 # 
 # where $C^H_p$ and $C^S_p$ are the gross heat capacities of the heater and sensor, respectively, and $U_c$ is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.
 
@@ -22,14 +24,16 @@
 # 
 # Following the approach demonstrated in the first two models, we construct a model in terms of deviation from ambient temperature.
 # 
+# $$
 # \begin{align}
 # \frac{dT_{H,1}'}{dt} & = -\frac{U_a+U_c}{C^H_p}T_{H,1}' + \frac{U_c}{C^H_p}T_{S,1}' + P_1u_1\\
 # \frac{dT_{S,1}'}{dt} & = \frac{U_c}{C^S_p}(T_{H,1}' - T_{S,1}') 
 # \end{align}
+# $$
 
 # Next we jump right to the step of tuning the model parameters to fit the step response data.
 
-# In[11]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -88,7 +92,7 @@ interact(compare,
 # 
 # An important consequence of this model is that temperature reported by sensor is not keep up with the heater temperature during rapid transients. To see this, below we plot the measured temperature and the predicted heater temperature.
 
-# In[26]:
+# In[3]:
 
 
 # fitted parameters
