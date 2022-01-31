@@ -132,6 +132,7 @@ parts:
     chapters:
     - file: python/A.00-Python-Tutorials
       sections:
+      - file: python/A.05-Tidy-Data-and-Pandas
       - file: python/A.10-Coding-Controllers-with-Python-Generators
       - file: python/A.11-Modular-Approach-to-Simulation-using-Python-Generators
       - file: python/A.30-Animation-in-Jupyter-Notebooks

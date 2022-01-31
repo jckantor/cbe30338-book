@@ -1,0 +1,2663 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started with Pandas &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding Controllers with Python Generators" href="A.10-Coding-Controllers-with-Python-Generators.html" />
+    <link rel="prev" title="Python Tutorials" href="A.00-Python-Tutorials.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
+     2.5. Second-order model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.03-Relay-Control.html">
+     3.3. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.04-Implementing-Controllers.html">
+     3.4. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.05-Proportional-Integral-Control.html">
+     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.06-Lab-Assignment-PI-Control.html">
+     3.6. Lab Assignment: Relay and PI Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.08-Lab-Assignment-Cascade-Control.html">
+     3.8. Lab Assignment 4: Cascade Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.09-Lab-Assignment-Solution.html">
+     3.9. Lab Assignment 4: Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.03-State-Estimation-Copy1.html">
+     4.3. Estimation and Anamoly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.03-State-Estimation.html">
+     4.4. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.04-Lab-Assigment-State-Estimation.html">
+     4.5. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.05-Anomaly-Detection.html">
+     4.6. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.7. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.07-Observer-Synthesis-LMI.html">
+     4.8. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.08-Envrironmental-Application.html">
+     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04.09-Study-Questions.html">
+     4.10. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.02-Linear-Blending-Problem.html">
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.03-Homework_4.html">
+     5.3. Homework Assignment 4
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.04-Gasoline-Blending.html">
+     5.4. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.05-Linear-Programming.html">
+     5.5. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.6. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.98-Linear-Production-Model-in-Pyomo.html">
+     5.7. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05.99-Pyomo-Examples.html">
+     5.8. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tclab/02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.03-PID_Control.html">
+     4.2. PID Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.10-Lab-Assignment-PID-Control.html">
+     4.3. Lab Assignment: PID Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.11-Lab-Assignment-PI-Control.html">
+     4.4. Lab Assignment 4: PI Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tclab/06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Getting Started with Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/python/A.05-Getting-Started-with-Pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fpython/A.05-Getting-Started-with-Pandas.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/python/A.05-Getting-Started-with-Pandas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/python/A.05-Getting-Started-with-Pandas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   Tidy Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-data-files">
+   Reading Data Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-csv-files">
+     From .csv files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-google-sheets">
+     From Google Sheets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-python">
+     From Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-data-from-dataframes">
+   Accessing Data from DataFrames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-data">
+   Visualizing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabular-display">
+     Tabular Display
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plots">
+     Scatter Plots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-plots">
+     Statistical Plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-variables">
+   Working with Variables
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Getting Started with Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tidy-data">
+   Tidy Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-data-files">
+   Reading Data Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-csv-files">
+     From .csv files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-google-sheets">
+     From Google Sheets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-python">
+     From Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#accessing-data-from-dataframes">
+   Accessing Data from DataFrames
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-data">
+   Visualizing Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tabular-display">
+     Tabular Display
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting">
+     Plotting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plots">
+     Scatter Plots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#statistical-plots">
+     Statistical Plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-variables">
+   Working with Variables
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started-with-pandas">
+<h1>Getting Started with Pandas<a class="headerlink" href="#getting-started-with-pandas" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is the most popular and widely used Python library for data wrangling and analysis. Originally eveloped in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python.</p>
+<p>The purpose of this notebook is to get you started using pandas. Pandas is a big library capable of handling complex applications. But in the spirit of the 80/20 rule (i.e., <span class="xref myst">Pareto principle</span>), our goal here is to introduce a small part of the pandas library that can handle requirements.</p>
+<p>This streamlined approach employees principles of “Tidy Data”, a consistent, simple, and straightforward approach to organizing tabular data. Keeping data organized following “Tidy Data” principles means much less time “wrangling” data, short and clear Python code for analysis, and more time devoted to creating good data.</p>
+<div class="section" id="tidy-data">
+<h2>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">¶</a></h2>
+<p>Data acquired in process applications is normally accumulated by repeated observation of process variables. The values are typically numbers, such as temperature or pressure, but can also be strings, integers, or categorical data, such as whether a solenoid valve is an “on” or “off”, or the status of a process alarm.</p>
+<p>We will make the following assumptions about our data sets.</p>
+<ul class="simple">
+<li><p>Data from repeated observations is arranged in tabular form in data files. Each distinct experiment, treatment, or unit of data is located in a separate file.</p></li>
+<li><p>Every column of a data file holds all data for a unique variable.</p></li>
+<li><p>Every row of a data file is an observation.</p></li>
+<li><p>Every cell contains a single value.</p></li>
+</ul>
+<p>These straightforward guidelines are closely tied to concepts underlying relational databases and have become known as the <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">“Tidy Data”</a> principles popularized by Hadley Wickham. Adopting these principles when creating and saving data streamlines later analysis. <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005097">Hart, et al., provide excellent contrasting examples of tidy and messy data</a>.</p>
+<p>For these notes we will assume our data is stored in data files organized using “Tiny Data” principles. If your data doesn’t satisfy these assumptions, follow the procedures described by <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Wickham</a> to reorgnize your data for efficient analysis.</p>
+</div>
+<div class="section" id="reading-data-files">
+<h2>Reading Data Files<a class="headerlink" href="#reading-data-files" title="Permalink to this headline">¶</a></h2>
+<p>We proceed assuming data stored in data files, each data file corresponding to an experiment or other clearly defined collection of observations.</p>
+<div class="section" id="from-csv-files">
+<h3>From .csv files<a class="headerlink" href="#from-csv-files" title="Permalink to this headline">¶</a></h3>
+<p>For files stored in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format, a pandas <strong>DataFrame</strong> object is created with the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">read_csv(data_file)</span></code></a>. <code class="docutils literal notranslate"><span class="pre">data_file</span></code> is a string containing a url or the name of a local file. <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function has many optional arguments, but for simple cases the path to the data file is often enough to do the job.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.01</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.01</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.00</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>796.00</td>
+      <td>58.281</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>797</th>
+      <td>797.01</td>
+      <td>58.120</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>798</th>
+      <td>798.01</td>
+      <td>58.378</td>
+      <td>37.560</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>799</th>
+      <td>799.00</td>
+      <td>58.281</td>
+      <td>37.624</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>800.01</td>
+      <td>58.668</td>
+      <td>37.592</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>801 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="from-google-sheets">
+<h3>From Google Sheets<a class="headerlink" href="#from-google-sheets" title="Permalink to this headline">¶</a></h3>
+<p>Google sheets are a convenient to collect and share data. There is a complete API and libraries to enable full read/write access to Google Sheets. But if the data is not confidential and can be temporarilty published to the web for public access, then it takes just a few steps and one line of Python to read the data as pandas DataFrame.</p>
+<p>The first step is publish the sheet to the web. In Google Sheets, select “File &gt; Share &gt; Publish to the Web”.</p>
+<p><img alt="" src="../_images/pandas-google-sheets-1.png" /></p>
+<p>In the dialog box, choose the “Link” tab. The choose the sheet to be published and “Comma-seperated values (.csv)” from the drop down menus. Click “Publish”.</p>
+<p><img alt="" src="../_images/pandas-google-sheets-2.png" /></p>
+<p>After confirming the choice to publish, copy the link url.  This url can be read by <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code> to create a pandas dataframe.</p>
+<p><img alt="" src="../_images/pandas-google-sheets-3.png" /></p>
+<p>Copy the url into the following cell to complete the operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheet_url</span> <span class="o">=</span> <span class="s2">&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=896527992&amp;single=true&amp;output=csv&quot;</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">sheet_url</span><span class="p">)</span>
+<span class="n">hx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Hot Flow (L/hr)</th>
+      <th>Cold Flow (L/hr)</th>
+      <th>Time</th>
+      <th>H Outlet</th>
+      <th>H Inlet</th>
+      <th>C Inlet</th>
+      <th>C Outlet</th>
+      <th>T5 (ｰC)</th>
+      <th>T6 (ｰC)</th>
+      <th>T7 (ｰC)</th>
+      <th>...</th>
+      <th>dQm/dt (kW)</th>
+      <th>cp2 (kJ/kg*K)</th>
+      <th>cp1 (kJ/kg*K)</th>
+      <th>dTm (ｰC)</th>
+      <th>k1 (kW/K*mｲ)</th>
+      <th>k2 (kW/K*mｲ)</th>
+      <th>km (kW/K*mｲ)</th>
+      <th>rho1 (kg/dmｳ)</th>
+      <th>rho2 (kg/dmｳ)</th>
+      <th>EFF (%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>651</td>
+      <td>798</td>
+      <td>32:08.1</td>
+      <td>37.3</td>
+      <td>56.4</td>
+      <td>15.5</td>
+      <td>30.8</td>
+      <td>41.8</td>
+      <td>18.8</td>
+      <td>45.5</td>
+      <td>...</td>
+      <td>14.29</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>23.6</td>
+      <td>10.703</td>
+      <td>13.305</td>
+      <td>8.673</td>
+      <td>0.989</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>651</td>
+      <td>798</td>
+      <td>32:07.8</td>
+      <td>37.2</td>
+      <td>56.3</td>
+      <td>15.4</td>
+      <td>30.8</td>
+      <td>41.8</td>
+      <td>18.8</td>
+      <td>45.5</td>
+      <td>...</td>
+      <td>14.29</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>23.6</td>
+      <td>10.678</td>
+      <td>13.329</td>
+      <td>8.671</td>
+      <td>0.989</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>651</td>
+      <td>798</td>
+      <td>32:07.6</td>
+      <td>37.2</td>
+      <td>56.3</td>
+      <td>15.4</td>
+      <td>30.8</td>
+      <td>41.8</td>
+      <td>18.8</td>
+      <td>45.5</td>
+      <td>...</td>
+      <td>14.25</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>23.6</td>
+      <td>10.654</td>
+      <td>13.329</td>
+      <td>8.639</td>
+      <td>0.989</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>650</td>
+      <td>512</td>
+      <td>29:13.0</td>
+      <td>41.4</td>
+      <td>56.4</td>
+      <td>15.6</td>
+      <td>34.7</td>
+      <td>45.5</td>
+      <td>20.3</td>
+      <td>48.4</td>
+      <td>...</td>
+      <td>11.39</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.7</td>
+      <td>10.862</td>
+      <td>8.483</td>
+      <td>6.884</td>
+      <td>0.989</td>
+      <td>0.997</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>650</td>
+      <td>512</td>
+      <td>29:12.3</td>
+      <td>41.4</td>
+      <td>56.4</td>
+      <td>15.6</td>
+      <td>34.7</td>
+      <td>45.5</td>
+      <td>20.3</td>
+      <td>48.4</td>
+      <td>...</td>
+      <td>11.35</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.7</td>
+      <td>10.814</td>
+      <td>8.482</td>
+      <td>6.866</td>
+      <td>0.989</td>
+      <td>0.997</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>650</td>
+      <td>512</td>
+      <td>29:12.1</td>
+      <td>41.4</td>
+      <td>56.4</td>
+      <td>15.6</td>
+      <td>34.7</td>
+      <td>45.5</td>
+      <td>20.3</td>
+      <td>48.4</td>
+      <td>...</td>
+      <td>11.30</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.7</td>
+      <td>10.814</td>
+      <td>8.410</td>
+      <td>6.837</td>
+      <td>0.987</td>
+      <td>0.996</td>
+      <td>140.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>655</td>
+      <td>201</td>
+      <td>26:17.3</td>
+      <td>47.9</td>
+      <td>56.4</td>
+      <td>16.1</td>
+      <td>42.3</td>
+      <td>50.4</td>
+      <td>24.2</td>
+      <td>52.0</td>
+      <td>...</td>
+      <td>7.75</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.7</td>
+      <td>10.824</td>
+      <td>4.951</td>
+      <td>5.105</td>
+      <td>0.987</td>
+      <td>0.996</td>
+      <td>137.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>655</td>
+      <td>201</td>
+      <td>26:17.1</td>
+      <td>47.9</td>
+      <td>56.4</td>
+      <td>16.2</td>
+      <td>42.3</td>
+      <td>50.6</td>
+      <td>24.2</td>
+      <td>52.0</td>
+      <td>...</td>
+      <td>7.60</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.7</td>
+      <td>10.751</td>
+      <td>4.805</td>
+      <td>5.004</td>
+      <td>0.987</td>
+      <td>0.996</td>
+      <td>132.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>655</td>
+      <td>201</td>
+      <td>26:16.8</td>
+      <td>47.9</td>
+      <td>56.4</td>
+      <td>16.2</td>
+      <td>42.3</td>
+      <td>50.6</td>
+      <td>24.2</td>
+      <td>52.1</td>
+      <td>...</td>
+      <td>7.49</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.7</td>
+      <td>10.751</td>
+      <td>4.660</td>
+      <td>4.933</td>
+      <td>0.990</td>
+      <td>0.998</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>503</td>
+      <td>795</td>
+      <td>20:22.3</td>
+      <td>34.5</td>
+      <td>56.4</td>
+      <td>15.5</td>
+      <td>29.1</td>
+      <td>39.2</td>
+      <td>18.1</td>
+      <td>43.3</td>
+      <td>...</td>
+      <td>12.62</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>22.9</td>
+      <td>8.296</td>
+      <td>13.285</td>
+      <td>7.882</td>
+      <td>0.990</td>
+      <td>0.998</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>503</td>
+      <td>795</td>
+      <td>20:22.1</td>
+      <td>34.5</td>
+      <td>56.4</td>
+      <td>15.5</td>
+      <td>29.1</td>
+      <td>39.2</td>
+      <td>18.1</td>
+      <td>43.3</td>
+      <td>...</td>
+      <td>12.64</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>22.9</td>
+      <td>8.345</td>
+      <td>13.260</td>
+      <td>7.897</td>
+      <td>0.990</td>
+      <td>0.998</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>503</td>
+      <td>795</td>
+      <td>20:21.8</td>
+      <td>34.5</td>
+      <td>56.4</td>
+      <td>15.5</td>
+      <td>29.1</td>
+      <td>39.2</td>
+      <td>18.1</td>
+      <td>43.3</td>
+      <td>...</td>
+      <td>12.61</td>
+      <td>4.183</td>
+      <td>4.179</td>
+      <td>22.9</td>
+      <td>8.321</td>
+      <td>13.260</td>
+      <td>7.885</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>500</td>
+      <td>498</td>
+      <td>18:25.1</td>
+      <td>38.6</td>
+      <td>56.4</td>
+      <td>15.8</td>
+      <td>32.9</td>
+      <td>42.8</td>
+      <td>19.4</td>
+      <td>46.2</td>
+      <td>...</td>
+      <td>11.24</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.1</td>
+      <td>8.290</td>
+      <td>10.163</td>
+      <td>6.957</td>
+      <td>0.989</td>
+      <td>0.997</td>
+      <td>119.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>500</td>
+      <td>498</td>
+      <td>18:24.8</td>
+      <td>38.6</td>
+      <td>56.4</td>
+      <td>15.8</td>
+      <td>33.0</td>
+      <td>42.8</td>
+      <td>19.4</td>
+      <td>46.2</td>
+      <td>...</td>
+      <td>11.18</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.2</td>
+      <td>8.338</td>
+      <td>10.017</td>
+      <td>6.906</td>
+      <td>0.989</td>
+      <td>0.997</td>
+      <td>116.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>500</td>
+      <td>498</td>
+      <td>18:24.6</td>
+      <td>38.7</td>
+      <td>56.4</td>
+      <td>15.8</td>
+      <td>33.0</td>
+      <td>42.9</td>
+      <td>19.4</td>
+      <td>46.2</td>
+      <td>...</td>
+      <td>11.06</td>
+      <td>4.182</td>
+      <td>4.179</td>
+      <td>23.2</td>
+      <td>8.314</td>
+      <td>9.846</td>
+      <td>6.834</td>
+      <td>0.989</td>
+      <td>0.997</td>
+      <td>115.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>502</td>
+      <td>199</td>
+      <td>15:05.3</td>
+      <td>45.8</td>
+      <td>56.2</td>
+      <td>16.2</td>
+      <td>41.3</td>
+      <td>49.0</td>
+      <td>23.6</td>
+      <td>51.0</td>
+      <td>...</td>
+      <td>5.97</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.4</td>
+      <td>8.398</td>
+      <td>3.301</td>
+      <td>3.992</td>
+      <td>0.988</td>
+      <td>0.996</td>
+      <td>94.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>502</td>
+      <td>199</td>
+      <td>15:05.1</td>
+      <td>45.8</td>
+      <td>56.2</td>
+      <td>16.2</td>
+      <td>41.3</td>
+      <td>49.0</td>
+      <td>23.6</td>
+      <td>51.0</td>
+      <td>...</td>
+      <td>5.97</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.4</td>
+      <td>8.374</td>
+      <td>3.301</td>
+      <td>3.986</td>
+      <td>0.988</td>
+      <td>0.996</td>
+      <td>94.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>502</td>
+      <td>199</td>
+      <td>15:04.8</td>
+      <td>45.8</td>
+      <td>56.2</td>
+      <td>16.2</td>
+      <td>41.3</td>
+      <td>49.0</td>
+      <td>23.6</td>
+      <td>51.0</td>
+      <td>...</td>
+      <td>5.99</td>
+      <td>4.180</td>
+      <td>4.180</td>
+      <td>21.5</td>
+      <td>8.374</td>
+      <td>3.350</td>
+      <td>3.992</td>
+      <td>0.988</td>
+      <td>0.996</td>
+      <td>96.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>205</td>
+      <td>801</td>
+      <td>10:02.8</td>
+      <td>25.2</td>
+      <td>55.0</td>
+      <td>15.4</td>
+      <td>23.2</td>
+      <td>29.6</td>
+      <td>16.2</td>
+      <td>34.7</td>
+      <td>...</td>
+      <td>7.20</td>
+      <td>4.185</td>
+      <td>4.179</td>
+      <td>18.7</td>
+      <td>3.456</td>
+      <td>13.275</td>
+      <td>5.503</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>205</td>
+      <td>801</td>
+      <td>10:02.6</td>
+      <td>25.2</td>
+      <td>55.1</td>
+      <td>15.4</td>
+      <td>23.2</td>
+      <td>29.7</td>
+      <td>16.2</td>
+      <td>34.7</td>
+      <td>...</td>
+      <td>7.22</td>
+      <td>4.185</td>
+      <td>4.179</td>
+      <td>18.7</td>
+      <td>3.480</td>
+      <td>13.275</td>
+      <td>5.523</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>205</td>
+      <td>801</td>
+      <td>10:02.3</td>
+      <td>25.2</td>
+      <td>55.1</td>
+      <td>15.4</td>
+      <td>23.2</td>
+      <td>29.7</td>
+      <td>16.2</td>
+      <td>34.6</td>
+      <td>...</td>
+      <td>7.19</td>
+      <td>4.185</td>
+      <td>4.179</td>
+      <td>18.7</td>
+      <td>3.456</td>
+      <td>13.251</td>
+      <td>5.498</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>204</td>
+      <td>500</td>
+      <td>07:06.6</td>
+      <td>28.5</td>
+      <td>55.0</td>
+      <td>15.6</td>
+      <td>26.5</td>
+      <td>33.1</td>
+      <td>17.1</td>
+      <td>37.8</td>
+      <td>...</td>
+      <td>6.41</td>
+      <td>4.184</td>
+      <td>4.179</td>
+      <td>19.7</td>
+      <td>3.478</td>
+      <td>8.398</td>
+      <td>4.654</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>99.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>204</td>
+      <td>500</td>
+      <td>07:06.3</td>
+      <td>28.5</td>
+      <td>55.0</td>
+      <td>15.6</td>
+      <td>26.5</td>
+      <td>33.1</td>
+      <td>17.1</td>
+      <td>37.8</td>
+      <td>...</td>
+      <td>6.38</td>
+      <td>4.184</td>
+      <td>4.179</td>
+      <td>19.7</td>
+      <td>3.454</td>
+      <td>8.398</td>
+      <td>4.638</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>204</td>
+      <td>500</td>
+      <td>07:06.1</td>
+      <td>28.5</td>
+      <td>55.0</td>
+      <td>15.6</td>
+      <td>26.5</td>
+      <td>33.1</td>
+      <td>17.1</td>
+      <td>37.8</td>
+      <td>...</td>
+      <td>6.37</td>
+      <td>4.184</td>
+      <td>4.179</td>
+      <td>19.7</td>
+      <td>3.454</td>
+      <td>8.374</td>
+      <td>4.631</td>
+      <td>0.992</td>
+      <td>0.998</td>
+      <td>100.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>24 rows × 27 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="from-python">
+<h3>From Python<a class="headerlink" href="#from-python" title="Permalink to this headline">¶</a></h3>
+<p>Pandas dataframes can be created directly in Python. Here we demonstrate use of a Python dictionary to create a dataframe with data for variables computed as numpy arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">df_np</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;sin&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;cos&quot;</span><span class="p">:</span> <span class="n">c</span><span class="p">})</span>
+<span class="n">df_np</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time</th>
+      <th>sin</th>
+      <th>cos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.05</td>
+      <td>0.049979</td>
+      <td>0.998750</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.10</td>
+      <td>0.099833</td>
+      <td>0.995004</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.15</td>
+      <td>0.149438</td>
+      <td>0.988771</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.20</td>
+      <td>0.198669</td>
+      <td>0.980067</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>196</th>
+      <td>9.80</td>
+      <td>-0.366479</td>
+      <td>-0.930426</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>9.85</td>
+      <td>-0.412523</td>
+      <td>-0.910947</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>9.90</td>
+      <td>-0.457536</td>
+      <td>-0.889191</td>
+    </tr>
+    <tr>
+      <th>199</th>
+      <td>9.95</td>
+      <td>-0.501405</td>
+      <td>-0.865213</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>10.00</td>
+      <td>-0.544021</td>
+      <td>-0.839072</td>
+    </tr>
+  </tbody>
+</table>
+<p>201 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="accessing-data-from-dataframes">
+<h2>Accessing Data from DataFrames<a class="headerlink" href="#accessing-data-from-dataframes" title="Permalink to this headline">¶</a></h2>
+<p>The core object in pandas is the <strong>DataFrame</strong>. For “Tidy Data”, a DataFrame will be collection of columns, each column containing observations of a single, unique variable. Each row is one observation of all variables.</p>
+<p>The <strong>index</strong> assigns a unique label to each row/observation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RangeIndex(start=0, stop=801, step=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The names of the <strong>columns</strong> are given by <code class="docutils literal notranslate"><span class="pre">.columns</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Time&#39;, &#39;T1&#39;, &#39;T2&#39;, &#39;Q1&#39;, &#39;Q2&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each column forms a <code class="docutils literal notranslate"><span class="pre">Series</span></code> comprised of all observations of a variable. There are several common ways to access the data series for a variable. These produce the same result.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;T1&quot;]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.T1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">&quot;T1&quot;]</span></code></p></li>
+</ul>
+<p>Which you choose depends on situation and context.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      21.543
+1      21.543
+2      21.543
+3      21.543
+4      21.543
+        ...  
+796    58.281
+797    58.120
+798    58.378
+799    58.281
+800    58.668
+Name: T1, Length: 801, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.loc[row,</span> <span class="pre">column]</span></code> is used to extract slices of the dataframe. A single value is accessed by row index and column label.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.543
+</pre></div>
+</div>
+</div>
+</div>
+<p>To extract values for multiple variables from a single observation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T1    21.543
+T2    20.931
+Name: 3, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>To extract a range of observations of one or more variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>T1</th>
+      <th>T2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>21.543</td>
+      <td>20.931</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>21.543</td>
+      <td>20.931</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>21.543</td>
+      <td>20.931</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Observations can be selected by conditions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&lt;=</span> <span class="mi">110</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>100</th>
+      <td>100.01</td>
+      <td>36.367</td>
+      <td>22.929</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>101.00</td>
+      <td>36.399</td>
+      <td>23.090</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>102.01</td>
+      <td>36.689</td>
+      <td>23.154</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>103.01</td>
+      <td>36.689</td>
+      <td>23.154</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>104.01</td>
+      <td>37.012</td>
+      <td>23.187</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>105.01</td>
+      <td>37.012</td>
+      <td>23.154</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>106.00</td>
+      <td>37.173</td>
+      <td>23.154</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>107.00</td>
+      <td>37.334</td>
+      <td>23.187</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>108.00</td>
+      <td>37.398</td>
+      <td>23.380</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>109.01</td>
+      <td>37.656</td>
+      <td>23.412</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>110.00</td>
+      <td>37.656</td>
+      <td>23.412</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="visualizing-data">
+<h2>Visualizing Data<a class="headerlink" href="#visualizing-data" title="Permalink to this headline">¶</a></h2>
+<p>Pandas provides convenient tools for displaying data in tabular and graphical formats.</p>
+<div class="section" id="tabular-display">
+<h3>Tabular Display<a class="headerlink" href="#tabular-display" title="Permalink to this headline">¶</a></h3>
+<p>The quickest way to display a dataframe as a table is with <code class="docutils literal notranslate"><span class="pre">display()</span></code>. Additional styling and formating options are available through a dataframe’s <code class="docutils literal notranslate"><span class="pre">.style</span></code> property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.01</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.01</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.00</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>796.00</td>
+      <td>58.281</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>797</th>
+      <td>797.01</td>
+      <td>58.120</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>798</th>
+      <td>798.01</td>
+      <td>58.378</td>
+      <td>37.560</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>799</th>
+      <td>799.00</td>
+      <td>58.281</td>
+      <td>37.624</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>800.01</td>
+      <td>58.668</td>
+      <td>37.592</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>801 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>For development it is often enough to view just the first few rows or last few rows of a dataframe. The dataframe methods <code class="docutils literal notranslate"><span class="pre">.head()</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> provide this service.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.00</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.01</td>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.01</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.00</td>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Time</th>
+      <th>T1</th>
+      <th>T2</th>
+      <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>796</th>
+      <td>796.00</td>
+      <td>58.281</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>797</th>
+      <td>797.01</td>
+      <td>58.120</td>
+      <td>37.656</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>798</th>
+      <td>798.01</td>
+      <td>58.378</td>
+      <td>37.560</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>799</th>
+      <td>799.00</td>
+      <td>58.281</td>
+      <td>37.624</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>800.01</td>
+      <td>58.668</td>
+      <td>37.592</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="plotting">
+<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h3>
+<p>An extensive variety of plots can be constructed using a dataframe’s <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. Many of the usual Matploblib plotting commands can be accessed through options passed to <code class="docutils literal notranslate"><span class="pre">.plot()</span></code>. For many routine applications, a single call of a dataframe’s <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method can replace many lines of Python code using Matplotlib.</p>
+<p>For example, to plot all observations for a single variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">T1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_31_1.png" src="../_images/A.05-Getting-Started-with-Pandas_31_1.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method will often be used to plot one or more variables on the vertical ‘y’ axis as a function of another variable on the horizontal ‘x’ axes. Additional options specify line styles, grid, labels, titles, and much more.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span><span class="s1">&#39;rx&#39;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">},</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;TC Lab&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;TC Lab&#39;}, xlabel=&#39;Time&#39;, ylabel=&#39;deg C&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_33_1.png" src="../_images/A.05-Getting-Started-with-Pandas_33_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;]],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_34_1.png" src="../_images/A.05-Getting-Started-with-Pandas_34_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&gt;</span> <span class="mi">570</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span><span class="s2">&quot;s:&quot;</span><span class="p">},</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_35_1.png" src="../_images/A.05-Getting-Started-with-Pandas_35_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plots">
+<h3>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;T2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;T1&#39;, ylabel=&#39;T2&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_37_1.png" src="../_images/A.05-Getting-Started-with-Pandas_37_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="statistical-plots">
+<h3>Statistical Plots<a class="headerlink" href="#statistical-plots" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:title={&#39;center&#39;:&#39;T1&#39;}&gt;,
+        &lt;AxesSubplot:title={&#39;center&#39;:&#39;T2&#39;}&gt;]], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_39_1.png" src="../_images/A.05-Getting-Started-with-Pandas_39_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-variables">
+<h2>Working with Variables<a class="headerlink" href="#working-with-variables" title="Permalink to this headline">¶</a></h2>
+<p>Pandas provide are an effective data structure for calculations with data.</p>
+<p>To illustrate, here we have temperature and flow data for a double pipe heat exchanger</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Hot Flow (L/hr)&#39;, &#39;Cold Flow (L/hr)&#39;, &#39;Time&#39;, &#39;H Outlet&#39;, &#39;H Inlet&#39;,
+       &#39;C Inlet&#39;, &#39;C Outlet&#39;, &#39;T5 (ｰC)&#39;, &#39;T6 (ｰC)&#39;, &#39;T7 (ｰC)&#39;, &#39;T8 (ｰC)&#39;,
+       &#39;T9 (ｰC)&#39;, &#39;T10 (ｰC)&#39;, &#39;dp1 (mbar)&#39;, &#39;dp2 (mbar)&#39;, &#39;dQ1/dt (kW)&#39;,
+       &#39;dQ2/dt (kW)&#39;, &#39;dQm/dt (kW)&#39;, &#39;cp2 (kJ/kg*K)&#39;, &#39;cp1 (kJ/kg*K)&#39;,
+       &#39;dTm (ｰC)&#39;, &#39;k1 (kW/K*mｲ)&#39;, &#39;k2 (kW/K*mｲ)&#39;, &#39;km (kW/K*mｲ)&#39;,
+       &#39;rho1 (kg/dmｳ)&#39;, &#39;rho2 (kg/dmｳ)&#39;, &#39;EFF (%)&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># heat capacity of water </span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mf">4.18</span> <span class="c1"># kJ/ L / C</span>
+
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Cp</span> <span class="o">*</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Inlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Outlet&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">3600</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Cp</span> <span class="o">*</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Outlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Inlet&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">3600</span>
+
+<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">,</span> <span class="s2">&quot;Qc&quot;</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Heat Balances&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Heat Balances&#39;}&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_42_1.png" src="../_images/A.05-Getting-Started-with-Pandas_42_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">dT1</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Inlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Outlet&quot;</span><span class="p">]</span>
+<span class="n">dT0</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Outlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Inlet&quot;</span><span class="p">]</span>
+
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;LMTD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dT1</span> <span class="o">-</span> <span class="n">dT0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dT1</span><span class="o">/</span><span class="n">dT0</span><span class="p">)</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;LMTD&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     23.649139
+1     23.601683
+2     23.601683
+3     23.690900
+4     23.690900
+5     23.690900
+6     21.763415
+7     21.724590
+8     21.724590
+9     22.899854
+10    22.899854
+11    22.899854
+12    23.148236
+13    23.098701
+14    23.149100
+15    21.415674
+16    21.415674
+17    21.415674
+18    18.690256
+19    18.725265
+20    18.725265
+21    19.680153
+22    19.680153
+23    19.680153
+Name: LMTD, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">Qh</span> <span class="o">+</span> <span class="n">hx</span><span class="o">.</span><span class="n">Qc</span><span class="p">)</span><span class="o">/</span><span class="n">hx</span><span class="o">.</span><span class="n">LMTD</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Ac&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Ah&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;R ~ Ac + Ah&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">hx</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Intercept      0.141716
+Ac           115.292199
+Ah           186.346764
+dtype: float64
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      R   R-squared:                       0.997
+Model:                            OLS   Adj. R-squared:                  0.997
+Method:                 Least Squares   F-statistic:                     3711.
+Date:                Sun, 30 Jan 2022   Prob (F-statistic):           1.70e-27
+Time:                        23:10:39   Log-Likelihood:                 44.929
+No. Observations:                  24   AIC:                            -83.86
+Df Residuals:                      21   BIC:                            -80.32
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      0.1417      0.032      4.425      0.000       0.075       0.208
+Ac           115.2922      2.465     46.762      0.000     110.165     120.419
+Ah           186.3468      2.233     83.445      0.000     181.703     190.991
+==============================================================================
+Omnibus:                        9.087   Durbin-Watson:                   0.894
+Prob(Omnibus):                  0.011   Jarque-Bera (JB):                2.268
+Skew:                           0.227   Prob(JB):                        0.322
+Kurtosis:                       1.564   Cond. No.                         334.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA_pred&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mf">0.14</span> <span class="o">+</span> <span class="mf">115.3</span><span class="o">*</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Ac&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">186.3</span><span class="o">*</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Ah&quot;</span><span class="p">])</span>
+<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="s2">&quot;UA_pred&quot;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/A.05-Getting-Started-with-Pandas_46_1.png" src="../_images/A.05-Getting-Started-with-Pandas_46_1.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="A.00-Python-Tutorials.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Python Tutorials</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="A.10-Coding-Controllers-with-Python-Generators.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coding Controllers with Python Generators</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
