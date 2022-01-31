@@ -425,6 +425,8 @@ hx["R_pred"] = hx["Rt"] + hx["Rh"] + hx["Rc"]
 hx[["R", "R_pred", "Rt", "Rh", "Rc"]]
 
 
+# ### Comparison of Model to Experimental Data
+
 # In[189]:
 
 
@@ -433,6 +435,8 @@ hx.plot(y = ["UA", "UA_pred"], grid=True, title="Heat Transfer Coefficient")
 
 
 # ## Concluding Remarks
+# 
+# This notobook is a basic introduction to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive. 
 
 # In[ ]:
 
