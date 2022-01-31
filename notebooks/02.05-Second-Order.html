@@ -217,7 +217,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment 3: Relay and PI Control
+     3.6. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
@@ -602,6 +602,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.05-Getting-Started-with-Pandas.html">
+     Getting Started with Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../python/A.10-Coding-Controllers-with-Python-Generators.html">
      Coding Controllers with Python Generators
     </a>
@@ -819,13 +824,13 @@
 <div class="section" id="dynamics-of-the-heater-sensor-system">
 <h2><span class="section-number">2.5.1. </span>Dynamics of the Heater/Sensor System<a class="headerlink" href="#dynamics-of-the-heater-sensor-system" title="Permalink to this headline">¶</a></h2>
 <p>The previous results are not yet fully satisfactory. We’re still missing the initial ‘lag’ in response of the measured temperature.</p>
-<p>For this third model, we consider the possibility that the heater and sensor may not be at the same temperature. In other words, that the heater/sensor assembly is not at a uniform temperature. To account for this possibility, we introduce <span class="math notranslate nohighlight">\(T_{H,1}\)</span> to denote the temperature of heater one and <span class="math notranslate nohighlight">\(T_{S,1}\)</span> to denote the temperature of the corresponding sensor. We’ll further assume that sensor mainly exchanges heat with the heater, and the dominant heat transfer to the surroundings is through the heat sink attached to the heater.</p>
+<p>For this model we consider the possibility that the heater and sensor may not be at the same temperature. To account for this possibility, we introduce <span class="math notranslate nohighlight">\(T_{H,1}\)</span> to denote the temperature of heater one and <span class="math notranslate nohighlight">\(T_{S,1}\)</span> to denote the temperature of the corresponding sensor. We’ll further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is through the heat sink attached to the heater.</p>
 <p>This motivates a model</p>
 <p>\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 \end{align}</p>
-<p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, and <span class="math notranslate nohighlight">\(U_b\)</span> is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.</p>
+<p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the heat capacities of the heater and sensor, respectively, and <span class="math notranslate nohighlight">\(U_b\)</span> is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.</p>
 <p>\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1})
@@ -846,22 +851,18 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>        <span class="c1"># watts / (units P1 * percent U1)</span>
 <span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>               <span class="c1"># P1 units</span>
 <span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
-<span class="n">u1</span> <span class="o">=</span> <span class="mi">50</span>
 
-
-
-<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;data/Model_Data.csv&quot;</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://jckantor.github.io/cbe30338-2021/&quot;</span> <span class="o">+</span> <span class="n">data_file</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="c1"># read data file. </span>
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="n">t_expt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
 <span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-
 
 <span class="c1"># adjustable parameters</span>
 <span class="n">CpH</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># joules/deg C</span>
 <span class="n">CpS</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># joules/deg C</span>
 <span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
 <span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
-
 
 <span class="k">def</span> <span class="nf">model_energy_second_order</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="c1"># unpack the adjustable parameters</span>
@@ -870,7 +871,7 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
     <span class="c1"># model solution</span>
     <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="n">T1H</span><span class="p">,</span> <span class="n">T1S</span> <span class="o">=</span> <span class="n">y</span>
-        <span class="n">dT1H</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1S</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ua</span><span class="o">*</span><span class="n">T_amb</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
+        <span class="n">dT1H</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1S</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">U1</span> <span class="o">+</span> <span class="n">Ua</span><span class="o">*</span><span class="n">T_amb</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
         <span class="n">dT1S</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">T1H</span> <span class="o">-</span> <span class="n">T1S</span><span class="p">)</span><span class="o">/</span><span class="n">CpS</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
 
@@ -884,63 +885,26 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
     <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_data</span><span class="p">(</span><span class="n">expt</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
         
-    <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">expt</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
     
-<span class="n">model_energy_second_order</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">model_energy_second_order</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">z3t28j296f98jdp1vqyplkz00000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_22612</span><span class="o">/</span><span class="mf">608552792.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">expt</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span> 
-<span class="ne">---&gt; </span><span class="mi">52</span> <span class="n">model_energy_second_order</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/ipykernel_22612/608552792.py</span> in <span class="ni">model_energy_second_order</span><span class="nt">(param, plot)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> 
-<span class="ne">---&gt; </span><span class="mi">40</span>     <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_expt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_expt</span><span class="p">)],</span> <span class="p">[</span><span class="n">T_amb</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_expt</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span> 
-<span class="g g-Whitespace">     </span><span class="mi">42</span>     <span class="c1"># create dataframe with predictions</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/ivp.py</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, args, **options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>         <span class="n">method</span> <span class="o">=</span> <span class="n">METHODS</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span> 
-<span class="ne">--&gt; </span><span class="mi">542</span>     <span class="n">solver</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">vectorized</span><span class="o">=</span><span class="n">vectorized</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span> 
-<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="k">if</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/rk.py</span> in <span class="ni">__init__</span><span class="nt">(self, fun, t0, y0, t_bound, max_step, rtol, atol, vectorized, first_step, **extraneous)</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>         <span class="bp">self</span><span class="o">.</span><span class="n">max_step</span> <span class="o">=</span> <span class="n">validate_max_step</span><span class="p">(</span><span class="n">max_step</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>         <span class="bp">self</span><span class="o">.</span><span class="n">rtol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">atol</span> <span class="o">=</span> <span class="n">validate_tol</span><span class="p">(</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">94</span>         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span>         <span class="k">if</span> <span class="n">first_step</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>             <span class="bp">self</span><span class="o">.</span><span class="n">h_abs</span> <span class="o">=</span> <span class="n">select_initial_step</span><span class="p">(</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">136</span>         <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">137</span>             <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">138</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_single</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">139</span> 
-<span class="g g-Whitespace">    </span><span class="mi">140</span>         <span class="bp">self</span><span class="o">.</span><span class="n">fun</span> <span class="o">=</span> <span class="n">fun</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/_ivp/base.py</span> in <span class="ni">fun_wrapped</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> 
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">def</span> <span class="nf">fun_wrapped</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">20</span>         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> 
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="k">return</span> <span class="n">fun_wrapped</span><span class="p">,</span> <span class="n">y0</span>
-
-<span class="nn">/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/ipykernel_22612/608552792.py</span> in <span class="ni">deriv</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span>         <span class="n">T1H</span><span class="p">,</span> <span class="n">T1S</span> <span class="o">=</span> <span class="n">y</span>
-<span class="ne">---&gt; </span><span class="mi">36</span>         <span class="n">dT1H</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1S</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">u1</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ua</span><span class="o">*</span><span class="n">T_amb</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>         <span class="n">dT1S</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">T1H</span> <span class="o">-</span> <span class="n">T1S</span><span class="p">)</span><span class="o">/</span><span class="n">CpS</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
-
-<span class="ne">TypeError</span>: &#39;int&#39; object is not callable
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time
+1.00     -0.543000
+2.01     -0.535029
+3.01     -0.512148
+4.00     -0.475868
+5.00     -0.427309
+            ...   
+796.00   -5.335340
+797.01   -5.173834
+798.01   -5.431413
+799.00   -5.334092
+800.01   -5.720880
+Name: T1, Length: 800, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -949,33 +913,34 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <h3><span class="section-number">2.5.1.1. </span>Best fit<a class="headerlink" href="#best-fit" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">model_energy_second_order</span><span class="p">,</span>  <span class="p">[</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">model_energy_second_order</span><span class="p">,</span>  <span class="p">[</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">])</span>
 <span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CpH = </span><span class="si">{</span><span class="n">CpH</span><span class="si">}</span><span class="s2">,  CpS = </span><span class="si">{</span><span class="n">CpS</span><span class="si">}</span><span class="s2">,   Ua = </span><span class="si">{</span><span class="n">Ua</span><span class="si">}</span><span class="s2">,  Ub = </span><span class="si">{</span><span class="n">Ub</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">model_energy_second_order</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">model_energy_second_order</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CpH = 2.1819127156760283,  CpS = 1.878312055293452,   Ua = 0.04956661570349656,  Ub = 0.021187799850674392
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CpH = 2.2888335491295524,  CpS = 2.3039928054444236,   Ua = 0.043567404080568334,  Ub = 0.03740603797495637
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Time
-0.0     -0.221000
-10.0     0.104481
-20.0     0.063797
-30.0    -0.007664
-40.0    -0.117127
-           ...   
-560.0   -0.289049
-570.0   -0.245878
-580.0   -0.203222
-590.0   -0.386367
-600.0    0.039925
-Name: T1, Length: 61, dtype: float64
+1.00     -0.543000
+2.01     -0.537311
+3.01     -0.520849
+4.00     -0.494547
+5.00     -0.458562
+            ...   
+796.00   -0.722437
+797.01   -0.560728
+798.01   -0.818011
+799.00   -0.720289
+800.01   -1.106541
+Name: T1, Length: 800, dtype: float64
 </pre></div>
 </div>
-<img alt="../_images/02.05-Second-Order_4_2.png" src="../_images/02.05-Second-Order_4_2.png" />
 </div>
 </div>
 </div>
