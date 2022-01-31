@@ -3,11 +3,11 @@
 
 # # Tidy Data and Pandas
 # 
-# [**Pandas**](https://pandas.pydata.org/) is the most popular and widely used Python library for data wrangling and analysis. Originally eveloped in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python. 
+# [**Pandas**](https://pandas.pydata.org/) is the most popular and widely used Python library for data wrangling and analysis. Developed just over 10 years ago in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python. 
 # 
-# T**idy Data** is a small set a of core principles for organizing data into tables that streamlines analysis and coding. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following "Tidy Data" principles means much less time "wrangling" data, short and clear Python code for analysis, and more time devoted to creating good data.
+# **Tidy Data** is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following "Tidy Data" principles means  less time "wrangling" data, short and clear Python code for analysis, and allows more time for capture good data and putting it to work.
 # 
-# The purpose of this notebook is to get you started using Tidy Data and Pandas. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal is to introduce a small part of the pandas library that can handle many routine tasks for data analysis.
+# The purpose of this notebook is to get you started using Pandas with Tidy Data. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal here is to introduce just enough of the pandas library to handle routine tasks for basic data analysis.
 # 
 # Some useful references
 # 
@@ -15,7 +15,6 @@
 # * [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper by Hadley Wickham.
 # * [Tidy Data](https://r4ds.had.co.nz/tidy-data.html?q=Tidy%20Data#non-tidy-data), Chapter 12 from R for Data Science.
 # * [13 Most Important Pandas Functions for Data Science](https://www.analyticsvidhya.com/blog/2021/05/pandas-functions-13-most-important/)
-# 
 
 # ## Tidy Data
 # 
@@ -436,7 +435,7 @@ hx.plot(y = ["UA", "UA_pred"], grid=True, title="Heat Transfer Coefficient")
 
 # ## Concluding Remarks
 # 
-# This notobook is a basic introduction to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive. 
+# Learning Pandas and data analysis is like learning to ride a bicycle. Once you have the enough knowledge to get going, the next steps are about practice and learning by doing. This notobook provides basic knowledge to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive.
 
 # In[ ]:
 
