@@ -3,6 +3,31 @@
 
 # # Second-order model
 
+# ## Data from a Step Test
+# 
+# Experiment 
+# 
+# | P1 | P1 | U1 | U2 |
+# | :--: | :--: | :--: | :--: |
+# | 200 | 100 | 50 | 0 |
+# 
+
+# In[10]:
+
+
+import pandas as pd
+
+data_file = "https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv"
+tc = pd.read_csv(data_file)
+tc.plot(x = "Time", figsize=(12, 4), grid=True, lw=2)
+
+
+# In[3]:
+
+
+df.plot(x="Time")
+
+
 # ## Dynamics of the Heater/Sensor System
 # 
 # The previous results are not yet fully satisfactory. We're still missing the initial 'lag' in response of the measured temperature. 

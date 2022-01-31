@@ -5,11 +5,11 @@
 # 
 # [**Pandas**](https://pandas.pydata.org/) is the most popular and widely used Python library for data wrangling and analysis. Developed just over 10 years ago in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python. 
 # 
-# **Tidy Data** is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following "Tidy Data" principles means  less time "wrangling" data, short and clear Python code for analysis, and allows more time for capture good data and putting it to work.
+# **Tidy Data** is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following "Tidy Data" principles means less time wrangling data, short and clear Python code for analysis, and more time to capture good data and gain insight..
 # 
-# The purpose of this notebook is to get you started using Pandas with Tidy Data. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal here is to introduce just enough of the pandas library to handle routine tasks for basic data analysis.
+# The purpose of this notebook is to get you started using Pandas with Tidy Data. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal here is to introduce just enough of the pandas library to handle routine data analysis tasks.
 # 
-# Some useful references
+# Some useful references:
 # 
 # * [Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
 # * [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper by Hadley Wickham.
@@ -42,7 +42,7 @@
 # 
 # For files stored in `.csv` format, a pandas **DataFrame** object is created with the [`read_csv(data_file)`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html). `data_file` is a string containing a url or the name of a local file. `read_csv()` function has many optional arguments, but for simple cases the path to the data file is often enough to do the job.
 
-# In[191]:
+# In[1]:
 
 
 import pandas as pd
@@ -72,7 +72,7 @@ display(df)
 # 
 # Copy the url into the following cell to complete the operation.
 
-# In[55]:
+# In[2]:
 
 
 sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&single=true&output=csv"
@@ -84,7 +84,7 @@ hx
 # 
 # Pandas dataframes can be created directly in Python. Here we demonstrate use of a Python dictionary to create a dataframe with data for variables computed as numpy arrays.
 
-# In[54]:
+# In[3]:
 
 
 import numpy as np
@@ -249,9 +249,9 @@ df[["T1", "T2"]].hist(bins=30, figsize=(10, 3))
 
 # ### Tidy Data
 # 
-# The student group designed a series of experiments testing high (H), medium (M), and low (L) flowrates for both the hot and cold streams, a total of nine flowrate combinations. For each combination they reported data for three repeated observations. From this data they intend to compute the overall heat transfer coefficient $UA$, and attempt to fit a regression model for the heat transfer coefficients as a function of the flowrates.
+# The student group designed a series of experiments measuring the performance of the heat exchanger to high (H), medium (M), and low (L) flowrates for both the hot and cold streams --- a total of nine flowrate combinations. For each combination they reported data for three repeated observations. [A portion of their data is available on Google Sheets](https://docs.google.com/spreadsheets/d/1wuJq3B4z0tmTIsRpm5zZUP-PBBxT6OpuJKeBlQcQ4Z0/edit?usp=sharing). From this data they intend to compute the overall heat transfer coefficient $UA$, and attempt to fit a regression model for the heat transfer coefficients as a function of the flowrates.
 # 
-# A portion of the data collected by the students is presented in this screenshot
+# A screenshot of the data collected by the students is given below.
 # 
 # ![](figures/pandas-google-sheets-4.png)
 # 
@@ -274,7 +274,7 @@ df[["T1", "T2"]].hist(bins=30, figsize=(10, 3))
 # 
 # The raw data was copied to a new sheet in the same Google Sheets file, edited to conform with Tidy Data, and a link created using the procedures outlined above for reading data from Google Sheets. The data is read in the following cell.
 
-# In[96]:
+# In[20]:
 
 
 hx = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&single=true&output=csv")
@@ -294,7 +294,7 @@ hx.head()
 # 
 # The next cell creates two new calculated variables in the dataframe for $Q_h$ and $Q_c$, and uses the pandas plotting facility to visualize the results. This calculation takes advantage of the "one variable per column" rule of Tidy Data which enables calculations for all observations to be done in a single line of code.
 
-# In[97]:
+# In[21]:
 
 
 # heat capacity of water 
@@ -328,7 +328,7 @@ hx.plot(y = ["Qh", "Qc"], ylim = (0, 15), grid=True, xlabel="Observation", ylabe
 # \end{align*}
 # $$
 
-# In[98]:
+# In[22]:
 
 
 dT1 = hx["H Inlet"] - hx["C Outlet"]
@@ -343,7 +343,7 @@ hx.plot(y="UA", xlabel="Observation", ylabel="kW/deg C", grid=True)
 # 
 # The data clearly demonstrate that the heat transfer coefficient in the double pipe heat exchanger depends on flowrates of both the cold and hot liquid streams. We can see this by inspecting the data.
 
-# In[104]:
+# In[23]:
 
 
 hx[["Flow Rate H", "Flow Rate C", "Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]]
@@ -351,14 +351,14 @@ hx[["Flow Rate H", "Flow Rate C", "Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]]
 
 # The replicated measurements provide an opportunity to compute averages. Here we use the pandas `.groupby()` function to group observations and compute means. The data will be used to plot results, so we'll save the results of these calculations as a new dataframe for reuse.
 
-# In[171]:
+# In[24]:
 
 
 sx = hx.groupby(["Flow Rate H", "Flow Rate C"]).mean()[["Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]]
 sx
 
 
-# In[173]:
+# In[25]:
 
 
 import matplotlib.pyplot as plt
@@ -368,7 +368,7 @@ sx.sort_values("Cold Flow (L/hr)").groupby("Flow Rate H").plot(x = "Cold Flow (L
                                                                style={"UA": 'ro-'}, ax=ax)
 
 
-# In[174]:
+# In[26]:
 
 
 fig, ax = plt.subplots(1, 1)
@@ -395,7 +395,7 @@ sx.sort_values("Hot Flow (L/hr)").groupby("Flow Rate C").plot(x = "Hot Flow (L/h
 # This suggests a linear regression for $R = \frac{1}{UA}$ in terms of $X_h = \dot{q}_h^{-0.8}$ and $X_c  = \dot{q}_c^{-0.8}$.
 # 
 
-# In[185]:
+# In[27]:
 
 
 hx["R"] = 1.0/hx["UA"]
@@ -403,7 +403,7 @@ hx["Xh"] = hx["Hot Flow (L/hr)"]**(-0.8)
 hx["Xc"] = hx["Cold Flow (L/hr)"]**(-0.8)
 
 
-# In[186]:
+# In[28]:
 
 
 import statsmodels.formula.api as sm
@@ -413,7 +413,7 @@ print(result.params)
 print(result.summary())
 
 
-# In[187]:
+# In[29]:
 
 
 hx["Rh"] = 115.3 * hx["Xh"]
@@ -426,7 +426,7 @@ hx[["R", "R_pred", "Rt", "Rh", "Rc"]]
 
 # ### Comparison of Model to Experimental Data
 
-# In[189]:
+# In[30]:
 
 
 hx["UA_pred"] = 1/hx["R_pred"]
