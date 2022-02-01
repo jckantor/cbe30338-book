@@ -328,13 +328,15 @@ hx.plot(y = ["Qh", "Qc"], ylim = (0, 15), grid=True, xlabel="Observation", ylabe
 # \end{align*}
 # $$
 
-# In[22]:
+# In[31]:
 
 
-dT1 = hx["H Inlet"] - hx["C Outlet"]
 dT0 = hx["H Outlet"] - hx["C Inlet"]
+dT1 = hx["H Inlet"] - hx["C Outlet"]
 hx["LMTD"] = (dT1 - dT0) / np.log(dT1/dT0)
-hx["UA"] =  0.5*(hx.Qh + hx.Qc)/hx.LMTD
+
+Q = (hx.Qh + hx.Qc)/2
+hx["UA"] =  Q/hx.LMTD
 
 hx.plot(y="UA", xlabel="Observation", ylabel="kW/deg C", grid=True)
 
@@ -435,7 +437,9 @@ hx.plot(y = ["UA", "UA_pred"], grid=True, title="Heat Transfer Coefficient")
 
 # ## Concluding Remarks
 # 
-# Learning Pandas and data analysis is like learning to ride a bicycle. Once you have the enough knowledge to get going, the next steps are about practice and learning by doing. This notobook provides basic knowledge to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive.
+# Learning Pandas and data analysis is like learning to ride a bicycle. Once you have the enough knowledge to get going, the next steps are about practice and learning by doing. 
+# 
+# This notobook provides basic knowledge to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive. The next steps are to put these tools work on your data analaysis tasks, and explore other elements of the pandas library that can be useful in your work.
 
 # In[ ]:
 

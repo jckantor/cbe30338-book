@@ -1,38 +1,36 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Second-order model
+# # Higer-order models
 
-# ## Data from a Step Test
+# ## Step Test
 # 
-# Experiment 
+# Using a Temperature Control Lab device initially at steady state at ambient room temperature, the following device settings were used to induce a step response in $T_1$ and $T_2$.  
 # 
 # | P1 | P1 | U1 | U2 |
 # | :--: | :--: | :--: | :--: |
 # | 200 | 100 | 50 | 0 |
 # 
+# Data was recorded for 800 seconds and saved to a .csv data file. Some noise and data dropouts are evident in the data. The data file is accessible at the link given in the code cell below. 
+# 
+# The challenge is to develop a first-principles models that reproduces the system measured response shown below.
 
-# In[10]:
+# In[23]:
 
 
 import pandas as pd
 
 data_file = "https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv"
-tc = pd.read_csv(data_file)
-tc.plot(x = "Time", figsize=(12, 4), grid=True, lw=2)
+data = pd.read_csv(data_file)
+data.plot(x = "Time", y=["T1", "T2"], figsize=(10, 3), grid=True, lw=2, ylabel="deg C")
+data.plot(x = "Time", y=["Q1", "Q2"], figsize=(10, 3), grid=True, lw=2, ylabel="%")
 
 
-# In[3]:
-
-
-df.plot(x="Time")
-
-
-# ## Dynamics of the Heater/Sensor System
+# ## Two-State Model
 # 
-# The previous results are not yet fully satisfactory. We're still missing the initial 'lag' in response of the measured temperature. 
+# ### Dynamics of the Heater/Sensor System
 # 
-# For this model we consider the possibility that the heater and sensor may not be at the same temperature. To account for this possibility, we introduce $T_{H,1}$ to denote the temperature of heater one and $T_{S,1}$ to denote the temperature of the corresponding sensor. We'll further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is through the heat sink attached to the heater.
+# For this model we no longer assume  the heater and sensor are at the same temperature. To account for differing temperatures, we introduce $T_{H,1}$ to denote the temperature of heater one and $T_{S,1}$ to denote the temperature of the corresponding sensor. We further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is dominated by the heat sink attached to the heater.
 # 
 # This motivates a model
 # 
@@ -52,12 +50,10 @@ df.plot(x="Time")
 # 
 # $$T_1 = T_{S,1}$$
 
-# In[13]:
+# In[45]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 import  pandas as pd
 
@@ -67,19 +63,16 @@ alpha = 0.00016        # watts / (units P1 * percent U1)
 P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
 
-# read data file. 
-data_file = "https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv"
-data = pd.read_csv(data_file).set_index("Time")[1:]
-t_expt = data.index
-T1 = data['T1'].values
-
 # adjustable parameters
 CpH = 5                # joules/deg C
 CpS = 1                # joules/deg C
 Ua = 0.05              # watts/deg C
 Ub = 0.05              # watts/deg C
 
-def model_energy_second_order(param, plot=False):
+# extract data from experiment
+t_expt = df["Time"]
+
+def tclab_model2(param, plot=False):
     # unpack the adjustable parameters
     CpH, CpS, Ua, Ub = param
 
@@ -93,30 +86,70 @@ def model_energy_second_order(param, plot=False):
     soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [T_amb, T_amb], t_eval=t_expt) 
     
     # create dataframe with predictions
-    pred = pd.DataFrame(columns=["T1", "T2", "Q1", "Q2"], index=t_expt)
-    pred["T1"] = soln.y[1]
-
-    # plot solution
-    if plot:
-        ax = plot_data(expt, pred)
+    pred = pd.DataFrame(columns=["Time"])
+    pred["TH1"] = soln.y[0]
+    pred["TS1"] = soln.y[1]
+    pred["Q1"] = U1
         
-    return pred["T1"] - data["T1"]
+    return pred
     
-model_energy_second_order([CpH, CpS, Ua, Ub], plot=False)
+pred = tclab_model2([CpH, CpS, Ua, Ub], plot=True)
+
+ax = data["T1"].plot()
+pred[["TS1", "TH1"]].plot(ax=ax)
 
 
-# ### Best fit
+# ### "Least Squares" Model Fitting
+# 
+# Fitting a model to data is a basic task in engineering, science, business, and a foundation of modern data sciences. For engineers the goal is to validate hypotheses about how a device works, then to enable simulation and design. In the data science model fitting may be almost completely empirical using black box models to develop predictive models of complex systems.
+# 
+# In this case we wish to find values for a small number of parameters that cause a model to replicate a measured response. One common measure of fit is the sum of sum of squares of residual difference between the model and data. For residuals modeled as independent and identically distributed random variables from a Gaussian distribution, minimizing the sum of squares has a strong theoretical foundation. So strong, in fact, the term "least squares" has become synonomous with model fitting and regression.
+# 
+# :::{admonition} Why is model fitting called "regression"?
+# 
+# Someone will have to explain to me why the word "regession" is use to the describe the task of fitting a model to data. After all, the textbook definition of regression is to return to a less advanced state, and the verb "to regress" has distinct negative connotations. Seems odd, doesn't it?
+# 
+# :::
+# 
+# The SciPy library includes a well-developed function [`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html) for this purpose. The name is a misnomoer because the function allows other common "loss" functions in addition to sum of squares. The simplest use of `least_squares` is to provide a function that, given values for the unknown parameters, creates a vector of residuals between a model and data. 
+# 
+# This is demonstrated below.
 
-# In[12]:
+# In[50]:
 
 
 from scipy.optimize import least_squares
 
-results = least_squares(model_energy_second_order,  [CpH, CpS, Ua, Ub])
+def fun(p):
+    pred = tclab_model2(p)
+    return pred["TS1"] - data["T1"]
+
+results = least_squares(fun,  [CpH, CpS, Ua, Ub])
+
 CpH, CpS, Ua, Ub = results.x
 print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}")
-model_energy_second_order(results.x, False)
 
+pred = tclab_model2(results.x)
+
+ax = data["T1"].plot()
+pred[["TS1", "TH1"]].plot(ax=ax)
+
+
+# In[48]:
+
+
+(pred["TS1"] - data["T1"]).plot(grid=True)
+
+
+# :::{admonition} Loss Functions
+# 
+# Consult the documentation page [`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html). Modify the regression to use alternative loss functions including `soft_l1`, `huber`, `cauchy` and `arctan`. 
+# 
+# 1. Which gives the best result? 
+# 2. From the documentation, why is the fit better? 
+# 3. How much of difference does it make it estimated model parameters?
+# 
+# :::
 
 # ## Fourth-Order Multi-Input Multi-Output Model
 
@@ -152,10 +185,9 @@ model_energy_second_order(results.x, False)
 # T_2 & = T_{S,2}
 # \end{align}
 
-# In[13]:
+# In[68]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -167,45 +199,61 @@ Ua = 0.05              # watts/deg C
 Ub = 0.05              # watts/deg C
 Uc = 0.05              # watts/deg C
 
-def model_energy_fourth_order(param, plot=False):
+P2 = 100
+U2 = 0
+
+def tclab_model4(param):
     # unpack the adjustable parameters
     CpH, CpS, Ua, Ub, Uc = param  
 
     # model solution
     def deriv(t, y):
         T1H, T1S, T2H, T2S= y
-        dT1H = (-(Ua + Ub + Uc)*T1H + Ub*T1S + Uc*T2H + alpha*P1*u1(t) + Ua*T_amb)/CpH
+        dT1H = (-(Ua + Ub + Uc)*T1H + Ub*T1S + Uc*T2H + alpha*P1*U1 + Ua*T_amb)/CpH
         dT1S = Ub*(T1H - T1S)/CpS
-        dT2H = (-(Ua + Ub + Uc)*T2H + Ub*T2S + Uc*T1H + alpha*P2*u2(t) + Ua*T_amb)/CpH
+        dT2H = (-(Ua + Ub + Uc)*T2H + Ub*T2S + Uc*T1H + alpha*P2*U2 + Ua*T_amb)/CpH
         dT2S = Ub*(T2H - T2S)/CpS
         return [dT1H, dT1S, dT2H, dT2S]
 
     soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [T_amb]*4, t_eval=t_expt) 
     
     # create dataframe with predictions
-    pred = pd.DataFrame(columns=["T1", "T2", "Q1", "Q2"], index=t_expt)
-    pred["T1"] = soln.y[1]
-    pred["T2"] = soln.y[3]
-
-    # plot solution
-    if plot:
-        ax = plot_data(expt, pred)
+    pred = pd.DataFrame(t_expt, columns=["Time"])
+    pred["TH1"] = soln.y[0]
+    pred["TS1"] = soln.y[1]
+    pred["TH2"] = soln.y[2]
+    pred["TS2"] = soln.y[3]
     
-    err1 = np.array(pred["T1"] - expt["T1"])
-    err2 = np.array(pred["T2"] - expt["T2"])
+    return pred
     
-    return np.concatenate((err1, err2))
+pred = tclab_model4([CpH, CpS, Ua, Ub, Uc])
+
+ax = data[["T1", "T2"]].plot()
+pred[["TH1", "TS1", "TH2", "TS2"]].plot(ax=ax, grid=True)
+
+
+# In[75]:
+
+
+from scipy.optimize import least_squares
+
+def fun(p):
+    pred = tclab_model4(p)
+    pred["TS1"].plot()
+    err1 = pred["TS1"] - data["T1"]
+    err2 = pred["TS2"] - data["T2"]
     
-model_energy_fourth_order([CpH, CpS, Ua, Ub, Uc], plot=True)
+    return pd.concat([err1, err2])
 
+results = least_squares(fun,  [CpH, CpS, Ua, Ub, Uc], loss="cauchy")
 
-# In[14]:
-
-
-results = least_squares(model_energy_fourth_order,  [CpH, CpS, Ua, Ub, Uc])
 CpH, CpS, Ua, Ub, Uc = results.x
-print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub},  Uc = {Uc}")
-model_energy_fourth_order(results.x, True)
+print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}, Uc = {Uc}")
+
+pred = tclab_model4(results.x)
+
+ax = data[["T1", "T2"]].plot()
+pred[["TS1", "TS2"]].plot(ax=ax)
 
 
 # In[ ]:
