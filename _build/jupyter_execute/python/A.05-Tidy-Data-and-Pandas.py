@@ -18,6 +18,9 @@
 
 # ## Tidy Data
 # 
+# >The KonMari Method™ is not a quick fix for a messy room or a once-in-a-while approach to tidying. 
+# It’s a chance to reset your entire life – but only if you commit to following its principles. -- Marie Kondo
+# 
 # Data acquired in process applications generally consists of repeated observation of a set of process variables. The values are usually numbers, such as temperature or pressure, but can also be strings, integers, or categorical data indicating the status of equipment or alarms.
 # 
 # We assume data from repeated observations is arranged in tabular form in data files. Each distinct experiment, treatment, or unit of data is located in a separate file.
