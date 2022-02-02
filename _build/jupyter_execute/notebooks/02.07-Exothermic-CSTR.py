@@ -143,7 +143,7 @@ df.plot(x="Time", subplots=True, grid=True, title=["Concentration", "Temperature
 # 
 # The primary means of controlling the reactoris through temperature of the cooling water jacket. The next calculations explore the effect of plus or minus change of 5 K in cooling water temperature on reactor behavior. These simulations reproduce the behavior shown in Example 2.5 SEMD.
 
-# In[44]:
+# In[45]:
 
 
 fig, ax = plt.subplots(1, 2, figsize=(12, 4))
@@ -151,8 +151,8 @@ for Tc in [295, 300, 305]:
     soln = solve_ivp(deriv, [t_initial, t_final], IC, t_eval=t)
     df = pd.DataFrame(soln.y.T, columns=["cA", "T"])
     df["Time"] = soln.t
-    df.plot(x="Time", y="cA", ax=ax[0], grid=True)
-    df.plot(x="Time", y="T", ax=ax[1], grid=True)
+    df.plot(x="Time", y="cA", ax=ax[0], title="Concentration", grid=True)
+    df.plot(x="Time", y="T", ax=ax[1], title="Temperature", grid=True)
 
 
 # ## Interactive Simulation
@@ -191,10 +191,12 @@ interact(sim, Tcooling = (290.0, 310.0), continuous_update=False);
 # 
 # The nullclines of two first-order differential equations are points in the phase plane for which one or the other of the two derivatives are zero.
 # 
+# $$
 # \begin{align*}
 # V\frac{dc_A}{dt} & = 0 = q(c_{Ai}-c_A)-Vkc_A \\
 # V\rho C_p\frac{dT}{dt} & = 0 = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 # \end{align*}
+# $$
 # 
 # The intersection of the nullclines correspond to steady states. The relative positions of the nullclines provide valuable insight into the dynamics of a nonlinear system.
 
