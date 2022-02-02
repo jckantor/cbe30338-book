@@ -978,10 +978,13 @@ Solving environment: ...working... done
 </div>
 <div class="section" id="process-information">
 <h2><span class="section-number">7.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this headline">¶</a></h2>
-<p>\begin{align*}
-C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\
-C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
 <div class="section" id="process-parameter-values">
 <h3><span class="section-number">7.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
@@ -1056,15 +1059,21 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 <div class="section" id="pyomo-simulation">
 <h2><span class="section-number">7.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see how well our initial guess at a control strategy will work for us.</p>
-<p>\begin{align*}
-C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\
-C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
 <p>subject to initial conditions</p>
-<p>\begin{align*}
-T_H(t_0) &amp; = T_{amb} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
 T_S(t_0) &amp; = T_{amb}
-\end{align*}</p>
+\end{align*}
+\end{split}\]</div>
 <p>and prior specification of inputs <span class="math notranslate nohighlight">\(u(t)\)</span> and <span class="math notranslate nohighlight">\(d(t)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1142,19 +1151,28 @@ T_S(t_0) &amp; = T_{amb}
 <div class="section" id="optimal-control-with-knowledge-of-disturbances">
 <h2><span class="section-number">7.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this headline">¶</a></h2>
 <p>An optimal control policy minimizes the differences</p>
-<p>\begin{align*}
-\min_{u} \int_{t_0}^{t_f} |T_H^{SP}(t) - T_H(t)|^2,dt \
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
+\end{align*}
+\end{split}\]</div>
 <p>subject to constraints</p>
-<p>\begin{align*}
-C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\
-C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
 <p>initial conditions</p>
-<p>\begin{align*}
-T_H(t_0) &amp; = T_{amb} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
 T_S(t_0) &amp; = T_{amb}
-\end{align*}</p>
+\end{align*}
+\end{split}\]</div>
 <p>and prior knowledge of <span class="math notranslate nohighlight">\(d(t)\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1258,10 +1276,13 @@ Solution:
 <div class="section" id="exercise">
 <h3><span class="section-number">7.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
 <p>The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.</p>
-<p>\begin{align*}
-\frac{du}{dt} &amp; \leq \dot{u}<em>{max} \
-\frac{du}{dt} &amp; \geq -\dot{u}</em>{max}
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{du}{dt} &amp; \leq \dot{u}_{max} \\
+\frac{du}{dt} &amp; \geq -\dot{u}_{max}
+\end{align*}
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\dot{u}_{max}\)</span> is the maximum rate of change.</p>
 </div>
 </div>
@@ -1271,19 +1292,28 @@ Solution:
 <div><p>“… and now my watch begins …” ―The Night’s Watch oath, Game of Thrones</p>
 </div></blockquote>
 <p>The trouble with open-loop optimal control is that we can’t anticipate or know the values of unmeasured disturbances, much less the future values of those disturbances. The best we can do is use available data and process models to estimate the process state and disturbances. The est</p>
-<p>\begin{align*}
-\min_{\hat{T}_H, \hat{T}<em>S, \hat{d}} \int</em>{t - h}^t |\hat{T}_S(t) - T_S(t)|^2,dt \
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\min_{\hat{T}_H, \hat{T}_S, \hat{d}} \int_{t - h}^t \|\hat{T}_S(t) - T_S(t)\|^2\,dt \\
+\end{align*}
+\end{split}\]</div>
 <p>subject to</p>
-<p>\begin{align*}
-C_p^H \frac{d\hat{T}<em>H}{dt} &amp; = U_a (T</em>{amb} - \hat{T}_H) + U_c (\hat{T}_S - \hat{T}_H) + P u(t) + \hat{d}(t)\
-C_p^S \frac{d\hat{T}_S}{dt} &amp; = - U_c (\hat{T}_S - \hat{T}_H)
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{d\hat{T}_H}{dt} &amp; = U_a (T_{amb} - \hat{T}_H) + U_c (\hat{T}_S - \hat{T}_H) + P u(t) + \hat{d}(t)\\
+C_p^S \frac{d\hat{T}_S}{dt} &amp; = - U_c (\hat{T}_S - \hat{T}_H) 
+\end{align*}
+\end{split}\]</div>
 <p>and initial conditions</p>
-<p>\begin{align*}
-T_H(t_0) &amp; = T_{amb} \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
 T_S(t_0) &amp; = T_{amb}
-\end{align*}</p>
+\end{align*}
+\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 

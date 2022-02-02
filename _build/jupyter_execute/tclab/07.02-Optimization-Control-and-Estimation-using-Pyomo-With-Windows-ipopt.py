@@ -41,11 +41,12 @@ get_ipython().system('conda install -c conda-forge/label/cf201901 ipopt ')
 
 # ## Process Information
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
 # C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
 # \end{align*}
-# 
+# $$
 
 # ### Process Parameter Values
 
@@ -115,17 +116,21 @@ plt.tight_layout()
 # 
 # Let's see how well our initial guess at a control strategy will work for us.
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
 # C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
 # \end{align*}
+# $$
 # 
 # subject to initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb} \\
 # T_S(t_0) & = T_{amb}
 # \end{align*}
+# $$
 # 
 # and prior specification of inputs $u(t)$ and $d(t)$.
 
@@ -196,23 +201,29 @@ plt.tight_layout()
 # 
 # An optimal control policy minimizes the differences
 # 
+# $$
 # \begin{align*}
 # \min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
 # \end{align*}
+# $$
 # 
 # subject to constraints
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
 # C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
 # \end{align*}
+# $$
 # 
 # initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb} \\
 # T_S(t_0) & = T_{amb}
 # \end{align*}
+# $$
 # 
 # and prior knowledge of $d(t)$.
 
@@ -284,10 +295,12 @@ plt.tight_layout()
 # 
 # The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.
 # 
+# $$
 # \begin{align*}
 # \frac{du}{dt} & \leq \dot{u}_{max} \\
 # \frac{du}{dt} & \geq -\dot{u}_{max}
 # \end{align*}
+# $$
 # 
 # where $\dot{u}_{max}$ is the maximum rate of change. 
 
@@ -297,24 +310,29 @@ plt.tight_layout()
 # 
 # The trouble with open-loop optimal control is that we can't anticipate or know the values of unmeasured disturbances, much less the future values of those disturbances. The best we can do is use available data and process models to estimate the process state and disturbances. The est
 # 
-# 
+# $$
 # \begin{align*}
 # \min_{\hat{T}_H, \hat{T}_S, \hat{d}} \int_{t - h}^t \|\hat{T}_S(t) - T_S(t)\|^2\,dt \\
 # \end{align*}
+# $$
 # 
 # subject to
 # 
+# $$
 # \begin{align*}
 # C_p^H \frac{d\hat{T}_H}{dt} & = U_a (T_{amb} - \hat{T}_H) + U_c (\hat{T}_S - \hat{T}_H) + P u(t) + \hat{d}(t)\\
 # C_p^S \frac{d\hat{T}_S}{dt} & = - U_c (\hat{T}_S - \hat{T}_H) 
 # \end{align*}
+# $$
 # 
 # and initial conditions
 # 
+# $$
 # \begin{align*}
 # T_H(t_0) & = T_{amb} \\
 # T_S(t_0) & = T_{amb}
 # \end{align*}
+# $$
 # 
 
 # In[17]:
