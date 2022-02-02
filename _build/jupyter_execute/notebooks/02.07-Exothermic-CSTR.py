@@ -75,7 +75,7 @@ plt.grid();
 # which are the equations that will be integrated below.
 # 
 # | Quantity | Symbol | Value | Units | Comments |
-# | :------- | :----: | :---: | :---- | |
+# | :------- | :----: | :---: | :---- | :--- |
 # | Activation Energy | $E_a$ | 72,750 | J/gmol | |
 # | Arrehnius pre-exponential | $k_0$ | 7.2 x 10<sup>10</sup> | 1/min | |
 # | Gas Constant | $R$ | 8.314 | J/gmol/K | |
@@ -89,8 +89,7 @@ plt.grid();
 # | Feed temperature | $T_f$ | 350 | K | |
 # | Initial concentration | $c_{A,0}$ | 0.5 | gmol/liter | |
 # | Initial temperature | $T_0$ | 350 | K | |
-# | Coolant temperature | $T_c$ | 300 | K | Primary Manipulated Variable |
-# 
+# | Coolant temperature | $T_c$ | 300 | K | Manipulated Variable |
 # 
 
 # ## Transient Behavior
