@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4. Process Analytics &#8212; CBE 30338 Chemical Process Control</title>
+    <title>2.6. Fed-Batch Bioreactor &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -51,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1. Learning Goals" href="04.01-Learning-Goals.html" />
-    <link rel="prev" title="3.9. Lab Assignment 4: Solution" href="03.09-Lab-Assignment-Solution.html" />
+    <link rel="next" title="2.7. Exothermic Continuous Stirred Tank Reactor" href="02.07-Exothermic-CSTR.html" />
+    <link rel="prev" title="2.5. Higher-order models" href="02.05-Second-Order.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -141,16 +143,16 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="02.00-Process-Modeling.html">
    2. Process Modeling
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
      2.1. First-Order Linear Systems
@@ -176,8 +178,8 @@
      2.5. Higher-order models
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.06-Fed-Batch-Bioreactor.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      2.6. Fed-Batch Bioreactor
     </a>
    </li>
@@ -245,11 +247,11 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Process-Analytics.html">
    4. Process Analytics
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
@@ -672,9 +674,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/04.00-Process-Analytics.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/02.06-Fed-Batch-Bioreactor.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -692,7 +694,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04.00-Process-Analytics.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/02.06-Fed-Batch-Bioreactor.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -708,11 +710,63 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/02.06-Fed-Batch-Bioreactor.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/02.06-Fed-Batch-Bioreactor.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-development">
+   2.6.1. Model Development
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dilution-effect">
+     2.6.1.1. Dilution Effect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-implementation">
+   2.6.2. Python Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulation">
+   2.6.3. Simulation
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -720,20 +774,162 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Process Analytics</h1>
+                <h1>Fed-Batch Bioreactor</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-development">
+   2.6.1. Model Development
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dilution-effect">
+     2.6.1.1. Dilution Effect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-implementation">
+   2.6.2. Python Implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulation">
+   2.6.3. Simulation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="process-analytics">
-<h1><span class="section-number">4. </span>Process Analytics<a class="headerlink" href="#process-analytics" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="tex2jax_ignore mathjax_ignore section" id="fed-batch-bioreactor">
+<h1><span class="section-number">2.6. </span>Fed-Batch Bioreactor<a class="headerlink" href="#fed-batch-bioreactor" title="Permalink to this headline">¶</a></h1>
+<p>Batch reactors are commonly used in the production of speciality chemicals, pharmaceuticals, and beverage and food products.</p>
+<div class="section" id="model-development">
+<h2><span class="section-number">2.6.1. </span>Model Development<a class="headerlink" href="#model-development" title="Permalink to this headline">¶</a></h2>
+<p>Mass balances for a fed-batch bioreactor are given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\frac{d(XV)}{dt} &amp; = V r_g(X,S) \\
+\frac{d(PV)}{dt} &amp; = V r_P(X,S) \\
+\frac{d(SV)}{dt} &amp; = F S_f - \frac{1}{Y_{X/S}}V r_g(X,S)
+\end{align*}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is cell concentration, <span class="math notranslate nohighlight">\(P\)</span> is product concentration, and <span class="math notranslate nohighlight">\(S\)</span> is substrate concentration, all given in units of grams/liter.</p>
+<p>The reactor is fed with fresh substrate at concentration <span class="math notranslate nohighlight">\(S_f\)</span> and flowrate <span class="math notranslate nohighlight">\(F(t)\)</span> in liters per hour. The volume is therefore changing</p>
+<div class="math notranslate nohighlight">
+\[\frac{dV}{dt} = F(t)\]</div>
+<p>Rate <span class="math notranslate nohighlight">\(r_g(X,S)\)</span> is the production of fresh cell biomass in units of grams/liter/hr. The cell specific growth is expressed as</p>
+<div class="math notranslate nohighlight">
+\[r_g(X,S) = \mu(S)X\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu(S)\)</span> is the cell specific growth rate. In the Monod model, the specific growth rate is a function of substrate concentration given by</p>
+<div class="math notranslate nohighlight">
+\[\mu(S) = \mu_{max}\frac{S}{K_S + S}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_{max}\)</span> is the maximum specific growth rate, and <span class="math notranslate nohighlight">\(K_S\)</span> is the half saturation constant which is the value of <span class="math notranslate nohighlight">\(S\)</span> for which <span class="math notranslate nohighlight">\(\mu = \frac{1}{2}\mu_{max}\)</span>.</p>
+<p>For this model, the product is assumed to be a by-product of cell growth</p>
+<div class="math notranslate nohighlight">
+\[r_P(X,S) = Y_{P/X}r_g(X,S)\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y_{P/X}\)</span> is the product yield coefficient defined as</p>
+<div class="math notranslate nohighlight">
+\[Y_{P/X} = \frac{\mbox{mass of product formed}}{\mbox{mass of new cells formed}}\]</div>
+<p>The model further assumes that substrate is consumed is proportion to the mass of new cells formed where <span class="math notranslate nohighlight">\(Y_{X/S}\)</span> is the yield coefficient for new cells</p>
+<div class="math notranslate nohighlight">
+\[Y_{P/X} = \frac{\mbox{mass of new cells formed}}{\mbox{mass of substrate consumed}}\]</div>
+<div class="section" id="dilution-effect">
+<h3><span class="section-number">2.6.1.1. </span>Dilution Effect<a class="headerlink" href="#dilution-effect" title="Permalink to this headline">¶</a></h3>
+<p>One aspect of the fed-batch model is that volume is not constant, therefore the cell, product, and substrate concentrations are subject to a dilution effect.  Mathematically, the chain rule of differential calculus provides a means to recast the state of model in terms of the intensive concentration variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(P\)</span>, and <span class="math notranslate nohighlight">\(S\)</span>, and extensive volume <span class="math notranslate nohighlight">\(V\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\frac{d(XV)}{dt} &amp; = V\frac{dX}{dt} + X\frac{dV}{dt} = V\frac{dX}{dt} + F(t)X \\
+\frac{d(PV)}{dt} &amp; = V\frac{dP}{dt} + P\frac{dV}{dt} = V\frac{dP}{dt} + F(t)P \\
+\frac{d(SV)}{dt} &amp; = V\frac{dS}{dt} + S\frac{dV}{dt} = V\frac{dS}{dt} + F(t)S
+\end{align*}\end{split}\]</div>
+<p>Rearranging and substituting into the mass balances gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\frac{dX}{dt} &amp; = - \frac{F(t)}{V}X + r_g(X,S)  \\
+\frac{dP}{dt} &amp; = - \frac{F(t)}{V}P + r_P(X,S) \\
+\frac{dS}{dt} &amp; = \frac{F(t)}{V}(S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S) \\
+\frac{dV}{dt} &amp; = F(t)
+\end{align*}\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="python-implementation">
+<h2><span class="section-number">2.6.2. </span>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">mumax</span> <span class="o">=</span> <span class="mf">0.20</span>      <span class="c1"># 1/hour</span>
+<span class="n">Ks</span> <span class="o">=</span> <span class="mf">1.00</span>         <span class="c1"># g/liter</span>
+<span class="n">Yxs</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># g/g</span>
+<span class="n">Ypx</span> <span class="o">=</span> <span class="mf">0.2</span>         <span class="c1"># g/g</span>
+<span class="n">Sf</span> <span class="o">=</span> <span class="mf">10.0</span>         <span class="c1"># g/liter</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># reaction rates</span>
+<span class="k">def</span> <span class="nf">mu</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mumax</span><span class="o">*</span><span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">Ks</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">X</span>
+    
+<span class="k">def</span> <span class="nf">Rp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Ypx</span><span class="o">*</span><span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dX</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">dP</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">Yxs</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dP</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="simulation">
+<h2><span class="section-number">2.6.3. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" />
+</div>
+</div>
 </div>
 </div>
 
@@ -762,17 +958,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03.09-Lab-Assignment-Solution.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="02.05-Second-Order.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.9. </span>Lab Assignment 4: Solution</p>
+            <p class="prev-next-title"><span class="section-number">2.5. </span>Higher-order models</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="04.01-Learning-Goals.html" title="next page">
+    <a class='right-next' id="next-link" href="02.07-Exothermic-CSTR.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.1. </span>Learning Goals</p>
+        <p class="prev-next-title"><span class="section-number">2.7. </span>Exothermic Continuous Stirred Tank Reactor</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
