@@ -7,7 +7,7 @@
 # 
 # Using a Temperature Control Lab device initially at steady state at ambient room temperature, the following device settings were used to induce a step response in $T_1$ and $T_2$.  
 # 
-# | P1 | P1 | U1 | U2 |
+# | P1 | P2 | U1 | U2 |
 # | :--: | :--: | :--: | :--: |
 # | 200 | 100 | 50 | 0 |
 # 
@@ -15,7 +15,7 @@
 # 
 # The challenge is to develop a first-principles models that reproduces the system measured response shown below.
 
-# In[23]:
+# In[1]:
 
 
 import pandas as pd
@@ -34,23 +34,27 @@ data.plot(x = "Time", y=["Q1", "Q2"], figsize=(10, 3), grid=True, lw=2, ylabel="
 # 
 # This motivates a model
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
 # \end{align}
+# $$
 # 
 # where $C^H_p$ and $C^S_p$ are the heat capacities of the heater and sensor, respectively, and $U_b$ is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.
 # 
+# $$
 # \begin{align}
 # \frac{dT_{H,1}}{dt} & = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 # \frac{dT_{S,1}}{dt} & = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 # \end{align}
+# $$
 # 
 # Where measured temperature, that is, the temperature recorded by the Arduino, $T_1$ is given by
 # 
 # $$T_1 = T_{S,1}$$
 
-# In[45]:
+# In[2]:
 
 
 import numpy as np
@@ -62,6 +66,8 @@ T_amb = 21             # deg C
 alpha = 0.00016        # watts / (units P1 * percent U1)
 P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
+P1 = 100               # P2 units
+U2 = 0                 # steady state value of u1 (percent)
 
 # adjustable parameters
 CpH = 5                # joules/deg C
@@ -70,9 +76,9 @@ Ua = 0.05              # watts/deg C
 Ub = 0.05              # watts/deg C
 
 # extract data from experiment
-t_expt = df["Time"]
+t_expt = data["Time"]
 
-def tclab_model2(param, plot=False):
+def tclab_model2(param):
     # unpack the adjustable parameters
     CpH, CpS, Ua, Ub = param
 
@@ -87,16 +93,18 @@ def tclab_model2(param, plot=False):
     
     # create dataframe with predictions
     pred = pd.DataFrame(columns=["Time"])
+    pred["Time"] = t_expt
     pred["TH1"] = soln.y[0]
     pred["TS1"] = soln.y[1]
     pred["Q1"] = U1
         
     return pred
     
-pred = tclab_model2([CpH, CpS, Ua, Ub], plot=True)
+pred = tclab_model2([CpH, CpS, Ua, Ub])
 
 ax = data["T1"].plot()
 pred[["TS1", "TH1"]].plot(ax=ax)
+pred
 
 
 # ### "Least Squares" Model Fitting
@@ -105,17 +113,11 @@ pred[["TS1", "TH1"]].plot(ax=ax)
 # 
 # In this case we wish to find values for a small number of parameters that cause a model to replicate a measured response. One common measure of fit is the sum of sum of squares of residual difference between the model and data. For residuals modeled as independent and identically distributed random variables from a Gaussian distribution, minimizing the sum of squares has a strong theoretical foundation. So strong, in fact, the term "least squares" has become synonomous with model fitting and regression.
 # 
-# :::{admonition} Why is model fitting called "regression"?
-# 
-# Someone will have to explain to me why the word "regession" is use to the describe the task of fitting a model to data. After all, the textbook definition of regression is to return to a less advanced state, and the verb "to regress" has distinct negative connotations. Seems odd, doesn't it?
-# 
-# :::
-# 
 # The SciPy library includes a well-developed function [`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html) for this purpose. The name is a misnomoer because the function allows other common "loss" functions in addition to sum of squares. The simplest use of `least_squares` is to provide a function that, given values for the unknown parameters, creates a vector of residuals between a model and data. 
 # 
 # This is demonstrated below.
 
-# In[50]:
+# In[3]:
 
 
 from scipy.optimize import least_squares
@@ -124,24 +126,19 @@ def fun(p):
     pred = tclab_model2(p)
     return pred["TS1"] - data["T1"]
 
-results = least_squares(fun,  [CpH, CpS, Ua, Ub])
+results = least_squares(fun,  [CpH, CpS, Ua, Ub], loss="arctan")
 
 CpH, CpS, Ua, Ub = results.x
 print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}")
 
 pred = tclab_model2(results.x)
 
-ax = data["T1"].plot()
+ax = data["T1"].plot(grid=True)
 pred[["TS1", "TH1"]].plot(ax=ax)
-
-
-# In[48]:
-
-
 (pred["TS1"] - data["T1"]).plot(grid=True)
 
 
-# :::{admonition} Loss Functions
+# :::{admonition} Choosing a Loss Function
 # 
 # Consult the documentation page [`scipy.optimize.least_squares`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html). Modify the regression to use alternative loss functions including `soft_l1`, `huber`, `cauchy` and `arctan`. 
 # 
@@ -152,45 +149,65 @@ pred[["TS1", "TH1"]].plot(ax=ax)
 # :::
 
 # ## Fourth-Order Multi-Input Multi-Output Model
+# 
+# The next step in the evolution of our model is to incorporate the second heater/sensor assembly. Even with only heat applied to 
 
 # ### Model derivation
 # 
+# $$
 # \begin{align}
 # C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + U_c(T_{H,2}-T_{H,1})  + \alpha P_1u_1\\
 # C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1})  \\
 # C^H_p\frac{dT_{H,2}}{dt} & = U_a(T_{amb} - T_{H,2}) + U_b(T_{S,2} - T_{H,2}) + U_c(T_{H,1}-T_{H,2}) + \alpha P_2 u_2\\
 # C^S_p\frac{dT_{S,2}}{dt} & = U_b(T_{H,2} - T_{S,2}) 
 # \end{align}
+# $$
 # 
 # where
 # 
+# $$
 # \begin{align}
 # T_1 & = T_{S,1} \\
 # T_2 & = T_{S,2}
 # \end{align}
+# $$
 
 # ### Standard form
 # 
+# Normalize the derivatives to get in proper form for `solve_ivp`.
+# 
+# $$
 # \begin{align}
 # \frac{dT_{H,1}}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{U_c}{C^H_p}T_{H,2}  + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 # \frac{dT_{S,1}}{dt} & = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1})  \\
 # \frac{dT_{H,2}}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2} + \frac{U_b}{C^H_p}T_{S,2} + \frac{U_c}{C^H_p}T_{H,1}  + \frac{\alpha P_2}{C^H_p}u_2 + \frac{U_a}{C^H_p}T_{amb}\\
 # \frac{dT_{S,2}}{dt} & = \frac{U_b}{C^S_p}(T_{H,2} - T_{S,2}) 
 # \end{align}
+# $$
 # 
 # where
 # 
+# $$
 # \begin{align}
 # T_1 & = T_{S,1} \\
 # T_2 & = T_{S,2}
 # \end{align}
+# $$
+# 
 
-# In[68]:
+# In[23]:
 
 
 import numpy as np
-import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+
+# known parameters
+T_amb = 21             # deg C
+alpha = 0.00016        # watts / (units P1 * percent U1)
+P1 = 200               # P1 units
+U1 = 50                # steady state value of u1 (percent)
+P2 = 100               # P2 units
+U2 = 0                 # steady state value of u1 (percent)
 
 # adjustable parameters
 CpH = 5                # joules/deg C
@@ -198,9 +215,6 @@ CpS = 1                # joules/deg C
 Ua = 0.05              # watts/deg C
 Ub = 0.05              # watts/deg C
 Uc = 0.05              # watts/deg C
-
-P2 = 100
-U2 = 0
 
 def tclab_model4(param):
     # unpack the adjustable parameters
@@ -228,32 +242,31 @@ def tclab_model4(param):
     
 pred = tclab_model4([CpH, CpS, Ua, Ub, Uc])
 
-ax = data[["T1", "T2"]].plot()
-pred[["TH1", "TS1", "TH2", "TS2"]].plot(ax=ax, grid=True)
+ax = data.plot(x="Time", y=["T1", "T2"])
+pred.plot(x="Time", y = ["TH1", "TS1", "TH2", "TS2"], ax=ax, grid=True)
 
 
-# In[75]:
+# Least squares fitting with Cauchy loss function.
+
+# In[24]:
 
 
 from scipy.optimize import least_squares
 
+# define function to be minimized by least_squares
 def fun(p):
     pred = tclab_model4(p)
-    pred["TS1"].plot()
-    err1 = pred["TS1"] - data["T1"]
-    err2 = pred["TS2"] - data["T2"]
-    
-    return pd.concat([err1, err2])
+    return pd.concat([pred["TS1"] - data["T1"], pred["TS2"] - data["T2"]])
 
+# compute the least_squares best fit for parameters
 results = least_squares(fun,  [CpH, CpS, Ua, Ub, Uc], loss="cauchy")
-
 CpH, CpS, Ua, Ub, Uc = results.x
-print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}, Uc = {Uc}")
+print(f"CpH = {CpH:0.2f},  CpS = {CpS:.5f},   Ua = {Ua:.5f},  Ub = {Ub:.7f}, Uc = {Uc:.4f}")
 
+# show the new prediction with optimized parameters
 pred = tclab_model4(results.x)
-
-ax = data[["T1", "T2"]].plot()
-pred[["TS1", "TS2"]].plot(ax=ax)
+ax = data.plot(x="Time", y=["T1", "T2"], figsize=(12, 6))
+pred.plot(x="Time", y = ["TH1", "TS1", "TH2", "TS2"], ax=ax, grid=True)
 
 
 # In[ ]:

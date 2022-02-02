@@ -206,6 +206,12 @@ df.tail(5)
 df.T1.plot()
 
 
+# In[32]:
+
+
+get_ipython().run_line_magic('pinfo', 'df.plot')
+
+
 # The `.plot()` method will often be used to plot one or more variables on the vertical 'y' axis as a function of another variable on the horizontal 'x' axes. Additional options specify line styles, grid, labels, titles, and much more. 
 
 # In[15]:
