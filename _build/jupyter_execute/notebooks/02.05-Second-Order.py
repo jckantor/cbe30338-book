@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Higher-order models
+# # Second and Higher Order models
 
 # ## Step Test
 # 

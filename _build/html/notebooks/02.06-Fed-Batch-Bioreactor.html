@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,19 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.7. Exothermic Continuous Stirred Tank Reactor" href="02.07-Exothermic-CSTR.html" />
-    <link rel="prev" title="2.5. Higher-order models" href="02.05-Second-Order.html" />
+    <link rel="prev" title="2.5. Second and Higher Order models" href="02.05-Second-Order.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -98,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Course Information
  </span>
@@ -115,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Topical Materials
  </span>
@@ -175,7 +175,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Higher-order models
+     2.5. Second and Higher Order models
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -458,7 +458,7 @@
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Control Laboratory
  </span>
@@ -595,7 +595,7 @@
   </ul>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Python Tutorials
  </span>
@@ -743,25 +743,35 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-development">
-   2.6.1. Model Development
+  <a class="reference internal nav-link" href="#modeling-tank-volume">
+   2.6.1. Modeling Tank Volume
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-substrate-composition">
+   2.6.2. Modeling Substrate Composition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-biomass">
+   2.6.3. Modeling Biomass
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dilution-effect">
-     2.6.1.1. Dilution Effect
+    <a class="reference internal nav-link" href="#substrate-modeling-revisited">
+     2.6.3.1. Substrate Modeling, revisited
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#product-modeling">
+     2.6.3.2. Product Modeling
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-implementation">
-   2.6.2. Python Implementation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation">
-   2.6.3. Simulation
+  <a class="reference internal nav-link" href="#putting-the-simulation-model-to-work">
+   2.6.4. Putting the Simulation Model to Work
   </a>
  </li>
 </ul>
@@ -785,25 +795,35 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-development">
-   2.6.1. Model Development
+  <a class="reference internal nav-link" href="#modeling-tank-volume">
+   2.6.1. Modeling Tank Volume
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-substrate-composition">
+   2.6.2. Modeling Substrate Composition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-biomass">
+   2.6.3. Modeling Biomass
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dilution-effect">
-     2.6.1.1. Dilution Effect
+    <a class="reference internal nav-link" href="#substrate-modeling-revisited">
+     2.6.3.1. Substrate Modeling, revisited
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#product-modeling">
+     2.6.3.2. Product Modeling
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python-implementation">
-   2.6.2. Python Implementation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation">
-   2.6.3. Simulation
+  <a class="reference internal nav-link" href="#putting-the-simulation-model-to-work">
+   2.6.4. Putting the Simulation Model to Work
   </a>
  </li>
 </ul>
@@ -818,45 +838,310 @@
   <div class="tex2jax_ignore mathjax_ignore section" id="fed-batch-bioreactor">
 <h1><span class="section-number">2.6. </span>Fed-Batch Bioreactor<a class="headerlink" href="#fed-batch-bioreactor" title="Permalink to this headline">¶</a></h1>
 <p>Batch reactors are commonly used in the production of speciality chemicals, pharmaceuticals, and beverage and food products.</p>
-<div class="section" id="model-development">
-<h2><span class="section-number">2.6.1. </span>Model Development<a class="headerlink" href="#model-development" title="Permalink to this headline">¶</a></h2>
-<p>Mass balances for a fed-batch bioreactor are given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
-\frac{d(XV)}{dt} &amp; = V r_g(X,S) \\
-\frac{d(PV)}{dt} &amp; = V r_P(X,S) \\
-\frac{d(SV)}{dt} &amp; = F S_f - \frac{1}{Y_{X/S}}V r_g(X,S)
-\end{align*}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X\)</span> is cell concentration, <span class="math notranslate nohighlight">\(P\)</span> is product concentration, and <span class="math notranslate nohighlight">\(S\)</span> is substrate concentration, all given in units of grams/liter.</p>
-<p>The reactor is fed with fresh substrate at concentration <span class="math notranslate nohighlight">\(S_f\)</span> and flowrate <span class="math notranslate nohighlight">\(F(t)\)</span> in liters per hour. The volume is therefore changing</p>
+<p><img alt="" src="https://live.staticflickr.com/5129/5283264793_973c8f0bea_c.jpg" />
+<br>Source: Sanofi Pasteur, Creative Commons License</p>
+<p>The following links provide additional illustrations of fed-batch fermentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ib.bioninja.com.au/_Media/penicillin-production-2_med.jpeg">https://ib.bioninja.com.au/_Media/penicillin-production-2_med.jpeg</a></p></li>
+<li><p><a class="reference external" href="https://biologyreader.com/wp-content/uploads/2021/07/diagram-of-fed-batch-culture.jpg">https://biologyreader.com/wp-content/uploads/2021/07/diagram-of-fed-batch-culture.jpg</a></p></li>
+</ul>
+<p>Our goal is to demonstrate modeling of a fed-batch fermentation process. The learning goals are:</p>
+<ul class="simple">
+<li><p>Learn to develop models for reactive systems using mass balances.</p></li>
+<li><p>Model variable volume dilution effects.</p></li>
+<li><p>Simulate the response of the model using Python solvers for initial value problems.</p></li>
+</ul>
+<div class="section" id="modeling-tank-volume">
+<h2><span class="section-number">2.6.1. </span>Modeling Tank Volume<a class="headerlink" href="#modeling-tank-volume" title="Permalink to this headline">¶</a></h2>
+<p>The volumetric inlet flowrate to a fed-batch reactor is <span class="math notranslate nohighlight">\(F(t)\)</span>. Assuming changes in specific volume due to mixing, the volume of liquid in the reactor is given by</p>
 <div class="math notranslate nohighlight">
 \[\frac{dV}{dt} = F(t)\]</div>
-<p>Rate <span class="math notranslate nohighlight">\(r_g(X,S)\)</span> is the production of fresh cell biomass in units of grams/liter/hr. The cell specific growth is expressed as</p>
+<p>Assume the initial volume is 1 liter and a constant flowrate of 0.05 liters/hour. Simulate the volume of the reactor for 50 hours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dV</span><span class="p">]</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># integration period</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># solve ivp</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># extract solution into a data frame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;V&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="c1"># plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_2_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_2_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="modeling-substrate-composition">
+<h2><span class="section-number">2.6.2. </span>Modeling Substrate Composition<a class="headerlink" href="#modeling-substrate-composition" title="Permalink to this headline">¶</a></h2>
+<p>The feed entering the tank carries important nutrients for the fermentation. Assume the substrate feed composition <span class="math notranslate nohighlight">\(S_f\)</span> is 10 grams/liter. Simulate the concentration in the fed-batch reactor.</p>
+<div class="math notranslate nohighlight">
+\[\frac{d(VS)}{dt} = F S_f\]</div>
+<p>Applying the chain rule</p>
+<div class="math notranslate nohighlight">
+\[\frac{d(VS)}{dt} = V\frac{dS}{dt} + S\frac{dV}{dt}\]</div>
+<p>so the mass balance becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp; V\frac{dS}{dt} + S\frac{dV}{dt} = F S_f \\
+\implies &amp;  V\frac{dS}{dT} + S F = F S_f \\
+\implies &amp; V\frac{dS}{dt} = F (S_f - S) \\
+\implies &amp; \frac{dS}{dt} = \frac{F}{V} (S_f - S)\\
+\end{align*}
+\end{split}\]</div>
+<p>which accounts for dilution due to changing tank volume. The model now has state variables for substrate composition and tank volume.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{dS}{dt} &amp; = \frac{F(t)}{V} (S_f - S) \\
+\frac{dV}{dt} &amp;  = F(t)
+\end{align*}
+\end{split}\]</div>
+<p>The following cell extends our simulation model to include substrate concentration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">Sf</span> <span class="o">=</span> <span class="mf">10.0</span>         <span class="c1"># g/liter</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># integration period</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># solve ivp</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># extract solution into a data frame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="c1"># plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_4_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_4_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="modeling-biomass">
+<h2><span class="section-number">2.6.3. </span>Modeling Biomass<a class="headerlink" href="#modeling-biomass" title="Permalink to this headline">¶</a></h2>
+<p>Fermentation is process in which biomass consumes substrate to produce more biomass and by-products.</p>
+<div class="math notranslate nohighlight">
+\[\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \rightarrow \text{Biomass (X)} + Y_{P/X}\text{Products (P)}\]</div>
+<p>The rate <span class="math notranslate nohighlight">\(r_g(X,S)\)</span> is the production of fresh cell biomass in units of grams/liter/hr. The volume specific growth rate is expressed as</p>
 <div class="math notranslate nohighlight">
 \[r_g(X,S) = \mu(S)X\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu(S)\)</span> is the cell specific growth rate. In the Monod model, the specific growth rate is a function of substrate concentration given by</p>
+<p>where <span class="math notranslate nohighlight">\(\mu(S)\)</span> is the cell specific growth rate. In the Monod model, the cell specific growth rate is a function of substrate concentration given by</p>
 <div class="math notranslate nohighlight">
 \[\mu(S) = \mu_{max}\frac{S}{K_S + S}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mu_{max}\)</span> is the maximum specific growth rate, and <span class="math notranslate nohighlight">\(K_S\)</span> is the half saturation constant which is the value of <span class="math notranslate nohighlight">\(S\)</span> for which <span class="math notranslate nohighlight">\(\mu = \frac{1}{2}\mu_{max}\)</span>.</p>
-<p>For this model, the product is assumed to be a by-product of cell growth</p>
+<p>where <span class="math notranslate nohighlight">\(\mu_{max}\)</span> is the maximum specific growth rate, and <span class="math notranslate nohighlight">\(K_S\)</span> is the saturation constant. <span class="math notranslate nohighlight">\(K_S\)</span> is equal to the value of <span class="math notranslate nohighlight">\(S\)</span> for which <span class="math notranslate nohighlight">\(\mu = \frac{1}{2}\mu_{max}\)</span>.</p>
+<p>The overall balance for biomass is</p>
+<div class="math notranslate nohighlight">
+\[\frac{d(VX)}{dt} = V r_g(X, S)\]</div>
+<p>After accounting for the dilution effect our model becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{dX}{dt} &amp; = - \frac{F(t)}{V} X +  r_g(X, S) \\
+\frac{dS}{dt} &amp; = \frac{F(t)}{V} (S_f - S) \\
+\frac{dV}{dt} &amp;  = F(t)
+\end{align*}
+\end{split}\]</div>
+<p>The following cell shows the results of incorporating biomass growth into the model for the fed-batch reaction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">Sf</span> <span class="o">=</span> <span class="mf">10.0</span>         <span class="c1"># g/liter</span>
+<span class="n">mumax</span> <span class="o">=</span> <span class="mf">0.20</span>      <span class="c1"># 1/hour</span>
+<span class="n">Ks</span> <span class="o">=</span> <span class="mf">1.00</span>         <span class="c1"># g/liter</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># reaction rates</span>
+<span class="k">def</span> <span class="nf">mu</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mumax</span><span class="o">*</span><span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">Ks</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">X</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dX</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># integration period</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># solve ivp</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># extract solution into a data frame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="c1"># plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" />
+</div>
+</div>
+<div class="admonition-experiment-with-this-model admonition">
+<p class="admonition-title">Experiment with this model</p>
+<p>At this stage the model is not complete and will give implausible simulation results. But is still important to understand what the model is doing and why the simulation results do provide the results you may expect.</p>
+<p>Before going further with this notebook, run this notebook and experiment with different initial conditions for <span class="math notranslate nohighlight">\(X\)</span>. Choose small values and see what happens. Why are the results different than one might expect of a fed-batch bioreactor?</p>
+</div>
+<div class="section" id="substrate-modeling-revisited">
+<h3><span class="section-number">2.6.3.1. </span>Substrate Modeling, revisited<a class="headerlink" href="#substrate-modeling-revisited" title="Permalink to this headline">¶</a></h3>
+<p>The growth of biomass consumes substrate which serves to limit the production of biomass.  Assume the substrate is consumed is proportion to the mass of new cells formed where <span class="math notranslate nohighlight">\(Y_{X/S}\)</span> is the yield coefficient for new cells.</p>
+<div class="math notranslate nohighlight">
+\[Y_{X/S} = \frac{\mbox{mass of new cells formed}}{\mbox{mass of substrate consumed}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu(S)\)</span> is the cell specific growth rate. So the total consumption of substrate becomes</p>
+<div class="math notranslate nohighlight">
+\[\frac{V}{Y_{X/S}} r_g(X, S)\]</div>
+<p>Including this in our model</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{dX}{dt} &amp; = - \frac{F(t)}{V} X +  r_g(X, S) \\
+\frac{dS}{dt} &amp; = \frac{F(t)}{V} (S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S)|\\
+\frac{dV}{dt} &amp;  = F(t)
+\end{align*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">Sf</span> <span class="o">=</span> <span class="mf">10.0</span>         <span class="c1"># g/liter</span>
+<span class="n">mumax</span> <span class="o">=</span> <span class="mf">0.20</span>      <span class="c1"># 1/hour</span>
+<span class="n">Ks</span> <span class="o">=</span> <span class="mf">1.00</span>         <span class="c1"># g/liter</span>
+<span class="n">Yxs</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># g/g</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># reaction rates</span>
+<span class="k">def</span> <span class="nf">mu</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mumax</span><span class="o">*</span><span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">Ks</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">X</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dX</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">Yxs</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="c1"># integration period</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># solve ivp</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># extract solution into a data frame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="c1"># plot</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_9_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_9_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="product-modeling">
+<h3><span class="section-number">2.6.3.2. </span>Product Modeling<a class="headerlink" href="#product-modeling" title="Permalink to this headline">¶</a></h3>
+<p>At this stage this is just one last consideration, modeling of the product produced by the fed-batch fermenter. For this model, the product is assumed to be a by-product of cell growth</p>
 <div class="math notranslate nohighlight">
 \[r_P(X,S) = Y_{P/X}r_g(X,S)\]</div>
 <p>where <span class="math notranslate nohighlight">\(Y_{P/X}\)</span> is the product yield coefficient defined as</p>
 <div class="math notranslate nohighlight">
-\[Y_{P/X} = \frac{\mbox{mass of product formed}}{\mbox{mass of new cells formed}}\]</div>
-<p>The model further assumes that substrate is consumed is proportion to the mass of new cells formed where <span class="math notranslate nohighlight">\(Y_{X/S}\)</span> is the yield coefficient for new cells</p>
-<div class="math notranslate nohighlight">
-\[Y_{P/X} = \frac{\mbox{mass of new cells formed}}{\mbox{mass of substrate consumed}}\]</div>
-<div class="section" id="dilution-effect">
-<h3><span class="section-number">2.6.1.1. </span>Dilution Effect<a class="headerlink" href="#dilution-effect" title="Permalink to this headline">¶</a></h3>
-<p>One aspect of the fed-batch model is that volume is not constant, therefore the cell, product, and substrate concentrations are subject to a dilution effect.  Mathematically, the chain rule of differential calculus provides a means to recast the state of model in terms of the intensive concentration variables <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(P\)</span>, and <span class="math notranslate nohighlight">\(S\)</span>, and extensive volume <span class="math notranslate nohighlight">\(V\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
-\frac{d(XV)}{dt} &amp; = V\frac{dX}{dt} + X\frac{dV}{dt} = V\frac{dX}{dt} + F(t)X \\
-\frac{d(PV)}{dt} &amp; = V\frac{dP}{dt} + P\frac{dV}{dt} = V\frac{dP}{dt} + F(t)P \\
-\frac{d(SV)}{dt} &amp; = V\frac{dS}{dt} + S\frac{dV}{dt} = V\frac{dS}{dt} + F(t)S
-\end{align*}\end{split}\]</div>
-<p>Rearranging and substituting into the mass balances gives</p>
+\[ \begin{align}\begin{aligned}Y_{P/X} = \frac{\mbox{mass of product formed}}{\mbox{mass of new cells formed}}$$. The mass balance for product is given by\\$$\frac{d(VP)}{dt} =  r_P(X,S)\end{aligned}\end{align} \]</div>
+<p>Applying the chain rule for derivatives results in the final version of our model.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
 \frac{dX}{dt} &amp; = - \frac{F(t)}{V}X + r_g(X,S)  \\
@@ -864,10 +1149,6 @@
 \frac{dS}{dt} &amp; = \frac{F(t)}{V}(S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S) \\
 \frac{dV}{dt} &amp; = F(t)
 \end{align*}\end{split}\]</div>
-</div>
-</div>
-<div class="section" id="python-implementation">
-<h2><span class="section-number">2.6.2. </span>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -903,31 +1184,124 @@
     <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">Yxs</span>
     <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dP</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="simulation">
-<h2><span class="section-number">2.6.3. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
 <span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
 
 <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">])</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+       <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Biomass (X)&quot;</span><span class="p">,</span> <span class="s2">&quot;Product (P)&quot;</span><span class="p">,</span> <span class="s2">&quot;Substrate (S)&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume (V)&quot;</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:title={&#39;center&#39;:&#39;Biomass (X)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Product (P)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Substrate (S)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Volume (V)&#39;}, xlabel=&#39;Time&#39;&gt;],
+      dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" />
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_11_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_11_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="putting-the-simulation-model-to-work">
+<h2><span class="section-number">2.6.4. </span>Putting the Simulation Model to Work<a class="headerlink" href="#putting-the-simulation-model-to-work" title="Permalink to this headline">¶</a></h2>
+<p>Simulation has many uses, among them is to gain insight into operating strategies.</p>
+<ol class="simple">
+<li><p>The above simulations have been run with initial conditions <span class="math notranslate nohighlight">\(X_0\)</span> = 0.05 g/liter, <span class="math notranslate nohighlight">\(V\)</span> = 1 liter, and <span class="math notranslate nohighlight">\(P_0\)</span> = <span class="math notranslate nohighlight">\(S_0\)</span> = 0 g/liter. Suppose the economic operation of the downstream separations process require a product concentration <span class="math notranslate nohighlight">\(P\)</span> of at least 0.8 g/liter. How long would you have to operate the reactor?  (Hint: Modify the simulation to create a terminal event corresponding to the desired product concentration. See Section 2.2 for an example, or consult the documentation for <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> to see how this is done.)</p></li>
+<li><p>One problem with the operation is that the initial load of the bioreactor has no substrate. Suppose we change the operating strategy to set the initial substrate concentration equal to the feed concentration <span class="math notranslate nohighlight">\(S_0 = S_f\)</span>.  Now how long does it take to get to a product concentration <span class="math notranslate nohighlight">\(P\)</span> = 0.8 g/liter?</p></li>
+<li><p>We know now have decided to operate the bioreactor with an initial substrate concentration <span class="math notranslate nohighlight">\(S_0\)</span> = <span class="math notranslate nohighlight">\(S_f\)</span>. Now we need to decide how long to run the reactor before shutting down, cleaning, and restarting with a new batch. Assume the turn around time is 4 hours, and productivity is measured as</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\text{Productivity} = \frac{P \cdot V}{t_{turn-around} + t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is time since start of the batch. Modify the dataframe to compute productivity as a function of <span class="math notranslate nohighlight">\(t\)</span>, and decide the optimal time to run the batch.</p>
+<p><strong>Solution:</strong></p>
+<p>The straightforward solution to this problem is add a column to the dataframe of simulation results, plot as a function of t, then lookup and report the time at which Productivity is a maximum. This is about 33 hours.</p>
+<p>Another way to solve this problem is to create a new differential equation</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\frac{d}{dt}\text{Productivity} &amp; = \frac{P'V + P V'}{t_{turnaround} + t} - \frac{PV}{(t_{turnaround} + t)^2}
+\end{align*}
+\]</div>
+<p>and set up an event to determine when the rate of change is zero.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hidden Cell Solution</span>
+<span class="c1"># Plot a column to the dataframe to plot productivity versus time.</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="c1"># parameter values</span>
+<span class="n">mumax</span> <span class="o">=</span> <span class="mf">0.20</span>      <span class="c1"># 1/hour</span>
+<span class="n">Ks</span> <span class="o">=</span> <span class="mf">1.00</span>         <span class="c1"># g/liter</span>
+<span class="n">Yxs</span> <span class="o">=</span> <span class="mf">0.5</span>         <span class="c1"># g/g</span>
+<span class="n">Ypx</span> <span class="o">=</span> <span class="mf">0.2</span>         <span class="c1"># g/g</span>
+<span class="n">Sf</span> <span class="o">=</span> <span class="mf">10.0</span>         <span class="c1"># g/liter</span>
+<span class="n">t_turnaound</span> <span class="o">=</span> <span class="mi">4</span>   <span class="c1"># hr</span>
+
+<span class="c1"># inlet flowrate</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.05</span>
+
+<span class="c1"># reaction rates</span>
+<span class="k">def</span> <span class="nf">mu</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mumax</span><span class="o">*</span><span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">Ks</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="o">*</span><span class="n">X</span>
+    
+<span class="k">def</span> <span class="nf">Rp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Ypx</span><span class="o">*</span><span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">Productivity_max</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># differential equations</span>
+<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">J</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">dX</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">X</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">dP</span> <span class="o">=</span> <span class="o">-</span><span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="n">P</span><span class="o">/</span><span class="n">V</span> <span class="o">+</span> <span class="n">Rp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span>
+    <span class="n">dS</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sf</span> <span class="o">-</span> <span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">V</span> <span class="o">-</span> <span class="n">Rg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">S</span><span class="p">)</span><span class="o">/</span><span class="n">Yxs</span>
+    <span class="n">dV</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">dJ</span> <span class="o">=</span> <span class="p">(</span><span class="n">P</span><span class="o">*</span><span class="n">dV</span> <span class="o">+</span> <span class="n">V</span><span class="o">*</span><span class="n">dP</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">t_turnaround</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">P</span><span class="o">*</span><span class="n">V</span><span class="o">/</span><span class="p">(</span><span class="n">t_turnaround</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dP</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">,</span> <span class="n">dJ</span><span class="p">]</span>
+
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">Sf</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">events</span><span class="o">=</span><span class="p">[</span><span class="n">Productivity_max</span><span class="p">])</span>
+<span class="n">t_events</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t_events</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Maximum productivity reached at t = </span><span class="si">{</span><span class="n">t_events</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;J&quot;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
+
+<span class="c1">#df[&quot;Productivity&quot;] = df[&quot;P&quot;]*df[&quot;V&quot;]/(t_turnaround + df[&quot;Time&quot;])</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Biomass (X)&quot;</span><span class="p">,</span> <span class="s2">&quot;Product (P)&quot;</span><span class="p">,</span> <span class="s2">&quot;Substrate (S)&quot;</span><span class="p">,</span> <span class="s2">&quot;Volume (V)&quot;</span><span class="p">,</span> <span class="s2">&quot;Productivity&quot;</span><span class="p">])</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">33</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Maximum productivity reached at t = [array([33.60731468])]
+</pre></div>
+</div>
+<img alt="../_images/02.06-Fed-Batch-Bioreactor_14_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_14_1.png" />
 </div>
 </div>
 </div>
@@ -962,7 +1336,7 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.5. </span>Higher-order models</p>
+            <p class="prev-next-title"><span class="section-number">2.5. </span>Second and Higher Order models</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02.07-Exothermic-CSTR.html" title="next page">
