@@ -19,21 +19,21 @@
 
 ## Week 3: Jan 25 - Jan 28
 
-|        | Day   | Activity     | Topic                             | Pre-reading          | Assignment       |
-|:-------|:------|:-------------|:----------------------------------|:---------------------|:-----------------|
-| Jan 25 | Tue   | Class        | Modeling: Temperature Control Lab | Section 2.3          |                  |
-| Jan 26 | Wed   | Office Hours |                                   |                      |                  |
-| Jan 27 | Thu   | Class        | Modeling: Second Order Systems    | Sections 2.4 and 2.5 |                  |
-| Jan 28 | Fri   | Lab          | Lab 3: Model Parameter Estimation | Lab Chapter 3        | Lab Assignment 3 |
+|        | Day   | Activity     | Topic                             | Pre-reading   | Assignment       |
+|:-------|:------|:-------------|:----------------------------------|:--------------|:-----------------|
+| Jan 25 | Tue   | Class        | Modeling: Temperature Control Lab | Section 2.3   |                  |
+| Jan 26 | Wed   | Office Hours |                                   |               |                  |
+| Jan 27 | Thu   | Class        | Modeling: Second Order Systems    | Section 2.4   |                  |
+| Jan 28 | Fri   | Lab          | Lab 3: Model Parameter Estimation | Lab Chapter 3 | Lab Assignment 3 |
 
 ## Week 4: Feb 1 - Feb 4
 
-|       | Day   | Activity     | Topic                        | Pre-reading   | Assignment   |
-|:------|:------|:-------------|:-----------------------------|:--------------|:-------------|
-| Feb 1 | Tue   | Class        | Modeling: Exothermic Reactor |               |              |
-| Feb 2 | Wed   | Office Hours |                              |               |              |
-| Feb 3 | Thu   | Class        | Modeling: Systems            |               |              |
-| Feb 4 | Fri   | Lab          | Quiz 1: Process Modeling     |               |              |
+|       | Day   | Activity     | Topic                                 | Pre-reading          | Assignment      |
+|:------|:------|:-------------|:--------------------------------------|:---------------------|:----------------|
+| Feb 1 | Tue   | Class        | Modeling: Fitting Higher Order Models | Section 2.5          |                 |
+| Feb 2 | Wed   | Office Hours |                                       |                      |                 |
+| Feb 3 | Thu   | Class        | Modeling: Reactor Modeling            | Sections 2.6 and 2.7 | HW Assignment 2 |
+| Feb 4 | Fri   | Lab          |                                       |                      |                 |
 
 ## Week 5: Feb 8 - Feb 11
 
@@ -42,7 +42,7 @@
 | Feb 8  | Tue   | Class        | Setpoints, Disturbances, Servo and Regulation Problems |               |                  |
 | Feb 9  | Wed   | Office Hours |                                                        |               |                  |
 | Feb 10 | Thu   | Class        | P, PI, and PID Control, and Tuning                     |               |                  |
-| Feb 11 | Fri   | Lab          | Lab 4: PID Control                                     | Lab Chapter 4 | Lab Assignment 4 |
+| Feb 11 | Fri   | Lab          | Quiz 1 / Lab 4: PID Control                            | Lab Chapter 4 | Lab Assignment 4 |
 
 ## Week 6: Feb 15 - Feb 18
 
