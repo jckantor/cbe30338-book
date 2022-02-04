@@ -359,18 +359,30 @@ df.plot(x = "Time", grid=True, subplots=True, figsize=(12, 8),
 # ## Putting the Simulation Model to Work
 # 
 # Simulation has many uses, among them is to gain insight into operating strategies. 
-# 
-# 1. The above simulations have been run with initial conditions $X_0$ = 0.05 g/liter, $V$ = 1 liter, and $P_0$ = $S_0$ = 0 g/liter. Suppose the economic operation of the downstream separations process require a product concentration $P$ of at least 0.8 g/liter. How long would you have to operate the reactor?  (Hint: Modify the simulation to create a terminal event corresponding to the desired product concentration. See Section 2.2 for an example, or consult the documentation for `scipy.integrate.solve_ivp` to see how this is done.)
-# 
-# 2. One problem with the operation is that the initial load of the bioreactor has no substrate. Suppose we change the operating strategy to set the initial substrate concentration equal to the feed concentration $S_0 = S_f$.  Now how long does it take to get to a product concentration $P$ = 0.8 g/liter?
-# 
-# 3. We know now have decided to operate the bioreactor with an initial substrate concentration $S_0$ = $S_f$. Now we need to decide how long to run the reactor before shutting down, cleaning, and restarting with a new batch. Assume the turn around time is 4 hours, and productivity is measured as 
-# 
-# $$\text{Productivity} = \frac{P \cdot V}{t_{turn-around} + t}$$
-# 
-# where $t$ is time since start of the batch. Modify the dataframe to compute productivity as a function of $t$, and decide the optimal time to run the batch. 
 
-# **Solution:**
+# :::{admonition} Exercise 1
+# 
+# The above simulations have been run with initial conditions $X_0$ = 0.05 g/liter, $V$ = 1 liter, and $P_0$ = $S_0$ = 0 g/liter. Suppose the economic operation of the downstream separations process require a product concentration $P$ of at least 0.8 g/liter. How long would you have to operate the reactor?  (Hint: Modify the simulation to create a terminal event corresponding to the desired product concentration. See Section 2.2 for an example, or consult the documentation for `scipy.integrate.solve_ivp` to see how this is done.)
+# 
+# :::
+
+# :::{admonition} Exercise 2
+# 
+# One problem with the operation is that the initial load of the bioreactor has no substrate. Suppose we change the operating strategy to set the initial substrate concentration equal to the feed concentration $S_0 = S_f$.  Now how long does it take to get to a product concentration $P$ = 0.8 g/liter?
+# 
+# :::
+
+# :::{admonition} Exercise 3
+# 
+# We know now have decided to operate the bioreactor with an initial substrate concentration $S_0$ = $S_f$. Now we need to decide how long to run the reactor before shutting down, cleaning, and restarting with a new batch. Assume the turn around time is 4 hours, and productivity is measured as 
+# 
+# $$\text{Productivity} = \frac{P \cdot V}{t_{turn-around} + t}$$ 
+# 
+# where $t$ is time since start of the batch. Modify the dataframe to compute productivity as a function of $t$, and decide the optimal time to run the batch.
+# 
+# :::
+
+# **Solution (tag: remove-cell):**
 # 
 # The straightforward solution to this problem is add a column to the dataframe of simulation results, plot as a function of t, then lookup and report the time at which Productivity is a maximum. This is about 33 hours.
 # 
@@ -387,7 +399,7 @@ df.plot(x = "Time", grid=True, subplots=True, figsize=(12, 8),
 # In[14]:
 
 
-# Hidden Cell Solution
+# tagged: remove-cell
 # Plot a column to the dataframe to plot productivity versus time.
 
 import numpy as np
