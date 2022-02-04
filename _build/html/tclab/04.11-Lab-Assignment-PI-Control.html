@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/tclab/04.11-Lab-Assignment-PI-Control.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/04.11-Lab-Assignment-PI-Control.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -821,23 +821,27 @@
 <div class="section" id="implementation-of-a-simple-pi-controller">
 <h2><span class="section-number">4.4.1. </span>Implementation of a simple PI controller<a class="headerlink" href="#implementation-of-a-simple-pi-controller" title="Permalink to this headline">¶</a></h2>
 <p>Given a process variable <span class="math notranslate nohighlight">\(PV\)</span> and setpoint <span class="math notranslate nohighlight">\(SP\)</span>, proportional-integral-derivative control determines the value of a manipulated variable MV by the equation</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-52f71e5f-90dd-4e5e-b2b1-1d4ee9b13b0c">
+<span class="eqno">(4.15)<a class="headerlink" href="#equation-52f71e5f-90dd-4e5e-b2b1-1d4ee9b13b0c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV &amp; = \bar{MV} + k_p\left(SP - PV\right) + k_i \int_0^t \left(SP-PV)\right)dt
-\end{align}</p>
+\end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k_p\)</span> and <span class="math notranslate nohighlight">\(k_i\)</span> are the proportional and integral coefficients, respectively. The value <span class="math notranslate nohighlight">\(\bar{MV}\)</span> is a nominal or initial value of the manipulated variable.</p>
 <p>The actual implementation of PI control is normally done by computing how much the <span class="math notranslate nohighlight">\(MV\)</span> should change at each time step. Defining the error at time <span class="math notranslate nohighlight">\(k\)</span> as</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7b6cccd0-9d38-46b0-a774-c5375f5357b7">
+<span class="eqno">(4.16)<a class="headerlink" href="#equation-7b6cccd0-9d38-46b0-a774-c5375f5357b7" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = SP_k - PV_k
-\end{align}</p>
+\end{align}\]</div>
 <p>then consecutive values of <span class="math notranslate nohighlight">\(MV\)</span> are given by</p>
-<p>\begin{align}
-MV_{k-1} &amp; = \bar{MV} + k_p e_{k-1} + k_i \sum_{j=0}^{k-1} e_{j} \
+<div class="amsmath math notranslate nohighlight" id="equation-745fc9d7-09f1-433a-accd-9774e2a03983">
+<span class="eqno">(4.17)<a class="headerlink" href="#equation-745fc9d7-09f1-433a-accd-9774e2a03983" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_{k-1} &amp; = \bar{MV} + k_p e_{k-1} + k_i \sum_{j=0}^{k-1} e_{j} \\
 MV_{k} &amp; = \bar{MV} + k_p e_{k} + k_i \sum_{j=0}^{k} e_{j}
-\end{align}</p>
+\end{align}\]</div>
 <p>Taking differences gives a practical formula for updating the value of <span class="math notranslate nohighlight">\(MV\)</span> in response to measurements</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3448b9e9-5c77-4654-a42f-877236ff25ca">
+<span class="eqno">(4.18)<a class="headerlink" href="#equation-3448b9e9-5c77-4654-a42f-877236ff25ca" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} + k_p(e_{k} - e_{k-1}) + k_i e_{k}
-\end{align}</p>
+\end{align}\]</div>
 <p>The following code defines a Python object that implements this algorithm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

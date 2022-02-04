@@ -356,7 +356,7 @@ df.plot(x = "Time", grid=True, subplots=True, figsize=(12, 8),
        title=["Biomass (X)", "Product (P)", "Substrate (S)", "Volume (V)"], sharex=True)
 
 
-# ## Putting the Simulation Model to Work
+# ## Exercises: Putting the Simulation Model to Work
 # 
 # Simulation has many uses, among them is to gain insight into operating strategies. 
 

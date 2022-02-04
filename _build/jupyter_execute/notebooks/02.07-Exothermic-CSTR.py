@@ -25,7 +25,7 @@
 # 
 # We can see the strong temperature dependence by plotting $k(T)$ versus temperature over typical operating conditions.
 
-# In[2]:
+# In[6]:
 
 
 import matplotlib.pyplot as plt
@@ -56,21 +56,17 @@ plt.grid();
 # 
 # The model consists of mole and energy balances on the contents of the well-mixed reactor.
 # 
-# $$
 # \begin{align*}
 # V\frac{dc_A}{dt} & = q(c_{Ai}-c_A)-Vkc_A \\
 # V\rho C_p\frac{dT}{dt} & = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 # \end{align*}
-# $$
 # 
 # Normalizing the equations to isolate the time rates of change of $c_A$ and $T$ give
 # 
-# $$
 # \begin{align*}
 # \frac{dc_A}{dt} & = \frac{q}{V}(c_{Ai} - c_A)- kc_A \\
 # \frac{dT}{dt} & = \frac{q}{V}(T_i - T) + \frac{-\Delta H_R}{\rho C_p}kc_A + \frac{UA}{V\rho C_p}(T_c - T)
 # \end{align*}
-# $$
 # 
 # which are the equations that will be integrated below.
 # 
@@ -96,7 +92,7 @@ plt.grid();
 # 
 # The first simulation assumes a cooling water temperature of 300 K. 
 
-# In[34]:
+# In[7]:
 
 
 from scipy.integrate import solve_ivp
@@ -125,7 +121,7 @@ def deriv(t, y):
 
 # We first define a visualization function that will be reused in later simulations.
 
-# In[41]:
+# In[8]:
 
 
 # simulation
@@ -143,60 +139,71 @@ df.plot(x="Time", subplots=True, grid=True, title=["Concentration", "Temperature
 # 
 # The primary means of controlling the reactoris through temperature of the cooling water jacket. The next calculations explore the effect of plus or minus change of 5 K in cooling water temperature on reactor behavior. These simulations reproduce the behavior shown in Example 2.5 SEMD.
 
-# In[45]:
+# In[29]:
 
 
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
+t = np.linspace(0, 10, 1001)
+conc_df = pd.DataFrame(t, columns=["Time"])
+temp_df = pd.DataFrame(t, columns=["Time"])
 for Tc in [295, 300, 305]:
-    soln = solve_ivp(deriv, [t_initial, t_final], IC, t_eval=t)
-    df = pd.DataFrame(soln.y.T, columns=["cA", "T"])
-    df["Time"] = soln.t
-    df.plot(x="Time", y="cA", ax=ax[0], title="Concentration", grid=True)
-    df.plot(x="Time", y="T", ax=ax[1], title="Temperature", grid=True)
+    soln = solve_ivp(deriv, [0, t_final], IC, t_eval=t)
+    conc_df[f"Tc={Tc}"] = soln.y[0,:]
+    temp_df[f"Tc={Tc}"] = soln.y[1,:]
+    
+conc_df.plot(x="Time", grid=True, figsize=(10, 3), title="Concentration")
+temp_df.plot(x="Time", grid=True, figsize=(10, 3), title="Temperature")
 
 
 # ## Interactive Simulation
 # 
 # Executing the following cell provides an interactive tool for exploring the relationship of cooling temperature with reactor behavior.  Use it to observe a thermal runaway, sustained osciallations, and low and high conversion steady states.
 
-# In[5]:
+# In[63]:
 
 
 from ipywidgets import interact
 from IPython.display import display
 
+T0 = 350
+IC = [cA0, T0]
+t = np.linspace(0, 10, 1001)
 # create an initial plot object, and close so it doesn't appear
 Tc = 300.0
-fig, ax = plt.subplots(1, 2, figsize=(12, 4))
-soln = solve_ivp(deriv, [t_initial, t_final], IC, t_eval=t)
-plot_reactor(ax, soln.t, soln.y)
-plt.close()
+fig, ax = plt.subplots(2, 1, figsize=(12, 5))
+soln = solve_ivp(deriv, [0, t_final], IC, t_eval=t)
+df = pd.DataFrame(soln.y.T, columns=["cA", "T"])
+df["Time"] = soln.t
+df.plot(x="Time", y="cA", ax=ax[0], ylim=(0, 1), grid=True, title="Concentration", lw=2)
+df.plot(x="Time", y="T", ax=ax[1], ylim=(300, 460), grid=True, title="Temperature", lw=2)
 
 # function to update and display the plot object
-def sim(Tcooling):
+def sim(C_initial, T_initial, Tcooling):
     global Tc
     Tc = Tcooling
-    soln = solve_ivp(deriv, [t_initial, t_final], IC, t_eval=t)
+    IC = [C_initial, T_initial]
+    soln = solve_ivp(deriv, [0, t_final], IC, t_eval=t)
     ax[0].lines[0].set_ydata(soln.y[0])
-    ax[0].legend().get_texts()[0].set_text(str(Tc))
+    #ax[0].legend().get_texts()[0].set_text(str(Tc))
     ax[1].lines[0].set_ydata(soln.y[1])
-    ax[1].legend().get_texts()[0].set_text(str(Tc))
+    #ax[1].legend().get_texts()[0].set_text(str(Tc))
     display(fig)
 
 # interactive widget
-interact(sim, Tcooling = (290.0, 310.0), continuous_update=False);
+interact(sim,
+         C_initial = (0.0, 1.0),
+         T_initial =  (300, 400),
+         Tcooling = (290.0, 310.0),
+         continuous_update=False);
 
 
 # ## Nullclines
 # 
 # The nullclines of two first-order differential equations are points in the phase plane for which one or the other of the two derivatives are zero.
 # 
-# $$
 # \begin{align*}
 # V\frac{dc_A}{dt} & = 0 = q(c_{Ai}-c_A)-Vkc_A \\
 # V\rho C_p\frac{dT}{dt} & = 0 = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 # \end{align*}
-# $$
 # 
 # The intersection of the nullclines correspond to steady states. The relative positions of the nullclines provide valuable insight into the dynamics of a nonlinear system.
 

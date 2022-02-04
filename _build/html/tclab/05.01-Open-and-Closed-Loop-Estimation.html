@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/tclab/05.01-Open-and-Closed-Loop-Estimation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/05.01-Open-and-Closed-Loop-Estimation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -987,45 +987,51 @@
 <h2><span class="section-number">5.2.2. </span>Experiment 2. Closed-Loop State Estimation and Relay Control<a class="headerlink" href="#experiment-2-closed-loop-state-estimation-and-relay-control" title="Permalink to this headline">¶</a></h2>
 <p>In the second experiment, use a closed loop estimator and relay control to cause the heater to track a desired temperature setpoint.</p>
 <p>Before performing the experiment, you will need to determine suitable values for the observer gain <span class="math notranslate nohighlight">\(L\)</span>.  <span class="math notranslate nohighlight">\(L\)</span> is a matrix consisting of two rows and one column.  You need to choose the values in <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A-LC\)</span> is stable and has acceptable time constants. For this experiment we will use a pole placement technique to determine <span class="math notranslate nohighlight">\(L\)</span>.</p>
-<p>\begin{align*}
-L &amp; = \begin{bmatrix} ? \ ? \end{bmatrix}
-\end{align*}</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+L &amp; = \begin{bmatrix} ? \\ ? \end{bmatrix}
+\end{align*}\]</div>
 <p><strong>a.</strong>) Before starting the experiment, compute the eigenvalues and corresponding time constants of <span class="math notranslate nohighlight">\(A\)</span> and of <span class="math notranslate nohighlight">\(A-LC\)</span>.</p>
 <p><strong>b.</strong>) Then repeat the same tasks for Experiment 1, but this time use a closed-loop estimator. In your answers, be sure to describe how the results of this experiment differ from the first, and explain why.</p>
 <div class="section" id="review-of-closed-loop-estimation">
 <h3><span class="section-number">5.2.2.1. </span>Review of Closed Loop Estimation<a class="headerlink" href="#review-of-closed-loop-estimation" title="Permalink to this headline">¶</a></h3>
 <p>Examining the results, we see the predicted heater temperature appears to track the desired setpoint, but the sensor temperature is off the mark. This could be due several factors, most likely model error.</p>
-<p>Process
-\begin{align*}
-\frac{dx}{dt} &amp; = A x + B u \
+<p>Process</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dx}{dt} &amp; = A x + B u \\
 y &amp; = C x + D u
-\end{align*}</p>
-<p>Model
-\begin{align*}
-\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B u \
+\end{align*}\]</div>
+<p>Model</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B u \\
 \hat{y} &amp; = C \hat{x} + D u
-\end{align*}</p>
+\end{align*}\]</div>
 <p>If the measured and estimated outputs are different, then <span class="math notranslate nohighlight">\(y - \hat{y} \neq 0\)</span>. Taking the difference we find</p>
-<p>\begin{align*}
-y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \\
 &amp; = C(x - \hat{x})
-\end{align*}</p>
+\end{align*}\]</div>
 <p>The difference <span class="math notranslate nohighlight">\(y - \hat{y}\)</span> can be observed.  But what we want is to make <span class="math notranslate nohighlight">\(x - \hat{x}\)</span> small. Is there way to use knowledge of <span class="math notranslate nohighlight">\(y - \hat{y}\)</span> to reduce <span class="math notranslate nohighlight">\(x - \hat{x}\)</span>?</p>
 <p>The technique is to introduce feedback <span class="math notranslate nohighlight">\(L(y-\hat{y})\)</span> to the model.</p>
-<p>\begin{align*}
-\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B u + L(y - \hat{y}) \
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B u + L(y - \hat{y}) \\
 \hat{y} &amp; = C \hat{x} + D u
-\end{align*}</p>
+\end{align*}\]</div>
 <p>Subtracting the new model equations from the process model, we get an expression for the dynamics of the model error <span class="math notranslate nohighlight">\(e = x - \hat{x]\)</span></p>
-<p>\begin{align*}
-\frac{de}{dt} &amp; = \frac{dx}{dt} - \frac{d\hat{x}}{dt} \
-\
-&amp; = (Ax + Bu) - (A\hat{x} + Bu + L(Cx - C\hat{x})) \
-\
-&amp; = (A - LC)(x -\hat{x}) \
-\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{de}{dt} &amp; = \frac{dx}{dt} - \frac{d\hat{x}}{dt} \\
+\\
+&amp; = (Ax + Bu) - (A\hat{x} + Bu + L(Cx - C\hat{x})) \\
+\\
+&amp; = (A - LC)(x -\hat{x}) \\
+\\
 \frac{de}{dt} &amp; = (A - LC) e
-\end{align*}</p>
+\end{align*}\]</div>
 <p>The choice of <span class="math notranslate nohighlight">\(L\)</span> determines observer performance.</p>
 </div>
 <div class="section" id="choosing-l">

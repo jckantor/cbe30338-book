@@ -8,7 +8,7 @@ exclude_patterns: [.DS_Store, "**.ipynb_checkpoints", "**.pytest_cache"]
 
 # Launch on Google Colab button
 launch_buttons:
-  notebook_interface: "classic"
+  notebook_interface: "jupyterlab"
   colab_url: "https://colab.research.google.com"
 
 only_build_toc_files: true
@@ -17,11 +17,20 @@ only_build_toc_files: true
 # See https://jupyterbook.org/content/execute.html
 execute:
   execute_notebooks: off
+  
+# MyST syntax extensions
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - linkify
+    - substitution
+    - colon_fence
+    - amsmath
 
 # Define the name of the latex output file for PDF builds
 latex:
   latex_documents:
-    targetname: book.tex
+    targetname: cbe30338-book.tex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
