@@ -58,7 +58,7 @@ plt.grid();
 # 
 # \begin{align*}
 # V\frac{dc_A}{dt} & = q(c_{Ai}-c_A)-Vkc_A \\
-# V\rho C_p\frac{dT}{dt} & = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
+# V\rho C_p\frac{dT}{dt} & = \rho q C_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 # \end{align*}
 # 
 # Normalizing the equations to isolate the time rates of change of $c_A$ and $T$ give
@@ -158,7 +158,7 @@ temp_df.plot(x="Time", grid=True, figsize=(10, 3), title="Temperature")
 # 
 # Executing the following cell provides an interactive tool for exploring the relationship of cooling temperature with reactor behavior.  Use it to observe a thermal runaway, sustained osciallations, and low and high conversion steady states.
 
-# In[63]:
+# In[96]:
 
 
 from ipywidgets import interact
@@ -202,26 +202,30 @@ interact(sim,
 # 
 # \begin{align*}
 # V\frac{dc_A}{dt} & = 0 = q(c_{Ai}-c_A)-Vkc_A \\
-# V\rho C_p\frac{dT}{dt} & = 0 = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
+# V\rho C_p\frac{dT}{dt} & = 0 = \rho q C_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
+# \end{align*}
+# 
+# Solving each of these steady-state equations for $c_A$
+# 
+# \begin{align*}
+# \frac{dc_A}{dt} = 0 \implies c_A & = \frac{q c_{A,i}}{q + V k(T)} \\
+# \frac{dT}{dt} = 0 \implies c_A & = -\frac{\rho q C_p(T_i - T) + UA(T_c - T)}{(-\Delta H_R)Vk(T)} 
 # \end{align*}
 # 
 # The intersection of the nullclines correspond to steady states. The relative positions of the nullclines provide valuable insight into the dynamics of a nonlinear system.
 
-# In[6]:
+# In[107]:
 
 
 # plot nullclines
-
 def plot_nullclines(ax):
     T = np.linspace(300.0,460.0,1000)
-    ax.plot((q/V)*cAi/((q/V) + k(T)), T, 'b:')
-    ax.plot(((q/V)*(Ti-T) + (UA/V/rho/Cp)*(Tc-T))/((dHr/rho/Cp)*k(T)), T, 'r:')
-    ax.set_xlim(0,1)
-    ax.set_ylim(300,460)
-    ax.grid()
+    df = pd.DataFrame({'T': T,  
+                       "dC/dt = 0": (q/V)*cAi/((q/V) + k(T)),
+                       "dT/dt = 0": (rho*q*Cp*(Ti-T) + UA*(Tc-T))/(V*dHr*k(T))})
+    df.plot(x = "dC/dt = 0", y = "T", lw=2, ax=ax, xlabel="Concentration", ylabel="Temperature")
+    df.plot(x = "dT/dt = 0", y = "T", ax=ax, grid=True, xlim=(0, 1), ylim = (300, 500))
     ax.legend(['dC/dt = 0','dT/dt = 0'])
-    ax.set_xlabel('Concentration')
-    ax.set_ylabel('Temperature')
     
 fix, ax = plt.subplots(1, 1, figsize=(8,6))
 plot_nullclines(ax)
@@ -231,36 +235,48 @@ plot_nullclines(ax)
 # 
 # The final analysis is display the simulation in both time and phase plane coordinates. The following cell produces a 
 
-# In[7]:
+# In[132]:
 
 
 def plot_phase(ax, t, y):
     ax.plot(y[0][0], y[1][0], 'r.', ms=20)
     ax.plot(y[0], y[1], 'g', lw=2)
 
-def phase(cinitial=0.5, Tinitial=350):
+def phase(cinitial=0.5, Tinitial=350, Tcooling=300):
     global Tc
-    soln = solve_ivp(deriv, [t_initial, t_final], [cinitial,Tinitial], t_eval=t)
+    Tc = Tcooling
+    T = np.linspace(300.0, 460.0, 1000)
+    ax_phase.lines[1].set_xdata((rho*q*Cp*(Ti-T) + UA*(Tc-T))/(V*dHr*k(T)))
+    soln = solve_ivp(deriv, [0, t_final], [cinitial, Tinitial], t_eval=t)
     
-    ax[0,0].lines[2].set_xdata(soln.y[0][0])
-    ax[0,0].lines[2].set_ydata(soln.y[1][0])
-    ax[0,0].lines[3].set_xdata(soln.y[0])
-    ax[0,0].lines[3].set_ydata(soln.y[1])
-    ax[1,0].lines[0].set_ydata(soln.y[0])
-    ax[1,1].lines[0].set_ydata(soln.y[1])
-    display(fig)
+    ax_phase.lines[2].set_xdata(soln.y[0][0])
+    ax_phase.lines[2].set_ydata(soln.y[1][0])
+    
+    ax_phase.lines[3].set_xdata(soln.y[0])
+    ax_phase.lines[3].set_ydata(soln.y[1])
+    
+    ax[0].lines[0].set_ydata(soln.y[0])
+    ax[1].lines[0].set_ydata(soln.y[1])
+    display(fig1)
+    display(fig2)
     
 Tc = 300.0
 cinitial = 0.5
 Tinitial = 350.0
-fig, ax = plt.subplots(2, 2, figsize=(12, 9))
-soln = solve_ivp(deriv, [t_initial, t_final], [cinitial, Tinitial], t_eval=t)
-plot_nullclines(ax[0,0])
-plot_phase(ax[0,0], soln.t, soln.y)
-plot_reactor(ax[1,:], soln.t, soln.y)
-plt.close()
+fig1, ax_phase = plt.subplots(1, 1, figsize=(8, 8))
+fig2, ax = plt.subplots(2, 1, figsize=(8, 6))
 
-interact(phase, cinitial=(0,1,.01), Tinitial=(300,400,1))
+soln = solve_ivp(deriv, [0, t_final], [cinitial, Tinitial], t_eval=t)
+dfsoln = pd.DataFrame(soln.y.T, columns=["cA", "T"])
+dfsoln["Time"] = soln.t
+
+plot_nullclines(ax_phase)
+plot_phase(ax_phase, soln.t, soln.y)
+
+dfsoln.plot(x="Time", y="cA", ax=ax[0], ylim=(0, 1), grid=True)
+dfsoln.plot(x="Time", y="T", ax=ax[1], ylim=(300, 500), grid=True)
+
+interact(phase, cinitial=(0, 1, 0.01), Tinitial=(300, 400, 1), Tcooling=(295.0, 305.0))
 
 
 # ## Suggested Exercises
