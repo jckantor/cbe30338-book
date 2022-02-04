@@ -1213,14 +1213,21 @@
 <div class="section" id="putting-the-simulation-model-to-work">
 <h2><span class="section-number">2.6.4. </span>Putting the Simulation Model to Work<a class="headerlink" href="#putting-the-simulation-model-to-work" title="Permalink to this headline">¶</a></h2>
 <p>Simulation has many uses, among them is to gain insight into operating strategies.</p>
-<ol class="simple">
-<li><p>The above simulations have been run with initial conditions <span class="math notranslate nohighlight">\(X_0\)</span> = 0.05 g/liter, <span class="math notranslate nohighlight">\(V\)</span> = 1 liter, and <span class="math notranslate nohighlight">\(P_0\)</span> = <span class="math notranslate nohighlight">\(S_0\)</span> = 0 g/liter. Suppose the economic operation of the downstream separations process require a product concentration <span class="math notranslate nohighlight">\(P\)</span> of at least 0.8 g/liter. How long would you have to operate the reactor?  (Hint: Modify the simulation to create a terminal event corresponding to the desired product concentration. See Section 2.2 for an example, or consult the documentation for <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> to see how this is done.)</p></li>
-<li><p>One problem with the operation is that the initial load of the bioreactor has no substrate. Suppose we change the operating strategy to set the initial substrate concentration equal to the feed concentration <span class="math notranslate nohighlight">\(S_0 = S_f\)</span>.  Now how long does it take to get to a product concentration <span class="math notranslate nohighlight">\(P\)</span> = 0.8 g/liter?</p></li>
-<li><p>We know now have decided to operate the bioreactor with an initial substrate concentration <span class="math notranslate nohighlight">\(S_0\)</span> = <span class="math notranslate nohighlight">\(S_f\)</span>. Now we need to decide how long to run the reactor before shutting down, cleaning, and restarting with a new batch. Assume the turn around time is 4 hours, and productivity is measured as</p></li>
-</ol>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">Exercise 1</p>
+<p>The above simulations have been run with initial conditions <span class="math notranslate nohighlight">\(X_0\)</span> = 0.05 g/liter, <span class="math notranslate nohighlight">\(V\)</span> = 1 liter, and <span class="math notranslate nohighlight">\(P_0\)</span> = <span class="math notranslate nohighlight">\(S_0\)</span> = 0 g/liter. Suppose the economic operation of the downstream separations process require a product concentration <span class="math notranslate nohighlight">\(P\)</span> of at least 0.8 g/liter. How long would you have to operate the reactor?  (Hint: Modify the simulation to create a terminal event corresponding to the desired product concentration. See Section 2.2 for an example, or consult the documentation for <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> to see how this is done.)</p>
+</div>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title">Exercise 2</p>
+<p>One problem with the operation is that the initial load of the bioreactor has no substrate. Suppose we change the operating strategy to set the initial substrate concentration equal to the feed concentration <span class="math notranslate nohighlight">\(S_0 = S_f\)</span>.  Now how long does it take to get to a product concentration <span class="math notranslate nohighlight">\(P\)</span> = 0.8 g/liter?</p>
+</div>
+<div class="admonition-exercise-3 admonition">
+<p class="admonition-title">Exercise 3</p>
+<p>We know now have decided to operate the bioreactor with an initial substrate concentration <span class="math notranslate nohighlight">\(S_0\)</span> = <span class="math notranslate nohighlight">\(S_f\)</span>. Now we need to decide how long to run the reactor before shutting down, cleaning, and restarting with a new batch. Assume the turn around time is 4 hours, and productivity is measured as</p>
 <div class="math notranslate nohighlight">
 \[\text{Productivity} = \frac{P \cdot V}{t_{turn-around} + t}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is time since start of the batch. Modify the dataframe to compute productivity as a function of <span class="math notranslate nohighlight">\(t\)</span>, and decide the optimal time to run the batch.</p>
+</div>
 </div>
 </div>
 
