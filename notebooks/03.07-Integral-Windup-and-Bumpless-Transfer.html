@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -890,13 +890,15 @@
 <div class="section" id="pi-control">
 <h2><span class="section-number">3.7.2. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0b826f92-bccf-4458-82cf-e912575893a3">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-0b826f92-bccf-4458-82cf-e912575893a3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
-\end{align}</p>
+\end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint</p>
-<p>\begin{align}
-e_k &amp; = PV_k - SP_k \
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1ba91d6e-4b25-4646-a06f-cc67a4e7e1e3">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-1ba91d6e-4b25-4646-a06f-cc67a4e7e1e3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+e_k &amp; = PV_k - SP_k \\
+\end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
 <p>We encode the controller using the Python <code class="docutils literal notranslate"><span class="pre">yield'</span> <span class="pre">statement.</span> <span class="pre">The</span> <span class="pre">implementation</span> <span class="pre">has</span> <span class="pre">added</span> </code>t_step` to facilitate use of this code for situations where we may change the time step or have a variable time step.</p>
 <div class="cell docutils container">
@@ -982,9 +984,10 @@ e_k &amp; = PV_k - SP_k \
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2c56ab16-45d2-419d-8cf0-c4d4a6afe118">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-2c56ab16-45d2-419d-8cf0-c4d4a6afe118" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
-\end{align}</p>
+\end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
 <p><strong>Study Question:</strong> Carefully examine the code for the PI controller. How is it possible for <span class="math notranslate nohighlight">\(MV\)</span> to be different from the actual input applied to the device?</p>
 <hr>
@@ -992,16 +995,18 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 <div class="section" id="anti-reset-windup-version-1">
 <h3><span class="section-number">3.7.3.1. </span>Anti-reset windup - Version 1<a class="headerlink" href="#anti-reset-windup-version-1" title="Permalink to this headline">¶</a></h3>
 <p>There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of values that can be implemented in the actual process. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<p>\begin{align}
-\hat{MV}<em>{k} &amp; = MV</em>{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
-\end{align}</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-50b0824b-a40a-4d7c-994a-35160bec3a4d">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-50b0824b-a40a-4d7c-994a-35160bec3a4d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-2db6d646-bb6d-4b75-b892-2a93ef9256df">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-2db6d646-bb6d-4b75-b892-2a93ef9256df" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
-MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\
-\hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\
+MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
+\hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
 MV^{max} &amp; \text{if}  \hat{MV_k} \geq MV^{max}
 \end{cases}
-\end{align}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add anti-integral windup feature. Not yet final.</span>
@@ -1208,13 +1213,15 @@ TCLab Model disconnected successfully.
 </ul>
 <div class="section" id="id1">
 <h3><span class="section-number">3.7.5.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>\begin{align}
-e_k &amp; = PV_k - SP_k \
-\hat{MV}<em>{k} &amp; = MV</em>{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k}
-\end{align}</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c0f2077a-c86e-412a-b13e-71105f7f8b18">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-c0f2077a-c86e-412a-b13e-71105f7f8b18" title="Permalink to this equation">¶</a></span>\[\begin{align}
+e_k &amp; = PV_k - SP_k \\
+\hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
+\end{align}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-f951268c-f25e-4e0d-b3e3-9b0929e4e6c8">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-f951268c-f25e-4e0d-b3e3-9b0929e4e6c8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
-\end{align}</p>
+\end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add anti-integral windup feature.</span>

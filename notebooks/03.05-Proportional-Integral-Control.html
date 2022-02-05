@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/03.05-Proportional-Integral-Control.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/03.05-Proportional-Integral-Control.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -1057,41 +1057,48 @@ MV_k &amp; = \bar{MV} - K_P e_k
 <div class="section" id="position-form">
 <h3><span class="section-number">3.5.4.1. </span>Position form<a class="headerlink" href="#position-form" title="Permalink to this headline">¶</a></h3>
 <p>Given a process variable <span class="math notranslate nohighlight">\(PV\)</span> and setpoint <span class="math notranslate nohighlight">\(SP\)</span>, proportional-integral control is defined by the relation</p>
-<p>\begin{align}
-MV(t) &amp; = \bar{MV} - K_P\left(PV(t) - SP(t)\right) - K_I\int_{-\infty}^t (PV(t’) - SP(t’)),dt’
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2934118b-e7c8-429c-b26d-03fbf3c16d93">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-2934118b-e7c8-429c-b26d-03fbf3c16d93" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV(t) &amp; = \bar{MV} - K_P\left(PV(t) - SP(t)\right) - K_I\int_{-\infty}^t (PV(t') - SP(t'))\,dt'
+\end{align}\]</div>
 <p>or</p>
-<p>\begin{align}
-MV(t) &amp; = \bar{MV} - K_P e(t) - K_I\int_{-\infty}^t e(t’) ,dt’
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-76c3524e-da10-4ffa-86c7-de62b63c0b77">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-76c3524e-da10-4ffa-86c7-de62b63c0b77" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV(t) &amp; = \bar{MV} - K_P e(t) - K_I\int_{-\infty}^t e(t') \,dt'
+\end{align}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[e(t) = PV(t) - SP(t)\]</div>
 <p>where <strong><span class="math notranslate nohighlight">\(K_P\)</span> is the proportional gain</strong> and <strong><span class="math notranslate nohighlight">\(K_I\)</span> is the integral gain</strong>. When implemented in discrete time with time steps of length <span class="math notranslate nohighlight">\(h\)</span>, the basic rule for proportional-integral control becomes</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8597d465-a3ec-4cdd-93a4-614e4bbf5df7">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-8597d465-a3ec-4cdd-93a4-614e4bbf5df7" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \bar{MV} - K_P(PV_k - SP_k) - h K_I\sum_{j=0}^{j=k}(PV_j - SP_j)
-\end{align}</p>
+\end{align}\]</div>
 <p>or</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-03aabde0-44f3-4b3d-8b8a-5786814f2c22">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-03aabde0-44f3-4b3d-8b8a-5786814f2c22" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \bar{MV} - K_P e_k - h K_I\sum_{j=0}^{j=k}e_j
-\end{align}</p>
+\end{align}\]</div>
 <p>where</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-99741e3e-c1bb-42b2-8d89-fbc10b0e0e47">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-99741e3e-c1bb-42b2-8d89-fbc10b0e0e47" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k
-\end{align}</p>
+\end{align}\]</div>
 <p>This is the so-called <strong>position form</strong> of PI control. The position form specifies the value (or “position”) of the manipulated variable stricly in terms of the current and past values of the <strong>error</strong> signal <span class="math notranslate nohighlight">\(e_k\)</span>. Note the sign convention: A positive error occurs when the process variable is greater than the setpoint. The position form of PI control is rarely used in practice.</p>
 </div>
 <div class="section" id="velocity-form">
 <h3><span class="section-number">3.5.4.2. </span>Velocity form<a class="headerlink" href="#velocity-form" title="Permalink to this headline">¶</a></h3>
 <p>A more common implementation of PI control is done by computing how much the manipulated variable changes at each time step, and incrementing the manipulated variable by that amount. Consecutive values of <span class="math notranslate nohighlight">\(MV\)</span> are given by</p>
-<p>\begin{align}
-MV_{k-1} &amp; = \bar{MV} - K_p e_{k-1} - h K_i \sum_{j=0}^{k-1} e_{j} \
+<div class="amsmath math notranslate nohighlight" id="equation-25b00a1c-42e6-455d-befa-ece0ea239739">
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-25b00a1c-42e6-455d-befa-ece0ea239739" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_{k-1} &amp; = \bar{MV} - K_p e_{k-1} - h K_i \sum_{j=0}^{k-1} e_{j} \\
 MV_{k} &amp; = \bar{MV} - K_p e_{k} - h K_i \sum_{j=0}^{k} e_{j}
-\end{align}</p>
+\end{align}\]</div>
 <p>Taking differences gives a formula for updating the value of <span class="math notranslate nohighlight">\(MV\)</span> in response to process measurements or changes in setpoint.</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fb12640c-5965-4b1d-897f-423b4a0eef8d">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-fb12640c-5965-4b1d-897f-423b4a0eef8d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
-\end{align}</p>
+\end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(MV_0 = \bar{MV}\)</span>. Let’s see how this works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1118,13 +1125,15 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 </div>
 </div>
 <p>As we can see from this example, an important practical property of proportonal-integral control is <strong>steady-state tracking of the setpoint.</strong> In other words, for a steaady setpoint <span class="math notranslate nohighlight">\(\bar{SP}\)</span>, at steady-state</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-db5e9330-569f-458e-b695-44da59bc2f36">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-db5e9330-569f-458e-b695-44da59bc2f36" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lim_{k \rightarrow \infty} PV_k = \bar{SP}
-\end{align}</p>
+\end{align}\]</div>
 <p>To see why this is true, start with the velocity form of the proportional-integral controller</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f2b84aba-4ea1-4add-b8f2-1f6da28814f1">
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-f2b84aba-4ea1-4add-b8f2-1f6da28814f1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
-\end{align}</p>
+\end{align}\]</div>
 <p>At steady-state <span class="math notranslate nohighlight">\(MV_{k} = MV_{k-1}\)</span> and <span class="math notranslate nohighlight">\(e_{k} = e_{k-1}\)</span> leaving</p>
 <div class="math notranslate nohighlight">
 \[h K_i e_{k} = 0 \implies e_{k} = 0 \implies PV_{k} = \bar{SP}\]</div>
@@ -1135,11 +1144,12 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 <h2><span class="section-number">3.5.5. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of <strong>tuning rules</strong> in the literature that provide recommended values for the proportional gain <span class="math notranslate nohighlight">\(K_P\)</span>. These rules require process information obtained from testing. For a first-order plus time-delay (FOPTD), the available process information includes gain <span class="math notranslate nohighlight">\(K\)</span>, process time constant <span class="math notranslate nohighlight">\(T\)</span>, and process time delay <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
-<p>\begin{align}
-\text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\
-\text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\
-\text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\
-\end{align}</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f8d59389-117a-43f3-84b6-dd32b61d57da">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-f8d59389-117a-43f3-84b6-dd32b61d57da" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
+\text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
+\text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
+\end{align}\]</div>
 <p>Among the best known and commonly used tuning rules are listed in the following table (also see Astrom and Murray, Chapter 11):</p>
 <table class="colwidths-auto table">
 <thead>

@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/05.02-Linear-Blending-Problem.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/05.02-Linear-Blending-Problem.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -1038,9 +1038,10 @@
 <div class="section" id="step-4-objective-function">
 <h3><span class="section-number">5.2.3.4. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
 <p>If we let subscript <span class="math notranslate nohighlight">\(c\)</span> denote a blending component from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
-<p>\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-edb4f5f1-b5f2-4f1f-86cc-dd93340fb0fd">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-edb4f5f1-b5f2-4f1f-86cc-dd93340fb0fd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mbox{cost} &amp; = \sum_{c\in C} x_c P_c
-\end{align}</p>
+\end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_c\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(c\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_c\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[c]['cost']</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

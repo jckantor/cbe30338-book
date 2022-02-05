@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/05.98-Linear-Production-Model-in-Pyomo.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/05.98-Linear-Production-Model-in-Pyomo.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -985,13 +985,14 @@ interaction. For example, the basic pyomo install command would read</p>
 <div class="section" id="example-linear-production-model-with-constraints">
 <h2><span class="section-number">5.7.4. </span>Example: Linear Production Model with Constraints<a class="headerlink" href="#example-linear-production-model-with-constraints" title="Permalink to this headline">¶</a></h2>
 <p>The mathematical formulation of a simple linear production model is given by</p>
-<p>\begin{align}
-\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\
-\mbox{subject to:}\qquad \
-x &amp; \leq 40  &amp; \mbox{demand constraint} \
-x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \
+<div class="amsmath math notranslate nohighlight" id="equation-154665e6-5fdc-4ed0-b584-a4b53227e94d">
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-154665e6-5fdc-4ed0-b584-a4b53227e94d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
+\mbox{subject to:}\qquad \\
+x &amp; \leq 40  &amp; \mbox{demand constraint} \\
+x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
-\end{align}</p>
+\end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the rates of production (in units per week) for two products.</p>
 <div class="section" id="step-1-import-pyomo">
 <h3><span class="section-number">5.7.4.1. </span>Step 1. Import Pyomo.<a class="headerlink" href="#step-1-import-pyomo" title="Permalink to this headline">¶</a></h3>

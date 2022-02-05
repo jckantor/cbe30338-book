@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/04.03-State-Estimation-Copy1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/04.03-State-Estimation-Copy1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -834,10 +834,11 @@
 <div class="section" id="state-space-model">
 <h2><span class="section-number">4.3.1. </span>State-Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<p>\begin{align}
-\frac{dx}{dt} &amp; = A x + B_u u + B_d d \
+<div class="amsmath math notranslate nohighlight" id="equation-8a61ca3e-46e5-45ac-a276-3afbfbfd3af1">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-8a61ca3e-46e5-45ac-a276-3afbfbfd3af1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
-\end{align}</p>
+\end{align}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}x = \begin{bmatrix} T_{H,1} \\ T_{S,1} \end{bmatrix}
@@ -887,9 +888,10 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <div class="section" id="prediction-and-correction">
 <h3><span class="section-number">4.3.1.1. </span>Prediction and Correction<a class="headerlink" href="#prediction-and-correction" title="Permalink to this headline">¶</a></h3>
 <p>Making the substitution <span class="math notranslate nohighlight">\(\hat{y} = C\hat{x}\)</span>, the observer equation becomes</p>
-<p>\begin{align*}
-\frac{d\hat{x}}{dt} &amp; = \underbrace{A \hat{x} + B_u u + B_d \hat{d}}<em>{\text{prediction}} - \underbrace{L(\hat{y} - y)}</em>{\text{correction}}
-\end{align*}</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\hat{x}}{dt} &amp; = \underbrace{A \hat{x} + B_u u + B_d \hat{d}}_{\text{prediction}} - \underbrace{L(\hat{y} - y)}_{\text{correction}}
+\end{align*}\]</div>
 <p>As before, we can try approximating the derivative with a first order difference formula over small intervals of time. One clever detail is to choose the start of the interval, time <span class="math notranslate nohighlight">\(t_{k-1}\)</span>, to evaluate the model prediction part of the obsever equation, and use the process measurement available at end of the interval, time <span class="math notranslate nohighlight">\(t_k\)</span>, to evaluate the correction term.</p>
 <div class="math notranslate nohighlight">
 \[\frac{\hat{x}_{k} - \hat{x}_{k-1}}{t_k - t_{k-1}} = \underbrace{A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}}_{\text{prediction at time $t_{k-1}$}} - \underbrace{L(\hat{y}_k - y_k)}_{\text{correction at time $t_k$}}\]</div>
@@ -898,10 +900,11 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <ul class="simple">
 <li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
 </ul>
-<p>\begin{align}
-\hat{x}<em>k^{pred} &amp; = \hat{x}</em>{k-1} + (t_k - t_{k-1}) ( A \hat{x}<em>{k-1} + B_u u</em>{k-1} + B_d \hat{d}_{k-1}) \
+<div class="amsmath math notranslate nohighlight" id="equation-6d5f0ff9-e6d0-49a2-9a7c-6ceff0d46f59">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-6d5f0ff9-e6d0-49a2-9a7c-6ceff0d46f59" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 \hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
-\end{align}</p>
+\end{align}\]</div>
 <ul class="simple">
 <li><p><strong>Measurement Correction:</strong> Use measurement <span class="math notranslate nohighlight">\(y_k\)</span> to update <span class="math notranslate nohighlight">\(\hat{x}_{k}^{pred} \rightarrow \hat{x}_{k}\)</span> with the equation</p></li>
 </ul>
@@ -1009,43 +1012,50 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <h2><span class="section-number">4.3.3. </span>Choosing L<a class="headerlink" href="#choosing-l" title="Permalink to this headline">¶</a></h2>
 <p>As this example has made clear, we need a notation that distinguishes the actual state of the physical system from our best estimate of that state. We will use <span class="math notranslate nohighlight">\(\hat{x}\)</span> to denote our best estimate of <span class="math notranslate nohighlight">\(x\)</span>, and use <span class="math notranslate nohighlight">\(\hat{y}\)</span> to denote the measurement that would result from <span class="math notranslate nohighlight">\(\hat{x}\)</span>. We can write two systems of equations corresponding to the dynamics of the actual process and to a model of the process.</p>
 <ul class="simple">
-<li><p><strong>Process</strong>
-\begin{align*}
-\frac{dx}{dt} &amp; = A x + B_u u + B_d d \
-y &amp; = C x
-\end{align*}</p></li>
-<li><p><strong>Prediction Model</strong>
-\begin{align*}
-\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B_u u + B_d \hat{d}\
-\hat{y} &amp; = C \hat{x}
-\end{align*}</p></li>
+<li><p><strong>Process</strong></p></li>
 </ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
+y &amp; = C x
+\end{align*}\]</div>
+<ul class="simple">
+<li><p><strong>Prediction Model</strong></p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\hat{x}}{dt} &amp; = A \hat{x} + B_u u + B_d \hat{d}\\
+\hat{y} &amp; = C \hat{x}
+\end{align*}\]</div>
 <p>We have made a bold assumption that the equatons and coefficients in these systems are the same. Any differences are due to different values for the states <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(\hat{x}\)</span>, and differences between unmeasured process disturbances <span class="math notranslate nohighlight">\(d\)</span> and our estimate for those disturbances, <span class="math notranslate nohighlight">\(\hat{d}\)</span>.</p>
 <p>As we learned from the example, the problem with using this formulation for the feedback control of unmeasured states is that we are neglecting available measurements. This is a obvious oversight. How can this be addressed?</p>
 <p>A brilliant answer to this question was given by David Luenberger in the early 1960’s while a graduate student at Stanford University. The answer was to modify the second system of equations to include a corrective action due to differences between actual process measurements and predictions of what those measurments should be.</p>
 <ul class="simple">
-<li><p><strong>Observer</strong>
-\begin{align*}
-\frac{d\hat{x}}{dt} &amp; = \underbrace{A \hat{x} + B_u u + B_d \hat{d}}<em>{\text{prediction}} - \underbrace{L(\hat{y} - y)}</em>{\text{correction}}\
-\hat{y} &amp; = C \hat{x}
-\end{align*}</p></li>
+<li><p><strong>Observer</strong></p></li>
 </ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\hat{x}}{dt} &amp; = \underbrace{A \hat{x} + B_u u + B_d \hat{d}}_{\text{prediction}} - \underbrace{L(\hat{y} - y)}_{\text{correction}}\\
+\hat{y} &amp; = C \hat{x}
+\end{align*}\]</div>
 <p>The idea is that if predicted measurements <span class="math notranslate nohighlight">\(\hat{y}\)</span> are different from the actual measurements <span class="math notranslate nohighlight">\(y\)</span>, then corrective action will be imposed to modify the state estimates. In a sense, this is imposing feedback control on our process model to cause the model states to track the actual process states. We will need find values for a matrrix <span class="math notranslate nohighlight">\(L\)</span> (after Luenberger?) to make this work.</p>
 <p>Taking the difference between predicted and actual measurements, we find</p>
-<p>\begin{align*}
-\hat{y} - y &amp; = C \hat{x} - C x \
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{y} - y &amp; = C \hat{x} - C x \\
 &amp; = C\underbrace{(\hat{x} - x)}_e
-\end{align*}</p>
+\end{align*}\]</div>
 <p>where <span class="math notranslate nohighlight">\(e = \hat{x} - x\)</span> is error in our prediction of the state. Subtracting the new model equations from the process model, we get an expression for the dynamics of the model error <span class="math notranslate nohighlight">\(e = \hat{x} - x\)</span></p>
-<p>\begin{align*}
-\frac{de}{dt} &amp; = \frac{d\hat{x}}{dt} - \frac{dx}{dt} \
-\
-\frac{de}{dt} &amp; = (A\hat{x} + B_u u + B_d \hat{d}) - (Ax + B_u u B_d d + L(C\hat{x} - C x)) \
-\
-\frac{de}{dt} &amp; = (A - LC)(\hat{x} - x) + B_d(\hat{d} - d) \
-\
-\implies \frac{de}{dt} &amp; = (A - LC) e + B_d(\hat{d} - d)
-\end{align*}</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{de}{dt} &amp; = \frac{d\hat{x}}{dt} - \frac{dx}{dt} \\
+\\
+\frac{de}{dt} &amp; = (A\hat{x} + B_u u + B_d \hat{d}) - (Ax + B_u u B_d d + L(C\hat{x} - C x)) \\
+\\
+\frac{de}{dt} &amp; = (A - LC)(\hat{x} - x) + B_d(\hat{d} - d) \\
+\\
+\implies \frac{de}{dt} &amp; = (A - LC) e + B_d(\hat{d} - d) 
+\end{align*}\]</div>
 <p>The choice of <span class="math notranslate nohighlight">\(L\)</span> determines observer performance. What we seek is a matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A - LC\)</span> results in error <span class="math notranslate nohighlight">\(e\)</span> that quickly decays to zero.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

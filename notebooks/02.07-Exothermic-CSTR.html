@@ -715,7 +715,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=tree/notebooks/02.07-Exothermic-CSTR.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/02.07-Exothermic-CSTR.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -758,33 +758,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transient-behavior">
-   2.7.4. Transient Behavior
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#effect-of-cooling-temperature">
-   2.7.5. Effect of Cooling Temperature
+   2.7.4. Effect of Cooling Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interactive-simulation">
-   2.7.6. Interactive Simulation
+   2.7.5. Interactive Simulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nullclines">
-   2.7.7. Nullclines
+   2.7.6. Nullclines
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#phase-plane-analysis">
-   2.7.8. Phase Plane Analysis
+   2.7.7. Phase Plane Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#suggested-exercises">
-   2.7.9. Suggested Exercises
+   2.7.8. Suggested Exercises
   </a>
  </li>
 </ul>
@@ -823,33 +818,28 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#transient-behavior">
-   2.7.4. Transient Behavior
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#effect-of-cooling-temperature">
-   2.7.5. Effect of Cooling Temperature
+   2.7.4. Effect of Cooling Temperature
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interactive-simulation">
-   2.7.6. Interactive Simulation
+   2.7.5. Interactive Simulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#nullclines">
-   2.7.7. Nullclines
+   2.7.6. Nullclines
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#phase-plane-analysis">
-   2.7.8. Phase Plane Analysis
+   2.7.7. Phase Plane Analysis
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#suggested-exercises">
-   2.7.9. Suggested Exercises
+   2.7.8. Suggested Exercises
   </a>
  </li>
 </ul>
@@ -876,7 +866,7 @@
 \[A \xrightarrow{kc_A}{} \text{Products}\]</div>
 <p>The reaction rate per unit volume is modeled as the product <span class="math notranslate nohighlight">\(kc_A\)</span> where <span class="math notranslate nohighlight">\(c_A\)</span> is the concentration of <span class="math notranslate nohighlight">\(A\)</span>. The rate constant <span class="math notranslate nohighlight">\(k(T)\)</span> is a increases with temperature following the Arrehenius law</p>
 <div class="math notranslate nohighlight">
-\[k(t) = k_0 e^{-\frac{E_a}{RT}}\]</div>
+\[k(T) = k_0 e^{-\frac{E_a}{RT}}\]</div>
 <p><span class="math notranslate nohighlight">\(E_a\)</span> is the activation energy, <span class="math notranslate nohighlight">\(R\)</span> is the gas constant, <span class="math notranslate nohighlight">\(T\)</span> is absolute temperature, and <span class="math notranslate nohighlight">\(k_0\)</span> is the pre-exponential factor.</p>
 <p>We can see the strong temperature dependence by plotting <span class="math notranslate nohighlight">\(k(T)\)</span> versus temperature over typical operating conditions.</p>
 <div class="cell docutils container">
@@ -884,6 +874,7 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># Arrehnius parameters</span>
 <span class="n">Ea</span> <span class="o">=</span> <span class="mi">72750</span>     <span class="c1"># activation energy J/gmol</span>
@@ -894,40 +885,35 @@
 <span class="k">def</span> <span class="nf">k</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">k0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ea</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
 
-<span class="c1"># semilog plot of the rate constant</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">290</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Absolute Temperature [K]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Rate Constant [1/min]&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Arrenhius Rate Constant&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">290</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Absolute Temperature [K]&quot;</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="s2">&quot;k(T) [1/min]&quot;</span><span class="p">:</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)})</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.07-Exothermic-CSTR_3_0.png" src="../_images/02.07-Exothermic-CSTR_3_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Absolute Temperature [K]&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.07-Exothermic-CSTR_3_1.png" src="../_images/02.07-Exothermic-CSTR_3_1.png" />
 </div>
 </div>
-<p>This graph shows the reaction rate changes by three orders of magnitude over the range of possible operating temperatures. Because an exothermic reaction releases heat faster at higher temperatures, there is a positive feedback that can potentially result in unstable process behavior.</p>
+<p>This graph shows the reaction rate changes by six orders of magnitude over the range of possible operating temperatures. Because an exothermic reaction releases heat faster at higher temperatures, there is a positive feedback that can potentially result in unstable process behavior.</p>
 </div>
 <div class="section" id="model-equations-and-parameter-values">
 <h2><span class="section-number">2.7.3. </span>Model Equations and Parameter Values<a class="headerlink" href="#model-equations-and-parameter-values" title="Permalink to this headline">¶</a></h2>
 <p>The model consists of mole and energy balances on the contents of the well-mixed reactor.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-V\frac{dc_A}{dt} &amp; = q(c_{Ai}-c_A)-Vkc_A \\
-V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
-\end{align*}
-\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+V\frac{dc_A}{dt} &amp; = q(c_{A,f} - c_A) - Vk(T)c_A \\
+\rho C_p V\frac{dT}{dt} &amp; = \rho  C_p q(T_f - T) + (-\Delta H_R)Vk(T)c_A + UA(T_c - T)
+\end{align*}\]</div>
 <p>Normalizing the equations to isolate the time rates of change of <span class="math notranslate nohighlight">\(c_A\)</span> and <span class="math notranslate nohighlight">\(T\)</span> give</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\frac{dc_A}{dt} &amp; = \frac{q}{V}(c_{Ai} - c_A)- kc_A \\
-\frac{dT}{dt} &amp; = \frac{q}{V}(T_i - T) + \frac{-\Delta H_R}{\rho C_p}kc_A + \frac{UA}{V\rho C_p}(T_c - T)
-\end{align*}
-\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dc_A}{dt} &amp; = \frac{q}{V}(c_{A,f} - c_A)- k(T)c_A \\
+\frac{dT}{dt} &amp; = \frac{q}{V}(T_f - T) + \frac{-\Delta H_R}{\rho C_p}k(T)c_A + \frac{UA}{V\rho C_p}(T_c - T)
+\end{align*}\]</div>
 <p>which are the equations that will be integrated below.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1005,54 +991,71 @@ V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 <td class="text-align:left"><p>K</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Initial concentration</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(c_{A,0}\)</span></p></td>
-<td class="text-align:center"><p>0.5</p></td>
-<td class="text-align:left"><p>gmol/liter</p></td>
-<td class="text-align:left"><p></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Initial temperature</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_0\)</span></p></td>
-<td class="text-align:center"><p>350</p></td>
-<td class="text-align:left"><p>K</p></td>
-<td class="text-align:left"><p></p></td>
-</tr>
 <tr class="row-odd"><td class="text-align:left"><p>Coolant temperature</p></td>
 <td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_c\)</span></p></td>
 <td class="text-align:center"><p>300</p></td>
 <td class="text-align:left"><p>K</p></td>
 <td class="text-align:left"><p>Manipulated Variable</p></td>
 </tr>
+<tr class="row-even"><td class="text-align:left"><p>Initial concentration</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(c_{A,0}\)</span></p></td>
+<td class="text-align:center"><p>0.5</p></td>
+<td class="text-align:left"><p>gmol/liter</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Initial temperature</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(T_0\)</span></p></td>
+<td class="text-align:center"><p>350</p></td>
+<td class="text-align:left"><p>K</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="transient-behavior">
-<h2><span class="section-number">2.7.4. </span>Transient Behavior<a class="headerlink" href="#transient-behavior" title="Permalink to this headline">¶</a></h2>
-<p>The first simulation assumes a cooling water temperature of 300 K.</p>
+<p>This mathematical formulation is implemented as a function <code class="docutils literal notranslate"><span class="pre">simulate_cstr</span></code> that returns a <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame object. The inputs to the function is a grid of points in time for the which a solution is required, initial conditions, and values for selected operating parameters. The remaining parameters are fixed in the body of the function. With this design, all calculations within the function require no access to parameters or function defined outside of <code class="docutils literal notranslate"><span class="pre">simulate_cstr</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
 
-<span class="n">Ea</span>  <span class="o">=</span> <span class="mi">72750</span>     <span class="c1"># activation energy J/gmol</span>
-<span class="n">R</span>   <span class="o">=</span> <span class="mf">8.314</span>     <span class="c1"># gas constant J/gmol/K</span>
-<span class="n">k0</span>  <span class="o">=</span> <span class="mf">7.2e10</span>    <span class="c1"># Arrhenius rate constant 1/min</span>
-<span class="n">V</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Volume [L]</span>
-<span class="n">rho</span> <span class="o">=</span> <span class="mf">1000.0</span>    <span class="c1"># Density [g/L]</span>
-<span class="n">Cp</span>  <span class="o">=</span> <span class="mf">0.239</span>     <span class="c1"># Heat capacity [J/g/K]</span>
-<span class="n">dHr</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.0e4</span>    <span class="c1"># Enthalpy of reaction [J/mol]</span>
-<span class="n">UA</span>  <span class="o">=</span> <span class="mf">5.0e4</span>     <span class="c1"># Heat transfer [J/min/K]</span>
-<span class="n">q</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Flowrate [L/min]</span>
-<span class="n">cAi</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># Inlet feed concentration [mol/L]</span>
-<span class="n">Ti</span>  <span class="o">=</span> <span class="mf">350.0</span>     <span class="c1"># Inlet feed temperature [K]</span>
+<span class="c1"># study parameters</span>
+<span class="n">Tc</span>  <span class="o">=</span> <span class="mf">300.0</span>     <span class="c1"># Coolant temperature [K]</span>
 <span class="n">cA0</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>      <span class="c1"># Initial concentration [mol/L]</span>
 <span class="n">T0</span>  <span class="o">=</span> <span class="mf">350.0</span><span class="p">;</span>    <span class="c1"># Initial temperature [K]</span>
-<span class="n">Tc</span>  <span class="o">=</span> <span class="mf">300.0</span>     <span class="c1"># Coolant temperature [K]</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">cA</span><span class="p">,</span><span class="n">T</span> <span class="o">=</span> <span class="n">y</span>
-    <span class="n">dcAdt</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cAi</span> <span class="o">-</span> <span class="n">cA</span><span class="p">)</span> <span class="o">-</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">cA</span>
-    <span class="n">dTdt</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ti</span> <span class="o">-</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">dHr</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">cA</span> <span class="o">+</span> <span class="p">(</span><span class="n">UA</span><span class="o">/</span><span class="n">V</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Tc</span><span class="o">-</span><span class="n">T</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">dcAdt</span><span class="p">,</span> <span class="n">dTdt</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">Tc</span><span class="o">=</span><span class="n">Tc</span><span class="p">,</span> <span class="n">cA0</span><span class="o">=</span><span class="n">cA0</span><span class="p">,</span> <span class="n">T0</span><span class="o">=</span><span class="n">T0</span><span class="p">):</span>
+    
+    <span class="c1"># fixed model parameters</span>
+    <span class="n">Ea</span>  <span class="o">=</span> <span class="mi">72750</span>     <span class="c1"># activation energy J/gmol</span>
+    <span class="n">R</span>   <span class="o">=</span> <span class="mf">8.314</span>     <span class="c1"># gas constant J/gmol/K</span>
+    <span class="n">k0</span>  <span class="o">=</span> <span class="mf">7.2e10</span>    <span class="c1"># Arrhenius rate constant 1/min</span>
+    <span class="n">V</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Volume [L]</span>
+    <span class="n">rho</span> <span class="o">=</span> <span class="mf">1000.0</span>    <span class="c1"># Density [g/L]</span>
+    <span class="n">Cp</span>  <span class="o">=</span> <span class="mf">0.239</span>     <span class="c1"># Heat capacity [J/g/K]</span>
+    <span class="n">dHr</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.0e4</span>    <span class="c1"># Enthalpy of reaction [J/mol]</span>
+    <span class="n">UA</span>  <span class="o">=</span> <span class="mf">5.0e4</span>     <span class="c1"># Heat transfer [J/min/K]</span>
+    <span class="n">q</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Flowrate [L/min]</span>
+    <span class="n">cAf</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># Inlet feed concentration [mol/L]</span>
+    <span class="n">Tf</span>  <span class="o">=</span> <span class="mf">350.0</span>     <span class="c1"># Inlet feed temperature [K]</span>
+    
+    <span class="c1"># Arrhenius rate expression</span>
+    <span class="k">def</span> <span class="nf">k</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ea</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
+
+    <span class="c1"># function to evaluate differential equations</span>
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">cA</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">dcAdt</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cAf</span> <span class="o">-</span> <span class="n">cA</span><span class="p">)</span> <span class="o">-</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">cA</span>
+        <span class="n">dTdt</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Tf</span> <span class="o">-</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="o">-</span><span class="n">dHr</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="o">*</span><span class="n">cA</span> <span class="o">+</span> <span class="p">(</span><span class="n">UA</span><span class="o">/</span><span class="n">V</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Tc</span><span class="o">-</span><span class="n">T</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dcAdt</span><span class="p">,</span> <span class="n">dTdt</span><span class="p">]</span>
+    
+    <span class="c1"># solve ivp</span>
+    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_eval</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)],</span> <span class="p">[</span><span class="n">cA0</span><span class="p">,</span> <span class="n">T0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
+    
+    <span class="c1"># return solution as a pandas dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="n">t_eval</span><span class="p">})</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1060,15 +1063,13 @@ V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 <p>We first define a visualization function that will be reused in later simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># simulation</span>
-<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">cA0</span><span class="p">,</span> <span class="n">T0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># time grid</span>
 <span class="n">t_final</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">max_step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">])</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">])</span>
+<span class="c1"># simulate for default cooling temperature and initial conditions</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1083,17 +1084,23 @@ V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 </div>
 </div>
 <div class="section" id="effect-of-cooling-temperature">
-<h2><span class="section-number">2.7.5. </span>Effect of Cooling Temperature<a class="headerlink" href="#effect-of-cooling-temperature" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.4. </span>Effect of Cooling Temperature<a class="headerlink" href="#effect-of-cooling-temperature" title="Permalink to this headline">¶</a></h2>
 <p>The primary means of controlling the reactoris through temperature of the cooling water jacket. The next calculations explore the effect of plus or minus change of 5 K in cooling water temperature on reactor behavior. These simulations reproduce the behavior shown in Example 2.5 SEMD.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create plot grid</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># simulate for a range of cooling temperatures</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+
 <span class="k">for</span> <span class="n">Tc</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">295</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">305</span><span class="p">]:</span>
-    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t_initial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">])</span>
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">Tc</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tc = </span><span class="si">{</span><span class="n">Tc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Tc = </span><span class="si">{</span><span class="n">Tc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1103,70 +1110,89 @@ V\rho C_p\frac{dT}{dt} &amp; = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 </div>
 </div>
 <div class="section" id="interactive-simulation">
-<h2><span class="section-number">2.7.6. </span>Interactive Simulation<a class="headerlink" href="#interactive-simulation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.5. </span>Interactive Simulation<a class="headerlink" href="#interactive-simulation" title="Permalink to this headline">¶</a></h2>
 <p>Executing the following cell provides an interactive tool for exploring the relationship of cooling temperature with reactor behavior.  Use it to observe a thermal runaway, sustained osciallations, and low and high conversion steady states.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 
-<span class="c1"># create an initial plot object, and close so it doesn&#39;t appear</span>
-<span class="n">Tc</span> <span class="o">=</span> <span class="mf">300.0</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t_initial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-<span class="n">plot_reactor</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1"># initial simulation</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">460</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># this close is needed to avoid duplicate plotter output</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 
 <span class="c1"># function to update and display the plot object</span>
-<span class="k">def</span> <span class="nf">sim</span><span class="p">(</span><span class="n">Tcooling</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">Tc</span>
-    <span class="n">Tc</span> <span class="o">=</span> <span class="n">Tcooling</span>
-    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t_initial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">sim</span><span class="p">(</span><span class="n">T_cooling</span><span class="p">,</span> <span class="n">c_initial</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">T_cooling</span><span class="p">,</span> <span class="n">c_initial</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">])</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">get_texts</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Tc</span><span class="p">))</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">get_texts</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Tc</span><span class="p">))</span>
     <span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 
 <span class="c1"># interactive widget</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">Tcooling</span> <span class="o">=</span> <span class="p">(</span><span class="mf">290.0</span><span class="p">,</span> <span class="mf">310.0</span><span class="p">),</span> <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">T_cooling</span> <span class="o">=</span> <span class="p">(</span><span class="mf">290.0</span><span class="p">,</span> <span class="mf">310.0</span><span class="p">),</span> <span class="n">c_initial</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">T_initial</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "3f00b2b8607c4d4187d0875977a5b962", "version_major": 2, "version_minor": 0}
+{"model_id": "3fac63faef9e412d8c977102e6310832", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
 <div class="section" id="nullclines">
-<h2><span class="section-number">2.7.7. </span>Nullclines<a class="headerlink" href="#nullclines" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.6. </span>Nullclines<a class="headerlink" href="#nullclines" title="Permalink to this headline">¶</a></h2>
 <p>The nullclines of two first-order differential equations are points in the phase plane for which one or the other of the two derivatives are zero.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-V\frac{dc_A}{dt} &amp; = 0 = q(c_{Ai}-c_A)-Vkc_A \\
-V\rho C_p\frac{dT}{dt} &amp; = 0 = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
-\end{align*}
-\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+V\frac{dc_A}{dt} &amp; = 0 = q(c_{A,f} - c_A) - Vk(T)c_A \\
+\rho C_pV\frac{dT}{dt} &amp; = 0 = \rho C_p q(T_f - T) + (-\Delta H_R)Vk(T)c_A + UA(T_c-T)
+\end{align*}\]</div>
+<p>Solving each of equations for steady-state values <span class="math notranslate nohighlight">\(\bar{c}_A\)</span>, <span class="math notranslate nohighlight">\(\bar{T}\)</span> gives two relations</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d\bar{c}_A}{dt} = 0 \implies \bar{c}_A &amp; = \frac{q c_{A,f}}{q + V k(\bar{T})} \\
+\frac{d\bar{T}}{dt} = 0 \implies \bar{c}_A &amp; = -\frac{\rho q C_p(T_f - \bar{T}) + UA(T_c - \bar{T})}{(-\Delta H_R)Vk(\bar{T})} 
+\end{align*}\]</div>
 <p>The intersection of the nullclines correspond to steady states. The relative positions of the nullclines provide valuable insight into the dynamics of a nonlinear system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot nullclines</span>
+<span class="n">Ea</span>  <span class="o">=</span> <span class="mi">72750</span>     <span class="c1"># activation energy J/gmol</span>
+<span class="n">R</span>   <span class="o">=</span> <span class="mf">8.314</span>     <span class="c1"># gas constant J/gmol/K</span>
+<span class="n">k0</span>  <span class="o">=</span> <span class="mf">7.2e10</span>    <span class="c1"># Arrhenius rate constant 1/min</span>
+<span class="n">V</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Volume [L]</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1000.0</span>    <span class="c1"># Density [g/L]</span>
+<span class="n">Cp</span>  <span class="o">=</span> <span class="mf">0.239</span>     <span class="c1"># Heat capacity [J/g/K]</span>
+<span class="n">dHr</span> <span class="o">=</span> <span class="o">-</span><span class="mf">5.0e4</span>    <span class="c1"># Enthalpy of reaction [J/mol]</span>
+<span class="n">UA</span>  <span class="o">=</span> <span class="mf">5.0e4</span>     <span class="c1"># Heat transfer [J/min/K]</span>
+<span class="n">q</span>   <span class="o">=</span> <span class="mf">100.0</span>     <span class="c1"># Flowrate [L/min]</span>
+<span class="n">cAf</span> <span class="o">=</span> <span class="mf">1.0</span>       <span class="c1"># Inlet feed concentration [mol/L]</span>
+<span class="n">Tf</span>  <span class="o">=</span> <span class="mf">350.0</span>     <span class="c1"># Inlet feed temperature [K]</span>
 
-<span class="k">def</span> <span class="nf">plot_nullclines</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">300.0</span><span class="p">,</span><span class="mf">460.0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="n">cAi</span><span class="o">/</span><span class="p">((</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)),</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;b:&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(((</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ti</span><span class="o">-</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">UA</span><span class="o">/</span><span class="n">V</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Tc</span><span class="o">-</span><span class="n">T</span><span class="p">))</span><span class="o">/</span><span class="p">((</span><span class="n">dHr</span><span class="o">/</span><span class="n">rho</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span><span class="o">*</span><span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)),</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;r:&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">460</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">plot_nullclines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Tc</span><span class="o">=</span><span class="n">Tc</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span>  
+                       <span class="s2">&quot;dC/dt = 0&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="n">cAf</span><span class="o">/</span><span class="p">((</span><span class="n">q</span><span class="o">/</span><span class="n">V</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)),</span>
+                       <span class="s2">&quot;dT/dt = 0&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">rho</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="n">Cp</span><span class="o">*</span><span class="p">(</span><span class="n">Tf</span> <span class="o">-</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">UA</span><span class="o">*</span><span class="p">(</span><span class="n">Tc</span> <span class="o">-</span> <span class="n">T</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">dHr</span><span class="o">*</span><span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">))})</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="s2">&quot;g--&quot;</span><span class="p">})</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span><span class="s2">&quot;r--&quot;</span><span class="p">})</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;dC/dt = 0&#39;</span><span class="p">,</span><span class="s1">&#39;dT/dt = 0&#39;</span><span class="p">])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Concentration&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">)</span>
     
-<span class="n">fix</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">plot_nullclines</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">fix</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_nullclines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">Tc</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1176,51 +1202,54 @@ V\rho C_p\frac{dT}{dt} &amp; = 0 = wC_p(T_i-T) + (-\Delta H_R)Vkc_A + UA(T_c-T)
 </div>
 </div>
 <div class="section" id="phase-plane-analysis">
-<h2><span class="section-number">2.7.8. </span>Phase Plane Analysis<a class="headerlink" href="#phase-plane-analysis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.7. </span>Phase Plane Analysis<a class="headerlink" href="#phase-plane-analysis" title="Permalink to this headline">¶</a></h2>
 <p>The final analysis is display the simulation in both time and phase plane coordinates. The following cell produces a</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_phase</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up figure window and axes</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">phase</span><span class="p">(</span><span class="n">cinitial</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Tinitial</span><span class="o">=</span><span class="mi">350</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">Tc</span>
-    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t_initial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="p">[</span><span class="n">cinitial</span><span class="p">,</span><span class="n">Tinitial</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-    
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># simulate</span>
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># add plots</span>
+<span class="n">plot_nullclines</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;cA&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">],</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cA&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Concentration&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">460</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_phase</span><span class="p">(</span><span class="n">T_cooling</span><span class="p">,</span> <span class="n">c_initial</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">):</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">simulate_cstr</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">T_cooling</span><span class="p">,</span> <span class="n">c_initial</span><span class="p">,</span> <span class="n">T_initial</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">300.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">((</span><span class="n">rho</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="n">Cp</span><span class="o">*</span><span class="p">(</span><span class="n">Tf</span> <span class="o">-</span> <span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">UA</span><span class="o">*</span><span class="p">(</span><span class="n">T_cooling</span> <span class="o">-</span> <span class="n">T</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">V</span><span class="o">*</span><span class="n">dHr</span><span class="o">*</span><span class="n">k</span><span class="p">(</span><span class="n">T</span><span class="p">)))</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">([</span><span class="n">c_initial</span><span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">([</span><span class="n">T_initial</span><span class="p">])</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;cA&quot;</span><span class="p">])</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;T&quot;</span><span class="p">])</span>
     <span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-    
-<span class="n">Tc</span> <span class="o">=</span> <span class="mf">300.0</span>
-<span class="n">cinitial</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">Tinitial</span> <span class="o">=</span> <span class="mf">350.0</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t_initial</span><span class="p">,</span> <span class="n">t_final</span><span class="p">],</span> <span class="p">[</span><span class="n">cinitial</span><span class="p">,</span> <span class="n">Tinitial</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-<span class="n">plot_nullclines</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">plot_phase</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plot_reactor</span><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="n">interact</span><span class="p">(</span><span class="n">phase</span><span class="p">,</span> <span class="n">cinitial</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">.01</span><span class="p">),</span> <span class="n">Tinitial</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_phase</span><span class="p">,</span> <span class="n">T_cooling</span> <span class="o">=</span> <span class="p">(</span><span class="mf">290.0</span><span class="p">,</span> <span class="mf">310.0</span><span class="p">),</span> <span class="n">c_initial</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="n">T_initial</span> <span class="o">=</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "fc96639dec6f4ae08c8aa0795911f7a3", "version_major": 2, "version_minor": 0}
-</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.phase(cinitial=0.5, Tinitial=350)&gt;
-</pre></div>
-</div>
-</div>
+{"model_id": "e39cffb80f9c407a9c595017df8fe5be", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 </div>
 <div class="section" id="suggested-exercises">
-<h2><span class="section-number">2.7.9. </span>Suggested Exercises<a class="headerlink" href="#suggested-exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7.8. </span>Suggested Exercises<a class="headerlink" href="#suggested-exercises" title="Permalink to this headline">¶</a></h2>
 <p><strong>1.</strong> Using the interactive simulation, adjust the cooling temperature over the range of values from 290K to 310K, identify the cooling water temperatures at which you observe a qualitative difference in system behavior. Try to identify the following behaviors:</p>
 <ul class="simple">
 <li><p>Stable steady state</p></li>
