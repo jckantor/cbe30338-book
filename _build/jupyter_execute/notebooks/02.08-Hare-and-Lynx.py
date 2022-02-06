@@ -46,9 +46,10 @@ df.plot(x="Year", figsize=(10, 6), grid=True)
 # 
 # The model equatons describe the time rate of change of the population densities of hare ($H$) and lynx ($L$). Each is the difference between the birth and death rate. The death rate of hare is coupled to the population density of lynx. The birth rate of lynx is a simple multiple of the death rate of hare.
 # 
-# $$\begin{align*}\frac{dH}{dt} & = \underbrace{rH\left(1-\frac{H}{k}\right)}_{Hare Birth Rate}-\underbrace{\frac{aHL}{c+H}}_{Hare Death Rate}\\
+# \begin{align*}
+# \frac{dH}{dt} & = \underbrace{rH\left(1-\frac{H}{k}\right)}_{Hare Birth Rate}-\underbrace{\frac{aHL}{c+H}}_{Hare Death Rate}\\
 # \frac{dL}{dt} & = \underbrace{a\frac{bHL}{c+H}}_{Lynx Birth Rate}-\underbrace{dL}_{Lynx Death Rate}
-# \end{align*}$$
+# \end{align*}
 
 # ### Parameter Values
 # 
@@ -61,7 +62,7 @@ df.plot(x="Year", figsize=(10, 6), grid=True)
 # | Hare Carrying Capacity| $k$ | 125 |
 # | Hare Reproduction Rate | $r$ | 1.6 |
 
-# ## Simulation using the scipy.odeint()
+# ## Simulation using the scipy.integrate.solve_ivp()
 
 # ### Step 1. Initialization
 # 
@@ -95,10 +96,10 @@ r = 1.6
 # 
 # `deriv` is a function that returns a two element list containting values for the derivatives of $H$ and $L$. The first argument is a two element list with values of $H$ and $L$, followed by the current time $t$.
 # 
-# $$\begin{align*}
+# \begin{align*}
 # \frac{dH}{dt} & = r H \left(1-\frac{H}{k}\right) - \frac{a H L}{c + H} \\
 # \frac{dL}{dt} & = b\frac{a H L}{c + H} - dL
-# \end{align*}$$
+# \end{align*}
 
 # In[8]:
 
@@ -233,25 +234,24 @@ interact(sim,aslider=(1.25, 4, 0.01))
 # 
 # The visualization function for this example accepts a list of time values, values of $H$ and $L$, and model parameters. The model parameters are needed to plot nullclines and steady states on the phase plane.
 
-# In[63]:
+# In[80]:
 
 
 # visualization
 def hare_lynx_plot(t, H, L):
     # time axis
-    plt.figure(figsize=(12, 5))
-    plt.subplot(1, 2, 1)
-    plt.plot(t, H)
-    plt.plot(t, L)
-    plt.xlabel('Time [years]')
-    plt.ylabel('Population Density')
-    plt.legend(['Hare','Lynx'],loc='upper left')
-    
+    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+    ax[0].plot(t, H, label="Hare")
+    ax[0].plot(t, L, label="Lynx")
+    ax[0].set_xlabel('Time [years]')
+    ax[0].set_ylabel('Population Density')
+    ax[0].set_ylim(0, 130)
+    ax[0].grid(True)
+
     # phase plane
-    plt.subplot(1,2,2)
-    plt.plot(H,L)
-    plt.xlim(0,150)
-    plt.ylim(0,130)
+    ax[1].plot(H ,L)
+    ax[1].set_xlim(0, 150)
+    ax[1].set_ylim(0, 130)
     plot_nullclines()
 
 
@@ -259,7 +259,7 @@ def hare_lynx_plot(t, H, L):
 # 
 # An additional function is created to encapsulate the entire process of solving the model and displaying the solution. The function takes arguments specifing the initial values of $H$ and $L$, and a value of the parameter $a$.  These argument 
 
-# In[64]:
+# In[81]:
 
 
 # default parameter values
@@ -278,12 +278,12 @@ def lynx_hare(H=20, L=20, aslider=3.2):
     global a
     a = aslider
     soln = solve_ivp(deriv, [min(t), max(t)], IC, t_eval=t)
-    HLPlot(soln.t, soln.y[0, :], soln.y[1, :])
+    hare_lynx_plot(soln.t, soln.y[0, :], soln.y[1, :])
 
 
 # Use the `aslider` to adjust values of the Hare/Lynx interaction.  Can you indentify stable and unstable steady states?
 
-# In[65]:
+# In[82]:
 
 
 from ipywidgets import interact
@@ -296,7 +296,7 @@ interact(lynx_hare, H = (0,80,1), L =(0,80,1), aslider=(1.25,4.0,0.01));
 # 
 # Any displacement from an unstable focus leads to a trajectory that spirals away from the steady state. 
 
-# In[66]:
+# In[83]:
 
 
 lynx_hare(H=20, L=20, aslider=4)
@@ -306,7 +306,7 @@ lynx_hare(H=20, L=20, aslider=4)
 # 
 # Small displacements from a stable focus results in trajectories that spiral back towards the steady state.
 
-# In[67]:
+# In[84]:
 
 
 lynx_hare(H=20, L=20, aslider=1.9)
@@ -316,7 +316,7 @@ lynx_hare(H=20, L=20, aslider=1.9)
 # 
 # Displacements from a steady state either move towards (stable) or away from (unstable) nodes without the spiral structure of a focus.
 
-# In[68]:
+# In[85]:
 
 
 lynx_hare(H=20, L=20, aslider=1.4)

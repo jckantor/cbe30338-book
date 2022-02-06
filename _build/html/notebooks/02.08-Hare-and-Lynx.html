@@ -780,8 +780,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation-using-the-scipy-odeint">
-   2.8.5. Simulation using the scipy.odeint()
+  <a class="reference internal nav-link" href="#simulation-using-the-scipy-integrate-solve-ivp">
+   2.8.5. Simulation using the scipy.integrate.solve_ivp()
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -925,8 +925,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulation-using-the-scipy-odeint">
-   2.8.5. Simulation using the scipy.odeint()
+  <a class="reference internal nav-link" href="#simulation-using-the-scipy-integrate-solve-ivp">
+   2.8.5. Simulation using the scipy.integrate.solve_ivp()
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1082,10 +1082,11 @@
 <div class="section" id="model-equations">
 <h3><span class="section-number">2.8.4.1. </span>Model Equations<a class="headerlink" href="#model-equations" title="Permalink to this headline">¶</a></h3>
 <p>The model equatons describe the time rate of change of the population densities of hare (<span class="math notranslate nohighlight">\(H\)</span>) and lynx (<span class="math notranslate nohighlight">\(L\)</span>). Each is the difference between the birth and death rate. The death rate of hare is coupled to the population density of lynx. The birth rate of lynx is a simple multiple of the death rate of hare.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}\frac{dH}{dt} &amp; = \underbrace{rH\left(1-\frac{H}{k}\right)}_{Hare Birth Rate}-\underbrace{\frac{aHL}{c+H}}_{Hare Death Rate}\\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{dH}{dt} &amp; = \underbrace{rH\left(1-\frac{H}{k}\right)}_{Hare Birth Rate}-\underbrace{\frac{aHL}{c+H}}_{Hare Death Rate}\\
 \frac{dL}{dt} &amp; = \underbrace{a\frac{bHL}{c+H}}_{Lynx Birth Rate}-\underbrace{dL}_{Lynx Death Rate}
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 </div>
 <div class="section" id="parameter-values">
 <h3><span class="section-number">2.8.4.2. </span>Parameter Values<a class="headerlink" href="#parameter-values" title="Permalink to this headline">¶</a></h3>
@@ -1125,8 +1126,8 @@
 </table>
 </div>
 </div>
-<div class="section" id="simulation-using-the-scipy-odeint">
-<h2><span class="section-number">2.8.5. </span>Simulation using the scipy.odeint()<a class="headerlink" href="#simulation-using-the-scipy-odeint" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simulation-using-the-scipy-integrate-solve-ivp">
+<h2><span class="section-number">2.8.5. </span>Simulation using the scipy.integrate.solve_ivp()<a class="headerlink" href="#simulation-using-the-scipy-integrate-solve-ivp" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="step-1-initialization">
 <h3><span class="section-number">2.8.5.1. </span>Step 1. Initialization<a class="headerlink" href="#step-1-initialization" title="Permalink to this headline">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">SciPy</span></code> library includes functions for integrating differential equations. Of these, the function <code class="docutils literal notranslate"><span class="pre">odeint</span></code> provides an easy-to-use general purpose algorithm well suited to this type of problem.</p>
@@ -1160,11 +1161,11 @@
 <div class="section" id="step-3-write-function-for-the-rhs-of-the-differential-equations">
 <h3><span class="section-number">2.8.5.3. </span>Step 3.  Write function for the RHS of the Differential Equations<a class="headerlink" href="#step-3-write-function-for-the-rhs-of-the-differential-equations" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">deriv</span></code> is a function that returns a two element list containting values for the derivatives of <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(L\)</span>. The first argument is a two element list with values of <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(L\)</span>, followed by the current time <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \frac{dH}{dt} &amp; = r H \left(1-\frac{H}{k}\right) - \frac{a H L}{c + H} \\
 \frac{dL}{dt} &amp; = b\frac{a H L}{c + H} - dL
-\end{align*}\end{split}\]</div>
+\end{align*}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># differential equations</span>
@@ -1331,19 +1332,18 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># visualization</span>
 <span class="k">def</span> <span class="nf">hare_lynx_plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
     <span class="c1"># time axis</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [years]&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population Density&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Hare&#39;</span><span class="p">,</span><span class="s1">&#39;Lynx&#39;</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-    
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hare&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lynx&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time [years]&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population Density&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="c1"># phase plane</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">130</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">H</span> <span class="p">,</span><span class="n">L</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">)</span>
     <span class="n">plot_nullclines</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1371,7 +1371,7 @@
     <span class="k">global</span> <span class="n">a</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">aslider</span>
     <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">HLPlot</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+    <span class="n">hare_lynx_plot</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
 </pre></div>
 </div>
 </div>
@@ -1386,7 +1386,7 @@
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "11dcdb5427ea4c35a60cea7c87a3db22", "version_major": 2, "version_minor": 0}
+{"model_id": "6a4a6f991d7d4c56a63405dbb2d9cc8f", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
