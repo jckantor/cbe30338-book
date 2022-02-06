@@ -29,7 +29,7 @@
 # 
 # A digitized version of the historical data is available from [D. R. Hundley at Whitman College](http://people.whitman.edu/~hundledr/courses/M250F03/M250.html). The following cell reads the data from the url, imports it into a pandas dataframe, and creates a plot. 
 
-# In[5]:
+# In[1]:
 
 
 import pandas as pd
@@ -47,8 +47,8 @@ df.plot(x="Year", figsize=(10, 6), grid=True)
 # The model equatons describe the time rate of change of the population densities of hare ($H$) and lynx ($L$). Each is the difference between the birth and death rate. The death rate of hare is coupled to the population density of lynx. The birth rate of lynx is a simple multiple of the death rate of hare.
 # 
 # \begin{align*}
-# \frac{dH}{dt} & = \underbrace{rH\left(1-\frac{H}{k}\right)}_{Hare Birth Rate}-\underbrace{\frac{aHL}{c+H}}_{Hare Death Rate}\\
-# \frac{dL}{dt} & = \underbrace{a\frac{bHL}{c+H}}_{Lynx Birth Rate}-\underbrace{dL}_{Lynx Death Rate}
+# \frac{dH}{dt} & = \underbrace{rH\left(1-\frac{H}{k}\right)}_{\text{Hare Birth Rate}}-\underbrace{\frac{aHL}{c+H}}_{\text{Hare Death Rate}}\\
+# \frac{dL}{dt} & = \underbrace{a\frac{bHL}{c+H}}_{\text{Lynx Birth Rate}}-\underbrace{dL}_{\text{Lynx Death Rate}}
 # \end{align*}
 
 # ### Parameter Values
@@ -68,7 +68,7 @@ df.plot(x="Year", figsize=(10, 6), grid=True)
 # 
 # The `SciPy` library includes functions for integrating differential equations. Of these, the function `odeint` provides an easy-to-use general purpose algorithm well suited to this type of problem.
 
-# In[6]:
+# In[2]:
 
 
 import numpy as np
@@ -80,7 +80,7 @@ from scipy.integrate import solve_ivp
 # 
 # Set global default values for the parameters
 
-# In[7]:
+# In[3]:
 
 
 # default parameter values
@@ -101,7 +101,7 @@ r = 1.6
 # \frac{dL}{dt} & = b\frac{a H L}{c + H} - dL
 # \end{align*}
 
-# In[8]:
+# In[4]:
 
 
 # differential equations
@@ -114,37 +114,62 @@ def deriv(t, y):
 
 # ### Step 4. Choose Time Grid, Initial Conditions, and Integrate
 
-# In[25]:
+# In[5]:
 
 
 # perform simulation
-t = np.linspace(0, 70, 500)                               # time grid
-IC = [20, 20]                                             # H, L initial conditions 
-soln = solve_ivp(deriv, [min(t), max(t)], IC, t_eval=t)   # compute solution
-df = pd.DataFrame({"Year": soln.t, 
-                   "Hare": soln.y[0, :],
-                   "Lynx": soln.y[1, :]})                 # create dataframe
+t = np.linspace(0, 70, 500)                                                       # time grid
+IC = [20, 20]                                                                     # H, L initial conditions 
+soln = solve_ivp(deriv, [min(t), max(t)], IC, t_eval=t)                           # compute solution
+df = pd.DataFrame({"Year": soln.t, "Hare": soln.y[0, :], "Lynx": soln.y[1, :]})   # create dataframe
 
 
 # ### Step 5. Visualize and Analyze the Solution
 # 
 # For this choice of parameters and initial conditions, the Hare/Lynx population exhibits sustained oscillations.
 
-# In[29]:
+# In[6]:
 
 
 df.plot(x="Year", grid=True, title="Hare/Lynx Population Dynamics")
 
 
-# #### Phase Plane
+# ## Phase Plane
 
-# In[30]:
+# `simulate_hare_lynx` consolidates all of the above steps into a single function that returns a DataFrame holding the results of a simulation. The only required argument is an initial condition for the hare and lynx populations. All other parameters, including the desired time grid, are optional arguments.
+
+# In[7]:
 
 
-df.plot(x="Hare", y="Lynx", grid=True)
+def simulate_hare_lynx(IC, 
+        t=np.linspace(0, 70, 701), a=3.2, b=0.6, c=50, d=0.56, k=125, r=1.6):
+
+    def deriv(t, y):
+        H, L = y
+        dH =  r*H*(1 - H/k) - a*H*L/(c + H)
+        dL = b*a*H*L/(c + H) - d*L
+        return [dH, dL] 
+    
+    soln = solve_ivp(deriv, [min(t), max(t)], IC, t_eval=t)
+    return pd.DataFrame({"Time": soln.t, "Hare": soln.y[0, :], "Lynx": soln.y[1, :]})
 
 
-# ## Nullclines
+# In[8]:
+
+
+IC = [20, 20]
+df = simulate_hare_lynx(IC)
+df.plot(x="Time", grid=True)
+
+
+# In[9]:
+
+
+ax = df.plot(x="Hare", y="Lynx", grid=True)
+ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], "g.", ms=20)
+
+
+# ## Nullclines: Finding Steady States
 # 
 # Nullclines are the points in the phase plane where the derivatives are equal to zero. 
 # 
@@ -170,17 +195,16 @@ df.plot(x="Hare", y="Lynx", grid=True)
 
 # For convenience, we create a function to plots the nullclines and steady states that occur where the nullclines intersect.
 
-# In[61]:
+# In[10]:
 
 
-def plot_nullclines():
+def plot_nullclines(a=3.2, b=0.6, c=50, d=0.56, k=125, r=1.6):
+    
     # nullcline dH/dt = 0
-    Hp = np.linspace(0,k)
+    Hp = np.linspace(0, k)
     Lp = (r/a)*(c + Hp)*(1 - Hp/k)
     plt.plot(Hp, Lp, 'b')
-    plt.ylim(0, 130)
-    plt.xlim(0, 150)
-    
+
     # nullcline dL/dt = 0
     Hd = c*d/(a*b - d)
     plt.plot([Hd, Hd], plt.ylim(), 'r', lw=3)
@@ -194,10 +218,12 @@ def plot_nullclines():
     Lss = r*(1 - Hss/k)*(c + Hss)/a
     plt.plot([0, k, Hss], [0, 0, Lss], 'r.', ms=20)
 
+    # format plot
+    plt.ylim(0, 130)
+    plt.xlim(0, 150)
     plt.xlabel('Hare')
     plt.ylabel('Lynx')
     plt.legend(['dH/dt = 0','dL/dt = 0'])  
-    
     plt.grid(True)
 
 
@@ -207,7 +233,7 @@ def plot_nullclines():
 # * Hare population at the carry capacity of the environment, and no Lynx
 # * Coexistence of Hare and Lynx.
 
-# In[62]:
+# In[11]:
 
 
 plot_nullclines()
@@ -215,79 +241,40 @@ plot_nullclines()
 
 # Visualization of the nullclines give us some insight into how the Hare and Lynx populations depend on the model parameters. Here we look at how the nullclines depend on the Hare/Lynx predation rate $a$.
 
-# In[51]:
+# In[12]:
 
 
 from ipywidgets import interact
 
-def sim(aslider=3.2):
-    global a
-    a = aslider
-    plotNullclines()
+def sim(a=3.2):
+    plot_nullclines(a=a)
     
-interact(sim,aslider=(1.25, 4, 0.01))
+interact(sim, a=(1.25, 4, 0.01))
 
 
 # ## Interactive Simulation
 
-# ### Visualization Function
-# 
-# The visualization function for this example accepts a list of time values, values of $H$ and $L$, and model parameters. The model parameters are needed to plot nullclines and steady states on the phase plane.
-
-# In[80]:
-
-
-# visualization
-def hare_lynx_plot(t, H, L):
-    # time axis
-    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-    ax[0].plot(t, H, label="Hare")
-    ax[0].plot(t, L, label="Lynx")
-    ax[0].set_xlabel('Time [years]')
-    ax[0].set_ylabel('Population Density')
-    ax[0].set_ylim(0, 130)
-    ax[0].grid(True)
-
-    # phase plane
-    ax[1].plot(H ,L)
-    ax[1].set_xlim(0, 150)
-    ax[1].set_ylim(0, 130)
-    plot_nullclines()
-
-
-# ### Simulation Function
-# 
 # An additional function is created to encapsulate the entire process of solving the model and displaying the solution. The function takes arguments specifing the initial values of $H$ and $L$, and a value of the parameter $a$.  These argument 
 
-# In[81]:
+# In[13]:
 
 
-# default parameter values
-a = 3.2
-b = 0.6
-c = 50
-d = 0.56
-k = 125
-r = 1.6
-
-# perform simulation
-t = np.linspace(0,70,500)
-
-def lynx_hare(H=20, L=20, aslider=3.2):
-    IC = [H, L]
-    global a
-    a = aslider
-    soln = solve_ivp(deriv, [min(t), max(t)], IC, t_eval=t)
-    hare_lynx_plot(soln.t, soln.y[0, :], soln.y[1, :])
+def hare_lynx(H=20, L=20, a=3.2):
+    df = simulate_hare_lynx([H, L], a=a)
+    fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+    df.plot(x="Time", ax=ax[0], ylim=(0, 130), grid=True)
+    ax = df.plot(x="Hare", y="Lynx", ax=ax[1], ylim=(0, 130), grid=True)
+    plot_nullclines(a=a)
+    ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], 'g.', ms=20)
 
 
 # Use the `aslider` to adjust values of the Hare/Lynx interaction.  Can you indentify stable and unstable steady states?
 
-# In[82]:
+# In[14]:
 
 
 from ipywidgets import interact
-interact(lynx_hare, H = (0,80,1), L =(0,80,1), aslider=(1.25,4.0,0.01));
+interact(hare_lynx, H = (0, 140, 1), L =(0, 140, 1), a=(1.25, 4.0, 0.002));
 
 
 # ## Stability of a Steady State
@@ -296,30 +283,30 @@ interact(lynx_hare, H = (0,80,1), L =(0,80,1), aslider=(1.25,4.0,0.01));
 # 
 # Any displacement from an unstable focus leads to a trajectory that spirals away from the steady state. 
 
-# In[83]:
+# In[15]:
 
 
-lynx_hare(H=20, L=20, aslider=4)
+hare_lynx(H=20, L=20, a=4)
 
 
 # ### 2. Stable Focus 
 # 
 # Small displacements from a stable focus results in trajectories that spiral back towards the steady state.
 
-# In[84]:
+# In[16]:
 
 
-lynx_hare(H=20, L=20, aslider=1.9)
+hare_lynx(H=20, L=20, a=1.9)
 
 
 # ### 3. Stable and Unstable Nodes
 # 
 # Displacements from a steady state either move towards (stable) or away from (unstable) nodes without the spiral structure of a focus.
 
-# In[85]:
+# In[17]:
 
 
-lynx_hare(H=20, L=20, aslider=1.4)
+hare_lynx(H=20, L=20, a=1.4)
 
 
 # ## Summary
