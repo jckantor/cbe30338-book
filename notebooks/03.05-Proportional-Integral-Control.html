@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.5. Practical Proportional (P) and Proportional-Integral (PI) Control &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.6. Practical Proportional (P) and Proportional-Integral (PI) Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.6. Lab Assignment: Relay and PI Control" href="03.06-Lab-Assignment-PI-Control.html" />
-    <link rel="prev" title="3.4. Implementing Controllers in Python" href="03.04-Implementing-Controllers.html" />
+    <link rel="next" title="3.7. Lab Assignment: Relay and PI Control" href="03.06-Lab-Assignment-PI-Control.html" />
+    <link rel="prev" title="3.5. Implementing Controllers in Python" href="03.04-Implementing-Controllers.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -744,61 +754,61 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-goals">
-   3.5.1. Learning Goals
+   3.6.1. Learning Goals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#negative-feedback">
-   3.5.2. Negative Feedback
+   3.6.2. Negative Feedback
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proportional-control">
-   3.5.3. Proportional Control
+   3.6.3. Proportional Control
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#descripton">
-     3.5.3.1. Descripton
+     3.6.3.1. Descripton
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation">
-     3.5.3.2. Implementation
+     3.6.3.2. Implementation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#controller-testing">
-     3.5.3.3. Controller Testing
+     3.6.3.3. Controller Testing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-offset">
-     3.5.3.4. Steady-State Offset
+     3.6.3.4. Steady-State Offset
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proportional-integral-pi-control">
-   3.5.4. Proportional-Integral (PI) Control
+   3.6.4. Proportional-Integral (PI) Control
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#position-form">
-     3.5.4.1. Position form
+     3.6.4.1. Position form
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#velocity-form">
-     3.5.4.2. Velocity form
+     3.6.4.2. Velocity form
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-tuning-rules">
-   3.5.5. Empirical Tuning Rules
+   3.6.5. Empirical Tuning Rules
   </a>
  </li>
 </ul>
@@ -823,61 +833,61 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-goals">
-   3.5.1. Learning Goals
+   3.6.1. Learning Goals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#negative-feedback">
-   3.5.2. Negative Feedback
+   3.6.2. Negative Feedback
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proportional-control">
-   3.5.3. Proportional Control
+   3.6.3. Proportional Control
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#descripton">
-     3.5.3.1. Descripton
+     3.6.3.1. Descripton
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementation">
-     3.5.3.2. Implementation
+     3.6.3.2. Implementation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#controller-testing">
-     3.5.3.3. Controller Testing
+     3.6.3.3. Controller Testing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-offset">
-     3.5.3.4. Steady-State Offset
+     3.6.3.4. Steady-State Offset
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#proportional-integral-pi-control">
-   3.5.4. Proportional-Integral (PI) Control
+   3.6.4. Proportional-Integral (PI) Control
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#position-form">
-     3.5.4.1. Position form
+     3.6.4.1. Position form
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#velocity-form">
-     3.5.4.2. Velocity form
+     3.6.4.2. Velocity form
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-tuning-rules">
-   3.5.5. Empirical Tuning Rules
+   3.6.5. Empirical Tuning Rules
   </a>
  </li>
 </ul>
@@ -890,9 +900,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="practical-proportional-p-and-proportional-integral-pi-control">
-<h1><span class="section-number">3.5. </span>Practical Proportional (P) and Proportional-Integral (PI) Control<a class="headerlink" href="#practical-proportional-p-and-proportional-integral-pi-control" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.6. </span>Practical Proportional (P) and Proportional-Integral (PI) Control<a class="headerlink" href="#practical-proportional-p-and-proportional-integral-pi-control" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="learning-goals">
-<h2><span class="section-number">3.5.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Explain terms in the equations for proportional control and proportional-integral control/</p></li>
 <li><p>Derive velocity from form of PI control.</p></li>
@@ -919,7 +929,7 @@
 </ul>
 </div>
 <div class="section" id="negative-feedback">
-<h2><span class="section-number">3.5.2. </span>Negative Feedback<a class="headerlink" href="#negative-feedback" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.2. </span>Negative Feedback<a class="headerlink" href="#negative-feedback" title="Permalink to this headline">¶</a></h2>
 <p><strong>Negative feedback</strong> is the core principle underpinining process control.  Negative feedback suppresses deviations from the setpoint assuming the proportional gain is positive and the process exhibits a positive-going response from a positive change in the manipulated variable. If the process variable grows above the setpoint then the manipulated variable is decreased. If the process variable falls below the setpoint then the manipulated variable is increased.</p>
 <p>If the system exhibits a negative-going response to a postive change in the manipiulated variable, then the sign of the proportional gain must also be negative to assure negative feedback control.</p>
 <p><img alt="" src="https://www.biologycorner.com/resources/feedback-loop-glucose.png" /></p>
@@ -931,9 +941,9 @@
 <p><strong>Study Question:</strong> Describe a situation where you have witnessed positive feedback in an audio or visual system.</p>
 <hr></div>
 <div class="section" id="proportional-control">
-<h2><span class="section-number">3.5.3. </span>Proportional Control<a class="headerlink" href="#proportional-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.3. </span>Proportional Control<a class="headerlink" href="#proportional-control" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="descripton">
-<h3><span class="section-number">3.5.3.1. </span>Descripton<a class="headerlink" href="#descripton" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.3.1. </span>Descripton<a class="headerlink" href="#descripton" title="Permalink to this headline">¶</a></h3>
 <p><strong>Proportional control</strong> adjusts the manipulated variable in proportion to the error between the setpoint and measured process variable.</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -961,7 +971,7 @@ MV_k &amp; = \bar{MV} - K_P e_k
 <p>In subsequent notebooks we will see how <span class="math notranslate nohighlight">\(\bar{MV}\)</span> is used when building advanced control implementations.</p>
 </div>
 <div class="section" id="implementation">
-<h3><span class="section-number">3.5.3.2. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.3.2. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
 <p>Using the Python <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement, n instance of a proportional controller is created by specifying the gain <span class="math notranslate nohighlight">\(K_P\)</span>, upper and lower bounds on the manipulated variable, and the offset value <span class="math notranslate nohighlight">\(\bar{MV}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -977,7 +987,7 @@ MV_k &amp; = \bar{MV} - K_P e_k
 </div>
 </div>
 <div class="section" id="controller-testing">
-<h3><span class="section-number">3.5.3.3. </span>Controller Testing<a class="headerlink" href="#controller-testing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.3.3. </span>Controller Testing<a class="headerlink" href="#controller-testing" title="Permalink to this headline">¶</a></h3>
 <p>Let’s see how the proportional control works when applied to the Temperature Control Laboratory. For this simulation we set <span class="math notranslate nohighlight">\(\bar{MV} = 0\)</span> and <span class="math notranslate nohighlight">\(K_p = 3.0\)</span>.</p>
 <p>The following cell creates a function <code class="docutils literal notranslate"><span class="pre">experiment</span></code> that we can use to test controllers. The experiment tests the ability of the control to:</p>
 <ol class="simple">
@@ -1035,7 +1045,7 @@ MV_k &amp; = \bar{MV} - K_P e_k
 <p><strong>Study Question:</strong> Did the proportional control acheive the setpoint? Did proportional control reject the disturbance? How serious is the problem?</p>
 <hr></div>
 <div class="section" id="steady-state-offset">
-<h3><span class="section-number">3.5.3.4. </span>Steady-State Offset<a class="headerlink" href="#steady-state-offset" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.3.4. </span>Steady-State Offset<a class="headerlink" href="#steady-state-offset" title="Permalink to this headline">¶</a></h3>
 <p>Proportional-only control provides no assurance the the process variable will eventually acquire the setpoint. To see this, consider the proportional control law</p>
 <div class="math notranslate nohighlight">
 \[MV_k = \bar{MV} - K_P e_k\]</div>
@@ -1053,50 +1063,50 @@ MV_k &amp; = \bar{MV} - K_P e_k
 <hr></div>
 </div>
 <div class="section" id="proportional-integral-pi-control">
-<h2><span class="section-number">3.5.4. </span>Proportional-Integral (PI) Control<a class="headerlink" href="#proportional-integral-pi-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.4. </span>Proportional-Integral (PI) Control<a class="headerlink" href="#proportional-integral-pi-control" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="position-form">
-<h3><span class="section-number">3.5.4.1. </span>Position form<a class="headerlink" href="#position-form" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.4.1. </span>Position form<a class="headerlink" href="#position-form" title="Permalink to this headline">¶</a></h3>
 <p>Given a process variable <span class="math notranslate nohighlight">\(PV\)</span> and setpoint <span class="math notranslate nohighlight">\(SP\)</span>, proportional-integral control is defined by the relation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2934118b-e7c8-429c-b26d-03fbf3c16d93">
-<span class="eqno">(3.1)<a class="headerlink" href="#equation-2934118b-e7c8-429c-b26d-03fbf3c16d93" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c8f655ed-f0fc-439b-8187-ac5a95766d2a">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-c8f655ed-f0fc-439b-8187-ac5a95766d2a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV(t) &amp; = \bar{MV} - K_P\left(PV(t) - SP(t)\right) - K_I\int_{-\infty}^t (PV(t') - SP(t'))\,dt'
 \end{align}\]</div>
 <p>or</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76c3524e-da10-4ffa-86c7-de62b63c0b77">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-76c3524e-da10-4ffa-86c7-de62b63c0b77" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f138d1f8-b25b-404b-b850-3da3ee5939bc">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-f138d1f8-b25b-404b-b850-3da3ee5939bc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV(t) &amp; = \bar{MV} - K_P e(t) - K_I\int_{-\infty}^t e(t') \,dt'
 \end{align}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[e(t) = PV(t) - SP(t)\]</div>
 <p>where <strong><span class="math notranslate nohighlight">\(K_P\)</span> is the proportional gain</strong> and <strong><span class="math notranslate nohighlight">\(K_I\)</span> is the integral gain</strong>. When implemented in discrete time with time steps of length <span class="math notranslate nohighlight">\(h\)</span>, the basic rule for proportional-integral control becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8597d465-a3ec-4cdd-93a4-614e4bbf5df7">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-8597d465-a3ec-4cdd-93a4-614e4bbf5df7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-53688812-ebea-4151-b32f-39ad552825fb">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-53688812-ebea-4151-b32f-39ad552825fb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \bar{MV} - K_P(PV_k - SP_k) - h K_I\sum_{j=0}^{j=k}(PV_j - SP_j)
 \end{align}\]</div>
 <p>or</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03aabde0-44f3-4b3d-8b8a-5786814f2c22">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-03aabde0-44f3-4b3d-8b8a-5786814f2c22" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-53684b01-6e4b-474f-82d8-226bc560fab4">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-53684b01-6e4b-474f-82d8-226bc560fab4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \bar{MV} - K_P e_k - h K_I\sum_{j=0}^{j=k}e_j
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99741e3e-c1bb-42b2-8d89-fbc10b0e0e47">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-99741e3e-c1bb-42b2-8d89-fbc10b0e0e47" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b8abe1f5-79c0-401a-a790-aee78626ccf6">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-b8abe1f5-79c0-401a-a790-aee78626ccf6" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k
 \end{align}\]</div>
 <p>This is the so-called <strong>position form</strong> of PI control. The position form specifies the value (or “position”) of the manipulated variable stricly in terms of the current and past values of the <strong>error</strong> signal <span class="math notranslate nohighlight">\(e_k\)</span>. Note the sign convention: A positive error occurs when the process variable is greater than the setpoint. The position form of PI control is rarely used in practice.</p>
 </div>
 <div class="section" id="velocity-form">
-<h3><span class="section-number">3.5.4.2. </span>Velocity form<a class="headerlink" href="#velocity-form" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6.4.2. </span>Velocity form<a class="headerlink" href="#velocity-form" title="Permalink to this headline">¶</a></h3>
 <p>A more common implementation of PI control is done by computing how much the manipulated variable changes at each time step, and incrementing the manipulated variable by that amount. Consecutive values of <span class="math notranslate nohighlight">\(MV\)</span> are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25b00a1c-42e6-455d-befa-ece0ea239739">
-<span class="eqno">(3.6)<a class="headerlink" href="#equation-25b00a1c-42e6-455d-befa-ece0ea239739" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4bbcd4af-f308-4682-9ecd-1d90a7a30a2f">
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-4bbcd4af-f308-4682-9ecd-1d90a7a30a2f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k-1} &amp; = \bar{MV} - K_p e_{k-1} - h K_i \sum_{j=0}^{k-1} e_{j} \\
 MV_{k} &amp; = \bar{MV} - K_p e_{k} - h K_i \sum_{j=0}^{k} e_{j}
 \end{align}\]</div>
 <p>Taking differences gives a formula for updating the value of <span class="math notranslate nohighlight">\(MV\)</span> in response to process measurements or changes in setpoint.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb12640c-5965-4b1d-897f-423b4a0eef8d">
-<span class="eqno">(3.7)<a class="headerlink" href="#equation-fb12640c-5965-4b1d-897f-423b4a0eef8d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8946e2c5-ab12-43fb-9fc1-dc8e2c7f8586">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-8946e2c5-ab12-43fb-9fc1-dc8e2c7f8586" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(MV_0 = \bar{MV}\)</span>. Let’s see how this works.</p>
@@ -1125,13 +1135,13 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 </div>
 </div>
 <p>As we can see from this example, an important practical property of proportonal-integral control is <strong>steady-state tracking of the setpoint.</strong> In other words, for a steaady setpoint <span class="math notranslate nohighlight">\(\bar{SP}\)</span>, at steady-state</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db5e9330-569f-458e-b695-44da59bc2f36">
-<span class="eqno">(3.8)<a class="headerlink" href="#equation-db5e9330-569f-458e-b695-44da59bc2f36" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ae0bde89-2870-4e5a-aab7-5faf7a1c9948">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-ae0bde89-2870-4e5a-aab7-5faf7a1c9948" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \lim_{k \rightarrow \infty} PV_k = \bar{SP}
 \end{align}\]</div>
 <p>To see why this is true, start with the velocity form of the proportional-integral controller</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f2b84aba-4ea1-4add-b8f2-1f6da28814f1">
-<span class="eqno">(3.9)<a class="headerlink" href="#equation-f2b84aba-4ea1-4add-b8f2-1f6da28814f1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a856f2bf-7ed0-47f0-af25-556f4f715ba1">
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-a856f2bf-7ed0-47f0-af25-556f4f715ba1" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 \end{align}\]</div>
 <p>At steady-state <span class="math notranslate nohighlight">\(MV_{k} = MV_{k-1}\)</span> and <span class="math notranslate nohighlight">\(e_{k} = e_{k-1}\)</span> leaving</p>
@@ -1141,11 +1151,11 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 </div>
 </div>
 <div class="section" id="empirical-tuning-rules">
-<h2><span class="section-number">3.5.5. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6.5. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of <strong>tuning rules</strong> in the literature that provide recommended values for the proportional gain <span class="math notranslate nohighlight">\(K_P\)</span>. These rules require process information obtained from testing. For a first-order plus time-delay (FOPTD), the available process information includes gain <span class="math notranslate nohighlight">\(K\)</span>, process time constant <span class="math notranslate nohighlight">\(T\)</span>, and process time delay <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f8d59389-117a-43f3-84b6-dd32b61d57da">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-f8d59389-117a-43f3-84b6-dd32b61d57da" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d3bbc9ef-c4f2-43a8-b42c-e6f066fe7446">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-d3bbc9ef-c4f2-43a8-b42c-e6f066fe7446" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
 \text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
 \text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
@@ -1224,13 +1234,13 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.4. </span>Implementing Controllers in Python</p>
+            <p class="prev-next-title"><span class="section-number">3.5. </span>Implementing Controllers in Python</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03.06-Lab-Assignment-PI-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.6. </span>Lab Assignment: Relay and PI Control</p>
+        <p class="prev-next-title"><span class="section-number">3.7. </span>Lab Assignment: Relay and PI Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

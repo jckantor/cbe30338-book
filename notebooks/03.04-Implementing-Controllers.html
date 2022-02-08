@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.4. Implementing Controllers in Python &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.5. Implementing Controllers in Python &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.5. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.05-Proportional-Integral-Control.html" />
-    <link rel="prev" title="3.3. Relay Control" href="03.03-Relay-Control.html" />
+    <link rel="next" title="3.6. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.05-Proportional-Integral-Control.html" />
+    <link rel="prev" title="3.4. Relay Control" href="03.03-Relay-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -744,39 +754,39 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem-with-coding-controllers-as-simple-functions">
-   3.4.1. The problem with coding controllers as simple functions
+   3.5.1. The problem with coding controllers as simple functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-seek-in-a-controller-implementation">
-   3.4.2. What we seek in a controller implementation
+   3.5.2. What we seek in a controller implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementating-relay-control-as-nested-function">
-   3.4.3. Implementating relay control as nested function
+   3.5.3. Implementating relay control as nested function
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-generator">
-   3.4.4. Implementing relay control as a Python generator
+   3.5.4. Implementing relay control as a Python generator
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-python-generator">
-     3.4.4.1. What is a Python generator?
+     3.5.4.1. What is a Python generator?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coding-a-relay-controller-as-a-python-generator">
-     3.4.4.2. Coding a relay controller as a Python generator
+     3.5.4.2. Coding a relay controller as a Python generator
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-class">
-   3.4.5. Implementing relay control as a Python class
+   3.5.5. Implementing relay control as a Python class
   </a>
  </li>
 </ul>
@@ -801,39 +811,39 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-problem-with-coding-controllers-as-simple-functions">
-   3.4.1. The problem with coding controllers as simple functions
+   3.5.1. The problem with coding controllers as simple functions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-seek-in-a-controller-implementation">
-   3.4.2. What we seek in a controller implementation
+   3.5.2. What we seek in a controller implementation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementating-relay-control-as-nested-function">
-   3.4.3. Implementating relay control as nested function
+   3.5.3. Implementating relay control as nested function
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-generator">
-   3.4.4. Implementing relay control as a Python generator
+   3.5.4. Implementing relay control as a Python generator
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-python-generator">
-     3.4.4.1. What is a Python generator?
+     3.5.4.1. What is a Python generator?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coding-a-relay-controller-as-a-python-generator">
-     3.4.4.2. Coding a relay controller as a Python generator
+     3.5.4.2. Coding a relay controller as a Python generator
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-class">
-   3.4.5. Implementing relay control as a Python class
+   3.5.5. Implementing relay control as a Python class
   </a>
  </li>
 </ul>
@@ -846,7 +856,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="implementing-controllers-in-python">
-<h1><span class="section-number">3.4. </span>Implementing Controllers in Python<a class="headerlink" href="#implementing-controllers-in-python" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.5. </span>Implementing Controllers in Python<a class="headerlink" href="#implementing-controllers-in-python" title="Permalink to this headline">¶</a></h1>
 <p>One of the challenges we will face is implementing complex control algorithms within the real-time event loop. Up to this point we have been doing the control calculations directly inside the event loop. This can work well for simple applications, like relay control for a single control variable. But for more complex algorithms and applications, this becomes completely unworkable. Placing the code for complex control algorithms directly in the event loop makes puts an undue burden on the coder to maintain all details of controller and system operation.</p>
 <p>What we seek are coding techniques that can encapusulate control algorithms into separate, self-contained blocks of code where they can be developed, tested, and deployed. This notebook introduces three techniques for implementing controllers in testable, modular fashion:</p>
 <ul class="simple">
@@ -860,7 +870,7 @@
 <p>Finally, Python classes provide even more flexibility by allowing the use of object oriented programming. This is more overhead than is required from simple control algorithms, but are key to the robust implementation of more complex systems.</p>
 <p>This notebook demonstrates these three different approaches to controller implementation. A reader new to Python coding may wish to limit their attention to the first two, nested functions and generators, and leave the more involved aspects of object-oriented coding the Python classes for a later time.</p>
 <div class="section" id="the-problem-with-coding-controllers-as-simple-functions">
-<h2><span class="section-number">3.4.1. </span>The problem with coding controllers as simple functions<a class="headerlink" href="#the-problem-with-coding-controllers-as-simple-functions" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.1. </span>The problem with coding controllers as simple functions<a class="headerlink" href="#the-problem-with-coding-controllers-as-simple-functions" title="Permalink to this headline">¶</a></h2>
 <p>A function performing the duty of the controller does the calculations necessary to compute a new value of the manipulated variable, <span class="math notranslate nohighlight">\(MV_k\)</span>. For relay control with a deadzone, for example, the value of <span class="math notranslate nohighlight">\(MV_k\)</span> is given</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -936,7 +946,7 @@ MV_{k} &amp; = \begin{cases}
 <p>This tight couplineg of the controller implementation, information management, and process operation would present very difficult challenges for the design and maintenance of control systems.</p>
 </div>
 <div class="section" id="what-we-seek-in-a-controller-implementation">
-<h2><span class="section-number">3.4.2. </span>What we seek in a controller implementation<a class="headerlink" href="#what-we-seek-in-a-controller-implementation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.2. </span>What we seek in a controller implementation<a class="headerlink" href="#what-we-seek-in-a-controller-implementation" title="Permalink to this headline">¶</a></h2>
 <p>What we seek in controller implementations are features facilitating the coding and maintenance of complex control systems and algorithms. Ideally, the code would “encapulate” the controllers such that:</p>
 <ul class="simple">
 <li><p>Multiple instances of generic control algorithms can be created, each with unique parameter values.</p></li>
@@ -946,7 +956,7 @@ MV_{k} &amp; = \begin{cases}
 <p>By separating controller implementations from the event loop, we create a more flexible, maintainable, and testable framework for process control.</p>
 </div>
 <div class="section" id="implementating-relay-control-as-nested-function">
-<h2><span class="section-number">3.4.3. </span>Implementating relay control as nested function<a class="headerlink" href="#implementating-relay-control-as-nested-function" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.3. </span>Implementating relay control as nested function<a class="headerlink" href="#implementating-relay-control-as-nested-function" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relay_with_deadzone</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="n">MV_max</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
@@ -1025,9 +1035,9 @@ MV_{k} &amp; = \begin{cases}
 </div>
 </div>
 <div class="section" id="implementing-relay-control-as-a-python-generator">
-<h2><span class="section-number">3.4.4. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.4. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-a-python-generator">
-<h3><span class="section-number">3.4.4.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.5.4.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this headline">¶</a></h3>
 <p>Values are returned from Python functions using the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement. Once the return statement is encountered, the function is over and all local information is lost.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1195,7 +1205,7 @@ Hello [&#39;Rover&#39;, &#39;Spot&#39;]
 </div>
 </div>
 <div class="section" id="coding-a-relay-controller-as-a-python-generator">
-<h3><span class="section-number">3.4.4.2. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.5.4.2. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Relay</span><span class="p">(</span><span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -1243,7 +1253,7 @@ Hello [&#39;Rover&#39;, &#39;Spot&#39;]
 </div>
 </div>
 <div class="section" id="implementing-relay-control-as-a-python-class">
-<h2><span class="section-number">3.4.5. </span>Implementing relay control as a Python class<a class="headerlink" href="#implementing-relay-control-as-a-python-class" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.5. </span>Implementing relay control as a Python class<a class="headerlink" href="#implementing-relay-control-as-a-python-class" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Relay</span><span class="p">():</span>
@@ -1324,13 +1334,13 @@ Hello [&#39;Rover&#39;, &#39;Spot&#39;]
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.3. </span>Relay Control</p>
+            <p class="prev-next-title"><span class="section-number">3.4. </span>Relay Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03.05-Proportional-Integral-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.5. </span>Practical Proportional (P) and Proportional-Integral (PI) Control</p>
+        <p class="prev-next-title"><span class="section-number">3.6. </span>Practical Proportional (P) and Proportional-Integral (PI) Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

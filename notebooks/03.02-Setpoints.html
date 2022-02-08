@@ -53,7 +53,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.3. Relay Control" href="03.03-Relay-Control.html" />
+    <link rel="next" title="3.3. Case Study: PCR Thermal Cycler Protocols" href="03.02a-Setpoints.html" />
     <link rel="prev" title="3.1. Case Study: Thermal Cycling for PCR" href="03.01-Case-Study-Thermal-Cycling-PCR.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -758,55 +768,53 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolation">
+     3.2.2.2. Interpolation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-functon-to-create-functions">
-     3.2.2.2. A functon to create functions
+     3.2.2.3. A functon to create functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-of-a-setpoint-function">
-     3.2.2.3. Example of a setpoint function
+     3.2.2.4. Example of a setpoint function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-multiple-setpoint-functions">
-     3.2.2.4. Creating multiple setpoint functions
+     3.2.2.5. Creating multiple setpoint functions
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#case-study-pcr-thermal-cycler-protocols">
-   3.2.3. Case Study: PCR Thermal Cycler Protocols
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#typcial-pcr-thermal-cycler-protocols">
-     3.2.3.1. Typcial PCR thermal cycler protocols
+     3.2.2.6. Typcial PCR thermal cycler protocols
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#representing-pcr-protocols-in-python">
-     3.2.3.2. Representing PCR protocols in Python
+     3.2.2.7. Representing PCR protocols in Python
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#converting-to-ramp-soak-specifications">
-     3.2.3.3. Converting to ramp, soak specifications
+     3.2.2.8. Converting to ramp, soak specifications
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#finding-the-start-and-finish-of-each-segment">
-     3.2.3.4. Finding the start and finish of each segment
+     3.2.2.9. Finding the start and finish of each segment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment">
-     3.2.3.5. Finding the setpoint function by interpolating the start and end of each segment
+     3.2.2.10. Finding the setpoint function by interpolating the start and end of each segment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-a-setpoint-function-for-pcr-thermal-cycler">
-     3.2.3.6. Creating a setpoint function for PCR thermal cycler
+     3.2.2.11. Creating a setpoint function for PCR thermal cycler
     </a>
    </li>
   </ul>
@@ -847,55 +855,53 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolation">
+     3.2.2.2. Interpolation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-functon-to-create-functions">
-     3.2.2.2. A functon to create functions
+     3.2.2.3. A functon to create functions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-of-a-setpoint-function">
-     3.2.2.3. Example of a setpoint function
+     3.2.2.4. Example of a setpoint function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-multiple-setpoint-functions">
-     3.2.2.4. Creating multiple setpoint functions
+     3.2.2.5. Creating multiple setpoint functions
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#case-study-pcr-thermal-cycler-protocols">
-   3.2.3. Case Study: PCR Thermal Cycler Protocols
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#typcial-pcr-thermal-cycler-protocols">
-     3.2.3.1. Typcial PCR thermal cycler protocols
+     3.2.2.6. Typcial PCR thermal cycler protocols
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#representing-pcr-protocols-in-python">
-     3.2.3.2. Representing PCR protocols in Python
+     3.2.2.7. Representing PCR protocols in Python
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#converting-to-ramp-soak-specifications">
-     3.2.3.3. Converting to ramp, soak specifications
+     3.2.2.8. Converting to ramp, soak specifications
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#finding-the-start-and-finish-of-each-segment">
-     3.2.3.4. Finding the start and finish of each segment
+     3.2.2.9. Finding the start and finish of each segment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment">
-     3.2.3.5. Finding the setpoint function by interpolating the start and end of each segment
+     3.2.2.10. Finding the setpoint function by interpolating the start and end of each segment
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#creating-a-setpoint-function-for-pcr-thermal-cycler">
-     3.2.3.6. Creating a setpoint function for PCR thermal cycler
+     3.2.2.11. Creating a setpoint function for PCR thermal cycler
     </a>
    </li>
   </ul>
@@ -930,8 +936,9 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># specify a setpoint profile</span>
@@ -948,27 +955,22 @@
     <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
 <span class="p">]</span>
 
-<span class="c1"># convert to numpy array to provide simple access to columns</span>
-<span class="n">profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
-
-<span class="c1"># create an annotated plot</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">profile</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">profile</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">sp_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">profile</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">])</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sp_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Setpoint&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Step&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">180</span><span class="p">,</span> <span class="mf">37.5</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Ramp&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span> <span class="mi">45</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">380</span><span class="p">,</span> <span class="mi">48</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
             <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;Soak/Dwell&quot;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">55</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
             <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.05</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sample Setpoint Profile&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.02-Setpoints_2_0.png" src="../_images/03.02-Setpoints_2_0.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(210, 55, &#39;Soak/Dwell&#39;)
+</pre></div>
+</div>
+<img alt="../_images/03.02-Setpoints_2_1.png" src="../_images/03.02-Setpoints_2_1.png" />
 </div>
 </div>
 <hr>
@@ -986,53 +988,106 @@
 <p>Here we show the points for a typical setpoint.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">profile</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">270</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">370</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">450</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
-    <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
-<span class="p">]</span>
+<span class="n">sp_profile</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> 
+                        <span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">270</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">370</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">450</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">25</span><span class="p">)],</span>
+                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">])</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">profile</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">profile</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp_profile</span><span class="p">)</span>
+<span class="n">sp_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;SP&quot;</span><span class="p">:</span> <span class="s2">&quot;r.&quot;</span><span class="p">},</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe217098fd0&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Time  SP
+0     0  25
+1    50  35
+2   120  35
+3   120  40
+4   170  50
+5   170  50
+6   270  50
+7   370  40
+8   450  40
+9   600  25
 </pre></div>
 </div>
-<img alt="../_images/03.02-Setpoints_6_1.png" src="../_images/03.02-Setpoints_6_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/03.02-Setpoints_6_2.png" src="../_images/03.02-Setpoints_6_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="interpolation">
+<h3><span class="section-number">3.2.2.2. </span>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h3>
+<p>Interpolation is a method to fill in points between known values of a function. Here we will use linear interpolation to create a continuous setpoint function given “breakpoint”.</p>
+<p>The Python standard libraries include</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_interp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span>
+<span class="n">sp_interp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[</span><span class="s2">&quot;SP&quot;</span><span class="p">]</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">t_interp</span><span class="p">,</span> <span class="n">sp_interp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sp</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">t_interp</span> <span class="o">=</span> <span class="n">sp_profile</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span>
+    <span class="n">y_interp</span> <span class="o">=</span> <span class="n">sp_profile</span><span class="p">[</span><span class="s2">&quot;SP&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_interp</span><span class="p">,</span> <span class="n">y_interp</span><span class="p">)</span>
+
+<span class="n">sp</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sp_profile</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;SP&quot;</span><span class="p">:</span> <span class="s2">&quot;r.&quot;</span><span class="p">},</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">sp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffdc16d8790&gt;]
+</pre></div>
+</div>
+<img alt="../_images/03.02-Setpoints_10_1.png" src="../_images/03.02-Setpoints_10_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="a-functon-to-create-functions">
-<h3><span class="section-number">3.2.2.2. </span>A functon to create functions<a class="headerlink" href="#a-functon-to-create-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.3. </span>A functon to create functions<a class="headerlink" href="#a-functon-to-create-functions" title="Permalink to this headline">¶</a></h3>
 <p>Python functions are frequently written to accept data, perform calculations, and return values. What may be less familiar is that functions can also return function. This is just what we neeed - a function that accepts a series of (time, value) pairs describing a setpoint profile, then returns a function that can be used to find values of the setpoint at any point in time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_setpoint_function</span><span class="p">(</span><span class="n">profile</span><span class="p">):</span>
     
     <span class="n">profile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
-    <span class="n">ti</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">yi</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">t_interp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">y_interp</span> <span class="o">=</span> <span class="n">profile</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
     
     <span class="c1"># define a function to interpolate time and values</span>
     <span class="k">def</span> <span class="nf">setpoint_function</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ti</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_interp</span><span class="p">,</span> <span class="n">y_interp</span><span class="p">)</span>
     
     <span class="c1"># return that function</span>
     <span class="k">return</span> <span class="n">setpoint_function</span>
@@ -1042,11 +1097,11 @@
 </div>
 </div>
 <div class="section" id="example-of-a-setpoint-function">
-<h3><span class="section-number">3.2.2.3. </span>Example of a setpoint function<a class="headerlink" href="#example-of-a-setpoint-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.4. </span>Example of a setpoint function<a class="headerlink" href="#example-of-a-setpoint-function" title="Permalink to this headline">¶</a></h3>
 <p>The following example creates a setpoint function that produces setpoints corresponding the profile described in the introduction to this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">create_setpoint_function</span><span class="p">(</span><span class="n">profile</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span> <span class="o">=</span> <span class="n">create_setpoint_function</span><span class="p">(</span><span class="n">sp_profile</span><span class="p">)</span>
 
 <span class="c1"># print select values</span>
 <span class="n">t</span> <span class="o">=</span> <span class="mi">100</span>
@@ -1063,7 +1118,9 @@
 <p>We can use the setpoint function to create plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute setpoint values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># compute setpoint values</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 
@@ -1077,12 +1134,12 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.02-Setpoints_12_0.png" src="../_images/03.02-Setpoints_12_0.png" />
+<img alt="../_images/03.02-Setpoints_16_0.png" src="../_images/03.02-Setpoints_16_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="creating-multiple-setpoint-functions">
-<h3><span class="section-number">3.2.2.4. </span>Creating multiple setpoint functions<a class="headerlink" href="#creating-multiple-setpoint-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.5. </span>Creating multiple setpoint functions<a class="headerlink" href="#creating-multiple-setpoint-functions" title="Permalink to this headline">¶</a></h3>
 <p>The next cell demonstrates the use of <code class="docutils literal notranslate"><span class="pre">create_setpoint_function</span></code> to create multiple independent setpoint functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1102,25 +1159,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe21721f1c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffdc1af8a60&gt;]
 </pre></div>
 </div>
-<img alt="../_images/03.02-Setpoints_14_1.png" src="../_images/03.02-Setpoints_14_1.png" />
+<img alt="../_images/03.02-Setpoints_18_1.png" src="../_images/03.02-Setpoints_18_1.png" />
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="case-study-pcr-thermal-cycler-protocols">
-<h2><span class="section-number">3.2.3. </span>Case Study: PCR Thermal Cycler Protocols<a class="headerlink" href="#case-study-pcr-thermal-cycler-protocols" title="Permalink to this headline">¶</a></h2>
-<p>The goal of this next section is to create a function that returns the value of a setpoint profile for a PCR thermal cycler. We’ll break this into a series of steps:</p>
-<ul class="simple">
-<li><p>Specify a PCR protocol</p></li>
-<li><p>Convert the PCR protocol in a sequence of ramp and soak periods</p></li>
-<li><p>Create a function that returns the value of setpoint at any point in time</p></li>
-<li><p>Create a function that returns a setpoint function.</p></li>
-</ul>
 <div class="section" id="typcial-pcr-thermal-cycler-protocols">
-<h3><span class="section-number">3.2.3.1. </span>Typcial PCR thermal cycler protocols<a class="headerlink" href="#typcial-pcr-thermal-cycler-protocols" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.6. </span>Typcial PCR thermal cycler protocols<a class="headerlink" href="#typcial-pcr-thermal-cycler-protocols" title="Permalink to this headline">¶</a></h3>
 <p>Here’s an example of a PCR thermal cycler protocol:</p>
 <ul class="simple">
 <li><p>Activation of polymerase: 95°C, 15 min</p></li>
@@ -1137,7 +1184,7 @@
 <p>The details of these protocols vary depending on the nature of the test, the reagents used, and the type of detection that will be employed. In real-time PCR, the number of cycling steps will end once a positive result is obtained.</p>
 </div>
 <div class="section" id="representing-pcr-protocols-in-python">
-<h3><span class="section-number">3.2.3.2. </span>Representing PCR protocols in Python<a class="headerlink" href="#representing-pcr-protocols-in-python" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.7. </span>Representing PCR protocols in Python<a class="headerlink" href="#representing-pcr-protocols-in-python" title="Permalink to this headline">¶</a></h3>
 <p>The PCR protocol is a series of (time, temperature) pairs. The code in the next cell represents a protocol as a sequence of (time, temperature) pairs in a Python list. The list is constructed by concatenating subprotocols denoting the activation, cycling and extension steps in a PCR protocol</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1185,7 +1232,7 @@
 </div>
 </div>
 <div class="section" id="converting-to-ramp-soak-specifications">
-<h3><span class="section-number">3.2.3.3. </span>Converting to ramp, soak specifications<a class="headerlink" href="#converting-to-ramp-soak-specifications" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.8. </span>Converting to ramp, soak specifications<a class="headerlink" href="#converting-to-ramp-soak-specifications" title="Permalink to this headline">¶</a></h3>
 <p>Each step in a PCR protocol consists of an initial ramp to the specified temperature, followed by a soak for the specified time and temperature. We begin the coding by demonstrating how to interpret the protocol specification as a series of ramp and soak periods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1298,7 +1345,7 @@ Time - 2024.0: Soak at 30C for 0 seconds
 </div>
 </div>
 <div class="section" id="finding-the-start-and-finish-of-each-segment">
-<h3><span class="section-number">3.2.3.4. </span>Finding the start and finish of each segment<a class="headerlink" href="#finding-the-start-and-finish-of-each-segment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.9. </span>Finding the start and finish of each segment<a class="headerlink" href="#finding-the-start-and-finish-of-each-segment" title="Permalink to this headline">¶</a></h3>
 <p>Finally, we create a two column numpy array representing the setpoint profile. The first row in the array is the starting time and temperature. Each subsequent row constains the ending time and temperature of a segment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1378,15 +1425,15 @@ Time - 2024.0: Soak at 30C for 0 seconds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe2158d2160&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffdc1607eb0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/03.02-Setpoints_25_1.png" src="../_images/03.02-Setpoints_25_1.png" />
+<img alt="../_images/03.02-Setpoints_28_1.png" src="../_images/03.02-Setpoints_28_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment">
-<h3><span class="section-number">3.2.3.5. </span>Finding the setpoint function by interpolating the start and end of each segment<a class="headerlink" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.10. </span>Finding the setpoint function by interpolating the start and end of each segment<a class="headerlink" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment" title="Permalink to this headline">¶</a></h3>
 <p>To implement control algorithms we will need to find values of the setpoint function at arbitrary points in time, not just at the start and finish of ramp or soak periods. The standard numpy library includes a linear interpolation function <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.interp.html"><code class="docutils literal notranslate"><span class="pre">numpy.interp</span></code></a> well suited to this purpose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1407,12 +1454,12 @@ Time - 2024.0: Soak at 30C for 0 seconds
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Setpoint function&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03.02-Setpoints_27_1.png" src="../_images/03.02-Setpoints_27_1.png" />
+<img alt="../_images/03.02-Setpoints_30_1.png" src="../_images/03.02-Setpoints_30_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="creating-a-setpoint-function-for-pcr-thermal-cycler">
-<h3><span class="section-number">3.2.3.6. </span>Creating a setpoint function for PCR thermal cycler<a class="headerlink" href="#creating-a-setpoint-function-for-pcr-thermal-cycler" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2.2.11. </span>Creating a setpoint function for PCR thermal cycler<a class="headerlink" href="#creating-a-setpoint-function-for-pcr-thermal-cycler" title="Permalink to this headline">¶</a></h3>
 <p>The last step is to put all of these steps together to create a function that generates a setpoint function. This is an example of a very powerful coding technique of <a class="reference external" href="https://realpython.com/inner-functions-what-are-they-good-for/">nested functions</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1460,7 +1507,7 @@ Time - 2024.0: Soak at 30C for 0 seconds
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Setpoint function&#39;)
 </pre></div>
 </div>
-<img alt="../_images/03.02-Setpoints_29_1.png" src="../_images/03.02-Setpoints_29_1.png" />
+<img alt="../_images/03.02-Setpoints_32_1.png" src="../_images/03.02-Setpoints_32_1.png" />
 </div>
 </div>
 <hr>
@@ -1502,10 +1549,10 @@ Time - 2024.0: Soak at 30C for 0 seconds
             <p class="prev-next-title"><span class="section-number">3.1. </span>Case Study: Thermal Cycling for PCR</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="03.03-Relay-Control.html" title="next page">
+    <a class='right-next' id="next-link" href="03.02a-Setpoints.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.3. </span>Relay Control</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>Case Study: PCR Thermal Cycler Protocols</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

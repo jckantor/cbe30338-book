@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.9. Lab Assignment 4: Solution &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.10. Lab Assignment 4: Solution &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,7 +54,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4. Process Analytics" href="04.00-Process-Analytics.html" />
-    <link rel="prev" title="3.8. Lab Assignment 4: Cascade Control" href="03.08-Lab-Assignment-Cascade-Control.html" />
+    <link rel="prev" title="3.9. Lab Assignment 4: Cascade Control" href="03.08-Lab-Assignment-Cascade-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -744,78 +754,78 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1-pi-control-for-t2-using-q1">
-   3.9.1. Exercise 1. PI Control for T2 using Q1
+   3.10.1. Exercise 1. PI Control for T2 using Q1
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-model-identification">
-     3.9.1.1. Step 1: Model Identification
+     3.10.1.1. Step 1: Model Identification
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-test">
-       3.9.1.1.1. Step Test
+       3.10.1.1.1. Step Test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#verify-data-set">
-       3.9.1.1.2. Verify data set
+       3.10.1.1.2. Verify data set
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fitting-fopdt-parameters-for-q1-t2">
-       3.9.1.1.3. Fitting FOPDT Parameters for Q1 -&gt; T2
+       3.10.1.1.3. Fitting FOPDT Parameters for Q1 -&gt; T2
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-controller-implementation-and-testing">
-     3.9.1.2. Step 2: Controller implementation and testing
+     3.10.1.2. Step 2: Controller implementation and testing
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pi-implementation">
-       3.9.1.2.1. PI Implementation
+       3.10.1.2.1. PI Implementation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pi-controller-tuning">
-       3.9.1.2.2. PI Controller Tuning
+       3.10.1.2.2. PI Controller Tuning
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-controller-testing">
-     3.9.1.3. Step 3: Controller Testing
+     3.10.1.3. Step 3: Controller Testing
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
-   3.9.2. Exercise 2
+   3.10.2. Exercise 2
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-determining-the-inner-controller">
-     3.9.2.1. Step 1: Determining the Inner Controller
+     3.10.2.1. Step 1: Determining the Inner Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-step-testing-the-inner-controller">
-     3.9.2.2. Step 2: Step Testing the Inner Controller
+     3.10.2.2. Step 2: Step Testing the Inner Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-implement-the-outer-controller">
-     3.9.2.3. Step 3: Implement the Outer Controller
+     3.10.2.3. Step 3: Implement the Outer Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-test-the-cascade-control-configuration">
-     3.9.2.4. Step 4: Test the Cascade Control Configuration
+     3.10.2.4. Step 4: Test the Cascade Control Configuration
     </a>
    </li>
   </ul>
@@ -842,78 +852,78 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1-pi-control-for-t2-using-q1">
-   3.9.1. Exercise 1. PI Control for T2 using Q1
+   3.10.1. Exercise 1. PI Control for T2 using Q1
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-model-identification">
-     3.9.1.1. Step 1: Model Identification
+     3.10.1.1. Step 1: Model Identification
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-test">
-       3.9.1.1.1. Step Test
+       3.10.1.1.1. Step Test
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#verify-data-set">
-       3.9.1.1.2. Verify data set
+       3.10.1.1.2. Verify data set
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#fitting-fopdt-parameters-for-q1-t2">
-       3.9.1.1.3. Fitting FOPDT Parameters for Q1 -&gt; T2
+       3.10.1.1.3. Fitting FOPDT Parameters for Q1 -&gt; T2
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-controller-implementation-and-testing">
-     3.9.1.2. Step 2: Controller implementation and testing
+     3.10.1.2. Step 2: Controller implementation and testing
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pi-implementation">
-       3.9.1.2.1. PI Implementation
+       3.10.1.2.1. PI Implementation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pi-controller-tuning">
-       3.9.1.2.2. PI Controller Tuning
+       3.10.1.2.2. PI Controller Tuning
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-controller-testing">
-     3.9.1.3. Step 3: Controller Testing
+     3.10.1.3. Step 3: Controller Testing
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2">
-   3.9.2. Exercise 2
+   3.10.2. Exercise 2
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-determining-the-inner-controller">
-     3.9.2.1. Step 1: Determining the Inner Controller
+     3.10.2.1. Step 1: Determining the Inner Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-step-testing-the-inner-controller">
-     3.9.2.2. Step 2: Step Testing the Inner Controller
+     3.10.2.2. Step 2: Step Testing the Inner Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-implement-the-outer-controller">
-     3.9.2.3. Step 3: Implement the Outer Controller
+     3.10.2.3. Step 3: Implement the Outer Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-test-the-cascade-control-configuration">
-     3.9.2.4. Step 4: Test the Cascade Control Configuration
+     3.10.2.4. Step 4: Test the Cascade Control Configuration
     </a>
    </li>
   </ul>
@@ -928,7 +938,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-4-solution">
-<h1><span class="section-number">3.9. </span>Lab Assignment 4: Solution<a class="headerlink" href="#lab-assignment-4-solution" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.10. </span>Lab Assignment 4: Solution<a class="headerlink" href="#lab-assignment-4-solution" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import all libraries used for this assignment</span>
@@ -978,7 +988,7 @@
 </div>
 </div>
 <div class="section" id="exercise-1-pi-control-for-t2-using-q1">
-<h2><span class="section-number">3.9.1. </span>Exercise 1. PI Control for T2 using Q1<a class="headerlink" href="#exercise-1-pi-control-for-t2-using-q1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.10.1. </span>Exercise 1. PI Control for T2 using Q1<a class="headerlink" href="#exercise-1-pi-control-for-t2-using-q1" title="Permalink to this headline">¶</a></h2>
 <p>The exerise comprises of two basic steps:</p>
 <ul class="simple">
 <li><p>Step 1: Step tests to identify FOPDT model for Q1 -&gt; T2 dynamics. The same step test data will be used in exercise 2 for the Q1 -&gt; T1 dynamics.</p></li>
@@ -986,9 +996,9 @@
 <li><p>Step 3: Test controller for setpoint response and disturbance rejection.</p></li>
 </ul>
 <div class="section" id="step-1-model-identification">
-<h3><span class="section-number">3.9.1.1. </span>Step 1: Model Identification<a class="headerlink" href="#step-1-model-identification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.1.1. </span>Step 1: Model Identification<a class="headerlink" href="#step-1-model-identification" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="step-test">
-<h4><span class="section-number">3.9.1.1.1. </span>Step Test<a class="headerlink" href="#step-test" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.10.1.1.1. </span>Step Test<a class="headerlink" href="#step-test" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="n">connected</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="n">speedup</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">connected</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
@@ -1014,7 +1024,7 @@
 </div>
 </div>
 <div class="section" id="verify-data-set">
-<h4><span class="section-number">3.9.1.1.2. </span>Verify data set<a class="headerlink" href="#verify-data-set" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.10.1.1.2. </span>Verify data set<a class="headerlink" href="#verify-data-set" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load data file into a pandas dataframe</span>
@@ -1044,7 +1054,7 @@
 </div>
 </div>
 <div class="section" id="fitting-fopdt-parameters-for-q1-t2">
-<h4><span class="section-number">3.9.1.1.3. </span>Fitting FOPDT Parameters for Q1 -&gt; T2<a class="headerlink" href="#fitting-fopdt-parameters-for-q1-t2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.10.1.1.3. </span>Fitting FOPDT Parameters for Q1 -&gt; T2<a class="headerlink" href="#fitting-fopdt-parameters-for-q1-t2" title="Permalink to this headline">¶</a></h4>
 <p>We will need to fit at an FOPDT model at three times in the assignment. For that purpose we will take time to write a generic function that we can use for this purpose. The function accepts three array arguments: time t, manipulated variable MV, and process variable PV. The function requires MV to be constant.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1090,9 +1100,9 @@
 </div>
 </div>
 <div class="section" id="step-2-controller-implementation-and-testing">
-<h3><span class="section-number">3.9.1.2. </span>Step 2: Controller implementation and testing<a class="headerlink" href="#step-2-controller-implementation-and-testing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.1.2. </span>Step 2: Controller implementation and testing<a class="headerlink" href="#step-2-controller-implementation-and-testing" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="pi-implementation">
-<h4><span class="section-number">3.9.1.2.1. </span>PI Implementation<a class="headerlink" href="#pi-implementation" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.10.1.2.1. </span>PI Implementation<a class="headerlink" href="#pi-implementation" title="Permalink to this headline">¶</a></h4>
 <p>We use the PI antiwindup implementation from notebook 3.5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,7 +1121,7 @@
 </div>
 </div>
 <div class="section" id="pi-controller-tuning">
-<h4><span class="section-number">3.9.1.2.2. </span>PI Controller Tuning<a class="headerlink" href="#pi-controller-tuning" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.10.1.2.2. </span>PI Controller Tuning<a class="headerlink" href="#pi-controller-tuning" title="Permalink to this headline">¶</a></h4>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Type</p></th>
@@ -1170,7 +1180,7 @@
 </div>
 </div>
 <div class="section" id="step-3-controller-testing">
-<h3><span class="section-number">3.9.1.3. </span>Step 3: Controller Testing<a class="headerlink" href="#step-3-controller-testing" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.1.3. </span>Step 3: Controller Testing<a class="headerlink" href="#step-3-controller-testing" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">controller</span> <span class="o">=</span> <span class="n">PI_antiwindup</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -1249,7 +1259,7 @@
 </div>
 </div>
 <div class="section" id="exercise-2">
-<h2><span class="section-number">3.9.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.10.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <p>The second exercise of the assignment can be broken into four steps:</p>
 <ul class="simple">
 <li><p>Step 1: Implement PI control for the inner control.</p></li>
@@ -1258,7 +1268,7 @@
 <li><p>Step 4: Test the cascade control configuration.</p></li>
 </ul>
 <div class="section" id="step-1-determining-the-inner-controller">
-<h3><span class="section-number">3.9.2.1. </span>Step 1: Determining the Inner Controller<a class="headerlink" href="#step-1-determining-the-inner-controller" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.2.1. </span>Step 1: Determining the Inner Controller<a class="headerlink" href="#step-1-determining-the-inner-controller" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile_1</span><span class="p">)</span>
@@ -1276,7 +1286,7 @@
 </div>
 </div>
 <div class="section" id="step-2-step-testing-the-inner-controller">
-<h3><span class="section-number">3.9.2.2. </span>Step 2: Step Testing the Inner Controller<a class="headerlink" href="#step-2-step-testing-the-inner-controller" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.2.2. </span>Step 2: Step Testing the Inner Controller<a class="headerlink" href="#step-2-step-testing-the-inner-controller" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inner</span>  <span class="o">=</span> <span class="n">PI_antiwindup</span><span class="p">(</span><span class="n">Kp_inner</span><span class="p">,</span> <span class="mf">1.4</span><span class="o">*</span><span class="n">Ki_inner</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -1313,7 +1323,7 @@
 </div>
 </div>
 <div class="section" id="step-3-implement-the-outer-controller">
-<h3><span class="section-number">3.9.2.3. </span>Step 3: Implement the Outer Controller<a class="headerlink" href="#step-3-implement-the-outer-controller" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.2.3. </span>Step 3: Implement the Outer Controller<a class="headerlink" href="#step-3-implement-the-outer-controller" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">datafile_2</span><span class="p">)</span>
@@ -1331,7 +1341,7 @@
 </div>
 </div>
 <div class="section" id="step-4-test-the-cascade-control-configuration">
-<h3><span class="section-number">3.9.2.4. </span>Step 4: Test the Cascade Control Configuration<a class="headerlink" href="#step-4-test-the-cascade-control-configuration" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.10.2.4. </span>Step 4: Test the Cascade Control Configuration<a class="headerlink" href="#step-4-test-the-cascade-control-configuration" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inner</span>  <span class="o">=</span> <span class="n">PI_antiwindup</span><span class="p">(</span><span class="n">Kp_inner</span><span class="p">,</span> <span class="mf">1.4</span><span class="o">*</span><span class="n">Ki_inner</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -1407,7 +1417,7 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.8. </span>Lab Assignment 4: Cascade Control</p>
+            <p class="prev-next-title"><span class="section-number">3.9. </span>Lab Assignment 4: Cascade Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.00-Process-Analytics.html" title="next page">

@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -956,34 +966,34 @@ Reformate LB  84.0   93.7   2.8      0.0     0.12  2.75   88.85
 <h2><span class="section-number">5.4.3. </span>Blending Model<a class="headerlink" href="#blending-model" title="Permalink to this headline">¶</a></h2>
 <p>This simplified blending model assumes the product attributes can be computed as linear volume weighted averages of the component properties. Let the decision variable <span class="math notranslate nohighlight">\(x_{s,p} \geq 0\)</span> be the volume, in gallons, of blending component <span class="math notranslate nohighlight">\(s \in S\)</span> used in the final product <span class="math notranslate nohighlight">\(p \in P\)</span>.</p>
 <p>The objective is maximize profit, which is the difference between product revenue and stream costs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e13a317-5ec4-442b-89d1-e2fe21b12acf">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-8e13a317-5ec4-442b-89d1-e2fe21b12acf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f645442c-8670-4c7d-8677-546ec9ae72a9">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-f645442c-8670-4c7d-8677-546ec9ae72a9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \mbox{Price}_p \sum_{s\in S} x_{s,p}
 - \sum_{s\in S} \mbox{Cost}_s \sum_{p\in P} x_{s,p}\right)
 \end{align}\]</div>
 <p>or</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a50df269-34f7-45ab-8569-816ac76bac3a">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-a50df269-34f7-45ab-8569-816ac76bac3a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-877084dd-d41a-4aa6-86da-50dfc231393c">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-877084dd-d41a-4aa6-86da-50dfc231393c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mbox{profit} &amp; = \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Price}_p - \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Cost}_s
 \end{align}\]</div>
 <p>The blending constraint for octane can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5db99e5b-46ad-4d7a-ab33-736c476b45af">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-5db99e5b-46ad-4d7a-ab33-736c476b45af" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-69e4ec87-cf7e-4bdf-a4ef-d9600394fd18">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-69e4ec87-cf7e-4bdf-a4ef-d9600394fd18" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{\sum_{s \in S} x_{s,p} \mbox{Octane}_s}{\sum_{s \in S} x_{s,p}} &amp; \geq \mbox{Octane}_p &amp; \forall p \in P
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mbox{Octane}_s\)</span> refers to the octane rating of stream <span class="math notranslate nohighlight">\(s\)</span>, whereas <span class="math notranslate nohighlight">\(\mbox{Octane}_p\)</span> refers to the octane rating of product <span class="math notranslate nohighlight">\(p\)</span>. Multiplying through by the denominator, and consolidating terms gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-152f9bd8-2275-45b6-a355-14089771b1b2">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-152f9bd8-2275-45b6-a355-14089771b1b2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-35fa8705-f032-47ff-b132-c415a0855842">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-35fa8705-f032-47ff-b132-c415a0855842" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Octane}_s - \mbox{Octane}_p\right) &amp; \geq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>The same assumptions and development apply to the benzene constraint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df4d475e-d7ba-42f2-b405-8d4da6b82d99">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-df4d475e-d7ba-42f2-b405-8d4da6b82d99" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6c85d3df-08e7-4749-9e0b-6ed5d42615a3">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-6c85d3df-08e7-4749-9e0b-6ed5d42615a3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Benzene}_s - \mbox{Benzene}_p\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>Reid vapor pressure, however, follows a somewhat different mixing rule.  For the Reid vapor pressure we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c4fe4282-6f13-4efe-89aa-f7e57d642422">
-<span class="eqno">(5.7)<a class="headerlink" href="#equation-c4fe4282-6f13-4efe-89aa-f7e57d642422" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b5315e9f-2e23-44f0-b113-c000db69e26e">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-b5315e9f-2e23-44f0-b113-c000db69e26e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{min,p}^{1.25}\right) &amp; \geq  0 &amp; \forall p \in P \\
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{max,p}^{1.25}\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
