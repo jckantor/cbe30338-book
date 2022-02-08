@@ -21,11 +21,12 @@
 # * A **ramp** is a specified period of time over which the setpoint changes at a constant rate from a specified starting value to a specified final value.
 # * The **ramp rate** is the rate of change in a setpoint ramp. These may have positive or negative values.
 
-# In[13]:
+# In[35]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
+import pandas as pd
+
 import matplotlib.pyplot as plt
 
 # specify a setpoint profile
@@ -42,22 +43,14 @@ profile = [
     (600, 25),
 ]
 
-# convert to numpy array to provide simple access to columns
-profile = np.array(profile)
-
-# create an annotated plot
-fig, ax = plt.subplots(1, 1, figsize=(10, 5))
-ax.plot(profile[:, 0], profile[:, 1], lw=4)
+sp_profile = pd.DataFrame(profile, columns=["Time", "SP"])
+ax = sp_profile.plot(x="Time", grid=True, ylim=(25, 60), title="Setpoint")
 ax.annotate("Step", xy=(120, 37.5), xytext=(180, 37.5), fontsize=20, 
             va="center", arrowprops=dict(facecolor='black', shrink=0.05))
 ax.annotate("Ramp", xy=(320, 45), xytext=(380, 48), fontsize=20, 
             va="center", arrowprops=dict(facecolor='black', shrink=0.05))
 ax.annotate("Soak/Dwell", xy=(210, 50), xytext=(210, 55), fontsize=20, 
             ha="center", arrowprops=dict(facecolor='black', shrink=0.05))
-ax.set_ylim(25, 60)
-ax.set_title("Sample Setpoint Profile")
-ax.set_xlabel("Time")
-ax.grid(True)
 
 
 # <hr>
@@ -82,49 +75,71 @@ ax.grid(True)
 # 
 # Here we show the points for a typical setpoint.
 
-# In[21]:
+# In[37]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
 import matplotlib.pyplot as plt
 
-profile = [
-    (0, 25),
-    (50, 35),
-    (120, 35),
-    (120, 40),
-    (170, 50),
-    (170, 50),
-    (270, 50),
-    (370, 40),
-    (450, 40),
-    (600, 25),
-]
+sp_profile = pd.DataFrame([(0, 25), (50, 35), (120, 35), (120, 40), (170, 50), 
+                        (170, 50), (270, 50), (370, 40), (450, 40), (600, 25)],
+                       columns=["Time", "SP"])
 
-t = [t for t, _ in profile]
-y = [y for _, y in profile]
+print(sp_profile)
+sp_profile.plot(x="Time", y="SP", style={"SP": "r."}, ms=10, ylim=(25, 80), grid=True)
 
-fig, ax = plt.subplots(1, 1)
-ax.plot(t, y, '.', ms=10)
+
+# ### Interpolation
+# 
+# Interpolation is a method to fill in points between known values of a function. Here we will use linear interpolation to create a continuous setpoint function given "breakpoint".
+# 
+# The Python standard libraries include 
+
+# In[27]:
+
+
+t_interp = profile["Time"]
+sp_interp = profile["SP"]
+
+np.interp(500, t_interp, sp_interp)
+
+
+# In[39]:
+
+
+def sp(t):
+    t_interp = sp_profile["Time"]
+    y_interp = sp_profile["SP"]
+    return np.interp(t, t_interp, y_interp)
+
+sp(500)
+
+
+# In[42]:
+
+
+t = np.linspace(0, 600, 101)
+
+ax = sp_profile.plot(x="Time", y="SP", style={"SP": "r."}, ms=20, ylim=(25, 60), grid=True)
+ax.plot(t, sp(t), '.')
 
 
 # ### A functon to create functions
 # 
 # Python functions are frequently written to accept data, perform calculations, and return values. What may be less familiar is that functions can also return function. This is just what we neeed - a function that accepts a series of (time, value) pairs describing a setpoint profile, then returns a function that can be used to find values of the setpoint at any point in time.
 
-# In[22]:
+# In[46]:
 
 
 def create_setpoint_function(profile):
     
     profile = np.array(profile)
-    ti = profile[:, 0]
-    yi = profile[:, 1]
+    t_interp = profile[:, 0]
+    y_interp = profile[:, 1]
     
     # define a function to interpolate time and values
     def setpoint_function(t):
-        return np.interp(t, ti, yi)
+        return np.interp(t, t_interp, y_interp)
     
     # return that function
     return setpoint_function
@@ -134,10 +149,10 @@ def create_setpoint_function(profile):
 # 
 # The following example creates a setpoint function that produces setpoints corresponding the profile described in the introduction to this notebook.
 
-# In[23]:
+# In[47]:
 
 
-sp = create_setpoint_function(profile)
+sp = create_setpoint_function(sp_profile)
 
 # print select values
 t = 100
@@ -146,8 +161,10 @@ print(f"at time = {t:3d} setpoint = {sp(t)}")
 
 # We can use the setpoint function to create plots.
 
-# In[24]:
+# In[49]:
 
+
+import matplotlib.pyplot as plt
 
 # compute setpoint values
 t = np.linspace(0, 600, 600)
@@ -165,7 +182,7 @@ ax.grid(True)
 # 
 # The next cell demonstrates the use of `create_setpoint_function` to create multiple independent setpoint functions.
 
-# In[25]:
+# In[50]:
 
 
 T_amb = 21.0
@@ -181,15 +198,6 @@ t = np.linspace(-1, 250, 250)
 ax[0].plot(t, sp_1(t))
 ax[1].plot(t, sp_2(t))
 
-
-# ## Case Study: PCR Thermal Cycler Protocols
-# 
-# The goal of this next section is to create a function that returns the value of a setpoint profile for a PCR thermal cycler. We'll break this into a series of steps:
-# 
-# * Specify a PCR protocol
-# * Convert the PCR protocol in a sequence of ramp and soak periods
-# * Create a function that returns the value of setpoint at any point in time
-# * Create a function that returns a setpoint function.
 
 # ### Typcial PCR thermal cycler protocols
 # 
@@ -209,7 +217,7 @@ ax[1].plot(t, sp_2(t))
 # 
 # The PCR protocol is a series of (time, temperature) pairs. The code in the next cell represents a protocol as a sequence of (time, temperature) pairs in a Python list. The list is constructed by concatenating subprotocols denoting the activation, cycling and extension steps in a PCR protocol
 
-# In[6]:
+# In[51]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -234,7 +242,7 @@ protocol
 # 
 # Each step in a PCR protocol consists of an initial ramp to the specified temperature, followed by a soak for the specified time and temperature. We begin the coding by demonstrating how to interpret the protocol specification as a series of ramp and soak periods.
 
-# In[7]:
+# In[52]:
 
 
 # each soak period is preceeded by a ramp
@@ -245,7 +253,7 @@ for time, temp in protocol:
 
 # The next step is to introduce a ramp rate and add variables to track the start time and temperature for each segment. We will assume all ramp rates have the same absolute value.
 
-# In[8]:
+# In[53]:
 
 
 # add varibles to track current time and temperature
@@ -266,7 +274,7 @@ for time, temp in protocol:
 # 
 # Finally, we create a two column numpy array representing the setpoint profile. The first row in the array is the starting time and temperature. Each subsequent row constains the ending time and temperature of a segment.
 
-# In[9]:
+# In[54]:
 
 
 # store the data in a list of time, temperature pairs marking the end of each period
@@ -294,7 +302,7 @@ SP_array = np.array(SP_list)
 SP_array
 
 
-# In[10]:
+# In[55]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(12, 5))
@@ -305,7 +313,7 @@ ax.plot(SP_array[:,0], SP_array[:,1], '.')
 # 
 # To implement control algorithms we will need to find values of the setpoint function at arbitrary points in time, not just at the start and finish of ramp or soak periods. The standard numpy library includes a linear interpolation function [`numpy.interp`](https://numpy.org/doc/stable/reference/generated/numpy.interp.html) well suited to this purpose.
 
-# In[11]:
+# In[56]:
 
 
 # create function to interpolate
@@ -324,7 +332,7 @@ ax.set_title("Setpoint function")
 # 
 # The last step is to put all of these steps together to create a function that generates a setpoint function. This is an example of a very powerful coding technique of [nested functions](https://realpython.com/inner-functions-what-are-they-good-for/).
 
-# In[12]:
+# In[57]:
 
 
 # create the setpoint function from a specified PCR 

@@ -34,6 +34,7 @@ parts:
       sections:
       - file: notebooks/03.01-Case-Study-Thermal-Cycling-PCR
       - file: notebooks/03.02-Setpoints
+      - file: notebooks/03.02a-Setpoints
       - file: notebooks/03.03-Relay-Control
       - file: notebooks/03.04-Implementing-Controllers
       - file: notebooks/03.05-Proportional-Integral-Control

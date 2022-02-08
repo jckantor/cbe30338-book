@@ -166,7 +166,7 @@ df.plot(x="Time", grid=True)
 
 
 ax = df.plot(x="Hare", y="Lynx", grid=True)
-ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], "g.", ms=20)
+ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], "b.", ms=20)
 
 
 # ## Nullclines: Finding Steady States
@@ -265,16 +265,16 @@ def hare_lynx(H=20, L=20, a=3.2):
     df.plot(x="Time", ax=ax[0], ylim=(0, 130), grid=True)
     ax = df.plot(x="Hare", y="Lynx", ax=ax[1], ylim=(0, 130), grid=True)
     plot_nullclines(a=a)
-    ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], 'g.', ms=20)
+    ax.plot(df.loc[0, "Hare"], df.loc[0, "Lynx"], 'b.', ms=20)
 
 
-# Use the `aslider` to adjust values of the Hare/Lynx interaction.  Can you indentify stable and unstable steady states?
+# Use the `a` slider to adjust values of the Hare/Lynx interaction.  Can you indentify stable and unstable steady states?
 
-# In[14]:
+# In[18]:
 
 
 from ipywidgets import interact
-interact(hare_lynx, H = (0, 140, 1), L =(0, 140, 1), a=(1.25, 4.0, 0.002));
+interact(hare_lynx, H = (0, 140, 0.1), L =(0, 140, 0.1), a=(1.25, 4.0, 0.002));
 
 
 # ## Stability of a Steady State

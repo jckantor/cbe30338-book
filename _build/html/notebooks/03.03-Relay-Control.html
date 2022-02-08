@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3. Relay Control &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.4. Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.4. Implementing Controllers in Python" href="03.04-Implementing-Controllers.html" />
-    <link rel="prev" title="3.2. Setpoints" href="03.02-Setpoints.html" />
+    <link rel="next" title="3.5. Implementing Controllers in Python" href="03.04-Implementing-Controllers.html" />
+    <link rel="prev" title="3.3. Case Study: PCR Thermal Cycler Protocols" href="03.02a-Setpoints.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -210,39 +215,44 @@
      3.2. Setpoints
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -744,12 +754,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relay-control-for-the-temperature-control-lab">
-   3.3.1. Relay Control for the Temperature Control Lab
+   3.4.1. Relay Control for the Temperature Control Lab
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relay-control-with-deadzone-hysteresis-or-deadtime">
-   3.3.2. Relay Control with Deadzone (Hysteresis) or Deadtime
+   3.4.2. Relay Control with Deadzone (Hysteresis) or Deadtime
   </a>
  </li>
 </ul>
@@ -774,12 +784,12 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relay-control-for-the-temperature-control-lab">
-   3.3.1. Relay Control for the Temperature Control Lab
+   3.4.1. Relay Control for the Temperature Control Lab
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#relay-control-with-deadzone-hysteresis-or-deadtime">
-   3.3.2. Relay Control with Deadzone (Hysteresis) or Deadtime
+   3.4.2. Relay Control with Deadzone (Hysteresis) or Deadtime
   </a>
  </li>
 </ul>
@@ -792,9 +802,9 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="relay-control">
-<h1><span class="section-number">3.3. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.4. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="relay-control-for-the-temperature-control-lab">
-<h2><span class="section-number">3.3.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
 <p>Relay control is perhaps the simplest form of feedback control that comes to mind for controlling common heaters. This is the on/off control familiar from home thermostats, air conditioners, and other devices where the manipulated variable is in either an “on” state or an “off” state.</p>
 <p>The following code implements relay control for temperature T1 on the Temperature Control Lab. At each time step <span class="math notranslate nohighlight">\(t_k\)</span>, the value of</p>
 <div class="math notranslate nohighlight">
@@ -810,8 +820,7 @@ U_{k} &amp; = \begin{cases}
 <p>Relay control can be implemented as a single line of code in the standard clock-driven loop of the Temperature Control Lab.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
 
 <span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
@@ -847,7 +856,7 @@ U_{k} &amp; = \begin{cases}
 </div>
 </div>
 <div class="section" id="relay-control-with-deadzone-hysteresis-or-deadtime">
-<h2><span class="section-number">3.3.2. </span>Relay Control with Deadzone (Hysteresis) or Deadtime<a class="headerlink" href="#relay-control-with-deadzone-hysteresis-or-deadtime" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4.2. </span>Relay Control with Deadzone (Hysteresis) or Deadtime<a class="headerlink" href="#relay-control-with-deadzone-hysteresis-or-deadtime" title="Permalink to this headline">¶</a></h2>
 <p>One of the issues with simple relay control is the potential for ‘chattering’ where the manipulated variable (in this case heater power) exhibits periods of rapid on-and-off switching. This can be caused by systems that are highly response to control inputs, or where sensor measurements carry significant noise.</p>
 <p>There are several simple and highly effective solutions to the problem of chattering.</p>
 <ul class="simple">
@@ -952,17 +961,17 @@ T^{SP} - d \leq T \leq T^{SP} + d
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="03.02-Setpoints.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="03.02a-Setpoints.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.2. </span>Setpoints</p>
+            <p class="prev-next-title"><span class="section-number">3.3. </span>Case Study: PCR Thermal Cycler Protocols</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03.04-Implementing-Controllers.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.4. </span>Implementing Controllers in Python</p>
+        <p class="prev-next-title"><span class="section-number">3.5. </span>Implementing Controllers in Python</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

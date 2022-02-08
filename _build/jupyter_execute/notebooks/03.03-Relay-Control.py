@@ -25,7 +25,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 TCLab = setup(connected=False, speedup=20)

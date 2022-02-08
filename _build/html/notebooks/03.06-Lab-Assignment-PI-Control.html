@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.6. Lab Assignment: Relay and PI Control &#8212; CBE 30338 Chemical Process Control</title>
+    <title>3.7. Lab Assignment: Relay and PI Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.7. Integral Windup and Bumpless Transfer" href="03.07-Integral-Windup-and-Bumpless-Transfer.html" />
-    <link rel="prev" title="3.5. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.05-Proportional-Integral-Control.html" />
+    <link rel="next" title="3.8. Integral Windup and Bumpless Transfer" href="03.07-Integral-Windup-and-Bumpless-Transfer.html" />
+    <link rel="prev" title="3.6. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.05-Proportional-Integral-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -188,6 +188,11 @@
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -211,38 +216,43 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="03.02a-Setpoints.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="03.03-Relay-Control.html">
-     3.3. Relay Control
+     3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.04-Implementing-Controllers.html">
-     3.4. Implementing Controllers in Python
+     3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
-     3.5. Practical Proportional (P) and Proportional-Integral (PI) Control
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.6. Lab Assignment: Relay and PI Control
+     3.7. Lab Assignment: Relay and PI Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.7. Integral Windup and Bumpless Transfer
+     3.8. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.8. Lab Assignment 4: Cascade Control
+     3.9. Lab Assignment 4: Cascade Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.9. Lab Assignment 4: Solution
+     3.10. Lab Assignment 4: Solution
     </a>
    </li>
   </ul>
@@ -744,12 +754,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1-relay-or-on-off-control">
-   3.6.1. Exercise 1. Relay (or On-Off) control
+   3.7.1. Exercise 1. Relay (or On-Off) control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2-implementing-a-pi-controller">
-   3.6.2. Exercise 2. Implementing a PI Controller
+   3.7.2. Exercise 2. Implementing a PI Controller
   </a>
  </li>
 </ul>
@@ -774,12 +784,12 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-1-relay-or-on-off-control">
-   3.6.1. Exercise 1. Relay (or On-Off) control
+   3.7.1. Exercise 1. Relay (or On-Off) control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise-2-implementing-a-pi-controller">
-   3.6.2. Exercise 2. Implementing a PI Controller
+   3.7.2. Exercise 2. Implementing a PI Controller
   </a>
  </li>
 </ul>
@@ -792,14 +802,14 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-relay-and-pi-control">
-<h1><span class="section-number">3.6. </span>Lab Assignment: Relay and PI Control<a class="headerlink" href="#lab-assignment-relay-and-pi-control" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.7. </span>Lab Assignment: Relay and PI Control<a class="headerlink" href="#lab-assignment-relay-and-pi-control" title="Permalink to this headline">¶</a></h1>
 <p>This lab assignment introduces the use of relay, proportional (P), and proportional-integral (PI) control for the Temperature Control Laboratory. In this assignment you will</p>
 <ol class="simple">
 <li><p>implement and test a relay control for the dual heater/sensor system</p></li>
 <li><p>implement and test a proportional-integral (PI) control algorithm for a single heater/sensor</p></li>
 </ol>
 <div class="section" id="exercise-1-relay-or-on-off-control">
-<h2><span class="section-number">3.6.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this headline">¶</a></h2>
 <p>Create a notebook to implement a relay control for the Temperature Control Lab subject the following requirements:</p>
 <ul class="simple">
 <li><p>Simultaneous control of sensor temperatures T1 and T2.</p></li>
@@ -830,7 +840,7 @@
 </div>
 </div>
 <div class="section" id="exercise-2-implementing-a-pi-controller">
-<h2><span class="section-number">3.6.2. </span>Exercise 2. Implementing a PI Controller<a class="headerlink" href="#exercise-2-implementing-a-pi-controller" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.2. </span>Exercise 2. Implementing a PI Controller<a class="headerlink" href="#exercise-2-implementing-a-pi-controller" title="Permalink to this headline">¶</a></h2>
 <p>Create a notebook to implement PI for the Temperature Control Lab.</p>
 <ul class="simple">
 <li><p>Using the simulation mode, create an implementaton of PI control and, by trail and error, find values for Kp and Ki, that provide a fast and accurate acquisitioni of the desired setpoint.</p></li>
@@ -877,13 +887,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3.5. </span>Practical Proportional (P) and Proportional-Integral (PI) Control</p>
+            <p class="prev-next-title"><span class="section-number">3.6. </span>Practical Proportional (P) and Proportional-Integral (PI) Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="03.07-Integral-Windup-and-Bumpless-Transfer.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3.7. </span>Integral Windup and Bumpless Transfer</p>
+        <p class="prev-next-title"><span class="section-number">3.8. </span>Integral Windup and Bumpless Transfer</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
