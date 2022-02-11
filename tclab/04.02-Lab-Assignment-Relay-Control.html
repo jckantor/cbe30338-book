@@ -800,17 +800,21 @@
 <span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># modify these setpoints to change with time</span>
-<span class="n">SP1</span> <span class="o">=</span> <span class="mi">40</span>
-<span class="n">SP2</span> <span class="o">=</span> <span class="mi">35</span>
+
+<span class="k">def</span> <span class="nf">SP1</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">40</span>
+
+<span class="k">def</span> <span class="nf">SP2</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">35</span>
 
 <span class="c1"># relay controller</span>
 <span class="k">def</span> <span class="nf">relay</span><span class="p">(</span><span class="n">SP</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">Umin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Umax</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">U</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">T</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">U</span>
-        <span class="k">if</span> <span class="n">T</span> <span class="o">&lt;</span> <span class="n">SP</span> <span class="o">-</span> <span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">t</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">U</span>
+        <span class="k">if</span> <span class="n">T</span> <span class="o">&lt;</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">U</span> <span class="o">=</span> <span class="n">Umax</span>
-        <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="n">SP</span> <span class="o">+</span> <span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">T</span> <span class="o">&gt;</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">U</span> <span class="o">=</span> <span class="n">Umin</span>
 
 <span class="c1"># create a single control loop</span>
@@ -824,7 +828,7 @@
     <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
         <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
-        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller1</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">T1</span><span class="p">)</span>
+        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller1</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">])</span>
         <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
         <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
 </pre></div>
@@ -835,7 +839,32 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" src="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">z3t28j296f98jdp1vqyplkz00000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_21892</span><span class="o">/</span><span class="mf">2446721225.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">32</span>     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>         <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>         <span class="n">U1</span> <span class="o">=</span> <span class="n">controller1</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">])</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/tclab/labtime.py</span> in <span class="ni">clock</span><span class="nt">(period, step, tol, adaptive)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span>                            <span class="s1">&#39;(</span><span class="si">{:.2f}</span><span class="s1"> too long). Consider increasing step.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>                 <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">,</span> <span class="n">elapsed</span><span class="o">-</span><span class="n">step</span><span class="p">))</span>
+<span class="ne">--&gt; </span><span class="mi">109</span>         <span class="n">labtime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">step</span> <span class="o">-</span> <span class="p">(</span><span class="n">labtime</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">%</span> <span class="n">step</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">now</span> <span class="o">=</span> <span class="n">labtime</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nn">~/opt/anaconda3/lib/python3.9/site-packages/tclab/labtime.py</span> in <span class="ni">sleep</span><span class="nt">(self, delay)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>         <span class="bp">self</span><span class="o">.</span><span class="n">lastsleep</span> <span class="o">=</span> <span class="n">delay</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_running</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">41</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rate</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="k">raise</span> <span class="ne">RuntimeWarning</span><span class="p">(</span><span class="s2">&quot;sleep is not valid when labtime is stopped.&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+<img alt="../_images/04.02-Lab-Assignment-Relay-Control_3_3.png" src="../_images/04.02-Lab-Assignment-Relay-Control_3_3.png" />
 </div>
 </div>
 </div>
