@@ -20,7 +20,7 @@
 # 
 # Some started code is include below.
 
-# In[4]:
+# In[6]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -28,17 +28,21 @@ from tclab import TCLab, clock, Historian, Plotter, setup
 TCLab = setup(connected=False)
 
 # modify these setpoints to change with time
-SP1 = 40
-SP2 = 35
+
+def SP1(t):
+    return 40
+
+def SP2(t):
+    return 35
 
 # relay controller
 def relay(SP, d=1, Umin=0, Umax=100):
     U = 0
     while True:
-        T = yield U
-        if T < SP - d/2:
+        t, T = yield U
+        if T < SP(t) - d/2:
             U = Umax
-        if T > SP + d/2:
+        if T > SP(t) + d/2:
             U = Umin
 
 # create a single control loop
@@ -52,7 +56,7 @@ with TCLab() as lab:
     p = Plotter(h, t_final)
     for t in clock(t_final, t_step):
         T1 = lab.T1
-        U1 = controller1.send(T1)
+        U1 = controller1.send([t, T1])
         lab.Q1(U1)
         p.update()
 
