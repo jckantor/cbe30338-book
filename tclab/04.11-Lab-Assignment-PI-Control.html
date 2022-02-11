@@ -216,43 +216,28 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.02a-Setpoints.html">
+    <a class="reference internal" href="../notebooks/03.03-Setpoints-Thermal-Cycler.html">
      3.3. Case Study: PCR Thermal Cycler Protocols
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.03-Relay-Control.html">
+    <a class="reference internal" href="../notebooks/03.04-Relay-Control.html">
      3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.04-Implementing-Controllers.html">
+    <a class="reference internal" href="../notebooks/03.05-Implementing-Controllers.html">
      3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.05-Proportional-Integral-Control.html">
+    <a class="reference internal" href="../notebooks/03.06-Proportional-Integral-Control.html">
      3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.06-Lab-Assignment-PI-Control.html">
-     3.7. Lab Assignment: Relay and PI Control
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.8. Integral Windup and Bumpless Transfer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.08-Lab-Assignment-Cascade-Control.html">
-     3.9. Lab Assignment 4: Cascade Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.09-Lab-Assignment-Solution.html">
-     3.10. Lab Assignment 4: Solution
+     3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -831,25 +816,25 @@
 <div class="section" id="implementation-of-a-simple-pi-controller">
 <h2><span class="section-number">4.4.1. </span>Implementation of a simple PI controller<a class="headerlink" href="#implementation-of-a-simple-pi-controller" title="Permalink to this headline">¶</a></h2>
 <p>Given a process variable <span class="math notranslate nohighlight">\(PV\)</span> and setpoint <span class="math notranslate nohighlight">\(SP\)</span>, proportional-integral-derivative control determines the value of a manipulated variable MV by the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6ec0359-8316-44d3-9dd9-eee848814c3d">
-<span class="eqno">(4.15)<a class="headerlink" href="#equation-c6ec0359-8316-44d3-9dd9-eee848814c3d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8882bfd1-7d82-4145-b6f2-dfb027da6004">
+<span class="eqno">(4.15)<a class="headerlink" href="#equation-8882bfd1-7d82-4145-b6f2-dfb027da6004" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV &amp; = \bar{MV} + k_p\left(SP - PV\right) + k_i \int_0^t \left(SP-PV)\right)dt
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(k_p\)</span> and <span class="math notranslate nohighlight">\(k_i\)</span> are the proportional and integral coefficients, respectively. The value <span class="math notranslate nohighlight">\(\bar{MV}\)</span> is a nominal or initial value of the manipulated variable.</p>
 <p>The actual implementation of PI control is normally done by computing how much the <span class="math notranslate nohighlight">\(MV\)</span> should change at each time step. Defining the error at time <span class="math notranslate nohighlight">\(k\)</span> as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-201d1b80-8d17-426d-923d-3bae4a9bda99">
-<span class="eqno">(4.16)<a class="headerlink" href="#equation-201d1b80-8d17-426d-923d-3bae4a9bda99" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d729e29c-6e98-4e3e-9fc6-c6df29b0947d">
+<span class="eqno">(4.16)<a class="headerlink" href="#equation-d729e29c-6e98-4e3e-9fc6-c6df29b0947d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = SP_k - PV_k
 \end{align}\]</div>
 <p>then consecutive values of <span class="math notranslate nohighlight">\(MV\)</span> are given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-97e59163-ef4d-42e8-9411-854a354ff5d2">
-<span class="eqno">(4.17)<a class="headerlink" href="#equation-97e59163-ef4d-42e8-9411-854a354ff5d2" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c36c0844-00ef-4a14-819c-16501dd1ad68">
+<span class="eqno">(4.17)<a class="headerlink" href="#equation-c36c0844-00ef-4a14-819c-16501dd1ad68" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k-1} &amp; = \bar{MV} + k_p e_{k-1} + k_i \sum_{j=0}^{k-1} e_{j} \\
 MV_{k} &amp; = \bar{MV} + k_p e_{k} + k_i \sum_{j=0}^{k} e_{j}
 \end{align}\]</div>
 <p>Taking differences gives a practical formula for updating the value of <span class="math notranslate nohighlight">\(MV\)</span> in response to measurements</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9583bec2-3609-485b-a601-c299bbd567f1">
-<span class="eqno">(4.18)<a class="headerlink" href="#equation-9583bec2-3609-485b-a601-c299bbd567f1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4a108929-6a84-4407-a3da-8001622dae66">
+<span class="eqno">(4.18)<a class="headerlink" href="#equation-4a108929-6a84-4407-a3da-8001622dae66" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} + k_p(e_{k} - e_{k-1}) + k_i e_{k}
 \end{align}\]</div>
 <p>The following code defines a Python object that implements this algorithm.</p>

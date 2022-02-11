@@ -216,43 +216,28 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.02a-Setpoints.html">
+    <a class="reference internal" href="03.03-Setpoints-Thermal-Cycler.html">
      3.3. Case Study: PCR Thermal Cycler Protocols
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.03-Relay-Control.html">
+    <a class="reference internal" href="03.04-Relay-Control.html">
      3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.04-Implementing-Controllers.html">
+    <a class="reference internal" href="03.05-Implementing-Controllers.html">
      3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
+    <a class="reference internal" href="03.06-Proportional-Integral-Control.html">
      3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.7. Lab Assignment: Relay and PI Control
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.8. Integral Windup and Bumpless Transfer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.9. Lab Assignment 4: Cascade Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.10. Lab Assignment 4: Solution
+     3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -544,18 +529,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.03-PID_Control.html">
-     4.2. PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.10-Lab-Assignment-PID-Control.html">
-     4.3. Lab Assignment: PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.11-Lab-Assignment-PI-Control.html">
-     4.4. Lab Assignment 4: PI Control
+    <a class="reference internal" href="../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
   </ul>
@@ -1048,8 +1023,8 @@
 <div class="section" id="step-4-objective-function">
 <h3><span class="section-number">5.2.3.4. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
 <p>If we let subscript <span class="math notranslate nohighlight">\(c\)</span> denote a blending component from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50414ad4-f59d-40ad-a175-7b6cfcda28b1">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-50414ad4-f59d-40ad-a175-7b6cfcda28b1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76caa8eb-4c04-4b06-b50c-51cc3f4ca4b5">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-76caa8eb-4c04-4b06-b50c-51cc3f4ca4b5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mbox{cost} &amp; = \sum_{c\in C} x_c P_c
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_c\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(c\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_c\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[c]['cost']</span></code>.</p>
