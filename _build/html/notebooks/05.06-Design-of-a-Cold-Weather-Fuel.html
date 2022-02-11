@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,19 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -98,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Information
  </span>
@@ -115,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Topical Materials
  </span>
@@ -216,43 +216,28 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.02a-Setpoints.html">
+    <a class="reference internal" href="03.03-Setpoints-Thermal-Cycler.html">
      3.3. Case Study: PCR Thermal Cycler Protocols
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.03-Relay-Control.html">
+    <a class="reference internal" href="03.04-Relay-Control.html">
      3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.04-Implementing-Controllers.html">
+    <a class="reference internal" href="03.05-Implementing-Controllers.html">
      3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.05-Proportional-Integral-Control.html">
+    <a class="reference internal" href="03.06-Proportional-Integral-Control.html">
      3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.06-Lab-Assignment-PI-Control.html">
-     3.7. Lab Assignment: Relay and PI Control
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.8. Integral Windup and Bumpless Transfer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.08-Lab-Assignment-Cascade-Control.html">
-     3.9. Lab Assignment 4: Cascade Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="03.09-Lab-Assignment-Solution.html">
-     3.10. Lab Assignment 4: Solution
+     3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -468,7 +453,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Control Laboratory
  </span>
@@ -544,18 +529,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.03-PID_Control.html">
-     4.2. PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.10-Lab-Assignment-PID-Control.html">
-     4.3. Lab Assignment: PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.11-Lab-Assignment-PI-Control.html">
-     4.4. Lab Assignment 4: PI Control
+    <a class="reference internal" href="../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
   </ul>
@@ -605,7 +580,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Python Tutorials
  </span>
@@ -840,8 +815,8 @@
 <div class="section" id="data">
 <h2><span class="section-number">5.6.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>The following data was collected for potential fuels commonly available at hardware and home improvement stores. The data consists of price ($/gal.) and parameters to predict vapor pressure using the Antoine equation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9ec3afc0-ded2-4557-a316-db5b30aa6251">
-<span class="eqno">(5.8)<a class="headerlink" href="#equation-9ec3afc0-ded2-4557-a316-db5b30aa6251" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74d4f12e-c1f0-40cf-8384-9c300719be3f">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-74d4f12e-c1f0-40cf-8384-9c300719be3f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \log_{10}P^{vap}_{s}(T) &amp; = A_s - \frac{B_s}{T + C_s}
 \end{align}\]</div>
 <p>where the subscript <span class="math notranslate nohighlight">\(s\)</span> refers to species, temperature <span class="math notranslate nohighlight">\(T\)</span> is in units of degrees Celcius, and pressure <span class="math notranslate nohighlight">\(P\)</span> is in units of mmHg. The additional information for molecular weight and specific gravity will be needed to present the final results in volume fraction.</p>
@@ -920,19 +895,19 @@
 <h2><span class="section-number">5.6.4. </span>Optimization Model<a class="headerlink" href="#optimization-model" title="Permalink to this headline">¶</a></h2>
 <p>The first optimization model is to create a mixture that maximizes the vapor pressure at -10°C while having a vapor pressure less than or equal to denatured alcohol at 30°C and above.</p>
 <p>The decision variables in the optimization model correspond to <span class="math notranslate nohighlight">\(x_s\)</span>, the mole fraction of each species <span class="math notranslate nohighlight">\(s \in S\)</span> from the set of available species <span class="math notranslate nohighlight">\(S\)</span>. By definition, the mole fractions must satisfy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-086ef814-e476-4be7-8ec9-e59ef64e3860">
-<span class="eqno">(5.9)<a class="headerlink" href="#equation-086ef814-e476-4be7-8ec9-e59ef64e3860" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-07343909-19b5-4043-a045-be5797fa9d04">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-07343909-19b5-4043-a045-be5797fa9d04" title="Permalink to this equation">¶</a></span>\[\begin{align}
 x_s &amp; \geq 0 &amp; \forall s\in S \\
 \sum_{s\in S} x_s &amp; = 1
 \end{align}\]</div>
 <p>The objective is to maximize the vapor pressure at low temperatures, say -10°C, while maintaing a vapor pressure less than or equal to denatured alcohol at 30°C. Using Raoult’s law for ideal mixtures,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5674c865-9699-43c3-aba6-132c3731826f">
-<span class="eqno">(5.10)<a class="headerlink" href="#equation-5674c865-9699-43c3-aba6-132c3731826f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-816391cf-c0a3-43d1-80f4-2c8e68866451">
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-816391cf-c0a3-43d1-80f4-2c8e68866451" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \max_{x_s} \sum_{s\in S} x_s P^{vap}_s(-10°C) \\
 \end{align}\]</div>
 <p>subject to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9169d2f0-5a3d-4bad-8b3b-54281cc79190">
-<span class="eqno">(5.11)<a class="headerlink" href="#equation-9169d2f0-5a3d-4bad-8b3b-54281cc79190" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0bebe75f-25c8-4f58-9d5e-c7dec9d658f4">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-0bebe75f-25c8-4f58-9d5e-c7dec9d658f4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s\in S} x_s P^{vap}_s(30°C) &amp; \leq P^{vap}_{denatured\ alcohol}(30°C) \\
 \end{align}\]</div>
 <p>This optimization model is implemented in Pyomo in the following cell.</p>

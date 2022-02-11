@@ -105,7 +105,7 @@ with TCLab() as lab:
 
 # ## Implementating relay control as nested function
 
-# In[2]:
+# In[1]:
 
 
 def relay_with_deadzone(MV_min, MV_max, d):
@@ -120,7 +120,7 @@ def relay_with_deadzone(MV_min, MV_max, d):
     return update
 
 
-# In[3]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -153,7 +153,7 @@ with TCLab() as lab:
 # 
 # Values are returned from Python functions using the `return` statement. Once the return statement is encountered, the function is over and all local information is lost.
 
-# In[5]:
+# In[3]:
 
 
 def my_function():
@@ -169,7 +169,7 @@ print(my_function())
 # * An 'instance' of the generator must be created before it can be used,
 # * The Python function `next()` gets the value returned by the next yeild statement.
 
-# In[6]:
+# In[4]:
 
 
 def my_generator():
@@ -186,9 +186,9 @@ print(next(f))
 print(next(f))
 
 
-# You can create multiple instances of generators, each maintaining its own state. 
+# You can create multiple instances of generators, each maintaining its own state, and can be accessed in any particular order.
 
-# In[7]:
+# In[5]:
 
 
 def my_dog(dog):
@@ -205,10 +205,50 @@ print(next(g))
 print(next(f))
 
 
-# In[8]:
+# :::{admonition} Study Question
+# 
+# In the following cell, right a generator called `my_counter` that accepts a name, returns it's name and a counter of how many times it has been called.
+# 
+# :::
+# 
+# :::{toggle}
+# 
+#     def my_counter(name):
+#         n = 0
+#         while True:
+#             n = n + 1
+#             yield name, n
+# 
+#     a = my_counter("A")
+#     b = my_counter("B")
+# 
+#     print("\nStart A")
+#     for k in range(0, 3):
+#         name, n = next(a)
+#         print(name, n)
+# 
+#     print("\nStart B") 
+#     for k in range(0, 2):
+#         name, n = next(b)
+#         print(name, n)
+# 
+#     print("\nRestart C")
+#     for k in range(0, 2):
+#         name, n = next(a)
+#         print(name, n)
+# 
+# :::
+
+# In[ ]:
 
 
-def my_gen():
+### write solution here
+
+
+# In[6]:
+
+
+def my_dog():
     msgs = []
     while True:
         msg = yield f"Hello {msgs}"
@@ -226,7 +266,7 @@ print(msg)
 
 # This behavior has a number very useful implications. The first thing is that we can create multiple instances of a generator, each with it's own parameters.
 
-# In[9]:
+# In[7]:
 
 
 g10 = my_generator(10)

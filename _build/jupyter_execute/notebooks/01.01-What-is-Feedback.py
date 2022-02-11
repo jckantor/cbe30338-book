@@ -3,7 +3,7 @@
 
 # # What is Feedback?
 # 
-# The principle theme of this course is the use of feedback to create useful engineering systems. So what is feedback?
+# The main theme of this course is the use of feedback to create useful engineering systems. So what is feedback?
 
 # ## Biomedical Example: Artificial Pancreas
 # 

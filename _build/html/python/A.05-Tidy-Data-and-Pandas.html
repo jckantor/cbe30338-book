@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,19 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -98,7 +98,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Information
  </span>
@@ -115,7 +115,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Topical Materials
  </span>
@@ -216,43 +216,28 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.02a-Setpoints.html">
+    <a class="reference internal" href="../notebooks/03.03-Setpoints-Thermal-Cycler.html">
      3.3. Case Study: PCR Thermal Cycler Protocols
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.03-Relay-Control.html">
+    <a class="reference internal" href="../notebooks/03.04-Relay-Control.html">
      3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.04-Implementing-Controllers.html">
+    <a class="reference internal" href="../notebooks/03.05-Implementing-Controllers.html">
      3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.05-Proportional-Integral-Control.html">
+    <a class="reference internal" href="../notebooks/03.06-Proportional-Integral-Control.html">
      3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.06-Lab-Assignment-PI-Control.html">
-     3.7. Lab Assignment: Relay and PI Control
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
-     3.8. Integral Windup and Bumpless Transfer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.08-Lab-Assignment-Cascade-Control.html">
-     3.9. Lab Assignment 4: Cascade Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.09-Lab-Assignment-Solution.html">
-     3.10. Lab Assignment 4: Solution
+     3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -468,7 +453,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Control Laboratory
  </span>
@@ -544,18 +529,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.03-PID_Control.html">
-     4.2. PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.10-Lab-Assignment-PID-Control.html">
-     4.3. Lab Assignment: PID Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.11-Lab-Assignment-PI-Control.html">
-     4.4. Lab Assignment 4: PI Control
+    <a class="reference internal" href="../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
   </ul>
@@ -605,7 +580,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Python Tutorials
  </span>
@@ -1024,6 +999,7 @@
 <li><p><a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper by Hadley Wickham.</p></li>
 <li><p><a class="reference external" href="https://r4ds.had.co.nz/tidy-data.html?q=Tidy%20Data#non-tidy-data">Tidy Data</a>, Chapter 12 from R for Data Science.</p></li>
 <li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/pandas-functions-13-most-important/">13 Most Important Pandas Functions for Data Science</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/advanced-pandas-plots-e2347a33d576">Create Stunning Visualizations With Pandas Dataframes in One Line of Code</a> Blog post describing more complex visualizations and libraries based on pandas dataframes.</p></li>
 </ul>
 <div class="section" id="tidy-data">
 <h2>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">¶</a></h2>
@@ -2232,335 +2208,6 @@ Name: 3, dtype: float64
 <img alt="../_images/A.05-Tidy-Data-and-Pandas_31_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_31_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.plot<span class="o">?</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">Signature:</span>      df<span class=" -Color -Color-Blue">.</span>plot<span class=" -Color -Color-Blue">(*</span>args<span class=" -Color -Color-Blue">,</span> <span class=" -Color -Color-Blue">**</span>kwargs<span class=" -Color -Color-Blue">)</span>
-<span class=" -Color -Color-Red">Type:</span>           PlotAccessor
-<span class=" -Color -Color-Red">String form:</span>    &lt;pandas.plotting._core.PlotAccessor object at 0x7f95915e0d60&gt;
-<span class=" -Color -Color-Red">File:</span>           ~/opt/anaconda3/lib/python3.9/site-packages/pandas/plotting/_core.py
-<span class=" -Color -Color-Red">Docstring:</span>     
-Make plots of Series or DataFrame.
-
-Uses the backend specified by the
-option ``plotting.backend``. By default, matplotlib is used.
-
-Parameters
-----------
-data : Series or DataFrame
-    The object for which the method is called.
-x : label or position, default None
-    Only used if data is a DataFrame.
-y : label, position or list of label, positions, default None
-    Allows plotting of one column versus another. Only used if data is a
-    DataFrame.
-kind : str
-    The kind of plot to produce:
-
-    - &#39;line&#39; : line plot (default)
-    - &#39;bar&#39; : vertical bar plot
-    - &#39;barh&#39; : horizontal bar plot
-    - &#39;hist&#39; : histogram
-    - &#39;box&#39; : boxplot
-    - &#39;kde&#39; : Kernel Density Estimation plot
-    - &#39;density&#39; : same as &#39;kde&#39;
-    - &#39;area&#39; : area plot
-    - &#39;pie&#39; : pie plot
-    - &#39;scatter&#39; : scatter plot (DataFrame only)
-    - &#39;hexbin&#39; : hexbin plot (DataFrame only)
-ax : matplotlib axes object, default None
-    An axes of the current figure.
-subplots : bool, default False
-    Make separate subplots for each column.
-sharex : bool, default True if ax is None else False
-    In case ``subplots=True``, share x axis and set some x axis labels
-    to invisible; defaults to True if ax is None otherwise False if
-    an ax is passed in; Be aware, that passing in both an ax and
-    ``sharex=True`` will alter all x axis labels for all axis in a figure.
-sharey : bool, default False
-    In case ``subplots=True``, share y axis and set some y axis labels to invisible.
-layout : tuple, optional
-    (rows, columns) for the layout of subplots.
-figsize : a tuple (width, height) in inches
-    Size of a figure object.
-use_index : bool, default True
-    Use index as ticks for x axis.
-title : str or list
-    Title to use for the plot. If a string is passed, print the string
-    at the top of the figure. If a list is passed and `subplots` is
-    True, print each item in the list above the corresponding subplot.
-grid : bool, default None (matlab style default)
-    Axis grid lines.
-legend : bool or {&#39;reverse&#39;}
-    Place legend on axis subplots.
-style : list or dict
-    The matplotlib line style per column.
-logx : bool or &#39;sym&#39;, default False
-    Use log scaling or symlog scaling on x axis.
-    .. versionchanged:: 0.25.0
-
-logy : bool or &#39;sym&#39; default False
-    Use log scaling or symlog scaling on y axis.
-    .. versionchanged:: 0.25.0
-
-loglog : bool or &#39;sym&#39;, default False
-    Use log scaling or symlog scaling on both x and y axes.
-    .. versionchanged:: 0.25.0
-
-xticks : sequence
-    Values to use for the xticks.
-yticks : sequence
-    Values to use for the yticks.
-xlim : 2-tuple/list
-    Set the x limits of the current axes.
-ylim : 2-tuple/list
-    Set the y limits of the current axes.
-xlabel : label, optional
-    Name to use for the xlabel on x-axis. Default uses index name as xlabel, or the
-    x-column name for planar plots.
-
-    .. versionadded:: 1.1.0
-
-    .. versionchanged:: 1.2.0
-
-       Now applicable to planar plots (`scatter`, `hexbin`).
-
-ylabel : label, optional
-    Name to use for the ylabel on y-axis. Default will show no ylabel, or the
-    y-column name for planar plots.
-
-    .. versionadded:: 1.1.0
-
-    .. versionchanged:: 1.2.0
-
-       Now applicable to planar plots (`scatter`, `hexbin`).
-
-rot : int, default None
-    Rotation for ticks (xticks for vertical, yticks for horizontal
-    plots).
-fontsize : int, default None
-    Font size for xticks and yticks.
-colormap : str or matplotlib colormap object, default None
-    Colormap to select colors from. If string, load colormap with that
-    name from matplotlib.
-colorbar : bool, optional
-    If True, plot colorbar (only relevant for &#39;scatter&#39; and &#39;hexbin&#39;
-    plots).
-position : float
-    Specify relative alignments for bar plot layout.
-    From 0 (left/bottom-end) to 1 (right/top-end). Default is 0.5
-    (center).
-table : bool, Series or DataFrame, default False
-    If True, draw a table using the data in the DataFrame and the data
-    will be transposed to meet matplotlib&#39;s default layout.
-    If a Series or DataFrame is passed, use passed data to draw a
-    table.
-yerr : DataFrame, Series, array-like, dict and str
-    See :ref:`Plotting with Error Bars &lt;visualization.errorbars&gt;` for
-    detail.
-xerr : DataFrame, Series, array-like, dict and str
-    Equivalent to yerr.
-stacked : bool, default False in line and bar plots, and True in area plot
-    If True, create stacked plot.
-sort_columns : bool, default False
-    Sort column names to determine plot ordering.
-secondary_y : bool or sequence, default False
-    Whether to plot on the secondary y-axis if a list/tuple, which
-    columns to plot on secondary y-axis.
-mark_right : bool, default True
-    When using a secondary_y axis, automatically mark the column
-    labels with &quot;(right)&quot; in the legend.
-include_bool : bool, default is False
-    If True, boolean values can be plotted.
-backend : str, default None
-    Backend to use instead of the backend specified in the option
-    ``plotting.backend``. For instance, &#39;matplotlib&#39;. Alternatively, to
-    specify the ``plotting.backend`` for the whole session, set
-    ``pd.options.plotting.backend``.
-
-    .. versionadded:: 1.0.0
-
-**kwargs
-    Options to pass to matplotlib plotting method.
-
-Returns
--------
-:class:`matplotlib.axes.Axes` or numpy.ndarray of them
-    If the backend is not the default matplotlib one, the return value
-    will be the object returned by the backend.
-
-Notes
------
-- See matplotlib documentation online for more on this subject
-- If `kind` = &#39;bar&#39; or &#39;barh&#39;, you can specify relative alignments
-  for bar plot layout by `position` keyword.
-  From 0 (left/bottom-end) to 1 (right/top-end). Default is 0.5
-  (center)
-<span class=" -Color -Color-Red">Call docstring:</span>
-Make plots of Series or DataFrame.
-
-Uses the backend specified by the
-option ``plotting.backend``. By default, matplotlib is used.
-
-Parameters
-----------
-data : Series or DataFrame
-    The object for which the method is called.
-x : label or position, default None
-    Only used if data is a DataFrame.
-y : label, position or list of label, positions, default None
-    Allows plotting of one column versus another. Only used if data is a
-    DataFrame.
-kind : str
-    The kind of plot to produce:
-
-    - &#39;line&#39; : line plot (default)
-    - &#39;bar&#39; : vertical bar plot
-    - &#39;barh&#39; : horizontal bar plot
-    - &#39;hist&#39; : histogram
-    - &#39;box&#39; : boxplot
-    - &#39;kde&#39; : Kernel Density Estimation plot
-    - &#39;density&#39; : same as &#39;kde&#39;
-    - &#39;area&#39; : area plot
-    - &#39;pie&#39; : pie plot
-    - &#39;scatter&#39; : scatter plot (DataFrame only)
-    - &#39;hexbin&#39; : hexbin plot (DataFrame only)
-ax : matplotlib axes object, default None
-    An axes of the current figure.
-subplots : bool, default False
-    Make separate subplots for each column.
-sharex : bool, default True if ax is None else False
-    In case ``subplots=True``, share x axis and set some x axis labels
-    to invisible; defaults to True if ax is None otherwise False if
-    an ax is passed in; Be aware, that passing in both an ax and
-    ``sharex=True`` will alter all x axis labels for all axis in a figure.
-sharey : bool, default False
-    In case ``subplots=True``, share y axis and set some y axis labels to invisible.
-layout : tuple, optional
-    (rows, columns) for the layout of subplots.
-figsize : a tuple (width, height) in inches
-    Size of a figure object.
-use_index : bool, default True
-    Use index as ticks for x axis.
-title : str or list
-    Title to use for the plot. If a string is passed, print the string
-    at the top of the figure. If a list is passed and `subplots` is
-    True, print each item in the list above the corresponding subplot.
-grid : bool, default None (matlab style default)
-    Axis grid lines.
-legend : bool or {&#39;reverse&#39;}
-    Place legend on axis subplots.
-style : list or dict
-    The matplotlib line style per column.
-logx : bool or &#39;sym&#39;, default False
-    Use log scaling or symlog scaling on x axis.
-    .. versionchanged:: 0.25.0
-
-logy : bool or &#39;sym&#39; default False
-    Use log scaling or symlog scaling on y axis.
-    .. versionchanged:: 0.25.0
-
-loglog : bool or &#39;sym&#39;, default False
-    Use log scaling or symlog scaling on both x and y axes.
-    .. versionchanged:: 0.25.0
-
-xticks : sequence
-    Values to use for the xticks.
-yticks : sequence
-    Values to use for the yticks.
-xlim : 2-tuple/list
-    Set the x limits of the current axes.
-ylim : 2-tuple/list
-    Set the y limits of the current axes.
-xlabel : label, optional
-    Name to use for the xlabel on x-axis. Default uses index name as xlabel, or the
-    x-column name for planar plots.
-
-    .. versionadded:: 1.1.0
-
-    .. versionchanged:: 1.2.0
-
-       Now applicable to planar plots (`scatter`, `hexbin`).
-
-ylabel : label, optional
-    Name to use for the ylabel on y-axis. Default will show no ylabel, or the
-    y-column name for planar plots.
-
-    .. versionadded:: 1.1.0
-
-    .. versionchanged:: 1.2.0
-
-       Now applicable to planar plots (`scatter`, `hexbin`).
-
-rot : int, default None
-    Rotation for ticks (xticks for vertical, yticks for horizontal
-    plots).
-fontsize : int, default None
-    Font size for xticks and yticks.
-colormap : str or matplotlib colormap object, default None
-    Colormap to select colors from. If string, load colormap with that
-    name from matplotlib.
-colorbar : bool, optional
-    If True, plot colorbar (only relevant for &#39;scatter&#39; and &#39;hexbin&#39;
-    plots).
-position : float
-    Specify relative alignments for bar plot layout.
-    From 0 (left/bottom-end) to 1 (right/top-end). Default is 0.5
-    (center).
-table : bool, Series or DataFrame, default False
-    If True, draw a table using the data in the DataFrame and the data
-    will be transposed to meet matplotlib&#39;s default layout.
-    If a Series or DataFrame is passed, use passed data to draw a
-    table.
-yerr : DataFrame, Series, array-like, dict and str
-    See :ref:`Plotting with Error Bars &lt;visualization.errorbars&gt;` for
-    detail.
-xerr : DataFrame, Series, array-like, dict and str
-    Equivalent to yerr.
-stacked : bool, default False in line and bar plots, and True in area plot
-    If True, create stacked plot.
-sort_columns : bool, default False
-    Sort column names to determine plot ordering.
-secondary_y : bool or sequence, default False
-    Whether to plot on the secondary y-axis if a list/tuple, which
-    columns to plot on secondary y-axis.
-mark_right : bool, default True
-    When using a secondary_y axis, automatically mark the column
-    labels with &quot;(right)&quot; in the legend.
-include_bool : bool, default is False
-    If True, boolean values can be plotted.
-backend : str, default None
-    Backend to use instead of the backend specified in the option
-    ``plotting.backend``. For instance, &#39;matplotlib&#39;. Alternatively, to
-    specify the ``plotting.backend`` for the whole session, set
-    ``pd.options.plotting.backend``.
-
-    .. versionadded:: 1.0.0
-
-**kwargs
-    Options to pass to matplotlib plotting method.
-
-Returns
--------
-:class:`matplotlib.axes.Axes` or numpy.ndarray of them
-    If the backend is not the default matplotlib one, the return value
-    will be the object returned by the backend.
-
-Notes
------
-- See matplotlib documentation online for more on this subject
-- If `kind` = &#39;bar&#39; or &#39;barh&#39;, you can specify relative alignments
-  for bar plot layout by `position` keyword.
-  From 0 (left/bottom-end) to 1 (right/top-end). Default is 0.5
-  (center)
-</pre></div>
-</div>
-</div>
-</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method will often be used to plot one or more variables on the vertical ‘y’ axis as a function of another variable on the horizontal ‘x’ axes. Additional options specify line styles, grid, labels, titles, and much more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2573,7 +2220,7 @@ Notes
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;TC Lab&#39;}, xlabel=&#39;Time&#39;, ylabel=&#39;deg C&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_34_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_34_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_33_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_33_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2587,7 +2234,7 @@ Notes
       dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_35_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_35_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_34_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_34_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2600,7 +2247,7 @@ Notes
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_36_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_36_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_35_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_35_1.png" />
 </div>
 </div>
 </div>
@@ -2616,7 +2263,7 @@ Notes
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;T1&#39;, ylabel=&#39;T2&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_38_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_38_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_37_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_37_1.png" />
 </div>
 </div>
 </div>
@@ -2633,7 +2280,7 @@ Notes
         &lt;AxesSubplot:title={&#39;center&#39;:&#39;T2&#39;}&gt;]], dtype=object)
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_40_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_40_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_39_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_39_1.png" />
 </div>
 </div>
 </div>
@@ -2808,7 +2455,7 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_8bf74_">
+<table id="T_13c85_">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
@@ -2819,155 +2466,155 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
   </thead>
   <tbody>
     <tr>
-      <th id="T_8bf74_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_8bf74_row0_col0" class="data row0 col0" >14.44</td>
-      <td id="T_8bf74_row0_col1" class="data row0 col1" >14.18</td>
-      <td id="T_8bf74_row0_col2" class="data row0 col2" >1.81</td>
+      <th id="T_13c85_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_13c85_row0_col0" class="data row0 col0" >14.44</td>
+      <td id="T_13c85_row0_col1" class="data row0 col1" >14.18</td>
+      <td id="T_13c85_row0_col2" class="data row0 col2" >1.81</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_8bf74_row1_col0" class="data row1 col0" >14.44</td>
-      <td id="T_8bf74_row1_col1" class="data row1 col1" >14.27</td>
-      <td id="T_8bf74_row1_col2" class="data row1 col2" >1.17</td>
+      <th id="T_13c85_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_13c85_row1_col0" class="data row1 col0" >14.44</td>
+      <td id="T_13c85_row1_col1" class="data row1 col1" >14.27</td>
+      <td id="T_13c85_row1_col2" class="data row1 col2" >1.17</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_8bf74_row2_col0" class="data row2 col0" >14.44</td>
-      <td id="T_8bf74_row2_col1" class="data row2 col1" >14.27</td>
-      <td id="T_8bf74_row2_col2" class="data row2 col2" >1.17</td>
+      <th id="T_13c85_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_13c85_row2_col0" class="data row2 col0" >14.44</td>
+      <td id="T_13c85_row2_col1" class="data row2 col1" >14.27</td>
+      <td id="T_13c85_row2_col2" class="data row2 col2" >1.17</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_8bf74_row3_col0" class="data row3 col0" >11.32</td>
-      <td id="T_8bf74_row3_col1" class="data row3 col1" >11.35</td>
-      <td id="T_8bf74_row3_col2" class="data row3 col2" >-0.30</td>
+      <th id="T_13c85_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_13c85_row3_col0" class="data row3 col0" >11.32</td>
+      <td id="T_13c85_row3_col1" class="data row3 col1" >11.35</td>
+      <td id="T_13c85_row3_col2" class="data row3 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_8bf74_row4_col0" class="data row4 col0" >11.32</td>
-      <td id="T_8bf74_row4_col1" class="data row4 col1" >11.35</td>
-      <td id="T_8bf74_row4_col2" class="data row4 col2" >-0.30</td>
+      <th id="T_13c85_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_13c85_row4_col0" class="data row4 col0" >11.32</td>
+      <td id="T_13c85_row4_col1" class="data row4 col1" >11.35</td>
+      <td id="T_13c85_row4_col2" class="data row4 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_8bf74_row5_col0" class="data row5 col0" >11.32</td>
-      <td id="T_8bf74_row5_col1" class="data row5 col1" >11.35</td>
-      <td id="T_8bf74_row5_col2" class="data row5 col2" >-0.30</td>
+      <th id="T_13c85_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_13c85_row5_col0" class="data row5 col0" >11.32</td>
+      <td id="T_13c85_row5_col1" class="data row5 col1" >11.35</td>
+      <td id="T_13c85_row5_col2" class="data row5 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_8bf74_row6_col0" class="data row6 col0" >6.46</td>
-      <td id="T_8bf74_row6_col1" class="data row6 col1" >6.11</td>
-      <td id="T_8bf74_row6_col2" class="data row6 col2" >5.41</td>
+      <th id="T_13c85_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_13c85_row6_col0" class="data row6 col0" >6.46</td>
+      <td id="T_13c85_row6_col1" class="data row6 col1" >6.11</td>
+      <td id="T_13c85_row6_col2" class="data row6 col2" >5.41</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_8bf74_row7_col0" class="data row7 col0" >6.46</td>
-      <td id="T_8bf74_row7_col1" class="data row7 col1" >6.09</td>
-      <td id="T_8bf74_row7_col2" class="data row7 col2" >5.77</td>
+      <th id="T_13c85_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_13c85_row7_col0" class="data row7 col0" >6.46</td>
+      <td id="T_13c85_row7_col1" class="data row7 col1" >6.09</td>
+      <td id="T_13c85_row7_col2" class="data row7 col2" >5.77</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_8bf74_row8_col0" class="data row8 col0" >6.46</td>
-      <td id="T_8bf74_row8_col1" class="data row8 col1" >6.09</td>
-      <td id="T_8bf74_row8_col2" class="data row8 col2" >5.77</td>
+      <th id="T_13c85_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_13c85_row8_col0" class="data row8 col0" >6.46</td>
+      <td id="T_13c85_row8_col1" class="data row8 col1" >6.09</td>
+      <td id="T_13c85_row8_col2" class="data row8 col2" >5.77</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_8bf74_row9_col0" class="data row9 col0" >12.79</td>
-      <td id="T_8bf74_row9_col1" class="data row9 col1" >12.55</td>
-      <td id="T_8bf74_row9_col2" class="data row9 col2" >1.85</td>
+      <th id="T_13c85_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_13c85_row9_col0" class="data row9 col0" >12.79</td>
+      <td id="T_13c85_row9_col1" class="data row9 col1" >12.55</td>
+      <td id="T_13c85_row9_col2" class="data row9 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row10" class="row_heading level0 row10" >10</th>
-      <td id="T_8bf74_row10_col0" class="data row10 col0" >12.79</td>
-      <td id="T_8bf74_row10_col1" class="data row10 col1" >12.55</td>
-      <td id="T_8bf74_row10_col2" class="data row10 col2" >1.85</td>
+      <th id="T_13c85_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_13c85_row10_col0" class="data row10 col0" >12.79</td>
+      <td id="T_13c85_row10_col1" class="data row10 col1" >12.55</td>
+      <td id="T_13c85_row10_col2" class="data row10 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row11" class="row_heading level0 row11" >11</th>
-      <td id="T_8bf74_row11_col0" class="data row11 col0" >12.79</td>
-      <td id="T_8bf74_row11_col1" class="data row11 col1" >12.55</td>
-      <td id="T_8bf74_row11_col2" class="data row11 col2" >1.85</td>
+      <th id="T_13c85_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_13c85_row11_col0" class="data row11 col0" >12.79</td>
+      <td id="T_13c85_row11_col1" class="data row11 col1" >12.55</td>
+      <td id="T_13c85_row11_col2" class="data row11 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row12" class="row_heading level0 row12" >12</th>
-      <td id="T_8bf74_row12_col0" class="data row12 col0" >10.33</td>
-      <td id="T_8bf74_row12_col1" class="data row12 col1" >9.89</td>
-      <td id="T_8bf74_row12_col2" class="data row12 col2" >4.32</td>
+      <th id="T_13c85_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_13c85_row12_col0" class="data row12 col0" >10.33</td>
+      <td id="T_13c85_row12_col1" class="data row12 col1" >9.89</td>
+      <td id="T_13c85_row12_col2" class="data row12 col2" >4.32</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row13" class="row_heading level0 row13" >13</th>
-      <td id="T_8bf74_row13_col0" class="data row13 col0" >10.33</td>
-      <td id="T_8bf74_row13_col1" class="data row13 col1" >9.95</td>
-      <td id="T_8bf74_row13_col2" class="data row13 col2" >3.76</td>
+      <th id="T_13c85_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_13c85_row13_col0" class="data row13 col0" >10.33</td>
+      <td id="T_13c85_row13_col1" class="data row13 col1" >9.95</td>
+      <td id="T_13c85_row13_col2" class="data row13 col2" >3.76</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row14" class="row_heading level0 row14" >14</th>
-      <td id="T_8bf74_row14_col0" class="data row14 col0" >10.28</td>
-      <td id="T_8bf74_row14_col1" class="data row14 col1" >9.95</td>
-      <td id="T_8bf74_row14_col2" class="data row14 col2" >3.21</td>
+      <th id="T_13c85_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_13c85_row14_col0" class="data row14 col0" >10.28</td>
+      <td id="T_13c85_row14_col1" class="data row14 col1" >9.95</td>
+      <td id="T_13c85_row14_col2" class="data row14 col2" >3.21</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row15" class="row_heading level0 row15" >15</th>
-      <td id="T_8bf74_row15_col0" class="data row15 col0" >6.06</td>
-      <td id="T_8bf74_row15_col1" class="data row15 col1" >5.80</td>
-      <td id="T_8bf74_row15_col2" class="data row15 col2" >4.33</td>
+      <th id="T_13c85_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_13c85_row15_col0" class="data row15 col0" >6.06</td>
+      <td id="T_13c85_row15_col1" class="data row15 col1" >5.80</td>
+      <td id="T_13c85_row15_col2" class="data row15 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row16" class="row_heading level0 row16" >16</th>
-      <td id="T_8bf74_row16_col0" class="data row16 col0" >6.06</td>
-      <td id="T_8bf74_row16_col1" class="data row16 col1" >5.80</td>
-      <td id="T_8bf74_row16_col2" class="data row16 col2" >4.33</td>
+      <th id="T_13c85_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_13c85_row16_col0" class="data row16 col0" >6.06</td>
+      <td id="T_13c85_row16_col1" class="data row16 col1" >5.80</td>
+      <td id="T_13c85_row16_col2" class="data row16 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row17" class="row_heading level0 row17" >17</th>
-      <td id="T_8bf74_row17_col0" class="data row17 col0" >6.06</td>
-      <td id="T_8bf74_row17_col1" class="data row17 col1" >5.80</td>
-      <td id="T_8bf74_row17_col2" class="data row17 col2" >4.33</td>
+      <th id="T_13c85_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_13c85_row17_col0" class="data row17 col0" >6.06</td>
+      <td id="T_13c85_row17_col1" class="data row17 col1" >5.80</td>
+      <td id="T_13c85_row17_col2" class="data row17 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row18" class="row_heading level0 row18" >18</th>
-      <td id="T_8bf74_row18_col0" class="data row18 col0" >7.09</td>
-      <td id="T_8bf74_row18_col1" class="data row18 col1" >7.25</td>
-      <td id="T_8bf74_row18_col2" class="data row18 col2" >-2.27</td>
+      <th id="T_13c85_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_13c85_row18_col0" class="data row18 col0" >7.09</td>
+      <td id="T_13c85_row18_col1" class="data row18 col1" >7.25</td>
+      <td id="T_13c85_row18_col2" class="data row18 col2" >-2.27</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row19" class="row_heading level0 row19" >19</th>
-      <td id="T_8bf74_row19_col0" class="data row19 col0" >7.12</td>
-      <td id="T_8bf74_row19_col1" class="data row19 col1" >7.25</td>
-      <td id="T_8bf74_row19_col2" class="data row19 col2" >-1.93</td>
+      <th id="T_13c85_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_13c85_row19_col0" class="data row19 col0" >7.12</td>
+      <td id="T_13c85_row19_col1" class="data row19 col1" >7.25</td>
+      <td id="T_13c85_row19_col2" class="data row19 col2" >-1.93</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row20" class="row_heading level0 row20" >20</th>
-      <td id="T_8bf74_row20_col0" class="data row20 col0" >7.12</td>
-      <td id="T_8bf74_row20_col1" class="data row20 col1" >7.25</td>
-      <td id="T_8bf74_row20_col2" class="data row20 col2" >-1.93</td>
+      <th id="T_13c85_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_13c85_row20_col0" class="data row20 col0" >7.12</td>
+      <td id="T_13c85_row20_col1" class="data row20 col1" >7.25</td>
+      <td id="T_13c85_row20_col2" class="data row20 col2" >-1.93</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row21" class="row_heading level0 row21" >21</th>
-      <td id="T_8bf74_row21_col0" class="data row21 col0" >6.28</td>
-      <td id="T_8bf74_row21_col1" class="data row21 col1" >6.33</td>
-      <td id="T_8bf74_row21_col2" class="data row21 col2" >-0.81</td>
+      <th id="T_13c85_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_13c85_row21_col0" class="data row21 col0" >6.28</td>
+      <td id="T_13c85_row21_col1" class="data row21 col1" >6.33</td>
+      <td id="T_13c85_row21_col2" class="data row21 col2" >-0.81</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row22" class="row_heading level0 row22" >22</th>
-      <td id="T_8bf74_row22_col0" class="data row22 col0" >6.28</td>
-      <td id="T_8bf74_row22_col1" class="data row22 col1" >6.33</td>
-      <td id="T_8bf74_row22_col2" class="data row22 col2" >-0.81</td>
+      <th id="T_13c85_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_13c85_row22_col0" class="data row22 col0" >6.28</td>
+      <td id="T_13c85_row22_col1" class="data row22 col1" >6.33</td>
+      <td id="T_13c85_row22_col2" class="data row22 col2" >-0.81</td>
     </tr>
     <tr>
-      <th id="T_8bf74_level0_row23" class="row_heading level0 row23" >23</th>
-      <td id="T_8bf74_row23_col0" class="data row23 col0" >6.28</td>
-      <td id="T_8bf74_row23_col1" class="data row23 col1" >6.33</td>
-      <td id="T_8bf74_row23_col2" class="data row23 col2" >-0.81</td>
+      <th id="T_13c85_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_13c85_row23_col0" class="data row23 col0" >6.28</td>
+      <td id="T_13c85_row23_col1" class="data row23 col1" >6.33</td>
+      <td id="T_13c85_row23_col2" class="data row23 col2" >-0.81</td>
     </tr>
   </tbody>
 </table>
 </div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Observation&#39;, ylabel=&#39;kW&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_46_2.png" src="../_images/A.05-Tidy-Data-and-Pandas_46_2.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_45_2.png" src="../_images/A.05-Tidy-Data-and-Pandas_45_2.png" />
 </div>
 </div>
 </div>
@@ -3003,7 +2650,7 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Observation&#39;, ylabel=&#39;kW/deg C&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_48_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_48_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_47_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_47_1.png" />
 </div>
 </div>
 </div>
@@ -3353,7 +3000,7 @@ M    AxesSubplot(0.125,0.125;0.775x0.755)
 dtype: object
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_53_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_53_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_52_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_52_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3372,7 +3019,7 @@ M    AxesSubplot(0.125,0.125;0.775x0.755)
 dtype: object
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_54_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_54_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_53_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_53_1.png" />
 </div>
 </div>
 </div>
@@ -3418,8 +3065,8 @@ dtype: float64
 Dep. Variable:                      R   R-squared:                       0.997
 Model:                            OLS   Adj. R-squared:                  0.997
 Method:                 Least Squares   F-statistic:                     3711.
-Date:                Tue, 01 Feb 2022   Prob (F-statistic):           1.70e-27
-Time:                        08:53:59   Log-Likelihood:                 44.929
+Date:                Fri, 11 Feb 2022   Prob (F-statistic):           1.70e-27
+Time:                        09:19:36   Log-Likelihood:                 44.929
 No. Observations:                  24   AIC:                            -83.86
 Df Residuals:                      21   BIC:                            -80.32
 Df Model:                           2                                         
@@ -3691,7 +3338,7 @@ Notes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:title={&#39;center&#39;:&#39;Heat Transfer Coefficient&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/A.05-Tidy-Data-and-Pandas_60_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_60_1.png" />
+<img alt="../_images/A.05-Tidy-Data-and-Pandas_59_1.png" src="../_images/A.05-Tidy-Data-and-Pandas_59_1.png" />
 </div>
 </div>
 </div>

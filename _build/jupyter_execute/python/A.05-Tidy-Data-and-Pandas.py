@@ -15,6 +15,7 @@
 # * [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper by Hadley Wickham.
 # * [Tidy Data](https://r4ds.had.co.nz/tidy-data.html?q=Tidy%20Data#non-tidy-data), Chapter 12 from R for Data Science.
 # * [13 Most Important Pandas Functions for Data Science](https://www.analyticsvidhya.com/blog/2021/05/pandas-functions-13-most-important/)
+# * [Create Stunning Visualizations With Pandas Dataframes in One Line of Code](https://towardsdatascience.com/advanced-pandas-plots-e2347a33d576) Blog post describing more complex visualizations and libraries based on pandas dataframes.
 
 # ## Tidy Data
 # 
@@ -206,12 +207,6 @@ df.tail(5)
 df.T1.plot()
 
 
-# In[32]:
-
-
-get_ipython().run_line_magic('pinfo', 'df.plot')
-
-
 # The `.plot()` method will often be used to plot one or more variables on the vertical 'y' axis as a function of another variable on the horizontal 'x' axes. Additional options specify line styles, grid, labels, titles, and much more. 
 
 # In[15]:
@@ -337,7 +332,7 @@ hx.plot(y = ["Qh", "Qc"], ylim = (0, 15), grid=True, xlabel="Observation", ylabe
 # \end{align*}
 # $$
 
-# In[31]:
+# In[22]:
 
 
 dT0 = hx["H Outlet"] - hx["C Inlet"]

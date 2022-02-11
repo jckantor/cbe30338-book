@@ -8,5 +8,10 @@ tabulate
 ipytest
 
 # control and simulation libraries
+tclab
 simpy
+
+# jupyterlab IDE extensions
+ipydrawio
+
 

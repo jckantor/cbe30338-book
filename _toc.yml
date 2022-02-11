@@ -34,14 +34,12 @@ parts:
       sections:
       - file: notebooks/03.01-Case-Study-Thermal-Cycling-PCR
       - file: notebooks/03.02-Setpoints
-      - file: notebooks/03.02a-Setpoints
-      - file: notebooks/03.03-Relay-Control
-      - file: notebooks/03.04-Implementing-Controllers
-      - file: notebooks/03.05-Proportional-Integral-Control
-      - file: notebooks/03.06-Lab-Assignment-PI-Control
+      - file: notebooks/03.03-Setpoints-Thermal-Cycler
+      - file: notebooks/03.04-Relay-Control
+      - file: notebooks/03.05-Implementing-Controllers
+      - file: notebooks/03.06-Proportional-Integral-Control
       - file: notebooks/03.07-Integral-Windup-and-Bumpless-Transfer
-      - file: notebooks/03.08-Lab-Assignment-Cascade-Control
-      - file: notebooks/03.09-Lab-Assignment-Solution
+
   
     - file: notebooks/04.00-Process-Analytics
       sections:
@@ -117,9 +115,10 @@ parts:
     - file: tclab/04.00-Feedback-Control
       sections:
       - file: tclab/04.01-Relay-Control
-      - file: tclab/04.03-PID_Control
-      - file: tclab/04.10-Lab-Assignment-PID-Control
-      - file: tclab/04.11-Lab-Assignment-PI-Control
+      - file: tclab/04.02-Lab-Assignment-Relay-Control
+#      - file: tclab/04.03-PID_Control
+#      - file: tclab/04.10-Lab-Assignment-PID-Control
+#      - file: tclab/04.11-Lab-Assignment-PI-Control
       
     - file: tclab/05.00-State-Estimation
       sections:
