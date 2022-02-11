@@ -20,7 +20,7 @@
 # 
 # Some started code is include below.
 
-# In[6]:
+# In[ ]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -52,7 +52,7 @@ controller1.send(None)
 t_final = 500
 t_step = 1
 with TCLab() as lab:
-    h = Historian(lab.sources)
+    h = Historian({"T1": lambda )
     p = Plotter(h, t_final)
     for t in clock(t_final, t_step):
         T1 = lab.T1
@@ -65,9 +65,11 @@ with TCLab() as lab:
 # 
 # 1. Begin by testing the above code on your laptop.
 # 2. Create a new cell, copy the code to the new cell, and extend the code to control both T1 and T2 to the desired setpoints.
-# 3. Create another new cell, modify the setpoint function to include the switch to 25 degrees at t=300. Test this cell on your real hardware.
-# 4. Create one more new cell, and use class notes on setpoints to track this function on T1 while maintain T2 at a constant 40 deg C.
+# 3. Create another new cell, modify the setpoint functions to include the switch to 25 degrees at t=300 for both temperatures. Test this cell on your real hardware.
+# 4. Create one more new cell, and use class notes on setpoints to create a setpoint function using interpolation that reproduces the chart below. Scale time so the whole temperature program can be completed in 10 minutes. The goal is to hit 50 deg C at 3 miinutes, 27 deg C at 7 minutes, return to 32 deg C at 8 minutes, and hold until 10 minutes. The goal is follow the ramp as closely as possible.
 # 
+# Apply the setpoint to T1 while maintaining T2 at a constant 30 deg C.
+
 # ![](https://d29hmqxeker05q.cloudfront.net/eyJidWNrZXQiOiJpbWFnZXMuY2tiay5jb20iLCJrZXkiOiJpbWFnZXMvY2hvYzI0NDE0YzA0czAwMXNzMDAxc3NzMDA0ZzAxLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWUsIndpZHRoIjo2NTEsImhlaWdodCI6NTAwLCJmaXQiOiJpbnNpZGUifSwianBlZyI6eyJxdWFsaXR5Ijo5MCwicHJvZ3Jlc3NpdmUiOnRydWV9fX0=)
 
 # In[ ]:
