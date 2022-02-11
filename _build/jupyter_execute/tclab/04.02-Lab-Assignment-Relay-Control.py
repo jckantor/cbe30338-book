@@ -20,7 +20,7 @@
 # 
 # Some started code is include below.
 
-# In[ ]:
+# In[1]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -52,7 +52,7 @@ controller1.send(None)
 t_final = 500
 t_step = 1
 with TCLab() as lab:
-    h = Historian({"T1": lambda )
+    h = Historian(lab.sources)
     p = Plotter(h, t_final)
     for t in clock(t_final, t_step):
         T1 = lab.T1
