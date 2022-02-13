@@ -657,9 +657,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/08.01-Project-Ideas.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/08.01-Project-Ideas.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -693,6 +693,28 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/08.01-Project-Ideas.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/08.01-Project-Ideas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -704,8 +726,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimization">
-   8.1.1. Optimization
+  <a class="reference internal nav-link" href="#simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo">
+   8.1.1. Simulation and Optimal Control of the Williams-Otto Process using Pyomo
   </a>
  </li>
 </ul>
@@ -729,8 +751,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimization">
-   8.1.1. Optimization
+  <a class="reference internal nav-link" href="#simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo">
+   8.1.1. Simulation and Optimal Control of the Williams-Otto Process using Pyomo
   </a>
  </li>
 </ul>
@@ -744,11 +766,11 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="project-ideas">
 <h1><span class="section-number">8.1. </span>Project Ideas<a class="headerlink" href="#project-ideas" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="optimization">
-<h2><span class="section-number">8.1.1. </span>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Simulation and Optimal Control of the Williams-Otto Process using Pyomo. Develop a Jupyter notebook to replicate the calculations shown in <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id14">Schmid <em>et al.</em>, 2020</a>]</span>.</p></li>
-</ul>
+<div class="section" id="simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo">
+<h2><span class="section-number">8.1.1. </span>Simulation and Optimal Control of the Williams-Otto Process using Pyomo<a class="headerlink" href="#simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo" title="Permalink to this headline">¶</a></h2>
+<p>The Williams-Otto process is a hypothetical process presented in a 1960 paper as a benchmark problem to investigate the use of advanced strategies for process control. At that time <a class="reference external" href="https://en.wikipedia.org/wiki/Theodore_J._Williams">Theodore J. Williams</a> and Robert Otto were process control engineers working at Monsanto Corporation. Williams later became a professor of engineering and director of the Purdue Laboratory for Applied Industrial Control at Purdue University.</p>
+<p>Like others in the large chemical and oil companies of the era, they were investigating whether rapidly evolving computer technology of the era could be used to automate large scale chemical operations. Their paper offered a common framework for academics and industrial partners to compare the many competing proposals for advanced control systems. Sixty years later, the Williams-Otto process continues to benchmark system for the study of process control and dynamics.</p>
+<p>The goal of this project is to produce a Python library to support the use of the Williams-Otto process in process control education. The deliverables will be a collection of Jupyter notebooks implementing the Pyomo model described in <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id16">Schmid <em>et al.</em>, 2020</a>]</span>.</p>
 </div>
 </div>
 

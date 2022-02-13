@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. References &#8212; CBE 30338 Chemical Process Control</title>
+    <title>8.1. Simulation and Optimal Control of the Williams-Otto Process using Pyomo &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. The Temperature Control Laboratory" href="../tclab/01.00-TCLab.html" />
-    <link rel="prev" title="8.2. Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery" href="08.02-Pharmacokinetic-Modeling.html" />
+    <link rel="next" title="8.2. Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery" href="08.02-Pharmacokinetic-Modeling.html" />
+    <link rel="prev" title="8. Projects" href="08.00-Projects.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -428,18 +428,18 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="08.00-Projects.html">
    8. Projects
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="08.01-Williams-Otto-Process.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      8.1. Simulation and Optimal Control of the Williams-Otto Process using Pyomo
     </a>
    </li>
@@ -450,8 +450,8 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="09.00-Bibliography.html">
    9. References
   </a>
  </li>
@@ -662,9 +662,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/09.00-Bibliography.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/08.01-Williams-Otto-Process.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -682,7 +682,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/09.00-Bibliography.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/08.01-Williams-Otto-Process.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -698,6 +698,28 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/08.01-Williams-Otto-Process.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/08.01-Williams-Otto-Process.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -709,23 +731,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-texts-and-resources">
-   9.1. Online Texts and Resources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#textbooks-and-handbooks">
-   9.2. Textbooks and Handbooks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#process-control-education">
-   9.3. Process Control Education
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bibliography">
-   9.4. Bibliography
+  <a class="reference internal nav-link" href="#description">
+   8.1.1. Description
   </a>
  </li>
 </ul>
@@ -738,7 +745,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>References</h1>
+                <h1>Simulation and Optimal Control of the Williams-Otto Process using Pyomo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -749,23 +756,8 @@
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-texts-and-resources">
-   9.1. Online Texts and Resources
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#textbooks-and-handbooks">
-   9.2. Textbooks and Handbooks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#process-control-education">
-   9.3. Process Control Education
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bibliography">
-   9.4. Bibliography
+  <a class="reference internal nav-link" href="#description">
+   8.1.1. Description
   </a>
  </li>
 </ul>
@@ -777,85 +769,13 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="references">
-<h1><span class="section-number">9. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="online-texts-and-resources">
-<h2><span class="section-number">9.1. </span>Online Texts and Resources<a class="headerlink" href="#online-texts-and-resources" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p><span id="id1">[<a class="reference internal" href="#id22">Åström and Murray, 2010</a>]</span>. An excellent introductory text for an interdisciplinary course in control theory and applications. Extensive web site supporting courses at Caltech.</p></li>
-<li><p><span id="id2">[<a class="reference internal" href="#id21">Del Vecchio and Murray, 2014</a>]</span></p></li>
-<li><p><span id="id3">[<a class="reference internal" href="#id23">Marlin, 1995</a>]</span></p></li>
-<li><p><a class="reference external" href="https://cache.org/teaching-resources-center/process-control">Computer Aids for Chemical Engineering - Process Control</a></p></li>
-<li><p><a class="reference external" href="https://controlguru.com/table-of-contents/">Control Guru: Practical Process Control</a> by Doug Cooper and others.</p></li>
-</ol>
-</div>
-<div class="section" id="textbooks-and-handbooks">
-<h2><span class="section-number">9.2. </span>Textbooks and Handbooks<a class="headerlink" href="#textbooks-and-handbooks" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p><span id="id4">[<a class="reference internal" href="#id18">Albertos and Antonio, 2006</a>]</span>. Advanced monograph with multiple process case studies, and with application to cascade loops and other process control situations. Good source for case study examples.</p></li>
-<li><p><span id="id5">[<a class="reference internal" href="#id28">Blevins and Nixon, 2011</a>]</span></p></li>
-<li><p><span id="id6">[<a class="reference internal" href="#id25">Kravaris and Kookos, 2021</a>]</span></p></li>
-<li><p><span id="id7">[<a class="reference internal" href="#id31">Seborg <em>et al.</em>, 2016</a>]</span></p></li>
-<li><p><span id="id8">[<a class="reference internal" href="#id19">Smith and Corripio, 2005</a>]</span></p></li>
-<li><p><span id="id9">[<a class="reference internal" href="#id29">Love, 2007</a>]</span></p></li>
-</ol>
-</div>
-<div class="section" id="process-control-education">
-<h2><span class="section-number">9.3. </span>Process Control Education<a class="headerlink" href="#process-control-education" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p><span id="id10">[<a class="reference internal" href="#id26">Bequette, 2019</a>]</span></p></li>
-</ol>
-</div>
-<div class="section" id="bibliography">
-<h2><span class="section-number">9.4. </span>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h2>
-<p id="id11"><dl class="citation">
-<dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id4">AA06</a></span></dt>
-<dd><p>Pedro Albertos and Sala Antonio. <em>Multivariable control systems: an engineering approach</em>. Springer Science &amp; Business Media, 2006.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets">BBL+17</span></dt>
-<dd><p>Naveed A Bakh, Gili Bisker, Michael A Lee, Xun Gong, and Michael S Strano. Rational design of glucose-responsive insulin using pharmacokinetic modeling. <em>Advanced Healthcare Materials</em>, 6(22):1700601, 2017.</p>
-</dd>
-<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id10">Beq19</a></span></dt>
-<dd><p>B Wayne Bequette. Process control practice and education: past, present and future. <em>Computers &amp; Chemical Engineering</em>, 128:538–556, 2019.</p>
-</dd>
-<dt class="label" id="id28"><span class="brackets"><a class="fn-backref" href="#id5">BN11</a></span></dt>
-<dd><p>Terrence L Blevins and Mark Nixon. <em>Control loop foundation: batch and continuous processes</em>. ISA, 2011.</p>
-</dd>
-<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id2">DVM14</a></span></dt>
-<dd><p>Domitilla Del Vecchio and Richard M Murray. <em>Biomolecular feedback systems</em>. Princeton University Press, 2014. URL: <a class="reference external" href="https://fbswiki.org/wiki/index.php/Main_Page">https://fbswiki.org/wiki/index.php/Main_Page</a>.</p>
-</dd>
-<dt class="label" id="id17"><span class="brackets">Dou17</span></dt>
-<dd><p>Brian Douglas. The fundamentals of control theory. 2017. URL: <a class="reference external" href="https://drive.google.com/file/d/1LAjaDDViFG4H7dQ6PQVHo8XSQHS59GJf/view">https://drive.google.com/file/d/1LAjaDDViFG4H7dQ6PQVHo8XSQHS59GJf/view</a>.</p>
-</dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id6">KK21</a></span></dt>
-<dd><p>Costas Kravaris and Ioannis K Kookos. <em>Understanding Process Dynamics and Control</em>. Cambridge University Press, 2021.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">LL09</span></dt>
-<dd><p>Matthew E Levison and Julie H Levison. Pharmacokinetics and pharmacodynamics of antibacterial agents. <em>Infect Dis Clin North Am</em>, 23(4):791–815, Dec 2009. <a class="reference external" href="https://doi.org/10.1016/j.idc.2009.06.008">doi:10.1016/j.idc.2009.06.008</a>.</p>
-</dd>
-<dt class="label" id="id29"><span class="brackets"><a class="fn-backref" href="#id9">Lov07</a></span></dt>
-<dd><p>Jonathan Love. <em>Process automation handbook: a guide to theory and practice</em>. Springer Science &amp; Business Media, 2007.</p>
-</dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id3">Mar95</a></span></dt>
-<dd><p>Thomas E Marlin. Process control. <em>Chemical Engineering Series, McGraw-Hill International Editions: New York</em>, 1995. URL: <a class="reference external" href="http://pc-textbook.mcmaster.ca/">http://pc-textbook.mcmaster.ca/</a>.</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets">STC+20</span></dt>
-<dd><p>Jochen Schmid, Katrin Teichert, Moncef Chioua, Thorsten Schindler, and Michael Bortz. Simulation and optimal control of the williams-otto process using pyomo. <em>arXiv preprint arXiv:2004.07614</em>, 2020. URL: <a class="reference external" href="https://arxiv.org/pdf/2004.07614.pdf">https://arxiv.org/pdf/2004.07614.pdf</a>.</p>
-</dd>
-<dt class="label" id="id31"><span class="brackets"><a class="fn-backref" href="#id7">SEMDI16</a></span></dt>
-<dd><p>Dale E Seborg, Thomas F Edgar, Duncan A Mellichamp, and Francis J Doyle III. <em>Process dynamics and control</em>. John Wiley &amp; Sons, 2016.</p>
-</dd>
-<dt class="label" id="id19"><span class="brackets"><a class="fn-backref" href="#id8">SC05</a></span></dt>
-<dd><p>Carlos A Smith and Armando B Corripio. <em>Principles and practices of automatic process control</em>. John Wiley &amp; Sons, 2005.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets">YGB+20</span></dt>
-<dd><p>Jing Fan Yang, Xun Gong, Naveed A Bakh, Kelley Carr, Nelson FB Phillips, Faramarz Ismail-Beigi, Michael A Weiss, and Michael S Strano. Connecting rodent and human pharmacokinetic models for the design and translation of glucose-responsive insulin. <em>Diabetes</em>, 69(8):1815–1826, 2020.</p>
-</dd>
-<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id1">AAstromM10</a></span></dt>
-<dd><p>Karl Johan Åström and Richard M Murray. <em>Feedback systems</em>. Princeton university press, 2010. URL: <a class="reference external" href="https://fbswiki.org/wiki/index.php/Main_Page">https://fbswiki.org/wiki/index.php/Main_Page</a>.</p>
-</dd>
-</dl>
-</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo">
+<h1><span class="section-number">8.1. </span>Simulation and Optimal Control of the Williams-Otto Process using Pyomo<a class="headerlink" href="#simulation-and-optimal-control-of-the-williams-otto-process-using-pyomo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="description">
+<h2><span class="section-number">8.1.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>The Williams-Otto process is a hypothetical process presented in a 1960 paper as a benchmark problem to investigate the use of advanced strategies for process control. At that time <a class="reference external" href="https://en.wikipedia.org/wiki/Theodore_J._Williams">Theodore J. Williams</a> and Robert Otto were process control engineers working at Monsanto Corporation. Williams later became a professor of engineering and director of the Purdue Laboratory for Applied Industrial Control at Purdue University.</p>
+<p>Like others in the large chemical and oil companies of the era, they were investigating whether rapidly evolving computer technology of the era could be used to automate large scale chemical operations. Their paper offered a common framework for academics and industrial partners to compare the many competing proposals for advanced control systems. Sixty years later, the Williams-Otto process continues to benchmark system for the study of process control and dynamics.</p>
+<p>The goal of this project is to produce a Python library to support the use of the Williams-Otto process in process control education. The deliverables will be a collection of Jupyter notebooks implementing the Pyomo model described in <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id16">Schmid <em>et al.</em>, 2020</a>]</span>.</p>
 </div>
 </div>
 
@@ -884,17 +804,17 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="08.02-Pharmacokinetic-Modeling.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="08.00-Projects.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">8.2. </span>Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Projects</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../tclab/01.00-TCLab.html" title="next page">
+    <a class='right-next' id="next-link" href="08.02-Pharmacokinetic-Modeling.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>The Temperature Control Laboratory</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
