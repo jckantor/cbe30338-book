@@ -20,7 +20,7 @@
 # 
 # Some started code is include below.
 
-# In[1]:
+# In[9]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -52,8 +52,11 @@ controller1.send(None)
 t_final = 500
 t_step = 1
 with TCLab() as lab:
-    h = Historian(lab.sources)
-    p = Plotter(h, t_final)
+    sources = [("T1", lambda: lab.T1), ("T2", lambda: lab.T2),
+               ("SP1", lambda: SP1(t)), ("SP2", lambda: SP2(t)),
+               ("Q1", lab.Q1), ("Q2", lab.Q2)]
+    h = Historian(sources)
+    p = Plotter(h, t_final, layout=(("T1", "SP1"), ("T2", "SP2"), ("Q1", "Q2")))
     for t in clock(t_final, t_step):
         T1 = lab.T1
         U1 = controller1.send([t, T1])
