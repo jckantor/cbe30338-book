@@ -83,8 +83,7 @@ parts:
 
     - file: notebooks/08.00-Projects
       sections:
-      - file: notebooks/08.01-Williams-Otto-Process
-      - file: notebooks/08.02-Pharmacokinetic-Modeling
+      - file: notebooks/08.01-Project-Ideas
     
     - file: notebooks/09.00-Bibliography
 
