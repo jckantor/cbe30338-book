@@ -819,8 +819,8 @@
 <div class="section" id="state-space-model">
 <h2><span class="section-number">4.3.1. </span>State-Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d52deef-e385-4e12-be84-ef001a0d205f">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-2d52deef-e385-4e12-be84-ef001a0d205f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-44ce8c3f-84c4-446a-b43e-ea17eefd9a42">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-44ce8c3f-84c4-446a-b43e-ea17eefd9a42" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
@@ -885,8 +885,8 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <ul class="simple">
 <li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-a872e00f-27eb-44ec-814d-8260f1321cea">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-a872e00f-27eb-44ec-814d-8260f1321cea" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-708bb103-e647-4b70-8f88-28852e4c0158">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-708bb103-e647-4b70-8f88-28852e4c0158" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 \hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
 \end{align}\]</div>
