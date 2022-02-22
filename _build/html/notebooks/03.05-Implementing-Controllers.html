@@ -738,31 +738,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementating-relay-control-as-nested-function">
-   3.5.3. Implementating relay control as nested function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-generator">
-   3.5.4. Implementing relay control as a Python generator
+   3.5.3. Implementing relay control as a Python generator
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-python-generator">
-     3.5.4.1. What is a Python generator?
+     3.5.3.1. What is a Python generator?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-examples-of-python-generators">
+     3.5.3.2. Simple examples of Python generators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sending-information-to-a-python-generator">
+     3.5.3.3. Sending information to a Python generator.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coding-a-relay-controller-as-a-python-generator">
-     3.5.4.2. Coding a relay controller as a Python generator
+     3.5.3.4. Coding a relay controller as a Python generator
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-class">
-   3.5.5. Implementing relay control as a Python class
-  </a>
  </li>
 </ul>
 
@@ -795,31 +795,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementating-relay-control-as-nested-function">
-   3.5.3. Implementating relay control as nested function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-generator">
-   3.5.4. Implementing relay control as a Python generator
+   3.5.3. Implementing relay control as a Python generator
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-a-python-generator">
-     3.5.4.1. What is a Python generator?
+     3.5.3.1. What is a Python generator?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-examples-of-python-generators">
+     3.5.3.2. Simple examples of Python generators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sending-information-to-a-python-generator">
+     3.5.3.3. Sending information to a Python generator.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coding-a-relay-controller-as-a-python-generator">
-     3.5.4.2. Coding a relay controller as a Python generator
+     3.5.3.4. Coding a relay controller as a Python generator
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#implementing-relay-control-as-a-python-class">
-   3.5.5. Implementing relay control as a Python class
-  </a>
  </li>
 </ul>
 
@@ -930,65 +930,12 @@ MV_{k} &amp; = \begin{cases}
 </ul>
 <p>By separating controller implementations from the event loop, we create a more flexible, maintainable, and testable framework for process control.</p>
 </div>
-<div class="section" id="implementating-relay-control-as-nested-function">
-<h2><span class="section-number">3.5.3. </span>Implementating relay control as nested function<a class="headerlink" href="#implementating-relay-control-as-nested-function" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relay_with_deadzone</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="n">MV_max</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-    <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_min</span>
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">):</span>
-        <span class="k">nonlocal</span> <span class="n">MV</span>
-        <span class="k">if</span> <span class="n">PV</span> <span class="o">&lt;=</span> <span class="n">SP</span> <span class="o">-</span> <span class="n">d</span><span class="p">:</span>
-            <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_max</span>
-        <span class="k">elif</span> <span class="n">PV</span> <span class="o">&gt;=</span> <span class="n">SP</span> <span class="o">+</span> <span class="n">d</span><span class="p">:</span>
-            <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_min</span>
-        <span class="k">return</span> <span class="n">MV</span>
-    <span class="k">return</span> <span class="n">update</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
-
-<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="c1"># control parameters</span>
-<span class="n">controller</span> <span class="o">=</span> <span class="n">relay_with_deadzone</span><span class="p">(</span><span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">T_SP</span> <span class="o">=</span> <span class="mi">40</span>
-
-<span class="c1"># time horizon and time step</span>
-<span class="n">t_final</span> <span class="o">=</span> <span class="mi">250</span>
-
-<span class="c1"># perform experiment</span>
-<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
-    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">):</span>
-        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
-        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="p">(</span><span class="n">T_SP</span><span class="p">,</span> <span class="n">T1</span><span class="p">)</span>
-        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>      
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/03.05-Implementing-Controllers_10_0.png" src="../_images/03.05-Implementing-Controllers_10_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
-</pre></div>
-</div>
-<img alt="../_images/03.05-Implementing-Controllers_10_2.png" src="../_images/03.05-Implementing-Controllers_10_2.png" />
-</div>
-</div>
-</div>
 <div class="section" id="implementing-relay-control-as-a-python-generator">
-<h2><span class="section-number">3.5.4. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5.3. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="what-is-a-python-generator">
-<h3><span class="section-number">3.5.4.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this headline">¶</a></h3>
-<p>Values are returned from Python functions using the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement. Once the return statement is encountered, the function is over and all local information is lost.</p>
+<h3><span class="section-number">3.5.3.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this headline">¶</a></h3>
+<p>To implement process control, we need functions that can receive new measurements of pocess variables and then return updated values for the manipulaed variables. Python generators creates functions which can return multiple values.</p>
+<p>Let’s break down what this means by starting with ordinary Python functions. Values are returned from Python functions with the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement. When the return statement is encountered the function is done. All local information is lost. The function starts from scratch each time it is called  retaining no information from prior use. Moreover, there is no way to communcate with the function after it is called.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
@@ -1004,6 +951,20 @@ MV_{k} &amp; = \begin{cases}
 </div>
 </div>
 </div>
+<p>Python generators address these issues with the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement. The <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement changes an ordinary function into a generator. A <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement is written as</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y = yield u
+</pre></div>
+</div>
+<p>This statement does three things:</p>
+<ul class="simple">
+<li><p>The value <span class="math notranslate nohighlight">\(u\)</span> is returned to the calling function. This works exactly the same as a <code class="docutils literal notranslate"><span class="pre">return</span></code> statement in a Python function.</p></li>
+<li><p>Execution of the generator is paused and execution returned to the calling function along with the value returned.</p></li>
+<li><p>The generator waits to restart execution. Execution is restarted when the next value is requested using the <code class="docutils literal notranslate"><span class="pre">next</span></code> function, or when a value is sent to the generator with <code class="docutils literal notranslate"><span class="pre">.send()</span></code>.</p></li>
+<li><p>The value sent to the generator is put into the <code class="docutils literal notranslate"><span class="pre">y</span></code>. This is can be any Python object.</p></li>
+</ul>
+</div>
+<div class="section" id="simple-examples-of-python-generators">
+<h3><span class="section-number">3.5.3.2. </span>Simple examples of Python generators<a class="headerlink" href="#simple-examples-of-python-generators" title="Permalink to this headline">¶</a></h3>
 <p>Values are returned from generators with a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement. But what makes a generator different is that operation can be restarted to produce values from more <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements. (Functions are ‘one and done’, generators come back for another season.)</p>
 <p>Because generators can be called multiple times, there are some extra details involved with their use:</p>
 <ul class="simple">
@@ -1100,7 +1061,9 @@ for k in range(0, 2):
 </div>
 </div>
 </div>
-<p>Communication with a generator can be two-way. Think of this as send a message to the generator and waiting for a response.</p>
+</div>
+<div class="section" id="sending-information-to-a-python-generator">
+<h3><span class="section-number">3.5.3.3. </span>Sending information to a Python generator.<a class="headerlink" href="#sending-information-to-a-python-generator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_dog</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -1109,8 +1072,14 @@ for k in range(0, 2):
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">msg</span> <span class="o">=</span> <span class="k">yield</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> says </span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">my_dog</span><span class="p">(</span><span class="s2">&quot;Rover&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Messages are sent to a generator using a <code class="docutils literal notranslate"><span class="pre">.send(msg)</span></code> method. Notice the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement returns a value to a calling function before it can receive a value generator has to return a message before</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">my_dog</span><span class="p">(</span><span class="s2">&quot;Rover&quot;</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Fetch ball&quot;</span><span class="p">))</span>
@@ -1134,42 +1103,13 @@ Rover says Roll over 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rover says roll over 1
-Rover says fetch 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rover says roll over 3
+Rover says fetch 4
 </pre></div>
 </div>
 </div>
 </div>
 <p>This behavior has a number very useful implications. The first thing is that we can create multiple instances of a generator, each with it’s own parameters.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g10</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">g20</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g20</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g20</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g20</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">z3t28j296f98jdp1vqyplkz00000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_46328</span><span class="o">/</span><span class="mf">2267332091.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">g10</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">g20</span> <span class="o">=</span> <span class="n">my_generator</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g10</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">g10</span><span class="p">))</span>
-
-<span class="ne">TypeError</span>: my_generator() takes 0 positional arguments but 1 was given
-</pre></div>
-</div>
-</div>
-</div>
 <p>The second important implication is that each instance of a generator can maintain its own state in the form of local variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1207,7 +1147,7 @@ Rover says fetch 2
 </div>
 </div>
 <div class="section" id="coding-a-relay-controller-as-a-python-generator">
-<h3><span class="section-number">3.5.4.2. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.5.3.4. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Relay</span><span class="p">(</span><span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -1251,56 +1191,12 @@ Rover says fetch 2
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="implementing-relay-control-as-a-python-class">
-<h2><span class="section-number">3.5.5. </span>Implementing relay control as a Python class<a class="headerlink" href="#implementing-relay-control-as-a-python-class" title="Permalink to this headline">¶</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Relay</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">MV_min</span> <span class="o">=</span> <span class="n">MV_min</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">MV_max</span> <span class="o">=</span> <span class="n">MV_max</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">MV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MV_min</span>
-        
-    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">PV</span> <span class="o">&lt;=</span> <span class="n">SP</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">MV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MV_max</span>
-        <span class="k">if</span> <span class="n">PV</span> <span class="o">&gt;=</span> <span class="n">SP</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">MV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MV_min</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">MV</span>
+<div class="cell_output docutils container">
+<img alt="../_images/03.05-Implementing-Controllers_31_0.png" src="../_images/03.05-Implementing-Controllers_31_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
-
-<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-
-<span class="c1"># control parameters</span>
-<span class="n">controller</span> <span class="o">=</span> <span class="n">Relay</span><span class="p">(</span><span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">T_SP</span> <span class="o">=</span> <span class="mi">40</span>
-
-<span class="c1"># time horizon and time step</span>
-<span class="n">t_final</span> <span class="o">=</span> <span class="mi">250</span>
-
-<span class="c1"># perform experiment</span>
-<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
-    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">):</span>
-        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
-        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">T_SP</span><span class="p">,</span> <span class="n">T1</span><span class="p">)</span>
-        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>      
-</pre></div>
+<img alt="../_images/03.05-Implementing-Controllers_31_2.png" src="../_images/03.05-Implementing-Controllers_31_2.png" />
 </div>
 </div>
 </div>

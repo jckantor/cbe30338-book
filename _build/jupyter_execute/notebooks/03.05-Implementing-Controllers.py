@@ -103,57 +103,15 @@ with TCLab() as lab:
 # 
 # By separating controller implementations from the event loop, we create a more flexible, maintainable, and testable framework for process control.
 
-# ## Implementating relay control as nested function
-
-# In[1]:
-
-
-def relay_with_deadzone(MV_min, MV_max, d):
-    MV = MV_min
-    def update(SP, PV):
-        nonlocal MV
-        if PV <= SP - d:
-            MV = MV_max
-        elif PV >= SP + d:
-            MV = MV_min
-        return MV
-    return update
-
-
-# In[2]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-from tclab import TCLab, clock, Historian, Plotter, setup
-
-TCLab = setup(connected=False, speedup=20)
-
-# control parameters
-controller = relay_with_deadzone(MV_min=0, MV_max=100, d=1)
-T_SP = 40
-
-# time horizon and time step
-t_final = 250
-
-# perform experiment
-with TCLab() as lab:
-    lab.P1 = 200
-    h = Historian(lab.sources)
-    p = Plotter(h, t_final)
-    for t in clock(t_final):
-        T1 = lab.T1
-        U1 = controller(T_SP, T1)
-        lab.Q1(U1)
-        p.update(t)      
-
-
 # ## Implementing relay control as a Python generator
 
 # ### What is a Python generator?
 # 
-# Values are returned from Python functions using the `return` statement. Once the return statement is encountered, the function is over and all local information is lost.
+# To implement process control, we need functions that can receive new measurements of pocess variables and then return updated values for the manipulaed variables. Python generators creates functions which can return multiple values.
+# 
+# Let's break down what this means by starting with ordinary Python functions. Values are returned from Python functions with the `return` statement. When the return statement is encountered the function is done. All local information is lost. The function starts from scratch each time it is called  retaining no information from prior use. Moreover, there is no way to communcate with the function after it is called.
 
-# In[3]:
+# In[15]:
 
 
 def my_function():
@@ -162,6 +120,20 @@ def my_function():
 print(my_function())
 
 
+# Python generators address these issues with the `yield` statement. The `yield` statement changes an ordinary function into a generator. A `yield` statement is written as
+# 
+#     y = yield u
+#     
+# This statement does three things:
+# 
+# * The value $u$ is returned to the calling function. This works exactly the same as a `return` statement in a Python function.
+# * Execution of the generator is paused and execution returned to the calling function along with the value returned.
+# * The generator waits to restart execution. Execution is restarted when the next value is requested using the `next` function, or when a value is sent to the generator with `.send()`.
+# * The value sent to the generator is put into the `y`. This is can be any Python object.
+# 
+
+# ### Simple examples of Python generators
+# 
 # Values are returned from generators with a `yield` statement. But what makes a generator different is that operation can be restarted to produce values from more `yield` statements. (Functions are 'one and done', generators come back for another season.)  
 # 
 # Because generators can be called multiple times, there are some extra details involved with their use:
@@ -169,7 +141,7 @@ print(my_function())
 # * An 'instance' of the generator must be created before it can be used,
 # * The Python function `next()` gets the value returned by the next yeild statement.
 
-# In[4]:
+# In[20]:
 
 
 def my_generator():
@@ -188,7 +160,7 @@ print(next(f))
 
 # You can create multiple instances of generators, each maintaining its own state, and can be accessed in any particular order.
 
-# In[5]:
+# In[21]:
 
 
 def my_dog(dog):
@@ -239,15 +211,15 @@ print(next(f))
 # 
 # :::
 
-# In[ ]:
+# In[22]:
 
 
 ### write solution here
 
 
-# Communication with a generator can be two-way. Think of this as send a message to the generator and waiting for a response.
+# ### Sending information to a Python generator.
 
-# In[35]:
+# In[23]:
 
 
 def my_dog(name):
@@ -257,6 +229,12 @@ def my_dog(name):
         msg = yield f"{name} says {msg} {n}"
         n = n + 1
 
+
+# Messages are sent to a generator using a `.send(msg)` method. Notice the `yield` statement returns a value to a calling function before it can receive a value generator has to return a message before 
+
+# In[24]:
+
+
 a = my_dog("Rover")
 a.send(None)
 
@@ -264,7 +242,7 @@ print(a.send("Fetch ball"))
 print(a.send("Roll over"))
 
 
-# In[29]:
+# In[25]:
 
 
 print(a.send("roll over"))
@@ -273,20 +251,6 @@ a.close()
 
 
 # This behavior has a number very useful implications. The first thing is that we can create multiple instances of a generator, each with it's own parameters.
-
-# In[7]:
-
-
-g10 = my_generator(10)
-g20 = my_generator(20)
-
-print(next(g10))
-print(next(g10))
-print(next(g20))
-print(next(g10))
-print(next(g20))
-print(next(g20))
-
 
 # The second important implication is that each instance of a generator can maintain its own state in the form of local variables.
 
@@ -325,7 +289,7 @@ print(cube.send(12))
 
 # ### Coding a relay controller as a Python generator
 
-# In[ ]:
+# In[27]:
 
 
 def Relay(MV_min=0, MV_max=100, d=0):
@@ -340,7 +304,7 @@ def Relay(MV_min=0, MV_max=100, d=0):
 
 # By coding the relay controller as a Python generator, we've eliminated the need to store the controller's parameters as global variable for our main program. This reduces the complexity of the code, and makes it possible. We have decoupled details of the control algorithm from the event loop. This is a big step forward to writing more modular, testable, and ultimately more reliable codes.
 
-# In[ ]:
+# In[28]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -368,50 +332,8 @@ with TCLab() as lab:
         p.update(t)    
 
 
-# ## Implementing relay control as a Python class
-
 # In[ ]:
 
 
-class Relay():
-    def __init__(self, MV_min=0, MV_max=100, d=0):
-        self.d = d
-        self.MV_min = MV_min
-        self.MV_max = MV_max
-        self.d = d
-        self.MV = self.MV_min
-        
-    def update(self, SP, PV):
-        if PV <= SP - self.d:
-            self.MV = self.MV_max
-        if PV >= SP + self.d:
-            self.MV = self.MV_min
-        return self.MV
 
-
-# In[ ]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-from tclab import TCLab, clock, Historian, Plotter, setup
-
-TCLab = setup(connected=False, speedup=20)
-
-# control parameters
-controller = Relay(MV_min=0, MV_max=100, d=0.5)
-T_SP = 40
-
-# time horizon and time step
-t_final = 250
-
-# perform experiment
-with TCLab() as lab:
-    lab.P1 = 200
-    h = Historian(lab.sources)
-    p = Plotter(h, t_final)
-    for t in clock(t_final):
-        T1 = lab.T1
-        U1 = controller.update(T_SP, T1)
-        lab.Q1(U1)
-        p.update(t)      
 

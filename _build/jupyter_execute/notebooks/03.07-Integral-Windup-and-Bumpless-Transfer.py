@@ -2,14 +2,27 @@
 # coding: utf-8
 
 # # Integral Windup and Bumpless Transfer
+# 
+# > "the devil is in the details" -- anonymous
+# 
+# > "and everything is detail" -- military expression
+# 
+# > "why me?" -- the devil
+# 
+# ![](https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png)
 
 # ## Learning Goals
 # 
+# Up to this point we have been giving a "textbook" introduction to proportional-integral (PI) control. There is a world of difference between "textbook" and "practical". 
+# 
 # * Explain the purpose of each of the following enhancements of 'textbook' PI control:
 #     * Anti-reset windup
-#          * Control algorithm modifications
-#          * Event loop modifications
+#          * What is reset windup?
+#          * Fix 1: Insert limits on the manipulated variable (MV)
+#          * Fix 2: If possible, get field measurements of the manipulated variable (MV)
 #     * Bumpless Transfer
+#          * What is bumpless transfer?
+#          * Manual to Auto transition
 
 # ## PI Control
 # 
@@ -40,7 +53,7 @@ def PI(Kp, Ki, MV_bar=0):
     while True:
         t_step, SP, PV = yield MV
         e = PV - SP
-        MV += -Kp*(e - e_prev) - t_step*Ki*e
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e
         e_prev = e
 
 
@@ -50,10 +63,9 @@ def PI(Kp, Ki, MV_bar=0):
 # 
 # The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.
 
-# In[2]:
+# In[11]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 def experiment(controller, t_step=5, t_final=1000,
@@ -62,8 +74,10 @@ def experiment(controller, t_step=5, t_final=1000,
 
     TCLab = setup(connected=False, speedup=60)
     with TCLab() as lab:
-        h = Historian(lab.sources)
-        p = Plotter(h, t_final)
+        sources = (("T1", lambda: lab.T1), ("SP", lambda: SP(t)), 
+                   ("U1", lambda: U1), ("Q1", lab.Q1))
+        h = Historian(sources)
+        p = Plotter(h, t_final, layout=[("T1", "SP"), ("Q1", "U1")])
 
         # initialize manipulated variable
         lab.P1 = 200
@@ -79,7 +93,7 @@ def experiment(controller, t_step=5, t_final=1000,
             p.update(t)
 
 
-# In[3]:
+# In[12]:
 
 
 experiment(PI(5, 0.05))
@@ -89,7 +103,7 @@ experiment(PI(5, 0.05))
 # 
 # Let's increase the magnitude of the control gains to see if we an acheive even better control performance.
 
-# In[4]:
+# In[13]:
 
 
 experiment(PI(10, 0.5))
@@ -127,7 +141,7 @@ experiment(PI(10, 0.5))
 # \end{cases}
 # \end{align}
 
-# In[5]:
+# In[14]:
 
 
 # add anti-integral windup feature. Not yet final.
@@ -138,7 +152,7 @@ def PI_antiwindup_1(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
     while True:
         t_step, SP, PV = yield MV
         e = PV - SP
-        MV += -Kp*(e - e_prev) - t_step*Ki*e
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e
         MV = max(MV_min, min(MV_max, MV))
         e_prev = e
 
@@ -165,7 +179,7 @@ experiment(PI_antiwindup_1(10, 0.5))
 
 # This behavior also occurs in the Temperature Control Laboratory in which the manipulated power levels are constrained to the range 0% to 100%. This is demonstated in the following cell.
 
-# In[6]:
+# In[15]:
 
 
 # show that inputs to the TCLab are constrained to the range 0 to 100%
@@ -179,10 +193,9 @@ with TCLab() as lab:
 
 # To accomodate feedback of the manipulated variable, we first need to modify the event loop to incorporate the measurement of the manipulated variable, then send that value to the controller.
 
-# In[7]:
+# In[16]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 def experiment_2(controller, t_final=1000, t_step=5,
@@ -192,8 +205,10 @@ def experiment_2(controller, t_final=1000, t_step=5,
     with TCLab() as lab:
 
         # set up historian and plotter
-        h = Historian(lab.sources)
-        p = Plotter(h, t_final)
+        sources = (("T1", lambda: lab.T1), ("SP", lambda: SP(t)), 
+                   ("U1", lambda: U1), ("Q1", lab.Q1))
+        h = Historian(sources)
+        p = Plotter(h, t_final, layout=[("T1", "SP"), ("Q1", "U1")])
 
         # initialize manipulated variable
         lab.P1 = 200
@@ -211,7 +226,7 @@ def experiment_2(controller, t_final=1000, t_step=5,
 
 # The next change is to the controller. The controller now accepts values for PV, SP, and, additionally, MV. To demonstrate the impact of these changes, this example will comment out the software limits placed on MV to show that feedback of manipulated variable is also an anti-reset windwup strategy.
 
-# In[8]:
+# In[17]:
 
 
 # add anti-integral windup feature. Not yet final.
@@ -222,7 +237,7 @@ def PI_antiwindup_2(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
     while True:
         t_step, SP, PV, MV = yield MV   # <==== now gets MV from experiment
         e = PV - SP
-        MV += -Kp*(e - e_prev) - t_step*Ki*e 
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e 
         # MV = max(MV_min, min(MV_max, MV)) # <=== turn this off for demo
         e_prev = e
 
@@ -233,7 +248,7 @@ experiment_2(PI_antiwindup_2(10, 0.5))
 # 
 # With these considerations in place, the following cell presents a version of the PI control algorithm incorporating both range limits and direct feedback of the manipulated variables.
 
-# In[9]:
+# In[18]:
 
 
 # add anti-integral windup feature.
@@ -244,21 +259,20 @@ def PI_antiwindup(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
     while True:
         t_step, SP, PV, MV = yield MV       # <= now gets MV from experiment
         e = PV - SP
-        MV += -Kp*(e - e_prev) - t_step*Ki*e 
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e 
         MV = max(MV_min, min(MV_max, MV))   # <= range limits
         e_prev = e
         
 experiment_2(PI_antiwindup(10, 0.5))
 
 
-# ## Manual Operation
+# ## Manual to Auto Transition: Bumpless Transfer
 # 
 # Manual operation can be implemented by specifying the manipulated variable. We will implement this by specifying a function that specifies values of manipulated variable whenever manual conteol is in effect. 
 
-# In[10]:
+# In[19]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 def experiment_3(controller, t_final=1000, t_step=5,
@@ -269,8 +283,10 @@ def experiment_3(controller, t_final=1000, t_step=5,
     with TCLab() as lab:
 
         # set up historian and plotter
-        h = Historian(lab.sources)
-        p = Plotter(h, t_final)
+        sources = (("T1", lambda: lab.T1), ("SP", lambda: SP(t)), 
+                   ("U1", lambda: U1), ("Q1", lab.Q1))
+        h = Historian(sources)
+        p = Plotter(h, t_final, layout=[("T1", "SP"), ("Q1", "U1")])
 
         # initialize manipulated variable
         lab.P1 = 200
@@ -294,6 +310,7 @@ experiment_3(PI_antiwindup(10, 0.5))
 # ## Bumpless Transfer
 # 
 # * Remove setpoint from proportional term
+# * Only the integral control term incorporates the setpoint. 
 
 # ### Bumpless Transfer
 # 
@@ -306,7 +323,7 @@ experiment_3(PI_antiwindup(10, 0.5))
 # MV_k & = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 # \end{align}
 
-# In[11]:
+# In[21]:
 
 
 # add anti-integral windup feature.
@@ -323,4 +340,10 @@ def PI_bumpless(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
         PV_prev = PV
         
 experiment_3(PI_bumpless(10, 0.5))
+
+
+# In[ ]:
+
+
+
 

@@ -25,7 +25,7 @@
 # 
 # If the system exhibits a negative-going response to a postive change in the manipiulated variable, then the sign of the proportional gain must also be negative to assure negative feedback control.
 # 
-# ![](https://www.biologycorner.com/resources/feedback-loop-glucose.png)
+# ![](http://4.bp.blogspot.com/-ZKMZhvwDJ2o/UM3-y4BDIqI/AAAAAAAAAbM/PIsa1XpziNg/s1600/fbl+glucose.gif)
 # 
 # **Positive feedback** is encountered in social, economic, and biological systems where there is a desire to amplify a desirable outcome. Positive feedback can induce good behaviors, result in 'virtuous' cycles of innovation and development, or wealth creation. But in most hard engineering situations, the immediate objective is to cause a variable to track a setpoint for which negative feedback is enabling technology
 # 
@@ -33,7 +33,7 @@
 # 
 # **Study Question:** Describe the two types of negative feedback taking place in the glucose/insulin/glucagon system diagrammed above. 
 # 
-# **Study Question:** Why are two feedback loops necessary in this biological system? Can you think of an analogy for temperature control of a PCR thermal cycler?
+# **Study Question:** Why are two feedback loops necessary in this biological system? Can you think of an analogy for temperature control of the Temperature Control Lab?
 # 
 # **Study Question:** For the glucose feedback loops diagrammed above, describe at least one physiological source disturbance for each.
 # 
@@ -43,7 +43,7 @@
 
 # ## Proportional Control
 
-# ### Descripton
+# ### Description
 # 
 # **Proportional control** adjusts the manipulated variable in proportion to the error between the setpoint and measured process variable.
 # 
@@ -79,64 +79,109 @@
 # 
 # Using the Python `yield` statement, n instance of a proportional controller is created by specifying the gain $K_P$, upper and lower bounds on the manipulated variable, and the offset value $\bar{MV}$.
 
-# In[1]:
+# In[64]:
 
 
-def P(Kp, MV_bar=0):
+def PI(Kp, Ki, t_step, MV_bar=0):
     MV = MV_bar
+    e_prev = 0
     while True:
         SP, PV = yield MV
         e = PV - SP
-        MV = MV_bar - Kp*e
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e
+        MV = max(0, min(100, MV))
+        e_prev = e
 
 
-# ### Controller Testing
-
-# Let's see how the proportional control works when applied to the Temperature Control Laboratory. For this simulation we set $\bar{MV} = 0$ and $K_p = 3.0$.
-# 
-# The following cell creates a function `experiment` that we can use to test controllers. The experiment tests the ability of the control to:
-# 
-# 1. maintain a setpoint point for temperature T1, and
-# 2. suppress the influence of a disturbance due to switching on the second heater.
-# 
-# 
-
-# In[2]:
+# In[65]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 from tclab import TCLab, clock, Historian, Plotter, setup
 
-def setpoint(t):
+TCLab = setup(connected=False, speedup=10)
+
+def SP(t):
+    return 40 if t >= 20 else 25
+
+def DV(t):
+    return 100 if t >= 200 else 0
+
+t_final = 600
+t_step = 2
+
+controller = PI(3, 0.2, t_step)
+
+with TCLab() as lab:
+
+    sources = [["T1", lambda: lab.T1],
+               ["SP1", lambda: SP(t)],
+               ["E1", lambda: lab.T1 - SP(t)],
+               ["Q1", lab.Q1]]
+    
+    h = Historian(sources)
+    p = Plotter(h, t_final, layout=[["T1", "SP1"], ["E1"], ["Q1"]])
+    
+    lab.P1 = 200
+    lab.P2 = 255
+    lab.Q1(next(controller))
+
+    # event loop
+    for t in clock(t_final, t_step):
+        T1 = lab.T1
+        U1 = controller.send((SP(t), T1))
+        lab.Q1(U1)
+        lab.Q2(DV(t))
+        p.update(t)
+
+
+# In[ ]:
+
+
+lab.
+
+
+# ### Testing with Disturbance Inputs
+
+# Let's see how proportional control works when applied to the Temperature Control Laboratory. For this simulation we set $\bar{MV} = 0$ and $K_p = 3.0$.
+
+# In[23]:
+
+
+from tclab import TCLab, clock, Historian, Plotter, setup
+TCLab = setup(connected=False, speedup=60)
+
+def SP(t):
     return 40 if t >= 20 else 0
 
-def disturbance(t):
+def DV(t):
     return 100 if t>= 220 else 0
 
-def experiment(controller, t_step=2, t_final=450,
-               SP=lambda t: 40 if t >= 20 else 0, 
-               DV=lambda t: 100 if t >= 220 else 0):
-
-    TCLab = setup(connected=False, speedup=60)
-    with TCLab() as lab:
-        h = Historian(lab.sources)
-        p = Plotter(h, t_final)
-
-        # initialize manipulated variable
-        lab.P1 = 200
-        lab.P2 = 200
-        lab.Q1(next(controller))
-
-        # event loop
-        for t in clock(t_final, t_step):
-            T1 = lab.T1
-            U1 = controller.send((SP(t), T1))
-            lab.Q1(U1)
-            lab.Q2(DV(t))
-            p.update(t)    
-            
 controller = P(3.0)
-experiment(controller, SP=setpoint, DV=disturbance)
+
+t_final = 600
+t_step = 2
+
+with TCLab() as lab:
+    sources = [("T1", lambda: lab.T1),
+               ("Q1", lab.Q1),
+               ("DV", lab.Q2),
+               ("SP1", lambda: SP(t))]
+    h = Historian(sources)
+    layout = [["T1", "SP1"], ["Q1"], ["DV"]]
+    p = Plotter(h, t_final, layout=layout)
+    
+    # initialize manipulated variable
+    lab.P1 = 200
+    lab.P2 = 200
+    lab.Q1(next(controller))
+
+    # event loop
+    for t in clock(t_final, t_step):
+        T1 = lab.T1
+        U1 = controller.send((SP(t), T1))
+        lab.Q1(U1)
+        lab.Q2(DV(t))
+        p.update(t)    
 
 
 # For systems without significant time delay and with properly chosen parameters, proportional control can achieve a fast response to changes in setpoint. Note, however, the steady state may be different than the desired setpoint, sometimes unacceptably different. This steady-state error a short-coming of purely proportional control.
@@ -169,6 +214,31 @@ experiment(controller, SP=setpoint, DV=disturbance)
 # **Study Question:** Test the simulation for values of $K_p$ that are twice as large, and half as large as demonstrated above. What do you notice about the steady-state error between the desired setpoint and the measured process variable?
 # 
 # <hr>
+
+# ## History Time-Out
+# 
+# 
+# Boulton and Watt Steam Engine
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/SteamEngine_Boulton%26Watt_1784.png/1280px-SteamEngine_Boulton%26Watt_1784.png)
+# 
+# [Governor](https://youtu.be/B01LgS8S5C8?t=42)
+# 
+# PID Control
+# 
+# ![](https://owaysonline.com/wp-content/uploads/Block-Diagram-of-Ships-Auto-Pilot.png)
+# 
+# Pneumatic Control
+# 
+# ![](https://forumautomation.com/uploads/default/original/2X/8/80d57597e66ff4a5dae1243f91e0bf8c9e1d0dcb.png)
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pneumatische_regelaar.jpg/640px-Pneumatische_regelaar.jpg)
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Smart_current_loop_positioner.png/1024px-Smart_current_loop_positioner.png?1645118511583)
+# 
+# ![](https://www.amazon.com/pid-controller/s?k=pid+controller)
+# 
+# 
 
 # ## Proportional-Integral (PI) Control
 
@@ -227,20 +297,58 @@ experiment(controller, SP=setpoint, DV=disturbance)
 # 
 # with $MV_0 = \bar{MV}$. Let's see how this works.
 
-# In[3]:
+# In[60]:
 
 
-def PI(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
+def PI(Kp, Ki, MV_bar=0):
     MV = MV_bar
     e_prev = 0
     while True:
         SP, PV = yield MV
         e = PV - SP
-        MV += -Kp*(e - e_prev) - Ki*e
+        MV = MV - Kp*(e - e_prev) - t_step*Ki*e
         e_prev = e
         
-PI_controller = PI(3, 0.2)
-experiment(PI_controller)
+
+
+# In[30]:
+
+
+from tclab import TCLab, clock, Historian, Plotter, setup
+TCLab = setup(connected=False, speedup=60)
+
+def SP(t):
+    return 60 if t >= 20 else 0
+
+def DV(t):
+    return 100 if t>= 220 else 0
+
+controller = PI(3, 0.2)
+
+t_final = 450
+t_step = 2
+
+with TCLab() as lab:
+    sources = [("T1", lambda: lab.T1),
+               ("Q1", lab.Q1),
+               ("DV", lab.Q2),
+               ("SP1", lambda: SP(t))]
+    h = Historian(sources)
+    layout = [["T1", "SP1"], ["Q1"], ["DV"]]
+    p = Plotter(h, t_final, layout=layout)
+    
+    # initialize manipulated variable
+    lab.P1 = 200
+    lab.P2 = 200
+    lab.Q1(next(controller))
+
+    # event loop
+    for t in clock(t_final, t_step):
+        T1 = lab.T1
+        U1 = controller.send((SP(t), T1))
+        lab.Q1(U1)
+        lab.Q2(DV(t))
+        p.update(t)    
 
 
 # As we can see from this example, an important practical property of proportonal-integral control is **steady-state tracking of the setpoint.** In other words, for a steaady setpoint $\bar{SP}$, at steady-state 
