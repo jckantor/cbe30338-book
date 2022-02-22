@@ -26,6 +26,7 @@ parse:
     - substitution
     - colon_fence
     - amsmath
+    - deflist
 
 # Define the name of the latex output file for PDF builds
 latex:

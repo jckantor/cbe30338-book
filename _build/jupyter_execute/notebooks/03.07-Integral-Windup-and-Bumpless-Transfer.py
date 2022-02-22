@@ -24,6 +24,23 @@
 #          * What is bumpless transfer?
 #          * Manual to Auto transition
 
+# ## Vocabulary
+# 
+# Process control is full of specialized language to describe control systems and their performance. Here are is a vocabulary list for this notebook.
+# 
+# Reset-windup
+# 
+# : Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these cases, error signal can never return to zero causing the integration of the error signal to "wind-up".
+# 
+# Anti-reset-windup
+# 
+# : A modification to the standard PI and PID control algorithms to (1) avoid out-of range values of the manipulated variables (MV), and (2) incorporate field measurements of the manipulated variable. Anti-reset-windup avoids infeasible values of the manipulated variable due to infeasible setpoints or situations where the actuator is not responding to inputs.
+# 
+# Bumpless transfer
+# 
+# : A modification to the standard PI and PID control algorithms to avoid sudden jumps in manipulated variable when switching from manual to automatic control. 
+# 
+
 # ## PI Control
 # 
 # Proportional-Integral (PI) Control is velecity form
@@ -63,13 +80,13 @@ def PI(Kp, Ki, MV_bar=0):
 # 
 # The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.
 
-# In[11]:
+# In[2]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 def experiment(controller, t_step=5, t_final=1000,
-               SP=lambda t: 40 if t >= 20 else 0, 
+               SP=lambda t: 40 if t >= 20 else 20, 
                DV=lambda t: 100 if t >= 420 else 0):
 
     TCLab = setup(connected=False, speedup=60)
@@ -93,7 +110,7 @@ def experiment(controller, t_step=5, t_final=1000,
             p.update(t)
 
 
-# In[12]:
+# In[3]:
 
 
 experiment(PI(5, 0.05))
@@ -103,7 +120,7 @@ experiment(PI(5, 0.05))
 # 
 # Let's increase the magnitude of the control gains to see if we an acheive even better control performance.
 
-# In[13]:
+# In[4]:
 
 
 experiment(PI(10, 0.5))
@@ -141,7 +158,7 @@ experiment(PI(10, 0.5))
 # \end{cases}
 # \end{align}
 
-# In[14]:
+# In[5]:
 
 
 # add anti-integral windup feature. Not yet final.
@@ -179,7 +196,7 @@ experiment(PI_antiwindup_1(10, 0.5))
 
 # This behavior also occurs in the Temperature Control Laboratory in which the manipulated power levels are constrained to the range 0% to 100%. This is demonstated in the following cell.
 
-# In[15]:
+# In[6]:
 
 
 # show that inputs to the TCLab are constrained to the range 0 to 100%
@@ -193,7 +210,7 @@ with TCLab() as lab:
 
 # To accomodate feedback of the manipulated variable, we first need to modify the event loop to incorporate the measurement of the manipulated variable, then send that value to the controller.
 
-# In[16]:
+# In[7]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -226,7 +243,7 @@ def experiment_2(controller, t_final=1000, t_step=5,
 
 # The next change is to the controller. The controller now accepts values for PV, SP, and, additionally, MV. To demonstrate the impact of these changes, this example will comment out the software limits placed on MV to show that feedback of manipulated variable is also an anti-reset windwup strategy.
 
-# In[17]:
+# In[8]:
 
 
 # add anti-integral windup feature. Not yet final.
@@ -248,7 +265,7 @@ experiment_2(PI_antiwindup_2(10, 0.5))
 # 
 # With these considerations in place, the following cell presents a version of the PI control algorithm incorporating both range limits and direct feedback of the manipulated variables.
 
-# In[18]:
+# In[9]:
 
 
 # add anti-integral windup feature.
@@ -270,7 +287,7 @@ experiment_2(PI_antiwindup(10, 0.5))
 # 
 # Manual operation can be implemented by specifying the manipulated variable. We will implement this by specifying a function that specifies values of manipulated variable whenever manual conteol is in effect. 
 
-# In[19]:
+# In[10]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -323,7 +340,7 @@ experiment_3(PI_antiwindup(10, 0.5))
 # MV_k & = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 # \end{align}
 
-# In[21]:
+# In[11]:
 
 
 # add anti-integral windup feature.
@@ -340,6 +357,12 @@ def PI_bumpless(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
         PV_prev = PV
         
 experiment_3(PI_bumpless(10, 0.5))
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
