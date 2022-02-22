@@ -733,45 +733,50 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vocabulary">
+   3.7.2. Vocabulary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pi-control">
-   3.7.2. PI Control
+   3.7.3. PI Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-integral-windup">
-   3.7.3. What is Integral Windup?
+   3.7.4. What is Integral Windup?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-version-1">
-     3.7.3.1. Anti-reset windup - Version 1
+     3.7.4.1. Anti-reset windup - Version 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-version-2">
-     3.7.3.2. Anti-reset Windup - Version 2
+     3.7.4.2. Anti-reset Windup - Version 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-complete">
-     3.7.3.3. Anti-reset Windup - Complete
+     3.7.4.3. Anti-reset Windup - Complete
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manual-to-auto-transition-bumpless-transfer">
-   3.7.4. Manual to Auto Transition: Bumpless Transfer
+   3.7.5. Manual to Auto Transition: Bumpless Transfer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bumpless-transfer">
-   3.7.5. Bumpless Transfer
+   3.7.6. Bumpless Transfer
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     3.7.5.1. Bumpless Transfer
+     3.7.6.1. Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -802,45 +807,50 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vocabulary">
+   3.7.2. Vocabulary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pi-control">
-   3.7.2. PI Control
+   3.7.3. PI Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-integral-windup">
-   3.7.3. What is Integral Windup?
+   3.7.4. What is Integral Windup?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-version-1">
-     3.7.3.1. Anti-reset windup - Version 1
+     3.7.4.1. Anti-reset windup - Version 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-version-2">
-     3.7.3.2. Anti-reset Windup - Version 2
+     3.7.4.2. Anti-reset Windup - Version 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anti-reset-windup-complete">
-     3.7.3.3. Anti-reset Windup - Complete
+     3.7.4.3. Anti-reset Windup - Complete
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manual-to-auto-transition-bumpless-transfer">
-   3.7.4. Manual to Auto Transition: Bumpless Transfer
+   3.7.5. Manual to Auto Transition: Bumpless Transfer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bumpless-transfer">
-   3.7.5. Bumpless Transfer
+   3.7.6. Bumpless Transfer
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     3.7.5.1. Bumpless Transfer
+     3.7.6.1. Bumpless Transfer
     </a>
    </li>
   </ul>
@@ -889,16 +899,28 @@
 </li>
 </ul>
 </div>
+<div class="section" id="vocabulary">
+<h2><span class="section-number">3.7.2. </span>Vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h2>
+<p>Process control is full of specialized language to describe control systems and their performance. Here are is a vocabulary list for this notebook.</p>
+<dl class="simple myst">
+<dt>Reset-windup</dt><dd><p>Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these cases, error signal can never return to zero causing the integration of the error signal to “wind-up”.</p>
+</dd>
+<dt>Anti-reset-windup</dt><dd><p>A modification to the standard PI and PID control algorithms to (1) avoid out-of range values of the manipulated variables (MV), and (2) incorporate field measurements of the manipulated variable. Anti-reset-windup avoids infeasible values of the manipulated variable due to infeasible setpoints or situations where the actuator is not responding to inputs.</p>
+</dd>
+<dt>Bumpless transfer</dt><dd><p>A modification to the standard PI and PID control algorithms to avoid sudden jumps in manipulated variable when switching from manual to automatic control.</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="pi-control">
-<h2><span class="section-number">3.7.2. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.3. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-101055c2-4e2e-4997-b14a-9ff3027ebba6">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-101055c2-4e2e-4997-b14a-9ff3027ebba6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ab4457e7-f0fd-406c-b080-e25cf508977b">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-ab4457e7-f0fd-406c-b080-e25cf508977b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0cf97511-062e-4768-9308-b0819e18244f">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-0cf97511-062e-4768-9308-b0819e18244f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dc7efa65-3f79-4329-b19c-77d5f15db787">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-dc7efa65-3f79-4329-b19c-77d5f15db787" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -927,7 +949,7 @@ e_k &amp; = PV_k - SP_k \\
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
 
 <span class="k">def</span> <span class="nf">experiment</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">t_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-               <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> 
+               <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">20</span><span class="p">,</span> 
                <span class="n">DV</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">420</span> <span class="k">else</span> <span class="mi">0</span><span class="p">):</span>
 
     <span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
@@ -960,16 +982,16 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_6_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_6_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_7_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_7_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_6_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_6_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_7_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_7_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="what-is-integral-windup">
-<h2><span class="section-number">3.7.3. </span>What is Integral Windup?<a class="headerlink" href="#what-is-integral-windup" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.4. </span>What is Integral Windup?<a class="headerlink" href="#what-is-integral-windup" title="Permalink to this headline">¶</a></h2>
 <p>Let’s increase the magnitude of the control gains to see if we an acheive even better control performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -978,17 +1000,17 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_8_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_8_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_8_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_8_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_2.png" />
 </div>
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-815681a5-4ba3-48e6-9c36-c9d95a0608eb">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-815681a5-4ba3-48e6-9c36-c9d95a0608eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2b22a7de-f745-4ddd-9d53-ebe42db546b0">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-2b22a7de-f745-4ddd-9d53-ebe42db546b0" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
@@ -996,14 +1018,14 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 <hr>
 <p><strong>Integral (aka Reset) windup is a consequence the controller computing values for the manipulable input that are outside the range of feasible values. The difference is due to the presence of upper and lower bounds on the manipulated variable.</strong></p>
 <div class="section" id="anti-reset-windup-version-1">
-<h3><span class="section-number">3.7.3.1. </span>Anti-reset windup - Version 1<a class="headerlink" href="#anti-reset-windup-version-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.4.1. </span>Anti-reset windup - Version 1<a class="headerlink" href="#anti-reset-windup-version-1" title="Permalink to this headline">¶</a></h3>
 <p>There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of values that can be implemented in the actual process. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7db1ad7d-5997-46f2-8ef8-cd232033a361">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-7db1ad7d-5997-46f2-8ef8-cd232033a361" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-062f7c1f-1e88-434e-9ae6-099db381bc31">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-062f7c1f-1e88-434e-9ae6-099db381bc31" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-67b5794f-e0e4-4988-92b1-0e28d0eeb801">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-67b5794f-e0e4-4988-92b1-0e28d0eeb801" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fa03a112-0671-422e-a000-3c0c6c115253">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-fa03a112-0671-422e-a000-3c0c6c115253" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1029,16 +1051,16 @@ MV^{max} &amp; \text{if}  \hat{MV_k} \geq MV^{max}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_11_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_11_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_12_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_12_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_11_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_11_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_12_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_12_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="anti-reset-windup-version-2">
-<h3><span class="section-number">3.7.3.2. </span>Anti-reset Windup - Version 2<a class="headerlink" href="#anti-reset-windup-version-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.4.2. </span>Anti-reset Windup - Version 2<a class="headerlink" href="#anti-reset-windup-version-2" title="Permalink to this headline">¶</a></h3>
 <p>A more subtle form of windup occurs when the manipulated variable is subject to external interventions. This can occur when a valve stem in a process application gets stuck, an operator or user intervenes and resets a mechanical actuator, or there is some sort of system failure.</p>
 <p>For these reasons, practical control systems often include a field measurement of the manipulated variable that is fed back to the controller. The following image, for example, shows a pneumatically operated globe valve with a positioner, and with feedback of position to the central control system.</p>
 <p><a href="https://commons.wikimedia.org/wiki/File:Pl_control_valve.jpg#/media/File:Pl_control_valve.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Pl_control_valve.jpg" alt="Pl control valve.jpg" height="720" width="540"></a>
@@ -1123,16 +1145,16 @@ TCLab Model disconnected successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_19_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_19_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_20_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_20_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_19_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_19_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_20_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_20_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="anti-reset-windup-complete">
-<h3><span class="section-number">3.7.3.3. </span>Anti-reset Windup - Complete<a class="headerlink" href="#anti-reset-windup-complete" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7.4.3. </span>Anti-reset Windup - Complete<a class="headerlink" href="#anti-reset-windup-complete" title="Permalink to this headline">¶</a></h3>
 <p>With these considerations in place, the following cell presents a version of the PI control algorithm incorporating both range limits and direct feedback of the manipulated variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1153,17 +1175,17 @@ TCLab Model disconnected successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_21_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_21_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_21_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_21_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_2.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="manual-to-auto-transition-bumpless-transfer">
-<h2><span class="section-number">3.7.4. </span>Manual to Auto Transition: Bumpless Transfer<a class="headerlink" href="#manual-to-auto-transition-bumpless-transfer" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.5. </span>Manual to Auto Transition: Bumpless Transfer<a class="headerlink" href="#manual-to-auto-transition-bumpless-transfer" title="Permalink to this headline">¶</a></h2>
 <p>Manual operation can be implemented by specifying the manipulated variable. We will implement this by specifying a function that specifies values of manipulated variable whenever manual conteol is in effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1203,29 +1225,29 @@ TCLab Model disconnected successfully.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_23_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_23_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_23_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_23_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="bumpless-transfer">
-<h2><span class="section-number">3.7.5. </span>Bumpless Transfer<a class="headerlink" href="#bumpless-transfer" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7.6. </span>Bumpless Transfer<a class="headerlink" href="#bumpless-transfer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Remove setpoint from proportional term</p></li>
 <li><p>Only the integral control term incorporates the setpoint.</p></li>
 </ul>
 <div class="section" id="id1">
-<h3><span class="section-number">3.7.5.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-1039fe71-83c5-4976-a057-887074a0d1d5">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-1039fe71-83c5-4976-a057-887074a0d1d5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<h3><span class="section-number">3.7.6.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="amsmath math notranslate nohighlight" id="equation-f14775c0-40dd-449c-9b0c-8a33459ac2b5">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-f14775c0-40dd-449c-9b0c-8a33459ac2b5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-08ce188a-1799-413b-aa44-e15a47e411f9">
-<span class="eqno">(3.17)<a class="headerlink" href="#equation-08ce188a-1799-413b-aa44-e15a47e411f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4b4b75d9-2d6c-4a85-ac9b-61acfd4d3355">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-4b4b75d9-2d6c-4a85-ac9b-61acfd4d3355" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -1248,11 +1270,11 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_0.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_27_0.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_27_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_2.png" />
+<img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_27_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_27_2.png" />
 </div>
 </div>
 </div>

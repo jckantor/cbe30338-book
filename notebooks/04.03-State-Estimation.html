@@ -992,14 +992,14 @@
 <div class="section" id="heater-sensor-model">
 <h2><span class="section-number">4.4.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this headline">¶</a></h2>
 <p>In chapter two we explored various models for describing the response of the heater/sensor assemblies to heater inputs. For heater/sensor assembly 1 we developed the following model</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d84a6bea-cc24-4cdf-ada1-69a703f8a92a">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-d84a6bea-cc24-4cdf-ada1-69a703f8a92a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-43c60b82-fd07-4cc3-b941-3b029e1a2fca">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-43c60b82-fd07-4cc3-b941-3b029e1a2fca" title="Permalink to this equation">¶</a></span>\[\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, <span class="math notranslate nohighlight">\(U_a\)</span> is the heat transfer coefficient characterizing the exchange of heat with the surroundings, and <span class="math notranslate nohighlight">\(U_b\)</span> is a heat transfer coefficient between the heater and sensor.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a7e50d1-8139-4e76-bc1c-29b20985a8fd">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-1a7e50d1-8139-4e76-bc1c-29b20985a8fd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-48717e2c-8315-49e6-a877-2688c9a3b36b">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-48717e2c-8315-49e6-a877-2688c9a3b36b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
@@ -1010,8 +1010,8 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <div class="section" id="converting-to-a-state-space-model">
 <h2><span class="section-number">4.4.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7aa2d92e-b5f0-46bb-a1b5-89d5bcd91357">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-7aa2d92e-b5f0-46bb-a1b5-89d5bcd91357" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cb36ff73-f9c9-4f8a-af34-4dd431ed5426">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-cb36ff73-f9c9-4f8a-af34-4dd431ed5426" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
