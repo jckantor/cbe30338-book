@@ -760,8 +760,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-operation">
-   3.7.4. Manual Operation
+  <a class="reference internal nav-link" href="#manual-to-auto-transition-bumpless-transfer">
+   3.7.4. Manual to Auto Transition: Bumpless Transfer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -829,8 +829,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-operation">
-   3.7.4. Manual Operation
+  <a class="reference internal nav-link" href="#manual-to-auto-transition-bumpless-transfer">
+   3.7.4. Manual to Auto Transition: Bumpless Transfer
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -856,18 +856,35 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="integral-windup-and-bumpless-transfer">
 <h1><span class="section-number">3.7. </span>Integral Windup and Bumpless Transfer<a class="headerlink" href="#integral-windup-and-bumpless-transfer" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>“the devil is in the details” – anonymous</p>
+</div></blockquote>
+<blockquote>
+<div><p>“and everything is detail” – military expression</p>
+</div></blockquote>
+<blockquote>
+<div><p>“why me?” – the devil</p>
+</div></blockquote>
+<p><img alt="" src="https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png" /></p>
 <div class="section" id="learning-goals">
 <h2><span class="section-number">3.7.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<p>Up to this point we have been giving a “textbook” introduction to proportional-integral (PI) control. There is a world of difference between “textbook” and “practical”.</p>
 <ul class="simple">
 <li><p>Explain the purpose of each of the following enhancements of ‘textbook’ PI control:</p>
 <ul>
 <li><p>Anti-reset windup</p>
 <ul>
-<li><p>Control algorithm modifications</p></li>
-<li><p>Event loop modifications</p></li>
+<li><p>What is reset windup?</p></li>
+<li><p>Fix 1: Insert limits on the manipulated variable (MV)</p></li>
+<li><p>Fix 2: If possible, get field measurements of the manipulated variable (MV)</p></li>
 </ul>
 </li>
-<li><p>Bumpless Transfer</p></li>
+<li><p>Bumpless Transfer</p>
+<ul>
+<li><p>What is bumpless transfer?</p></li>
+<li><p>Manual to Auto transition</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -875,13 +892,13 @@
 <div class="section" id="pi-control">
 <h2><span class="section-number">3.7.2. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7ccd7014-717f-412c-82d8-a49c6ee85e08">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-7ccd7014-717f-412c-82d8-a49c6ee85e08" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-101055c2-4e2e-4997-b14a-9ff3027ebba6">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-101055c2-4e2e-4997-b14a-9ff3027ebba6" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50115a1c-3cb2-41a1-9e5a-63375845e16e">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-50115a1c-3cb2-41a1-9e5a-63375845e16e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0cf97511-062e-4768-9308-b0819e18244f">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-0cf97511-062e-4768-9308-b0819e18244f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -896,7 +913,7 @@ e_k &amp; = PV_k - SP_k \\
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
         <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
 </pre></div>
 </div>
@@ -907,8 +924,7 @@ e_k &amp; = PV_k - SP_k \\
 <p>The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
 
 <span class="k">def</span> <span class="nf">experiment</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">t_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
                <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> 
@@ -916,8 +932,10 @@ e_k &amp; = PV_k - SP_k \\
 
     <span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> 
+                   <span class="p">(</span><span class="s2">&quot;U1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">U1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;U1&quot;</span><span class="p">)])</span>
 
         <span class="c1"># initialize manipulated variable</span>
         <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
@@ -969,8 +987,8 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9cae81bc-032e-42f2-90c8-ffbddf0ac3a5">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-9cae81bc-032e-42f2-90c8-ffbddf0ac3a5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-815681a5-4ba3-48e6-9c36-c9d95a0608eb">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-815681a5-4ba3-48e6-9c36-c9d95a0608eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
@@ -980,12 +998,12 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
 <div class="section" id="anti-reset-windup-version-1">
 <h3><span class="section-number">3.7.3.1. </span>Anti-reset windup - Version 1<a class="headerlink" href="#anti-reset-windup-version-1" title="Permalink to this headline">¶</a></h3>
 <p>There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of values that can be implemented in the actual process. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53093b7b-330f-4a51-98bd-32bd51404e0a">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-53093b7b-330f-4a51-98bd-32bd51404e0a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7db1ad7d-5997-46f2-8ef8-cd232033a361">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-7db1ad7d-5997-46f2-8ef8-cd232033a361" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-ec9d45f3-c18b-4664-9b2b-9f30d8a79ade">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-ec9d45f3-c18b-4664-9b2b-9f30d8a79ade" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-67b5794f-e0e4-4988-92b1-0e28d0eeb801">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-67b5794f-e0e4-4988-92b1-0e28d0eeb801" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1002,7 +1020,7 @@ MV^{max} &amp; \text{if}  \hat{MV_k} \geq MV^{max}
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
         <span class="n">MV</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MV_max</span><span class="p">,</span> <span class="n">MV</span><span class="p">))</span>
         <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
 
@@ -1055,8 +1073,7 @@ TCLab Model disconnected successfully.
 <p>To accomodate feedback of the manipulated variable, we first need to modify the event loop to incorporate the measurement of the manipulated variable, then send that value to the controller.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
 
 <span class="k">def</span> <span class="nf">experiment_2</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">t_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> 
@@ -1065,8 +1082,10 @@ TCLab Model disconnected successfully.
     <span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
 
         <span class="c1"># set up historian and plotter</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> 
+                   <span class="p">(</span><span class="s2">&quot;U1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">U1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;U1&quot;</span><span class="p">)])</span>
 
         <span class="c1"># initialize manipulated variable</span>
         <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
@@ -1095,7 +1114,7 @@ TCLab Model disconnected successfully.
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">,</span> <span class="n">MV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>   <span class="c1"># &lt;==== now gets MV from experiment</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
         <span class="c1"># MV = max(MV_min, min(MV_max, MV)) # &lt;=== turn this off for demo</span>
         <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
 
@@ -1125,7 +1144,7 @@ TCLab Model disconnected successfully.
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">,</span> <span class="n">MV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>       <span class="c1"># &lt;= now gets MV from experiment</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
         <span class="n">MV</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MV_max</span><span class="p">,</span> <span class="n">MV</span><span class="p">))</span>   <span class="c1"># &lt;= range limits</span>
         <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
         
@@ -1143,13 +1162,12 @@ TCLab Model disconnected successfully.
 </div>
 </div>
 </div>
-<div class="section" id="manual-operation">
-<h2><span class="section-number">3.7.4. </span>Manual Operation<a class="headerlink" href="#manual-operation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="manual-to-auto-transition-bumpless-transfer">
+<h2><span class="section-number">3.7.4. </span>Manual to Auto Transition: Bumpless Transfer<a class="headerlink" href="#manual-to-auto-transition-bumpless-transfer" title="Permalink to this headline">¶</a></h2>
 <p>Manual operation can be implemented by specifying the manipulated variable. We will implement this by specifying a function that specifies values of manipulated variable whenever manual conteol is in effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
 
 <span class="k">def</span> <span class="nf">experiment_3</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">t_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> 
@@ -1159,8 +1177,10 @@ TCLab Model disconnected successfully.
     <span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
 
         <span class="c1"># set up historian and plotter</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">)</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> 
+                   <span class="p">(</span><span class="s2">&quot;U1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">U1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;U1&quot;</span><span class="p">)])</span>
 
         <span class="c1"># initialize manipulated variable</span>
         <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
@@ -1195,16 +1215,17 @@ TCLab Model disconnected successfully.
 <h2><span class="section-number">3.7.5. </span>Bumpless Transfer<a class="headerlink" href="#bumpless-transfer" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Remove setpoint from proportional term</p></li>
+<li><p>Only the integral control term incorporates the setpoint.</p></li>
 </ul>
 <div class="section" id="id1">
 <h3><span class="section-number">3.7.5.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-02110bd6-6203-4990-b1b8-480482a056ee">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-02110bd6-6203-4990-b1b8-480482a056ee" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1039fe71-83c5-4976-a057-887074a0d1d5">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-1039fe71-83c5-4976-a057-887074a0d1d5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-36fbb8ee-224c-480f-8633-2519f74f2044">
-<span class="eqno">(3.17)<a class="headerlink" href="#equation-36fbb8ee-224c-480f-8633-2519f74f2044" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-08ce188a-1799-413b-aa44-e15a47e411f9">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-08ce188a-1799-413b-aa44-e15a47e411f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">
