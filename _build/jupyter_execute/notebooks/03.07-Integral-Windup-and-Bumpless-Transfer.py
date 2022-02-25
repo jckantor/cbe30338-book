@@ -8,8 +8,6 @@
 # > "and everything is detail" -- military expression
 # 
 # > "why me?" -- the devil
-# 
-# ![](https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png)
 
 # ## Learning Goals
 # 
@@ -24,22 +22,48 @@
 #          * What is bumpless transfer?
 #          * Manual to Auto transition
 
-# ## Vocabulary
+# ## Glossary
 # 
-# Process control is full of specialized language to describe control systems and their performance. Here are is a vocabulary list for this notebook.
+# Process control is full of specialized language to describe control systems and their performance. Here are is a glossary list for this notebook.
 # 
-# Reset-windup
-# 
-# : Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these cases, error signal can never return to zero causing the integration of the error signal to "wind-up".
+# Reset-windup (also call Integral windup)
+# : Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these situation the error signal (PV - SP) can never return to zero which causes the integration of the error signal to "wind-up".
 # 
 # Anti-reset-windup
-# 
 # : A modification to the standard PI and PID control algorithms to (1) avoid out-of range values of the manipulated variables (MV), and (2) incorporate field measurements of the manipulated variable. Anti-reset-windup avoids infeasible values of the manipulated variable due to infeasible setpoints or situations where the actuator is not responding to inputs.
 # 
 # Bumpless transfer
-# 
 # : A modification to the standard PI and PID control algorithms to avoid sudden jumps in manipulated variable when switching from manual to automatic control. 
 # 
+# P&ID Diagrams
+# : Diagrams showing type and placement of sensors, controllers, actuators, and other instruments used in process control. A typical encoding is given XY where 
+# 
+# | X | Variable |
+# | :---: | :---: |
+# | F | Flow |
+# | L | Level |
+# | P | Pressure | 
+# | T | Temperature |
+# 
+# | Y | Instrument Type |
+# | :---: | :---: |
+# | T | Transmitter |
+# | G | Gauge |
+# | I | Indicator |
+# | IC | Indicating Controller |
+# 
+# : PV
+# Process Variable. Generally a variable that is measured and used for feedback control. Typical examples are flow, level, pressure, and temperature, but may include composition, displacement, and many other variable types.
+# 
+# : MV
+# Manipulated Variable. The variable being manipulated by the controller. Typically a flowrate using a control valve.
+# 
+# : SP
+# Setpoint Variable. A desired value for process variable (PV). The job of the controller is change MV to cause PV to become equal to SP.
+
+# ## Typical P&ID Diagram for PI and PID control.
+# 
+# ![](https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png)
 
 # ## PI Control
 # 
@@ -49,7 +73,7 @@
 # MV_k & = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 # \end{align}
 # 
-# where $MV_0= \bar{MV}$ is the initial value, and the error $e_k$ is the difference between the process variable and setpoint
+# where $MV_0= \bar{MV}$ is the initial value, and the error $e_k$ is the difference between the process variable and setpoint, and $\delta t$ is the time step.
 # 
 # \begin{align}
 # e_k & = PV_k - SP_k \\
@@ -59,11 +83,12 @@
 # 
 # We encode the controller using the Python `yield' statement. The implementation has added `t_step` to facilitate use of this code for situations where we may change the time step or have a variable time step.
 
-# In[1]:
+# ![](figures/sequence-PID-1.png)
+
+# In[23]:
 
 
 # caution: this is not a final version of our PI controller
-
 def PI(Kp, Ki, MV_bar=0):
     MV = MV_bar
     e_prev = 0
@@ -80,12 +105,14 @@ def PI(Kp, Ki, MV_bar=0):
 # 
 # The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.
 
-# In[2]:
+# In[24]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
 
-def experiment(controller, t_step=5, t_final=1000,
+def experiment(controller, 
+               t_step=5, 
+               t_final=1000,
                SP=lambda t: 40 if t >= 20 else 20, 
                DV=lambda t: 100 if t >= 420 else 0):
 
@@ -110,17 +137,17 @@ def experiment(controller, t_step=5, t_final=1000,
             p.update(t)
 
 
-# In[3]:
+# In[25]:
 
 
 experiment(PI(5, 0.05))
 
 
-# ## What is Integral Windup?
+# ## What is Integral/Reset Windup?
 # 
 # Let's increase the magnitude of the control gains to see if we an acheive even better control performance.
 
-# In[4]:
+# In[26]:
 
 
 experiment(PI(10, 0.5))
@@ -131,7 +158,7 @@ experiment(PI(10, 0.5))
 # **Study Question:** Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation
 # 
 # \begin{align}
-# MV_{k} & = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
+# MV_{k} & = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 # \end{align}
 # 
 # Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?  
@@ -140,11 +167,11 @@ experiment(PI(10, 0.5))
 # 
 # <hr>
 # 
-# **Integral (aka Reset) windup is a consequence the controller computing values for the manipulable input that are outside the range of feasible values. The difference is due to the presence of upper and lower bounds on the manipulated variable.**
+# Integral (also called Reset) windup is a consequence the controller computing values for the manipulable input that are outside the range of feasible values. The difference is due to the presence of upper and lower bounds on the manipulated variable.
 
-# ### Anti-reset windup - Version 1
+# ### Anti-reset windup - Type 1
 # 
-# There several common strategies for avoiding integral (aka reset) windup. The first of these, which should be part of any practical implementation, is to limit computed values of manipulated variable to the range of values that can be implemented in the actual process. This will avoid $MV$ 'winding up' due to range limits.
+# There several common strategies for avoiding integral (eset) windup. The first of these should be part of any practical implementation. The technique is to limit computed values of manipulated variable to the range of values that can be implemented. This will avoid $MV$ 'winding up' due to range limits.
 # 
 # \begin{align}
 # \hat{MV}_{k} & = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
@@ -157,12 +184,19 @@ experiment(PI(10, 0.5))
 # MV^{max} & \text{if}  \hat{MV_k} \geq MV^{max}
 # \end{cases}
 # \end{align}
+# 
+# The logic in the if statement can be conveniently coded with a single line of Python
+# 
+# :::python
+# MV = max(MV_min, min(MV_max, MV))
+# :::
+# 
+# Let's see how this works when applied to a simulation of the temperature control lab.
 
-# In[5]:
+# In[27]:
 
 
 # add anti-integral windup feature. Not yet final.
-
 def PI_antiwindup_1(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
     MV = MV_bar
     e_prev = 0
@@ -176,7 +210,7 @@ def PI_antiwindup_1(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
 experiment(PI_antiwindup_1(10, 0.5))
 
 
-# ### Anti-reset Windup - Version 2
+# ### Anti-reset Windup - Type 2
 # 
 # A more subtle form of windup occurs when the manipulated variable is subject to external interventions. This can occur when a valve stem in a process application gets stuck, an operator or user intervenes and resets a mechanical actuator, or there is some sort of system failure. 
 # 
@@ -196,11 +230,10 @@ experiment(PI_antiwindup_1(10, 0.5))
 
 # This behavior also occurs in the Temperature Control Laboratory in which the manipulated power levels are constrained to the range 0% to 100%. This is demonstated in the following cell.
 
-# In[6]:
+# In[28]:
 
 
 # show that inputs to the TCLab are constrained to the range 0 to 100%
-
 TCLab = setup(connected=False, speedup=20)
 with TCLab() as lab:
     print(f"Q1 = {lab.Q1()}")

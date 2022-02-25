@@ -240,6 +240,11 @@
      3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1023,8 +1028,8 @@
 <div class="section" id="step-4-objective-function">
 <h3><span class="section-number">5.2.3.4. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
 <p>If we let subscript <span class="math notranslate nohighlight">\(c\)</span> denote a blending component from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04f5691f-7630-4382-beb7-8ad5386bc861">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-04f5691f-7630-4382-beb7-8ad5386bc861" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9f5af9a1-8b1d-4982-970f-f69de36d6a37">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-9f5af9a1-8b1d-4982-970f-f69de36d6a37" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \mbox{cost} &amp; = \sum_{c\in C} x_c P_c
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(P_c\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(c\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_c\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[c]['cost']</span></code>.</p>

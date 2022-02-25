@@ -369,31 +369,6 @@ with TCLab() as lab:
 # 
 # Steady-state tracking is normally important in chemical process applications. For this reason, PI control is, by far, the most commonly encountered control used in the process industries.
 
-# ## Empirical Tuning Rules
-# 
-# There are a number of **tuning rules** in the literature that provide recommended values for the proportional gain $K_P$. These rules require process information obtained from testing. For a first-order plus time-delay (FOPTD), the available process information includes gain $K$, process time constant $T$, and process time delay $\tau$.
-# 
-# Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks
-# 
-# \begin{align}
-# \text{IAE} & = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
-# \text{ISE} & = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
-# \text{ITAE} & = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
-# \end{align}
-# 
-# Among the best known and commonly used tuning rules are listed in the following table (also see Astrom and Murray, Chapter 11):
-# 
-# | Type | $K_P$ | $K_I$ |
-# | :---: | :---: | :---: |
-# | P (Ziegler-Nichols) | $\frac{T}{K\tau}$ | |
-# | PI (Astrom and Murray) | $\frac{0.15\tau + 0.35T}{K\tau}$ | $\frac{0.46\tau + 0.02T}{K\tau^2}$ |
-# | PI (Aggressvie IMC) | $\frac{T}{K(\tau + \max(0.1T, 0.8\tau)}$ | $\frac{1}{K(\tau + \max(0.1T, 0.8\tau)}$ |
-# | PI (ITAE Tuning) | $\frac{0.586}{K}\left(\frac{\tau}{T}\right)^{-0.916}$  | $\frac{1.03  -  0 .165\left(\frac{\tau}{T}\right)}{T}K_P$ |
-# | PI (Morari and Zafiriou) | $\frac{T + 0.5\tau}{1.7 K \tau}$ | $\frac{1}{1.7K}$ |
-# | PI (Ziegler-Nichols) | $\frac{0.9 T}{K\tau}$ | $\frac{0.3T}{K\tau^2}$ |
-# 
-# 
-
 # <hr>
 # 
 # **Study Question:** Repeat the simulation experiments using the Ziegler-Nichols and the Astrom and Murray tuning rules for PI control. Compare the magnitude of the recommended control constants. Compare the resulting performance in response to regard to both setpoint tracking and disturbance rejection. Compare:

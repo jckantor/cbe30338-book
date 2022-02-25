@@ -240,6 +240,11 @@
      3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -819,8 +824,8 @@
 <div class="section" id="state-space-model">
 <h2><span class="section-number">4.3.1. </span>State-Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6c47be19-0c23-44e8-95d3-99cfe61dbe82">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-6c47be19-0c23-44e8-95d3-99cfe61dbe82" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5da680c4-c265-418b-90c5-57f5431dcdb5">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-5da680c4-c265-418b-90c5-57f5431dcdb5" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
@@ -885,8 +890,8 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <ul class="simple">
 <li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-5edfcf33-be08-49a1-b8f7-a2c5e936a816">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-5edfcf33-be08-49a1-b8f7-a2c5e936a816" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9409790c-aa10-4f23-9379-cb5abbb33f98">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-9409790c-aa10-4f23-9379-cb5abbb33f98" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 \hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
 \end{align}\]</div>
