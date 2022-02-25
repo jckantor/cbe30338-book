@@ -775,21 +775,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pi-control-with-anti-reset-windup-and-bumpless-transfer">
+   3.8.6. PI Control with anti-reset windup and bumpless transfer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event-loop-with-disturbance-variable-and-manual-control">
+   3.8.7. Event Loop with Disturbance Variable and Manual Control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-tuning-rules">
-   3.8.6. Empirical Tuning Rules
+   3.8.8. Empirical Tuning Rules
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rules-based-on-step-reponse">
-     3.8.6.1. Rules based on Step Reponse
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rules-based-on-closed-loop-testing">
-     3.8.6.2. Rules based on Closed Loop Testing
+    <a class="reference internal nav-link" href="#ziegler-nichols-step-test">
+     3.8.8.1. Ziegler-Nichols Step Test
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-assignment-5">
+   3.8.9. Lab Assignment 5
+  </a>
  </li>
 </ul>
 
@@ -854,21 +864,31 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pi-control-with-anti-reset-windup-and-bumpless-transfer">
+   3.8.6. PI Control with anti-reset windup and bumpless transfer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#event-loop-with-disturbance-variable-and-manual-control">
+   3.8.7. Event Loop with Disturbance Variable and Manual Control
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#empirical-tuning-rules">
-   3.8.6. Empirical Tuning Rules
+   3.8.8. Empirical Tuning Rules
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rules-based-on-step-reponse">
-     3.8.6.1. Rules based on Step Reponse
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rules-based-on-closed-loop-testing">
-     3.8.6.2. Rules based on Closed Loop Testing
+    <a class="reference internal nav-link" href="#ziegler-nichols-step-test">
+     3.8.8.1. Ziegler-Nichols Step Test
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-assignment-5">
+   3.8.9. Lab Assignment 5
+  </a>
  </li>
 </ul>
 
@@ -950,44 +970,51 @@
 <li><p><strong>Anti-reset windup</strong>. Limit MV to feasible limits. Use measured MV if available.</p></li>
 <li><p><strong>Bumpless transfer</strong>. Leave SP out of the proportional control term.</p></li>
 </ul>
-<p>Given:</p>
+<p>Given parameters  <span class="math notranslate nohighlight">\(\delta t\)</span>, <span class="math notranslate nohighlight">\(K_P\)</span>, <span class="math notranslate nohighlight">\(K_I\)</span>, <span class="math notranslate nohighlight">\(MV_{min}\)</span>, <span class="math notranslate nohighlight">\(MV_{out}\)</span></p>
+<p>At each time step <span class="math notranslate nohighlight">\( t + \delta t\)</span></p>
+<p>Using</p>
 <ul class="simple">
-<li><p>parameter values <span class="math notranslate nohighlight">\(\delta t\)</span>, <span class="math notranslate nohighlight">\(K_P\)</span>, <span class="math notranslate nohighlight">\(K_I\)</span>, <span class="math notranslate nohighlight">\(MV_{min}\)</span>, <span class="math notranslate nohighlight">\(MV_{out}\)</span></p></li>
 <li><p>prior values <span class="math notranslate nohighlight">\(PV_{k-1}\)</span></p></li>
-<li><p>current values for <span class="math notranslate nohighlight">\(PV_k\)</span>, <span class="math notranslate nohighlight">\(SP_k\)</span>, <span class="math notranslate nohighlight">\(MV_k\)</span> (if available):</p></li>
+<li><p>current values for <span class="math notranslate nohighlight">\(PV_k\)</span>, <span class="math notranslate nohighlight">\(SP_k\)</span>, <span class="math notranslate nohighlight">\(MV_k\)</span> (if available)</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-b87776c5-2ab6-4740-9e97-a14304f3c4f3">
-<span class="eqno">(3.17)<a class="headerlink" href="#equation-b87776c5-2ab6-4740-9e97-a14304f3c4f3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<p>Compute</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
 \\
-E_k &amp; = PV_k - SP_k &amp; \text{Error} \\
+E_k &amp; = SP_k - PV_k &amp; \text{error} \\
 \\
-\hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i E_{k} &amp; \text{Tentative update to MV}\\
+\hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i E_{k} &amp; \text{proposed update to MV}\\
 \\
-MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k) &amp; \text{limit MV}
-\end{align}\]</div>
+MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)) &amp; \text{limit MV to feasible values}
+\end{align*}\]</div>
 </div>
 </div>
 <div class="section" id="pi-control-for-temperature-control-lab">
 <h2><span class="section-number">3.8.5. </span>PI Control for Temperature Control Lab<a class="headerlink" href="#pi-control-for-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/sequence-PID-1.png" /></p>
+</div>
+<div class="section" id="pi-control-with-anti-reset-windup-and-bumpless-transfer">
+<h2><span class="section-number">3.8.6. </span>PI Control with anti-reset windup and bumpless transfer<a class="headerlink" href="#pi-control-with-anti-reset-windup-and-bumpless-transfer" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># caution: this is not a final version of our PI controller</span>
-<span class="k">def</span> <span class="nf">PI</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add anti-integral windup feature.</span>
+<span class="k">def</span> <span class="nf">PI_bumpless</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_bar</span>
-    <span class="n">e_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">PV_prev</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
+        <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">,</span> <span class="n">MV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span> 
         <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
-        <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
+        <span class="k">if</span> <span class="n">PV_prev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">PV</span> <span class="o">-</span> <span class="n">PV_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
+            <span class="n">MV</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MV_max</span><span class="p">,</span> <span class="n">MV</span><span class="p">))</span>
+        <span class="n">PV_prev</span> <span class="o">=</span> <span class="n">PV</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>The benefits of using the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement is that we can use the same code to create multiple instances of controller, each with it’s own parameters and state. The communication between the main event loop and a controller instance is illustrated in this diagram:</p>
-<p><img alt="" src="https://jckantor.github.io/cbe30338-2021/figures/controller-coroutine.png" /></p>
-<p>The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.</p>
+</div>
+<div class="section" id="event-loop-with-disturbance-variable-and-manual-control">
+<h2><span class="section-number">3.8.7. </span>Event Loop with Disturbance Variable and Manual Control<a class="headerlink" href="#event-loop-with-disturbance-variable-and-manual-control" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
@@ -1021,26 +1048,7 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k) &amp; \text{limit MV}
             <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
             <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
             
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add anti-integral windup feature.</span>
-
-<span class="k">def</span> <span class="nf">PI_bumpless</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_bar</span>
-    <span class="n">PV_prev</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">,</span> <span class="n">MV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span> 
-        <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
-        <span class="k">if</span> <span class="n">PV_prev</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">MV</span> <span class="o">+=</span> <span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">PV</span> <span class="o">-</span> <span class="n">PV_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span> 
-            <span class="n">MV</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">MV_min</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">MV_max</span><span class="p">,</span> <span class="n">MV</span><span class="p">))</span>
-        <span class="n">PV_prev</span> <span class="o">=</span> <span class="n">PV</span>
-        
-<span class="n">experiment_3</span><span class="p">(</span><span class="n">PI_bumpless</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="n">experiment_3</span><span class="p">(</span><span class="n">PI_bumpless</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1054,15 +1062,31 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k) &amp; \text{limit MV}
 </div>
 </div>
 <div class="section" id="empirical-tuning-rules">
-<h2><span class="section-number">3.8.6. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.8.8. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of <strong>tuning rules</strong> in the literature that provide recommended values for the proportional gain <span class="math notranslate nohighlight">\(K_P\)</span>. These rules require process information obtained from testing.</p>
-<div class="section" id="rules-based-on-step-reponse">
-<h3><span class="section-number">3.8.6.1. </span>Rules based on Step Reponse<a class="headerlink" href="#rules-based-on-step-reponse" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="ziegler-nichols-step-test">
+<h3><span class="section-number">3.8.8.1. </span>Ziegler-Nichols Step Test<a class="headerlink" href="#ziegler-nichols-step-test" title="Permalink to this headline">¶</a></h3>
+<p>Test Procedure:</p>
+<ol class="simple">
+<li><p>Initialize experiment at a steady state. Confirm the process variable <span class="math notranslate nohighlight">\(PV\)</span> is at a constant value <span class="math notranslate nohighlight">\(PV_1\)</span>. Eliminate any disturbances that might affect the test outcome.</p></li>
+<li><p>Make a step change in the manipulated variable <span class="math notranslate nohighlight">\(MV_1 \rightarrow MV_2\)</span>
+$<span class="math notranslate nohighlight">\( \Delta MV = MV_2 - MV_1\)</span>$</p></li>
+<li><p>Record the process variable <span class="math notranslate nohighlight">\(PV(t)\)</span> until a new steady state <span class="math notranslate nohighlight">\(PV_2\)</span> is reached.
+$<span class="math notranslate nohighlight">\( \Delta PV = PV_2 - PV_1 \)</span>$</p></li>
+<li><p>From the chart for <span class="math notranslate nohighlight">\(PV(t)\)</span> estimate</p></li>
+</ol>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\\
+K &amp; = \frac{\Delta PV}{\Delta MV} &amp; \text{gain} \\
+\tau &amp; &amp; \text{first-order time constant} \\
+\theta &amp; &amp; \text{dead time}
+\end{align*}\]</div>
 <p><img alt="" src="https://cdn-images-1.medium.com/max/421/1*I4X51TgnOaR7CifBWmRFlA.png" /></p>
 <p>For a first-order plus time-delay (FOPTD), the available process information includes gain <span class="math notranslate nohighlight">\(K\)</span>, process time constant <span class="math notranslate nohighlight">\(T\)</span>, and process time delay <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
 <p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9607439e-d313-4bf6-9208-b343ef2f52b8">
-<span class="eqno">(3.18)<a class="headerlink" href="#equation-9607439e-d313-4bf6-9208-b343ef2f52b8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-61521aa2-fee3-4098-969e-2030a01edca8">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-61521aa2-fee3-4098-969e-2030a01edca8" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
 \text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
 \text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
@@ -1077,39 +1101,34 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k) &amp; \text{limit MV}
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:center"><p>P (Ziegler-Nichols)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{T}{K\tau}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{\tau}{K\theta}\)</span></p></td>
 <td class="text-align:center"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p>PI (Astrom and Murray)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.15\tau + 0.35T}{K\tau}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.46\tau + 0.02T}{K\tau^2}\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:center"><p>PI (Aggressvie IMC)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{T}{K(\tau + \max(0.1T, 0.8\tau)}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{K(\tau + \max(0.1T, 0.8\tau)}\)</span></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:center"><p>PI (ITAE Tuning)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.586}{K}\left(\frac{\tau}{T}\right)^{-0.916}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1.03  -  0 .165\left(\frac{\tau}{T}\right)}{T}K_P\)</span></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:center"><p>PI (Morari and Zafiriou)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{T + 0.5\tau}{1.7 K \tau}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{1}{1.7K}\)</span></p></td>
-</tr>
 <tr class="row-odd"><td class="text-align:center"><p>PI (Ziegler-Nichols)</p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.9 T}{K\tau}\)</span></p></td>
-<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.3T}{K\tau^2}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.9 \tau}{K\theta}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.3\tau}{K\theta^2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p>PI (Astrom and Murray)</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.15\theta + 0.35\tau}{K\theta}\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.46\theta + 0.02\tau}{K\theta^2}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="rules-based-on-closed-loop-testing">
-<h3><span class="section-number">3.8.6.2. </span>Rules based on Closed Loop Testing<a class="headerlink" href="#rules-based-on-closed-loop-testing" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://d1.amobbs.com/bbs_upload782111/files_36/ourdev_614499E39LAH.pdf">https://d1.amobbs.com/bbs_upload782111/files_36/ourdev_614499E39LAH.pdf</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method">https://en.wikipedia.org/wiki/Ziegler–Nichols_method</a></p></li>
-</ul>
 </div>
+<div class="section" id="lab-assignment-5">
+<h2><span class="section-number">3.8.9. </span>Lab Assignment 5<a class="headerlink" href="#lab-assignment-5" title="Permalink to this headline">¶</a></h2>
+<p>You will test PI controllers tuned using Step Test experiment and a closed-loop Relay experiment. For testing, use the Chocolate tempering setpoint profile you developed for Lab Assignment 5.</p>
+<ol class="simple">
+<li><p>Perform the Step Test experiment desribed above. Report the following results.</p></li>
+</ol>
+<p>a. The code used to perform the experiment.
+b. Calculations of <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span>.
+c. PI Parameter <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_I\)</span> determined using the “improved” tuning rults.
+d. The code and results of applying this controller to the Chocolate tempering setpoint used in Lab Assignment 4. This time, leave heater 2 off.</p>
+<ol class="simple">
+<li><p>Repeat the previous steps using closed-loop relay control to determine critical gain <span class="math notranslate nohighlight">\(K_c\)</span> and critical period <span class="math notranslate nohighlight">\(T_c\)</span>.</p></li>
+</ol>
 </div>
 </div>
 
