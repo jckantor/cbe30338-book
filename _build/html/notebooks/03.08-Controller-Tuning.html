@@ -790,8 +790,30 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ziegler-nichols-step-test">
-     3.8.8.1. Ziegler-Nichols Step Test
+    <a class="reference internal nav-link" href="#tuning-rules-based-on-step-test-experiments">
+     3.8.8.1. Tuning Rules Based on Step Test Experiments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-test-procedure">
+       3.8.8.1.1. Step Test Procedure
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#control-parameters">
+       3.8.8.1.2. Control Parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#evaluate-control-performance">
+       3.8.8.1.3. Evaluate Control Performance
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuning-rules-based-on-closed-loop-testing">
+     3.8.8.2. Tuning Rules based on Closed Loop Testing
     </a>
    </li>
   </ul>
@@ -879,8 +901,30 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ziegler-nichols-step-test">
-     3.8.8.1. Ziegler-Nichols Step Test
+    <a class="reference internal nav-link" href="#tuning-rules-based-on-step-test-experiments">
+     3.8.8.1. Tuning Rules Based on Step Test Experiments
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-test-procedure">
+       3.8.8.1.1. Step Test Procedure
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#control-parameters">
+       3.8.8.1.2. Control Parameters
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#evaluate-control-performance">
+       3.8.8.1.3. Evaluate Control Performance
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tuning-rules-based-on-closed-loop-testing">
+     3.8.8.2. Tuning Rules based on Closed Loop Testing
     </a>
    </li>
   </ul>
@@ -991,6 +1035,7 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)) &amp; \text{limit MV to 
 </div>
 <div class="section" id="pi-control-for-temperature-control-lab">
 <h2><span class="section-number">3.8.5. </span>PI Control for Temperature Control Lab<a class="headerlink" href="#pi-control-for-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
+<p>The following sequence diagram shows the flow of information for one measure-compute-act-record cycle of the control system is shown in the following sequence diagram</p>
 <p><img alt="" src="../_images/sequence-PID-1.png" /></p>
 </div>
 <div class="section" id="pi-control-with-anti-reset-windup-and-bumpless-transfer">
@@ -1047,34 +1092,47 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)) &amp; \text{limit MV to 
             <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
             <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
             <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
-            
-<span class="n">experiment_3</span><span class="p">(</span><span class="n">PI_bumpless</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">experiment_3</span><span class="p">(</span><span class="n">PI_bumpless</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/03.08-Controller-Tuning_11_0.png" src="../_images/03.08-Controller-Tuning_11_0.png" />
+<img alt="../_images/03.08-Controller-Tuning_12_0.png" src="../_images/03.08-Controller-Tuning_12_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/03.08-Controller-Tuning_11_2.png" src="../_images/03.08-Controller-Tuning_11_2.png" />
+<img alt="../_images/03.08-Controller-Tuning_12_2.png" src="../_images/03.08-Controller-Tuning_12_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="empirical-tuning-rules">
 <h2><span class="section-number">3.8.8. </span>Empirical Tuning Rules<a class="headerlink" href="#empirical-tuning-rules" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of <strong>tuning rules</strong> in the literature that provide recommended values for the proportional gain <span class="math notranslate nohighlight">\(K_P\)</span>. These rules require process information obtained from testing.</p>
-<div class="section" id="ziegler-nichols-step-test">
-<h3><span class="section-number">3.8.8.1. </span>Ziegler-Nichols Step Test<a class="headerlink" href="#ziegler-nichols-step-test" title="Permalink to this headline">¶</a></h3>
-<p>Test Procedure:</p>
+<div class="section" id="tuning-rules-based-on-step-test-experiments">
+<h3><span class="section-number">3.8.8.1. </span>Tuning Rules Based on Step Test Experiments<a class="headerlink" href="#tuning-rules-based-on-step-test-experiments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step-test-procedure">
+<h4><span class="section-number">3.8.8.1.1. </span>Step Test Procedure<a class="headerlink" href="#step-test-procedure" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
 <li><p>Initialize experiment at a steady state. Confirm the process variable <span class="math notranslate nohighlight">\(PV\)</span> is at a constant value <span class="math notranslate nohighlight">\(PV_1\)</span>. Eliminate any disturbances that might affect the test outcome.</p></li>
-<li><p>Make a step change in the manipulated variable <span class="math notranslate nohighlight">\(MV_1 \rightarrow MV_2\)</span>
-$<span class="math notranslate nohighlight">\( \Delta MV = MV_2 - MV_1\)</span>$</p></li>
-<li><p>Record the process variable <span class="math notranslate nohighlight">\(PV(t)\)</span> until a new steady state <span class="math notranslate nohighlight">\(PV_2\)</span> is reached.
-$<span class="math notranslate nohighlight">\( \Delta PV = PV_2 - PV_1 \)</span>$</p></li>
-<li><p>From the chart for <span class="math notranslate nohighlight">\(PV(t)\)</span> estimate</p></li>
+<li><p>Make a step change in the manipulated variable <span class="math notranslate nohighlight">\(MV_1 \rightarrow MV_2\)</span></p></li>
 </ol>
+<div class="math notranslate nohighlight">
+\[ \Delta MV = MV_2 - MV_1\]</div>
+<ol class="simple">
+<li><p>Record the process variable <span class="math notranslate nohighlight">\(PV(t)\)</span> until a new steady state <span class="math notranslate nohighlight">\(PV_2\)</span> is reached.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ \Delta PV = PV_2 - PV_1 \]</div>
+</div>
+<div class="section" id="control-parameters">
+<h4><span class="section-number">3.8.8.1.2. </span>Control Parameters<a class="headerlink" href="#control-parameters" title="Permalink to this headline">¶</a></h4>
+<p>Using <span class="math notranslate nohighlight">\(PV(t)\)</span> and the following chart, compute values for a first-order plus dead-time model parameters for gain (<span class="math notranslate nohighlight">\(K\)</span>), process time constant (<span class="math notranslate nohighlight">\(\tau\)</span>), and dead-time (<span class="math notranslate nohighlight">\(\theta\)</span>).</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \\
@@ -1083,15 +1141,7 @@ K &amp; = \frac{\Delta PV}{\Delta MV} &amp; \text{gain} \\
 \theta &amp; &amp; \text{dead time}
 \end{align*}\]</div>
 <p><img alt="" src="https://cdn-images-1.medium.com/max/421/1*I4X51TgnOaR7CifBWmRFlA.png" /></p>
-<p>For a first-order plus time-delay (FOPTD), the available process information includes gain <span class="math notranslate nohighlight">\(K\)</span>, process time constant <span class="math notranslate nohighlight">\(T\)</span>, and process time delay <span class="math notranslate nohighlight">\(\tau\)</span>.</p>
-<p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61521aa2-fee3-4098-969e-2030a01edca8">
-<span class="eqno">(3.17)<a class="headerlink" href="#equation-61521aa2-fee3-4098-969e-2030a01edca8" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
-\text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
-\text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
-\end{align}\]</div>
-<p>Among the best known and commonly used tuning rules are listed in the following table (also see Astrom and Murray, Chapter 11):</p>
+<p>The Ziegler-Nichols estimates for the proportional and integral gain are then computed from the following tuning rules. Astrom and Hagglunc (200\6) provide an updated “improved” formula for these parameters.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Type</p></th>
@@ -1108,26 +1158,132 @@ K &amp; = \frac{\Delta PV}{\Delta MV} &amp; \text{gain} \\
 <td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.9 \tau}{K\theta}\)</span></p></td>
 <td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.3\tau}{K\theta^2}\)</span></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>PI (Astrom and Murray)</p></td>
+<tr class="row-even"><td class="text-align:center"><p>PI (Astrom and Hagglund, 2006)</p></td>
 <td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.15\theta + 0.35\tau}{K\theta}\)</span></p></td>
 <td class="text-align:center"><p><span class="math notranslate nohighlight">\(\frac{0.46\theta + 0.02\tau}{K\theta^2}\)</span></p></td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="section" id="evaluate-control-performance">
+<h4><span class="section-number">3.8.8.1.3. </span>Evaluate Control Performance<a class="headerlink" href="#evaluate-control-performance" title="Permalink to this headline">¶</a></h4>
+<p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b51d1180-c045-4933-b158-4a060b7b1b30">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-b51d1180-c045-4933-b158-4a060b7b1b30" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
+\text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
+\text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\
+\end{align}\]</div>
+<p>Among the best known and commonly used tuning rules are listed in the following table (also see Astrom and Murray, Chapter 11):</p>
+</div>
+</div>
+<div class="section" id="tuning-rules-based-on-closed-loop-testing">
+<h3><span class="section-number">3.8.8.2. </span>Tuning Rules based on Closed Loop Testing<a class="headerlink" href="#tuning-rules-based-on-closed-loop-testing" title="Permalink to this headline">¶</a></h3>
+<p>For strong theoretical and practical reasons, closed-loop experiments can provide superior results for tuning P, PI, and PID controllers. The easiest closed-loop tuning experiment is to implement simple relay control. The following code cells demonstrate relay control suitable for the identification experiment.</p>
+<p>Experimental requirements:</p>
+<ol class="simple">
+<li><p>Conduct the experiment long enough to ensure steady cycling about a constant setpoint.</p></li>
+<li><p>Choose MV_min and/or MV_max to so the MV is “on” approximately 50% of the time.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\Delta MV = MV_{max} - MV_{min}\]</div>
+<ol class="simple">
+<li><p>Determine <span class="math notranslate nohighlight">\(\Delta PV\)</span> from peak-to-peak amplitude of the oscillation in <span class="math notranslate nohighlight">\(PV\)</span>. The “critical gain” is</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[K_c = (\frac{4}{\pi}) \frac{\Delta MV}{\Delta PV}\]</div>
+<ol class="simple">
+<li><p>Determine the “critical period” <span class="math notranslate nohighlight">\(T_c\)</span> by measuring the period of oscillation.</p></li>
+</ol>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Type</p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(K_P\)</span></p></th>
+<th class="text-align:center head"><p><span class="math notranslate nohighlight">\(K_I\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p>P (Ziegler-Nichols)</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(0.5 K_c\)</span></p></td>
+<td class="text-align:center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>PI (Ziegler-Nichols)</p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(0.4 K_c\)</span></p></td>
+<td class="text-align:center"><p><span class="math notranslate nohighlight">\(0.5\frac{K_c}{T_c}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<ol class="simple">
+<li><p>Implement and test the resulting controller.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+
+<span class="k">def</span> <span class="nf">experiment_4</span><span class="p">(</span><span class="n">controller</span><span class="p">,</span> <span class="n">t_final</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">t_step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">SP</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+
+        <span class="c1"># set up historian and plotter</span>
+        <span class="n">sources</span> <span class="o">=</span> <span class="p">((</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;SP&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)),</span> 
+                   <span class="p">(</span><span class="s2">&quot;U1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">U1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">))</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;U1&quot;</span><span class="p">)])</span>
+
+        <span class="c1"># initialize manipulated variable</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">controller</span><span class="p">))</span>
+
+        <span class="c1"># event loop</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+            <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
+            <span class="n">U1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">()</span>
+            <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">T1</span><span class="p">,</span> <span class="n">U1</span><span class="p">))</span>    <span class="c1"># automatic control</span>
+            <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Relay</span><span class="p">(</span><span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+    <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_bar</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">t_step</span><span class="p">,</span> <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span><span class="p">,</span> <span class="n">MV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span> 
+        <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
+        <span class="k">if</span> <span class="n">PV</span> <span class="o">&lt;</span> <span class="n">SP</span><span class="p">:</span>
+            <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_max</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_min</span>  
+            
+<span class="n">experiment_4</span><span class="p">(</span><span class="n">Relay</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03.08-Controller-Tuning_18_0.png" src="../_images/03.08-Controller-Tuning_18_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/03.08-Controller-Tuning_18_2.png" src="../_images/03.08-Controller-Tuning_18_2.png" />
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="lab-assignment-5">
 <h2><span class="section-number">3.8.9. </span>Lab Assignment 5<a class="headerlink" href="#lab-assignment-5" title="Permalink to this headline">¶</a></h2>
 <p>You will test PI controllers tuned using Step Test experiment and a closed-loop Relay experiment. For testing, use the Chocolate tempering setpoint profile you developed for Lab Assignment 5.</p>
 <ol class="simple">
-<li><p>Perform the Step Test experiment desribed above. Report the following results.</p></li>
-</ol>
-<p>a. The code used to perform the experiment.
-b. Calculations of <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span>.
-c. PI Parameter <span class="math notranslate nohighlight">\(K_p\)</span> and <span class="math notranslate nohighlight">\(K_I\)</span> determined using the “improved” tuning rults.
-d. The code and results of applying this controller to the Chocolate tempering setpoint used in Lab Assignment 4. This time, leave heater 2 off.</p>
-<ol class="simple">
-<li><p>Repeat the previous steps using closed-loop relay control to determine critical gain <span class="math notranslate nohighlight">\(K_c\)</span> and critical period <span class="math notranslate nohighlight">\(T_c\)</span>.</p></li>
+<li><p>Perform the Step Test experiment desribed above. Report the following results.</p>
+<ul class="simple">
+<li><p>The code used to perform the experiment.</p></li>
+<li><p>Calculations of <span class="math notranslate nohighlight">\(K\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
+<li><p>PI Parameter <span class="math notranslate nohighlight">\(K_P\)</span> and <span class="math notranslate nohighlight">\(K_I\)</span> determined using the “improved” tuning rules.</p></li>
+<li><p>The code and results of applying this controller to the Chocolate tempering setpoint used in Lab Assignment 4. This time, leave heater 2 off.</p></li>
+</ul>
+</li>
+<li><p>Repeat the previous steps using closed-loop relay control to determine critical gain <span class="math notranslate nohighlight">\(K_c\)</span> and critical period <span class="math notranslate nohighlight">\(T_c\)</span>. Report the PI Control parameters and experimental verification for the Chocolate tempering setpoint.</p></li>
 </ol>
 </div>
 </div>

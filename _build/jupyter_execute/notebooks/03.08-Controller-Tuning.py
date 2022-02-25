@@ -99,12 +99,14 @@
 # \end{align*}
 
 # ## PI Control for Temperature Control Lab
+# 
+# The following sequence diagram shows the flow of information for one measure-compute-act-record cycle of the control system is shown in the following sequence diagram
 
 # ![](figures/sequence-PID-1.png)
 
 # ## PI Control with anti-reset windup and bumpless transfer
 
-# In[3]:
+# In[5]:
 
 
 # add anti-integral windup feature.
@@ -122,7 +124,7 @@ def PI_bumpless(Kp, Ki, MV_bar=0, MV_min=0, MV_max=100):
 
 # ## Event Loop with Disturbance Variable and Manual Control
 
-# In[4]:
+# In[6]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -155,7 +157,11 @@ def experiment_3(controller, t_final=1000, t_step=5,
             lab.Q1(U1)
             lab.Q2(DV(t))
             p.update(t)  
-            
+
+
+# In[7]:
+
+
 experiment_3(PI_bumpless(2, 0.1))
 
 
@@ -163,27 +169,42 @@ experiment_3(PI_bumpless(2, 0.1))
 
 # There are a number of **tuning rules** in the literature that provide recommended values for the proportional gain $K_P$. These rules require process information obtained from testing. 
 
-# ### Ziegler-Nichols Step Test
+# ### Tuning Rules Based on Step Test Experiments
 # 
-# Test Procedure:
+# #### Step Test Procedure
 # 
 # 1. Initialize experiment at a steady state. Confirm the process variable $PV$ is at a constant value $PV_1$. Eliminate any disturbances that might affect the test outcome.
+# 
 # 2. Make a step change in the manipulated variable $MV_1 \rightarrow MV_2$
+# 
 # $$ \Delta MV = MV_2 - MV_1$$
+# 
 # 3. Record the process variable $PV(t)$ until a new steady state $PV_2$ is reached.
+# 
 # $$ \Delta PV = PV_2 - PV_1 $$
 # 
-# 4. From the chart for $PV(t)$ estimate
+# 
+# #### Control Parameters
+# 
+# Using $PV(t)$ and the following chart, compute values for a first-order plus dead-time model parameters for gain ($K$), process time constant ($\tau$), and dead-time ($\theta$).
 # \begin{align*}
 # \\
 # K & = \frac{\Delta PV}{\Delta MV} & \text{gain} \\
 # \tau & & \text{first-order time constant} \\
 # \theta & & \text{dead time}
 # \end{align*}
-
+# 
 # ![](https://cdn-images-1.medium.com/max/421/1*I4X51TgnOaR7CifBWmRFlA.png)
 # 
-# For a first-order plus time-delay (FOPTD), the available process information includes gain $K$, process time constant $T$, and process time delay $\tau$.
+# The Ziegler-Nichols estimates for the proportional and integral gain are then computed from the following tuning rules. Astrom and Hagglunc (200\6) provide an updated "improved" formula for these parameters.
+# 
+# | Type | $K_P$ | $K_I$ |
+# | :---: | :---: | :---: |
+# | P (Ziegler-Nichols) | $\frac{\tau}{K\theta}$ | |
+# | PI (Ziegler-Nichols) | $\frac{0.9 \tau}{K\theta}$ | $\frac{0.3\tau}{K\theta^2}$ |
+# | PI (Astrom and Hagglund, 2006) | $\frac{0.15\theta + 0.35\tau}{K\theta}$ | $\frac{0.46\theta + 0.02\tau}{K\theta^2}$ |
+# 
+# #### Evaluate Control Performance
 # 
 # Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks
 # 
@@ -195,11 +216,76 @@ experiment_3(PI_bumpless(2, 0.1))
 # 
 # Among the best known and commonly used tuning rules are listed in the following table (also see Astrom and Murray, Chapter 11):
 # 
+
+# ### Tuning Rules based on Closed Loop Testing
+# 
+# For strong theoretical and practical reasons, closed-loop experiments can provide superior results for tuning P, PI, and PID controllers. The easiest closed-loop tuning experiment is to implement simple relay control. The following code cells demonstrate relay control suitable for the identification experiment. 
+# 
+# Experimental requirements:
+# 
+# 1. Conduct the experiment long enough to ensure steady cycling about a constant setpoint.
+# 
+# 2. Choose MV_min and/or MV_max to so the MV is "on" approximately 50% of the time.  
+# 
+# $$\Delta MV = MV_{max} - MV_{min}$$
+# 
+# 3. Determine $\Delta PV$ from peak-to-peak amplitude of the oscillation in $PV$. The "critical gain" is
+# 
+# $$K_c = (\frac{4}{\pi}) \frac{\Delta MV}{\Delta PV}$$
+#  
+# 4. Determine the "critical period" $T_c$ by measuring the period of oscillation.
+# 
 # | Type | $K_P$ | $K_I$ |
 # | :---: | :---: | :---: |
-# | P (Ziegler-Nichols) | $\frac{\tau}{K\theta}$ | |
-# | PI (Ziegler-Nichols) | $\frac{0.9 \tau}{K\theta}$ | $\frac{0.3\tau}{K\theta^2}$ |
-# | PI (Astrom and Murray) | $\frac{0.15\theta + 0.35\tau}{K\theta}$ | $\frac{0.46\theta + 0.02\tau}{K\theta^2}$ |
+# | P (Ziegler-Nichols) | $0.5 K_c$ | |
+# | PI (Ziegler-Nichols) | $0.4 K_c$ | $0.5\frac{K_c}{T_c}$ |
+# 
+# 5. Implement and test the resulting controller.
+# 
+
+# In[32]:
+
+
+from tclab import TCLab, clock, Historian, Plotter, setup
+
+def experiment_4(controller, t_final=1000, t_step=5, SP=lambda t: 40 if t >= 20 else 0):
+    TCLab = setup(connected=False, speedup=60)
+    with TCLab() as lab:
+
+        # set up historian and plotter
+        sources = (("T1", lambda: lab.T1), ("SP", lambda: SP(t)), 
+                   ("U1", lambda: U1), ("Q1", lab.Q1))
+        h = Historian(sources)
+        p = Plotter(h, 200, layout=[("T1", "SP"), ("Q1", "U1")])
+
+        # initialize manipulated variable
+        lab.P1 = 200
+        lab.Q1(next(controller))
+
+        # event loop
+        for t in clock(t_final, t_step):
+            T1 = lab.T1
+            U1 = lab.Q1()
+            U1 = controller.send((t_step, SP(t), T1, U1))    # automatic control
+            lab.Q1(U1)
+            p.update(t)  
+
+
+# In[33]:
+
+
+def Relay(MV_bar=0, MV_min=0, MV_max=60):
+    MV = MV_bar
+    while True:
+        t_step, SP, PV, MV = yield MV 
+        e = PV - SP
+        if PV < SP:
+            MV = MV_max
+        else:
+            MV = MV_min  
+            
+experiment_4(Relay())
+
 
 # ## Lab Assignment 5
 # 
@@ -207,12 +293,12 @@ experiment_3(PI_bumpless(2, 0.1))
 # 
 # 1. Perform the Step Test experiment desribed above. Report the following results.
 # 
-# a. The code used to perform the experiment.
-# b. Calculations of $K$, $\tau$, and $\theta$.
-# c. PI Parameter $K_p$ and $K_I$ determined using the "improved" tuning rults.
-# d. The code and results of applying this controller to the Chocolate tempering setpoint used in Lab Assignment 4. This time, leave heater 2 off.
+#     * The code used to perform the experiment. 
+#     * Calculations of $K$, $\tau$, and $\theta$.
+#     * PI Parameter $K_P$ and $K_I$ determined using the "improved" tuning rules.
+#     * The code and results of applying this controller to the Chocolate tempering setpoint used in Lab Assignment 4. This time, leave heater 2 off.
 # 
-# 2. Repeat the previous steps using closed-loop relay control to determine critical gain $K_c$ and critical period $T_c$.
+# 2. Repeat the previous steps using closed-loop relay control to determine critical gain $K_c$ and critical period $T_c$. Report the PI Control parameters and experimental verification for the Chocolate tempering setpoint.
 
 # In[ ]:
 
