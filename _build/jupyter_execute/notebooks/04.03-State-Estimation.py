@@ -214,7 +214,7 @@ def tclab_model():
 
 # Let's run the model in parallel with the event loop, feeding both the hardware and model the same information.
 
-# In[6]:
+# In[ ]:
 
 
 from tclab import setup, clock, Historian, Plotter

@@ -268,43 +268,38 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.03-State-Estimation-Copy1.html">
-     4.3. Estimation and Anamoly Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="04.03-State-Estimation.html">
-     4.4. State Estimation
+     4.3. State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.04-Lab-Assigment-State-Estimation.html">
-     4.5. Lab Assignment 5: State Estimation
+     4.4. Lab Assignment 5: State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.05-Anomaly-Detection.html">
-     4.6. Anomaly Detection
+     4.5. Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
-     4.7. Lab Assignment 6: Anomaly Detection
+     4.6. Lab Assignment 6: Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.07-Observer-Synthesis-LMI.html">
-     4.8. Observer Synthesis using Linear Matrix Inequalities
+     4.7. Observer Synthesis using Linear Matrix Inequalities
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.08-Envrironmental-Application.html">
-     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.09-Study-Questions.html">
-     4.10. Study Questions
+     4.9. Study Questions
     </a>
    </li>
   </ul>
@@ -982,13 +977,13 @@ Setpoint Variable. A desired value for process variable (PV). The job of the con
 <div class="section" id="pi-control">
 <h2><span class="section-number">3.7.4. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3233b896-5ee7-4e41-be00-6a6929ab205a">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-3233b896-5ee7-4e41-be00-6a6929ab205a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5db3ad56-4701-41c2-a2fe-9970c8e18efd">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-5db3ad56-4701-41c2-a2fe-9970c8e18efd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint, and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9623297-c3fa-4bd6-a6c0-c0d22ee18f20">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-f9623297-c3fa-4bd6-a6c0-c0d22ee18f20" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fe05bdad-a9ad-42e2-a031-45afdbe8cec9">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-fe05bdad-a9ad-42e2-a031-45afdbe8cec9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -1079,8 +1074,8 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-305c14e4-7703-4f72-8ab2-18c63a973014">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-305c14e4-7703-4f72-8ab2-18c63a973014" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-044a19af-ce36-4765-8366-e8fb418126a9">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-044a19af-ce36-4765-8366-e8fb418126a9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
@@ -1090,12 +1085,12 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 <div class="section" id="anti-reset-windup-type-1">
 <h3><span class="section-number">3.7.5.1. </span>Anti-reset windup - Type 1<a class="headerlink" href="#anti-reset-windup-type-1" title="Permalink to this headline">¶</a></h3>
 <p>There several common strategies for avoiding integral (eset) windup. The first of these should be part of any practical implementation. The technique is to limit computed values of manipulated variable to the range of values that can be implemented. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aa55bf5f-4d7a-478c-8656-b673479573da">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-aa55bf5f-4d7a-478c-8656-b673479573da" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f65ea72f-1215-4eea-bbd8-e8d321f3ad24">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-f65ea72f-1215-4eea-bbd8-e8d321f3ad24" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-4fc33685-37d1-4826-94b6-81c0fb588998">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-4fc33685-37d1-4826-94b6-81c0fb588998" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be97aeb4-3f9f-4840-842f-002a82b6646f">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-be97aeb4-3f9f-4840-842f-002a82b6646f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1314,13 +1309,13 @@ TCLab Model disconnected successfully.
 </ul>
 <div class="section" id="id1">
 <h3><span class="section-number">3.7.7.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-16dfa11d-d728-46c8-b3fb-0982186dc1e6">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-16dfa11d-d728-46c8-b3fb-0982186dc1e6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-df4072ff-84af-4265-9e24-f08930a7a3bb">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-df4072ff-84af-4265-9e24-f08930a7a3bb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b241c390-d739-4b57-9e33-b3698b3e4063">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-b241c390-d739-4b57-9e33-b3698b3e4063" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ec76505c-0cec-4487-9dc5-0e3ea0d4daa9">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-ec76505c-0cec-4487-9dc5-0e3ea0d4daa9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">

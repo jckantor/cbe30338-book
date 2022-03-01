@@ -30,7 +30,7 @@
 # 
 # * The PI system is integrated suite of tools supporting the storage and retreival of process data in a time-series data base.
 # 
-# ![](http://www.automatedresults.com/images/arpidiagram.png)
+# ![](https://storage.googleapis.com/gweb-cloudblog-publish/images/GCP_deployment_scripts_for_PI_Core.max-1400x1400.jpg)
 # 
 # 
 
@@ -47,7 +47,7 @@
 # 
 # Documentatiion is available for the tclab [Historian](https://tclab.readthedocs.io/en/latest/notebooks/05_TCLab_Historian.html) and associated [Plotter](https://tclab.readthedocs.io/en/latest/notebooks/06_TCLab_Plotter.html) modules.
 # 
-# Historian is implemented using [SQLite](https://www.sqlite.org/index.html), a small, self-contained SQL data system in the public domain. SQLite was originally developed in 2000 by D. Richard Hipp who was designing software for a damage-control systems used in the U.S. Navy aboard gui}ded missile destroyers. Since then it has become widely used in embedded systems including most laptops, smartphones, and browsers. If you used Apple photos, messaging on your smartphone, GPS units in your car, then you've used SQLite. It estimated there are over 1 trillion SQLite databases in active use. Much of the success is to due to the licensing terms (free!) and an extraordinarily level of automated code testing assuring a high level of reliability.
+# Historian is implemented using [SQLite](https://www.sqlite.org/index.html), a small, self-contained SQL data system in the public domain. SQLite was originally developed in 2000 by D. Richard Hipp who was designing software for a damage-control systems used in the U.S. Navy aboard guided missile destroyers. Since then it has become widely used in embedded systems including most laptops, smartphones, and browsers. If you used Apple photos, messaging on your smartphone, GPS units in your car, then you've used SQLite. It estimated there are over 1 trillion SQLite databases in active use. Much of the success is to due to the licensing terms (free!) and an extraordinarily level of automated code testing assuring a high level of reliability.
 # 
 # Below we will introduce useful capabilities of the Historian that will prove useful as we explore more sophisticated control algorithms and strategies.
 # 
@@ -60,18 +60,19 @@
 # 
 # An instance of a data historian is created by providing a list of data sources. An instance of a `lab` created by `TCLab()` provides a default list of sources in `lab.sources`.
 
-# In[1]:
+# In[2]:
 
 
-from tclab import setup, clock, Historian
+from tclab import setup, clock, Historian, Plotter
 
-TCLab = setup(connected=False, speedup=60)
+TCLab = setup(connected=False, speedup=10)
 
 with TCLab() as lab:
     h = Historian(lab.sources)  # <= creates an instance of an historian with default lab.sources
+    p = Plotter(h)
     lab.Q1(100)
     for t in clock(600):
-        h.update(t)             # <= updates the historian at time t
+        p.update(t)             # <= updates the historian at time t
         
 # note that the historian lives on after we're finished with lab
 
@@ -80,14 +81,14 @@ with TCLab() as lab:
 # 
 # There are several approaches to accessing the data that has been recorded using the historian. Perhaps the most straightforward is to access the 'tags' with `h.columns` and to access the values with `h.fields` as shown here.
 
-# In[22]:
+# In[3]:
 
 
 # columns property consists of all data being logged
 h.columns
 
 
-# In[3]:
+# In[4]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -97,21 +98,11 @@ t, T1, T2, Q1, Q1 = h.fields   # <= access data using h.fields
 plt.plot(t, T1, t, T2)         # <= plot data 
 
 
-# #### Accessing Data by Name `logdict`
-# 
-# Often you only need data corresponding to specific tags. You can access the data directly using `.logdict[]`.
-
-# In[25]:
-
-
-plt.plot(h.logdict["Time"], h.logdict["T2"])
-
-
 # #### Accessing Data using `pandas`
 # 
 # The Python `pandas` library provides an enormous range of commonly tools for data analysis, it is among the most widely used libraries by data scientists. Data collected by the historian can be converted to a pandas data frame with one line of code.
 
-# In[4]:
+# In[5]:
 
 
 import pandas as pd
@@ -131,10 +122,10 @@ df.plot()
 # 
 # The following cell presents an example where two setpoints are provided for two control loops. The setpoint tags are `SP1` and `SP2`, respectively. Setpoint `SP1` is specified as a Python constant. The historian requires a function that returns the value of the  which is a function of time. This has to be 
 # 
-#     ['SP1', SP1
+#     ['SP1', SP1]
 #     
 
-# In[31]:
+# In[8]:
 
 
 from tclab import setup, clock, Historian
@@ -153,11 +144,11 @@ TCLab = setup(connected=False, speedup=60)
 with TCLab() as lab:
     # add setpoint to default sources
     sources = lab.sources
-    sources.append(['SP1', lambda: SP1(t)])
+    sources.append(['SP1', lambda: SP1])
     sources.append(['SP2', lambda: SP2])
     h = Historian(sources)
     for t in clock(600):
-        U1 = Kp*(SP1(t) - lab.T1)
+        U1 = Kp*(SP1 - lab.T1)
         U2 = 100 if lab.T2 < SP2 else 0
         lab.Q1(U1)
         lab.Q2(U2)
@@ -168,25 +159,31 @@ with TCLab() as lab:
 
 # #### Saving to a file
 
-# In[27]:
+# In[19]:
 
 
 h.to_csv("data/saved_data.csv")
 
 
-# In[32]:
+# In[20]:
 
 
 h.columns
 
 
+# In[22]:
+
+
+import pandas as pd
+df = pd.read_csv("data/saved_data.csv")
+df.head()
+
+
 # In[33]:
 
 
-fig, ax = plt.subplots(2, 1)
-
-ax[0].plot(h.logdict["Time"], h.logdict["T1"], h.logdict["Time"], h.logdict["SP1"])
-ax[1].plot(h.logdict["Time"], h.logdict["T2"], h.logdict["Time"], h.logdict["SP2"])
+df.plot(x="Time", y=["T1", "SP1"], grid=True, figsize=(10, 3))
+df.plot(x="Time", y=["T2", "SP2"], grid=True, figsize=(10, 3))
 
 
 # In[34]:
@@ -220,34 +217,27 @@ with TCLab() as lab:
         h.update(t)
 
 
-# In[35]:
+# In[49]:
 
 
+from tclab import Historian
+h = Historian([], dbfile="data/tclab_historian.db")
 h.get_sessions()
 
 
-# In[36]:
+# In[50]:
 
 
-h.load_session(1)
-fig, ax = plt.subplots(2, 1)
-
-ax[0].plot(h.logdict["Time"], h.logdict["T1"], h.logdict["Time"], h.logdict["SP1"])
-ax[1].plot(h.logdict["Time"], h.logdict["T2"], h.logdict["Time"], h.logdict["SP2"])
-
-
-# In[37]:
-
-
-g = Historian([], dbfile="lab4.db")
-g.get_sessions()
+h.db.delete_session(9)
+h.db.delete_session(10)
+h.get_sessions()
 
 
 # ## Plotter
 # 
 # The `Plotter` class provides a real-time graphical interface to an historian. It provides some simple facilities for 
 
-# In[38]:
+# In[16]:
 
 
 from tclab import setup, clock, Historian, Plotter
@@ -281,13 +271,13 @@ with TCLab() as lab:
         p.update(t)
 
 
-# In[39]:
+# In[17]:
 
 
 h.get_sessions()
 
 
-# In[40]:
+# In[18]:
 
 
 fig, ax = plt.subplots(2, 1)
