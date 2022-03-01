@@ -268,43 +268,38 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04.03-State-Estimation-Copy1.html">
-     4.3. Estimation and Anamoly Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.03-State-Estimation.html">
-     4.4. State Estimation
+     4.3. State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.04-Lab-Assigment-State-Estimation.html">
-     4.5. Lab Assignment 5: State Estimation
+     4.4. Lab Assignment 5: State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.05-Anomaly-Detection.html">
-     4.6. Anomaly Detection
+     4.5. Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.06-Lab-Assignment-Anomaly-Detection.html">
-     4.7. Lab Assignment 6: Anomaly Detection
+     4.6. Lab Assignment 6: Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.07-Observer-Synthesis-LMI.html">
-     4.8. Observer Synthesis using Linear Matrix Inequalities
+     4.7. Observer Synthesis using Linear Matrix Inequalities
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.08-Envrironmental-Application.html">
-     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/04.09-Study-Questions.html">
-     4.10. Study Questions
+     4.9. Study Questions
     </a>
    </li>
   </ul>
@@ -806,8 +801,8 @@
 <div class="section" id="simple-relay-control">
 <h2><span class="section-number">4.1.1. </span>Simple Relay Control<a class="headerlink" href="#simple-relay-control" title="Permalink to this headline">¶</a></h2>
 <p>The following code implements relay control for temperature T1 on the Temperature Control Lab.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10f43f19-cd70-4f30-abba-2a55286f1a9b">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-10f43f19-cd70-4f30-abba-2a55286f1a9b" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-407d5ed5-8233-4c42-9112-efdf2722b97f">
+<span class="eqno">(4.9)<a class="headerlink" href="#equation-407d5ed5-8233-4c42-9112-efdf2722b97f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Q(t) &amp; = \begin{cases} 
     Q^{max} &amp;\text{if $T \leq T_{setpoint}$}\\
     0       &amp; \text{if $T \geq T_{setpoint}$}
@@ -852,8 +847,8 @@ Q(t) &amp; = \begin{cases}
 <h2><span class="section-number">4.1.2. </span>Relay Control with Hysteresis<a class="headerlink" href="#relay-control-with-hysteresis" title="Permalink to this headline">¶</a></h2>
 <p>One of the issues with simple relay control is the potential for ‘chattering’, which are situations where the manipulated variable (in this case heater power) rapid on-and-off switching. This can be caused by systems that are highly response to control inputs or where the sensor measurements carry significant noise.</p>
 <p>The typical home thermostat used for furnace control incorporates a simple but highly effective solution to the chattering period. The idea is to intentially overshoot the setpoint. Then, after the control switches state, there will be at least a short period of time where no further control action should be necessary. The control algorithm can be written</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8855bff-4466-45c3-80c7-b7b1a233ead3">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-a8855bff-4466-45c3-80c7-b7b1a233ead3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1a3447ec-57a6-4815-a1eb-1d5ee7a9887d">
+<span class="eqno">(4.10)<a class="headerlink" href="#equation-1a3447ec-57a6-4815-a1eb-1d5ee7a9887d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Q(t) &amp; = \begin{cases} 
     0       &amp; \text{if $T \geq T_{Setpoint} - \frac{d}{2}$}\\
     Q^{max} &amp;\text{if $T \leq T_{Setpoint} + \frac{d}{2}$}\\
@@ -863,8 +858,8 @@ Q(t) &amp; = \begin{cases}
 <p>where <span class="math notranslate nohighlight">\(d\)</span> is the <em>tolerance</em> or <em>hysteresis</em>. For home heating systems a typical value is in the range of 0.5 to 1 degree F. This image shows how hystersis was adjusted on a typical home thermostat in common usage in the late 20th century.</p>
 <p><a title="By Vincent de Groot - http://www.videgro.net (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC BY 2.5 (http://creativecommons.org/licenses/by/2.5)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AHoneywell_thermostat_open.jpg"><img width="512" alt="Honeywell thermostat open" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Honeywell_thermostat_open.jpg/512px-Honeywell_thermostat_open.jpg"/></a></p>
 <p>The furnance is turned on for temperatures below the range</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab98d3aa-fe9b-4f41-a14d-fc7b090503c7">
-<span class="eqno">(4.13)<a class="headerlink" href="#equation-ab98d3aa-fe9b-4f41-a14d-fc7b090503c7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-391a2773-aa68-4925-b06e-472d607407fe">
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-391a2773-aa68-4925-b06e-472d607407fe" title="Permalink to this equation">¶</a></span>\[\begin{align}
 T_{Setpoint} - \frac{d}{2} \leq T \leq T_{Setpoint} + \frac{d}{2}
 \end{align}\]</div>
 <p>and is turned for temperatures above the range. Within the range, however, the furnance may be on or off depending on what happened at the last decision point.</p>

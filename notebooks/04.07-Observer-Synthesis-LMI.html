@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.8. Observer Synthesis using Linear Matrix Inequalities &#8212; CBE 30338 Chemical Process Control</title>
+    <title>4.7. Observer Synthesis using Linear Matrix Inequalities &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.9. Application of Luenberger Observers to Environmental Modeling of Rivers" href="04.08-Envrironmental-Application.html" />
-    <link rel="prev" title="4.7. Lab Assignment 6: Anomaly Detection" href="04.06-Lab-Assignment-Anomaly-Detection.html" />
+    <link rel="next" title="4.8. Application of Luenberger Observers to Environmental Modeling of Rivers" href="04.08-Envrironmental-Application.html" />
+    <link rel="prev" title="4.6. Lab Assignment 6: Anomaly Detection" href="04.06-Lab-Assignment-Anomaly-Detection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -268,43 +268,38 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.03-State-Estimation-Copy1.html">
-     4.3. Estimation and Anamoly Detection
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="04.03-State-Estimation.html">
-     4.4. State Estimation
+     4.3. State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.04-Lab-Assigment-State-Estimation.html">
-     4.5. Lab Assignment 5: State Estimation
+     4.4. Lab Assignment 5: State Estimation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.05-Anomaly-Detection.html">
-     4.6. Anomaly Detection
+     4.5. Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
-     4.7. Lab Assignment 6: Anomaly Detection
+     4.6. Lab Assignment 6: Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.8. Observer Synthesis using Linear Matrix Inequalities
+     4.7. Observer Synthesis using Linear Matrix Inequalities
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.08-Envrironmental-Application.html">
-     4.9. Application of Luenberger Observers to Environmental Modeling of Rivers
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="04.09-Study-Questions.html">
-     4.10. Study Questions
+     4.9. Study Questions
     </a>
    </li>
   </ul>
@@ -734,27 +729,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.8.1. References
+   4.7.1. References
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-parameters">
-   4.8.2. Model Parameters
+   4.7.2. Model Parameters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lyapunov-design">
-   4.8.3. Lyapunov Design
+   4.7.3. Lyapunov Design
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cvxpy">
-   4.8.4. CVXPY
+   4.7.4. CVXPY
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cal-h-2-optimal-state-estimation">
-   4.8.5.
+   4.7.5.
    <span class="math notranslate nohighlight">
     \(\cal{H}_2\)
    </span>
@@ -763,7 +758,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cal-h-infty-optimal-state-estimation">
-   4.8.6.
+   4.7.6.
    <span class="math notranslate nohighlight">
     \(\cal{H}_{\infty}\)
    </span>
@@ -792,27 +787,27 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
-   4.8.1. References
+   4.7.1. References
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model-parameters">
-   4.8.2. Model Parameters
+   4.7.2. Model Parameters
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lyapunov-design">
-   4.8.3. Lyapunov Design
+   4.7.3. Lyapunov Design
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cvxpy">
-   4.8.4. CVXPY
+   4.7.4. CVXPY
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cal-h-2-optimal-state-estimation">
-   4.8.5.
+   4.7.5.
    <span class="math notranslate nohighlight">
     \(\cal{H}_2\)
    </span>
@@ -821,7 +816,7 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cal-h-infty-optimal-state-estimation">
-   4.8.6.
+   4.7.6.
    <span class="math notranslate nohighlight">
     \(\cal{H}_{\infty}\)
    </span>
@@ -838,10 +833,10 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="observer-synthesis-using-linear-matrix-inequalities">
-<h1><span class="section-number">4.8. </span>Observer Synthesis using Linear Matrix Inequalities<a class="headerlink" href="#observer-synthesis-using-linear-matrix-inequalities" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.7. </span>Observer Synthesis using Linear Matrix Inequalities<a class="headerlink" href="#observer-synthesis-using-linear-matrix-inequalities" title="Permalink to this headline">¶</a></h1>
 <p>Note: This is an advanced topic</p>
 <div class="section" id="references">
-<h2><span class="section-number">4.8.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Charkabarty, Ankush. <a class="reference external" href="https://engineering.utsa.edu/ataha/wp-content/uploads/sites/38/2017/10/EE5243_Module10.pdf">“Guest Lecture: Exploiting Linear Matrix Inequalities In
 Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
@@ -850,10 +845,10 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 </ol>
 </div>
 <div class="section" id="model-parameters">
-<h2><span class="section-number">4.8.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="lyapunov-design">
-<h2><span class="section-number">4.8.3. </span>Lyapunov Design<a class="headerlink" href="#lyapunov-design" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.3. </span>Lyapunov Design<a class="headerlink" href="#lyapunov-design" title="Permalink to this headline">¶</a></h2>
 <p>Assuming no modeling error and ignoring disturbance inputs, the observer dynamics are described by</p>
 <div class="math notranslate nohighlight">
 \[\frac{de}{dt} = (A - LC)e\]</div>
@@ -892,7 +887,7 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 \[P \succ I\]</div>
 </div>
 <div class="section" id="cvxpy">
-<h2><span class="section-number">4.8.4. </span>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.4. </span>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install cvxpy
 </pre></div>
 </div>
@@ -957,7 +952,7 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 </div>
 </div>
 <div class="section" id="cal-h-2-optimal-state-estimation">
-<h2><span class="section-number">4.8.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
 <p>Let’s now consider performance metrics for the observer. In particular, we assume our system is of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1091,7 +1086,7 @@ Tr(Z) &amp; &lt; \nu
 </div>
 </div>
 <div class="section" id="cal-h-infty-optimal-state-estimation">
-<h2><span class="section-number">4.8.6. </span><span class="math notranslate nohighlight">\(\cal{H}_{\infty}\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-infty-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.7.6. </span><span class="math notranslate nohighlight">\(\cal{H}_{\infty}\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-infty-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1176,13 +1171,13 @@ Tr(Z) &amp; &lt; \nu
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.7. </span>Lab Assignment 6: Anomaly Detection</p>
+            <p class="prev-next-title"><span class="section-number">4.6. </span>Lab Assignment 6: Anomaly Detection</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="04.08-Envrironmental-Application.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">4.9. </span>Application of Luenberger Observers to Environmental Modeling of Rivers</p>
+        <p class="prev-next-title"><span class="section-number">4.8. </span>Application of Luenberger Observers to Environmental Modeling of Rivers</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
