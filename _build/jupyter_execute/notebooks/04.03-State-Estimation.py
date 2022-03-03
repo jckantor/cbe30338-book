@@ -91,8 +91,6 @@ ax[1].grid(True)
 
 # As shown, the controller does a reasonably good job of controlling the sensor temperature. But if the goal is to control heater temperature, then there is no assuronce the controller has accomplished that objective.
 
-# ![](figures/FeedbackControlDiagram2.png)
-
 # In the context of control, the control variable (CV) is heater temperature, the measured process variable (PV) is the sensor temperature, and we haven't yet established the relationship between them.
 
 # ## Heater/Sensor Model
@@ -145,6 +143,8 @@ ax[1].grid(True)
 # C = \begin{bmatrix} 0 & 1 \end{bmatrix}$$
 # 
 # By common convention, in state-space models the vector $x$ contains all variables representing the **state** of the system. The input vector $u$ is reserved for all manipulated variables (MV's), and the input vector $d$ for all disturbance variables (DV's). The vector $y$ holds all measured process variables (PV's).
+
+# ![](figures/FeedbackControlDiagram2.png)
 
 # ## Model Predictions
 # 
