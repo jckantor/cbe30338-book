@@ -186,7 +186,7 @@ df.plot(x="Time", y=["T1", "SP1"], grid=True, figsize=(10, 3))
 df.plot(x="Time", y=["T2", "SP2"], grid=True, figsize=(10, 3))
 
 
-# In[34]:
+# In[56]:
 
 
 from tclab import setup, clock, Historian
@@ -215,6 +215,16 @@ with TCLab() as lab:
         lab.Q1(U1)
         lab.Q2(U2)
         h.update(t)
+
+
+# In[62]:
+
+
+h.get_sessions()
+h.load_session(6)
+h.columns
+df = pd.DataFrame(h.log, columns=h.columns)
+df.plot(x="Time", y=["T2", "SP2"])
 
 
 # In[49]:

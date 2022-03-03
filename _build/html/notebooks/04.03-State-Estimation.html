@@ -992,14 +992,14 @@
 <div class="section" id="heater-sensor-model">
 <h2><span class="section-number">4.3.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this headline">¶</a></h2>
 <p>In chapter two we explored various models for describing the response of the heater/sensor assemblies to heater inputs. For heater/sensor assembly 1 we developed the following model</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c82bc970-925c-4f2b-8b82-bbf45c25051d">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-c82bc970-925c-4f2b-8b82-bbf45c25051d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8f69b040-b3c5-42ae-b37a-4523f401cfa9">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-8f69b040-b3c5-42ae-b37a-4523f401cfa9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, <span class="math notranslate nohighlight">\(U_a\)</span> is the heat transfer coefficient characterizing the exchange of heat with the surroundings, and <span class="math notranslate nohighlight">\(U_b\)</span> is a heat transfer coefficient between the heater and sensor.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9f21f54-b530-45d2-b892-cccda22c9acf">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-e9f21f54-b530-45d2-b892-cccda22c9acf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d24beec6-76b7-4fe3-b90b-cd17c99e7a92">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-d24beec6-76b7-4fe3-b90b-cd17c99e7a92" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
@@ -1010,8 +1010,8 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <div class="section" id="converting-to-a-state-space-model">
 <h2><span class="section-number">4.3.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be5308df-b54e-401c-ac02-c0ae42faeb63">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-be5308df-b54e-401c-ac02-c0ae42faeb63" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a8fc9eae-9c44-422e-b70e-63795a1dfecc">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-a8fc9eae-9c44-422e-b70e-63795a1dfecc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
@@ -1129,12 +1129,45 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/04.03-State-Estimation_17_0.png" src="../_images/04.03-State-Estimation_17_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/04.03-State-Estimation_17_2.png" src="../_images/04.03-State-Estimation_17_2.png" />
 </div>
 </div>
 </div>
 <div class="section" id="the-trouble-with-model-predictions">
 <h2><span class="section-number">4.3.6. </span>The Trouble with Model Predictions<a class="headerlink" href="#the-trouble-with-model-predictions" title="Permalink to this headline">¶</a></h2>
 <p>So far what we’re doing is interesting, but with no real consequence for control. All we are doing is passing input information along to the model so that it can operate in parallel with our actual hardware.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">h</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SP&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#xy = np.array((h.logdict[&quot;Time&quot;][20], h.logdict[&quot;SP&quot;][20]))</span>
+<span class="c1">#ax.annotate(&#39;Setpoint SP&#39;, xy=xy, xytext=xy + np.array([-50, 5]), </span>
+<span class="c1">#            arrowprops = dict(arrowstyle=&quot;-&gt;&quot;, facecolor =&#39;green&#39;,lw=2))</span>
+
+<span class="c1">#df.plot(y=[&quot;T1&quot;], ax=ax, grid=True, lw=3)</span>
+<span class="c1">#xy = np.array((h.logdict[&quot;Time&quot;][20], h.logdict[&quot;T1&quot;][20]))</span>
+<span class="c1">#ax.annotate(&#39;Measurement T1&#39;, xy=xy, xytext=xy + np.array([50, -5]),</span>
+<span class="c1">#            arrowprops = dict(arrowstyle=&quot;-&gt;&quot;, facecolor =&#39;green&#39;,lw=2))</span>
+
+<span class="c1">#df.plot(y=[&quot;Ts&quot;], ax=ax, grid=True)</span>
+
+<span class="c1">#df.plot(y=[&quot;Th&quot;], ax=ax, grid=True)</span>
+<span class="c1">#xy = np.array((h.logdict[&quot;Time&quot;][194], h.logdict[&quot;Th&quot;][194]))</span>
+<span class="c1">#ax.annotate(&#39;Predicted Heater Temperature Th&#39;, xy=xy, xytext=xy + np.array([-100, 7]), </span>
+<span class="c1">#            arrowprops = dict(arrowstyle=&quot;-&gt;&quot;, facecolor =&#39;green&#39;,lw=2))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/04.03-State-Estimation_19_0.png" src="../_images/04.03-State-Estimation_19_0.png" />
+</div>
+</div>
 <div class="section" id="issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature">
 <h3><span class="section-number">4.3.6.1. </span>Issue 1: Heater temperature is markedly different from the sensor temperature.<a class="headerlink" href="#issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature" title="Permalink to this headline">¶</a></h3>
 <p>Let’s first compare the setpoint to the heater temperature predicted by the model.</p>
@@ -1162,10 +1195,10 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(394.0, 52.43422318426067, &#39;Predicted Heater Temperature Th&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(396.05, 52.148085730216195, &#39;Predicted Heater Temperature Th&#39;)
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_20_1.png" src="../_images/04.03-State-Estimation_20_1.png" />
+<img alt="../_images/04.03-State-Estimation_21_1.png" src="../_images/04.03-State-Estimation_21_1.png" />
 </div>
 </div>
 <p>We see that the heater temperature predicted by the model is substantially different from the desired setpoint. Using the measured temperature as a proxy for heater temperature turns out not to work for applications requiring precise temperature control.</p>
@@ -1197,10 +1230,10 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(296.02, 51.983499315311796, &#39;Predicted Sensor Temperature Ts&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(300.03, 51.968562652669576, &#39;Predicted Sensor Temperature Ts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_23_1.png" src="../_images/04.03-State-Estimation_23_1.png" />
+<img alt="../_images/04.03-State-Estimation_24_1.png" src="../_images/04.03-State-Estimation_24_1.png" />
 </div>
 </div>
 <p>We see is a notable difference between the sensor temperature predicted by the model and the actual measurement.</p>
@@ -1373,11 +1406,11 @@ y &amp; = C x
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.03-State-Estimation_33_0.png" src="../_images/04.03-State-Estimation_33_0.png" />
+<img alt="../_images/04.03-State-Estimation_34_0.png" src="../_images/04.03-State-Estimation_34_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_33_2.png" src="../_images/04.03-State-Estimation_33_2.png" />
+<img alt="../_images/04.03-State-Estimation_34_2.png" src="../_images/04.03-State-Estimation_34_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1404,10 +1437,10 @@ y &amp; = C x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(302.01, 47.641848189471695, &#39;Predicted Sensor Temperature Ts&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(308.02, 47.92549374693902, &#39;Predicted Sensor Temperature Ts&#39;)
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_34_1.png" src="../_images/04.03-State-Estimation_34_1.png" />
+<img alt="../_images/04.03-State-Estimation_35_1.png" src="../_images/04.03-State-Estimation_35_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1434,10 +1467,10 @@ y &amp; = C x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(398.0, 51.70130402872223, &#39;Predicted Heater Temperature Th&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(418.03, 61.06556757920749, &#39;Predicted Heater Temperature Th&#39;)
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_35_1.png" src="../_images/04.03-State-Estimation_35_1.png" />
+<img alt="../_images/04.03-State-Estimation_36_1.png" src="../_images/04.03-State-Estimation_36_1.png" />
 </div>
 </div>
 </div>
@@ -1476,11 +1509,11 @@ y &amp; = C x
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.03-State-Estimation_38_0.png" src="../_images/04.03-State-Estimation_38_0.png" />
+<img alt="../_images/04.03-State-Estimation_39_0.png" src="../_images/04.03-State-Estimation_39_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
 </pre></div>
 </div>
-<img alt="../_images/04.03-State-Estimation_38_2.png" src="../_images/04.03-State-Estimation_38_2.png" />
+<img alt="../_images/04.03-State-Estimation_39_2.png" src="../_images/04.03-State-Estimation_39_2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1499,7 +1532,7 @@ y &amp; = C x
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/04.03-State-Estimation_39_0.png" src="../_images/04.03-State-Estimation_39_0.png" />
+<img alt="../_images/04.03-State-Estimation_40_0.png" src="../_images/04.03-State-Estimation_40_0.png" />
 </div>
 </div>
 </div>

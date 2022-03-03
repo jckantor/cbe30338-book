@@ -9,7 +9,7 @@
 # 
 # Let's begin our investigations by considering the single loop control problem for a single heater/sensor assembly in the Temperature Control Lab. First we define a setpoint function that we'll be using throughout the notebook.
 
-# In[1]:
+# In[5]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -34,7 +34,7 @@ ax.grid(True)
 
 # Next we implement a simple relay controller using the Python `yield` statement.
 
-# In[2]:
+# In[6]:
 
 
 # Relay Control
@@ -47,7 +47,7 @@ def relay(MV_min, MV_max):
 
 # Finally, we put these together to form a control system for the regulation of temperature T1 to the desired setpoint using relay control to manipulate `U1`.
 
-# In[3]:
+# In[7]:
 
 
 from tclab import setup, clock, Historian, Plotter
@@ -76,7 +76,7 @@ with TCLab() as lab:
 # 
 # So how did we do? Let's look at the response of the measured sensor temperature and heater input.
 
-# In[4]:
+# In[8]:
 
 
 fig, ax = plt.subplots(2, 1, figsize=(10, 6))
@@ -164,7 +164,7 @@ ax[1].grid(True)
 # 
 # To put this to work, we first use the Python `yield` statement to create co-routine that accepts values for time and the manipulated process inputs, then uses those values to update an estimate of the state.
 
-# In[5]:
+# In[9]:
 
 
 import numpy as np
@@ -214,7 +214,7 @@ def tclab_model():
 
 # Let's run the model in parallel with the event loop, feeding both the hardware and model the same information.
 
-# In[ ]:
+# In[10]:
 
 
 from tclab import setup, clock, Historian, Plotter
@@ -247,11 +247,36 @@ with TCLab() as lab:
 # 
 # So far what we're doing is interesting, but with no real consequence for control. All we are doing is passing input information along to the model so that it can operate in parallel with our actual hardware. 
 
+# In[60]:
+
+
+import pandas as pd
+
+df = pd.DataFrame.from_records(h.log, columns=h.columns, index="Time")
+ax = df.plot(y=["SP"], figsize=(10, 4), grid=True)
+
+#xy = np.array((h.logdict["Time"][20], h.logdict["SP"][20]))
+#ax.annotate('Setpoint SP', xy=xy, xytext=xy + np.array([-50, 5]), 
+#            arrowprops = dict(arrowstyle="->", facecolor ='green',lw=2))
+
+#df.plot(y=["T1"], ax=ax, grid=True, lw=3)
+#xy = np.array((h.logdict["Time"][20], h.logdict["T1"][20]))
+#ax.annotate('Measurement T1', xy=xy, xytext=xy + np.array([50, -5]),
+#            arrowprops = dict(arrowstyle="->", facecolor ='green',lw=2))
+
+#df.plot(y=["Ts"], ax=ax, grid=True)
+
+#df.plot(y=["Th"], ax=ax, grid=True)
+#xy = np.array((h.logdict["Time"][194], h.logdict["Th"][194]))
+#ax.annotate('Predicted Heater Temperature Th', xy=xy, xytext=xy + np.array([-100, 7]), 
+#            arrowprops = dict(arrowstyle="->", facecolor ='green',lw=2))
+
+
 # ### Issue 1: Heater temperature is markedly different from the sensor temperature.
 # 
 # Let's first compare the setpoint to the heater temperature predicted by the model.
 
-# In[7]:
+# In[11]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
@@ -280,7 +305,7 @@ ax.annotate('Predicted Heater Temperature Th', xy=xy, xytext=xy + np.array([-100
 # 
 # Next, let's compare the actual temperature measurements to the sensor temperature predicted by the model.
 
-# In[8]:
+# In[12]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
@@ -358,7 +383,7 @@ ax.annotate('Predicted Sensor Temperature Ts', xy=xy, xytext=xy + np.array([30, 
 
 # ### Fun with Eigenvalues
 
-# In[9]:
+# In[61]:
 
 
 import numpy as np
@@ -370,7 +395,7 @@ print('Time constants of A are:', -1.0/np.real(eigenvalues), 'seconds')
 
 # With a little trial and error, find values for $L$ that produce acceptable time constants. Later we will discuss more deliberate methods for finding values for $L$.
 
-# In[10]:
+# In[62]:
 
 
 L = np.array([[0.4], [0.2]])
@@ -407,7 +432,7 @@ print('Time constants of A - LC are:', -1.0/np.real(eigenvalues_observer), 'seco
 # 
 # Let's see how this works in practice. The next cell introduces `tclab_observer`, Python generator that creates instances of observers using the two-state model.
 
-# In[11]:
+# In[63]:
 
 
 def tclab_observer(L):
@@ -436,7 +461,7 @@ def tclab_observer(L):
 
 # The first experiment is to test if the observer does a better job of matching the model response to the measured temperatures.
 
-# In[12]:
+# In[64]:
 
 
 t_final = 700        # run time
@@ -465,7 +490,7 @@ with TCLab() as lab:
         p.update(t)
 
 
-# In[13]:
+# In[65]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
@@ -488,7 +513,7 @@ ax.annotate('Predicted Sensor Temperature Ts', xy=xy, xytext=xy + np.array([30, 
             arrowprops = dict(arrowstyle="->", facecolor ='green',lw=2))
 
 
-# In[14]:
+# In[66]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
@@ -517,7 +542,7 @@ ax.annotate('Predicted Heater Temperature Th', xy=xy, xytext=xy + np.array([-100
 # 
 # Now, if we really trust our model, let's take it a step further and control the estimated heater temperature. The following cell replaaces the temperature measurement in the relay feedback using estimated heater temperature. Measurements are still be used, but for estimation raather than directly in the controller feedback.
 
-# In[15]:
+# In[67]:
 
 
 t_final = 700        # run time
