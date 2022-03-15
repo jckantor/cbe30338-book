@@ -157,6 +157,7 @@ def experiment_3(controller, t_final=1000, t_step=5,
             lab.Q1(U1)
             lab.Q2(DV(t))
             p.update(t)  
+        h.to_csv("data.csv")
 
 
 # In[7]:

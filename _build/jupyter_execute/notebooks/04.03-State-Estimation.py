@@ -9,7 +9,7 @@
 # 
 # Let's begin our investigations by considering the single loop control problem for a single heater/sensor assembly in the Temperature Control Lab. First we define a setpoint function that we'll be using throughout the notebook.
 
-# In[5]:
+# In[4]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -34,7 +34,7 @@ ax.grid(True)
 
 # Next we implement a simple relay controller using the Python `yield` statement.
 
-# In[6]:
+# In[5]:
 
 
 # Relay Control
@@ -47,7 +47,7 @@ def relay(MV_min, MV_max):
 
 # Finally, we put these together to form a control system for the regulation of temperature T1 to the desired setpoint using relay control to manipulate `U1`.
 
-# In[7]:
+# In[6]:
 
 
 from tclab import setup, clock, Historian, Plotter
@@ -164,7 +164,7 @@ ax[1].grid(True)
 # 
 # To put this to work, we first use the Python `yield` statement to create co-routine that accepts values for time and the manipulated process inputs, then uses those values to update an estimate of the state.
 
-# In[9]:
+# In[1]:
 
 
 import numpy as np
@@ -214,7 +214,7 @@ def tclab_model():
 
 # Let's run the model in parallel with the event loop, feeding both the hardware and model the same information.
 
-# In[10]:
+# In[3]:
 
 
 from tclab import setup, clock, Historian, Plotter
@@ -247,7 +247,7 @@ with TCLab() as lab:
 # 
 # So far what we're doing is interesting, but with no real consequence for control. All we are doing is passing input information along to the model so that it can operate in parallel with our actual hardware. 
 
-# In[60]:
+# In[2]:
 
 
 import pandas as pd

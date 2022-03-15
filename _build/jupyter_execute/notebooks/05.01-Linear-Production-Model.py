@@ -3,6 +3,16 @@
 
 # # Linear Production Model
 
+# In[ ]:
+
+
+# Import Pyomo and solvers for Google Colab
+import sys
+if "google.colab" in sys.modules:
+    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/colab.py ')
+    get_ipython().run_line_magic('run', 'colab.py')
+
+
 # This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses [Pyomo](http://www.pyomo.org/) to represent the model with the [glpk](https://en.wikibooks.org/wiki/GLPK) solver to calculate solutions.
 
 # ## Example: Production Plan for a Single Product Plant
