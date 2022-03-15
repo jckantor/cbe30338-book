@@ -1087,6 +1087,7 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)) &amp; \text{limit MV to 
             <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
             <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
             <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  
+        <span class="n">h</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1163,8 +1164,8 @@ K &amp; = \frac{\Delta PV}{\Delta MV} &amp; \text{gain} \\
 <div class="section" id="evaluate-control-performance">
 <h4><span class="section-number">3.8.8.1.3. </span>Evaluate Control Performance<a class="headerlink" href="#evaluate-control-performance" title="Permalink to this headline">¶</a></h4>
 <p>Tuning rules are developed based on acheiving some performance criteria. Typical criteria include measures liks</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0681673d-3011-442b-8c7a-5d5b63a63d40">
-<span class="eqno">(3.17)<a class="headerlink" href="#equation-0681673d-3011-442b-8c7a-5d5b63a63d40" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ddc816a4-9a08-479c-ad85-e4f518fb1913">
+<span class="eqno">(3.17)<a class="headerlink" href="#equation-ddc816a4-9a08-479c-ad85-e4f518fb1913" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \text{IAE} &amp; = \int_0^{\infty} |e(t)|dt \qquad \text{Integral Absolute Error}\\
 \text{ISE} &amp; = \int_0^{\infty} |e(t)|^2dt \qquad \text{Integral Square Error}\\
 \text{ITAE} &amp; = \int_0^{\infty} t|e(t)|dt \qquad \text{Integral Time Absolute Error}\\

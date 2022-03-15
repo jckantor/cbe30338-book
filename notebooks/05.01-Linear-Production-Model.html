@@ -890,6 +890,17 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-production-model">
 <h1><span class="section-number">5.1. </span>Linear Production Model<a class="headerlink" href="#linear-production-model" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Pyomo and solvers for Google Colab</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="o">!</span>wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/colab.py 
+    <span class="o">%</span><span class="k">run</span> colab.py
+</pre></div>
+</div>
+</div>
+</div>
 <p>This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> to represent the model with the <a class="reference external" href="https://en.wikibooks.org/wiki/GLPK">glpk</a> solver to calculate solutions.</p>
 <div class="section" id="example-production-plan-for-a-single-product-plant">
 <h2><span class="section-number">5.1.1. </span>Example: Production Plan for a Single Product Plant<a class="headerlink" href="#example-production-plan-for-a-single-product-plant" title="Permalink to this headline">¶</a></h2>
@@ -1147,7 +1158,7 @@ objective =  -2600.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Linear-Production-Model_26_0.png" src="../_images/05.01-Linear-Production-Model_26_0.png" />
+<img alt="../_images/05.01-Linear-Production-Model_27_0.png" src="../_images/05.01-Linear-Production-Model_27_0.png" />
 </div>
 </div>
 </div>
