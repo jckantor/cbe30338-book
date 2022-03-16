@@ -3,17 +3,17 @@
 
 # # Linear Production Model
 
+# This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses [Pyomo](http://www.pyomo.org/) to represent the model.
+
 # In[ ]:
 
 
 # Import Pyomo and solvers for Google Colab
 import sys
 if "google.colab" in sys.modules:
-    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/colab.py ')
-    get_ipython().run_line_magic('run', 'colab.py')
+    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/import_pyomo_on_colab.py ')
+    get_ipython().run_line_magic('run', 'import_pyomo_on_colab.py')
 
-
-# This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses [Pyomo](http://www.pyomo.org/) to represent the model with the [glpk](https://en.wikibooks.org/wiki/GLPK) solver to calculate solutions.
 
 # ## Example: Production Plan for a Single Product Plant
 
@@ -128,152 +128,105 @@ if "google.colab" in sys.modules:
 # 2x + y & \leq 100 & \mbox{labor B constraint}
 # \end{align}$$
 
-# ## Solution using CVXPY
-# 
-# Here we will demonstrate the elementary use of [CVXPY](https://www.cvxpy.org/), a optimization modeling language that is embedded in Python using the cvxpy library.
+# ## Solution using Pyomo
 
-# In[ ]:
+# In[35]:
 
 
-import numpy as np
-import cvxpy as cp
+import pyomo.environ as pyo
 
-# create decision variables, setting non-negative attribute to true
-x = cp.Variable(nonneg=True)
-y = cp.Variable(nonneg=True)
+# create a new model
+model = pyo.ConcreteModel("Production Model")
 
-# create list of constraints
-constraints = [x <= 40,
-               x + y <= 80,
-               2*x + y <= 100]
+# add decision variables x and y
+model.x = pyo.Var(domain=pyo.NonNegativeReals)
+model.y = pyo.Var(domain=pyo.NonNegativeReals)
 
-# create objective
-objective = cp.Maximize(40*x + 30*y)
+# add objective
+@model.Objective(sense=pyo.maximize)
+def profit(model):
+    return 40*model.x + 30*model.y
 
-# create and solve the optimization problem
-problem = cp.Problem(objective, constraints)
-problem.solve()
+# add constraints
+@model.Constraint()
+def demand(model):
+    return model.x <= 40
 
-# access numerical solution
-print(f"Optimal Profit = ${problem.value:<7.2f}")
-print(f"x = {x.value:4.2f}")
-print(f"y = {y.value:4.2f}")
+@model.Constraint()
+def laborA(model):
+    return model.x + model.y <= 80
 
+@model.Constraint()
+def laborB(model):
+    return 2*model.x + model.y <= 100
 
-# ## Solution using scipy.optimize.linprog
-# 
-# The [scipy.optimize library](https://docs.scipy.org/doc/scipy/reference/optimize.html) includes a comprehensive collection of functions for finding roots and minimizing systems of one or more equations. Given a new problem, this library is often a good place to look for tools needed to solve a system of equations, or to minimize a particular objective.
-# 
-# In particular, the function `scipy.optimize.linprog` solves linear programming problems represented in the form
-# 
-# $$\begin{align}
-# \min_{x \geq 0} &\ c^T x \\
-# \mbox{subject to:}\qquad \\
-# A_{ub} & \leq b_{ub} \\
-# A_{eq} & = b_{eq} \\
-# \end{align}$$
-# 
-# where $c$ is a vector of coefficients in the objective function to be minimized, $A_{ub}$ and $b_{ub}$ are the coefficients and right-hand-sides of problem constraints written as upper bounds, and $A_{eq}$ and $b_{eq}$ are coefficients and right-hand-sides for equality constraints.
+# compute solution
+solver = pyo.SolverFactory('gurobi_direct')
+solver.solve(model)
 
-# In[31]:
-
-
-import numpy as np
-import cvxpy as cp
-
-c = np.array([40, 30])
-A = np.array([[1, 0], [1, 1], [2, 1]])
-b = np.array([40, 80, 100])
-
-x = cp.Variable(shape=(2), nonneg=True)
-
-constraints = [A@x <= b]
-prob = cp.Problem(cp.Maximize(c@x), constraints)
-prob.solve()
-x.value
-
-
-# In[23]:
-
-
-from scipy.optimize import linprog
-
-c = [-40, -30]
-
-A_ub = [[1, 0], 
-        [1, 1], 
-        [2, 1]]
-
-b_ub = [40, 
-        80, 
-        100]
-
-results = linprog(c, A_ub, b_ub)
-
-print(results.message)
-if results.success:
-    print('x =', results.x)
-    print('objective = ', results.fun)
+# display solution
+print("profit = ", model.profit())
+print("x = ", model.x())
+print("y = ", model.y())
 
 
 # The mixed product strategy earns more profit than either of the single product srategies. Does this surprise you?  Before going further, try to explain why it is possible for a mixed product strategy to earn more profit than either of the possible single product strategies.
 
 # ## What are the active constraints?
 
-# In[10]:
+# In[33]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
-from pylab import *
+import matplotlib.pyplot as plt
+import numpy as np
 
-figure(figsize=(6,6))
-subplot(111, aspect='equal')
-axis([0,100,0,100])
-xlabel('Production Qty X')
-ylabel('Production Qty Y')
+fig, ax = plt.subplots(1, 1, figsize=(6,6))
+ax.set_aspect('equal')
+ax.set_xlim(0, 100)
+ax.set_ylim(0, 100)
+ax.set_xlabel('Production Qty X')
+ax.set_ylabel('Production Qty Y')
 
-# Labor A constraint
-x = array([0,80])
+# labor A constraint
+x = np.array([0, 80])
 y = 80 - x
-plot(x,y,'r',lw=2)
-fill_between([0,80,100],[80,0,0],[100,100,100],color='r',alpha=0.15)
+ax.plot(x, y , 'r', lw=2, label="labor A constraint")
+ax.fill_between([0, 80, 100], [80, 0,0 ], [100, 100, 100], color='r', alpha=0.15)
 
-# Labor B constraint
-x = array([0,50])
+# labor B constraint
+x = np.array([0, 50])
 y = 100 - 2*x
-plot(x,y,'b',lw=2)
-fill_between([0,50,100],[100,0,0],[100,100,100],color='b',alpha=0.15)
+ax.plot(x, y, 'b', lw=2, label="labor B constraint")
+ax.fill_between([0, 50, 100], [100, 0, 0], [100, 100, 100], color='b', alpha=0.15)
 
-# Demand constraint
-plot([40,40],[0,100],'g',lw=2)
-fill_between([40,100],[0,0],[100,100],color='g',alpha=0.15)
+# demand constraint
+ax.plot([40, 40], [0, 100], 'g', lw=2, label="demand constraint")
+ax.fill_between([40, 100], [0, 0], [100, 100], color='g', alpha=0.15)
 
-legend(['Labor A Constraint','Labor B Constraint','Demand Constraint'])
+ax.legend()
 
 # Contours of constant profit
-x = array([0,100])
-for p in linspace(0,3600,10):
+x = np.array([0, 100])
+for p in np.linspace(0, 3600, 10):
     y = (p - 40*x)/30
-    plot(x,y,'y--')
+    ax.plot(x, y, 'y--')
 
-# Optimum
-plot(20,60,'r.',ms=20)
-annotate('Mixed Product Strategy', xy=(20,60), xytext=(50,70),
-         arrowprops=dict(shrink=.1,width=1,headwidth=5))
+# annotations
+arrowprops = {"shrink": 0.1, "width": 1, "headwidth": 5}
 
-plot(0,80,'b.',ms=20)
-annotate('Y Only', xy=(0,80), xytext=(20,90),
-         arrowprops=dict(shrink=0.1,width=1,headwidth=5))
+ax.plot(20, 60, 'r.', ms=20)
+ax.annotate('Mixed Product Strategy', xy=(20, 60), xytext=(50, 70), arrowprops=arrowprops)
 
-plot(40,0,'b.',ms=20)
-annotate('X Only', xy=(40,0), xytext=(70,20),
-         arrowprops=dict(shrink=0.1,width=1,headwidth=5))
+ax.plot(0, 80, 'b.', ms=20)
+ax.annotate('Y Only', xy=(0,80), xytext=(20,90), arrowprops=arrowprops)
 
-text(4,23,'Increasing Profit')
-annotate('', xy=(20,15), xytext=(0,0),
-         arrowprops=dict(width=0.5,headwidth=5))
+ax.plot(40,0,'b.',ms=20)
+ax.annotate('X Only', xy=(40,0), xytext=(70,20), arrowprops=arrowprops)
 
-savefig('figures/LPprob01.png', bbox_inches='tight')
+ax.text(4,23,'Increasing Profit')
+ax.annotate('', xy=(20,15), xytext=(0,0), arrowprops=arrowprops)
+
+plt.savefig('figures/LPprob01.png', bbox_inches='tight')
 
 
 # ## What is the incremental value of labor?
@@ -281,31 +234,54 @@ savefig('figures/LPprob01.png', bbox_inches='tight')
 # The optimal solution is found at the intersection of constraints corresponding to Labor A and Labor B.  These are the **active constraints**. Adding additional labor of either type will increase the profit.  By contrast, the demand constraint for product X is inactive at the optimum, therefore attempting to increase demand for product X would be wasted effort.
 # 
 # This leaves the important question of how much the profit will increase if additional resources are available. Let's see what happens if one additional hour of Labor A is available.
+# 
+# For this analysis, we repackage the Pyomo model into a Python function that accepts values for the available resources (i.e, demand, labor A, and labor B). This packaging makes it easy to do sensitivity studies, like this one, where parameters in the problem are adjusted to determine their impact on the optimal response.
 
-# In[4]:
-
-
-from scipy.optimize import linprog
-
-c = [-40, -30]
-
-A_ub = [[1, 0], 
-        [1, 1], 
-        [2, 1]]
-
-b_ub = [40,
-        81,    #  <<<<<< 1 additional hour of Labor A
-        100]
-
-results = linprog(c, A_ub, b_ub)
-
-print(results.message)
-if results.success:
-    print('x =', results.x)
-    print('objective = ', results.fun)
+# In[44]:
 
 
-# An additional hour of Labor A increases the profit by \$20. The base cost of \$50/hour for Labor A is included in the objective function. Therefore we should be willing to pay up to \$50 + \$20 = \$70/hour for additional Labor A.
+import pyomo.environ as pyo
+
+def production_model(demand=40, laborA=80, laborB=100):
+
+    # create a new model
+    model = pyo.ConcreteModel("Production Model")
+
+    # add decision variables x and y
+    model.x = pyo.Var(domain=pyo.NonNegativeReals)
+    model.y = pyo.Var(domain=pyo.NonNegativeReals)
+
+    # add objective
+    @model.Objective(sense=pyo.maximize)
+    def profit(model):
+        return 40*model.x + 30*model.y
+
+    # add constraints
+    @model.Constraint()
+    def demand(model):
+        return model.x <= demand
+
+    @model.Constraint()
+    def laborA(model):
+        return model.x + model.y <= laborA
+
+    @model.Constraint()
+    def laborB(model):
+        return 2*model.x + model.y <= laborB
+
+    # compute solution
+    solver = pyo.SolverFactory('gurobi_direct')
+    solver.solve(model)
+    
+    return model
+
+model= production_model(40, 81, 100)
+print("profit = ", model.profit())
+print("x = ", model.x())
+print("y = ", model.y())
+
+
+# An additional hour of Labor A increases the profit by 0 dollars. The base cost of 50 dollars per hour for Labor A is included in the objective function. Therefore we should be willing to pay up to 50 + 20 = 70 dollars per hour for additional Labor A.
 
 # ### Exercise
 # 

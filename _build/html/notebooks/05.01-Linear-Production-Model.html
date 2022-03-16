@@ -762,35 +762,30 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-using-cvxpy">
-   5.1.4. Solution using CVXPY
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-using-scipy-optimize-linprog">
-   5.1.5. Solution using scipy.optimize.linprog
+  <a class="reference internal nav-link" href="#solution-using-pyomo">
+   5.1.4. Solution using Pyomo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-are-the-active-constraints">
-   5.1.6. What are the active constraints?
+   5.1.5. What are the active constraints?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-the-incremental-value-of-labor">
-   5.1.7. What is the incremental value of labor?
+   5.1.6. What is the incremental value of labor?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise">
-     5.1.7.1. Exercise
+     5.1.6.1. Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#theory-of-constraints">
-   5.1.8. Theory of Constraints
+   5.1.7. Theory of Constraints
   </a>
  </li>
 </ul>
@@ -848,35 +843,30 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-using-cvxpy">
-   5.1.4. Solution using CVXPY
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-using-scipy-optimize-linprog">
-   5.1.5. Solution using scipy.optimize.linprog
+  <a class="reference internal nav-link" href="#solution-using-pyomo">
+   5.1.4. Solution using Pyomo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-are-the-active-constraints">
-   5.1.6. What are the active constraints?
+   5.1.5. What are the active constraints?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-the-incremental-value-of-labor">
-   5.1.7. What is the incremental value of labor?
+   5.1.6. What is the incremental value of labor?
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise">
-     5.1.7.1. Exercise
+     5.1.6.1. Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#theory-of-constraints">
-   5.1.8. Theory of Constraints
+   5.1.7. Theory of Constraints
   </a>
  </li>
 </ul>
@@ -890,18 +880,18 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-production-model">
 <h1><span class="section-number">5.1. </span>Linear Production Model<a class="headerlink" href="#linear-production-model" title="Permalink to this headline">¶</a></h1>
+<p>This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> to represent the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Pyomo and solvers for Google Colab</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
-    <span class="o">!</span>wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/colab.py 
-    <span class="o">%</span><span class="k">run</span> colab.py
+    <span class="o">!</span>wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/import_pyomo_on_colab.py 
+    <span class="o">%</span><span class="k">run</span> import_pyomo_on_colab.py
 </pre></div>
 </div>
 </div>
 </div>
-<p>This notebook demonstrates the use of linear programming to maximize profit for a simple model of a multiproduct production facility. The notebook uses <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> to represent the model with the <a class="reference external" href="https://en.wikibooks.org/wiki/GLPK">glpk</a> solver to calculate solutions.</p>
 <div class="section" id="example-production-plan-for-a-single-product-plant">
 <h2><span class="section-number">5.1.1. </span>Example: Production Plan for a Single Product Plant<a class="headerlink" href="#example-production-plan-for-a-single-product-plant" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you are thinking about starting up a business to produce Product X. You have determined there is a market for X of up to 40 units per week at a price of $270 each. The production of each unit requires $100 of raw materials, 1 hour of type A labor, and 2 hours of type B labor. You have an unlimited amount of raw material available to you, but only 80 hours per week of labor A at a cost of $50/hour, and 100 hours per week of labor B at a cost of $40 per hour. Ignoring all other expenses, what is the maximum weekly profit?</p>
@@ -997,102 +987,52 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
 \end{align}\end{split}\]</div>
 </div>
-<div class="section" id="solution-using-cvxpy">
-<h2><span class="section-number">5.1.4. </span>Solution using CVXPY<a class="headerlink" href="#solution-using-cvxpy" title="Permalink to this headline">¶</a></h2>
-<p>Here we will demonstrate the elementary use of <a class="reference external" href="https://www.cvxpy.org/">CVXPY</a>, a optimization modeling language that is embedded in Python using the cvxpy library.</p>
+<div class="section" id="solution-using-pyomo">
+<h2><span class="section-number">5.1.4. </span>Solution using Pyomo<a class="headerlink" href="#solution-using-pyomo" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
 
-<span class="c1"># create decision variables, setting non-negative attribute to true</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># create a new model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s2">&quot;Production Model&quot;</span><span class="p">)</span>
 
-<span class="c1"># create list of constraints</span>
-<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">,</span>
-               <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">,</span>
-               <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">]</span>
+<span class="c1"># add decision variables x and y</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 
-<span class="c1"># create objective</span>
-<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="mi">40</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># add objective</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span>
 
-<span class="c1"># create and solve the optimization problem</span>
-<span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
-<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="c1"># add constraints</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">demand</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span>
 
-<span class="c1"># access numerical solution</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimal Profit = $</span><span class="si">{</span><span class="n">problem</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">&lt;7.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">4.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="solution-using-scipy-optimize-linprog">
-<h2><span class="section-number">5.1.5. </span>Solution using scipy.optimize.linprog<a class="headerlink" href="#solution-using-scipy-optimize-linprog" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html">scipy.optimize library</a> includes a comprehensive collection of functions for finding roots and minimizing systems of one or more equations. Given a new problem, this library is often a good place to look for tools needed to solve a system of equations, or to minimize a particular objective.</p>
-<p>In particular, the function <code class="docutils literal notranslate"><span class="pre">scipy.optimize.linprog</span></code> solves linear programming problems represented in the form</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}
-\min_{x \geq 0} &amp;\ c^T x \\
-\mbox{subject to:}\qquad \\
-A_{ub} &amp; \leq b_{ub} \\
-A_{eq} &amp; = b_{eq} \\
-\end{align}\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(c\)</span> is a vector of coefficients in the objective function to be minimized, <span class="math notranslate nohighlight">\(A_{ub}\)</span> and <span class="math notranslate nohighlight">\(b_{ub}\)</span> are the coefficients and right-hand-sides of problem constraints written as upper bounds, and <span class="math notranslate nohighlight">\(A_{eq}\)</span> and <span class="math notranslate nohighlight">\(b_{eq}\)</span> are coefficients and right-hand-sides for equality constraints.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">laborA</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">laborB</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># compute solution</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;gurobi_direct&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="nd">@x</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">]</span>
-<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Maximize</span><span class="p">(</span><span class="n">c</span><span class="nd">@x</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
-<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-<span class="n">x</span><span class="o">.</span><span class="n">value</span>
+<span class="c1"># display solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;profit = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([19.99999999, 60.00000001])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">]</span>
-
-<span class="n">A_ub</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
-        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
-        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-
-<span class="n">b_ub</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> 
-        <span class="mi">80</span><span class="p">,</span> 
-        <span class="mi">100</span><span class="p">]</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A_ub</span><span class="p">,</span> <span class="n">b_ub</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;objective = &#39;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
-x = [ 20.  60.]
-objective =  -2600.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit =  2600.0
+x =  20.0
+y =  60.0
 </pre></div>
 </div>
 </div>
@@ -1100,113 +1040,134 @@ objective =  -2600.0
 <p>The mixed product strategy earns more profit than either of the single product srategies. Does this surprise you?  Before going further, try to explain why it is possible for a mixed product strategy to earn more profit than either of the possible single product strategies.</p>
 </div>
 <div class="section" id="what-are-the-active-constraints">
-<h2><span class="section-number">5.1.6. </span>What are the active constraints?<a class="headerlink" href="#what-are-the-active-constraints" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.5. </span>What are the active constraints?<a class="headerlink" href="#what-are-the-active-constraints" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Production Qty X&#39;</span><span class="p">)</span>
-<span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Production Qty Y&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Production Qty X&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Production Qty Y&#39;</span><span class="p">)</span>
 
-<span class="c1"># Labor A constraint</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
+<span class="c1"># labor A constraint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">80</span> <span class="o">-</span> <span class="n">x</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">80</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;labor A constraint&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">80</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 
-<span class="c1"># Labor B constraint</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">])</span>
+<span class="c1"># labor B constraint</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;labor B constraint&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 
-<span class="c1"># Demand constraint</span>
-<span class="n">plot</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">40</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fill_between</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="c1"># demand constraint</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;demand constraint&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
 
-<span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Labor A Constraint&#39;</span><span class="p">,</span><span class="s1">&#39;Labor B Constraint&#39;</span><span class="p">,</span><span class="s1">&#39;Demand Constraint&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="c1"># Contours of constant profit</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3600</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">40</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="mi">30</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;y--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;y--&#39;</span><span class="p">)</span>
 
-<span class="c1"># Optimum</span>
-<span class="n">plot</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="s1">&#39;r.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Mixed Product Strategy&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">60</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">70</span><span class="p">),</span>
-         <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># annotations</span>
+<span class="n">arrowprops</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;headwidth&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 
-<span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="s1">&#39;b.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Y Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span>
-         <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Mixed Product Strategy&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">70</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 
-<span class="n">plot</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;b.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;X Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span>
-         <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">shrink</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Y Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 
-<span class="n">text</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="s1">&#39;Increasing Profit&#39;</span><span class="p">)</span>
-<span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
-         <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">headwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;b.&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;X Only&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">20</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
 
-<span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/LPprob01.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="s1">&#39;Increasing Profit&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">arrowprops</span><span class="o">=</span><span class="n">arrowprops</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/LPprob01.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/05.01-Linear-Production-Model_27_0.png" src="../_images/05.01-Linear-Production-Model_27_0.png" />
+<img alt="../_images/05.01-Linear-Production-Model_24_0.png" src="../_images/05.01-Linear-Production-Model_24_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="what-is-the-incremental-value-of-labor">
-<h2><span class="section-number">5.1.7. </span>What is the incremental value of labor?<a class="headerlink" href="#what-is-the-incremental-value-of-labor" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.6. </span>What is the incremental value of labor?<a class="headerlink" href="#what-is-the-incremental-value-of-labor" title="Permalink to this headline">¶</a></h2>
 <p>The optimal solution is found at the intersection of constraints corresponding to Labor A and Labor B.  These are the <strong>active constraints</strong>. Adding additional labor of either type will increase the profit.  By contrast, the demand constraint for product X is inactive at the optimum, therefore attempting to increase demand for product X would be wasted effort.</p>
 <p>This leaves the important question of how much the profit will increase if additional resources are available. Let’s see what happens if one additional hour of Labor A is available.</p>
+<p>For this analysis, we repackage the Pyomo model into a Python function that accepts values for the available resources (i.e, demand, labor A, and labor B). This packaging makes it easy to do sensitivity studies, like this one, where parameters in the problem are adjusted to determine their impact on the optimal response.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
 
-<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">production_model</span><span class="p">(</span><span class="n">demand</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">laborA</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">laborB</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
 
-<span class="n">A_ub</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
-        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
-        <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="c1"># create a new model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s2">&quot;Production Model&quot;</span><span class="p">)</span>
 
-<span class="n">b_ub</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span>
-        <span class="mi">81</span><span class="p">,</span>    <span class="c1">#  &lt;&lt;&lt;&lt;&lt;&lt; 1 additional hour of Labor A</span>
-        <span class="mi">100</span><span class="p">]</span>
+    <span class="c1"># add decision variables x and y</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A_ub</span><span class="p">,</span> <span class="n">b_ub</span><span class="p">)</span>
+    <span class="c1"># add objective</span>
+    <span class="nd">@model</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x =&#39;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;objective = &#39;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+    <span class="c1"># add constraints</span>
+    <span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">demand</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">demand</span>
+
+    <span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">laborA</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">laborA</span>
+
+    <span class="nd">@model</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">laborB</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">laborB</span>
+
+    <span class="c1"># compute solution</span>
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;gurobi_direct&#39;</span><span class="p">)</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="n">model</span><span class="o">=</span> <span class="n">production_model</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;profit = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y = &quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
-x = [ 19.  62.]
-objective =  -2620.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit =  2620.0
+x =  19.0
+y =  62.0
 </pre></div>
 </div>
 </div>
 </div>
-<p>An additional hour of Labor A increases the profit by $20. The base cost of $50/hour for Labor A is included in the objective function. Therefore we should be willing to pay up to $50 + $20 = $70/hour for additional Labor A.</p>
+<p>An additional hour of Labor A increases the profit by 0 dollars. The base cost of 50 dollars per hour for Labor A is included in the objective function. Therefore we should be willing to pay up to 50 + 20 = 70 dollars per hour for additional Labor A.</p>
 <div class="section" id="exercise">
-<h3><span class="section-number">5.1.7.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.6.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>What is the incremental value of Labor B?</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="theory-of-constraints">
-<h2><span class="section-number">5.1.8. </span>Theory of Constraints<a class="headerlink" href="#theory-of-constraints" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.7. </span>Theory of Constraints<a class="headerlink" href="#theory-of-constraints" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For <span class="math notranslate nohighlight">\(n\)</span> decisions you should expect to find <span class="math notranslate nohighlight">\(n\)</span> ‘active’ constraints.</p></li>
 <li><p>Each inactive constraint has an associated ‘slack.’  The associated resources have no incremental value.</p></li>
