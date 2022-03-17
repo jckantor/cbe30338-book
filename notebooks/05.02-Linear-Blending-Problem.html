@@ -738,72 +738,111 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-optimization-problems-with-cvxpy">
-   5.2.3. Solving optimization problems with CVXPY
+  <a class="reference internal nav-link" href="#analysis">
+   5.2.3. Analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-python-dictionary">
-     5.2.3.1. Step 1. Coding Problem Data as a Python Dictionary
+    <a class="reference internal nav-link" href="#decision-variables">
+     5.2.3.1. Decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-2-identifying-index-sets">
-     5.2.3.2. Step 2. Identifying index sets
+    <a class="reference internal nav-link" href="#objective">
+     5.2.3.2. Objective
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-3-create-decision-variables">
-     5.2.3.3. Step 3. Create decision variables
+    <a class="reference internal nav-link" href="#constraints">
+     5.2.3.3. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-volume">
+       5.2.3.3.1. Order Volume
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alcohol-by-volume">
+       5.2.3.3.2. Alcohol by Volume
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
+   5.2.4. Solving optimization problems with Pyomo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
+     5.2.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
+     5.2.4.2. Step 2. Creating a model instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
+     5.2.4.3. Step 3. Identifying index sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-decision-variables">
+     5.2.4.4. Step 4. Create decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-objective-function">
-     5.2.3.4. Step 4. Objective Function
+     5.2.4.5. Step 4. Objective Function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-constraints">
-     5.2.3.5. Step 5. Constraints
+     5.2.4.6. Step 5. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#volume-constraint">
-       5.2.3.5.1. Volume Constraint
+       5.2.4.6.1. Volume Constraint
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#product-composition-constraint">
-       5.2.3.5.2. Product Composition Constraint
+      <a class="reference internal nav-link" href="#composition-constraint">
+       5.2.4.6.2. Composition Constraint
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-6-create-cvxpy-problem-object">
-     5.2.3.6. Step 6. Create CVXPY Problem object
+    <a class="reference internal nav-link" href="#step-6-solve">
+     5.2.4.7. Step 6. Solve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-7-display-solution">
-     5.2.3.7. Step 7. Display solution
+     5.2.4.8. Step 7. Display solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-studies">
-   5.2.4. Parametric Studies
+   5.2.5. Parametric Studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#consolidating">
-     5.2.4.1. Consolidating
+     5.2.5.1. Consolidating
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#optimal-blend-as-a-function-of-product-specification">
-     5.2.4.2. Optimal blend as a function of product specification
+     5.2.5.2. Optimal blend as a function of product specification
     </a>
    </li>
   </ul>
@@ -839,72 +878,111 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solving-optimization-problems-with-cvxpy">
-   5.2.3. Solving optimization problems with CVXPY
+  <a class="reference internal nav-link" href="#analysis">
+   5.2.3. Analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-python-dictionary">
-     5.2.3.1. Step 1. Coding Problem Data as a Python Dictionary
+    <a class="reference internal nav-link" href="#decision-variables">
+     5.2.3.1. Decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-2-identifying-index-sets">
-     5.2.3.2. Step 2. Identifying index sets
+    <a class="reference internal nav-link" href="#objective">
+     5.2.3.2. Objective
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-3-create-decision-variables">
-     5.2.3.3. Step 3. Create decision variables
+    <a class="reference internal nav-link" href="#constraints">
+     5.2.3.3. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-volume">
+       5.2.3.3.1. Order Volume
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alcohol-by-volume">
+       5.2.3.3.2. Alcohol by Volume
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
+   5.2.4. Solving optimization problems with Pyomo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
+     5.2.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
+     5.2.4.2. Step 2. Creating a model instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
+     5.2.4.3. Step 3. Identifying index sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-decision-variables">
+     5.2.4.4. Step 4. Create decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-objective-function">
-     5.2.3.4. Step 4. Objective Function
+     5.2.4.5. Step 4. Objective Function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-constraints">
-     5.2.3.5. Step 5. Constraints
+     5.2.4.6. Step 5. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#volume-constraint">
-       5.2.3.5.1. Volume Constraint
+       5.2.4.6.1. Volume Constraint
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#product-composition-constraint">
-       5.2.3.5.2. Product Composition Constraint
+      <a class="reference internal nav-link" href="#composition-constraint">
+       5.2.4.6.2. Composition Constraint
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#step-6-create-cvxpy-problem-object">
-     5.2.3.6. Step 6. Create CVXPY Problem object
+    <a class="reference internal nav-link" href="#step-6-solve">
+     5.2.4.7. Step 6. Solve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-7-display-solution">
-     5.2.3.7. Step 7. Display solution
+     5.2.4.8. Step 7. Display solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-studies">
-   5.2.4. Parametric Studies
+   5.2.5. Parametric Studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#consolidating">
-     5.2.4.1. Consolidating
+     5.2.5.1. Consolidating
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#optimal-blend-as-a-function-of-product-specification">
-     5.2.4.2. Optimal blend as a function of product specification
+     5.2.5.2. Optimal blend as a function of product specification
     </a>
    </li>
   </ul>
@@ -920,7 +998,7 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-blending-problems">
 <h1><span class="section-number">5.2. </span>Linear Blending Problems<a class="headerlink" href="#linear-blending-problems" title="Permalink to this headline">¶</a></h1>
-<p>This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using CVXPY.</p>
+<p>This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using Pyomo.</p>
 <div class="section" id="learning-goals">
 <h2><span class="section-number">5.2.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -955,236 +1033,470 @@
 <h2><span class="section-number">5.2.2. </span>Problem Statement (Jenchura, 2017)<a class="headerlink" href="#problem-statement-jenchura-2017" title="Permalink to this headline">¶</a></h2>
 <p>A brewery receives an order for 100 gallons that is at least 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV and costs \<span class="math notranslate nohighlight">\(0.32 per gallon to make, and beer B that is 3.7% ABV and costs \\\)</span>0.25 per gallon. Water (W) can also be used as a blending agent at a cost of \$0.05 per gallon. Find the minimum cost blend of A, B, and W that meets the customer requirements.</p>
 </div>
-<div class="section" id="solving-optimization-problems-with-cvxpy">
-<h2><span class="section-number">5.2.3. </span>Solving optimization problems with CVXPY<a class="headerlink" href="#solving-optimization-problems-with-cvxpy" title="Permalink to this headline">¶</a></h2>
-<p>The blending problem described above is relatively simple, it can be solved in CVXPY using no more than <code class="docutils literal notranslate"><span class="pre">cp.Variable()</span></code>, <code class="docutils literal notranslate"><span class="pre">cp.Minimize()</span></code>, and <code class="docutils literal notranslate"><span class="pre">cp.Problem()</span></code> as demonstrated below.</p>
+<div class="section" id="analysis">
+<h2><span class="section-number">5.2.3. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Before going futher, carefully read the problem description with the following questions in mind.</p>
+<ul class="simple">
+<li><p>What are the decision variables?</p></li>
+<li><p>What is the objective?</p></li>
+<li><p>What are the constraints?</p></li>
+</ul>
+<div class="section" id="decision-variables">
+<h3><span class="section-number">5.2.3.1. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">¶</a></h3>
+<p>The decision variables for this problem are the amounts of blending stocks “A”, “B”, and “W” to included in the final batch.  We can define a set of blending stocks <span class="math notranslate nohighlight">\(S\)</span>, and non-negative decision variables <span class="math notranslate nohighlight">\(x_s\)</span> that are indexed by the components in <span class="math notranslate nohighlight">\(S\)</span> that denote the amount of <span class="math notranslate nohighlight">\(s\)</span> included in the final batch.</p>
+</div>
+<div class="section" id="objective">
+<h3><span class="section-number">5.2.3.2. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
+<p>If we designate the price of blending stock <span class="math notranslate nohighlight">\(s \in S\)</span> as <span class="math notranslate nohighlight">\(P_s\)</span>, the cost is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mbox{cost} &amp; = \sum_{s\in C} x_s P_s
+\end{align}
+\]</div>
+<p>The objective is to minimize cost.</p>
+</div>
+<div class="section" id="constraints">
+<h3><span class="section-number">5.2.3.3. </span>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="order-volume">
+<h4><span class="section-number">5.2.3.3.1. </span>Order Volume<a class="headerlink" href="#order-volume" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(V = 100\)</span> represent the desired volume of product and assume ideal mixing. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V &amp;  = \sum_{s\in S} x_s
+\end{align}\]</div>
+</div>
+<div class="section" id="alcohol-by-volume">
+<h4><span class="section-number">5.2.3.3.2. </span>Alcohol by Volume<a class="headerlink" href="#alcohol-by-volume" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(C_s\)</span> denote the volume fraction of alcohol in blending stock <span class="math notranslate nohighlight">\(s\)</span>. Assuming ideal mixing, the total volume of of alchohol in the final product be</p>
+<div class="math notranslate nohighlight">
+\[C_{total} = \sum_{s\in S} x_s C_s\]</div>
+<p>If <span class="math notranslate nohighlight">\(\bar{C}\)</span> denotes the required average concentration, then</p>
+<div class="math notranslate nohighlight">
+\[\frac{C_{total}}{V} \geq \bar{C} \qquad \implies \qquad \frac{\sum_{s\in S} x_s C_s}{\sum_{s\in S} x_s} \geq \bar{C}\]</div>
+<p>Which is not linear in the decision variables. If at all possible, linear constraints are much preferred because (1) they enable the use of LP solvers, and (2) then tend to avoid problems that can arise with division by zero and other issues.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{s\in S} (C_s - \bar{C}) x_s \geq 0\]</div>
+<p>There are other ways to write composition constraints, but this one is preferred because it isolates the product quality parameter, <span class="math notranslate nohighlight">\(\bar{C}\)</span>, in a single constraint.  This constraint has “one job to do”.</p>
+</div>
+</div>
+</div>
+<div class="section" id="solving-optimization-problems-with-pyomo">
+<h2><span class="section-number">5.2.4. </span>Solving optimization problems with Pyomo<a class="headerlink" href="#solving-optimization-problems-with-pyomo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-coding-problem-data-as-a-pandas-dataframe">
+<h3><span class="section-number">5.2.4.1. </span>Step 1. Coding Problem Data as a Pandas DataFrame<a class="headerlink" href="#step-1-coding-problem-data-as-a-pandas-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a Pandas dataframe of raw materials, each row representing a unique blending agent, and columns containing attributes of the blending components. This is consistent with “Tidy Data” principles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.037</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]],</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Concentration</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>blending stock</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0.045</td>
+      <td>0.32</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0.037</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>W</th>
+      <td>0.000</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="step-2-creating-a-model-instance">
+<h3><span class="section-number">5.2.4.2. </span>Step 2. Creating a model instance<a class="headerlink" href="#step-2-creating-a-model-instance" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">bm</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s1">&#39;Blending Model&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="step-1-coding-problem-data-as-a-python-dictionary">
-<h3><span class="section-number">5.2.3.1. </span>Step 1. Coding Problem Data as a Python Dictionary<a class="headerlink" href="#step-1-coding-problem-data-as-a-python-dictionary" title="Permalink to this headline">¶</a></h3>
-<p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a dictionary of raw materials, each key denoting a unique blending agent. For each key there is a second level dictionary containing attributes of the blending component. This nested “dictionary of dictionaries” organization is a useful of organizing tabular data for optimization problems.</p>
+</div>
+<div class="section" id="step-3-identifying-index-sets">
+<h3><span class="section-number">5.2.4.3. </span>Step 3. Identifying index sets<a class="headerlink" href="#step-3-identifying-index-sets" title="Permalink to this headline">¶</a></h3>
+<p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of blending stocks. We will use these index sets to create decision variables and to express the sums that appear in the objective and constraints</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.045</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">},</span>
-    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.037</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">},</span>
-    <span class="s1">&#39;W&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;abv&#39;</span><span class="p">:</span> <span class="mf">0.000</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">},</span>
-<span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: {&#39;abv&#39;: 0.045, &#39;cost&#39;: 0.32}, &#39;B&#39;: {&#39;abv&#39;: 0.037, &#39;cost&#39;: 0.25}, &#39;W&#39;: {&#39;abv&#39;: 0.0, &#39;cost&#39;: 0.05}}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;A&#39;, &#39;B&#39;, &#39;W&#39;], dtype=&#39;object&#39;, name=&#39;blending stock&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-2-identifying-index-sets">
-<h3><span class="section-number">5.2.3.2. </span>Step 2. Identifying index sets<a class="headerlink" href="#step-2-identifying-index-sets" title="Permalink to this headline">¶</a></h3>
-<p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of raw materials in the blending problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;, &#39;B&#39;, &#39;W&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+W
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="step-3-create-decision-variables">
-<h3><span class="section-number">5.2.3.3. </span>Step 3. Create decision variables<a class="headerlink" href="#step-3-create-decision-variables" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="step-4-create-decision-variables">
+<h3><span class="section-number">5.2.4.4. </span>Step 4. Create decision variables<a class="headerlink" href="#step-4-create-decision-variables" title="Permalink to this headline">¶</a></h3>
+<p>Most real-world applications of optimization technologies involve many decision variables and constraints. It would be impractical to create unique identifiers for literally thousands of variables. For this reason, the <code class="docutils literal notranslate"><span class="pre">pyo.Var()</span></code> and other objects can create indexed sets of variables and constraints. Here is how it is done for the blending problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: Variable((), nonneg=True), &#39;B&#39;: Variable((), nonneg=True), &#39;W&#39;: Variable((), nonneg=True)}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="step-4-objective-function">
-<h3><span class="section-number">5.2.3.4. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
-<p>If we let subscript <span class="math notranslate nohighlight">\(c\)</span> denote a blending component from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-746d35fb-a231-4f5a-b5a4-fc04c04415c7">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-746d35fb-a231-4f5a-b5a4-fc04c04415c7" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\mbox{cost} &amp; = \sum_{c\in C} x_c P_c
-\end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(P_c\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(c\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_c\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[c]['cost']</span></code>.</p>
+<h3><span class="section-number">5.2.4.5. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
+<p>If we let subscript <span class="math notranslate nohighlight">\(d\)</span> denote a blending d from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mbox{cost} &amp; = \sum_{s\in S} x_s P_s
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_s\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(s\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_s\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[s,</span> <span class="pre">'Price']</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s2">&quot;cost&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
-<span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_cost</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">objective</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@bm</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">minimize</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Price&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>minimize var0 @ 0.32 + var1 @ 0.25 + var2 @ 0.05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute cost (type=&lt;class
+    &#39;pyomo.core.base.objective.ScalarObjective&#39;&gt;) on block Blending Model with
+    a new Component (type=&lt;class
+    &#39;pyomo.core.base.objective.ScalarObjective&#39;&gt;). This is usually indicative
+    of a modelling error. To avoid this warning, use block.del_component() and
+    block.add_component().
+cost : Size=1, Index=None, Active=True
+    Key  : Active : Sense    : Expression
+    None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="step-5-constraints">
-<h3><span class="section-number">5.2.3.5. </span>Step 5. Constraints<a class="headerlink" href="#step-5-constraints" title="Permalink to this headline">¶</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">volume</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.040</span>
-</pre></div>
-</div>
-</div>
-</div>
+<h3><span class="section-number">5.2.4.6. </span>Step 5. Constraints<a class="headerlink" href="#step-5-constraints" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="volume-constraint">
-<h4><span class="section-number">5.2.3.5.1. </span>Volume Constraint<a class="headerlink" href="#volume-constraint" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.2.4.6.1. </span>Volume Constraint<a class="headerlink" href="#volume-constraint" title="Permalink to this headline">¶</a></h4>
 <p>The customer requirement is produce a total volume <span class="math notranslate nohighlight">\(V\)</span>. Assuming ideal solutions, the constraint is given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
-V &amp;  = \sum_{c\in C} x_c
+V &amp;  = \sum_{s\in s} x_s
 \end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x_c\)</span> denotes the volume of component <span class="math notranslate nohighlight">\(c\)</span> used in the blend.</p>
+<p>where <span class="math notranslate nohighlight">\(x_s\)</span> denotes the volume of blending stock <span class="math notranslate nohighlight">\(s\)</span> used in the blend.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">volume</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)]</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="product-composition-constraint">
-<h4><span class="section-number">5.2.3.5.2. </span>Product Composition Constraint<a class="headerlink" href="#product-composition-constraint" title="Permalink to this headline">¶</a></h4>
-<p>The product composition is specified as requiring at least 4% alchohol by volume. Denoting the specification as <span class="math notranslate nohighlight">\(\bar{A}\)</span>, the constraint may be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\bar{A} &amp; \leq \frac{\sum_{c\in C}x_c A_c}{\sum_{c\in C} x_c}
-\end{align}\]</div>
-<p>where <span class="math notranslate nohighlight">\(A_c\)</span> is the alcohol by volume for component <span class="math notranslate nohighlight">\(c\)</span>. As written, this is a nonlinear constraint. Multiplying both sides of the equation by the denominator yields a linear constraint</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\bar{A}\sum_{c\in C} x_c &amp; \leq \sum_{c\in C}x_c A_c
-\end{align}\]</div>
-<p>A final form for this constraint can be given in either of two versions. In the first version we subtract the left-hand side from the right to give</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-0 &amp; \leq \sum_{c\in C}x_c \left(A_c - \bar{A}\right) &amp; \mbox{ Version 1 of the linear blending constraint}
-\end{align}\]</div>
-<p>Alternatively, the summation on the left-hand side corresponds to total volume. Since that is known as part of the problem specification, the blending constraint could also be written as</p>
-<div class="math notranslate nohighlight">
-\[\begin{align}
-\bar{A}V &amp; \leq \sum_{c\in C}x_c A_c  &amp; \mbox{ Version 2 of the linear blending constraint}
-\end{align}\]</div>
-<p>Which should you use? Normally either will work well. The advantage of version 1 is that it is fully specified by a single product requirement <span class="math notranslate nohighlight">\(\bar{A}\)</span>, and doesn’t require knowledge of the other product requirement <span class="math notranslate nohighlight">\(V\)</span>. This may be helpful in writing elegant Python code.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">constraints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can review the constraints by printing them out. If no name is specified for a decision variable when it is created, then cvxpy will assign a name beginiing with <code class="docutils literal notranslate"><span class="pre">var</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="n">constraints</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">constraint</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">volume</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">==</span> <span class="n">V</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>var0 + var1 + var2 == 100.0
-0.0 &lt;= var0 @ 0.0049999999999999975 + var1 @ -0.0030000000000000027 + var2 @ -0.04
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute volume (type=&lt;class
+    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block Blending Model
+    with a new Component (type=&lt;class
+    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
+    indicative of a modelling error. To avoid this warning, use
+    block.del_component() and block.add_component().
+volume : Size=1, Index=None, Active=True
+    Key  : Lower : Body               : Upper : Active
+    None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
 </pre></div>
 </div>
 </div>
 </div>
-<hr>
-<p><strong>Study Question:</strong> Consult the CVXPY document for <code class="docutils literal notranslate"><span class="pre">cvxpy.Variable()</span></code>. Modify the code above to assign a name to each variable corresponding to the key for its entry in the data dictionary. Rerun the cells to see how the objective and constraints are printed.</p>
-<hr></div>
 </div>
-<div class="section" id="step-6-create-cvxpy-problem-object">
-<h3><span class="section-number">5.2.3.6. </span>Step 6. Create CVXPY Problem object<a class="headerlink" href="#step-6-create-cvxpy-problem-object" title="Permalink to this headline">¶</a></h3>
-<p>An optimization problem consists of decision variables, and algebraic expressions that define an objective and a list of constranits. These are encapsulated into a CVXPY Problem.</p>
+<div class="section" id="composition-constraint">
+<h4><span class="section-number">5.2.4.6.2. </span>Composition Constraint<a class="headerlink" href="#composition-constraint" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="p">)</span>
-<span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_lb</span> <span class="o">=</span> <span class="mf">0.04</span>
+
+<span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">composition</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Concentration&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">C_lb</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.625000014836907
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute composition (type=&lt;class
+    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block Blending Model
+    with a new Component (type=&lt;class
+    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
+    indicative of a modelling error. To avoid this warning, use
+    block.del_component() and block.add_component().
+composition : Size=1, Index=None, Active=True
+    Key  : Lower : Body                                                                : Upper : Active
+    None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-6-solve">
+<h3><span class="section-number">5.2.4.7. </span>Step 6. Solve<a class="headerlink" href="#step-6-solve" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Set Declarations
+    S : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :    3 : {&#39;A&#39;, &#39;B&#39;, &#39;W&#39;}
+
+1 Var Declarations
+    x : Size=3, Index=S
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          A :     0 :  None :  None : False :  True : NonNegativeReals
+          B :     0 :  None :  None : False :  True : NonNegativeReals
+          W :     0 :  None :  None : False :  True : NonNegativeReals
+
+1 Objective Declarations
+    cost : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
+
+2 Constraint Declarations
+    composition : Size=1, Index=None, Active=True
+        Key  : Lower : Body                                                                : Upper : Active
+        None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+    volume : Size=1, Index=None, Active=True
+        Key  : Lower : Body               : Upper : Active
+        None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
+
+5 Declarations: S x cost volume composition
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">bm</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --write /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpr_905u1e.glpk.raw
+ --wglp /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpkqr7abph.glpk.glp
+ --cpxlp /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmp4_k2zpfj.pyomo.lp
+Reading problem data from &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmp4_k2zpfj.pyomo.lp&#39;...
+3 rows, 4 columns, 7 non-zeros
+30 lines were read
+Writing problem data to &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpkqr7abph.glpk.glp&#39;...
+23 lines were written
+GLPK Simplex Optimizer 5.0
+3 rows, 4 columns, 7 non-zeros
+Preprocessing...
+2 rows, 3 columns, 6 non-zeros
+Scaling...
+ A: min|aij| =  3.000e-03  max|aij| =  1.000e+00  ratio =  3.333e+02
+GM: min|aij| =  5.233e-01  max|aij| =  1.911e+00  ratio =  3.651e+00
+EQ: min|aij| =  2.739e-01  max|aij| =  1.000e+00  ratio =  3.651e+00
+Constructing initial basis...
+Size of triangular part is 2
+      0: obj =   5.000000000e+00 inf =   1.911e+02 (1)
+      1: obj =   2.900000000e+01 inf =   0.000e+00 (0)
+*     2: obj =   2.762500000e+01 inf =   0.000e+00 (0)
+OPTIMAL LP SOLUTION FOUND
+Time used:   0.0 secs
+Memory used: 0.0 Mb (40412 bytes)
+Writing basic solution to &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpr_905u1e.glpk.raw&#39;...
+16 lines were written
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 27.625
+  Upper bound: 27.625
+  Number of objectives: 1
+  Number of constraints: 3
+  Number of variables: 4
+  Number of nonzeros: 7
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Termination condition: optimal
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 0
+      Number of created subproblems: 0
+  Error rc: 0
+  Time: 0.013801097869873047
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="step-7-display-solution">
-<h3><span class="section-number">5.2.3.7. </span>Step 7. Display solution<a class="headerlink" href="#step-7-display-solution" title="Permalink to this headline">¶</a></h3>
-<p>Following solution, the values of any CVXPY variable, expression, objective, or constraint can be accessed using the associated <code class="docutils literal notranslate"><span class="pre">value</span></code> property.</p>
+<h3><span class="section-number">5.2.4.8. </span>Step 7. Display solution<a class="headerlink" href="#step-7-display-solution" title="Permalink to this headline">¶</a></h3>
+<p>Following solution, the values of any Pyomo variable, expression, objective, or constraint can be accessed using the associated <code class="docutils literal notranslate"><span class="pre">value</span></code> property.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total_cost</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>var0 @ 0.32 + var1 @ 0.25 + var2 @ 0.05
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Set Declarations
+    S : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :    3 : {&#39;A&#39;, &#39;B&#39;, &#39;W&#39;}
+
+1 Var Declarations
+    x : Size=3, Index=S
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          A :     0 : 37.5000000000001 :  None : False : False : NonNegativeReals
+          B :     0 :             62.5 :  None : False : False : NonNegativeReals
+          W :     0 :              0.0 :  None : False : False : NonNegativeReals
+
+1 Objective Declarations
+    cost : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
+
+2 Constraint Declarations
+    composition : Size=1, Index=None, Active=True
+        Key  : Lower : Body                                                                : Upper : Active
+        None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+    volume : Size=1, Index=None, Active=True
+        Key  : Lower : Body               : Upper : Active
+        None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
+
+5 Declarations: S x cost volume composition
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">total_cost</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.625000014836907
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.625000000000032
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">volume</span><span class="si">}</span><span class="s2"> gallons at ABV=</span><span class="si">{</span><span class="n">abv</span><span class="si">}</span><span class="s2">: $</span><span class="si">{</span><span class="n">total_cost</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> gallons at greater than ABV=</span><span class="si">{</span><span class="n">C_lb</span><span class="si">}</span><span class="s2">: $</span><span class="si">{</span><span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum cost to produce 100 gallons at ABV=0.04: $27.63
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum cost to produce 100 gallons at greater than ABV=0.04: $27.63
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">components</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]()</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A: 37.50 gallons
-B: 62.50 gallons
-W:  0.00 gallons
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A:  37.50 gallons
+B:  62.50 gallons
+W:   0.00 gallons
 </pre></div>
 </div>
 </div>
@@ -1192,7 +1504,7 @@ W:  0.00 gallons
 </div>
 </div>
 <div class="section" id="parametric-studies">
-<h2><span class="section-number">5.2.4. </span>Parametric Studies<a class="headerlink" href="#parametric-studies" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.5. </span>Parametric Studies<a class="headerlink" href="#parametric-studies" title="Permalink to this headline">¶</a></h2>
 <p>An important use of optimization models is to investigate how operations depend on critical parameters. For example, for this blending problem we may be interested in questions like:</p>
 <ul class="simple">
 <li><p>How does the operating cost change with product alcohol content?</p></li>
@@ -1202,42 +1514,8 @@ W:  0.00 gallons
 <li><p>How much would be pay for raw materials with different specifications</p></li>
 </ul>
 <div class="section" id="consolidating">
-<h3><span class="section-number">5.2.4.1. </span>Consolidating<a class="headerlink" href="#consolidating" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5.1. </span>Consolidating<a class="headerlink" href="#consolidating" title="Permalink to this headline">¶</a></h3>
 <p>To enable parametric studies, our first step is to consolidate the model into a function that accepts problem data and reports an optimal solution.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
-
-<span class="k">def</span> <span class="nf">brew_blend</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">abv</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-    
-    <span class="c1"># create set of components</span>
-    <span class="n">components</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    
-    <span class="c1"># create variables</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">nonneg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
-    
-    <span class="c1"># create objective function</span>
-    <span class="n">total_cost</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;cost&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
-    
-    <span class="c1"># create list of constraints</span>
-    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">volume</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">),</span>
-        <span class="mi">0</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="s1">&#39;abv&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">abv</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
-    <span class="p">]</span>
-    
-    <span class="c1"># create and solve problem</span>
-    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">total_cost</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
-    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
-    
-    <span class="c1"># return results</span>
-    <span class="n">min_cost</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">value</span>
-    <span class="n">optimal_blend</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">components</span><span class="p">}</span>
-    <span class="k">return</span> <span class="n">min_cost</span><span class="p">,</span> <span class="n">optimal_blend</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Demonstration</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1294,7 +1572,7 @@ W:  0.00
 </div>
 </div>
 <div class="section" id="optimal-blend-as-a-function-of-product-specification">
-<h3><span class="section-number">5.2.4.2. </span>Optimal blend as a function of product specification<a class="headerlink" href="#optimal-blend-as-a-function-of-product-specification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5.2. </span>Optimal blend as a function of product specification<a class="headerlink" href="#optimal-blend-as-a-function-of-product-specification" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
