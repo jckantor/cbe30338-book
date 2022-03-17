@@ -3,7 +3,7 @@
 
 # # Linear Blending Problems
 # 
-# This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using CVXPY.
+# This notebook introduces simple material blending problems, and outlines a multi-step procedure for creating and solving models for these problems using Pyomo.
 
 # ## Learning Goals
 # 
@@ -32,182 +32,220 @@
 # 
 # A brewery receives an order for 100 gallons that is at least 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV and costs \\$0.32 per gallon to make, and beer B that is 3.7% ABV and costs \\$0.25 per gallon. Water (W) can also be used as a blending agent at a cost of \\$0.05 per gallon. Find the minimum cost blend of A, B, and W that meets the customer requirements.
 
-# ## Solving optimization problems with CVXPY
+# ## Analysis
 # 
-# The blending problem described above is relatively simple, it can be solved in CVXPY using no more than `cp.Variable()`, `cp.Minimize()`, and `cp.Problem()` as demonstrated below.
+# Before going futher, carefully read the problem description with the following questions in mind.
+# 
+# * What are the decision variables?
+# * What is the objective?
+# * What are the constraints?
+# 
+# 
+# ### Decision variables
+# 
+# The decision variables for this problem are the amounts of blending stocks "A", "B", and "W" to included in the final batch.  We can define a set of blending stocks $S$, and non-negative decision variables $x_s$ that are indexed by the components in $S$ that denote the amount of $s$ included in the final batch.
+# 
+# ### Objective
+# 
+# If we designate the price of blending stock $s \in S$ as $P_s$, the cost is 
+# 
+# $$
+# \begin{align}
+# \mbox{cost} & = \sum_{s\in C} x_s P_s
+# \end{align}
+# $$
+# 
+# The objective is to minimize cost.
+# 
+# ### Constraints
+# 
+# #### Order Volume
+# 
+# Let $V = 100$ represent the desired volume of product and assume ideal mixing. Then
+# 
+# $$\begin{align}
+# V &  = \sum_{s\in S} x_s
+# \end{align}$$
+# 
+# #### Alcohol by Volume
+# 
+# Let $C_s$ denote the volume fraction of alcohol in blending stock $s$. Assuming ideal mixing, the total volume of of alchohol in the final product be
+# 
+# $$C_{total} = \sum_{s\in S} x_s C_s$$
+# 
+# If $\bar{C}$ denotes the required average concentration, then 
+# 
+# $$\frac{C_{total}}{V} \geq \bar{C} \qquad \implies \qquad \frac{\sum_{s\in S} x_s C_s}{\sum_{s\in S} x_s} \geq \bar{C}$$
+# 
+# Which is not linear in the decision variables. If at all possible, linear constraints are much preferred because (1) they enable the use of LP solvers, and (2) then tend to avoid problems that can arise with division by zero and other issues.
+# 
+# $$\sum_{s\in S} (C_s - \bar{C}) x_s \geq 0$$
+# 
+# There are other ways to write composition constraints, but this one is preferred because it isolates the product quality parameter, $\bar{C}$, in a single constraint.  This constraint has "one job to do".
 
-# In[1]:
+# ## Solving optimization problems with Pyomo
+
+# ### Step 1. Coding Problem Data as a Pandas DataFrame
+# 
+# The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a Pandas dataframe of raw materials, each row representing a unique blending agent, and columns containing attributes of the blending components. This is consistent with "Tidy Data" principles.
+
+# In[62]:
+
+
+data = pd.DataFrame([
+    ['A', 0.045, 0.32],
+    ['B', 0.037, 0.25],
+    ['W', 0.000, 0.05]], 
+    columns = ['blending stock', 'Concentration', 'Price']
+)
+
+data.set_index('blending stock', inplace=True)
+display(data)
+
+
+# ### Step 2. Creating a model instance
+
+# In[63]:
 
 
 import numpy as np
-import cvxpy as cp
+import pyomo.environ as pyo
+import pandas as pd
+
+bm = pyo.ConcreteModel('Blending Model')
 
 
-# ### Step 1. Coding Problem Data as a Python Dictionary
+# ### Step 3. Identifying index sets
 # 
-# The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a dictionary of raw materials, each key denoting a unique blending agent. For each key there is a second level dictionary containing attributes of the blending component. This nested "dictionary of dictionaries" organization is a useful of organizing tabular data for optimization problems.
+# The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of blending stocks. We will use these index sets to create decision variables and to express the sums that appear in the objective and constraints
 
-# In[2]:
-
-
-data = {
-    'A': {'abv': 0.045, 'cost': 0.32},
-    'B': {'abv': 0.037, 'cost': 0.25},
-    'W': {'abv': 0.000, 'cost': 0.05},
-}
-print(data)
+# In[65]:
 
 
-# ### Step 2. Identifying index sets
+data.index
+
+
+# In[67]:
+
+
+bm.S = pyo.Set(initialize=data.index)
+
+for s in bm.S:
+    print(s)
+
+
+# ### Step 4. Create decision variables
 # 
-# The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of raw materials in the blending problem.
+# Most real-world applications of optimization technologies involve many decision variables and constraints. It would be impractical to create unique identifiers for literally thousands of variables. For this reason, the `pyo.Var()` and other objects can create indexed sets of variables and constraints. Here is how it is done for the blending problem.
 
-# In[3]:
-
-
-components = set(data.keys())
-print(components)
+# In[68]:
 
 
-# ### Step 3. Create decision variables
-
-# In[4]:
-
-
-x = {c: cp.Variable(nonneg=True) for c in components}
-print(x)
+bm.x = pyo.Var(bm.S, domain=pyo.NonNegativeReals)
 
 
 # ### Step 4. Objective Function
 # 
-# If we let subscript $c$ denote a blending component from the set of blending components $C$, and denote the volume of $c$ used in the blend as $x_c$, the cost of the blend is
+# If we let subscript $d$ denote a blending d from the set of blending components $C$, and denote the volume of $c$ used in the blend as $x_c$, the cost of the blend is
 # 
+# $$
 # \begin{align}
-# \mbox{cost} & = \sum_{c\in C} x_c P_c
+# \mbox{cost} & = \sum_{s\in S} x_s P_s
 # \end{align}
+# $$
 # 
-# where $P_c$ is the price per unit volume of $c$. Using the Python data dictionary defined above, the price $P_c$ is given by `data[c]['cost']`.
+# where $P_s$ is the price per unit volume of $s$. Using the Python data dictionary defined above, the price $P_s$ is given by `data[s, 'Price']`
 
-# In[5]:
+# In[73]:
 
 
-total_cost = sum(x[c]*data[c]["cost"] for c in components)
-objective = cp.Minimize(total_cost)
-print(objective)
+@bm.Objective(sense=pyo.minimize)
+def cost(bm):
+    return sum(bm.x[s] * data.loc[s, "Price"] for s in bm.S)
+
+bm.cost.pprint()
 
 
 # ### Step 5. Constraints
-
-# In[6]:
-
-
-volume = 100
-abv = 0.040
-
 
 # #### Volume Constraint
 # 
 # The customer requirement is produce a total volume $V$. Assuming ideal solutions, the constraint is given by
 # 
 # $$\begin{align}
-# V &  = \sum_{c\in C} x_c
+# V &  = \sum_{s\in s} x_s
 # \end{align}$$
 # 
-# where $x_c$ denotes the volume of component $c$ used in the blend.
+# where $x_s$ denotes the volume of blending stock $s$ used in the blend.
 
-# In[7]:
-
-
-constraints = [volume == sum(x[c] for c in components)]
+# In[83]:
 
 
-# #### Product Composition Constraint
-# 
-# The product composition is specified as requiring at least 4% alchohol by volume. Denoting the specification as $\bar{A}$, the constraint may be written as
-# 
-# $$\begin{align}
-# \bar{A} & \leq \frac{\sum_{c\in C}x_c A_c}{\sum_{c\in C} x_c}
-# \end{align}$$
-# 
-# where $A_c$ is the alcohol by volume for component $c$. As written, this is a nonlinear constraint. Multiplying both sides of the equation by the denominator yields a linear constraint
-# 
-# $$\begin{align}
-# \bar{A}\sum_{c\in C} x_c & \leq \sum_{c\in C}x_c A_c
-# \end{align}$$
-# 
-# A final form for this constraint can be given in either of two versions. In the first version we subtract the left-hand side from the right to give
-# 
-# $$\begin{align}
-# 0 & \leq \sum_{c\in C}x_c \left(A_c - \bar{A}\right) & \mbox{ Version 1 of the linear blending constraint}
-# \end{align}$$
-# 
-# Alternatively, the summation on the left-hand side corresponds to total volume. Since that is known as part of the problem specification, the blending constraint could also be written as
-# 
-# $$\begin{align}
-# \bar{A}V & \leq \sum_{c\in C}x_c A_c  & \mbox{ Version 2 of the linear blending constraint}
-# \end{align}$$
-# 
-# Which should you use? Normally either will work well. The advantage of version 1 is that it is fully specified by a single product requirement $\bar{A}$, and doesn't require knowledge of the other product requirement $V$. This may be helpful in writing elegant Python code.
+V = 100
 
-# In[8]:
+@bm.Constraint()
+def volume(bm):
+    return sum(bm.x[s] for s in bm.S) == V
+
+bm.volume.pprint()
 
 
-constraints.append(0 <= sum(x[c]*(data[c]['abv'] - abv) for c in components))
+# #### Composition Constraint
+
+# In[84]:
 
 
-# We can review the constraints by printing them out. If no name is specified for a decision variable when it is created, then cvxpy will assign a name beginiing with `var`. 
+C_lb = 0.04
 
-# In[9]:
+@bm.Constraint()
+def composition(bm):
+    return sum(bm.x[s]*(data.loc[s, "Concentration"] - C_lb) for s in bm.S) >= 0
 
-
-for constraint in constraints:
-    print(constraint)
-
-
-# <hr>
-# 
-# **Study Question:** Consult the CVXPY document for `cvxpy.Variable()`. Modify the code above to assign a name to each variable corresponding to the key for its entry in the data dictionary. Rerun the cells to see how the objective and constraints are printed.
-# 
-# <hr>
-
-# ### Step 6. Create CVXPY Problem object
-# 
-# An optimization problem consists of decision variables, and algebraic expressions that define an objective and a list of constranits. These are encapsulated into a CVXPY Problem.
-
-# In[10]:
+bm.composition.pprint()
 
 
-problem = cp.Problem(objective, constraints)
-problem.solve()
+# ### Step 6. Solve
+
+# In[85]:
+
+
+bm.pprint()
+
+
+# In[88]:
+
+
+solver = pyo.SolverFactory('glpk')
+solver.solve(bm, tee=True).write()
 
 
 # ### Step 7. Display solution
 # 
-# Following solution, the values of any CVXPY variable, expression, objective, or constraint can be accessed using the associated `value` property.
+# Following solution, the values of any Pyomo variable, expression, objective, or constraint can be accessed using the associated `value` property.
 
-# In[11]:
-
-
-print(total_cost)
+# In[89]:
 
 
-# In[12]:
+bm.pprint()
 
 
-print(total_cost.value)
+# In[90]:
 
 
-# In[13]:
+print(bm.cost())
 
 
-print(f"Minimum cost to produce {volume} gallons at ABV={abv}: ${total_cost.value:5.2f}")
+# In[97]:
 
 
-# In[14]:
+print(f"Minimum cost to produce {V} gallons at greater than ABV={C_lb}: ${bm.cost():5.2f}")
 
 
-for c in sorted(components):
-    print(f"{c}: {x[c].value:5.2f} gallons")
+# In[94]:
+
+
+for s in bm.S:
+    print(f"{s}: {bm.x[s]():6.2f} gallons")
 
 
 # ## Parametric Studies
@@ -227,34 +265,7 @@ for c in sorted(components):
 # In[15]:
 
 
-import numpy as np
-import cvxpy as cp
 
-def brew_blend(volume, abv, data):
-    
-    # create set of components
-    components = set(data.keys())
-    
-    # create variables
-    x = {c: cp.Variable(nonneg=True, name=c) for c in components}
-    
-    # create objective function
-    total_cost = sum(x[c]*data[c]['cost'] for c in components)
-    
-    # create list of constraints
-    constraints = [
-        volume == sum(x[c] for c in components),
-        0 == sum(x[c]*(data[c]['abv'] - abv) for c in components)
-    ]
-    
-    # create and solve problem
-    problem = cp.Problem(cp.Minimize(total_cost), constraints)
-    problem.solve()
-    
-    # return results
-    min_cost = problem.value
-    optimal_blend = {c: x[c].value for c in components}
-    return min_cost, optimal_blend
 
 
 # Demonstration

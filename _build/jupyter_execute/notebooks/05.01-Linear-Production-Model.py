@@ -15,6 +15,80 @@ if "google.colab" in sys.modules:
     get_ipython().run_line_magic('run', 'import_pyomo_on_colab.py')
 
 
+# ## Learning Goals
+# 
+# This notebook introduces core concepts in the application of optimization techniques using a simple production planning problem. 
+# 
+# ### Optimization
+# 
+# **Optimization** is a the process of finding a "best" solution to a problem with multiple degrees of freedom. The components of an optimization problem are:
+# 
+# * **Decision Variables**: The degrees of freedom associated with a particular application. Examples might include how much of each raw material to use in a blended product, the value of a manipulated variable in feedback control, or the timing and sequencing of batch operations.
+# 
+# * **Constraints**: Equations or inequalities the determine the set of possible solutions to a problem. There can be many constraints in a optimization problem.
+# 
+# * **Objective**: A function of the decision variables that is to be either minimized or maximized. There is one optimization objective.
+# 
+# ### Modeling for Optimization
+# 
+# **Modeling** for optimization is the process of creating a mathematical description of an optimization problem. 
+# 
+# **Algebraic Modeling Languages (AML)** are a software systems for specifying and computing solutions to optimization problems. The are many examples of AML's in current use. AML are **descriptive**, not procedural. They are used to specify the problem, a numerical solution is found in a separate step using a **solver**.
+# 
+# **Pyomo** is a fully featured AML embedded in Python that is well suited to modeling optimization problems for process systems. This notebook demonstrates key steps in creating a Pyomo model for a simple application. 
+# 
+# * `import pyomo.environ as pyo` is the standard way to import pyomo into a python application. Note that Pyomo and at least one solver must be installed prior to this step.
+# 
+# * `model = pyo.ConcreteModel()` creates a empty model named `model`. You can choose any valid Python name. 
+# 
+# * `model.x = pyo.Var(domain=pyo.NonNegativeReals)` creates a new decision variable named `model.x` within the model.
+# 
+# * Constraints are specifed with Python functions that return logical relationships (`==`, `<=`, or `>=`) between two expressions involving the decision variables. A function is designated as a constraint with a decorator `model.Constraint()`, see examples below.
+# 
+# * An objective is specified with a Python function that returns an expression. An objective can be either minimized or maximized. A function is designated as an objective with the `model.Objective(sense=pyo.minimize)` or `model.Objective(sense=pyo.maximize)` decorator.
+# 
+# **Decorators** are a Python feature used to modify a function. Pyomo uses decorators to designate constraints, objectives, and several types of optimization objects that will be introduced in subsequent notebooks. You can think of it as a way of tagging functions with a special purpose. Decorators are implemented in Python as functions that process other functions, but those details are not needed for Pyomo modeling.
+# 
+# ### Solving Optimization Problems
+# 
+# **Linear Programming**: Optimization models are catorgized by their mathematical features. Solving problems with a one linear objective and multiple linear constraints is called **Linear Programming (LP)**. The problem below is a linear programming problem. 
+# 
+# **Solvers**: Linear programming has an enormous range of applications in business, logistics, and large scale planning problems involving up to millions of decision variables. The first practical algorithms were developed in the 1940's in the course of solving planning problems for the US Army Air Force. Since then, providing solvers for large scale linear programming has become a highly competitive commercial business. The commercial leaders are:
+# 
+# * **CPLEX** Founded in 1988, sold in 1997 to ILOG, later sold to IBM in 2009. This is the foundation of IBM's optimization business.
+# 
+# * **Gurobi**  Founded in 2008 by some of the same people involved in founding CPLEX. Generally considered the highest performing solver for large scale applications.
+# 
+# * **FICO Xpress**  Started in 1983 as an LP solver for PCs. Currently owned by FICO. Fast, robust, and many features beyond linear programming.
+# 
+# There are many, many other solvers from open-source projects, or specialized for specific applications.
+# 
+# ### Additional Terminology
+# 
+# Regarding solutions:
+# 
+# * **Feasible Solution**: Any value of the decisions variables that satisfy all constraints.
+# 
+# * **Infeasible Solution**: Any value of the decisions variables that does not satisfy all constraints.
+# 
+# * **Optimal Solution**: A feasible solution that resulting in the smallest (minimization) or largest (maximization) value for the objective.
+# 
+# * **Active Constraints**: The constraints that are 'active' at the optimal solution. Tiny changes in the parameters of an active consraint will affect the solution.
+# 
+# * **Inactive Constraints**: Constraints that are not active at the optimal solution.  Tiny changes in the parameters of an inactive constraint will have no effect on the optimal solution.
+# 
+# Regarding problems:
+# 
+# * **Infeasible Problem**: A problem with no feasible solutions.
+# 
+# * **Feasible Region** The set of all feasible solutions.
+# 
+# * **Unbounded Problem**: A problem that admits a feasible solution with unbounded value for the objective.  
+# 
+# 
+# 
+# 
+
 # ## Example: Production Plan for a Single Product Plant
 
 # Suppose you are thinking about starting up a business to produce Product X. You have determined there is a market for X of up to 40 units per week at a price of \$270 each. The production of each unit requires \$100 of raw materials, 1 hour of type A labor, and 2 hours of type B labor. You have an unlimited amount of raw material available to you, but only 80 hours per week of labor A at a cost of \$50/hour, and 100 hours per week of labor B at a cost of \$40 per hour. Ignoring all other expenses, what is the maximum weekly profit?
