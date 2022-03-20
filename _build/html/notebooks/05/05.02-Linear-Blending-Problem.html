@@ -1,0 +1,1864 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.8. Linear Blending Problems &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.9. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
+    <link rel="prev" title="5.1. Linear Production Model" href="05.01-Linear-Production-Model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.06-Proportional-Integral-Control.html">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.07-Observer-Synthesis-LMI.html">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.8. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Gasoline-Blending.html">
+     5.9. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.05-Linear-Programming.html">
+     5.10. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.11. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
+     5.13. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.99-Pyomo-Examples.html">
+     5.14. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/05/05.02-Linear-Blending-Problem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/05/05.02-Linear-Blending-Problem.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/05/05.02-Linear-Blending-Problem.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/05/05.02-Linear-Blending-Problem.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   5.8.1. Learning Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-statement-jenchura-2017">
+   5.8.2. Problem Statement (Jenchura, 2017)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   5.8.3. Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-variables">
+     5.8.3.1. Decision variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     5.8.3.2. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     5.8.3.3. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-volume">
+       5.8.3.3.1. Order Volume
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alcohol-by-volume">
+       5.8.3.3.2. Alcohol by Volume
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
+   5.8.4. Solving optimization problems with Pyomo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
+     5.8.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
+     5.8.4.2. Step 2. Creating a model instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
+     5.8.4.3. Step 3. Identifying index sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-decision-variables">
+     5.8.4.4. Step 4. Create decision variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-objective-function">
+     5.8.4.5. Step 4. Objective Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-constraints">
+     5.8.4.6. Step 5. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#volume-constraint">
+       5.8.4.6.1. Volume Constraint
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#composition-constraint">
+       5.8.4.6.2. Composition Constraint
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-6-solve">
+     5.8.4.7. Step 6. Solve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-display-solution">
+     5.8.4.8. Step 7. Display solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-studies">
+   5.8.5. Parametric Studies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
+     5.8.5.1. Consolidating the model into a single function to create and solve for optimal blend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-the-optimization-model">
+     5.8.5.2. How to use the optimization model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-study">
+   5.8.6. Parametric Study
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#study-exercises">
+   5.8.7. Study Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     5.8.7.1. Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     5.8.7.2. Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     5.8.7.3. Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Linear Blending Problems</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   5.8.1. Learning Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-statement-jenchura-2017">
+   5.8.2. Problem Statement (Jenchura, 2017)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   5.8.3. Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-variables">
+     5.8.3.1. Decision variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     5.8.3.2. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#constraints">
+     5.8.3.3. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-volume">
+       5.8.3.3.1. Order Volume
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#alcohol-by-volume">
+       5.8.3.3.2. Alcohol by Volume
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
+   5.8.4. Solving optimization problems with Pyomo
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
+     5.8.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
+     5.8.4.2. Step 2. Creating a model instance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
+     5.8.4.3. Step 3. Identifying index sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-decision-variables">
+     5.8.4.4. Step 4. Create decision variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-objective-function">
+     5.8.4.5. Step 4. Objective Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-constraints">
+     5.8.4.6. Step 5. Constraints
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#volume-constraint">
+       5.8.4.6.1. Volume Constraint
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#composition-constraint">
+       5.8.4.6.2. Composition Constraint
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-6-solve">
+     5.8.4.7. Step 6. Solve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-display-solution">
+     5.8.4.8. Step 7. Display solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-studies">
+   5.8.5. Parametric Studies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
+     5.8.5.1. Consolidating the model into a single function to create and solve for optimal blend
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-use-the-optimization-model">
+     5.8.5.2. How to use the optimization model
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-study">
+   5.8.6. Parametric Study
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#study-exercises">
+   5.8.7. Study Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-1">
+     5.8.7.1. Exercise 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-2">
+     5.8.7.2. Exercise 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise-3">
+     5.8.7.3. Exercise 3
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-blending-problems">
+<h1><span class="section-number">5.8. </span>Linear Blending Problems<a class="headerlink" href="#linear-blending-problems" title="Permalink to this headline">¶</a></h1>
+<p>This notebook introduces material blending problems and outlines a multi-step procedure for developing and solving models using Pyomo.</p>
+<div class="section" id="learning-goals">
+<h2><span class="section-number">5.8.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Linear Blending problems</p>
+<ul class="simple">
+<li><p>Frequently encountered in material blending</p></li>
+<li><p>Models generally consist of linear mixing rules and mass/material balances</p></li>
+<li><p>Decision variables are indexed by a set of raw materials</p></li>
+</ul>
+</li>
+<li><p>Further practice with key elements of modeling for optimization</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pyo.ConcreteModel()</span></code> to create a new instancce of an optimization model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyo.Set()</span></code> to create an index used to index decision variables</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pyo.Var()</span></code> to create an optimization <strong>decision variable</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model.Comstraint()</span></code> to decorate (tag) the output of a function as an optimization constraint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model.Objective()</span></code> to decorate (tag) the output of a function as an optimization objective</p></li>
+</ul>
+</li>
+<li><p>Modeling and solving linear blending problems in CVXPY</p>
+<ul class="simple">
+<li><p>Step 1. Coding problem data. Nested dictionaries or Pandas dataframes.</p></li>
+<li><p>Step 2. Create index set. Use .keys() with nested dictionaries, or .index with Pandas dataframes.</p></li>
+<li><p>Step 3. Create a dictionary of decision variables. Add any pertinent qualifiers or constraints for individual variables such as lower and upper bounds, non-negativity, variable names.</p></li>
+<li><p>Step 4. Create an expression defining the problem objective.</p></li>
+<li><p>Step 5. Create a one or more lists of problem constraints.</p></li>
+<li><p>Step 6. Create the problem object from the objectives and constraints.</p></li>
+<li><p>Step 7. Solve and display the solution.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="problem-statement-jenchura-2017">
+<h2><span class="section-number">5.8.2. </span>Problem Statement (Jenchura, 2017)<a class="headerlink" href="#problem-statement-jenchura-2017" title="Permalink to this headline">¶</a></h2>
+<p>A brewery receives an order for 100 gallons that is at least 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV and costs \<span class="math notranslate nohighlight">\(0.32 per gallon to make, and beer B that is 3.7% ABV and costs \\\)</span>0.25 per gallon. Water (W) can also be used as a blending agent at a cost of \$0.05 per gallon. Find the minimum cost blend of A, B, and W that meets the customer requirements.</p>
+</div>
+<div class="section" id="analysis">
+<h2><span class="section-number">5.8.3. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<p>Before going futher, carefully read the problem description with the following questions in mind.</p>
+<ul class="simple">
+<li><p>What are the decision variables?</p></li>
+<li><p>What is the objective?</p></li>
+<li><p>What are the constraints?</p></li>
+</ul>
+<div class="section" id="decision-variables">
+<h3><span class="section-number">5.8.3.1. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">¶</a></h3>
+<p>The decision variables for this problem are the amounts of blending stocks “A”, “B”, and “W” to included in the final batch.  We can define a set of blending stocks <span class="math notranslate nohighlight">\(S\)</span>, and non-negative decision variables <span class="math notranslate nohighlight">\(x_s\)</span> that are indexed by the components in <span class="math notranslate nohighlight">\(S\)</span> that denote the amount of <span class="math notranslate nohighlight">\(s\)</span> included in the final batch.</p>
+</div>
+<div class="section" id="objective">
+<h3><span class="section-number">5.8.3.2. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
+<p>If we designate the price of blending stock <span class="math notranslate nohighlight">\(s \in S\)</span> as <span class="math notranslate nohighlight">\(P_s\)</span>, the cost is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mbox{cost} &amp; = \sum_{s\in C} x_s P_s
+\end{align}
+\]</div>
+<p>The objective is to minimize cost.</p>
+</div>
+<div class="section" id="constraints">
+<h3><span class="section-number">5.8.3.3. </span>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="order-volume">
+<h4><span class="section-number">5.8.3.3.1. </span>Order Volume<a class="headerlink" href="#order-volume" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(V = 100\)</span> represent the desired volume of product and assume ideal mixing. Then</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V &amp;  = \sum_{s\in S} x_s
+\end{align}\]</div>
+</div>
+<div class="section" id="alcohol-by-volume">
+<h4><span class="section-number">5.8.3.3.2. </span>Alcohol by Volume<a class="headerlink" href="#alcohol-by-volume" title="Permalink to this headline">¶</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(C_s\)</span> denote the volume fraction of alcohol in blending stock <span class="math notranslate nohighlight">\(s\)</span>. Assuming ideal mixing, the total volume of of alchohol in the final product be</p>
+<div class="math notranslate nohighlight">
+\[C_{total} = \sum_{s\in S} x_s C_s\]</div>
+<p>If <span class="math notranslate nohighlight">\(\bar{C}\)</span> denotes the required average concentration, then</p>
+<div class="math notranslate nohighlight">
+\[\frac{C_{total}}{V} \geq \bar{C} \qquad \implies \qquad \frac{\sum_{s\in S} x_s C_s}{\sum_{s\in S} x_s} \geq \bar{C}\]</div>
+<p>Which is not linear in the decision variables. If at all possible, linear constraints are much preferred because (1) they enable the use of LP solvers, and (2) then tend to avoid problems that can arise with division by zero and other issues.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{s\in S} (C_s - \bar{C}) x_s \geq 0\]</div>
+<p>There are other ways to write composition constraints, but this one is preferred because it isolates the product quality parameter, <span class="math notranslate nohighlight">\(\bar{C}\)</span>, in a single constraint.  This constraint has “one job to do”.</p>
+</div>
+</div>
+</div>
+<div class="section" id="solving-optimization-problems-with-pyomo">
+<h2><span class="section-number">5.8.4. </span>Solving optimization problems with Pyomo<a class="headerlink" href="#solving-optimization-problems-with-pyomo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-coding-problem-data-as-a-pandas-dataframe">
+<h3><span class="section-number">5.8.4.1. </span>Step 1. Coding Problem Data as a Pandas DataFrame<a class="headerlink" href="#step-1-coding-problem-data-as-a-pandas-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a Pandas dataframe of raw materials, each row representing a unique blending agent, and columns containing attributes of the blending components. This is consistent with “Tidy Data” principles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.037</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]],</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Concentration</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>blending stock</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0.045</td>
+      <td>0.32</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0.037</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>W</th>
+      <td>0.000</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="step-2-creating-a-model-instance">
+<h3><span class="section-number">5.8.4.2. </span>Step 2. Creating a model instance<a class="headerlink" href="#step-2-creating-a-model-instance" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">bm</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s1">&#39;Blending Model&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-3-identifying-index-sets">
+<h3><span class="section-number">5.8.4.3. </span>Step 3. Identifying index sets<a class="headerlink" href="#step-3-identifying-index-sets" title="Permalink to this headline">¶</a></h3>
+<p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of blending stocks. We will use these index sets to create decision variables and to express the sums that appear in the objective and constraints</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;A&#39;, &#39;B&#39;, &#39;W&#39;], dtype=&#39;object&#39;, name=&#39;blending stock&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A
+B
+W
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-create-decision-variables">
+<h3><span class="section-number">5.8.4.4. </span>Step 4. Create decision variables<a class="headerlink" href="#step-4-create-decision-variables" title="Permalink to this headline">¶</a></h3>
+<p>Most real-world applications of optimization technologies involve many decision variables and constraints. It would be impractical to create unique identifiers for literally thousands of variables. For this reason, the <code class="docutils literal notranslate"><span class="pre">pyo.Var()</span></code> and other objects can create indexed sets of variables and constraints. Here is how it is done for the blending problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-objective-function">
+<h3><span class="section-number">5.8.4.5. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
+<p>If we let subscript <span class="math notranslate nohighlight">\(d\)</span> denote a blending d from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\mbox{cost} &amp; = \sum_{s\in S} x_s P_s
+\end{align}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_s\)</span> is the price per unit volume of <span class="math notranslate nohighlight">\(s\)</span>. Using the Python data dictionary defined above, the price <span class="math notranslate nohighlight">\(P_s\)</span> is given by <code class="docutils literal notranslate"><span class="pre">data[s,</span> <span class="pre">'Price']</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@bm</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">minimize</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Price&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute cost (type=&lt;class
+    &#39;pyomo.core.base.objective.ScalarObjective&#39;&gt;) on block Blending Model with
+    a new Component (type=&lt;class
+    &#39;pyomo.core.base.objective.ScalarObjective&#39;&gt;). This is usually indicative
+    of a modelling error. To avoid this warning, use block.del_component() and
+    block.add_component().
+cost : Size=1, Index=None, Active=True
+    Key  : Active : Sense    : Expression
+    None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-5-constraints">
+<h3><span class="section-number">5.8.4.6. </span>Step 5. Constraints<a class="headerlink" href="#step-5-constraints" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="volume-constraint">
+<h4><span class="section-number">5.8.4.6.1. </span>Volume Constraint<a class="headerlink" href="#volume-constraint" title="Permalink to this headline">¶</a></h4>
+<p>The customer requirement is produce a total volume <span class="math notranslate nohighlight">\(V\)</span>. Assuming ideal solutions, the constraint is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+V &amp;  = \sum_{s\in s} x_s
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_s\)</span> denotes the volume of blending stock <span class="math notranslate nohighlight">\(s\)</span> used in the blend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">volume</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">==</span> <span class="n">V</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute volume (type=&lt;class
+    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block Blending Model
+    with a new Component (type=&lt;class
+    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
+    indicative of a modelling error. To avoid this warning, use
+    block.del_component() and block.add_component().
+volume : Size=1, Index=None, Active=True
+    Key  : Lower : Body               : Upper : Active
+    None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="composition-constraint">
+<h4><span class="section-number">5.8.4.6.2. </span>Composition Constraint<a class="headerlink" href="#composition-constraint" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_lb</span> <span class="o">=</span> <span class="mf">0.04</span>
+
+<span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">composition</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Concentration&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">C_lb</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
+<span class="n">bm</span><span class="o">.</span><span class="n">composition</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Implicitly replacing the Component attribute composition (type=&lt;class
+    &#39;pyomo.core.base.constraint.ScalarConstraint&#39;&gt;) on block Blending Model
+    with a new Component (type=&lt;class
+    &#39;pyomo.core.base.constraint.AbstractScalarConstraint&#39;&gt;). This is usually
+    indicative of a modelling error. To avoid this warning, use
+    block.del_component() and block.add_component().
+composition : Size=1, Index=None, Active=True
+    Key  : Lower : Body                                                                : Upper : Active
+    None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-6-solve">
+<h3><span class="section-number">5.8.4.7. </span>Step 6. Solve<a class="headerlink" href="#step-6-solve" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Set Declarations
+    S : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :    3 : {&#39;A&#39;, &#39;B&#39;, &#39;W&#39;}
+
+1 Var Declarations
+    x : Size=3, Index=S
+        Key : Lower : Value : Upper : Fixed : Stale : Domain
+          A :     0 :  None :  None : False :  True : NonNegativeReals
+          B :     0 :  None :  None : False :  True : NonNegativeReals
+          W :     0 :  None :  None : False :  True : NonNegativeReals
+
+1 Objective Declarations
+    cost : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
+
+2 Constraint Declarations
+    composition : Size=1, Index=None, Active=True
+        Key  : Lower : Body                                                                : Upper : Active
+        None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+    volume : Size=1, Index=None, Active=True
+        Key  : Lower : Body               : Upper : Active
+        None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
+
+5 Declarations: S x cost volume composition
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">bm</span><span class="p">,</span> <span class="n">tee</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GLPSOL--GLPK LP/MIP Solver 5.0
+Parameter(s) specified in the command line:
+ --write /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpr_905u1e.glpk.raw
+ --wglp /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpkqr7abph.glpk.glp
+ --cpxlp /var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmp4_k2zpfj.pyomo.lp
+Reading problem data from &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmp4_k2zpfj.pyomo.lp&#39;...
+3 rows, 4 columns, 7 non-zeros
+30 lines were read
+Writing problem data to &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpkqr7abph.glpk.glp&#39;...
+23 lines were written
+GLPK Simplex Optimizer 5.0
+3 rows, 4 columns, 7 non-zeros
+Preprocessing...
+2 rows, 3 columns, 6 non-zeros
+Scaling...
+ A: min|aij| =  3.000e-03  max|aij| =  1.000e+00  ratio =  3.333e+02
+GM: min|aij| =  5.233e-01  max|aij| =  1.911e+00  ratio =  3.651e+00
+EQ: min|aij| =  2.739e-01  max|aij| =  1.000e+00  ratio =  3.651e+00
+Constructing initial basis...
+Size of triangular part is 2
+      0: obj =   5.000000000e+00 inf =   1.911e+02 (1)
+      1: obj =   2.900000000e+01 inf =   0.000e+00 (0)
+*     2: obj =   2.762500000e+01 inf =   0.000e+00 (0)
+OPTIMAL LP SOLUTION FOUND
+Time used:   0.0 secs
+Memory used: 0.0 Mb (40412 bytes)
+Writing basic solution to &#39;/var/folders/cm/z3t28j296f98jdp1vqyplkz00000gn/T/tmpr_905u1e.glpk.raw&#39;...
+16 lines were written
+# ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 27.625
+  Upper bound: 27.625
+  Number of objectives: 1
+  Number of constraints: 3
+  Number of variables: 4
+  Number of nonzeros: 7
+  Sense: minimize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Termination condition: optimal
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 0
+      Number of created subproblems: 0
+  Error rc: 0
+  Time: 0.013801097869873047
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="step-7-display-solution">
+<h3><span class="section-number">5.8.4.8. </span>Step 7. Display solution<a class="headerlink" href="#step-7-display-solution" title="Permalink to this headline">¶</a></h3>
+<p>Following solution, the values of any Pyomo variable, expression, objective, or constraint can be accessed using the associated <code class="docutils literal notranslate"><span class="pre">value</span></code> property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 Set Declarations
+    S : Size=1, Index=None, Ordered=Insertion
+        Key  : Dimen : Domain : Size : Members
+        None :     1 :    Any :    3 : {&#39;A&#39;, &#39;B&#39;, &#39;W&#39;}
+
+1 Var Declarations
+    x : Size=3, Index=S
+        Key : Lower : Value            : Upper : Fixed : Stale : Domain
+          A :     0 : 37.5000000000001 :  None : False : False : NonNegativeReals
+          B :     0 :             62.5 :  None : False : False : NonNegativeReals
+          W :     0 :              0.0 :  None : False : False : NonNegativeReals
+
+1 Objective Declarations
+    cost : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : minimize : 0.32*x[A] + 0.25*x[B] + 0.05*x[W]
+
+2 Constraint Declarations
+    composition : Size=1, Index=None, Active=True
+        Key  : Lower : Body                                                                : Upper : Active
+        None :   0.0 : 0.0049999999999999975*x[A] - 0.0030000000000000027*x[B] - 0.04*x[W] :  +Inf :   True
+    volume : Size=1, Index=None, Active=True
+        Key  : Lower : Body               : Upper : Active
+        None : 100.0 : x[A] + x[B] + x[W] : 100.0 :   True
+
+5 Declarations: S x cost volume composition
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27.625000000000032
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> gallons at greater than ABV=</span><span class="si">{</span><span class="n">C_lb</span><span class="si">}</span><span class="s2">: $</span><span class="si">{</span><span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum cost to produce 100 gallons at greater than ABV=0.04: $27.63
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]()</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2"> gallons&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A:  37.50 gallons
+B:  62.50 gallons
+W:   0.00 gallons
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parametric-studies">
+<h2><span class="section-number">5.8.5. </span>Parametric Studies<a class="headerlink" href="#parametric-studies" title="Permalink to this headline">¶</a></h2>
+<p>An important use of optimization models is to investigate how operations depend on critical parameters. For example, for this blending problem we may be interested in questions like:</p>
+<ul class="simple">
+<li><p>How does the operating cost change with product alcohol content?</p></li>
+<li><p>What is the cost of producing one more gallon of product?</p></li>
+<li><p>What if the supply of a raw material is constrained?</p></li>
+<li><p>What if we produce two products rather than one?</p></li>
+<li><p>How much would be pay for raw materials with different specifications</p></li>
+</ul>
+<div class="section" id="consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
+<h3><span class="section-number">5.8.5.1. </span>Consolidating the model into a single function to create and solve for optimal blend<a class="headerlink" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend" title="Permalink to this headline">¶</a></h3>
+<p>To enable parametric studies, our first step is to consolidate the model into a function that accepts problem data and reports an optimal solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="k">def</span> <span class="nf">blend_beer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">C_lb</span><span class="o">=</span><span class="mf">0.04</span><span class="p">):</span>
+    
+    <span class="c1"># create model</span>
+    <span class="n">bm</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s1">&#39;Blending Model&#39;</span><span class="p">)</span>
+
+    <span class="c1"># create index set for decision variables</span>
+    <span class="n">bm</span><span class="o">.</span><span class="n">S</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+    <span class="c1"># create decision variables</span>
+    <span class="n">bm</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+    <span class="c1"># specify objective</span>
+    <span class="nd">@bm</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">minimize</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Price&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span>
+
+    <span class="c1"># volume constraint</span>
+    <span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">volume</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">==</span> <span class="n">V</span>
+
+    <span class="c1"># composition constraint</span>
+    <span class="nd">@bm</span><span class="o">.</span><span class="n">Constraint</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">composition</span><span class="p">(</span><span class="n">bm</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;Concentration&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">C_lb</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
+    <span class="c1"># solve model</span>
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">bm</span><span class="p">)</span>
+    
+    <span class="c1"># return model for post-processing and display</span>
+    <span class="k">return</span> <span class="n">bm</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-use-the-optimization-model">
+<h3><span class="section-number">5.8.5.2. </span>How to use the optimization model<a class="headerlink" href="#how-to-use-the-optimization-model" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify blending stock data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mf">0.045</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mf">0.037</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mf">.042</span><span class="p">,</span> <span class="mf">.28</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]],</span> 
+    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="s1">&#39;Concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;Price&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;blending stock&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># set product requirements</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="mf">0.04</span>
+
+<span class="c1"># compute optimal solution using optimization model</span>
+<span class="n">bm</span> <span class="o">=</span> <span class="n">blend_beer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">abv</span><span class="p">)</span>
+
+<span class="c1"># extract data from the model</span>
+<span class="n">optimal_blend</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">optimal_blend</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">]</span>
+<span class="n">optimal_blend</span><span class="p">[</span><span class="s2">&quot;amount&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">]()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">S</span><span class="p">]</span>
+<span class="n">min_cost</span> <span class="o">=</span> <span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">()</span>
+
+<span class="c1"># display solutoin</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Minimum cost to produce </span><span class="si">{</span><span class="n">volume</span><span class="si">}</span><span class="s2"> gallons at ABV=</span><span class="si">{</span><span class="n">abv</span><span class="si">}</span><span class="s2"> = $</span><span class="si">{</span><span class="n">min_cost</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">optimal_blend</span><span class="p">)</span>
+<span class="n">optimal_blend</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;amount&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Concentration</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <th>blending stock</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0.045</td>
+      <td>0.32</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0.037</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>0.042</td>
+      <td>0.28</td>
+    </tr>
+    <tr>
+      <th>W</th>
+      <td>0.000</td>
+      <td>0.05</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Minimum cost to produce 100 gallons at ABV=0.04 = $26.80
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>40.0</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>60.0</td>
+    </tr>
+    <tr>
+      <th>W</th>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/05.02-Linear-Blending-Problem_33_4.png" src="../../_images/05.02-Linear-Blending-Problem_33_4.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="parametric-study">
+<h2><span class="section-number">5.8.6. </span>Parametric Study<a class="headerlink" href="#parametric-study" title="Permalink to this headline">¶</a></h2>
+<p>The following cell uses the optimal blending model to compute the minimum cost and blending stocks to produce</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">volume</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># gather results for a range of abv values</span>
+<span class="n">abv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.045</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;abv&quot;</span><span class="p">,</span> <span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">abv</span><span class="p">):</span>
+    <span class="n">bm</span> <span class="o">=</span> <span class="n">blend_beer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">cost</span><span class="p">(),</span> <span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">](),</span> <span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">](),</span> <span class="n">bm</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;W&quot;</span><span class="p">]()]</span>
+
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;abv&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cost&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;$ per 100 gallons&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;abv&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;W&quot;</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;gallons&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Concentration  Price
+blending stock                      
+A                       0.045   0.32
+B                       0.037   0.25
+W                       0.000   0.05
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;abv&#39;, ylabel=&#39;gallons&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/05.02-Linear-Blending-Problem_35_2.png" src="../../_images/05.02-Linear-Blending-Problem_35_2.png" />
+<img alt="../../_images/05.02-Linear-Blending-Problem_35_3.png" src="../../_images/05.02-Linear-Blending-Problem_35_3.png" />
+</div>
+</div>
+</div>
+<div class="section" id="study-exercises">
+<h2><span class="section-number">5.8.7. </span>Study Exercises<a class="headerlink" href="#study-exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="exercise-1">
+<h3><span class="section-number">5.8.7.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<p>An additional raw blending stock “C” becomes available with an abv of 4.2% at a cost of 28 cents per gallon. How does that change the optimal blend for a product volume of 100 gallons and an abv of 4.0%?</p>
+</div>
+<div class="section" id="exercise-2">
+<h3><span class="section-number">5.8.7.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<p>Having decided to use “C” for the blended product, you later learn only 50 gallons of “C” are available. Modify the solution procedure to allow for limits on the amount of raw maaterial, and investigate the implications for the optimal blend of having only 50 gallons of “C” available, and assuming the amounts of the other components “A”, “B”, and “W” remain unlimited.</p>
+</div>
+<div class="section" id="exercise-3">
+<h3><span class="section-number">5.8.7.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<p>An opportunity has developed to sell a second product with an abv of 3.8%. The first product is now labeled “X” with abv 4.0% and sells for \<span class="math notranslate nohighlight">\(1.25 per gallon, and the second product is designated &quot;Y&quot; and sells for \\\)</span>1.10 per gallon. You’ve also learned that all of your raw materials are limited to 50 gallons. What should your production plan be to maximize profits?</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="05.01-Linear-Production-Model.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.1. </span>Linear Production Model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05.04-Gasoline-Blending.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.9. </span>Gasoline Blending</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

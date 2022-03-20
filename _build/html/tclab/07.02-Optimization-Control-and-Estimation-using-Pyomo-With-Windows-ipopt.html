@@ -1,0 +1,1741 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.2. Simulation, Control, and Estimation using Pyomo &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python Tutorials" href="../python/A.00-Python-Tutorials.html" />
+    <link rel="prev" title="7.1. Simulation, Control, and Estimation using Pyomo" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.06-Proportional-Integral-Control.html">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/04/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.07-Observer-Synthesis-LMI.html">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/05/05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.02-Linear-Blending-Problem.html">
+     5.8. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.04-Gasoline-Blending.html">
+     5.9. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.05-Linear-Programming.html">
+     5.10. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.11. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
+     5.13. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+     5.14. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installations">
+   7.2.1. Installations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     7.2.1.1. Google Colab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macos">
+     7.2.1.2. MacOS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows-pc">
+     7.2.1.3. Windows PC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-information">
+   7.2.2. Process Information
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-parameter-values">
+     7.2.2.1. Process Parameter Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-inputs">
+     7.2.2.2. Process Inputs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyomo-simulation">
+   7.2.3. Pyomo Simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimal-control-with-knowledge-of-disturbances">
+   7.2.4. Optimal Control with Knowledge of Disturbances
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     7.2.4.1. Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-observation">
+   7.2.5. Estimation/Observation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-the-observer-as-a-python-generator">
+   7.2.6. Coding the Observer as a Python Generator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-the-controller-as-a-python-generator">
+   7.2.7. Coding the Controller as a Python Generator
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Simulation, Control, and Estimation using Pyomo</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installations">
+   7.2.1. Installations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     7.2.1.1. Google Colab
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#macos">
+     7.2.1.2. MacOS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windows-pc">
+     7.2.1.3. Windows PC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#process-information">
+   7.2.2. Process Information
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-parameter-values">
+     7.2.2.1. Process Parameter Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#process-inputs">
+     7.2.2.2. Process Inputs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pyomo-simulation">
+   7.2.3. Pyomo Simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimal-control-with-knowledge-of-disturbances">
+   7.2.4. Optimal Control with Knowledge of Disturbances
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     7.2.4.1. Exercise
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimation-observation">
+   7.2.5. Estimation/Observation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-the-observer-as-a-python-generator">
+   7.2.6. Coding the Observer as a Python Generator
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coding-the-controller-as-a-python-generator">
+   7.2.7. Coding the Controller as a Python Generator
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="simulation-control-and-estimation-using-pyomo">
+<h1><span class="section-number">7.2. </span>Simulation, Control, and Estimation using Pyomo<a class="headerlink" href="#simulation-control-and-estimation-using-pyomo" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installations">
+<h2><span class="section-number">7.2.1. </span>Installations<a class="headerlink" href="#installations" title="Permalink to this headline">¶</a></h2>
+<p>The following instructions show how to download and install pyomo and the ipopt solver.  Execute the appropriate cell for your platform (if needed).</p>
+<div class="section" id="google-colab">
+<h3><span class="section-number">7.2.1.1. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
+<span class="o">!</span>wget -N -q <span class="s2">&quot;https://ampl.com/dl/open/ipopt/ipopt-linux64.zip&quot;</span>
+<span class="o">!</span>unzip -o -q ipopt-linux64
+<span class="n">ipopt_executable</span> <span class="o">=</span> <span class="s1">&#39;/content/ipopt&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bin/sh: wget: command not found
+unzip:  cannot find or open ipopt-linux64, ipopt-linux64.zip or ipopt-linux64.ZIP.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="macos">
+<h3><span class="section-number">7.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
+<span class="o">!</span>curl -s https://ampl.com/dl/open/ipopt/ipopt-osx.zip --output ipopt-osx.zip
+<span class="o">!</span>tar xf ipopt-osx.zip ipopt
+<span class="n">ipopt_executable</span> <span class="o">=</span> <span class="s2">&quot;./ipopt&quot;</span>
+<span class="o">!</span>rm ipopt-osx.zip
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="windows-pc">
+<h3><span class="section-number">7.2.1.3. </span>Windows PC<a class="headerlink" href="#windows-pc" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c conda-forge pyomo pyomo.extras
+<span class="o">!</span>conda install -c conda-forge/label/cf201901 ipopt 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting package metadata: ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Collecting package metadata: ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="process-information">
+<h2><span class="section-number">7.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
+<div class="section" id="process-parameter-values">
+<h3><span class="section-number">7.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.04</span>        <span class="c1"># power input when the system is turned</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.068</span>      <span class="c1"># heat transfer coefficient from heater to environment</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mf">6.50</span>      <span class="c1"># heat capacity of the heater (J/deg C)</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mf">1.25</span>      <span class="c1"># heat capacity of the sensor (J/deg C)</span>
+<span class="n">Uc</span> <span class="o">=</span> <span class="mf">0.036</span>      <span class="c1"># heat transfer coefficient from heater to sensor</span>
+<span class="n">Tamb</span> <span class="o">=</span> <span class="mf">21.0</span>     <span class="c1"># ambient room temperature</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="process-inputs">
+<h3><span class="section-number">7.2.2.2. </span>Process Inputs<a class="headerlink" href="#process-inputs" title="Permalink to this headline">¶</a></h3>
+<p>The next cell defines some process inputs that will be used throughout the notebook to demonstrate aspects of process simulation, control, and estimation.  These are gathered in one place to make it easier to modify the notebook to test the response under different conditions. These functions are implemented using the <code class="docutils literal notranslate"><span class="pre">interp1d</span></code> from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">tclab_disturbance</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span>
+    <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> 
+    <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">])</span>
+
+<span class="n">tclab_input</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span>
+    <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">451</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span>
+    <span class="p">[</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>   <span class="mi">25</span><span class="p">,</span>   <span class="mi">25</span><span class="p">])</span>
+
+<span class="n">tclab_setpoint</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">550</span><span class="p">,</span> <span class="mi">9999</span><span class="p">],</span> 
+    <span class="p">[</span><span class="n">Tamb</span><span class="p">,</span> <span class="n">Tamb</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">35</span><span class="p">])</span>
+
+<span class="n">t_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+<span class="n">u_sim</span> <span class="o">=</span> <span class="n">tclab_input</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
+<span class="n">d_sim</span> <span class="o">=</span> <span class="n">tclab_disturbance</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
+<span class="n">setpoint_sim</span> <span class="o">=</span> <span class="n">tclab_setpoint</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">setpoint_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;setpoint&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;deg C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">u_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;heat power input&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;percent of max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">d_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;unmeasured disturbance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;watts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_12_0.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_12_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pyomo-simulation">
+<h2><span class="section-number">7.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s see how well our initial guess at a control strategy will work for us.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
+<p>subject to initial conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
+T_S(t_0) &amp; = T_{amb}
+\end{align*}
+\end{split}\]</div>
+<p>and prior specification of inputs <span class="math notranslate nohighlight">\(u(t)\)</span> and <span class="math notranslate nohighlight">\(d(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">t_sim</span><span class="p">)</span>  <span class="c1"># make sure the expt time grid are discretization points</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># differential equations</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+
+<span class="c1"># input specifications</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Usim</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)),</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">==</span> <span class="n">u_sim</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Dsim</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)),</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">==</span> <span class="n">d_sim</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+
+<span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">)</span>
+<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">Th_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">])</span>
+<span class="n">Ts_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">])</span>
+
+<span class="c1"># visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">Th_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">Ts_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">setpoint_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;temperatures&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;deg C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;T_heater&#39;</span><span class="p">,</span> <span class="s1">&#39;T_sensor&#39;</span><span class="p">,</span> <span class="s1">&#39;Heater Setpoint&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;heater power&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;percent of max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;disturbance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;watts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: More finite elements were found in ContinuousSet &#39;t&#39; than the number
+    of finite elements specified in apply. The larger number of finite
+    elements will be used.
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_14_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_14_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="optimal-control-with-knowledge-of-disturbances">
+<h2><span class="section-number">7.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this headline">¶</a></h2>
+<p>An optimal control policy minimizes the differences</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
+\end{align*}
+\end{split}\]</div>
+<p>subject to constraints</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
+\end{align*}
+\end{split}\]</div>
+<p>initial conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
+T_S(t_0) &amp; = T_{amb}
+\end{align*}
+\end{split}\]</div>
+<p>and prior knowledge of <span class="math notranslate nohighlight">\(d(t)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%%time  #if you put this as the first line, jupyter will report how long the code took to execute. </span>
+
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">t_sim</span><span class="p">)</span>  <span class="c1"># make sure the expt time grid are discretization points</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># differential equations</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+
+<span class="c1"># input specifications</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Dsim</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)),</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">==</span> <span class="n">d_sim</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+<span class="c1"># with these two lines which provide an objective function to determine the input</span>
+<span class="n">m</span><span class="o">.</span><span class="n">ls_control</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">setpoint_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">))])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ls_control</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+
+<span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">)</span>
+<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="c1"># visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">setpoint_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;temperatures&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;deg C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;T_heater&#39;</span><span class="p">,</span> <span class="s1">&#39;T_sensor&#39;</span><span class="p">,</span> <span class="s1">&#39;Heater Setpoint&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;heater power&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;percent of max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;disturbance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;watts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Lower bound: -inf
+  Upper bound: inf
+  Number of objectives: 1
+  Number of constraints: 1007
+  Number of variables: 1210
+  Sense: unknown
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Message: Ipopt 3.11.1\x3a Optimal Solution Found
+  Termination condition: optimal
+  Id: 0
+  Error rc: 0
+  Time: 0.27823472023010254
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_16_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_16_1.png" />
+</div>
+</div>
+<div class="section" id="exercise">
+<h3><span class="section-number">7.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
+<p>The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{du}{dt} &amp; \leq \dot{u}_{max} \\
+\frac{du}{dt} &amp; \geq -\dot{u}_{max}
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\dot{u}_{max}\)</span> is the maximum rate of change.</p>
+</div>
+</div>
+<div class="section" id="estimation-observation">
+<h2><span class="section-number">7.2.5. </span>Estimation/Observation<a class="headerlink" href="#estimation-observation" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>“… and now my watch begins …” ―The Night’s Watch oath, Game of Thrones</p>
+</div></blockquote>
+<p>The trouble with open-loop optimal control is that we can’t anticipate or know the values of unmeasured disturbances, much less the future values of those disturbances. The best we can do is use available data and process models to estimate the process state and disturbances. The est</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\min_{\hat{T}_H, \hat{T}_S, \hat{d}} \int_{t - h}^t \|\hat{T}_S(t) - T_S(t)\|^2\,dt \\
+\end{align*}
+\end{split}\]</div>
+<p>subject to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+C_p^H \frac{d\hat{T}_H}{dt} &amp; = U_a (T_{amb} - \hat{T}_H) + U_c (\hat{T}_S - \hat{T}_H) + P u(t) + \hat{d}(t)\\
+C_p^S \frac{d\hat{T}_S}{dt} &amp; = - U_c (\hat{T}_S - \hat{T}_H) 
+\end{align*}
+\end{split}\]</div>
+<p>and initial conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+T_H(t_0) &amp; = T_{amb} \\
+T_S(t_0) &amp; = T_{amb}
+\end{align*}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span> 
+
+<span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">t_sim</span><span class="p">)</span>  <span class="c1"># make sure the expt time grid are discretization points</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># differential equations</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Th_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">Usim</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)),</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">==</span> <span class="n">u_sim</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="c1">#for k in range(0, len(t_sim)):</span>
+<span class="c1">#    m.U[t_sim[k]]</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">ls_observer</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">-</span> <span class="n">Ts_sim</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">))])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ls_observer</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Tamb</span><span class="p">)</span>
+
+<span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">)</span>
+<span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="c1"># visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">setpoint_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;temperatures&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;deg C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;T_heater&#39;</span><span class="p">,</span> <span class="s1">&#39;T_sensor&#39;</span><span class="p">,</span> <span class="s1">&#39;Heater Setpoint&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;heater power&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;percent of max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_sim</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;disturbance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;watts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Lower bound: -inf
+  Upper bound: inf
+  Number of objectives: 1
+  Number of constraints: 1007
+  Number of variables: 1210
+  Sense: unknown
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Message: Ipopt 3.11.1\x3a Optimal Solution Found
+  Termination condition: optimal
+  Id: 0
+  Error rc: 0
+  Time: 0.21533441543579102
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+Wall time: 718 ms
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_19_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_19_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="coding-the-observer-as-a-python-generator">
+<h2><span class="section-number">7.2.6. </span>Coding the Observer as a Python Generator<a class="headerlink" href="#coding-the-observer-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">tclab_observer</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">t_hist</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">u_hist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">Ts_hist</span> <span class="o">=</span> <span class="p">[</span><span class="n">Tamb</span><span class="p">]</span>
+    
+    <span class="n">t_est</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">Th_est</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">Ts_est</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">d_est</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">t_meas</span><span class="p">,</span> <span class="n">u_meas</span><span class="p">,</span> <span class="n">Ts_meas</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">t_est</span><span class="p">,</span> <span class="n">Th_est</span><span class="p">,</span> <span class="n">Ts_est</span><span class="p">,</span> <span class="n">d_est</span>
+  
+        <span class="n">t_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t_meas</span><span class="p">)</span>
+        <span class="n">u_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u_meas</span><span class="p">)</span>
+        <span class="n">Ts_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ts_meas</span><span class="p">)</span>
+        
+        <span class="n">t_hist</span> <span class="o">=</span> <span class="n">t_hist</span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">:]</span>
+        <span class="n">u_hist</span> <span class="o">=</span> <span class="n">u_hist</span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">:]</span>
+        <span class="n">Ts_hist</span> <span class="o">=</span> <span class="n">Ts_hist</span><span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">:]</span>
+        
+        <span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span> <span class="o">=</span> <span class="n">t_hist</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="n">m</span><span class="o">.</span><span class="n">Th_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                          <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Ts_ode</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                          <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+
+        <span class="n">m</span><span class="o">.</span><span class="n">Usim</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">)),</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t_hist</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">==</span> <span class="n">u_hist</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+
+        <span class="n">m</span><span class="o">.</span><span class="n">ls_observer</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t_hist</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">-</span> <span class="n">Ts_hist</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">))])</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">ls_observer</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+        <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">t_hist</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">)</span>
+        <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    
+        <span class="n">t_est</span> <span class="o">=</span> <span class="n">t_hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">Th_est</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t_est</span><span class="p">]()</span>
+        <span class="n">Ts_est</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t_est</span><span class="p">]()</span>
+        <span class="n">d_est</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">D</span><span class="p">[</span><span class="n">t_est</span><span class="p">]()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">t_est</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Th_est</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Ts_est</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">d_est</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">observer</span> <span class="o">=</span> <span class="n">tclab_observer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)):</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">u_sim</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Ts_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
+    <span class="n">t_est</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">Th_est</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Th</span><span class="p">)</span>
+    <span class="n">Ts_est</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">d_est</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_est</span><span class="p">,</span> <span class="n">Th_est</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">Th_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_est</span><span class="p">,</span> <span class="n">Ts_est</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">Ts_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_est</span><span class="p">,</span> <span class="n">d_est</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">d_sim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.53 s, sys: 1.37 s, total: 3.9 s
+Wall time: 6.29 s
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_22_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_22_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="coding-the-controller-as-a-python-generator">
+<h2><span class="section-number">7.2.7. </span>Coding the Controller as a Python Generator<a class="headerlink" href="#coding-the-controller-as-a-python-generator" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pyomo.dae</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">tclab_control</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    
+    <span class="n">u</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">t_est</span><span class="p">,</span> <span class="n">Th_est</span><span class="p">,</span> <span class="n">Ts_est</span><span class="p">,</span> <span class="n">d_est</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">u</span>
+        
+        <span class="n">tf</span> <span class="o">=</span> <span class="n">t_est</span> <span class="o">+</span> <span class="n">h</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">heater</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                          <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                          <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Th_est</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">Ts_est</span><span class="p">)</span>
+        <span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">tclab_setpoint</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]),</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+        <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;backwards&#39;</span><span class="p">)</span>
+        <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        
+        <span class="n">umpc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">])</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">umpc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">observer</span> <span class="o">=</span> <span class="n">tclab_observer</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">controller</span> <span class="o">=</span> <span class="n">tclab_control</span><span class="p">()</span>
+<span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="n">t_mpc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">u_mpc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Th_mpc</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Ts_mpc</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)):</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t_sim</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">u_sim</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">Ts_sim</span><span class="p">[</span><span class="n">k</span><span class="p">]])</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>
+    <span class="n">u_mpc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">Th_mpc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Th</span><span class="p">)</span>
+    <span class="n">Ts_mpc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">u_mpc</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_sim</span><span class="p">,</span> <span class="n">Th_mpc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\eliza\Anaconda3\lib\site-packages\ipykernel_launcher.py:13: DeprecationWarning: object of type &lt;class &#39;numpy.float64&#39;&gt; cannot be safely interpreted as an integer.
+  del sys.path[0]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1912230dba8&gt;]
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_24_2.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_24_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">t_sim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tclab_control</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">ic</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">h</span>
+    
+    <span class="n">m</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">t</span> <span class="o">=</span> <span class="n">ContinuousSet</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="nb">round</span><span class="p">((</span><span class="n">tf</span><span class="o">-</span><span class="n">t</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Th</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Ts</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">U</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Thdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span> <span class="o">=</span> <span class="n">DerivativeVar</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">wrt</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">heater</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpH</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Thdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">Tamb</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span> <span class="o">+</span> <span class="n">P</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">+</span> <span class="n">d</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">sensor</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> 
+                      <span class="n">CpS</span><span class="o">*</span><span class="n">m</span><span class="o">.</span><span class="n">Tsdot</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">==</span> <span class="n">Uc</span><span class="o">*</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">ic</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">ic</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">obj</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([(</span><span class="n">tclab_setpoint</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">]),</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+    <span class="n">TransformationFactory</span><span class="p">(</span><span class="s1">&#39;dae.finite_difference&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply_to</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nfe</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;backwards&#39;</span><span class="p">)</span>
+    <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;ipopt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">tsim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">])</span>
+    <span class="n">Thsim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Th</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">])</span>
+    <span class="n">Tssim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">Ts</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">])</span>
+    <span class="n">Usim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">U</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tsim</span><span class="p">,</span> <span class="n">Usim</span><span class="p">,</span> <span class="n">Thsim</span><span class="p">,</span> <span class="n">Tssim</span><span class="p">]</span>
+    
+<span class="p">[</span><span class="n">tsim</span><span class="p">,</span> <span class="n">Usim</span><span class="p">,</span> <span class="n">Thsim</span><span class="p">,</span> <span class="n">Tssim</span><span class="p">]</span> <span class="o">=</span> <span class="n">tclab_control</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="mf">.5</span><span class="p">)</span>
+    
+<span class="c1"># visualization</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">Thsim</span><span class="p">,</span> <span class="n">tsim</span><span class="p">,</span> <span class="n">Tssim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;temperatures&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;deg C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;T_heater&#39;</span><span class="p">,</span> <span class="s1">&#39;T_sensor&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tsim</span><span class="p">,</span> <span class="n">Usim</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;heater input&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;percent of max&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_26_0.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_26_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
+<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">tf</span> <span class="o">=</span> <span class="mi">800</span>        <span class="c1"># run time</span>
+
+<span class="c1"># create a controller instance</span>
+<span class="n">controller</span> <span class="o">=</span> <span class="n">tclab_control</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># create an model estimator</span>
+<span class="n">observer</span> <span class="o">=</span> <span class="n">tclab_observer</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># execute the event loop</span>
+<span class="n">tf</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">([(</span><span class="s1">&#39;T1&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Q1&#39;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">),</span>
+                   <span class="p">(</span><span class="s1">&#39;Th&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">Th</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Ts&#39;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">Ts</span><span class="p">)])</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tf</span><span class="p">)</span>
+    <span class="n">U1</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">tf</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>                    <span class="c1"># allow time for more calculations</span>
+        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>                           <span class="c1"># measure the sensor temperature</span>
+        <span class="n">t</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">observer</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">U1</span><span class="p">,</span> <span class="n">T1</span><span class="p">])</span>  <span class="c1"># estimate the heater temperature                      # get setpoint</span>
+        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">Th</span><span class="p">,</span> <span class="n">Ts</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span>        <span class="c1"># compute control action</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">U1</span> <span class="o">=</span> <span class="n">U1</span>                           <span class="c1"># set manipulated variable  </span>
+        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>                           <span class="c1"># log data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_0.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_2.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_2.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tclab"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Simulation, Control, and Estimation using Pyomo</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../python/A.00-Python-Tutorials.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python Tutorials</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

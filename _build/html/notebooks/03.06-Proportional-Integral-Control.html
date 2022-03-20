@@ -1,0 +1,1300 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.6. Practical Proportional (P) and Proportional-Integral (PI) Control &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.7. Integral Windup and Bumpless Transfer" href="03.07-Integral-Windup-and-Bumpless-Transfer.html" />
+    <link rel="prev" title="3.5. Implementing Controllers in Python" href="03.05-Implementing-Controllers.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.07-Observer-Synthesis-LMI.html">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04/04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05/05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.02-Linear-Blending-Problem.html">
+     5.8. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.04-Gasoline-Blending.html">
+     5.9. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.05-Linear-Programming.html">
+     5.10. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.11. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
+     5.13. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
+     5.14. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tclab/02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tclab/06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/03.06-Proportional-Integral-Control.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/03.06-Proportional-Integral-Control.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/03.06-Proportional-Integral-Control.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/03.06-Proportional-Integral-Control.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   3.6.1. Learning Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#negative-feedback">
+   3.6.2. Negative Feedback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-control">
+   3.6.3. Proportional Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#description">
+     3.6.3.1. Description
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     3.6.3.2. Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-with-disturbance-inputs">
+     3.6.3.3. Testing with Disturbance Inputs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state-offset">
+     3.6.3.4. Steady-State Offset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#history-time-out">
+   3.6.4. History Time-Out
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-integral-pi-control">
+   3.6.5. Proportional-Integral (PI) Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#position-form">
+     3.6.5.1. Position form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-form">
+     3.6.5.2. Velocity form
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Practical Proportional (P) and Proportional-Integral (PI) Control</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   3.6.1. Learning Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#negative-feedback">
+   3.6.2. Negative Feedback
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-control">
+   3.6.3. Proportional Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#description">
+     3.6.3.1. Description
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     3.6.3.2. Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#testing-with-disturbance-inputs">
+     3.6.3.3. Testing with Disturbance Inputs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state-offset">
+     3.6.3.4. Steady-State Offset
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#history-time-out">
+   3.6.4. History Time-Out
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#proportional-integral-pi-control">
+   3.6.5. Proportional-Integral (PI) Control
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#position-form">
+     3.6.5.1. Position form
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#velocity-form">
+     3.6.5.2. Velocity form
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="practical-proportional-p-and-proportional-integral-pi-control">
+<h1><span class="section-number">3.6. </span>Practical Proportional (P) and Proportional-Integral (PI) Control<a class="headerlink" href="#practical-proportional-p-and-proportional-integral-pi-control" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-goals">
+<h2><span class="section-number">3.6.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Explain terms in the equations for proportional control and proportional-integral control/</p></li>
+<li><p>Derive velocity from form of PI control.</p></li>
+<li><p>Define terminology</p>
+<ul>
+<li><p>negative feedback</p></li>
+<li><p>bias (aka offset or null) term</p></li>
+<li><p>proportional gain and integral gain</p></li>
+</ul>
+</li>
+<li><p>Explain difference between setpoint tracking and disturbance rejection.</p></li>
+<li><p>Explain roles of the proportional and integral terms contribute.</p></li>
+<li><p>Explain the purpose of each of the following enhancements of ‘textbook’ PI control:</p>
+<ul>
+<li><p>Anti-reset windup</p>
+<ul>
+<li><p>Control algorithm modifications</p></li>
+<li><p>Event loop modifications</p></li>
+</ul>
+</li>
+<li><p>Bumpless Transfer</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="negative-feedback">
+<h2><span class="section-number">3.6.2. </span>Negative Feedback<a class="headerlink" href="#negative-feedback" title="Permalink to this headline">¶</a></h2>
+<p><strong>Negative feedback</strong> is the core principle underpinining process control.  Negative feedback suppresses deviations from the setpoint assuming the proportional gain is positive and the process exhibits a positive-going response from a positive change in the manipulated variable. If the process variable grows above the setpoint then the manipulated variable is decreased. If the process variable falls below the setpoint then the manipulated variable is increased.</p>
+<p>If the system exhibits a negative-going response to a postive change in the manipiulated variable, then the sign of the proportional gain must also be negative to assure negative feedback control.</p>
+<p><img alt="" src="http://4.bp.blogspot.com/-ZKMZhvwDJ2o/UM3-y4BDIqI/AAAAAAAAAbM/PIsa1XpziNg/s1600/fbl+glucose.gif" /></p>
+<p><strong>Positive feedback</strong> is encountered in social, economic, and biological systems where there is a desire to amplify a desirable outcome. Positive feedback can induce good behaviors, result in ‘virtuous’ cycles of innovation and development, or wealth creation. But in most hard engineering situations, the immediate objective is to cause a variable to track a setpoint for which negative feedback is enabling technology</p>
+<hr>
+<p><strong>Study Question:</strong> Describe the two types of negative feedback taking place in the glucose/insulin/glucagon system diagrammed above.</p>
+<p><strong>Study Question:</strong> Why are two feedback loops necessary in this biological system? Can you think of an analogy for temperature control of the Temperature Control Lab?</p>
+<p><strong>Study Question:</strong> For the glucose feedback loops diagrammed above, describe at least one physiological source disturbance for each.</p>
+<p><strong>Study Question:</strong> Describe a situation where you have witnessed positive feedback in an audio or visual system.</p>
+<hr></div>
+<div class="section" id="proportional-control">
+<h2><span class="section-number">3.6.3. </span>Proportional Control<a class="headerlink" href="#proportional-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="description">
+<h3><span class="section-number">3.6.3.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+<p><strong>Proportional control</strong> adjusts the manipulated variable in proportion to the error between the setpoint and measured process variable.</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+MV_k &amp; = \bar{MV} - K_P(PV_k - SP_k)
+\end{align}\]</div>
+<p>The constant of proportionality, <span class="math notranslate nohighlight">\(K_p\)</span>, is called the <strong>proportional control gain</strong>. The <strong>error signal</strong> is the difference between the the measured process variable and setpoint,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+e_k &amp; = PV_k - SP_k
+\end{align}\]</div>
+<p>for which the proportional control becomes</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}
+MV_k &amp; = \bar{MV} - K_P e_k
+\end{align}\]</div>
+<p>The negative sign results in <strong>negative feedback control</strong>.</p>
+<p>The constant term <span class="math notranslate nohighlight">\(\bar{MV}\)</span> is called the <strong>bias</strong>, <strong>offset</strong>, or <strong>null</strong> value of the manipulated variable. It is an initial estimate of the value of the manipulated variable required to maintain the desired setpoint. The estimate can be determined in several ways:</p>
+<ul class="simple">
+<li><p>manual adjustment of the manipulated variable followed by a transition to automatic control,</p></li>
+<li><p>solving a process model for the desired steady state,</p></li>
+<li><p>feedforward control,</p></li>
+<li><p>a user provided estimate,</p></li>
+<li><p>set to zero.</p></li>
+</ul>
+<p>In subsequent notebooks we will see how <span class="math notranslate nohighlight">\(\bar{MV}\)</span> is used when building advanced control implementations.</p>
+</div>
+<div class="section" id="implementation">
+<h3><span class="section-number">3.6.3.2. </span>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h3>
+<p>Using the Python <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement, n instance of a proportional controller is created by specifying the gain <span class="math notranslate nohighlight">\(K_P\)</span>, upper and lower bounds on the manipulated variable, and the offset value <span class="math notranslate nohighlight">\(\bar{MV}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PI</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">t_step</span><span class="p">,</span> <span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_bar</span>
+    <span class="n">e_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
+        <span class="n">MV</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">MV</span><span class="p">))</span>
+        <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+
+<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">SP</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">25</span>
+
+<span class="k">def</span> <span class="nf">DV</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">t_step</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">controller</span> <span class="o">=</span> <span class="n">PI</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">t_step</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">],</span>
+               <span class="p">[</span><span class="s2">&quot;SP1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span>
+               <span class="p">[</span><span class="s2">&quot;E1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span> <span class="o">-</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">)],</span>
+               <span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">]]</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;E1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">]])</span>
+    
+    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">P2</span> <span class="o">=</span> <span class="mi">255</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">controller</span><span class="p">))</span>
+
+    <span class="c1"># event loop</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
+        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">T1</span><span class="p">))</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03.06-Proportional-Integral-Control_7_0.png" src="../_images/03.06-Proportional-Integral-Control_7_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/03.06-Proportional-Integral-Control_7_2.png" src="../_images/03.06-Proportional-Integral-Control_7_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lab</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="testing-with-disturbance-inputs">
+<h3><span class="section-number">3.6.3.3. </span>Testing with Disturbance Inputs<a class="headerlink" href="#testing-with-disturbance-inputs" title="Permalink to this headline">¶</a></h3>
+<p>Let’s see how proportional control works when applied to the Temperature Control Laboratory. For this simulation we set <span class="math notranslate nohighlight">\(\bar{MV} = 0\)</span> and <span class="math notranslate nohighlight">\(K_p = 3.0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">SP</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">40</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">DV</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">t</span><span class="o">&gt;=</span> <span class="mi">220</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="n">controller</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="mf">3.0</span><span class="p">)</span>
+
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">t_step</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;DV&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;SP1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">))]</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;DV&quot;</span><span class="p">]]</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+    
+    <span class="c1"># initialize manipulated variable</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">P2</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">controller</span><span class="p">))</span>
+
+    <span class="c1"># event loop</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
+        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">T1</span><span class="p">))</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03.06-Proportional-Integral-Control_11_0.png" src="../_images/03.06-Proportional-Integral-Control_11_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/03.06-Proportional-Integral-Control_11_2.png" src="../_images/03.06-Proportional-Integral-Control_11_2.png" />
+</div>
+</div>
+<p>For systems without significant time delay and with properly chosen parameters, proportional control can achieve a fast response to changes in setpoint. Note, however, the steady state may be different than the desired setpoint, sometimes unacceptably different. This steady-state error a short-coming of purely proportional control.</p>
+<hr>
+<p><strong>Study Question:</strong> Did the proportional control acheive the setpoint? Did proportional control reject the disturbance? How serious is the problem?</p>
+<hr></div>
+<div class="section" id="steady-state-offset">
+<h3><span class="section-number">3.6.3.4. </span>Steady-State Offset<a class="headerlink" href="#steady-state-offset" title="Permalink to this headline">¶</a></h3>
+<p>Proportional-only control provides no assurance the the process variable will eventually acquire the setpoint. To see this, consider the proportional control law</p>
+<div class="math notranslate nohighlight">
+\[MV_k = \bar{MV} - K_P e_k\]</div>
+<p>in the limit <span class="math notranslate nohighlight">\(k\rightarrow\infty\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[e_{\infty} = \frac{\bar{MV} - MV_{\infty}}{K_P}\]</div>
+<p>The error <span class="math notranslate nohighlight">\(e_\infty\)</span> expresses the steady-state difference between a process variable and it setpoint. With proportional control, the only options to reduce steady-state offset are</p>
+<ol class="simple">
+<li><p>Increase <span class="math notranslate nohighlight">\(K_P\)</span>. This leads to increasing oscillations and relay-like behavior of the manipulated variable.</p></li>
+<li><p>Find a perfect initial estimate for <span class="math notranslate nohighlight">\(\bar{MV}\)</span>. If we could do this, we wouldn’t need feedback control.</p></li>
+</ol>
+<p>A persistent steady-state offset is most significant shortcoming of proportional-only control.</p>
+<hr>
+<p><strong>Study Question:</strong> Test the simulation for values of <span class="math notranslate nohighlight">\(K_p\)</span> that are twice as large, and half as large as demonstrated above. What do you notice about the steady-state error between the desired setpoint and the measured process variable?</p>
+<hr></div>
+</div>
+<div class="section" id="history-time-out">
+<h2><span class="section-number">3.6.4. </span>History Time-Out<a class="headerlink" href="#history-time-out" title="Permalink to this headline">¶</a></h2>
+<p>Boulton and Watt Steam Engine</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/SteamEngine_Boulton%26Watt_1784.png/1280px-SteamEngine_Boulton%26Watt_1784.png" /></p>
+<p><a class="reference external" href="https://youtu.be/B01LgS8S5C8?t=42">Governor</a></p>
+<p>PID Control</p>
+<p><img alt="" src="https://owaysonline.com/wp-content/uploads/Block-Diagram-of-Ships-Auto-Pilot.png" /></p>
+<p>Pneumatic Control</p>
+<p><img alt="" src="https://forumautomation.com/uploads/default/original/2X/8/80d57597e66ff4a5dae1243f91e0bf8c9e1d0dcb.png" /></p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pneumatische_regelaar.jpg/640px-Pneumatische_regelaar.jpg" /></p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Smart_current_loop_positioner.png/1024px-Smart_current_loop_positioner.png?1645118511583" /></p>
+<p><img alt="" src="https://www.amazon.com/pid-controller/s?k=pid+controller" /></p>
+</div>
+<div class="section" id="proportional-integral-pi-control">
+<h2><span class="section-number">3.6.5. </span>Proportional-Integral (PI) Control<a class="headerlink" href="#proportional-integral-pi-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="position-form">
+<h3><span class="section-number">3.6.5.1. </span>Position form<a class="headerlink" href="#position-form" title="Permalink to this headline">¶</a></h3>
+<p>Given a process variable <span class="math notranslate nohighlight">\(PV\)</span> and setpoint <span class="math notranslate nohighlight">\(SP\)</span>, proportional-integral control is defined by the relation</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8bd1cfb2-bcb3-4bc7-b10c-ca2418802d22">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-8bd1cfb2-bcb3-4bc7-b10c-ca2418802d22" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV(t) &amp; = \bar{MV} - K_P\left(PV(t) - SP(t)\right) - K_I\int_{-\infty}^t (PV(t') - SP(t'))\,dt'
+\end{align}\]</div>
+<p>or</p>
+<div class="amsmath math notranslate nohighlight" id="equation-87c3306f-4c4f-4abb-9e65-93561edcf058">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-87c3306f-4c4f-4abb-9e65-93561edcf058" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV(t) &amp; = \bar{MV} - K_P e(t) - K_I\int_{-\infty}^t e(t') \,dt'
+\end{align}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[e(t) = PV(t) - SP(t)\]</div>
+<p>where <strong><span class="math notranslate nohighlight">\(K_P\)</span> is the proportional gain</strong> and <strong><span class="math notranslate nohighlight">\(K_I\)</span> is the integral gain</strong>. When implemented in discrete time with time steps of length <span class="math notranslate nohighlight">\(h\)</span>, the basic rule for proportional-integral control becomes</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6aec7960-58ee-4860-8f6a-789561e56e40">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-6aec7960-58ee-4860-8f6a-789561e56e40" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_k &amp; = \bar{MV} - K_P(PV_k - SP_k) - h K_I\sum_{j=0}^{j=k}(PV_j - SP_j)
+\end{align}\]</div>
+<p>or</p>
+<div class="amsmath math notranslate nohighlight" id="equation-175462ef-6d47-4826-a2ff-01accce280c1">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-175462ef-6d47-4826-a2ff-01accce280c1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_k &amp; = \bar{MV} - K_P e_k - h K_I\sum_{j=0}^{j=k}e_j
+\end{align}\]</div>
+<p>where</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a3346c4d-2ad3-4cf0-97a2-d6589e7855a6">
+<span class="eqno">(3.5)<a class="headerlink" href="#equation-a3346c4d-2ad3-4cf0-97a2-d6589e7855a6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+e_k &amp; = PV_k - SP_k
+\end{align}\]</div>
+<p>This is the so-called <strong>position form</strong> of PI control. The position form specifies the value (or “position”) of the manipulated variable stricly in terms of the current and past values of the <strong>error</strong> signal <span class="math notranslate nohighlight">\(e_k\)</span>. Note the sign convention: A positive error occurs when the process variable is greater than the setpoint. The position form of PI control is rarely used in practice.</p>
+</div>
+<div class="section" id="velocity-form">
+<h3><span class="section-number">3.6.5.2. </span>Velocity form<a class="headerlink" href="#velocity-form" title="Permalink to this headline">¶</a></h3>
+<p>A more common implementation of PI control is done by computing how much the manipulated variable changes at each time step, and incrementing the manipulated variable by that amount. Consecutive values of <span class="math notranslate nohighlight">\(MV\)</span> are given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-97cb5ef6-1a3e-45f0-9224-b1d3c8aa07e1">
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-97cb5ef6-1a3e-45f0-9224-b1d3c8aa07e1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_{k-1} &amp; = \bar{MV} - K_p e_{k-1} - h K_i \sum_{j=0}^{k-1} e_{j} \\
+MV_{k} &amp; = \bar{MV} - K_p e_{k} - h K_i \sum_{j=0}^{k} e_{j}
+\end{align}\]</div>
+<p>Taking differences gives a formula for updating the value of <span class="math notranslate nohighlight">\(MV\)</span> in response to process measurements or changes in setpoint.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1e2585de-1f61-443e-9d13-9d49e8cab730">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-1e2585de-1f61-443e-9d13-9d49e8cab730" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
+\end{align}\]</div>
+<p>with <span class="math notranslate nohighlight">\(MV_0 = \bar{MV}\)</span>. Let’s see how this works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PI</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">MV_bar</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">MV</span> <span class="o">=</span> <span class="n">MV_bar</span>
+    <span class="n">e_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">SP</span><span class="p">,</span> <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">PV</span> <span class="o">-</span> <span class="n">SP</span>
+        <span class="n">MV</span> <span class="o">=</span> <span class="n">MV</span> <span class="o">-</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">e</span> <span class="o">-</span> <span class="n">e_prev</span><span class="p">)</span> <span class="o">-</span> <span class="n">t_step</span><span class="o">*</span><span class="n">Ki</span><span class="o">*</span><span class="n">e</span>
+        <span class="n">e_prev</span> <span class="o">=</span> <span class="n">e</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span><span class="p">,</span> <span class="n">setup</span>
+<span class="n">TCLab</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">speedup</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">SP</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">60</span> <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">DV</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">t</span><span class="o">&gt;=</span> <span class="mi">220</span> <span class="k">else</span> <span class="mi">0</span>
+
+<span class="n">controller</span> <span class="o">=</span> <span class="n">PI</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">t_final</span> <span class="o">=</span> <span class="mi">450</span>
+<span class="n">t_step</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
+    <span class="n">sources</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;DV&quot;</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">),</span>
+               <span class="p">(</span><span class="s2">&quot;SP1&quot;</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">))]</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">sources</span><span class="p">)</span>
+    <span class="n">layout</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;SP1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;DV&quot;</span><span class="p">]]</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">t_final</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="n">layout</span><span class="p">)</span>
+    
+    <span class="c1"># initialize manipulated variable</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">P2</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">controller</span><span class="p">))</span>
+
+    <span class="c1"># event loop</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_final</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
+        <span class="n">T1</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span>
+        <span class="n">U1</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">send</span><span class="p">((</span><span class="n">SP</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">T1</span><span class="p">))</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">U1</span><span class="p">)</span>
+        <span class="n">lab</span><span class="o">.</span><span class="n">Q2</span><span class="p">(</span><span class="n">DV</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/03.06-Proportional-Integral-Control_21_0.png" src="../_images/03.06-Proportional-Integral-Control_21_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab Model disconnected successfully.
+</pre></div>
+</div>
+<img alt="../_images/03.06-Proportional-Integral-Control_21_2.png" src="../_images/03.06-Proportional-Integral-Control_21_2.png" />
+</div>
+</div>
+<p>As we can see from this example, an important practical property of proportonal-integral control is <strong>steady-state tracking of the setpoint.</strong> In other words, for a steaady setpoint <span class="math notranslate nohighlight">\(\bar{SP}\)</span>, at steady-state</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3ad3ef7d-678a-434a-a23d-83bc410b36de">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-3ad3ef7d-678a-434a-a23d-83bc410b36de" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\lim_{k \rightarrow \infty} PV_k = \bar{SP}
+\end{align}\]</div>
+<p>To see why this is true, start with the velocity form of the proportional-integral controller</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7a810f3-ce6e-419f-966b-612915903820">
+<span class="eqno">(3.9)<a class="headerlink" href="#equation-f7a810f3-ce6e-419f-966b-612915903820" title="Permalink to this equation">¶</a></span>\[\begin{align}
+MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - h K_i e_{k}
+\end{align}\]</div>
+<p>At steady-state <span class="math notranslate nohighlight">\(MV_{k} = MV_{k-1}\)</span> and <span class="math notranslate nohighlight">\(e_{k} = e_{k-1}\)</span> leaving</p>
+<div class="math notranslate nohighlight">
+\[h K_i e_{k} = 0 \implies e_{k} = 0 \implies PV_{k} = \bar{SP}\]</div>
+<p>Steady-state tracking is normally important in chemical process applications. For this reason, PI control is, by far, the most commonly encountered control used in the process industries.</p>
+<hr>
+<p><strong>Study Question:</strong> Repeat the simulation experiments using the Ziegler-Nichols and the Astrom and Murray tuning rules for PI control. Compare the magnitude of the recommended control constants. Compare the resulting performance in response to regard to both setpoint tracking and disturbance rejection. Compare:</p>
+<ul class="simple">
+<li><p>Maximum overshoot</p></li>
+<li><p>Damping</p></li>
+<li><p>Time to acheive steady-state</p></li>
+</ul>
+<hr></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="03.05-Implementing-Controllers.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.5. </span>Implementing Controllers in Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="03.07-Integral-Windup-and-Bumpless-Transfer.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.7. </span>Integral Windup and Bumpless Transfer</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
