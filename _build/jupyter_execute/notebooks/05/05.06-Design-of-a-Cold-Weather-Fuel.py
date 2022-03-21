@@ -5,19 +5,7 @@
 
 # The venerable alcohol stove has been invaluable camping accessory for generations. They are simple, reliable, and in a pinch, can be made from aluminum soda cans. 
 # 
-# <<<<<<< local
-# <<<<<<< local
-# <<<<<<< local
-# ![](./figures/alcohol_stove.jpeg)
-# =======
 # ![](../figures/alcohol_stove.jpeg)
-# >>>>>>> remote
-# =======
-# ![](../figures/alcohol_stove.jpeg)
-# >>>>>>> remote
-# =======
-# ![](../figures/alcohol_stove.jpeg)
-# >>>>>>> remote
 # 
 # Alcohol stoves are typically fueled with denatured alcohol. Denatured alcohol, sometimes called methylated spirits, is a generally a mixture of ethanol and other alcohols and compounds designed to make it unfit for human consumption. An MSDS description of one [manufacturer's product](https://www.korellis.com/wordpress/wp-content/uploads/2016/05/Alcohol-Denatured.pdf) describes a roughly fifity/fifty mixture of ethanol and methanol.
 # 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.8. Linear Blending Problems &#8212; CBE 30338 Chemical Process Control</title>
+    <title>5.2. Linear Blending Problems &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.9. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
+    <link rel="next" title="5.3. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
     <link rel="prev" title="5.1. Linear Production Model" href="05.01-Linear-Production-Model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -321,32 +321,32 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.8. Linear Blending Problems
+     5.2. Linear Blending Problems
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.04-Gasoline-Blending.html">
-     5.9. Gasoline Blending
+     5.3. Gasoline Blending
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.05-Linear-Programming.html">
-     5.10. Linear Programming
+     5.4. Linear Programming
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
-     5.11. Design of a Cold Weather Fuel
+     5.5. Design of a Cold Weather Fuel
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
-     5.13. Linear Production Model in Pyomo
+     5.6. Linear Production Model in Pyomo
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
-     5.14. Pyomo Examples
+     5.7. Pyomo Examples
     </a>
    </li>
   </ul>
@@ -724,42 +724,42 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-goals">
-   5.8.1. Learning Goals
+   5.2.1. Learning Goals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-statement-jenchura-2017">
-   5.8.2. Problem Statement (Jenchura, 2017)
+   5.2.2. Problem Statement (Jenchura, 2017)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysis">
-   5.8.3. Analysis
+   5.2.3. Analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-variables">
-     5.8.3.1. Decision variables
+     5.2.3.1. Decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#objective">
-     5.8.3.2. Objective
+     5.2.3.2. Objective
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constraints">
-     5.8.3.3. Constraints
+     5.2.3.3. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#order-volume">
-       5.8.3.3.1. Order Volume
+       5.2.3.3.1. Order Volume
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#alcohol-by-volume">
-       5.8.3.3.2. Alcohol by Volume
+       5.2.3.3.2. Alcohol by Volume
       </a>
      </li>
     </ul>
@@ -768,103 +768,103 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
-   5.8.4. Solving optimization problems with Pyomo
+   5.2.4. Solving optimization problems with Pyomo
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
-     5.8.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+     5.2.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
-     5.8.4.2. Step 2. Creating a model instance
+     5.2.4.2. Step 2. Creating a model instance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
-     5.8.4.3. Step 3. Identifying index sets
+     5.2.4.3. Step 3. Identifying index sets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-create-decision-variables">
-     5.8.4.4. Step 4. Create decision variables
+     5.2.4.4. Step 4. Create decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-objective-function">
-     5.8.4.5. Step 4. Objective Function
+     5.2.4.5. Step 4. Objective Function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-constraints">
-     5.8.4.6. Step 5. Constraints
+     5.2.4.6. Step 5. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#volume-constraint">
-       5.8.4.6.1. Volume Constraint
+       5.2.4.6.1. Volume Constraint
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#composition-constraint">
-       5.8.4.6.2. Composition Constraint
+       5.2.4.6.2. Composition Constraint
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-6-solve">
-     5.8.4.7. Step 6. Solve
+     5.2.4.7. Step 6. Solve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-7-display-solution">
-     5.8.4.8. Step 7. Display solution
+     5.2.4.8. Step 7. Display solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-studies">
-   5.8.5. Parametric Studies
+   5.2.5. Parametric Studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
-     5.8.5.1. Consolidating the model into a single function to create and solve for optimal blend
+     5.2.5.1. Consolidating the model into a single function to create and solve for optimal blend
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-use-the-optimization-model">
-     5.8.5.2. How to use the optimization model
+     5.2.5.2. How to use the optimization model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-study">
-   5.8.6. Parametric Study
+   5.2.6. Parametric Study
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#study-exercises">
-   5.8.7. Study Exercises
+   5.2.7. Study Exercises
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     5.8.7.1. Exercise 1
+     5.2.7.1. Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2">
-     5.8.7.2. Exercise 2
+     5.2.7.2. Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3">
-     5.8.7.3. Exercise 3
+     5.2.7.3. Exercise 3
     </a>
    </li>
   </ul>
@@ -891,42 +891,42 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-goals">
-   5.8.1. Learning Goals
+   5.2.1. Learning Goals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-statement-jenchura-2017">
-   5.8.2. Problem Statement (Jenchura, 2017)
+   5.2.2. Problem Statement (Jenchura, 2017)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analysis">
-   5.8.3. Analysis
+   5.2.3. Analysis
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-variables">
-     5.8.3.1. Decision variables
+     5.2.3.1. Decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#objective">
-     5.8.3.2. Objective
+     5.2.3.2. Objective
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#constraints">
-     5.8.3.3. Constraints
+     5.2.3.3. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#order-volume">
-       5.8.3.3.1. Order Volume
+       5.2.3.3.1. Order Volume
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#alcohol-by-volume">
-       5.8.3.3.2. Alcohol by Volume
+       5.2.3.3.2. Alcohol by Volume
       </a>
      </li>
     </ul>
@@ -935,103 +935,103 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#solving-optimization-problems-with-pyomo">
-   5.8.4. Solving optimization problems with Pyomo
+   5.2.4. Solving optimization problems with Pyomo
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-coding-problem-data-as-a-pandas-dataframe">
-     5.8.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
+     5.2.4.1. Step 1. Coding Problem Data as a Pandas DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-creating-a-model-instance">
-     5.8.4.2. Step 2. Creating a model instance
+     5.2.4.2. Step 2. Creating a model instance
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-identifying-index-sets">
-     5.8.4.3. Step 3. Identifying index sets
+     5.2.4.3. Step 3. Identifying index sets
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-create-decision-variables">
-     5.8.4.4. Step 4. Create decision variables
+     5.2.4.4. Step 4. Create decision variables
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-objective-function">
-     5.8.4.5. Step 4. Objective Function
+     5.2.4.5. Step 4. Objective Function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-constraints">
-     5.8.4.6. Step 5. Constraints
+     5.2.4.6. Step 5. Constraints
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#volume-constraint">
-       5.8.4.6.1. Volume Constraint
+       5.2.4.6.1. Volume Constraint
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#composition-constraint">
-       5.8.4.6.2. Composition Constraint
+       5.2.4.6.2. Composition Constraint
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-6-solve">
-     5.8.4.7. Step 6. Solve
+     5.2.4.7. Step 6. Solve
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-7-display-solution">
-     5.8.4.8. Step 7. Display solution
+     5.2.4.8. Step 7. Display solution
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-studies">
-   5.8.5. Parametric Studies
+   5.2.5. Parametric Studies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
-     5.8.5.1. Consolidating the model into a single function to create and solve for optimal blend
+     5.2.5.1. Consolidating the model into a single function to create and solve for optimal blend
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-use-the-optimization-model">
-     5.8.5.2. How to use the optimization model
+     5.2.5.2. How to use the optimization model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parametric-study">
-   5.8.6. Parametric Study
+   5.2.6. Parametric Study
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#study-exercises">
-   5.8.7. Study Exercises
+   5.2.7. Study Exercises
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     5.8.7.1. Exercise 1
+     5.2.7.1. Exercise 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2">
-     5.8.7.2. Exercise 2
+     5.2.7.2. Exercise 2
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3">
-     5.8.7.3. Exercise 3
+     5.2.7.3. Exercise 3
     </a>
    </li>
   </ul>
@@ -1046,10 +1046,10 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-blending-problems">
-<h1><span class="section-number">5.8. </span>Linear Blending Problems<a class="headerlink" href="#linear-blending-problems" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.2. </span>Linear Blending Problems<a class="headerlink" href="#linear-blending-problems" title="Permalink to this headline">¶</a></h1>
 <p>This notebook introduces material blending problems and outlines a multi-step procedure for developing and solving models using Pyomo.</p>
 <div class="section" id="learning-goals">
-<h2><span class="section-number">5.8.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Linear Blending problems</p>
 <ul class="simple">
@@ -1081,11 +1081,11 @@
 </ol>
 </div>
 <div class="section" id="problem-statement-jenchura-2017">
-<h2><span class="section-number">5.8.2. </span>Problem Statement (Jenchura, 2017)<a class="headerlink" href="#problem-statement-jenchura-2017" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.2. </span>Problem Statement (Jenchura, 2017)<a class="headerlink" href="#problem-statement-jenchura-2017" title="Permalink to this headline">¶</a></h2>
 <p>A brewery receives an order for 100 gallons that is at least 4% ABV (alchohol by volume) beer. The brewery has on hand beer A that is 4.5% ABV and costs \<span class="math notranslate nohighlight">\(0.32 per gallon to make, and beer B that is 3.7% ABV and costs \\\)</span>0.25 per gallon. Water (W) can also be used as a blending agent at a cost of \$0.05 per gallon. Find the minimum cost blend of A, B, and W that meets the customer requirements.</p>
 </div>
 <div class="section" id="analysis">
-<h2><span class="section-number">5.8.3. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.3. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <p>Before going futher, carefully read the problem description with the following questions in mind.</p>
 <ul class="simple">
 <li><p>What are the decision variables?</p></li>
@@ -1093,11 +1093,11 @@
 <li><p>What are the constraints?</p></li>
 </ul>
 <div class="section" id="decision-variables">
-<h3><span class="section-number">5.8.3.1. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3.1. </span>Decision variables<a class="headerlink" href="#decision-variables" title="Permalink to this headline">¶</a></h3>
 <p>The decision variables for this problem are the amounts of blending stocks “A”, “B”, and “W” to included in the final batch.  We can define a set of blending stocks <span class="math notranslate nohighlight">\(S\)</span>, and non-negative decision variables <span class="math notranslate nohighlight">\(x_s\)</span> that are indexed by the components in <span class="math notranslate nohighlight">\(S\)</span> that denote the amount of <span class="math notranslate nohighlight">\(s\)</span> included in the final batch.</p>
 </div>
 <div class="section" id="objective">
-<h3><span class="section-number">5.8.3.2. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3.2. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
 <p>If we designate the price of blending stock <span class="math notranslate nohighlight">\(s \in S\)</span> as <span class="math notranslate nohighlight">\(P_s\)</span>, the cost is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1108,9 +1108,9 @@
 <p>The objective is to minimize cost.</p>
 </div>
 <div class="section" id="constraints">
-<h3><span class="section-number">5.8.3.3. </span>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.3.3. </span>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="order-volume">
-<h4><span class="section-number">5.8.3.3.1. </span>Order Volume<a class="headerlink" href="#order-volume" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.2.3.3.1. </span>Order Volume<a class="headerlink" href="#order-volume" title="Permalink to this headline">¶</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(V = 100\)</span> represent the desired volume of product and assume ideal mixing. Then</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -1118,7 +1118,7 @@ V &amp;  = \sum_{s\in S} x_s
 \end{align}\]</div>
 </div>
 <div class="section" id="alcohol-by-volume">
-<h4><span class="section-number">5.8.3.3.2. </span>Alcohol by Volume<a class="headerlink" href="#alcohol-by-volume" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.2.3.3.2. </span>Alcohol by Volume<a class="headerlink" href="#alcohol-by-volume" title="Permalink to this headline">¶</a></h4>
 <p>Let <span class="math notranslate nohighlight">\(C_s\)</span> denote the volume fraction of alcohol in blending stock <span class="math notranslate nohighlight">\(s\)</span>. Assuming ideal mixing, the total volume of of alchohol in the final product be</p>
 <div class="math notranslate nohighlight">
 \[C_{total} = \sum_{s\in S} x_s C_s\]</div>
@@ -1133,9 +1133,9 @@ V &amp;  = \sum_{s\in S} x_s
 </div>
 </div>
 <div class="section" id="solving-optimization-problems-with-pyomo">
-<h2><span class="section-number">5.8.4. </span>Solving optimization problems with Pyomo<a class="headerlink" href="#solving-optimization-problems-with-pyomo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.4. </span>Solving optimization problems with Pyomo<a class="headerlink" href="#solving-optimization-problems-with-pyomo" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="step-1-coding-problem-data-as-a-pandas-dataframe">
-<h3><span class="section-number">5.8.4.1. </span>Step 1. Coding Problem Data as a Pandas DataFrame<a class="headerlink" href="#step-1-coding-problem-data-as-a-pandas-dataframe" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.1. </span>Step 1. Coding Problem Data as a Pandas DataFrame<a class="headerlink" href="#step-1-coding-problem-data-as-a-pandas-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>The first step is to represent the problem data in a generic manner that could be extended to include additional blending components.  Here we use a Pandas dataframe of raw materials, each row representing a unique blending agent, and columns containing attributes of the blending components. This is consistent with “Tidy Data” principles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1201,7 +1201,7 @@ V &amp;  = \sum_{s\in S} x_s
 </div>
 </div>
 <div class="section" id="step-2-creating-a-model-instance">
-<h3><span class="section-number">5.8.4.2. </span>Step 2. Creating a model instance<a class="headerlink" href="#step-2-creating-a-model-instance" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.2. </span>Step 2. Creating a model instance<a class="headerlink" href="#step-2-creating-a-model-instance" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1215,7 +1215,7 @@ V &amp;  = \sum_{s\in S} x_s
 </div>
 </div>
 <div class="section" id="step-3-identifying-index-sets">
-<h3><span class="section-number">5.8.4.3. </span>Step 3. Identifying index sets<a class="headerlink" href="#step-3-identifying-index-sets" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.3. </span>Step 3. Identifying index sets<a class="headerlink" href="#step-3-identifying-index-sets" title="Permalink to this headline">¶</a></h3>
 <p>The objectives and constraints encountered in optimization problems often include sums over a set of objects. In the case, we will need to create sums over the set of blending stocks. We will use these index sets to create decision variables and to express the sums that appear in the objective and constraints</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1248,7 +1248,7 @@ W
 </div>
 </div>
 <div class="section" id="step-4-create-decision-variables">
-<h3><span class="section-number">5.8.4.4. </span>Step 4. Create decision variables<a class="headerlink" href="#step-4-create-decision-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.4. </span>Step 4. Create decision variables<a class="headerlink" href="#step-4-create-decision-variables" title="Permalink to this headline">¶</a></h3>
 <p>Most real-world applications of optimization technologies involve many decision variables and constraints. It would be impractical to create unique identifiers for literally thousands of variables. For this reason, the <code class="docutils literal notranslate"><span class="pre">pyo.Var()</span></code> and other objects can create indexed sets of variables and constraints. Here is how it is done for the blending problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1259,7 +1259,7 @@ W
 </div>
 </div>
 <div class="section" id="step-4-objective-function">
-<h3><span class="section-number">5.8.4.5. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.5. </span>Step 4. Objective Function<a class="headerlink" href="#step-4-objective-function" title="Permalink to this headline">¶</a></h3>
 <p>If we let subscript <span class="math notranslate nohighlight">\(d\)</span> denote a blending d from the set of blending components <span class="math notranslate nohighlight">\(C\)</span>, and denote the volume of <span class="math notranslate nohighlight">\(c\)</span> used in the blend as <span class="math notranslate nohighlight">\(x_c\)</span>, the cost of the blend is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1294,9 +1294,9 @@ cost : Size=1, Index=None, Active=True
 </div>
 </div>
 <div class="section" id="step-5-constraints">
-<h3><span class="section-number">5.8.4.6. </span>Step 5. Constraints<a class="headerlink" href="#step-5-constraints" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.6. </span>Step 5. Constraints<a class="headerlink" href="#step-5-constraints" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="volume-constraint">
-<h4><span class="section-number">5.8.4.6.1. </span>Volume Constraint<a class="headerlink" href="#volume-constraint" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.2.4.6.1. </span>Volume Constraint<a class="headerlink" href="#volume-constraint" title="Permalink to this headline">¶</a></h4>
 <p>The customer requirement is produce a total volume <span class="math notranslate nohighlight">\(V\)</span>. Assuming ideal solutions, the constraint is given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -1331,7 +1331,7 @@ volume : Size=1, Index=None, Active=True
 </div>
 </div>
 <div class="section" id="composition-constraint">
-<h4><span class="section-number">5.8.4.6.2. </span>Composition Constraint<a class="headerlink" href="#composition-constraint" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.2.4.6.2. </span>Composition Constraint<a class="headerlink" href="#composition-constraint" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_lb</span> <span class="o">=</span> <span class="mf">0.04</span>
@@ -1361,7 +1361,7 @@ composition : Size=1, Index=None, Active=True
 </div>
 </div>
 <div class="section" id="step-6-solve">
-<h3><span class="section-number">5.8.4.7. </span>Step 6. Solve<a class="headerlink" href="#step-6-solve" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.7. </span>Step 6. Solve<a class="headerlink" href="#step-6-solve" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bm</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
@@ -1474,7 +1474,7 @@ Solution:
 </div>
 </div>
 <div class="section" id="step-7-display-solution">
-<h3><span class="section-number">5.8.4.8. </span>Step 7. Display solution<a class="headerlink" href="#step-7-display-solution" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.4.8. </span>Step 7. Display solution<a class="headerlink" href="#step-7-display-solution" title="Permalink to this headline">¶</a></h3>
 <p>Following solution, the values of any Pyomo variable, expression, objective, or constraint can be accessed using the associated <code class="docutils literal notranslate"><span class="pre">value</span></code> property.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1555,7 +1555,7 @@ W:   0.00 gallons
 </div>
 </div>
 <div class="section" id="parametric-studies">
-<h2><span class="section-number">5.8.5. </span>Parametric Studies<a class="headerlink" href="#parametric-studies" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.5. </span>Parametric Studies<a class="headerlink" href="#parametric-studies" title="Permalink to this headline">¶</a></h2>
 <p>An important use of optimization models is to investigate how operations depend on critical parameters. For example, for this blending problem we may be interested in questions like:</p>
 <ul class="simple">
 <li><p>How does the operating cost change with product alcohol content?</p></li>
@@ -1565,7 +1565,7 @@ W:   0.00 gallons
 <li><p>How much would be pay for raw materials with different specifications</p></li>
 </ul>
 <div class="section" id="consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend">
-<h3><span class="section-number">5.8.5.1. </span>Consolidating the model into a single function to create and solve for optimal blend<a class="headerlink" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5.1. </span>Consolidating the model into a single function to create and solve for optimal blend<a class="headerlink" href="#consolidating-the-model-into-a-single-function-to-create-and-solve-for-optimal-blend" title="Permalink to this headline">¶</a></h3>
 <p>To enable parametric studies, our first step is to consolidate the model into a function that accepts problem data and reports an optimal solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1612,7 +1612,7 @@ W:   0.00 gallons
 </div>
 </div>
 <div class="section" id="how-to-use-the-optimization-model">
-<h3><span class="section-number">5.8.5.2. </span>How to use the optimization model<a class="headerlink" href="#how-to-use-the-optimization-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5.2. </span>How to use the optimization model<a class="headerlink" href="#how-to-use-the-optimization-model" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify blending stock data</span>
@@ -1748,7 +1748,7 @@ W:   0.00 gallons
 </div>
 </div>
 <div class="section" id="parametric-study">
-<h2><span class="section-number">5.8.6. </span>Parametric Study<a class="headerlink" href="#parametric-study" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.6. </span>Parametric Study<a class="headerlink" href="#parametric-study" title="Permalink to this headline">¶</a></h2>
 <p>The following cell uses the optimal blending model to compute the minimum cost and blending stocks to produce</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1785,17 +1785,17 @@ W                       0.000   0.05
 </div>
 </div>
 <div class="section" id="study-exercises">
-<h2><span class="section-number">5.8.7. </span>Study Exercises<a class="headerlink" href="#study-exercises" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2.7. </span>Study Exercises<a class="headerlink" href="#study-exercises" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="exercise-1">
-<h3><span class="section-number">5.8.7.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.7.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>An additional raw blending stock “C” becomes available with an abv of 4.2% at a cost of 28 cents per gallon. How does that change the optimal blend for a product volume of 100 gallons and an abv of 4.0%?</p>
 </div>
 <div class="section" id="exercise-2">
-<h3><span class="section-number">5.8.7.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.7.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Having decided to use “C” for the blended product, you later learn only 50 gallons of “C” are available. Modify the solution procedure to allow for limits on the amount of raw maaterial, and investigate the implications for the optimal blend of having only 50 gallons of “C” available, and assuming the amounts of the other components “A”, “B”, and “W” remain unlimited.</p>
 </div>
 <div class="section" id="exercise-3">
-<h3><span class="section-number">5.8.7.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.7.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>An opportunity has developed to sell a second product with an abv of 3.8%. The first product is now labeled “X” with abv 4.0% and sells for \<span class="math notranslate nohighlight">\(1.25 per gallon, and the second product is designated &quot;Y&quot; and sells for \\\)</span>1.10 per gallon. You’ve also learned that all of your raw materials are limited to 50 gallons. What should your production plan be to maximize profits?</p>
 </div>
 </div>
@@ -1836,7 +1836,7 @@ W                       0.000   0.05
     <a class='right-next' id="next-link" href="05.04-Gasoline-Blending.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.9. </span>Gasoline Blending</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Gasoline Blending</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

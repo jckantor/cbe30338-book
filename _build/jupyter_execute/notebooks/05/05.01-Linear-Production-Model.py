@@ -95,16 +95,7 @@ if "google.colab" in sys.modules:
 # 
 # To get started on this problem, we sketch a flow diagram illustrating the flow of raw materials and labor through the production plant.
 
-# <<<<<<< local
-# ![LP_ProductX.png](./figures/LP_ProductX.png)
-# =======
-# ![LP_ProductX.png](../figures/LP_ProductX.png)
-# >>>>>>> remote
-
-# <<<<<<< local
-# <<<<<<< LOCAL CELL DELETED >>>>>>>
-# =======
-# >>>>>>> remote
+# 
 # ![LP_ProductX.png](../figures/LP_ProductX.png)
 
 # The essential decision we need to make is how many units or Product X to produce each week. That's our *decision variable* which we denote as $x$. The weekly revenues are then
@@ -157,16 +148,6 @@ if "google.colab" in sys.modules:
 
 # Your marketing department has developed plans for a new product called Y. The product sells at a price of \\$210 each, and they expect that you can sell all that you can make. It's also cheaper to make, requiring only \\$90 in raw materials, 1 hour of Labor type A at \\$50 per hour, and 1 hour of Labor B at \\$40 per hour. What is the potential weekly profit?
 
-# <<<<<<< local
-# ![LP_ProductY.png](./figures/LP_ProductY.png)
-# =======
-# ![LP_ProductY.png](../figures/LP_ProductY.png)
-# >>>>>>> remote
-
-# <<<<<<< local
-# <<<<<<< LOCAL CELL DELETED >>>>>>>
-# =======
-# >>>>>>> remote
 # ![LP_ProductY.png](../figures/LP_ProductY.png)
 
 # The analysis proceeds in the same form as Product X. In this case the revenue is given by
@@ -210,16 +191,6 @@ if "google.colab" in sys.modules:
 # 
 # To answer this question, we consider the possibilty of manufacturing both products in the same plant. The marketing department assures us that product Y will not affect the sales of product X.  So the same constraints hold as before, but now we have two decision variables, $x$ and $y$.
 
-# <<<<<<< local
-# ![LP_ProductXY.png](./figures/LP_ProductXY.png)
-# =======
-# ![LP_ProductXY.png](../figures/LP_ProductXY.png)
-# >>>>>>> remote
-
-# <<<<<<< local
-# <<<<<<< LOCAL CELL DELETED >>>>>>>
-# =======
-# >>>>>>> remote
 # ![LP_ProductXY.png](../figures/LP_ProductXY.png)
 
 # Mathematical formulation
