@@ -1,0 +1,1279 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.13. Linear Production Model in Pyomo &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.14. Pyomo Examples" href="05.99-Pyomo-Examples.html" />
+    <link rel="prev" title="5.11. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.06-Proportional-Integral-Control.html">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../04/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.07-Observer-Synthesis-LMI.html">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../04/04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.02-Linear-Blending-Problem.html">
+     5.8. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.04-Gasoline-Blending.html">
+     5.9. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.05-Linear-Programming.html">
+     5.10. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.11. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.13. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.99-Pyomo-Examples.html">
+     5.14. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/05/05.98-Linear-Production-Model-in-Pyomo.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/05/05.98-Linear-Production-Model-in-Pyomo.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/05/05.98-Linear-Production-Model-in-Pyomo.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/05/05.98-Linear-Production-Model-in-Pyomo.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   5.13.1. Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anaconda">
+     5.13.1.1. Anaconda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     5.13.1.2. Google Colab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algebraic-modeling-languages">
+   5.13.2. Algebraic Modeling Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-concepts-in-pyomo">
+   5.13.3. Key Concepts in Pyomo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-linear-production-model-with-constraints">
+   5.13.4. Example: Linear Production Model with Constraints
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-import-pyomo">
+     5.13.4.1. Step 1. Import Pyomo.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-create-the-model-object">
+     5.13.4.2. Step 2. Create the model object.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
+     5.13.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-a-solver-object-and-solve">
+     5.13.4.4. Step 4.  Create a solver object and solve.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-display-the-solution">
+     5.13.4.5. Step 5. Display the solution.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-lists-sets-dictionaries-and-iterators">
+   5.13.5. Python Lists, Sets, Dictionaries, and Iterators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-in-matrix-vector-format">
+     5.13.5.1. Data in Matrix/Vector Format
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Linear Production Model in Pyomo</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   5.13.1. Installation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anaconda">
+     5.13.1.1. Anaconda
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     5.13.1.2. Google Colab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algebraic-modeling-languages">
+   5.13.2. Algebraic Modeling Languages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-concepts-in-pyomo">
+   5.13.3. Key Concepts in Pyomo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-linear-production-model-with-constraints">
+   5.13.4. Example: Linear Production Model with Constraints
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-import-pyomo">
+     5.13.4.1. Step 1. Import Pyomo.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-create-the-model-object">
+     5.13.4.2. Step 2. Create the model object.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
+     5.13.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-4-create-a-solver-object-and-solve">
+     5.13.4.4. Step 4.  Create a solver object and solve.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-5-display-the-solution">
+     5.13.4.5. Step 5. Display the solution.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-lists-sets-dictionaries-and-iterators">
+   5.13.5. Python Lists, Sets, Dictionaries, and Iterators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-in-matrix-vector-format">
+     5.13.5.1. Data in Matrix/Vector Format
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-production-model-in-pyomo">
+<h1><span class="section-number">5.13. </span>Linear Production Model in Pyomo<a class="headerlink" href="#linear-production-model-in-pyomo" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.pyomo.org/">Pyomo</a> is a state-of-the-art language for solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision <strong>variables</strong>, <strong>constraints</strong>, and an optimization <strong>objective</strong>. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.</p>
+<div class="section" id="installation">
+<h2><span class="section-number">5.13.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="anaconda">
+<h3><span class="section-number">5.13.1.1. </span>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
+<p>These instructions assume you have previously installed a suitable Python development environment, in particular the <a class="reference external" href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a>.</p>
+<p>The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span><span class="o">.</span><span class="n">extras</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">glpk</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">ipopt</span>
+</pre></div>
+</div>
+<p>Optionally, you may also wish to install the COIN-OR cbc solvers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">coincbc</span>
+</pre></div>
+</div>
+<p>This installation provides a capable open-source optimization suite with multiple solvers well suited a wide range of process applications. The solvers are</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikibooks.org/wiki/GLPK">glpk</a>. “GNU Linear Programming Kit” is a software package written in highly portable C for the solution of mixed integer linear programming and related problems.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/IPOPT">ipopt</a>. “Interior Point Optimizer” for large scale nonlinear optimization of continuous systems.</p></li>
+<li><p><a class="reference external" href="https://projects.coin-or.org/Cbc">cbc</a>. “COIN-OR Branch and Cut” is a mixed integer linear programming solver written in C++. It generally solves the same problems as glpk, but can run multiple threads, and is often faster and more robust.</p></li>
+</ul>
+<p>This suite can be further augmented by installing additional solvers from open-source and commercial sources.</p>
+<p>NOTE: If command window procedure fails on your laptop, you might try running these commands in a Jupyter notebook. In that case, each command needs to be prefixed with the shell escape <code class="docutils literal notranslate"><span class="pre">!</span></code>, and followed by the <code class="docutils literal notranslate"><span class="pre">-y</span></code> option to handle the y/n
+interaction. For example, the basic pyomo install command would read</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!conda install -c conda-forge pyomo -y
+</pre></div>
+</div>
+<p>To provide timely feedback, each install command should be executed in a separate cell.</p>
+</div>
+<div class="section" id="google-colab">
+<h3><span class="section-number">5.13.1.2. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
+!pip install -q pyomo
+!apt-get install -y -qq glpk-utils
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="algebraic-modeling-languages">
+<h2><span class="section-number">5.13.2. </span>Algebraic Modeling Languages<a class="headerlink" href="#algebraic-modeling-languages" title="Permalink to this headline">¶</a></h2>
+<p>One of the difficult aspects of applying optimization methods to large scale applications is creating and maintaining the underlying model. An application may include tens, hundreds, even thousdands of variables and constraints, and may incorporate data extracted in real time from sensor networks and corporate data bases. The resulting models can be very complex, and essentially impossible to create and maintain without use of software tools.</p>
+<p>Algebraic Modeling Languages (AMLs) were developed to assist with the creation and maintainence of optimization models. <a class="reference external" href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a> (General Algebraic Modeling System, <a class="reference external" href="https://www.gams.com/">https://www.gams.com/</a>), first proposed in 1976, was among the first and still widely used. Other notable examples include <a class="reference external" href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/AMPL">AMPL</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a>.</p>
+<p>In recent years, modeling for optimization has become more tightly integrated with scripting languages commonly used in science and engineering. Open-source examples include <a class="reference external" href="https://yalmip.github.io/">YALMIP</a> and <a class="reference external" href="http://web.cvxr.com/cvx/doc/">CVX</a> which are tightly integrated with Matlab, <a class="reference external" href="https://jump.readthedocs.io/en/latest/">JuMP</a> which works with Julia, and a variety of systems integrated with Python.</p>
+<p>Of the Python options, the open-source <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> is perhaps the most ambitious and certainly the most aligned with the needs of process systems engineering.</p>
+</div>
+<div class="section" id="key-concepts-in-pyomo">
+<h2><span class="section-number">5.13.3. </span>Key Concepts in Pyomo<a class="headerlink" href="#key-concepts-in-pyomo" title="Permalink to this headline">¶</a></h2>
+<p>A typical Pyomo application involves the creation of at least two Pyomo objects from the following classes:</p>
+<ul class="simple">
+<li><p><strong>ConcreteModel()</strong>  A python object representing the optimization problem to be solved.</p></li>
+<li><p><strong>SolverFactory()</strong> A python object representing the mathematical progamming software to be used for calculating a solution.</p></li>
+</ul>
+<p>There are a number of of open-source and commercial solvers that can be used with Pyomo. This simple structure allows one to test and find solvers suited to a particular application.</p>
+<p>A model, in turn, is composed of additional objects used to specify a problem. A minimal set of classes is needed to create useful models. These classes are:</p>
+<ul class="simple">
+<li><p><strong>Var()</strong> Objects representing variables determined in the course of solving a particular problem.</p></li>
+<li><p><strong>Objective()</strong> An object denoting the problem objective function that is to be either minimized or maximized.</p></li>
+<li><p><strong>Contraint()</strong> Objects representing problem constraints.</p></li>
+</ul>
+<p>The following cell presents a typical example.</p>
+</div>
+<div class="section" id="example-linear-production-model-with-constraints">
+<h2><span class="section-number">5.13.4. </span>Example: Linear Production Model with Constraints<a class="headerlink" href="#example-linear-production-model-with-constraints" title="Permalink to this headline">¶</a></h2>
+<p>The mathematical formulation of a simple linear production model is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-398392ac-84c9-40c5-b7a1-9f29d66c2cfb">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-398392ac-84c9-40c5-b7a1-9f29d66c2cfb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
+\mbox{subject to:}\qquad \\
+x &amp; \leq 40  &amp; \mbox{demand constraint} \\
+x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
+2x + y &amp; \leq 100 &amp; \mbox{labor B constraint}
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the rates of production (in units per week) for two products.</p>
+<div class="section" id="step-1-import-pyomo">
+<h3><span class="section-number">5.13.4.1. </span>Step 1. Import Pyomo.<a class="headerlink" href="#step-1-import-pyomo" title="Permalink to this headline">¶</a></h3>
+<p>The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-create-the-model-object">
+<h3><span class="section-number">5.13.4.2. </span>Step 2. Create the model object.<a class="headerlink" href="#step-2-create-the-model-object" title="Permalink to this headline">¶</a></h3>
+<p>Pyomo provides two distinct methods to create models. Here we use <code class="docutils literal notranslate"><span class="pre">ConcreteModel()</span></code> to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The Python variable <code class="docutils literal notranslate"><span class="pre">model</span></code> stores the model instance. This could be any valid Python variable name.</p>
+</div>
+<div class="section" id="step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
+<h3><span class="section-number">5.13.4.3. </span>Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="headerlink" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object" title="Permalink to this headline">¶</a></h3>
+<p>The first major component of a Pyomo model are decision variables which are added as fields to <code class="docutils literal notranslate"><span class="pre">model</span></code>. In the case we name the fields <code class="docutils literal notranslate"><span class="pre">model.x</span></code> and <code class="docutils literal notranslate"><span class="pre">model.y</span></code> corresponding to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in the process model. The Python class <code class="docutils literal notranslate"><span class="pre">Var()</span></code> is used to specify these as real numbers that must be greater than or equal to zero.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As we will see in other examples, the <code class="docutils literal notranslate"><span class="pre">domain</span></code> can specify other types of decision variables including reals, integers, and booleans.</p>
+<p>The objective is specified as an algebraic expression involving the decision variables. Here we store the objective in <code class="docutils literal notranslate"><span class="pre">model.profit</span></code>, and use the optional keyword <code class="docutils literal notranslate"><span class="pre">sense</span></code> to specify a maximization problem.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Constraints are added as fields to the model, each constraint created using the <code class="docutils literal notranslate"><span class="pre">Constraint()</span></code> class. The constraints are specified using the <code class="docutils literal notranslate"><span class="pre">expr</span></code> keywork in the form of linear algebraic expressions of the decision variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-create-a-solver-object-and-solve">
+<h3><span class="section-number">5.13.4.4. </span>Step 4.  Create a solver object and solve.<a class="headerlink" href="#step-4-create-a-solver-object-and-solve" title="Permalink to this headline">¶</a></h3>
+<p>The Pyomo libary includes a <code class="docutils literal notranslate"><span class="pre">SolverFactory()</span></code> class used to specify a solver. In this case, because the problem is a linear programming problem, we use the <code class="docutils literal notranslate"><span class="pre">glpk</span></code> solver.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method attempts to solve the model using the specified solver, and returns <code class="docutils literal notranslate"><span class="pre">results</span></code> which can be inspected to see if, in fact, a solution was found. If a solution is found, then <code class="docutils literal notranslate"><span class="pre">model</span></code> will have a pretty-print method <code class="docutils literal notranslate"><span class="pre">pprint()</span></code> that creates a summary of the problem solution.</p>
+</div>
+<div class="section" id="step-5-display-the-solution">
+<h3><span class="section-number">5.13.4.5. </span>Step 5. Display the solution.<a class="headerlink" href="#step-5-display-the-solution" title="Permalink to this headline">¶</a></h3>
+<p>Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># create a model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># declare decision variables</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+
+<span class="c1"># declare objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">profit</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">40</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">30</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># declare constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">demand</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborA</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">laborB</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">solver</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
+
+<span class="c1"># display solution</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Decision Variables&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">y</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Constraints&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Demand  = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">demand</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor A = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborA</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labor B = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">laborB</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># ==========================================================
+# = Solver Results                                         =
+# ==========================================================
+# ----------------------------------------------------------
+#   Problem Information
+# ----------------------------------------------------------
+Problem: 
+- Name: unknown
+  Lower bound: 2600.0
+  Upper bound: 2600.0
+  Number of objectives: 1
+  Number of constraints: 4
+  Number of variables: 3
+  Number of nonzeros: 6
+  Sense: maximize
+# ----------------------------------------------------------
+#   Solver Information
+# ----------------------------------------------------------
+Solver: 
+- Status: ok
+  Termination condition: optimal
+  Statistics: 
+    Branch and bound: 
+      Number of bounded subproblems: 0
+      Number of created subproblems: 0
+  Error rc: 0
+  Time: 0.01840686798095703
+# ----------------------------------------------------------
+#   Solution Information
+# ----------------------------------------------------------
+Solution: 
+- number of solutions: 0
+  number of solutions displayed: 0
+2 Var Declarations
+    x : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  20.0 :  None : False : False : NonNegativeReals
+    y : Size=1, Index=None
+        Key  : Lower : Value : Upper : Fixed : Stale : Domain
+        None :     0 :  60.0 :  None : False : False : NonNegativeReals
+
+1 Objective Declarations
+    profit : Size=1, Index=None, Active=True
+        Key  : Active : Sense    : Expression
+        None :   True : maximize : 40*x + 30*y
+
+3 Constraint Declarations
+    demand : Size=1, Index=None, Active=True
+        Key  : Lower : Body : Upper : Active
+        None :  -Inf :    x :  40.0 :   True
+    laborA : Size=1, Index=None, Active=True
+        Key  : Lower : Body  : Upper : Active
+        None :  -Inf : x + y :  80.0 :   True
+    laborB : Size=1, Index=None, Active=True
+        Key  : Lower : Body    : Upper : Active
+        None :  -Inf : 2*x + y : 100.0 :   True
+
+6 Declarations: x y profit demand laborA laborB
+
+Profit =  2600.0
+
+Decision Variables
+x =  20.0
+y =  60.0
+
+Constraints
+Demand  =  20.0
+Labor A =  80.0
+Labor B =  100.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="python-lists-sets-dictionaries-and-iterators">
+<h2><span class="section-number">5.13.5. </span>Python Lists, Sets, Dictionaries, and Iterators<a class="headerlink" href="#python-lists-sets-dictionaries-and-iterators" title="Permalink to this headline">¶</a></h2>
+<p>Pyomo is integrated with the Python language, and inherits significant functionality by leveraging the basic data structures of Python. To make the best use of Pyomo, it is important to understand the basics of Python lists, sets, and dictionaries.</p>
+<div class="section" id="data-in-matrix-vector-format">
+<h3><span class="section-number">5.13.5.1. </span>Data in Matrix/Vector Format<a class="headerlink" href="#data-in-matrix-vector-format" title="Permalink to this headline">¶</a></h3>
+<p>The example above used scalar modeling components, <code class="docutils literal notranslate"><span class="pre">model.x</span> <span class="pre">=</span> <span class="pre">Var()</span></code> and <code class="docutils literal notranslate"><span class="pre">model.y</span> <span class="pre">=</span> <span class="pre">Var()</span></code>, and each constraint was added as a separate line in the model.  This is fine for small problems with a just a few unknowns, but becomes impractical for larger problems.</p>
+<p>Here we repeat the example above, this time using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays to enter the data. An indexed variable <code class="docutils literal notranslate"><span class="pre">model.x</span></code> represents the unknowns, and the constraints are indexed as well. The indices are represented by the Python <code class="docutils literal notranslate"><span class="pre">range()</span></code> statement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># enter data as numpy arrays</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span><span class="mi">30</span><span class="p">])</span>
+
+<span class="c1"># set of row indices</span>
+<span class="n">I</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+
+<span class="c1"># set of column indices</span>
+<span class="n">J</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1"># create a model instance</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="c1"># create x and y variables in the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+
+<span class="c1"># add model constraints</span>
+<span class="n">model</span><span class="o">.</span><span class="n">constraints</span> <span class="o">=</span> <span class="n">ConstraintList</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># add a model objective</span>
+<span class="n">model</span><span class="o">.</span><span class="n">objective</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">),</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="c1"># create a solver</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># print solutions</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">J</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x[&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="s2">&quot;] =&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x[ 0 ] = 20.0
+x[ 1 ] = 60.0
+constraints : Size=3
+    Key : Lower : Body  : Upper
+      1 :  None :  20.0 :  40.0
+      2 :  None :  80.0 :  80.0
+      3 :  None : 100.0 : 100.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="05.06-Design-of-a-Cold-Weather-Fuel.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.11. </span>Design of a Cold Weather Fuel</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="05.99-Pyomo-Examples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.14. </span>Pyomo Examples</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

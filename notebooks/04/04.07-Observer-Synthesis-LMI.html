@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.7. Observer Synthesis using Linear Matrix Inequalities &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.8. Application of Luenberger Observers to Environmental Modeling of Rivers" href="04.08-Envrironmental-Application.html" />
+    <link rel="prev" title="4.6. Lab Assignment 6: Anomaly Detection" href="04.06-Lab-Assignment-Anomaly-Detection.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Readme.html">
+   CBE 30338 Chemical Process Control
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.1. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.02-One-Compartment-Pharmacokinetics.html">
+     2.2. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.06-Proportional-Integral-Control.html">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../05/05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.02-Linear-Blending-Problem.html">
+     5.8. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.04-Gasoline-Blending.html">
+     5.9. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.05-Linear-Programming.html">
+     5.10. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.11. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.98-Linear-Production-Model-in-Pyomo.html">
+     5.13. Linear Production Model in Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../05/05.99-Pyomo-Examples.html">
+     5.14. Pyomo Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.01-Static-Operability.html">
+     6.1. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.2. Simulation and Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.03-Predictive-Control.html">
+     6.3. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.04-Implementing-Predictive-Control.html">
+     6.4. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../06.05-Quiz-Review.html">
+     6.5. Quiz Review for Chapters 5 and 6
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../07.00-Discrete-Event-Systems.html">
+   7. Discrete Event Systems
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.01-Introduction-to-Simpy.html">
+     7.1. Introduction to Simpy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.02-Agent-Based-Models.html">
+     7.2. Agent Based Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.03-Chemotaxis.html">
+     7.3. Chemotaxis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.04-Project-Batch-Chemical-Process.html">
+     7.4. Batch Chemical Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../07.05-Queuing-Systems-and-Poisson-Processes.html">
+     7.5. Simulating Queuing Systems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../08.00-Projects.html">
+   8. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../08.01-Project-Ideas.html">
+     8.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../09.00-Bibliography.html">
+   9. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.04-Assignment-Thermostat-Control.html">
+     1.4. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../tclab/06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/notebooks/04/04.07-Observer-Synthesis-LMI.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks/04/04.07-Observer-Synthesis-LMI.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/notebooks/04/04.07-Observer-Synthesis-LMI.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/notebooks/04/04.07-Observer-Synthesis-LMI.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.7.1. References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-parameters">
+   4.7.2. Model Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lyapunov-design">
+   4.7.3. Lyapunov Design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cvxpy">
+   4.7.4. CVXPY
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cal-h-2-optimal-state-estimation">
+   4.7.5.
+   <span class="math notranslate nohighlight">
+    \(\cal{H}_2\)
+   </span>
+   Optimal State Estimation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cal-h-infty-optimal-state-estimation">
+   4.7.6.
+   <span class="math notranslate nohighlight">
+    \(\cal{H}_{\infty}\)
+   </span>
+   Optimal State Estimation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Observer Synthesis using Linear Matrix Inequalities</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   4.7.1. References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-parameters">
+   4.7.2. Model Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lyapunov-design">
+   4.7.3. Lyapunov Design
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cvxpy">
+   4.7.4. CVXPY
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cal-h-2-optimal-state-estimation">
+   4.7.5.
+   <span class="math notranslate nohighlight">
+    \(\cal{H}_2\)
+   </span>
+   Optimal State Estimation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cal-h-infty-optimal-state-estimation">
+   4.7.6.
+   <span class="math notranslate nohighlight">
+    \(\cal{H}_{\infty}\)
+   </span>
+   Optimal State Estimation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="observer-synthesis-using-linear-matrix-inequalities">
+<h1><span class="section-number">4.7. </span>Observer Synthesis using Linear Matrix Inequalities<a class="headerlink" href="#observer-synthesis-using-linear-matrix-inequalities" title="Permalink to this headline">¶</a></h1>
+<p>Note: This is an advanced topic</p>
+<div class="section" id="references">
+<h2><span class="section-number">4.7.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Charkabarty, Ankush. <a class="reference external" href="https://engineering.utsa.edu/ataha/wp-content/uploads/sites/38/2017/10/EE5243_Module10.pdf">“Guest Lecture: Exploiting Linear Matrix Inequalities In
+Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
+<li><p>Boyd, Stephen, et al. <a class="reference external" href="https://web.stanford.edu/~boyd/lmibook/index.html">Linear matrix inequalities in system and control theory.</a> Society for industrial and applied mathematics, 1994.</p></li>
+<li><p>Caverly, Ryan James, and James Richard Forbes. <a class="reference external" href="https://arxiv.org/abs/1903.08599">“Lmi properties and applications in systems, stability, and control theory.”</a> arXiv preprint arXiv:1903.08599 (2019).</p></li>
+</ol>
+</div>
+<div class="section" id="model-parameters">
+<h2><span class="section-number">4.7.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="lyapunov-design">
+<h2><span class="section-number">4.7.3. </span>Lyapunov Design<a class="headerlink" href="#lyapunov-design" title="Permalink to this headline">¶</a></h2>
+<p>Assuming no modeling error and ignoring disturbance inputs, the observer dynamics are described by</p>
+<div class="math notranslate nohighlight">
+\[\frac{de}{dt} = (A - LC)e\]</div>
+<p>where <span class="math notranslate nohighlight">\(e = \hat{x}-x\)</span> is the difference between the estimated and process states. Given a symmetric positive definite matrix <span class="math notranslate nohighlight">\(P\)</span>, define the <strong>Lyapunov</strong> frunction <span class="math notranslate nohighlight">\(V(e)\)</span> as <span class="math notranslate nohighlight">\(V(e) = e^TPe\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dV}{dt} &amp; = \dot{e}^TP e + e^TP\dot{e} \\
+&amp; = e^T(A - LC)^T Pe + e^T P (A - LC) e \\ 
+&amp; = e^T(A^TP + PA - C^TL^TP - P L C)e\\
+\end{align}
+\end{split}\]</div>
+<p>A sufficient condition for the global asympototic stability of observer is the left-hand side of this equation be negative for all <span class="math notranslate nohighlight">\(e \ne 0\)</span>. This will be true if and only if <span class="math notranslate nohighlight">\(A^TP + PA - C^TL^TP - P L C\)</span> is negative definite, i.e;,</p>
+<div class="math notranslate nohighlight">
+\[e^T(A^TP + PA - C^TL^TP - P L C)e &lt; 0 \qquad\forall e \ne 0\]</div>
+<p>To provide some margin for robustness relative to model error, we will specify</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+\frac{dV}{dt} \leq -\gamma V
+\end{align}
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(\gamma &gt; 0\)</span>. When recast as a linear matrix inequality, we obtain</p>
+<div class="math notranslate nohighlight">
+\[A^TP + PA - C^TL^TP - P L C  \prec -\gamma P\]</div>
+<p>where the notation <span class="math notranslate nohighlight">\(Q \prec 0\)</span> implies <span class="math notranslate nohighlight">\(Q\)</span> is negative definite.</p>
+<p>As stated, given parameters <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(\gamma\)</span>, the task is to find a symmetric positive definite <span class="math notranslate nohighlight">\(P \succ 0\)</span> and a matrix of observer gains <span class="math notranslate nohighlight">\(L\)</span> which satistify the condition above. As stated, this is a bilinear relationship due to the terms <span class="math notranslate nohighlight">\(PL\)</span> and <span class="math notranslate nohighlight">\(C^TL^T\)</span> appearing in the expression. A standard ‘trick’ is to introduce a new decision variable <span class="math notranslate nohighlight">\(Y = PL\)</span> to yield the linear matrix inequality</p>
+<div class="math notranslate nohighlight">
+\[A^TP + PA - C^TY^T - Y C + \gamma P \prec 0\]</div>
+<p>After finding a satisfactory solution <span class="math notranslate nohighlight">\(P \succ 0\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>, the desired observer gains are given by</p>
+<div class="math notranslate nohighlight">
+\[L = P^{-1} Y\]</div>
+<p>The next challenge is to perform the necessary calculations.</p>
+<p>The first challenge is that the above relationship is homogeneous. In other words, for any scale factor <span class="math notranslate nohighlight">\(\alpha &gt; 0\)</span>, if <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> satisfy the relationship then so do <span class="math notranslate nohighlight">\(\alpha P\)</span> and <span class="math notranslate nohighlight">\(\alpha Y\)</span> resulting in the same solution for <span class="math notranslate nohighlight">\(L\)</span>. Without loss of generality, we can specify a specific solution by adding the constraints</p>
+<div class="math notranslate nohighlight">
+\[P \succ I\]</div>
+</div>
+<div class="section" id="cvxpy">
+<h2><span class="section-number">4.7.4. </span>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install cvxpy
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameter estimates.</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>       <span class="c1"># watts / (units P * percent U1)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>              <span class="c1"># P units</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="mi">100</span>              <span class="c1"># P units</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mf">4.46</span>            <span class="c1"># heat capacity of the heater (J/deg C)</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mf">0.819</span>           <span class="c1"># heat capacity of the sensor (J/deg C)</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.050</span>            <span class="c1"># heat transfer coefficient from heater to environment</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.021</span>            <span class="c1"># heat transfer coefficient from heater to sensor</span>
+<span class="n">Uc</span> <span class="o">=</span> <span class="mf">0.0335</span>           <span class="c1"># heat transfer coefficient between heaters</span>
+<span class="n">Tamb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># ambient room temperature</span>
+
+<span class="c1"># state space model</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Uc</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+              <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+              <span class="p">[</span><span class="n">Uc</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span> <span class="o">+</span> <span class="n">Uc</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+
+<span class="n">Bu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P2</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">Bd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">Ua</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">Ua</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+
+<span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">10</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">P</span> <span class="o">&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span> <span class="o">+</span> <span class="n">P</span><span class="nd">@A</span> <span class="o">-</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">Y</span><span class="nd">@C</span> <span class="o">+</span> <span class="n">gamma</span><span class="o">*</span><span class="n">P</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="nd">@Y</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.56726483 0.34537519]
+ [0.22509201 0.09832281]
+ [0.34537519 0.56726483]
+ [0.09832281 0.22509201]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cal-h-2-optimal-state-estimation">
+<h2><span class="section-number">4.7.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s now consider performance metrics for the observer. In particular, we assume our system is of the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B_d d \\
+y &amp; = C_y x \\
+z &amp; = C_z x
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(d\)</span> are unmeasured disturbances, <span class="math notranslate nohighlight">\(y\)</span> are process measurements, and <span class="math notranslate nohighlight">\(z\)</span> are process variables we are attempting to estimate. Constructing an estimator</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d\hat{x}}{dt} &amp; = A\hat{x} - L(\hat{y} - y) + B_d\hat{d}\\
+\hat{y} &amp; = C_y\hat{x}
+\end{align}
+\end{split}\]</div>
+<p>and defining the state error in the usual way as <span class="math notranslate nohighlight">\(e_x = \hat{x} - x\)</span> yields error dynamics given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{de}{dt} &amp; = (A - LC_y) e + B_d(\hat{d} - d) \\
+e_z &amp; = C_z e
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(e_z = C_z e\)</span> denotes the estimator error of interest. The design objective is to find values for <span class="math notranslate nohighlight">\(L\)</span> that minimize the impact of changes in disturbance <span class="math notranslate nohighlight">\(\hat{d} - d\)</span> on <span class="math notranslate nohighlight">\(e_z\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\begin{bmatrix} PA + A^TP - YC_y - C_y^TY^T &amp; PB_d \\ B_d^T P &amp; -I\end{bmatrix} &amp; \prec 0 \\
+\begin{bmatrix} P &amp; C_z^T \\ C_z &amp; Z\end{bmatrix} &amp; \succ 0 \\
+Tr(Z) &amp; &lt; \nu
+\end{align}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span>
+
+<span class="n">Cz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span> <span class="o">+</span> <span class="n">P</span><span class="nd">@A</span> <span class="o">-</span> <span class="n">Y</span><span class="nd">@C</span> <span class="o">-</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">P</span><span class="nd">@Bd</span><span class="p">],</span> 
+                       <span class="p">[</span><span class="n">Bd</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))]])</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">P</span><span class="p">,</span> <span class="n">Cz</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="p">[</span><span class="n">Cz</span><span class="p">,</span> <span class="n">Z</span><span class="p">]])</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">nu</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">nu</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">nu</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">@</span> <span class="n">Y</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01510843285193801
+[[ 0.02450293 -0.00062794]
+ [ 0.00531293  0.00279802]
+ [-0.00062794  0.02450293]
+ [ 0.00279802  0.00531293]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">()</span>
+
+
+<span class="n">A_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">Bd</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])])</span>
+<span class="n">Bu_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">Bu</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
+<span class="n">Bd_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">[[</span><span class="mi">1</span><span class="p">]]])</span>
+<span class="n">C_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">C</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])])</span>
+
+<span class="n">Cz_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">20</span>
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">P</span> <span class="o">&gt;&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">A_aug</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span> <span class="o">+</span> <span class="n">P</span><span class="nd">@A_aug</span> <span class="o">-</span> <span class="n">C_aug</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">Y</span><span class="nd">@C_aug</span> <span class="o">+</span> <span class="n">gamma</span><span class="o">*</span><span class="n">P</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="nd">@Y</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A_aug</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span> <span class="o">+</span> <span class="n">P</span><span class="nd">@A_aug</span> <span class="o">-</span> <span class="n">Y</span><span class="nd">@C_aug</span> <span class="o">-</span> <span class="n">C_aug</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">P</span><span class="nd">@Bd_aug</span><span class="p">],</span> 
+                       <span class="p">[</span><span class="n">Bd_aug</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))]])</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">P</span><span class="p">,</span> <span class="n">Cz_aug</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="p">[</span><span class="n">Cz_aug</span><span class="p">,</span> <span class="n">Z</span><span class="p">]])</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">cp</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">nu</span><span class="p">]</span>
+<span class="n">constraints</span> <span class="o">+=</span> <span class="p">[</span><span class="n">nu</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">constraints</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nu</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">@</span> <span class="n">Y</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">baf7d3ce8340</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">A_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">Bd</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])])</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">Bu_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">Bu</span><span class="p">,</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]])</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">Bd_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="p">[[</span><span class="mi">1</span><span class="p">]]])</span>
+
+<span class="ne">NameError</span>: name &#39;A&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cal-h-infty-optimal-state-estimation">
+<h2><span class="section-number">4.7.6. </span><span class="math notranslate nohighlight">\(\cal{H}_{\infty}\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-infty-optimal-state-estimation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cvxpy</span> <span class="k">as</span> <span class="nn">cp</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">PSD</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">constraint</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">bmat</span><span class="p">([[</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span> <span class="o">+</span> <span class="n">P</span><span class="nd">@A</span> <span class="o">-</span> <span class="n">Y</span><span class="nd">@C</span> <span class="o">-</span> <span class="n">C</span><span class="o">.</span><span class="n">T</span><span class="nd">@Y</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">P</span><span class="nd">@Bd</span><span class="p">],</span> 
+                       <span class="p">[</span><span class="n">Bd</span><span class="o">.</span><span class="n">T</span><span class="nd">@P</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))]])</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span>
+<span class="n">prob</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
+<span class="n">prob</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="o">@</span> <span class="n">Y</span><span class="o">.</span><span class="n">value</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.13413964  0.02750461]
+ [ 0.21936083 -0.01039676]
+ [ 0.02750461  0.13413964]
+ [-0.01039676  0.21936083]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">L</span><span class="nd">@C</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">ev</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([21.53881154+20.40481958j, 21.53881154-20.40481958j,
+       24.71082258+21.80171218j, 24.71082258-21.80171218j])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;array([[ 0.0247742 , -0.00252384],\n       [-0.00184805,  0.00579824],\n       [-0.00252384,  0.0247742 ],\n       [ 0.00579824, -0.00184805]])&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks/04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="04.06-Lab-Assignment-Anomaly-Detection.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.6. </span>Lab Assignment 6: Anomaly Detection</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="04.08-Envrironmental-Application.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.8. </span>Application of Luenberger Observers to Environmental Modeling of Rivers</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Jeffrey Kantor<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
