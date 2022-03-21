@@ -58,7 +58,7 @@ parts:
       sections:
       - file: notebooks/05/05.01-Linear-Production-Model
       - file: notebooks/05/05.02-Linear-Blending-Problem
-      - file: notebooks/05/05.03-Homework_4
+      - file: notebooks/05/05.03-Homework_2
       - file: notebooks/05/05.04-Gasoline-Blending
       - file: notebooks/05/05.05-Linear-Programming
       - file: notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel

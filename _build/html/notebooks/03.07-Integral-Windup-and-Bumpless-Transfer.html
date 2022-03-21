@@ -321,32 +321,37 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.02-Linear-Blending-Problem.html">
-     5.8. Linear Blending Problems
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05/05.03-Homework_2.html">
+     5.3. Homework Assignment 2: Optimization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.04-Gasoline-Blending.html">
-     5.9. Gasoline Blending
+     5.4. Gasoline Blending
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.05-Linear-Programming.html">
-     5.10. Linear Programming
+     5.5. Linear Programming
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.06-Design-of-a-Cold-Weather-Fuel.html">
-     5.11. Design of a Cold Weather Fuel
+     5.6. Design of a Cold Weather Fuel
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.13. Linear Production Model in Pyomo
+     5.7. Linear Production Model in Pyomo
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
-     5.14. Pyomo Examples
+     5.8. Pyomo Examples
     </a>
    </li>
   </ul>
@@ -972,13 +977,13 @@ Setpoint Variable. A desired value for process variable (PV). The job of the con
 <div class="section" id="pi-control">
 <h2><span class="section-number">3.7.4. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">¶</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c58761d5-efe1-4ea7-8882-d273f6d01d51">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-c58761d5-efe1-4ea7-8882-d273f6d01d51" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3f252715-a6e9-4ca0-8ead-8bbe1bac80f9">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-3f252715-a6e9-4ca0-8ead-8bbe1bac80f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint, and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f5871835-b6e5-41c2-bdbb-a839970fabff">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-f5871835-b6e5-41c2-bdbb-a839970fabff" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-50aa3432-bf65-4e1b-ade4-af82dc72dc78">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-50aa3432-bf65-4e1b-ade4-af82dc72dc78" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -1069,8 +1074,8 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6174a605-8fee-4051-8f91-a62c3f5a261c">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-6174a605-8fee-4051-8f91-a62c3f5a261c" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-812d3a48-333f-40a9-8d7f-e464991efa3b">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-812d3a48-333f-40a9-8d7f-e464991efa3b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
@@ -1080,12 +1085,12 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 <div class="section" id="anti-reset-windup-type-1">
 <h3><span class="section-number">3.7.5.1. </span>Anti-reset windup - Type 1<a class="headerlink" href="#anti-reset-windup-type-1" title="Permalink to this headline">¶</a></h3>
 <p>There several common strategies for avoiding integral (eset) windup. The first of these should be part of any practical implementation. The technique is to limit computed values of manipulated variable to the range of values that can be implemented. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0bcaa7c-8e77-449a-a427-9ea96720593f">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-a0bcaa7c-8e77-449a-a427-9ea96720593f" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-96e0d630-55d6-4f45-bdbf-50b72378f0d4">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-96e0d630-55d6-4f45-bdbf-50b72378f0d4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-012711a3-1b33-4a5e-b01f-dfd4d7ebd645">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-012711a3-1b33-4a5e-b01f-dfd4d7ebd645" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fc33c044-d7d8-42ab-ad18-a05739e21480">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-fc33c044-d7d8-42ab-ad18-a05739e21480" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1304,13 +1309,13 @@ TCLab Model disconnected successfully.
 </ul>
 <div class="section" id="id1">
 <h3><span class="section-number">3.7.7.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-c4a40d85-c1e5-493b-914b-9a80d09004bb">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-c4a40d85-c1e5-493b-914b-9a80d09004bb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-339dd519-cec0-4d03-a24f-504d575ff7c6">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-339dd519-cec0-4d03-a24f-504d575ff7c6" title="Permalink to this equation">¶</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-59df4366-a83e-4e6b-97f4-424be8c1eb99">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-59df4366-a83e-4e6b-97f4-424be8c1eb99" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9d5f4af9-1a17-4434-9bc4-a7c1c83c9a99">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-9d5f4af9-1a17-4434-9bc4-a7c1c83c9a99" title="Permalink to this equation">¶</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">
