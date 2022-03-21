@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.6. Linear Production Model in Pyomo &#8212; CBE 30338 Chemical Process Control</title>
+    <title>5.7. Linear Production Model in Pyomo &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.7. Pyomo Examples" href="05.99-Pyomo-Examples.html" />
-    <link rel="prev" title="5.5. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
+    <link rel="next" title="5.8. Pyomo Examples" href="05.99-Pyomo-Examples.html" />
+    <link rel="prev" title="5.6. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -325,28 +325,33 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="05.03-Homework_2.html">
+     5.3. Homework Assignment 2: Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="05.04-Gasoline-Blending.html">
-     5.3. Gasoline Blending
+     5.4. Gasoline Blending
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.05-Linear-Programming.html">
-     5.4. Linear Programming
+     5.5. Linear Programming
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.06-Design-of-a-Cold-Weather-Fuel.html">
-     5.5. Design of a Cold Weather Fuel
+     5.6. Design of a Cold Weather Fuel
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     5.6. Linear Production Model in Pyomo
+     5.7. Linear Production Model in Pyomo
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
-     5.7. Pyomo Examples
+     5.8. Pyomo Examples
     </a>
    </li>
   </ul>
@@ -724,71 +729,71 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installation">
-   5.6.1. Installation
+   5.7.1. Installation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anaconda">
-     5.6.1.1. Anaconda
+     5.7.1.1. Anaconda
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colab">
-     5.6.1.2. Google Colab
+     5.7.1.2. Google Colab
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#algebraic-modeling-languages">
-   5.6.2. Algebraic Modeling Languages
+   5.7.2. Algebraic Modeling Languages
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#key-concepts-in-pyomo">
-   5.6.3. Key Concepts in Pyomo
+   5.7.3. Key Concepts in Pyomo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-linear-production-model-with-constraints">
-   5.6.4. Example: Linear Production Model with Constraints
+   5.7.4. Example: Linear Production Model with Constraints
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-import-pyomo">
-     5.6.4.1. Step 1. Import Pyomo.
+     5.7.4.1. Step 1. Import Pyomo.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-create-the-model-object">
-     5.6.4.2. Step 2. Create the model object.
+     5.7.4.2. Step 2. Create the model object.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
-     5.6.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
+     5.7.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-create-a-solver-object-and-solve">
-     5.6.4.4. Step 4.  Create a solver object and solve.
+     5.7.4.4. Step 4.  Create a solver object and solve.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-display-the-solution">
-     5.6.4.5. Step 5. Display the solution.
+     5.7.4.5. Step 5. Display the solution.
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-lists-sets-dictionaries-and-iterators">
-   5.6.5. Python Lists, Sets, Dictionaries, and Iterators
+   5.7.5. Python Lists, Sets, Dictionaries, and Iterators
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-in-matrix-vector-format">
-     5.6.5.1. Data in Matrix/Vector Format
+     5.7.5.1. Data in Matrix/Vector Format
     </a>
    </li>
   </ul>
@@ -815,71 +820,71 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installation">
-   5.6.1. Installation
+   5.7.1. Installation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#anaconda">
-     5.6.1.1. Anaconda
+     5.7.1.1. Anaconda
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colab">
-     5.6.1.2. Google Colab
+     5.7.1.2. Google Colab
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#algebraic-modeling-languages">
-   5.6.2. Algebraic Modeling Languages
+   5.7.2. Algebraic Modeling Languages
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#key-concepts-in-pyomo">
-   5.6.3. Key Concepts in Pyomo
+   5.7.3. Key Concepts in Pyomo
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-linear-production-model-with-constraints">
-   5.6.4. Example: Linear Production Model with Constraints
+   5.7.4. Example: Linear Production Model with Constraints
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-1-import-pyomo">
-     5.6.4.1. Step 1. Import Pyomo.
+     5.7.4.1. Step 1. Import Pyomo.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-2-create-the-model-object">
-     5.6.4.2. Step 2. Create the model object.
+     5.7.4.2. Step 2. Create the model object.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
-     5.6.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
+     5.7.4.3. Step 3. Add the Decision Variables, Objective, and Constraints to the model object.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-4-create-a-solver-object-and-solve">
-     5.6.4.4. Step 4.  Create a solver object and solve.
+     5.7.4.4. Step 4.  Create a solver object and solve.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-5-display-the-solution">
-     5.6.4.5. Step 5. Display the solution.
+     5.7.4.5. Step 5. Display the solution.
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#python-lists-sets-dictionaries-and-iterators">
-   5.6.5. Python Lists, Sets, Dictionaries, and Iterators
+   5.7.5. Python Lists, Sets, Dictionaries, and Iterators
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#data-in-matrix-vector-format">
-     5.6.5.1. Data in Matrix/Vector Format
+     5.7.5.1. Data in Matrix/Vector Format
     </a>
    </li>
   </ul>
@@ -894,12 +899,12 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="linear-production-model-in-pyomo">
-<h1><span class="section-number">5.6. </span>Linear Production Model in Pyomo<a class="headerlink" href="#linear-production-model-in-pyomo" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.7. </span>Linear Production Model in Pyomo<a class="headerlink" href="#linear-production-model-in-pyomo" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.pyomo.org/">Pyomo</a> is a state-of-the-art language for solving optimization problems embedded within Python. Using Pyomo, a user can describe optimization model by specifying decision <strong>variables</strong>, <strong>constraints</strong>, and an optimization <strong>objective</strong>. Pyomo includes a rich set of features to enable modeling of complex systems, specifying a solver, and displaying the solution.</p>
 <div class="section" id="installation">
-<h2><span class="section-number">5.6.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="anaconda">
-<h3><span class="section-number">5.6.1.1. </span>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.1.1. </span>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h3>
 <p>These instructions assume you have previously installed a suitable Python development environment, in particular the <a class="reference external" href="https://www.anaconda.com/download">Anaconda package for Python 3.x</a>.</p>
 <p>The following commands will install Pyomo and extra files plus the glpk (MILP) and ipopt (nonlinear) solvers.  These commands should be executed one at a time from the terminal window on MacOS, or the Anaconda command prompt on Windows 10.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pyomo</span>
@@ -927,7 +932,7 @@ interaction. For example, the basic pyomo install command would read</p>
 <p>To provide timely feedback, each install command should be executed in a separate cell.</p>
 </div>
 <div class="section" id="google-colab">
-<h3><span class="section-number">5.6.1.2. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.1.2. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture
@@ -940,14 +945,14 @@ interaction. For example, the basic pyomo install command would read</p>
 </div>
 </div>
 <div class="section" id="algebraic-modeling-languages">
-<h2><span class="section-number">5.6.2. </span>Algebraic Modeling Languages<a class="headerlink" href="#algebraic-modeling-languages" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7.2. </span>Algebraic Modeling Languages<a class="headerlink" href="#algebraic-modeling-languages" title="Permalink to this headline">¶</a></h2>
 <p>One of the difficult aspects of applying optimization methods to large scale applications is creating and maintaining the underlying model. An application may include tens, hundreds, even thousdands of variables and constraints, and may incorporate data extracted in real time from sensor networks and corporate data bases. The resulting models can be very complex, and essentially impossible to create and maintain without use of software tools.</p>
 <p>Algebraic Modeling Languages (AMLs) were developed to assist with the creation and maintainence of optimization models. <a class="reference external" href="https://en.wikipedia.org/wiki/General_Algebraic_Modeling_System">GAMS</a> (General Algebraic Modeling System, <a class="reference external" href="https://www.gams.com/">https://www.gams.com/</a>), first proposed in 1976, was among the first and still widely used. Other notable examples include <a class="reference external" href="https://en.wikipedia.org/wiki/AIMMS">AIMMS</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/AMPL">AMPL</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/FICO_Xpress">FICO XPRESS</a>.</p>
 <p>In recent years, modeling for optimization has become more tightly integrated with scripting languages commonly used in science and engineering. Open-source examples include <a class="reference external" href="https://yalmip.github.io/">YALMIP</a> and <a class="reference external" href="http://web.cvxr.com/cvx/doc/">CVX</a> which are tightly integrated with Matlab, <a class="reference external" href="https://jump.readthedocs.io/en/latest/">JuMP</a> which works with Julia, and a variety of systems integrated with Python.</p>
 <p>Of the Python options, the open-source <a class="reference external" href="http://www.pyomo.org/">Pyomo</a> is perhaps the most ambitious and certainly the most aligned with the needs of process systems engineering.</p>
 </div>
 <div class="section" id="key-concepts-in-pyomo">
-<h2><span class="section-number">5.6.3. </span>Key Concepts in Pyomo<a class="headerlink" href="#key-concepts-in-pyomo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7.3. </span>Key Concepts in Pyomo<a class="headerlink" href="#key-concepts-in-pyomo" title="Permalink to this headline">¶</a></h2>
 <p>A typical Pyomo application involves the creation of at least two Pyomo objects from the following classes:</p>
 <ul class="simple">
 <li><p><strong>ConcreteModel()</strong>  A python object representing the optimization problem to be solved.</p></li>
@@ -963,10 +968,10 @@ interaction. For example, the basic pyomo install command would read</p>
 <p>The following cell presents a typical example.</p>
 </div>
 <div class="section" id="example-linear-production-model-with-constraints">
-<h2><span class="section-number">5.6.4. </span>Example: Linear Production Model with Constraints<a class="headerlink" href="#example-linear-production-model-with-constraints" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7.4. </span>Example: Linear Production Model with Constraints<a class="headerlink" href="#example-linear-production-model-with-constraints" title="Permalink to this headline">¶</a></h2>
 <p>The mathematical formulation of a simple linear production model is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-398392ac-84c9-40c5-b7a1-9f29d66c2cfb">
-<span class="eqno">(5.11)<a class="headerlink" href="#equation-398392ac-84c9-40c5-b7a1-9f29d66c2cfb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3ba1bec5-29aa-4d8a-b726-34f1e26da5dd">
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-3ba1bec5-29aa-4d8a-b726-34f1e26da5dd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \max_{x,y \geq 0} &amp;\ 40\ x + 30\ y  &amp; \mbox{objective}\\
 \mbox{subject to:}\qquad \\
 x &amp; \leq 40  &amp; \mbox{demand constraint} \\
@@ -975,14 +980,14 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the rates of production (in units per week) for two products.</p>
 <div class="section" id="step-1-import-pyomo">
-<h3><span class="section-number">5.6.4.1. </span>Step 1. Import Pyomo.<a class="headerlink" href="#step-1-import-pyomo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.4.1. </span>Step 1. Import Pyomo.<a class="headerlink" href="#step-1-import-pyomo" title="Permalink to this headline">¶</a></h3>
 <p>The first step in any Pyomo project is to import relevant components of the Pyomo library. This can be done with the following python statement.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="step-2-create-the-model-object">
-<h3><span class="section-number">5.6.4.2. </span>Step 2. Create the model object.<a class="headerlink" href="#step-2-create-the-model-object" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.4.2. </span>Step 2. Create the model object.<a class="headerlink" href="#step-2-create-the-model-object" title="Permalink to this headline">¶</a></h3>
 <p>Pyomo provides two distinct methods to create models. Here we use <code class="docutils literal notranslate"><span class="pre">ConcreteModel()</span></code> to create a model instance which is appropriate when all of the data needed to complete the model is avaiable at the current time.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">ConcreteModel</span><span class="p">()</span>
 </pre></div>
@@ -990,7 +995,7 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 <p>The Python variable <code class="docutils literal notranslate"><span class="pre">model</span></code> stores the model instance. This could be any valid Python variable name.</p>
 </div>
 <div class="section" id="step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object">
-<h3><span class="section-number">5.6.4.3. </span>Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="headerlink" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.4.3. </span>Step 3. Add the Decision Variables, Objective, and Constraints to the model object.<a class="headerlink" href="#step-3-add-the-decision-variables-objective-and-constraints-to-the-model-object" title="Permalink to this headline">¶</a></h3>
 <p>The first major component of a Pyomo model are decision variables which are added as fields to <code class="docutils literal notranslate"><span class="pre">model</span></code>. In the case we name the fields <code class="docutils literal notranslate"><span class="pre">model.x</span></code> and <code class="docutils literal notranslate"><span class="pre">model.y</span></code> corresponding to <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in the process model. The Python class <code class="docutils literal notranslate"><span class="pre">Var()</span></code> is used to specify these as real numbers that must be greater than or equal to zero.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">Var</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
@@ -1009,7 +1014,7 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 </div>
 </div>
 <div class="section" id="step-4-create-a-solver-object-and-solve">
-<h3><span class="section-number">5.6.4.4. </span>Step 4.  Create a solver object and solve.<a class="headerlink" href="#step-4-create-a-solver-object-and-solve" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.4.4. </span>Step 4.  Create a solver object and solve.<a class="headerlink" href="#step-4-create-a-solver-object-and-solve" title="Permalink to this headline">¶</a></h3>
 <p>The Pyomo libary includes a <code class="docutils literal notranslate"><span class="pre">SolverFactory()</span></code> class used to specify a solver. In this case, because the problem is a linear programming problem, we use the <code class="docutils literal notranslate"><span class="pre">glpk</span></code> solver.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;glpk&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 <span class="n">results</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
@@ -1020,7 +1025,7 @@ x + y &amp; \leq 80  &amp; \mbox{labor A constraint} \\
 <p>The <code class="docutils literal notranslate"><span class="pre">solve()</span></code> method attempts to solve the model using the specified solver, and returns <code class="docutils literal notranslate"><span class="pre">results</span></code> which can be inspected to see if, in fact, a solution was found. If a solution is found, then <code class="docutils literal notranslate"><span class="pre">model</span></code> will have a pretty-print method <code class="docutils literal notranslate"><span class="pre">pprint()</span></code> that creates a summary of the problem solution.</p>
 </div>
 <div class="section" id="step-5-display-the-solution">
-<h3><span class="section-number">5.6.4.5. </span>Step 5. Display the solution.<a class="headerlink" href="#step-5-display-the-solution" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.4.5. </span>Step 5. Display the solution.<a class="headerlink" href="#step-5-display-the-solution" title="Permalink to this headline">¶</a></h3>
 <p>Most applications will require access to specific components of the model. If a solution is found, the model will include methods with the same name as the fields created above, and which can be used to access solution values.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Profit = &#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
 
@@ -1150,10 +1155,10 @@ Labor B =  100.0
 </div>
 </div>
 <div class="section" id="python-lists-sets-dictionaries-and-iterators">
-<h2><span class="section-number">5.6.5. </span>Python Lists, Sets, Dictionaries, and Iterators<a class="headerlink" href="#python-lists-sets-dictionaries-and-iterators" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.7.5. </span>Python Lists, Sets, Dictionaries, and Iterators<a class="headerlink" href="#python-lists-sets-dictionaries-and-iterators" title="Permalink to this headline">¶</a></h2>
 <p>Pyomo is integrated with the Python language, and inherits significant functionality by leveraging the basic data structures of Python. To make the best use of Pyomo, it is important to understand the basics of Python lists, sets, and dictionaries.</p>
 <div class="section" id="data-in-matrix-vector-format">
-<h3><span class="section-number">5.6.5.1. </span>Data in Matrix/Vector Format<a class="headerlink" href="#data-in-matrix-vector-format" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.7.5.1. </span>Data in Matrix/Vector Format<a class="headerlink" href="#data-in-matrix-vector-format" title="Permalink to this headline">¶</a></h3>
 <p>The example above used scalar modeling components, <code class="docutils literal notranslate"><span class="pre">model.x</span> <span class="pre">=</span> <span class="pre">Var()</span></code> and <code class="docutils literal notranslate"><span class="pre">model.y</span> <span class="pre">=</span> <span class="pre">Var()</span></code>, and each constraint was added as a separate line in the model.  This is fine for small problems with a just a few unknowns, but becomes impractical for larger problems.</p>
 <p>Here we repeat the example above, this time using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays to enter the data. An indexed variable <code class="docutils literal notranslate"><span class="pre">model.x</span></code> represents the unknowns, and the constraints are indexed as well. The indices are represented by the Python <code class="docutils literal notranslate"><span class="pre">range()</span></code> statement.</p>
 <div class="cell docutils container">
@@ -1245,13 +1250,13 @@ constraints : Size=3
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5.5. </span>Design of a Cold Weather Fuel</p>
+            <p class="prev-next-title"><span class="section-number">5.6. </span>Design of a Cold Weather Fuel</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="05.99-Pyomo-Examples.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.7. </span>Pyomo Examples</p>
+        <p class="prev-next-title"><span class="section-number">5.8. </span>Pyomo Examples</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
