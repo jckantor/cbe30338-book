@@ -53,7 +53,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.7. Linear Production Model in Pyomo" href="05.98-Linear-Production-Model-in-Pyomo.html" />
+    <link rel="next" title="5.7. Pyomo Examples" href="05.99-Pyomo-Examples.html" />
     <link rel="prev" title="5.5. Linear Programming" href="05.05-Linear-Programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -345,13 +345,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+     5.7. Pyomo Examples
     </a>
    </li>
   </ul>
@@ -815,8 +810,8 @@
 <div class="section" id="data">
 <h2><span class="section-number">5.6.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>The following data was collected for potential fuels commonly available at hardware and home improvement stores. The data consists of price ($/gal.) and parameters to predict vapor pressure using the Antoine equation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b8b34bd-51ee-45a6-9abd-8e2f58ae02f9">
-<span class="eqno">(5.7)<a class="headerlink" href="#equation-3b8b34bd-51ee-45a6-9abd-8e2f58ae02f9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6ba8a23b-e54d-4ae0-ad86-c1437eeac258">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-6ba8a23b-e54d-4ae0-ad86-c1437eeac258" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \log_{10}P^{vap}_{s}(T) &amp; = A_s - \frac{B_s}{T + C_s}
 \end{align}\]</div>
 <p>where the subscript <span class="math notranslate nohighlight">\(s\)</span> refers to species, temperature <span class="math notranslate nohighlight">\(T\)</span> is in units of degrees Celcius, and pressure <span class="math notranslate nohighlight">\(P\)</span> is in units of mmHg. The additional information for molecular weight and specific gravity will be needed to present the final results in volume fraction.</p>
@@ -895,19 +890,19 @@
 <h2><span class="section-number">5.6.4. </span>Optimization Model<a class="headerlink" href="#optimization-model" title="Permalink to this headline">¶</a></h2>
 <p>The first optimization model is to create a mixture that maximizes the vapor pressure at -10°C while having a vapor pressure less than or equal to denatured alcohol at 30°C and above.</p>
 <p>The decision variables in the optimization model correspond to <span class="math notranslate nohighlight">\(x_s\)</span>, the mole fraction of each species <span class="math notranslate nohighlight">\(s \in S\)</span> from the set of available species <span class="math notranslate nohighlight">\(S\)</span>. By definition, the mole fractions must satisfy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00cb39fe-eb8a-44c2-bb43-0fe37a0ce6a8">
-<span class="eqno">(5.8)<a class="headerlink" href="#equation-00cb39fe-eb8a-44c2-bb43-0fe37a0ce6a8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba70b3b9-fd8d-4a6b-842b-07c56ce1e780">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-ba70b3b9-fd8d-4a6b-842b-07c56ce1e780" title="Permalink to this equation">¶</a></span>\[\begin{align}
 x_s &amp; \geq 0 &amp; \forall s\in S \\
 \sum_{s\in S} x_s &amp; = 1
 \end{align}\]</div>
 <p>The objective is to maximize the vapor pressure at low temperatures, say -10°C, while maintaing a vapor pressure less than or equal to denatured alcohol at 30°C. Using Raoult’s law for ideal mixtures,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ca719147-7a71-41a9-9c9a-287e253fba64">
-<span class="eqno">(5.9)<a class="headerlink" href="#equation-ca719147-7a71-41a9-9c9a-287e253fba64" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fa599fea-c214-4e46-a187-d4e446f3fe5e">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-fa599fea-c214-4e46-a187-d4e446f3fe5e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \max_{x_s} \sum_{s\in S} x_s P^{vap}_s(-10°C) \\
 \end{align}\]</div>
 <p>subject to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54c27ad6-92a2-4ce7-920e-f0b75f2a508d">
-<span class="eqno">(5.10)<a class="headerlink" href="#equation-54c27ad6-92a2-4ce7-920e-f0b75f2a508d" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-464d928a-1382-49b8-b2a0-a669e3e1d198">
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-464d928a-1382-49b8-b2a0-a669e3e1d198" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s\in S} x_s P^{vap}_s(30°C) &amp; \leq P^{vap}_{denatured\ alcohol}(30°C) \\
 \end{align}\]</div>
 <p>This optimization model is implemented in Pyomo in the following cell.</p>
@@ -1113,10 +1108,10 @@ x_s &amp; \geq 0 &amp; \forall s\in S \\
             <p class="prev-next-title"><span class="section-number">5.5. </span>Linear Programming</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="05.98-Linear-Production-Model-in-Pyomo.html" title="next page">
+    <a class='right-next' id="next-link" href="05.99-Pyomo-Examples.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.7. </span>Linear Production Model in Pyomo</p>
+        <p class="prev-next-title"><span class="section-number">5.7. </span>Pyomo Examples</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

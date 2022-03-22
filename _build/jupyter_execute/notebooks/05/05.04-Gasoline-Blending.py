@@ -3,13 +3,31 @@
 
 # # Gasoline Blending
 # 
+# ** THIS WILL BE REVISED IN CLASS 3/22 (spill over to 3/24) **
+# 
 # The task is to determine the most profitable blend of gasoline products from given set of refinery streams.
+# 
+# ![](https://www.researchgate.net/profile/Jeffrey-Kelly-2/publication/260356707/figure/fig4/AS:267835926642706@1440868469487/Typical-gasoline-blending-system-Color-figure-can-be-viewed-in-the-online-issue-which_W640.jpg)
+# 
 
-# In[93]:
+# In[22]:
+
+
+import sys
+if "google.colab" in sys.modules:
+    get_ipython().system('wget "https://raw.githubusercontent.com/ndcbe/CBE60499/main/notebooks/helper.py"')
+    import helper
+    helper.install_idaes()
+    helper.install_ipopt()
+    helper.install_glpk()
+    helper.install_cbc()
+
+
+# In[23]:
 
 
 import pandas as pd
-import pyomo.environ as pyomo
+import pyomo.environ as pyo
 
 
 # ## Gasoline Product Specifications
@@ -21,15 +39,15 @@ import pyomo.environ as pyomo
 # * **benzene** the maximum volume percentage of benzene allowed in the final product. Benzene helps to increase octane rating, but is also a treacherous environmental contaminant.
 # 
 
-# In[149]:
+# In[10]:
 
 
-products = {
+products = pd.DataFrame({
     'Regular'        : {'price': 2.75, 'octane': 87, 'RVPmin': 0.0, 'RVPmax': 15.0, 'benzene': 1.1},
     'Premium'        : {'price': 2.85, 'octane': 91, 'RVPmin': 0.0, 'RVPmax': 15.0, 'benzene': 1.1},
-}
+}).T
 
-print(pd.DataFrame.from_dict(products).T)
+display(products)
 
 
 # ## Stream Specifications
@@ -46,10 +64,10 @@ print(pd.DataFrame.from_dict(products).T)
 # 
 # The stream specifications include research octane and motor octane numbers for each blending component, the Reid vapor pressure, the benzene content, cost, and availability (in gallons per day). The road octane number is computed as the average of the RON and MON.
 
-# In[150]:
+# In[17]:
 
 
-streams = {
+streams = pd.DataFrame({
     'Butane'       : {'RON': 93.0, 'MON': 92.0, 'RVP': 54.0, 'benzene': 0.00, 'cost': 0.85, 'avail': 30000},
     'LSR'          : {'RON': 78.0, 'MON': 76.0, 'RVP': 11.2, 'benzene': 0.73, 'cost': 2.05, 'avail': 35000},
     'Isomerate'    : {'RON': 83.0, 'MON': 81.1, 'RVP': 13.5, 'benzene': 0.00, 'cost': 2.20, 'avail': 0},
@@ -57,15 +75,22 @@ streams = {
     'Reformate LB' : {'RON': 93.7, 'MON': 84.0, 'RVP':  2.8, 'benzene': 0.12, 'cost': 2.75, 'avail': 0},
     'FCC Naphtha'  : {'RON': 92.1, 'MON': 77.1, 'RVP':  1.4, 'benzene': 1.06, 'cost': 2.60, 'avail': 70000},
     'Alkylate'     : {'RON': 97.3, 'MON': 95.9, 'RVP':  4.6, 'benzene': 0.00, 'cost': 2.75, 'avail': 40000},
-}
+}).T
 
-# calculate road octane as (R+M)/2
-for s in streams.keys():
-    streams[s]['octane'] = (streams[s]['RON'] + streams[s]['MON'])/2
-    
-# display feed information
-print(pd.DataFrame.from_dict(streams).T)
+streams['octane'] = (streams['RON'] + streams['MON'])/2
 
+display(streams)
+
+
+# ## Questions we want to Answer
+# 
+# 1. What is the maximum profit possible using the current product specifications and available streams?
+# 
+# 2. What are the marginal values of each blending stream? That is, how much would you be willing to pay for each additional gallon of the blending streams?
+# 
+# 3. A marketing team says there is an opportunity to create a mid-grade gasoline product with a road octane number of 89 that would sell for $2.82/gallon, and with all other specifications the same. Would an additional profit be created? What at what price point does the mid-grade product enhance profits?
+# 
+# 4. New environmental regulations have reduced the allowable benzene levels from 1.1 vol% to 0.62 vol%, and the maximum Reid vapor pressure from 15.0 to 9.0. What is the impact on profits?
 
 # ## Blending Model
 # 
@@ -109,13 +134,23 @@ print(pd.DataFrame.from_dict(streams).T)
 # 
 # This model is implemented in the following cell.
 
+# In[21]:
+
+
+import pyomo.environ as pyo
+
+def gas_blending(products, streams):
+
+    # create model
+    m = pyo.ConcreteModel()
+    
+    return m
+
+m = gas_blending(products, streams)
+
+
 # In[162]:
 
-
-import pyomo.environ as pyomo
-
-# create model
-m = pyomo.ConcreteModel()
 
 # create decision variables
 S = streams.keys()

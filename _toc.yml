@@ -62,7 +62,6 @@ parts:
       - file: notebooks/05/05.04-Gasoline-Blending
       - file: notebooks/05/05.05-Linear-Programming
       - file: notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel
-      - file: notebooks/05/05.98-Linear-Production-Model-in-Pyomo
       - file: notebooks/05/05.99-Pyomo-Examples
   
     - file: notebooks/06.00-Predictive-Control

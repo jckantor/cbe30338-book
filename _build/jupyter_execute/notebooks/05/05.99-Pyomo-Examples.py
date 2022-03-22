@@ -258,7 +258,7 @@ processing_cost()
 # In[8]:
 
 
-from pyomo.environ import *
+from pyomo.environ import pyo
 
 def make_change(amount, coins):
     model = ConcreteModel()

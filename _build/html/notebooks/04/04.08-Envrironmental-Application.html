@@ -345,13 +345,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+     5.7. Pyomo Examples
     </a>
    </li>
   </ul>
@@ -782,29 +777,29 @@
 <div class="section" id="model">
 <h2><span class="section-number">4.8.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>The Streeter-Phelps model for oxygen in a river or stream is given by the pair of linear differential equations</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a86facad-aed1-42c7-a9bf-743261daf255">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-a86facad-aed1-42c7-a9bf-743261daf255" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fa499ed6-18c2-467e-9248-65387fff1b32">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-fa499ed6-18c2-467e-9248-65387fff1b32" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx_1}{dt} &amp; = -\frac{k_1}{U} x_2 + \frac{k_2}{U}(D_s - x_1) \\
 \frac{dx_2}{dt} &amp; = -\frac{k_1}{U} x_2
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x_1\)</span> is dissolved oxygen (DO) and <span class="math notranslate nohighlight">\(x_2\)</span> is biological oxygen demand (BOD).  Rate constant <span class="math notranslate nohighlight">\(k_1\)</span> is the BOD removal rate, <span class="math notranslate nohighlight">\(k_2\)</span> is the re-areation rate, and <span class="math notranslate nohighlight">\(D_s\)</span> is the oxygen saturation level which, for this problem, is a disturbance variable. No manipulations to this system are possible.</p>
 <p>For environmental monitoring, dissolved oxygen can be measured in the field with a low-cost sensor. BOD, however, cannot be measured in the field.</p>
 <p>Our standard model for a state-space system is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57902259-1fa8-4b36-8631-9eeefd71e9a1">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-57902259-1fa8-4b36-8631-9eeefd71e9a1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b3aeeaf3-21c4-4a39-991f-ce8b9e3d3c17">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-b3aeeaf3-21c4-4a39-991f-ce8b9e3d3c17" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_d d + B_u u\\
 y &amp; = C x
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> contains the states, <span class="math notranslate nohighlight">\(d\)</span> contains the disturbances, and <span class="math notranslate nohighlight">\(u\)</span> contains the manipulable inputs.</p>
 <p>Parameter values are <span class="math notranslate nohighlight">\(k_1 = 0.3\ \text{day}^{-1}\)</span>, <span class="math notranslate nohighlight">\(k_2 = 0.06\ \text{day}^{-1}\)</span>, and <span class="math notranslate nohighlight">\(U = 1\)</span>. A typical value of Ds = 16 mg/liter. For these values the state space model becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-464ed900-a20a-4826-9132-ba5dc7a24865">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-464ed900-a20a-4826-9132-ba5dc7a24865" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9cce1090-18c9-4926-9059-2f4626527e5e">
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-9cce1090-18c9-4926-9059-2f4626527e5e" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_d d + B_u u\\
 y &amp; = C x
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24ddaf34-4546-4643-8d6d-370497c55dbf">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-24ddaf34-4546-4643-8d6d-370497c55dbf" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dfc0647c-705a-4224-a662-c7c584c6b572">
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-dfc0647c-705a-4224-a662-c7c584c6b572" title="Permalink to this equation">¶</a></span>\[\begin{align}
 A &amp; = \begin{bmatrix} -0.06 &amp; -0.3 \\0 &amp; -0.3\end{bmatrix}
 \qquad
 B_d = \begin{bmatrix} 0.06 \\ 0 \end{bmatrix} \\
@@ -814,8 +809,8 @@ C &amp; = \begin{bmatrix} 1 &amp; 0 \end{bmatrix}
 <ul class="simple">
 <li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-30a4632f-3565-4c71-b9e2-f0a5cd0c2a1a">
-<span class="eqno">(4.8)<a class="headerlink" href="#equation-30a4632f-3565-4c71-b9e2-f0a5cd0c2a1a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ed6f5527-36c5-4baa-b213-a1b4ec793e03">
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-ed6f5527-36c5-4baa-b213-a1b4ec793e03" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 \hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
 \end{align}\]</div>
