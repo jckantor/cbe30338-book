@@ -23,7 +23,7 @@ if "google.colab" in sys.modules:
     helper.install_cbc()
 
 
-# In[23]:
+# In[2]:
 
 
 import pandas as pd
@@ -39,7 +39,7 @@ import pyomo.environ as pyo
 # * **benzene** the maximum volume percentage of benzene allowed in the final product. Benzene helps to increase octane rating, but is also a treacherous environmental contaminant.
 # 
 
-# In[10]:
+# In[3]:
 
 
 products = pd.DataFrame({
@@ -64,12 +64,12 @@ display(products)
 # 
 # The stream specifications include research octane and motor octane numbers for each blending component, the Reid vapor pressure, the benzene content, cost, and availability (in gallons per day). The road octane number is computed as the average of the RON and MON.
 
-# In[17]:
+# In[39]:
 
 
 streams = pd.DataFrame({
     'Butane'       : {'RON': 93.0, 'MON': 92.0, 'RVP': 54.0, 'benzene': 0.00, 'cost': 0.85, 'avail': 30000},
-    'LSR'          : {'RON': 78.0, 'MON': 76.0, 'RVP': 11.2, 'benzene': 0.73, 'cost': 2.05, 'avail': 35000},
+    'LSR'          : {'RON': 78.0, 'MON': 76.0, 'RVP': 11.2, 'benzene': 0.73, 'cost': 2.05, 'avail': 35001},
     'Isomerate'    : {'RON': 83.0, 'MON': 81.1, 'RVP': 13.5, 'benzene': 0.00, 'cost': 2.20, 'avail': 0},
     'Reformate'    : {'RON':100.0, 'MON': 88.2, 'RVP':  3.2, 'benzene': 1.85, 'cost': 2.80, 'avail': 60000},
     'Reformate LB' : {'RON': 93.7, 'MON': 84.0, 'RVP':  2.8, 'benzene': 0.12, 'cost': 2.75, 'avail': 0},
@@ -96,16 +96,19 @@ display(streams)
 # 
 # This simplified blending model assumes the product attributes can be computed as linear volume weighted averages of the component properties. Let the decision variable $x_{s,p} \geq 0$ be the volume, in gallons, of blending component $s \in S$ used in the final product $p \in P$.
 # 
+# ### Objective
+# 
 # The objective is maximize profit, which is the difference between product revenue and stream costs. 
 # 
 # \begin{align}
-# \mbox{profit} & = \max_{x_{s,p}}\left( \sum_{p\in P} \mbox{Price}_p \sum_{s\in S} x_{s,p}
-# - \sum_{s\in S} \mbox{Cost}_s \sum_{p\in P} x_{s,p}\right)
+# \mbox{profit} & = \max_{x_{s,p}}\left( \sum_{p\in P} \text{Price}_p \sum_{s\in S} x_{s,p}
+# - \sum_{s\in S} \text{Cost}_s \sum_{p\in P} x_{s,p}\right) \\
+# & = \max_{x_{s,p}}\left(\sum_{p\in P}\sum_{s\in S}x_{s,p}(\text{Price}_p - \text{Cost}_s)\right)
 # \end{align}
-# or
-# \begin{align}
-# \mbox{profit} & = \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Price}_p - \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Cost}_s
-# \end{align}
+# 
+# ### Raw Materials
+# 
+# The first constraints in any blending problem are normally the limits on available raw materials. Letting $\text{
 # 
 # The blending constraint for octane can be written as 
 # 
@@ -134,19 +137,55 @@ display(streams)
 # 
 # This model is implemented in the following cell.
 
-# In[21]:
+# In[44]:
 
 
 import pyomo.environ as pyo
 
 def gas_blending(products, streams):
 
-    # create model
-    m = pyo.ConcreteModel()
+    m = pyo.ConcreteModel("Gasoline Blending")
+    
+    m.PRODUCTS = pyo.Set(initialize=products.index)
+    m.STREAMS = pyo.Set(initialize=streams.index)
+    
+    m.x = pyo.Var(m.STREAMS, m.PRODUCTS, domain=pyo.NonNegativeReals)
+    
+    @m.Objective(sense=pyo.maximize)
+    def profit(m):
+        return sum(sum(m.x[s, p]*(products.loc[p, 'price'] - streams.loc[s, 'cost']) for s in m.STREAMS) for p in m.PRODUCTS)
+    
+    @m.Constraint(m.STREAMS)
+    def raw_material_available(m, s):
+        return sum(m.x[s, p] for p in m.PRODUCTS) <= streams.loc[s, 'avail']
+    
+    @m.Constraint(m.PRODUCTS)
+    def octane(m, p):
+        return sum(m.x[s, p]*(streams.loc[s, 'octane'] - products.loc[p, 'octane']) for s in m.STREAMS) >= 0
+    
+    @m.Constraint(m.PRODUCTS)
+    def benzene(m, p):
+        return sum(m.x[s, p]*(streams.loc[s, 'benzene'] - products.loc[p, 'benzene']) for s in m.STREAMS) <= 0
+   
+    @m.Constraint(m.PRODUCTS)
+    def min_reid_vapor_pressure(m, p):
+        return sum(m.x[s, p]*(streams.loc[s, 'RVP']**1.25 - products.loc[p, 'RVPmin']**1.25) for s in m.STREAMS) >= 0
+ 
+    @m.Constraint(m.PRODUCTS)
+    def max_reid_vapor_pressure(m, p):
+        return sum(m.x[s, p]*(streams.loc[s, 'RVP']**1.25 - products.loc[p, 'RVPmax']**1.25) for s in m.STREAMS) <= 0
+
+    solver = pyo.SolverFactory('cbc')
+    solver.solve(m)
     
     return m
 
 m = gas_blending(products, streams)
+
+    
+soln = pd.DataFrame({s: {p: m.x[s,p]() for p in m.PRODUCTS} for s in m.STREAMS}).T
+print("profit = ", m.profit())
+display(soln)
 
 
 # In[162]:
