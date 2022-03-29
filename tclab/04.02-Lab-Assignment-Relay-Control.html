@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.2. Lab Assignment 4: Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. State Estimation" href="05.00-State-Estimation.html" />
@@ -345,13 +348,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -776,14 +784,14 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-4-relay-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-assignment-4-relay-control">
 <h1><span class="section-number">4.2. </span>Lab Assignment 4: Relay Control<a class="headerlink" href="#lab-assignment-4-relay-control" title="Permalink to this headline">¶</a></h1>
 <p>In this lab assignment you will implement relay control for the Temperature Control Laboratory.</p>
 <ol class="simple">
 <li><p>Implement and test a relay control for the heater/sensor system</p></li>
 <li><p>Implement and test a relay control to track a complex setpoint.</p></li>
 </ol>
-<div class="section" id="exercise-1-relay-or-on-off-control">
+<section id="exercise-1-relay-or-on-off-control">
 <h2><span class="section-number">4.2.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this headline">¶</a></h2>
 <p>Create a notebook to implements a relay control for the Temperature Control Lab subject the following requirements:</p>
 <ul class="simple">
@@ -845,8 +853,8 @@
 <img alt="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" src="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="procedures">
+</section>
+<section id="procedures">
 <h2><span class="section-number">4.2.2. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Begin by testing the above code on your laptop.</p></li>
@@ -856,8 +864,8 @@
 </ol>
 <p>Apply the setpoint to T1 while maintaining T2 at a constant 30 deg C.</p>
 <p><img alt="" src="https://d29hmqxeker05q.cloudfront.net/eyJidWNrZXQiOiJpbWFnZXMuY2tiay5jb20iLCJrZXkiOiJpbWFnZXMvY2hvYzI0NDE0YzA0czAwMXNzMDAxc3NzMDA0ZzAxLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWUsIndpZHRoIjo2NTEsImhlaWdodCI6NTAwLCJmaXQiOiJpbnNpZGUifSwianBlZyI6eyJxdWFsaXR5Ijo5MCwicHJvZ3Jlc3NpdmUiOnRydWV9fX0=" /></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,22 +38,24 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.1. Static Operability" href="06.01-Static-Operability.html" />
-    <link rel="prev" title="5.8. Pyomo Examples" href="05/05.99-Pyomo-Examples.html" />
+    <link rel="prev" title="5.9. Adding Logical Decisions to our Models" href="../CBE30338-Knapsack.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -343,13 +346,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -716,11 +724,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="predictive-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="predictive-control">
 <h1><span class="section-number">6. </span>Predictive Control<a class="headerlink" href="#predictive-control" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -747,11 +755,11 @@
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="05/05.99-Pyomo-Examples.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../CBE30338-Knapsack.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5.8. </span>Pyomo Examples</p>
+            <p class="prev-next-title"><span class="section-number">5.9. </span>Adding Logical Decisions to our Models</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06.01-Static-Operability.html" title="next page">

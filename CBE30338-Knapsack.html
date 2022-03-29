@@ -6,56 +6,56 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Optimization &#8212; CBE 30338 Chemical Process Control</title>
+    <title>5.9. Adding Logical Decisions to our Models &#8212; CBE 30338 Chemical Process Control</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="7. Predictive Control and Real Time Optimization" href="07.00-Predictive-Control-and-Real-Time-Optimization.html" />
-    <link rel="prev" title="5.2. Open and Closed Loop Estimation" href="05.01-Open-and-Closed-Loop-Estimation.html" />
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Predictive Control" href="notebooks/06.00-Predictive-Control.html" />
+    <link rel="prev" title="5.8. Recharging Strategy for an Electric Vehicle" href="CBE30338-EV-Example.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -75,26 +75,26 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+    <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Readme.html">
+  <a class="reference internal" href="Readme.html">
    CBE 30338 Chemical Process Control
   </a>
  </li>
@@ -106,12 +106,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Syllabus.html">
+  <a class="reference internal" href="Syllabus.html">
    CBE 30338/32338 Syllabus
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../Schedule.html">
+  <a class="reference internal" href="Schedule.html">
    CBE 30338/32338 Schedule
   </a>
  </li>
@@ -121,9 +121,9 @@ const thebe_selector_output = ".output, .cell_output"
   Topical Materials
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/01.00-What-is-Process-Control.html">
+  <a class="reference internal" href="notebooks/01.00-What-is-Process-Control.html">
    1. What is Process Control?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -133,19 +133,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/01.01-What-is-Feedback.html">
+    <a class="reference internal" href="notebooks/01.01-What-is-Feedback.html">
      1.1. What is Feedback?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/01.02-Elements-of-Feedback-Control.html">
+    <a class="reference internal" href="notebooks/01.02-Elements-of-Feedback-Control.html">
      1.2. Elements of Process Control
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/02.00-Process-Modeling.html">
+  <a class="reference internal" href="notebooks/02.00-Process-Modeling.html">
    2. Process Modeling
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -155,49 +155,49 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
+    <a class="reference internal" href="notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems.html">
      2.1. First-Order Linear Systems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.02-One-Compartment-Pharmacokinetics.html">
+    <a class="reference internal" href="notebooks/02.02-One-Compartment-Pharmacokinetics.html">
      2.2. One Compartment Pharmacokinetics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.03-First-Order-Model-for-a-Single-Heater.html">
+    <a class="reference internal" href="notebooks/02.03-First-Order-Model-for-a-Single-Heater.html">
      2.3. First Order Model for a Single Heater
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.04-Fitting-a-Model-to-Data.html">
+    <a class="reference internal" href="notebooks/02.04-Fitting-a-Model-to-Data.html">
      2.4. Fitting a Model to Experimental Data
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
+    <a class="reference internal" href="notebooks/02.05-Second-Order.html">
      2.5. Second and Higher Order models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.06-Fed-Batch-Bioreactor.html">
+    <a class="reference internal" href="notebooks/02.06-Fed-Batch-Bioreactor.html">
      2.6. Fed-Batch Bioreactor
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.07-Exothermic-CSTR.html">
+    <a class="reference internal" href="notebooks/02.07-Exothermic-CSTR.html">
      2.7. Exothermic Continuous Stirred Tank Reactor
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
+    <a class="reference internal" href="notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/03.00-Feedback-Control.html">
+  <a class="reference internal" href="notebooks/03.00-Feedback-Control.html">
    3. Feedback Control
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -207,49 +207,49 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.01-Case-Study-Thermal-Cycling-PCR.html">
+    <a class="reference internal" href="notebooks/03.01-Case-Study-Thermal-Cycling-PCR.html">
      3.1. Case Study: Thermal Cycling for PCR
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.02-Setpoints.html">
+    <a class="reference internal" href="notebooks/03.02-Setpoints.html">
      3.2. Setpoints
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.03-Setpoints-Thermal-Cycler.html">
+    <a class="reference internal" href="notebooks/03.03-Setpoints-Thermal-Cycler.html">
      3.3. Case Study: PCR Thermal Cycler Protocols
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.04-Relay-Control.html">
+    <a class="reference internal" href="notebooks/03.04-Relay-Control.html">
      3.4. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.05-Implementing-Controllers.html">
+    <a class="reference internal" href="notebooks/03.05-Implementing-Controllers.html">
      3.5. Implementing Controllers in Python
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.06-Proportional-Integral-Control.html">
+    <a class="reference internal" href="notebooks/03.06-Proportional-Integral-Control.html">
      3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
+    <a class="reference internal" href="notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
      3.7. Integral Windup and Bumpless Transfer
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/03.08-Controller-Tuning.html">
+    <a class="reference internal" href="notebooks/03.08-Controller-Tuning.html">
      3.8. Controller Tuning
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/04/04.00-Process-Analytics.html">
+  <a class="reference internal" href="notebooks/04/04.00-Process-Analytics.html">
    4. Process Analytics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -259,111 +259,111 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.01-Learning-Goals.html">
+    <a class="reference internal" href="notebooks/04/04.01-Learning-Goals.html">
      4.1. Learning Goals
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.02-Process-Historians.html">
+    <a class="reference internal" href="notebooks/04/04.02-Process-Historians.html">
      4.2. Data/Process/Operational Historian
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.03-State-Estimation.html">
+    <a class="reference internal" href="notebooks/04/04.03-State-Estimation.html">
      4.3. State Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.04-Lab-Assigment-State-Estimation.html">
+    <a class="reference internal" href="notebooks/04/04.04-Lab-Assigment-State-Estimation.html">
      4.4. Lab Assignment 5: State Estimation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.05-Anomaly-Detection.html">
+    <a class="reference internal" href="notebooks/04/04.05-Anomaly-Detection.html">
      4.5. Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.06-Lab-Assignment-Anomaly-Detection.html">
+    <a class="reference internal" href="notebooks/04/04.06-Lab-Assignment-Anomaly-Detection.html">
      4.6. Lab Assignment 6: Anomaly Detection
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.07-Observer-Synthesis-LMI.html">
+    <a class="reference internal" href="notebooks/04/04.07-Observer-Synthesis-LMI.html">
      4.7. Observer Synthesis using Linear Matrix Inequalities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.08-Envrironmental-Application.html">
+    <a class="reference internal" href="notebooks/04/04.08-Envrironmental-Application.html">
      4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/04/04.09-Study-Questions.html">
+    <a class="reference internal" href="notebooks/04/04.09-Study-Questions.html">
      4.9. Study Questions
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/05/05.00-Optimization.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="notebooks/05/05.00-Optimization.html">
    5. Optimization
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.01-Linear-Production-Model.html">
+    <a class="reference internal" href="notebooks/05/05.01-Linear-Production-Model.html">
      5.1. Linear Production Model
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.02-Linear-Blending-Problem.html">
+    <a class="reference internal" href="notebooks/05/05.02-Linear-Blending-Problem.html">
      5.2. Linear Blending Problems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.03-Homework_2.html">
+    <a class="reference internal" href="notebooks/05/05.03-Homework_2.html">
      5.3. Homework Assignment 2: Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.04-Gasoline-Blending.html">
+    <a class="reference internal" href="notebooks/05/05.04-Gasoline-Blending.html">
      5.4. Gasoline Blending
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.05-Linear-Programming.html">
+    <a class="reference internal" href="notebooks/05/05.05-Linear-Programming.html">
      5.5. Linear Programming
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel.html">
+    <a class="reference internal" href="notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel.html">
      5.6. Design of a Cold Weather Fuel
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+    <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../CBE30338-EV-Example.html">
+    <a class="reference internal" href="CBE30338-EV-Example.html">
      5.8. Recharging Strategy for an Electric Vehicle
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../CBE30338-Knapsack.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/06.00-Predictive-Control.html">
+  <a class="reference internal" href="notebooks/06.00-Predictive-Control.html">
    6. Predictive Control
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -373,34 +373,34 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/06.01-Static-Operability.html">
+    <a class="reference internal" href="notebooks/06.01-Static-Operability.html">
      6.1. Static Operability
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+    <a class="reference internal" href="notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control.html">
      6.2. Simulation and Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/06.03-Predictive-Control.html">
+    <a class="reference internal" href="notebooks/06.03-Predictive-Control.html">
      6.3. Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/06.04-Implementing-Predictive-Control.html">
+    <a class="reference internal" href="notebooks/06.04-Implementing-Predictive-Control.html">
      6.4. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/06.05-Quiz-Review.html">
+    <a class="reference internal" href="notebooks/06.05-Quiz-Review.html">
      6.5. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/07.00-Discrete-Event-Systems.html">
+  <a class="reference internal" href="notebooks/07.00-Discrete-Event-Systems.html">
    7. Discrete Event Systems
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -410,34 +410,34 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="notebooks/07.01-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/07.02-Agent-Based-Models.html">
+    <a class="reference internal" href="notebooks/07.02-Agent-Based-Models.html">
      7.2. Agent Based Models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/07.03-Chemotaxis.html">
+    <a class="reference internal" href="notebooks/07.03-Chemotaxis.html">
      7.3. Chemotaxis
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/07.04-Project-Batch-Chemical-Process.html">
+    <a class="reference internal" href="notebooks/07.04-Project-Batch-Chemical-Process.html">
      7.4. Batch Chemical Process
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/07.05-Queuing-Systems-and-Poisson-Processes.html">
+    <a class="reference internal" href="notebooks/07.05-Queuing-Systems-and-Poisson-Processes.html">
      7.5. Simulating Queuing Systems
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks/08.00-Projects.html">
+  <a class="reference internal" href="notebooks/08.00-Projects.html">
    8. Projects
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -447,14 +447,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/08.01-Project-Ideas.html">
+    <a class="reference internal" href="notebooks/08.01-Project-Ideas.html">
      8.1. Project Ideas
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks/09.00-Bibliography.html">
+  <a class="reference internal" href="notebooks/09.00-Bibliography.html">
    9. References
   </a>
  </li>
@@ -464,9 +464,9 @@ const thebe_selector_output = ".output, .cell_output"
   Control Laboratory
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-TCLab.html">
+  <a class="reference internal" href="tclab/01.00-TCLab.html">
    1. The Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -476,34 +476,34 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
+    <a class="reference internal" href="tclab/01.01-Setting-Up-TCLab.html">
      1.1. Setting up TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
+    <a class="reference internal" href="tclab/01.02-Troubleshooting-TCLab.html">
      1.2. Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Using-TCLab.html">
+    <a class="reference internal" href="tclab/01.03-Using-TCLab.html">
      1.3. Using TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+    <a class="reference internal" href="tclab/01.04-Assignment-Thermostat-Control.html">
      1.4. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
+  <a class="reference internal" href="tclab/02.00-Empirical-Model-Identification.html">
    2. Empirical Model Identification
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+  <a class="reference internal" href="tclab/03.00-Estimating-Model-Parameters.html">
    3. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
@@ -513,14 +513,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
+    <a class="reference internal" href="tclab/03.10-TCLab-Lab-2-Model-Indentification.html">
      3.1. Assignment: Model Identification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="04.00-Feedback-Control.html">
+  <a class="reference internal" href="tclab/04.00-Feedback-Control.html">
    4. Feedback Control
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -530,19 +530,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Relay-Control.html">
+    <a class="reference internal" href="tclab/04.01-Relay-Control.html">
      4.1. Relay Control
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
+    <a class="reference internal" href="tclab/04.02-Lab-Assignment-Relay-Control.html">
      4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05.00-State-Estimation.html">
+  <a class="reference internal" href="tclab/05.00-State-Estimation.html">
    5. State Estimation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
@@ -552,19 +552,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
+    <a class="reference internal" href="tclab/05.01-Open-and-Closed-Loop-Estimation.html">
      5.2. Open and Closed Loop Estimation
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tclab/06.00-Optimal-Control.html">
    6. Optimization
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+  <a class="reference internal" href="tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
    7. Predictive Control and Real Time Optimization
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
@@ -574,12 +574,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+    <a class="reference internal" href="tclab/07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
      7.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+    <a class="reference internal" href="tclab/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
      7.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
@@ -593,7 +593,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
+  <a class="reference internal" href="python/A.00-Python-Tutorials.html">
    Python Tutorials
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
@@ -603,22 +603,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/A.05-Tidy-Data-and-Pandas.html">
+    <a class="reference internal" href="python/A.05-Tidy-Data-and-Pandas.html">
      Tidy Data and Pandas
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/A.10-Coding-Controllers-with-Python-Generators.html">
+    <a class="reference internal" href="python/A.10-Coding-Controllers-with-Python-Generators.html">
      Coding Controllers with Python Generators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+    <a class="reference internal" href="python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
      Modular Simulation using Python Generators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../python/A.30-Animation-in-Jupyter-Notebooks.html">
+    <a class="reference internal" href="python/A.30-Animation-in-Jupyter-Notebooks.html">
      Animation in Jupyter Notebooks
     </a>
    </li>
@@ -665,9 +665,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/tclab/06.00-Optimal-Control.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/CBE30338-Knapsack.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -685,7 +685,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/06.00-Optimal-Control.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2FCBE30338-Knapsack.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -701,11 +701,46 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/CBE30338-Knapsack.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/CBE30338-Knapsack.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-pack-our-knapsack">
+   5.9.1. How to pack our knapsack
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -713,19 +748,73 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Optimization</h1>
+                <h1>Adding Logical Decisions to our Models</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-pack-our-knapsack">
+   5.9.1. How to pack our knapsack
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="optimization">
-<h1><span class="section-number">6. </span>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="adding-logical-decisions-to-our-models">
+<h1><span class="section-number">5.9. </span>Adding Logical Decisions to our Models<a class="headerlink" href="#adding-logical-decisions-to-our-models" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Import Pyomo and solvers for Google Colab
+import sys
+if &quot;google.colab&quot; in sys.modules:
+    !wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/install_on_colab.py 
+    %run install_on_colab.py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>installing pyomo . pyomo installed
+installing and testing solvers ...
+.. glpk installed
+.. ipopt
+.. gecode
+.. bonmin
+.. couenne
+.. gurobi_direct installed
+.. cbc installed
+installation and testing complete
+</pre></div>
+</div>
+</div>
+</div>
+<section id="how-to-pack-our-knapsack">
+<h2><span class="section-number">5.9.1. </span>How to pack our knapsack<a class="headerlink" href="#how-to-pack-our-knapsack" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pyomo.environ</span> <span class="k">as</span> <span class="nn">pyo</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">profits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -741,7 +830,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tclab"
+            path: "./."
         },
         predefinedOutput: true
     }
@@ -753,17 +842,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="05.01-Open-and-Closed-Loop-Estimation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="CBE30338-EV-Example.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">5.2. </span>Open and Closed Loop Estimation</p>
+            <p class="prev-next-title"><span class="section-number">5.8. </span>Recharging Strategy for an Electric Vehicle</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="07.00-Predictive-Control-and-Real-Time-Optimization.html" title="next page">
+    <a class='right-next' id="next-link" href="notebooks/06.00-Predictive-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Predictive Control and Real Time Optimization</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Predictive Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -785,7 +874,7 @@ const thebe_selector_output = ".output, .cell_output"
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>CBE 30338 Chemical Process Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -342,13 +345,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -741,11 +749,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cbe-30338-chemical-process-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="cbe-30338-chemical-process-control">
 <h1>CBE 30338 Chemical Process Control<a class="headerlink" href="#cbe-30338-chemical-process-control" title="Permalink to this headline">¶</a></h1>
 <p>This is a collection of class materials for CBE 303338 Chemical Process Control taught during the Spring 2022 semester. This repository includes existing materials materials from other repositories (notably CBE 30338 and CBE 32338), adds new materials, for access by students, teaching assistants, and other interested parties.</p>
 <p>These materials are maintained and archived at <a class="reference external" href="https://github.com/jckantor/cbe30338-book">https://github.com/jckantor/cbe30338-book</a>.</p>
-<div class="section" id="course-schedule">
+<section id="course-schedule">
 <h2>Course Schedule<a class="headerlink" href="#course-schedule" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -780,7 +788,7 @@
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -789,7 +797,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

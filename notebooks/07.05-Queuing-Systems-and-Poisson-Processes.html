@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.5. Simulating Queuing Systems &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="8. Projects" href="08.00-Projects.html" />
@@ -345,13 +348,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -932,16 +940,16 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="simulating-queuing-systems">
+  <section class="tex2jax_ignore mathjax_ignore" id="simulating-queuing-systems">
 <h1><span class="section-number">7.5. </span>Simulating Queuing Systems<a class="headerlink" href="#simulating-queuing-systems" title="Permalink to this headline">¶</a></h1>
 <p>Queuing theory is one of the foundations for the analysis of discrete-event systems. This notebook introduces the nomenclature and terminology of queuing theory that will be used in later applications.</p>
-<div class="section" id="examples-of-queues">
+<section id="examples-of-queues">
 <h2><span class="section-number">7.5.1. </span>Examples of Queues<a class="headerlink" href="#examples-of-queues" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="manufacturing-lines">
+<section id="manufacturing-lines">
 <h3><span class="section-number">7.5.1.1. </span>Manufacturing Lines<a class="headerlink" href="#manufacturing-lines" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="manufacturing-tesla-shanghai-gigafactory">
+</section>
+</section>
+<section id="manufacturing-tesla-shanghai-gigafactory">
 <h2><span class="section-number">7.5.2. </span>Manufacturing: Tesla Shanghai Gigafactory<a class="headerlink" href="#manufacturing-tesla-shanghai-gigafactory" title="Permalink to this headline">¶</a></h2>
 <p>Telsa has recently been outfitting factories with very large scale automated casting (‘megacasting’) to signficantly reduce the complexity of its manufacturiing processes.</p>
 <p>As you watch the following video, try to identify the many levels of control required to realize this automated manufacturing system. For example, what sensors and actuators are required for each robot to do their tasks?  How is quality control maintained? How are operations coordinated among the assembly stations in the manufacturing line?</p>
@@ -983,14 +991,14 @@
 </div></div>
 </div>
 <p><a class="reference external" href="https://electrek.co/2020/08/31/tesla-video-production-gigafactory-shanghai-alien-dreadnought/?fbclid=IwAR2jHUZMQG4Gl77ugYHvm3DTq-zV5iOuN3bMNePzJswvfY_VVgYP3W7pSZQ">Tesla China - Shanghai Gigafactory production line</a>.</p>
-<div class="section" id="service-lines">
+<section id="service-lines">
 <h3><span class="section-number">7.5.2.1. </span>Service Lines<a class="headerlink" href="#service-lines" title="Permalink to this headline">¶</a></h3>
 <p><img alt="mathworks queue" src="https://blogs.mathworks.com/images/seth/2015Q1/queues.png" /></p>
-</div>
-</div>
-<div class="section" id="concepts">
+</section>
+</section>
+<section id="concepts">
 <h2><span class="section-number">7.5.3. </span>Concepts<a class="headerlink" href="#concepts" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="nomenclature">
+<section id="nomenclature">
 <h3><span class="section-number">7.5.3.1. </span>Nomenclature<a class="headerlink" href="#nomenclature" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Servers</p></li>
@@ -998,8 +1006,8 @@
 <li><p>Departure rate</p></li>
 <li><p>Queuing area or waiting area</p></li>
 </ul>
-</div>
-<div class="section" id="service-disciplines-of-many-possibilities">
+</section>
+<section id="service-disciplines-of-many-possibilities">
 <h3><span class="section-number">7.5.3.2. </span>Service Disciplines (of many possibilities)<a class="headerlink" href="#service-disciplines-of-many-possibilities" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>First-in-first-out (FIFO or FCFS)</p></li>
@@ -1009,9 +1017,9 @@
 <li><p>Priority queue with premption</p></li>
 <li><p>Earliest due date</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="poisson-process">
+</section>
+</section>
+<section id="poisson-process">
 <h2><span class="section-number">7.5.4. </span>Poisson Process<a class="headerlink" href="#poisson-process" title="Permalink to this headline">¶</a></h2>
 <p>Poisson processes describe the occurance of independent random events. Examples:</p>
 <ul class="simple">
@@ -1020,7 +1028,7 @@
 <li><p>Physical phenomena like molecules striking a surface, meteor strikes.</p></li>
 </ul>
 <p>Poisson processes are a useful approximation for many simulations, and also very easy to implement in practice. This section introduces some theory before describing a typical implementation.</p>
-<div class="section" id="binomial-distribution">
+<section id="binomial-distribution">
 <h3><span class="section-number">7.5.4.1. </span>Binomial distribution<a class="headerlink" href="#binomial-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Suppose there is a probability <span class="math notranslate nohighlight">\(p\)</span> of an event occurring in a short interval. We’ll assume the interval is short enough that two or more events in the same interval would be extremely unlikely. Assuming each event is independent, the probability of seeing <span class="math notranslate nohighlight">\(k\)</span> events in <span class="math notranslate nohighlight">\(n\)</span> intervals is given by the binomial distribution</p>
 <div class="math notranslate nohighlight">
@@ -1060,8 +1068,8 @@
 <img alt="../_images/07.05-Queuing-Systems-and-Poisson-Processes_12_1.png" src="../_images/07.05-Queuing-Systems-and-Poisson-Processes_12_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="poisson-distribution">
+</section>
+<section id="poisson-distribution">
 <h3><span class="section-number">7.5.4.2. </span>Poisson distribution<a class="headerlink" href="#poisson-distribution" title="Permalink to this headline">¶</a></h3>
 <p>Now imagine the events are occuring at an average rate <span class="math notranslate nohighlight">\(r\)</span> of events per unit time. In period <span class="math notranslate nohighlight">\(t\)</span> there would be, on average, <span class="math notranslate nohighlight">\(r t\)</span> events. If that period is broken into <span class="math notranslate nohighlight">\(n\)</span> intervals then</p>
 <div class="math notranslate nohighlight">
@@ -1118,8 +1126,8 @@
 <img alt="../_images/07.05-Queuing-Systems-and-Poisson-Processes_14_1.png" src="../_images/07.05-Queuing-Systems-and-Poisson-Processes_14_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="waiting-time-between-events">
+</section>
+<section id="waiting-time-between-events">
 <h3><span class="section-number">7.5.4.3. </span>Waiting time between events<a class="headerlink" href="#waiting-time-between-events" title="Permalink to this headline">¶</a></h3>
 <p>Suppose an event has just occurred. What is the probability of no additional events in the next <span class="math notranslate nohighlight">\(t\)</span> units of time? This is calculated with the Poisson distribution where <span class="math notranslate nohighlight">\(k=0\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -1128,9 +1136,9 @@
 <div class="math notranslate nohighlight">
 \[\text{Exponential}(t | r) =  e^{-r t}\]</div>
 <p>This fact is useful in creating simulations of independent random events. For a given rate <span class="math notranslate nohighlight">\(r\)</span>, we sample values from an exponential distribution.</p>
-</div>
-</div>
-<div class="section" id="simulating-a-poisson-process-in-simpy">
+</section>
+</section>
+<section id="simulating-a-poisson-process-in-simpy">
 <h2><span class="section-number">7.5.5. </span>Simulating a Poisson Process in SimPy<a class="headerlink" href="#simulating-a-poisson-process-in-simpy" title="Permalink to this headline">¶</a></h2>
 <p>Poisson processes are easy to implement in SimPy. A single parameter, commonly denoted as <span class="math notranslate nohighlight">\(r\)</span> or <span class="math notranslate nohighlight">\(\lambda\)</span>, is required to specify the average rate of occurance in units of number per unit time. For example, a value <span class="math notranslate nohighlight">\(\lambda = 4.2 \text{ min}^{-1}\)</span> corresponds to an average of 4.2 events per minute.</p>
 <p>An alternative specification is so express the mean time between events. The rate of machine failures, for example, is typically specified as “mean time between failures” (MTBF). In these cases, <span class="math notranslate nohighlight">\(r = \lambda = \frac{1}{\bar{\tau}}\)</span> where <span class="math notranslate nohighlight">\(\bar{\tau}\)</span> is the mean time between events.</p>
@@ -1192,8 +1200,8 @@
 <img alt="../_images/07.05-Queuing-Systems-and-Poisson-Processes_19_1.png" src="../_images/07.05-Queuing-Systems-and-Poisson-Processes_19_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="kendall-notation-for-queues">
+</section>
+<section id="kendall-notation-for-queues">
 <h2><span class="section-number">7.5.6. </span>Kendall notation for queues<a class="headerlink" href="#kendall-notation-for-queues" title="Permalink to this headline">¶</a></h2>
 <p>Kendall notation is a standardized methods to describe and classify queues. The notation consists of three factors written as A/S/c where where A describes the arrival process, S the service process, and c is the number of servers attending the queue.</p>
 <ul class="simple">
@@ -1216,8 +1224,8 @@
 <p><img alt="Aircraft queue" src="https://i0.wp.com/nats.aero/blog/wp-content/uploads/2013/08/aircraft-queue-e1377251576844.jpg?ssl=1" /></p>
 <p>Example: M/M/8</p>
 <p><img alt="Call Center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Emergency_Call_Center_112.jpg/640px-Emergency_Call_Center_112.jpg" /></p>
-</div>
-<div class="section" id="example-simulation-of-an-order-processing-queue">
+</section>
+<section id="example-simulation-of-an-order-processing-queue">
 <h2><span class="section-number">7.5.7. </span>Example: Simulation of an Order Processing Queue<a class="headerlink" href="#example-simulation-of-an-order-processing-queue" title="Permalink to this headline">¶</a></h2>
 <p>A chemical storeroom processes orders for a large research campus. At peak loads it is expected to receive an average of one order every 12 minutes. The time required to process each order is a fixed 10 minutes.</p>
 <ol class="simple">
@@ -1291,8 +1299,8 @@
 <img alt="../_images/07.05-Queuing-Systems-and-Poisson-Processes_22_1.png" src="../_images/07.05-Queuing-Systems-and-Poisson-Processes_22_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="batch-processing-example-needs-rework">
+</section>
+<section id="batch-processing-example-needs-rework">
 <h2><span class="section-number">7.5.8. </span>Batch Processing Example  (NEEDS REWORK)<a class="headerlink" href="#batch-processing-example-needs-rework" title="Permalink to this headline">¶</a></h2>
 <p><strong>Note that this model is incorrect! Update expected soon.</strong></p>
 <p>Schultheisz, Daniel, and Jude T. Sommerfeld. “Discrete-Event Simulation in Chemical Engineering.” Chemical Engineering Education 22.2 (1988): 98-102.</p>
@@ -1545,8 +1553,8 @@ G/G/3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="processing-the-simulation-log">
+</section>
+<section id="processing-the-simulation-log">
 <h2><span class="section-number">7.5.9. </span>Processing the Simulation Log<a class="headerlink" href="#processing-the-simulation-log" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1610,8 +1618,8 @@ Reactor Utilization = 0.960
 <img alt="../_images/07.05-Queuing-Systems-and-Poisson-Processes_43_1.png" src="../_images/07.05-Queuing-Systems-and-Poisson-Processes_43_1.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.4. Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.5. Implementing Controllers in Python" href="03.05-Implementing-Controllers.html" />
@@ -345,13 +348,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -776,9 +784,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="relay-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="relay-control">
 <h1><span class="section-number">3.4. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="relay-control-for-the-temperature-control-lab">
+<section id="relay-control-for-the-temperature-control-lab">
 <h2><span class="section-number">3.4.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this headline">¶</a></h2>
 <p>Relay control is perhaps the simplest form of feedback control that comes to mind for controlling common heaters. This is the on/off control familiar from home thermostats, air conditioners, and other devices where the manipulated variable is in either an “on” state or an “off” state.</p>
 <p>The following code implements relay control for temperature T1 on the Temperature Control Lab. At each time step <span class="math notranslate nohighlight">\(t_k\)</span>, the value of</p>
@@ -829,8 +837,8 @@ U_{k} &amp; = \begin{cases}
 <img alt="../_images/03.04-Relay-Control_2_2.png" src="../_images/03.04-Relay-Control_2_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="relay-control-with-deadzone-hysteresis-or-deadtime">
+</section>
+<section id="relay-control-with-deadzone-hysteresis-or-deadtime">
 <h2><span class="section-number">3.4.2. </span>Relay Control with Deadzone (Hysteresis) or Deadtime<a class="headerlink" href="#relay-control-with-deadzone-hysteresis-or-deadtime" title="Permalink to this headline">¶</a></h2>
 <p>One of the issues with simple relay control is the potential for ‘chattering’ where the manipulated variable (in this case heater power) exhibits periods of rapid on-and-off switching. This can be caused by systems that are highly response to control inputs, or where sensor measurements carry significant noise.</p>
 <p>There are several simple and highly effective solutions to the problem of chattering.</p>
@@ -908,8 +916,8 @@ T^{SP} - d \leq T \leq T^{SP} + d
 <p><strong>Study Question:</strong> What is the effect of sample time on control performance? What happens if you make the controller sample time longer?</p>
 <p><strong>Study Question:</strong> In a new cell, create a modification of the script to include a change in setpoint from 40 deg C to 50 deg C at the 300 second mark. Run the experiment for at least 10 minutes to see the full effect.</p>
 <p><strong>Study Question:</strong> For a relay control with deadzone (also called hysteresis), try to sketch a graph of the manipulated variable <span class="math notranslate nohighlight">\(Q\)</span> as a function of the process variable <span class="math notranslate nohighlight">\(T\)</span>. Assume the setpoint is 50 and <span class="math notranslate nohighlight">\(d = 3\)</span>. Can you draw a unique function? Why not?</p>
-<hr></div>
-</div>
+<hr></section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>CBE 30338/32338 Syllabus &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -343,13 +346,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -866,9 +874,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cbe-30338-32338-syllabus">
+  <section class="tex2jax_ignore mathjax_ignore" id="cbe-30338-32338-syllabus">
 <h1>CBE 30338/32338 Syllabus<a class="headerlink" href="#cbe-30338-32338-syllabus" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="course-description">
+<section id="course-description">
 <h2>Course Description<a class="headerlink" href="#course-description" title="Permalink to this headline">¶</a></h2>
 <p>CBE 30338 Chemical Process Control introduces students to the analysis and design of control systems for chemical and biochemical processes. The major topics are</p>
 <ul class="simple">
@@ -880,8 +888,8 @@
 </ul>
 <p>Python and hands-on control experiments are integrated into the course. Applications include chemical and biological reactors, separation processes, autonomous biomedical devices, and examples from other engineering disciplines.</p>
 <p>The lab sessions provide opportunities for hands-on coding and experimentation using the Temperature Control Laboratory. Students purchase their own copy of the device from <a class="reference external" href="https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY">Amazon</a> or <a class="reference external" href="http://apmonitor.com">apmonitor.com</a>.</p>
-</div>
-<div class="section" id="learning-objectives">
+</section>
+<section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
 <p>Students completing this course will be able to …</p>
 <ul class="simple">
@@ -891,8 +899,8 @@
 <li><p>Create and solve steady-state optimization models</p></li>
 <li><p>Apply the principles of modeling and control to novel applications</p></li>
 </ul>
-</div>
-<div class="section" id="course-information">
+</section>
+<section id="course-information">
 <h2>Course Information<a class="headerlink" href="#course-information" title="Permalink to this headline">¶</a></h2>
 <p><strong>Dates:</strong> January 11 - April 21, 2022</p>
 <p><strong>Section:</strong> CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 138</p>
@@ -916,15 +924,15 @@
 <li><p>A laptop/desktop computer with USB-A port, or a USB-C port and a USB-C to USB-A converter.</p></li>
 <li><p>An up-to-date installation of the <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda Individual Edition</a>  for Python programming. Follow the instructions <a class="reference external" href="https://appdividend.com/2020/05/12/how-to-update-anaconda-upgrade-anaconda-navigator/">here</a> to update an older installation.</p></li>
 </ol>
-</div>
-<div class="section" id="instructor-information">
+</section>
+<section id="instructor-information">
 <h2>Instructor Information<a class="headerlink" href="#instructor-information" title="Permalink to this headline">¶</a></h2>
 <p><strong>Instructor:</strong> Jeffrey Kantor (he/him/his)</p>
 <p><strong>Email:</strong> jeff</p>
 <p><strong>Office:</strong> 257 Nieuwland Hall</p>
 <p>The best way to reach me is by email. Phone is a lost cause because of the spammers. If you’d like to chat, the best options are virtual offices (see above), or to send me some times convenient to you and I’ll get back to you with either an office appointment or zoom invitation.</p>
-</div>
-<div class="section" id="teaching-assistants">
+</section>
+<section id="teaching-assistants">
 <h2>Teaching Assistants<a class="headerlink" href="#teaching-assistants" title="Permalink to this headline">¶</a></h2>
 <p>Teaching assistants assist with</p>
 <ul class="simple">
@@ -955,8 +963,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="textbook">
+</section>
+<section id="textbook">
 <h2>Textbook<a class="headerlink" href="#textbook" title="Permalink to this headline">¶</a></h2>
 <p>Required notes and materials for the course are available at the Github/web repositories</p>
 <ul class="simple">
@@ -975,28 +983,28 @@
 <li><p><a class="reference external" href="http://apmonitor.com/pdc/index.php/Main/HomePage">BYU Process Dynamics and Control course website</a></p></li>
 <li><p><a class="reference external" href="https://resourcium.org/">Resourcium</a></p></li>
 </ul>
-</div>
-<div class="section" id="grading-criteria">
+</section>
+<section id="grading-criteria">
 <h2>Grading Criteria<a class="headerlink" href="#grading-criteria" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="class-participation">
+<section id="class-participation">
 <h3>Class Participation<a class="headerlink" href="#class-participation" title="Permalink to this headline">¶</a></h3>
 <p>You are expected to attend all class sessions.  If you miss class for an official University excused function, please find notes for that lecture, do the  reading, and avail yourself of office hours to catch up on the missed material.</p>
 <p>Class sessions will include opportunities to respond to instructor questions and other active learning exercises. All interactions will be civil, respectful, and inclusive. If you have any concerns about classroom dynamics, please feel free to speak with the instructor.</p>
-</div>
-<div class="section" id="homework-assignments">
+</section>
+<section id="homework-assignments">
 <h3>Homework Assignments<a class="headerlink" href="#homework-assignments" title="Permalink to this headline">¶</a></h3>
 <p>Weekly homework assignments are typically released on Tuesday and due before class the following Tuesday.  There will be no homework for the weeks including  Junior Parents’ Weekend,  Easter, and the final weeks when the semester project is underway.</p>
 <p>Homework assignments are critical to developing the skills needed to succeed in the course and in the major. Accordingly, assignments are a required element of the course. Missing assignments will be scored as zero. Three or more missed assignments will result in an incomplete for the course. Group study is encouraged, but the submitted work must be your own. Students must be able to explain all of their submitted work.</p>
-</div>
-<div class="section" id="laboratory-assignments">
+</section>
+<section id="laboratory-assignments">
 <h3>Laboratory Assignments<a class="headerlink" href="#laboratory-assignments" title="Permalink to this headline">¶</a></h3>
 <p>Laboratory assignments will be assigned in advance of each laboratory session and due the following Friday.</p>
-</div>
-<div class="section" id="quizzes">
+</section>
+<section id="quizzes">
 <h3>Quizzes<a class="headerlink" href="#quizzes" title="Permalink to this headline">¶</a></h3>
 <p>There will be one timed quiz following completion of each of the major units of the course. The quizzes will be conducted on-line outside of regularly scheduled class time.</p>
-</div>
-<div class="section" id="final-project">
+</section>
+<section id="final-project">
 <h3>Final Project<a class="headerlink" href="#final-project" title="Permalink to this headline">¶</a></h3>
 <p>The final project for CBE 30338 is in-depth exploration of a control problem of your choice. You will work in groups (at least three, no more than four, no exceptions), select a problem of interest, and develop an analysis or control design using the skills you learned in this course.  The essential elements of the project are:</p>
 <ul class="simple">
@@ -1004,9 +1012,9 @@
 <li><p>A <strong>Group presentation</strong> to the class.</p></li>
 <li><p>A <strong>Final Report</strong> that includes at least one executable demonstration of your project. The executable element might consist of a Python/Jupyter notebook, a simulation prepared in an industry standard format, or video of experiment or hardware demonstration.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="grading">
+</section>
+</section>
+<section id="grading">
 <h2>Grading<a class="headerlink" href="#grading" title="Permalink to this headline">¶</a></h2>
 <p>Grades for CBE 30338 and CBE 32338 are consolidated into a single grade assigned to CBE 30338. There is no separate grade or credit assigned for CBE 32338.</p>
 <p>Grades are based on an assessment of performance in four major categories of work: individual homework assignments, quizzes, and laboratory assignments, and the group final project. The lowest homework, quiz, and laboratory assignment will be dropped.</p>
@@ -1078,8 +1086,8 @@
 </tbody>
 </table>
 <p>Note: The total number of homework assignments may change, there may be a few more or a few less. Therefore the maximum number of points available in the course may vary.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

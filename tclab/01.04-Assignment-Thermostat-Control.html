@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.4. Assignment: Thermostat Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -343,13 +346,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -814,21 +822,21 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="assignment-thermostat-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-thermostat-control">
 <h1><span class="section-number">1.4. </span>Assignment: Thermostat Control<a class="headerlink" href="#assignment-thermostat-control" title="Permalink to this headline">¶</a></h1>
 <p>The purpose of this first laboratory session is to verify that you can interface and interact with the TCLab hardware, and familiarize you with the TCLab library. The first exercise will be to code a rudimentary relay (also called ‘on-off’ or thermostat) controller for one of the two heaters.</p>
 <p>For background on on-off control, consult</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.cds.caltech.edu/~murray/books/AM08/pdf/fbs-intro_07Aug2019.pdf#page=19">On-Off Control in Section 1.6 of <em>Feedback Control for Scientists and Engineers</em></a></p></li>
 </ul>
-<div class="section" id="procedures">
+<section id="procedures">
 <h2><span class="section-number">1.4.1. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Download a copy of this notebook to your laptop and complete the exercises shown below. Under each exercise heading, add as many text and code cells as needed to complete the exercise. The results should be embedded in the notebook. ‘Save-as-you-go’ to avoid losing your work.</p></li>
 <li><p>Submit your completed lab notebook via Canvas. All submissions must be pdf format.</p></li>
 </ol>
-</div>
-<div class="section" id="step-1-download-and-install-tclab-py">
+</section>
+<section id="step-1-download-and-install-tclab-py">
 <h2><span class="section-number">1.4.2. </span>Step 1. Download and install <a class="reference external" href="http://TCLab.py">TCLab.py</a><a class="headerlink" href="#step-1-download-and-install-tclab-py" title="Permalink to this headline">¶</a></h2>
 <p>Execute the following cell to download and install the <a class="reference external" href="http://TCLab.py">TCLab.py</a> python library.</p>
 <div class="cell docutils container">
@@ -848,8 +856,8 @@ Successfully installed pyserial-3.5 tclab-0.4.9
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-2-verify-that-your-hardware-and-software-are-working-correctly">
+</section>
+<section id="step-2-verify-that-your-hardware-and-software-are-working-correctly">
 <h2><span class="section-number">1.4.3. </span>Step 2.  Verify that your hardware and software are working correctly.<a class="headerlink" href="#step-2-verify-that-your-hardware-and-software-are-working-correctly" title="Permalink to this headline">¶</a></h2>
 <p>The following cell should cause the LED on the TCLab shield to light up to 50% maximum brightness. The output of this cell should indicate successful connection and disconnect.</p>
 <div class="cell docutils container">
@@ -870,8 +878,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response">
+</section>
+<section id="step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response">
 <h2><span class="section-number">1.4.4. </span>Step 3. Turn on the heaters for 120 seconds and log temperature response.<a class="headerlink" href="#step-3-turn-on-the-heaters-for-120-seconds-and-log-temperature-response" title="Permalink to this headline">¶</a></h2>
 <p>For this exercise, write a code cell that turns on heater 1 at 100% power, then log the temperature response once per second for 120 seconds. The output of the cell should report the time, power level, and temperature for each measurement. You will need the <code class="docutils literal notranslate"><span class="pre">clock</span></code> function from <code class="docutils literal notranslate"><span class="pre">tclab</span></code> for this exercise.</p>
 <div class="cell docutils container">
@@ -881,8 +889,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-4-code-an-on-off-controller">
+</section>
+<section id="step-4-code-an-on-off-controller">
 <h2><span class="section-number">1.4.5. </span>Step 4. Code an on-off controller.<a class="headerlink" href="#step-4-code-an-on-off-controller" title="Permalink to this headline">¶</a></h2>
 <p>Code an on-off controller for a setpoint of 30 degrees C using heater 1 as the manipulated variable, and temperature 1 as the measured variable. Operate the controller for at least 5 minutes (600 seconds) reporting time/power/temperature measurements every 2 seconds.</p>
 <div class="cell docutils container">
@@ -892,8 +900,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-5-analysis">
+</section>
+<section id="step-5-analysis">
 <h2><span class="section-number">1.4.6. </span>Step 5. Analysis<a class="headerlink" href="#step-5-analysis" title="Permalink to this headline">¶</a></h2>
 <p>Examine the results of the previous exercise and answer the following questions.</p>
 <ol class="simple">
@@ -903,8 +911,8 @@ TCLab disconnected successfully.
 </ol>
 <p>Type your answers in the markdown cell below.</p>
 <p>Write your answers in this markdown cell.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

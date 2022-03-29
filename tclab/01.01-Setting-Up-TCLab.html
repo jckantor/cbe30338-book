@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.1. Setting up TCLab &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -343,13 +346,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -808,9 +816,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="setting-up-tclab">
+  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-tclab">
 <h1><span class="section-number">1.1. </span>Setting up TCLab<a class="headerlink" href="#setting-up-tclab" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="hardware-setup">
+<section id="hardware-setup">
 <h2><span class="section-number">1.1.1. </span>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this headline">¶</a></h2>
 <p><img alt="" src="../_images/TCLab_labelled.jpg" /></p>
 <ol class="simple">
@@ -819,14 +827,14 @@
 <li><p>Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. <strong>Note: The temperature control shield requires its own power supply. There are two places where the power connector will fit. It’s important to be sure it is plugged into the shield, not the Arduino.</strong></p></li>
 </ol>
 <p>TCLab requires the one-time installation of custom firmware on an Arduino device. The firmware is normally preinstalled when you receive the device. But if necessary, the firmware and instructions for installation are available from the <a class="reference external" href="https://github.com/jckantor/TCLab-sketch">TCLab-Sketch repository</a>.</p>
-</div>
-<div class="section" id="software-setup">
+</section>
+<section id="software-setup">
 <h2><span class="section-number">1.1.2. </span>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="requirements">
+<section id="requirements">
 <h3><span class="section-number">1.1.2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <p>The tclab library must run locally on your laptop to access the USB port. A Python development system, such as <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> needs to be installed on your laptop prior to installing tclab.</p>
-</div>
-<div class="section" id="how-the-software-is-organized">
+</section>
+<section id="how-the-software-is-organized">
 <h3><span class="section-number">1.1.2.2. </span>How the software is organized<a class="headerlink" href="#how-the-software-is-organized" title="Permalink to this headline">¶</a></h3>
 <p>Software for the Temperature Control Lab is organized as shown in the accompanying diagram. Note that the Python scripts must run on your laptop, not a remote server, in order to access the local USB port.</p>
 <p><img alt="" src="../_images/TCLab_overview.png" /></p>
@@ -844,8 +852,8 @@ The top level consists of the you code you write to implement control algorithms
 The <a class="reference external" href="https://github.com/jckantor/TCLab-sketch">TCLab-sketch</a> repository provides firmware to ensure intrisically safe operation of the Arduino board and shield. The sketch is downloaded to the Arduino using the <a class="reference external" href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a>. Loading firmware to the Arduino is a one-time operation.</p>
 <p><strong><em>Arduino:</em></strong>
 The hardware platform for the Temperature Control Laboratory. The Python tools and libraries have been tested with the Arduino Leonardo boards.</p>
-</div>
-<div class="section" id="installing-the-tclab-library">
+</section>
+<section id="installing-the-tclab-library">
 <h3><span class="section-number">1.1.2.3. </span>Installing the tclab library<a class="headerlink" href="#installing-the-tclab-library" title="Permalink to this headline">¶</a></h3>
 <p>The tclab library is installed from a terminal window (MacOS) or command window (PC) with the command</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install tclab
@@ -879,9 +887,9 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

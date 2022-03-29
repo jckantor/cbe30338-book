@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.3. Chemotaxis &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.4. Batch Chemical Process" href="07.04-Project-Batch-Chemical-Process.html" />
@@ -345,13 +348,18 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.98-Linear-Production-Model-in-Pyomo.html">
-     5.7. Linear Production Model in Pyomo
+    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
-     5.8. Pyomo Examples
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
     </a>
    </li>
   </ul>
@@ -766,7 +774,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="chemotaxis">
+  <section class="tex2jax_ignore mathjax_ignore" id="chemotaxis">
 <h1><span class="section-number">7.3. </span>Chemotaxis<a class="headerlink" href="#chemotaxis" title="Permalink to this headline">¶</a></h1>
 <p><strong>Chemotaxis</strong> is a behavior exhibited by single organisms in response to gradients of certain chemicals. In the presence of gradient of an attractant or repellant, the normally random motion of cells changes causing a net movement towards or away from the source of the chemical. This behavior is contributes to foraging for feed, fleeing from poisons, or to serve the needs of a large organism in development, injury, infection, and reproduction.</p>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Chemotaxis1.jpg" /></p>
@@ -774,7 +782,7 @@
 <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0">CC BY-SA 4.0</a>,
 <a href="https://commons.wikimedia.org/w/index.php?curid=53871041">Link</a></p>
 <p>For many organisms such as <em>E. coli</em>, the movement consists of alternating tumbling and swimming phases. The tumbling results in a new random direction. If cell senses that it is moving in the ‘right’ direction (i.e., towards an attractant or away from a repellant), the swimming phase will last somewhat longer. The biochemical mechanisms for this behavior is part of a signal transduction pathways for chemotactic organisms.</p>
-<div class="section" id="simulation-with-simpy">
+<section id="simulation-with-simpy">
 <h2><span class="section-number">7.3.1. </span>Simulation with Simpy<a class="headerlink" href="#simulation-with-simpy" title="Permalink to this headline">¶</a></h2>
 <p>Here we create a simulation of chemotaxis using Simpy. This is an exercise to demonstrate the utility of discrete-event simulation, so no attempt has been made to reproduce results from the current literature on the topic. <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007548">See, for example.</a></p>
 <p>Motivated by <a class="reference external" href="https://www.pnas.org/content/71/4/1388">Brown and Berg (1974)</a>, we assume:</p>
@@ -910,8 +918,8 @@
 <img alt="../_images/07.03-Chemotaxis_4_0.png" src="../_images/07.03-Chemotaxis_4_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
