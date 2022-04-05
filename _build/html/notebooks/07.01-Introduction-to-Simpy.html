@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.1. Introduction to Simpy &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -345,6 +348,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -799,7 +817,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="introduction-to-simpy">
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-simpy">
 <h1><span class="section-number">7.1. </span>Introduction to Simpy<a class="headerlink" href="#introduction-to-simpy" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://simpy.readthedocs.io/en/latest/contents.html">Simpy</a> is a Python library for the simulation of systems that interact through discrete events. There are two essential to using Simpy:</p>
 <ol class="simple">
@@ -807,7 +825,7 @@
 <li><p>Processes you create to model system behavior.</p></li>
 </ol>
 <p>This notebook introduces these concepts using a toy example.</p>
-<div class="section" id="creating-a-simulation-environment">
+<section id="creating-a-simulation-environment">
 <h2><span class="section-number">7.1.1. </span>Creating a simulation environment<a class="headerlink" href="#creating-a-simulation-environment" title="Permalink to this headline">¶</a></h2>
 <p>A simulation environment is created with <code class="docutils literal notranslate"><span class="pre">simpy.Environment()</span></code>. The resulting object provides a collection of methods for setting and controlling a simulation.</p>
 <div class="cell docutils container">
@@ -827,8 +845,8 @@
 </div>
 </div>
 <p>That’s all it takes to create and run a simulation. But we didn’t give the simulation anything to do, so there are no details to report.</p>
-</div>
-<div class="section" id="creating-simulation-processes">
+</section>
+<section id="creating-simulation-processes">
 <h2><span class="section-number">7.1.2. </span>Creating simulation processes<a class="headerlink" href="#creating-simulation-processes" title="Permalink to this headline">¶</a></h2>
 <p>System behavior is modeled as a system of Simpy processes. Processes are implemented with the Python <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement, and attached to the simulation environment with <code class="docutils literal notranslate"><span class="pre">env.process()</span></code>.</p>
 <p>A process communicates with the simulation environment through the <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement. The yield statement sends an event back to the simulation environment. The the passage of time is modeled with <code class="docutils literal notranslate"><span class="pre">env.timeout(delay)</span></code> event.</p>
@@ -890,8 +908,8 @@ time 3.0: Hello, World.
 </div>
 </div>
 <p>Note that the simulation environment correctly orders the events!</p>
-</div>
-<div class="section" id="events">
+</section>
+<section id="events">
 <h2><span class="section-number">7.1.3. </span>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
 <p>Simpy includes many different event types that are managed by the simulation environment. The <code class="docutils literal notranslate"><span class="pre">env.timeout(delay)</span></code> demonstrated above is a mainstay in Simpy models. Many applications require nothing more.</p>
 <div class="cell docutils container">
@@ -935,8 +953,8 @@ time 3.0: Hello, World.
 <p>What we observe is that the simulation environment is scheduling tasks and executng them in a time ordered sequence, not the order in which they are created.</p>
 <hr>
 <p><strong>Study Question:</strong> Use <code class="docutils literal notranslate"><span class="pre">simpy.AnyOf(env,</span> <span class="pre">events)</span></code> to produce a message when the first process has completed.</p>
-<hr></div>
-<div class="section" id="ready-to-roomba">
+<hr></section>
+<section id="ready-to-roomba">
 <h2><span class="section-number">7.1.4. </span>Ready to Roomba<a class="headerlink" href="#ready-to-roomba" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1115,8 +1133,8 @@ time 3.0: Hello, World.
 <img alt="../_images/07.01-Introduction-to-Simpy_15_2.png" src="../_images/07.01-Introduction-to-Simpy_15_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="chemotaxis">
+</section>
+<section id="chemotaxis">
 <h2><span class="section-number">7.1.5. </span>Chemotaxis<a class="headerlink" href="#chemotaxis" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1200,8 +1218,8 @@ time 3.0: Hello, World.
 <img alt="../_images/07.01-Introduction-to-Simpy_19_0.png" src="../_images/07.01-Introduction-to-Simpy_19_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

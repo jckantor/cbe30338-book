@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.3. Homework Assignment 2: Optimization &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -345,6 +348,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -793,7 +811,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="homework-assignment-2-optimization">
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-assignment-2-optimization">
 <h1><span class="section-number">5.3. </span>Homework Assignment 2: Optimization<a class="headerlink" href="#homework-assignment-2-optimization" title="Permalink to this headline">¶</a></h1>
 <p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
 <p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
@@ -996,7 +1014,7 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="exercise-1-getting-started">
+<section id="exercise-1-getting-started">
 <h2><span class="section-number">5.3.1. </span>Exercise 1. Getting Started<a class="headerlink" href="#exercise-1-getting-started" title="Permalink to this headline">¶</a></h2>
 <p>Considering just the constraint on carbon content, adapt the <code class="docutils literal notranslate"><span class="pre">blend_beer</span></code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
 <ul class="simple">
@@ -1018,11 +1036,11 @@
 <li><p>the composition of the blend with regard to the species carbon, copper and managanese.</p></li>
 </ul>
 <p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
-<div class="section" id="solution">
+<section id="solution">
 <h3><span class="section-number">5.3.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="exercise-2-incorporating-constraints">
+</section>
+</section>
+<section id="exercise-2-incorporating-constraints">
 <h2><span class="section-number">5.3.2. </span>Exercise 2. Incorporating Constraints<a class="headerlink" href="#exercise-2-incorporating-constraints" title="Permalink to this headline">¶</a></h2>
 <p>We’ll continue this problem by incorporating all of the constraints. The constraiints include:</p>
 <ul class="simple">
@@ -1031,8 +1049,8 @@
 </ul>
 <p>The easiest way to proceed is to copy and paste <code class="docutils literal notranslate"><span class="pre">metal_blend</span></code> into a cell below, then add constraints one at a time until all have been incorporated.</p>
 <p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
-</div>
-<div class="section" id="exercise-3-sensitivity-analysis">
+</section>
+<section id="exercise-3-sensitivity-analysis">
 <h2><span class="section-number">5.3.3. </span>Exercise 3. Sensitivity Analysis<a class="headerlink" href="#exercise-3-sensitivity-analysis" title="Permalink to this headline">¶</a></h2>
 <p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
 <p>Using the functions you’ve created in above exercises, answer the following questions:</p>
@@ -1041,8 +1059,8 @@
 <li><p>Is there an upper limit on how much product your can provide to this customer? (Use trial and error. To the nearest 100 kg, find the maximum amount of product you can ship to the customer.) What is the unit cost now?</p></li>
 <li><p>After some negotiation, you and your customer settle on an order of 6,500 kg. Now you wish to negotiate with your suppliers for more raw material. How much money to you save for 1 additional kg of raw material “A”? Based on this, what price would you be willing to pay your supplier for additional “A”?</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

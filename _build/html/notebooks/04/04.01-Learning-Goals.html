@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.1. Learning Goals &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.2. Data/Process/Operational Historian" href="04.02-Process-Historians.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -759,9 +777,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="learning-goals">
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-goals">
 <h1><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="process-historians">
+<section id="process-historians">
 <h2><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this headline">¶</a></h2>
 <p><strong>Process historians</strong> are widely used throughout the process industries. The core function is to record and provide access to <strong>time series data</strong> for <strong>process tags</strong>.</p>
 <p>The tclab library includes the basic functions of a process historian implemented using <code class="docutils literal notranslate"><span class="pre">SQLite</span></code>, a widely used database for web applications and internet connected devices.</p>
@@ -778,8 +796,8 @@
 <li><p>Add a tag and a function to a list of data sources.</p></li>
 <li><p>Save data from the historian to a .csv file, then load the saved data for analysis.</p></li>
 </ul>
-</div>
-<div class="section" id="state-space-models">
+</section>
+<section id="state-space-models">
 <h2><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">¶</a></h2>
 <p>A linear state-space model is written in the form</p>
 <div class="math notranslate nohighlight">
@@ -803,8 +821,8 @@ y &amp; = C x
 <li><p>Compute eigenvalues and determine stability.</p></li>
 <li><p>Simulate the response of a state-space model to inputs and disturbances.</p></li>
 </ul>
-</div>
-<div class="section" id="state-estimation">
+</section>
+<section id="state-estimation">
 <h2><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">¶</a></h2>
 <p>State estimation is a form of real-time process analytics employed in control systems. State estimation combines process models with real-time process measurements to provide estimates of process variables that may not be directly measureable.</p>
 <p>At each time step <span class="math notranslate nohighlight">\(t_k\)</span> there are two calculations to perform:</p>
@@ -832,8 +850,8 @@ y &amp; = C x
 \end{align}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(d\)</span> is the unmeasured disturbance, and <span class="math notranslate nohighlight">\(\hat{d}\)</span> is an apriori estimate of <span class="math notranslate nohighlight">\(d\)</span>. If the estimate is accurate, then <span class="math notranslate nohighlight">\(d = \hat{d}\)</span>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

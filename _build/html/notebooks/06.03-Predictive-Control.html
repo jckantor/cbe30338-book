@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.3. Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.4. Implementing Predictive Control" href="06.04-Implementing-Predictive-Control.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -801,9 +819,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="predictive-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="predictive-control">
 <h1><span class="section-number">6.3. </span>Predictive Control<a class="headerlink" href="#predictive-control" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="model">
+<section id="model">
 <h2><span class="section-number">6.3.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>We will use the two-state model for a single heater/sensor assembly for the calculations that follow.</p>
 <div class="math notranslate nohighlight">
@@ -839,8 +857,8 @@ B_u = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix}
 B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
 \qquad
 C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
-</div>
-<div class="section" id="feedforward-optimal-control">
+</section>
+<section id="feedforward-optimal-control">
 <h2><span class="section-number">6.3.2. </span>Feedforward Optimal Control<a class="headerlink" href="#feedforward-optimal-control" title="Permalink to this headline">¶</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
@@ -963,15 +981,15 @@ T_S(t_0) &amp; = T_{amb}
 <img alt="../_images/06.03-Predictive-Control_5_0.png" src="../_images/06.03-Predictive-Control_5_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="assumptions-for-predictive-control">
+</section>
+<section id="assumptions-for-predictive-control">
 <h2><span class="section-number">6.3.3. </span>Assumptions for Predictive Control<a class="headerlink" href="#assumptions-for-predictive-control" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Future values of the setpoint are equal to the current setpoint.</p></li>
 <li><p>Future values of the disturbance are equal to the current setpoint.</p></li>
 </ul>
-</div>
-<div class="section" id="tclab-event-loop">
+</section>
+<section id="tclab-event-loop">
 <h2><span class="section-number">6.3.4. </span>TCLab Event Loop<a class="headerlink" href="#tclab-event-loop" title="Permalink to this headline">¶</a></h2>
 <p>Borrowing from notebook 4.6.</p>
 <div class="cell docutils container">
@@ -1058,8 +1076,8 @@ T_S(t_0) &amp; = T_{amb}
 <img alt="../_images/06.03-Predictive-Control_11_2.png" src="../_images/06.03-Predictive-Control_11_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="what-we-need-our-predictive-controller-to-do">
+</section>
+<section id="what-we-need-our-predictive-controller-to-do">
 <h2><span class="section-number">6.3.5. </span>What we need our predictive controller to do …<a class="headerlink" href="#what-we-need-our-predictive-controller-to-do" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Compute given current values of Th, Ts, d, and SP</p></li>
@@ -1147,8 +1165,8 @@ T_S(t_0) &amp; = T_{amb}
 <ul class="simple">
 <li><p>add observer</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

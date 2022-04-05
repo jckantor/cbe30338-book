@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1. What is Process Control? &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -345,6 +348,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -711,13 +729,13 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="what-is-process-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-process-control">
 <h1><span class="section-number">1. </span>What is Process Control?<a class="headerlink" href="#what-is-process-control" title="Permalink to this headline">¶</a></h1>
 <p>Readings …</p>
 <ul class="simple">
-<li><p>Astrom and Murray, Chapter 1. <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id22">Åström and Murray, 2010</a>]</span></p></li>
-<li><p>Brian Douglas, Chapter 1. <span id="id2">[<a class="reference internal" href="09.00-Bibliography.html#id17">Douglas, 2017</a>]</span></p></li>
-<li><p>T. Marlin, Chapters 1 and 2. <span id="id3">[<a class="reference internal" href="09.00-Bibliography.html#id23">Marlin, 1995</a>]</span></p></li>
+<li><p>Astrom and Murray, Chapter 1. <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id22" title="Karl Johan Åström and Richard M Murray. Feedback systems. Princeton university press, 2010. URL: https://fbswiki.org/wiki/index.php/Main_Page.">Åström and Murray, 2010</a>]</span></p></li>
+<li><p>Brian Douglas, Chapter 1. <span id="id2">[<a class="reference internal" href="09.00-Bibliography.html#id17" title="Brian Douglas. The fundamentals of control theory. 2017. URL: https://drive.google.com/file/d/1LAjaDDViFG4H7dQ6PQVHo8XSQHS59GJf/view.">Douglas, 2017</a>]</span></p></li>
+<li><p>T. Marlin, Chapters 1 and 2. <span id="id3">[<a class="reference internal" href="09.00-Bibliography.html#id23" title="Thomas E Marlin. Process control. Chemical Engineering Series, McGraw-Hill International Editions: New York, 1995. URL: http://pc-textbook.mcmaster.ca/.">Marlin, 1995</a>]</span></p></li>
 </ul>
 <p>The beats …</p>
 <ol class="simple">
@@ -766,11 +784,11 @@
 <li><p>The role of feedback is often not understood in social and economic settings.</p></li>
 </ul>
 </li>
-<li><p>Control is a large interdisciplineary field of ever-growing technical importance. This course will introduce many of the topics in the “Map of Control Theory” by Brian Douglas. <img alt="" src="../_images/Control_Map_ver5.png" /> <br> Image Credit: Brian Douglas <span id="id4">[<a class="reference internal" href="09.00-Bibliography.html#id17">Douglas, 2017</a>]</span></p></li>
+<li><p>Control is a large interdisciplineary field of ever-growing technical importance. This course will introduce many of the topics in the “Map of Control Theory” by Brian Douglas. <img alt="" src="../_images/Control_Map_ver5.png" /> <br> Image Credit: Brian Douglas <span id="id4">[<a class="reference internal" href="09.00-Bibliography.html#id17" title="Brian Douglas. The fundamentals of control theory. 2017. URL: https://drive.google.com/file/d/1LAjaDDViFG4H7dQ6PQVHo8XSQHS59GJf/view.">Douglas, 2017</a>]</span></p></li>
 </ol>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

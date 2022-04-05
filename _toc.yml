@@ -65,6 +65,7 @@ parts:
       - file: notebooks/05/05.99-Pyomo-Examples
       - file: CBE30338-EV-Example
       - file: CBE30338-Knapsack
+      - file: notebooks/milk-pooling
   
     - file: notebooks/06.00-Predictive-Control
       sections:

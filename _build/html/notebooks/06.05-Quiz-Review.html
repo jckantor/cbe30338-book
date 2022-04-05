@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.5. Quiz Review for Chapters 5 and 6 &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -345,6 +348,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -779,16 +797,16 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="quiz-review-for-chapters-5-and-6">
+  <section class="tex2jax_ignore mathjax_ignore" id="quiz-review-for-chapters-5-and-6">
 <h1><span class="section-number">6.5. </span>Quiz Review for Chapters 5 and 6<a class="headerlink" href="#quiz-review-for-chapters-5-and-6" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="material-covered">
+<section id="material-covered">
 <h2><span class="section-number">6.5.1. </span>Material covered<a class="headerlink" href="#material-covered" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Optimization: 5.1, 5.2, 5.3, 5.5,</p></li>
 <li><p>Predictive Control: 6.1, 6.2, 6.3, 6.4</p></li>
 </ul>
-</div>
-<div class="section" id="learning-goals">
+</section>
+<section id="learning-goals">
 <h2><span class="section-number">6.5.2. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
 <p>You should be able to:</p>
 <ol class="simple">
@@ -874,8 +892,8 @@
 </ul>
 </li>
 </ol>
-</div>
-<div class="section" id="exercises">
+</section>
+<section id="exercises">
 <h2><span class="section-number">6.5.3. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Study questions from Notebook 5.2.3</p></li>
@@ -887,8 +905,8 @@
 </ul>
 </li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

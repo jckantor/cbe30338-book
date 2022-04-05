@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.9. Study Questions &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5. Optimization" href="../05/05.00-Optimization.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -713,7 +731,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="study-questions">
+  <section class="tex2jax_ignore mathjax_ignore" id="study-questions">
 <h1><span class="section-number">4.9. </span>Study Questions<a class="headerlink" href="#study-questions" title="Permalink to this headline">¶</a></h1>
 <p><strong>Study Question.</strong> The following list of data sources has been specified for the tclab historian. <code class="docutils literal notranslate"><span class="pre">lab.T1</span></code> and <code class="docutils literal notranslate"><span class="pre">lab.T1</span></code> are current values of temperatures T1 and T2.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`sources = [[&quot;T1&quot;, lambda: lab.T1], [&quot;T_ave&quot;, lambda: (lab.T1 + lab.T1)/2], [&quot;T2&quot;, lab.T2]]`
@@ -753,7 +771,7 @@ C_{p,2}\frac{dT_2}{dt} &amp; = U_a(T_1 - T_2) + U_b(T_{amb} - T_2)
 <li><p>For the one that is not performing, what has gone wrong? How you propose to fix the problem?</p></li>
 <li><p>Data for A, L, and C are available. What calculation would you perform to verify your analysis?  What calculation would you perform to remedy the problem? Be sure you can write out the code (no more than five lines required) to do these calculations.</p></li>
 </ul>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.3. Using TCLab &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1.4. Assignment: Thermostat Control" href="01.04-Assignment-Thermostat-Control.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -1019,9 +1037,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="using-tclab">
+  <section class="tex2jax_ignore mathjax_ignore" id="using-tclab">
 <h1><span class="section-number">1.3. </span>Using TCLab<a class="headerlink" href="#using-tclab" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="creating-a-tclab-instance">
+<section id="creating-a-tclab-instance">
 <h2><span class="section-number">1.3.1. </span>Creating a TCLab instance<a class="headerlink" href="#creating-a-tclab-instance" title="Permalink to this headline">¶</a></h2>
 <p>Once installed, the <code class="docutils literal notranslate"><span class="pre">tclab</span></code> package can be imported into Python and an instance created with the Python statements</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from tclab import TCLab
@@ -1050,8 +1068,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-the-led">
+</section>
+<section id="using-the-led">
 <h2><span class="section-number">1.3.2. </span>Using the LED<a class="headerlink" href="#using-the-led" title="Permalink to this headline">¶</a></h2>
 <p>The following cell demonstrates the  process, and uses the tclab <code class="docutils literal notranslate"><span class="pre">LED()</span></code> function to flash the LED on the Temperature Control Lab for a period of 10 seconds at a 100% brightness level.</p>
 <div class="cell docutils container">
@@ -1073,8 +1091,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-tclab-and-python-s-with-statement">
+</section>
+<section id="using-tclab-and-python-s-with-statement">
 <h2><span class="section-number">1.3.3. </span>Using TCLab and Python’s <code class="docutils literal notranslate"><span class="pre">with</span></code> statement<a class="headerlink" href="#using-tclab-and-python-s-with-statement" title="Permalink to this headline">¶</a></h2>
 <p>The Python <code class="docutils literal notranslate"><span class="pre">with</span></code> statement provides a convenient means of setting up and closing a connection to the Temperature Control Laboratory. In particular, the with statement establishes a context where a tclab instance is created, assigned to a variable, and automatically closed upon completion. The <code class="docutils literal notranslate"><span class="pre">with</span></code> statement is the preferred way to connect the Temperature Control Laboratory for most uses.</p>
 <div class="cell docutils container">
@@ -1095,8 +1113,8 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="reading-temperatures">
+</section>
+<section id="reading-temperatures">
 <h2><span class="section-number">1.3.4. </span>Reading Temperatures<a class="headerlink" href="#reading-temperatures" title="Permalink to this headline">¶</a></h2>
 <p>Once a tclab instance is created and connected to a device the temperature sensors are acccessed with the attributes <code class="docutils literal notranslate"><span class="pre">.T1</span></code> and <code class="docutils literal notranslate"><span class="pre">.T2</span></code>.  Given an instance named <code class="docutils literal notranslate"><span class="pre">lab</span></code>, the temperatures are accessed as</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>T1 = lab.T1
@@ -1127,10 +1145,10 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="setting-heater-power">
+</section>
+<section id="setting-heater-power">
 <h2><span class="section-number">1.3.5. </span>Setting Heater Power<a class="headerlink" href="#setting-heater-power" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="setting-maximum-power-with-p1-and-p2">
+<section id="setting-maximum-power-with-p1-and-p2">
 <h3><span class="section-number">1.3.5.1. </span>Setting maximum power with <code class="docutils literal notranslate"><span class="pre">.P1</span></code> and <code class="docutils literal notranslate"><span class="pre">.P2</span></code><a class="headerlink" href="#setting-maximum-power-with-p1-and-p2" title="Permalink to this headline">¶</a></h3>
 <p>Heater power is specified as a percentage of the maximum power available at each heater. The maximum power to each heater is determined by setting parameters <code class="docutils literal notranslate"><span class="pre">.P1</span></code> and <code class="docutils literal notranslate"><span class="pre">.P2</span></code> to number in the range 0 and 255. The default settings are</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lab.P1 = 200
@@ -1158,8 +1176,8 @@ lab.P2 = 100
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="setting-heater-power-with-q1-and-q2">
+</section>
+<section id="setting-heater-power-with-q1-and-q2">
 <h3><span class="section-number">1.3.5.2. </span>Setting heater power with <code class="docutils literal notranslate"><span class="pre">.Q1()</span></code> and <code class="docutils literal notranslate"><span class="pre">.Q2()</span></code><a class="headerlink" href="#setting-heater-power-with-q1-and-q2" title="Permalink to this headline">¶</a></h3>
 <p>For legacy reasons, there are two ways to set the percentage of maximum power delivered to the heaters. The first way is to the functions<code class="docutils literal notranslate"><span class="pre">.Q1()</span></code> and <code class="docutils literal notranslate"><span class="pre">.Q2()</span></code> of a <code class="docutils literal notranslate"><span class="pre">TCLab</span></code> instance. For example, both heaters can be set to 100% power with the functions</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lab = TCLab()
@@ -1205,8 +1223,8 @@ Q2 = lab.Q2()
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="setting-heater-power-with-u1-and-u2">
+</section>
+<section id="setting-heater-power-with-u1-and-u2">
 <h3><span class="section-number">1.3.5.3. </span>Setting heater power with <code class="docutils literal notranslate"><span class="pre">.U1</span></code> and <code class="docutils literal notranslate"><span class="pre">.U2</span></code><a class="headerlink" href="#setting-heater-power-with-u1-and-u2" title="Permalink to this headline">¶</a></h3>
 <p>Alternatively, the percentage of maximum power delivered to the heaters can be set by assigning value to the <code class="docutils literal notranslate"><span class="pre">.U1</span></code> and <code class="docutils literal notranslate"><span class="pre">.U2</span></code> attributes of a <code class="docutils literal notranslate"><span class="pre">TCLab</span></code> instances. Getting the value of <code class="docutils literal notranslate"><span class="pre">.U1</span></code> and <code class="docutils literal notranslate"><span class="pre">.U2</span></code> retrieves the current settings.</p>
 <div class="cell docutils container">
@@ -1225,9 +1243,9 @@ Q2 = lab.Q2()
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="synchronizing-with-real-time-using-clock">
+</section>
+</section>
+<section id="synchronizing-with-real-time-using-clock">
 <h2><span class="section-number">1.3.6. </span>Synchronizing with Real Time using <code class="docutils literal notranslate"><span class="pre">clock</span></code><a class="headerlink" href="#synchronizing-with-real-time-using-clock" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">tclab</span></code> module includes <code class="docutils literal notranslate"><span class="pre">clock</span></code> for synchronizing calculations with real time.  <code class="docutils literal notranslate"><span class="pre">clock(t_period,</span> <span class="pre">t_step)</span></code> generates a sequence of evenly spaced time step over a period<code class="docutils literal notranslate"><span class="pre">t_period</span></code> seconds that are <code class="docutils literal notranslate"><span class="pre">t_step</span></code> seconds apart. If <code class="docutils literal notranslate"><span class="pre">t_step</span></code> is omitted then the default time step is set to 1 second.</p>
 <div class="cell docutils container">
@@ -1271,7 +1289,7 @@ Q2 = lab.Q2()
 </div>
 </div>
 </div>
-<div class="section" id="using-clock-with-tclab">
+<section id="using-clock-with-tclab">
 <h3><span class="section-number">1.3.6.1. </span>Using <code class="docutils literal notranslate"><span class="pre">clock</span></code> with TCLab<a class="headerlink" href="#using-clock-with-tclab" title="Permalink to this headline">¶</a></h3>
 <p>The following cell demonstrates use of <code class="docutils literal notranslate"><span class="pre">clock</span></code> to perform a short experiment.</p>
 <div class="cell docutils container">
@@ -1326,9 +1344,9 @@ TCLab disconnected successfully.
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="the-tclab-historian">
+</section>
+</section>
+<section id="the-tclab-historian">
 <h2><span class="section-number">1.3.7. </span>The TCLab <code class="docutils literal notranslate"><span class="pre">Historian</span></code><a class="headerlink" href="#the-tclab-historian" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Historian</span></code> class provides means for logging process data to a database.</p>
 <p>Given a list <code class="docutils literal notranslate"><span class="pre">sources</span></code> of data sources and methods to access the data, <code class="docutils literal notranslate"><span class="pre">Historian(sources)</span></code> creates an historian that logs data to database on each call to <code class="docutils literal notranslate"><span class="pre">.update()</span></code>. Given an instance <code class="docutils literal notranslate"><span class="pre">lab</span></code> of a TCLab object, <code class="docutils literal notranslate"><span class="pre">lab.sources</span></code> is a default list of data sources and methods for logging temperatures <code class="docutils literal notranslate"><span class="pre">lab.T1</span></code> and <code class="docutils literal notranslate"><span class="pre">lab.T2</span></code> and power settings <code class="docutils literal notranslate"><span class="pre">lab.U1</span></code> and <code class="docutils literal notranslate"><span class="pre">lab.U2</span></code>.</p>
@@ -1400,8 +1418,8 @@ Time
 <img alt="../_images/01.03-Using-TCLab_26_2.png" src="../_images/01.03-Using-TCLab_26_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="the-tclab-plotter">
+</section>
+<section id="the-tclab-plotter">
 <h2><span class="section-number">1.3.8. </span>The TCLab <code class="docutils literal notranslate"><span class="pre">Plotter</span></code><a class="headerlink" href="#the-tclab-plotter" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Plotter</span></code> class adds a real time plotting of experimental data. A plotter is created from an instance of an historian as follows</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>h = Historian(lab.sources)
@@ -1439,8 +1457,8 @@ p = Plotter(h)
 <img alt="../_images/01.03-Using-TCLab_28_2.png" src="../_images/01.03-Using-TCLab_28_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="using-tclab-offline">
+</section>
+<section id="using-tclab-offline">
 <h2><span class="section-number">1.3.9. </span>Using TCLab Offline<a class="headerlink" href="#using-tclab-offline" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">tclab</span></code> library includes a simulation capability. This is useful for circumstances when it isn’t possible to access the hardware.  The followinig cell demonstrated the use of <code class="docutils literal notranslate"><span class="pre">setup</span></code> to use the library in simulation mode. The argument <code class="docutils literal notranslate"><span class="pre">connected</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> if the hardware is connected, otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code>. Simulation mode allows the use of the <code class="docutils literal notranslate"><span class="pre">speedup</span></code> parameter to run experiments at some multiple of real time.</p>
 <div class="cell docutils container">
@@ -1468,8 +1486,8 @@ p = Plotter(h)
 <img alt="../_images/01.03-Using-TCLab_30_2.png" src="../_images/01.03-Using-TCLab_30_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="running-diagnostics">
+</section>
+<section id="running-diagnostics">
 <h2><span class="section-number">1.3.10. </span>Running Diagnostics<a class="headerlink" href="#running-diagnostics" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1544,8 +1562,8 @@ Diagnostics complete
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

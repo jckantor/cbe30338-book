@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.4. Gasoline Blending &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5.5. Linear Programming" href="05.05-Linear-Programming.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -741,6 +759,18 @@
   <a class="reference internal nav-link" href="#blending-model">
    5.4.4. Blending Model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     5.4.4.1. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raw-materials">
+     5.4.4.2. Raw Materials
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#display-results">
@@ -813,6 +843,18 @@
   <a class="reference internal nav-link" href="#blending-model">
    5.4.4. Blending Model
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     5.4.4.1. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#raw-materials">
+     5.4.4.2. Raw Materials
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#display-results">
@@ -855,7 +897,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="gasoline-blending">
+  <section class="tex2jax_ignore mathjax_ignore" id="gasoline-blending">
 <h1><span class="section-number">5.4. </span>Gasoline Blending<a class="headerlink" href="#gasoline-blending" title="Permalink to this headline">¶</a></h1>
 <p>** THIS WILL BE REVISED IN CLASS 3/22 (spill over to 3/24) **</p>
 <p>The task is to determine the most profitable blend of gasoline products from given set of refinery streams.</p>
@@ -882,7 +924,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="gasoline-product-specifications">
+<section id="gasoline-product-specifications">
 <h2><span class="section-number">5.4.1. </span>Gasoline Product Specifications<a class="headerlink" href="#gasoline-product-specifications" title="Permalink to this headline">¶</a></h2>
 <p>The gasoline products include regular and premium gasoline. In addition to the current price, the specifications include</p>
 <ul class="simple">
@@ -948,8 +990,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="stream-specifications">
+</section>
+<section id="stream-specifications">
 <h2><span class="section-number">5.4.2. </span>Stream Specifications<a class="headerlink" href="#stream-specifications" title="Permalink to this headline">¶</a></h2>
 <p>A typical refinery produces many intermediate streams that can be incorporated in a blended gasoline product. Here we provide data on seven streams that include:</p>
 <ul class="simple">
@@ -966,7 +1008,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">streams</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Butane&#39;</span>       <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">92.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">54.0</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">30000</span><span class="p">},</span>
-    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">},</span>
+    <span class="s1">&#39;LSR&#39;</span>          <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">78.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">76.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">11.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.73</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.05</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">35001</span><span class="p">},</span>
     <span class="s1">&#39;Isomerate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">83.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">81.1</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span> <span class="mf">13.5</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.00</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.20</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
     <span class="s1">&#39;Reformate&#39;</span>    <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span><span class="mf">100.0</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">88.2</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">1.85</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.80</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">60000</span><span class="p">},</span>
     <span class="s1">&#39;Reformate LB&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;RON&#39;</span><span class="p">:</span> <span class="mf">93.7</span><span class="p">,</span> <span class="s1">&#39;MON&#39;</span><span class="p">:</span> <span class="mf">84.0</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">:</span>  <span class="mf">2.8</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">:</span> <span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">:</span> <span class="mf">2.75</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
@@ -1026,7 +1068,7 @@
       <td>11.2</td>
       <td>0.73</td>
       <td>2.05</td>
-      <td>35000.0</td>
+      <td>35001.0</td>
       <td>77.00</td>
     </tr>
     <tr>
@@ -1083,8 +1125,8 @@
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="questions-we-want-to-answer">
+</section>
+<section id="questions-we-want-to-answer">
 <h2><span class="section-number">5.4.3. </span>Questions we want to Answer<a class="headerlink" href="#questions-we-want-to-answer" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>What is the maximum profit possible using the current product specifications and available streams?</p></li>
@@ -1092,39 +1134,41 @@
 <li><p>A marketing team says there is an opportunity to create a mid-grade gasoline product with a road octane number of 89 that would sell for $2.82/gallon, and with all other specifications the same. Would an additional profit be created? What at what price point does the mid-grade product enhance profits?</p></li>
 <li><p>New environmental regulations have reduced the allowable benzene levels from 1.1 vol% to 0.62 vol%, and the maximum Reid vapor pressure from 15.0 to 9.0. What is the impact on profits?</p></li>
 </ol>
-</div>
-<div class="section" id="blending-model">
+</section>
+<section id="blending-model">
 <h2><span class="section-number">5.4.4. </span>Blending Model<a class="headerlink" href="#blending-model" title="Permalink to this headline">¶</a></h2>
 <p>This simplified blending model assumes the product attributes can be computed as linear volume weighted averages of the component properties. Let the decision variable <span class="math notranslate nohighlight">\(x_{s,p} \geq 0\)</span> be the volume, in gallons, of blending component <span class="math notranslate nohighlight">\(s \in S\)</span> used in the final product <span class="math notranslate nohighlight">\(p \in P\)</span>.</p>
+<section id="objective">
+<h3><span class="section-number">5.4.4.1. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
 <p>The objective is maximize profit, which is the difference between product revenue and stream costs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-861f9a91-3844-4317-afc3-24c48ab9a22d">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-861f9a91-3844-4317-afc3-24c48ab9a22d" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \mbox{Price}_p \sum_{s\in S} x_{s,p}
-- \sum_{s\in S} \mbox{Cost}_s \sum_{p\in P} x_{s,p}\right)
+<div class="amsmath math notranslate nohighlight" id="equation-12b79524-e06f-419b-8456-777999b8fe71">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-12b79524-e06f-419b-8456-777999b8fe71" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \text{Price}_p \sum_{s\in S} x_{s,p}
+- \sum_{s\in S} \text{Cost}_s \sum_{p\in P} x_{s,p}\right) \\
+&amp; = \max_{x_{s,p}}\left(\sum_{p\in P}\sum_{s\in S}x_{s,p}(\text{Price}_p - \text{Cost}_s)\right)
 \end{align}\]</div>
-<p>or</p>
-<div class="amsmath math notranslate nohighlight" id="equation-40465e9d-a3eb-4718-9fdf-1faf86af5898">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-40465e9d-a3eb-4718-9fdf-1faf86af5898" title="Permalink to this equation">¶</a></span>\[\begin{align}
-\mbox{profit} &amp; = \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Price}_p - \max_{x_{s,p}} \sum_{p\in P}  \sum_{s\in S} x_{s,p}\mbox{Cost}_s
-\end{align}\]</div>
+</section>
+<section id="raw-materials">
+<h3><span class="section-number">5.4.4.2. </span>Raw Materials<a class="headerlink" href="#raw-materials" title="Permalink to this headline">¶</a></h3>
+<p>The first constraints in any blending problem are normally the limits on available raw materials. Letting $\text{</p>
 <p>The blending constraint for octane can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b4c07b1-576b-4ecc-ba15-8a6b967d6198">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-7b4c07b1-576b-4ecc-ba15-8a6b967d6198" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dda13a3a-f282-47eb-8d20-143b1dcd6640">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-dda13a3a-f282-47eb-8d20-143b1dcd6640" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{\sum_{s \in S} x_{s,p} \mbox{Octane}_s}{\sum_{s \in S} x_{s,p}} &amp; \geq \mbox{Octane}_p &amp; \forall p \in P
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mbox{Octane}_s\)</span> refers to the octane rating of stream <span class="math notranslate nohighlight">\(s\)</span>, whereas <span class="math notranslate nohighlight">\(\mbox{Octane}_p\)</span> refers to the octane rating of product <span class="math notranslate nohighlight">\(p\)</span>. Multiplying through by the denominator, and consolidating terms gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d09e7b8b-9cc5-498f-8a98-49b151e256a9">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-d09e7b8b-9cc5-498f-8a98-49b151e256a9" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c0479623-996c-44c4-8c90-c3b41a2c230d">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-c0479623-996c-44c4-8c90-c3b41a2c230d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Octane}_s - \mbox{Octane}_p\right) &amp; \geq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>The same assumptions and development apply to the benzene constraint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f39828e6-0e69-49c3-9789-73f87012eb1a">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-f39828e6-0e69-49c3-9789-73f87012eb1a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-443f4e5c-49c1-441f-afbf-0d2d249b1b25">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-443f4e5c-49c1-441f-afbf-0d2d249b1b25" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Benzene}_s - \mbox{Benzene}_p\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>Reid vapor pressure, however, follows a somewhat different mixing rule.  For the Reid vapor pressure we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e651c9d8-5c37-4eff-b89b-100b81e3f312">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-e651c9d8-5c37-4eff-b89b-100b81e3f312" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2cca85ef-1a1f-48d0-b44e-f9b5e186878a">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-2cca85ef-1a1f-48d0-b44e-f9b5e186878a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{min,p}^{1.25}\right) &amp; \geq  0 &amp; \forall p \in P \\
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{max,p}^{1.25}\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
@@ -1135,15 +1179,116 @@
 
 <span class="k">def</span> <span class="nf">gas_blending</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">streams</span><span class="p">):</span>
 
-    <span class="c1"># create model</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">ConcreteModel</span><span class="p">(</span><span class="s2">&quot;Gasoline Blending&quot;</span><span class="p">)</span>
+    
+    <span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">products</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">initialize</span><span class="o">=</span><span class="n">streams</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="n">m</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">Var</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">NonNegativeReals</span><span class="p">)</span>
+    
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Objective</span><span class="p">(</span><span class="n">sense</span><span class="o">=</span><span class="n">pyo</span><span class="o">.</span><span class="n">maximize</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;cost&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span>
+    
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">raw_material_available</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;avail&#39;</span><span class="p">]</span>
+    
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">octane</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">products</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;octane&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+    
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">benzene</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">products</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;benzene&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+   
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">min_reid_vapor_pressure</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;RVPmin&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+ 
+    <span class="nd">@m</span><span class="o">.</span><span class="n">Constraint</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">max_reid_vapor_pressure</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">streams</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;RVP&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span> <span class="o">-</span> <span class="n">products</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;RVPmax&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">1.25</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+
+    <span class="n">solver</span> <span class="o">=</span> <span class="n">pyo</span><span class="o">.</span><span class="n">SolverFactory</span><span class="p">(</span><span class="s1">&#39;cbc&#39;</span><span class="p">)</span>
+    <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="n">m</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">gas_blending</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">streams</span><span class="p">)</span>
+
+    
+<span class="n">soln</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">s</span><span class="p">:</span> <span class="p">{</span><span class="n">p</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="n">s</span><span class="p">,</span><span class="n">p</span><span class="p">]()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">PRODUCTS</span><span class="p">}</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">STREAMS</span><span class="p">})</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;profit = &quot;</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">profit</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="n">soln</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit =  100425.45002
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Regular</th>
+      <th>Premium</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Butane</th>
+      <td>2.175503e+04</td>
+      <td>8244.9672</td>
+    </tr>
+    <tr>
+      <th>LSR</th>
+      <td>9.212971e+03</td>
+      <td>25788.0290</td>
+    </tr>
+    <tr>
+      <th>Isomerate</th>
+      <td>0.000000e+00</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Reformate</th>
+      <td>1.978550e+04</td>
+      <td>40214.5030</td>
+    </tr>
+    <tr>
+      <th>Reformate LB</th>
+      <td>0.000000e+00</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>FCC Naphtha</th>
+      <td>7.000000e+04</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>Alkylate</th>
+      <td>-7.275958e-12</td>
+      <td>40000.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1187,10 +1332,11 @@ Profit = 27.5 cents per gallon.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="display-results">
+</section>
+</section>
+<section id="display-results">
 <h2><span class="section-number">5.4.5. </span>Display Results<a class="headerlink" href="#display-results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="results-for-each-stream">
+<section id="results-for-each-stream">
 <h3><span class="section-number">5.4.5.1. </span>Results for each Stream<a class="headerlink" href="#results-for-each-stream" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1219,8 +1365,8 @@ Alkylate          0.0  40000.0  40000.0    40000.0             0.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="results-for-each-product">
+</section>
+<section id="results-for-each-product">
 <h3><span class="section-number">5.4.5.2. </span>Results for each Product<a class="headerlink" href="#results-for-each-product" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1245,9 +1391,9 @@ Premium  114250.0    91.0  10.6      0.7
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="exercise-1">
+</section>
+</section>
+<section id="exercise-1">
 <h2><span class="section-number">5.4.6. </span>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
 <p>The marketing team says there is an opportunity to create a mid-grade gasoline product with a road octane number of 89 that would sell for $2.82/gallon, and with all other specifications the same. Could an additional profit be created?</p>
 <p>Create a new cell (or cells) below to compute a solution to this exercise.</p>
@@ -1372,8 +1518,8 @@ Profit = 44.7 cents per gallon.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercise-2">
+</section>
+<section id="exercise-2">
 <h2><span class="section-number">5.4.7. </span>Exercise 2.<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h2>
 <p>New environmental regulations have reduced the allowable benzene levels from 1.1 vol% to 0.62 vol%, and the maximum Reid vapor pressure from 15.0 to 9.0.</p>
 <p>Compared to the base case (i.e., without the midgrade product), how does this change profitability?</p>
@@ -1495,8 +1641,8 @@ Profit = 32.4 cents per gallon.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercise-3">
+</section>
+<section id="exercise-3">
 <h2><span class="section-number">5.4.8. </span>Exercise 3.<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h2>
 <p>Given the new product specifications in Exercise 2, let’s consider using different refinery streams. In place of Reformate, the refinery could produce Reformate LB. (That is, one or the other of the two streams could be 60000 gallons per day, but not both).  Same for LSR and Reformate.  How should the refinery be operated to maximize profitability?</p>
 <div class="cell docutils container">
@@ -1612,8 +1758,8 @@ Profit = 29.1 cents per gallon.
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

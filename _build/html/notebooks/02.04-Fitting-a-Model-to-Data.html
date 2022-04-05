@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.4. Fitting a Model to Experimental Data &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.5. Second and Higher Order models" href="02.05-Second-Order.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -913,10 +931,10 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fitting-a-model-to-experimental-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="fitting-a-model-to-experimental-data">
 <h1><span class="section-number">2.4. </span>Fitting a Model to Experimental Data<a class="headerlink" href="#fitting-a-model-to-experimental-data" title="Permalink to this headline">¶</a></h1>
 <p>The following cell provides an interactive tool for ‘tuning’ the model to fit the experimental data. Work with the sliders to find good choices for each of the parameters.</p>
-<div class="section" id="step-test-data">
+<section id="step-test-data">
 <h2><span class="section-number">2.4.1. </span>Step Test Data<a class="headerlink" href="#step-test-data" title="Permalink to this headline">¶</a></h2>
 <p><strong>Starting with a system at steady state</strong>, record the response of T1 to a step input of 50% power with P1 = 200.</p>
 <div class="cell docutils container">
@@ -953,14 +971,14 @@
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_2_0.png" src="../_images/02.04-Fitting-a-Model-to-Data_2_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="model">
+</section>
+<section id="model">
 <h2><span class="section-number">2.4.2. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + \alpha P_1u_1
 \end{align}\]</div>
-<div class="section" id="first-order-linear-differential-equations">
+<section id="first-order-linear-differential-equations">
 <h3><span class="section-number">2.4.2.1. </span>First Order Linear Differential Equations<a class="headerlink" href="#first-order-linear-differential-equations" title="Permalink to this headline">¶</a></h3>
 <p>A standard form for a single differential equation is</p>
 <div class="math notranslate nohighlight">
@@ -973,7 +991,7 @@ C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + \alpha P_1u_1
 \frac{dT_1'}{dt} &amp; = \underbrace{- \frac{U_a}{C_p}}_a T_1' + \underbrace{\frac{\alpha P_1}{C_p}}_b u_1
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are model constants, <span class="math notranslate nohighlight">\(x\)</span> is the dependent variable, and <span class="math notranslate nohighlight">\(u\)</span> is an exogeneous input.</p>
-<div class="section" id="steady-state-response">
+<section id="steady-state-response">
 <h4><span class="section-number">2.4.2.1.1. </span>Steady State Response<a class="headerlink" href="#steady-state-response" title="Permalink to this headline">¶</a></h4>
 <p>For a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>, the steady state response <span class="math notranslate nohighlight">\(\bar{x}\)</span> is given by solution to the equation</p>
 <div class="math notranslate nohighlight">
@@ -985,8 +1003,8 @@ C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + \alpha P_1u_1
 \[\begin{align}
 \bar{x} &amp; = -\frac{b}{a} \bar{u}
 \end{align}\]</div>
-</div>
-<div class="section" id="transient-response">
+</section>
+<section id="transient-response">
 <h4><span class="section-number">2.4.2.1.2. </span>Transient Response<a class="headerlink" href="#transient-response" title="Permalink to this headline">¶</a></h4>
 <p>The transient response is given by</p>
 <div class="math notranslate nohighlight">
@@ -994,8 +1012,8 @@ C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + \alpha P_1u_1
 x(t) &amp; = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
 \end{align}\]</div>
 <p>which is an exact, analytical solution.</p>
-</div>
-<div class="section" id="apply-to-model-equation">
+</section>
+<section id="apply-to-model-equation">
 <h4><span class="section-number">2.4.2.1.3. </span>Apply to Model Equation<a class="headerlink" href="#apply-to-model-equation" title="Permalink to this headline">¶</a></h4>
 <p>We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications</p>
 <div class="math notranslate nohighlight">
@@ -1012,10 +1030,10 @@ u_1 \sim u
 x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad &amp; \Rightarrow \qquad
 T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
 \end{align}\end{split}\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="plot-a-fit">
+</section>
+</section>
+</section>
+<section id="plot-a-fit">
 <h2><span class="section-number">2.4.3. </span>Plot a fit<a class="headerlink" href="#plot-a-fit" title="Permalink to this headline">¶</a></h2>
 <p>Let’s try a guess fit.</p>
 <div class="cell docutils container">
@@ -1063,8 +1081,8 @@ T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_9_0.png" src="../_images/02.04-Fitting-a-Model-to-Data_9_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="improving-the-fit">
+</section>
+<section id="improving-the-fit">
 <h2><span class="section-number">2.4.4. </span>Improving the fit<a class="headerlink" href="#improving-the-fit" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,8 +1129,8 @@ T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_11_0.png" src="../_images/02.04-Fitting-a-Model-to-Data_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="measuring-the-fit">
+</section>
+<section id="measuring-the-fit">
 <h2><span class="section-number">2.4.5. </span>Measuring the Fit<a class="headerlink" href="#measuring-the-fit" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sum of Squares</p></li>
@@ -1213,23 +1231,23 @@ T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_13_1.png" src="../_images/02.04-Fitting-a-Model-to-Data_13_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="an-aside-the-impact-of-the-highly-improbable">
+</section>
+<section id="an-aside-the-impact-of-the-highly-improbable">
 <h2><span class="section-number">2.4.6. </span>An Aside: “The Impact of the Highly Improbable”<a class="headerlink" href="#an-aside-the-impact-of-the-highly-improbable" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="gaussian-or-normal-distribution">
+<section id="gaussian-or-normal-distribution">
 <h3><span class="section-number">2.4.6.1. </span>Gaussian (or Normal) Distribution<a class="headerlink" href="#gaussian-or-normal-distribution" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/PH717-QuantCore/PH717-Module6-RandomError/Normal%20Distribution%20deviations.png" /></p>
-</div>
-<div class="section" id="heavy-tail-distributions">
+</section>
+<section id="heavy-tail-distributions">
 <h3><span class="section-number">2.4.6.2. </span>Heavy Tail Distributions<a class="headerlink" href="#heavy-tail-distributions" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="http://www.bitsofscience.org/wordpress-3.0.1/wordpress/wp-content/uploads//extreme-weather-gaussian.jpg" /></p>
 <p><img alt="" src="https://i.stack.imgur.com/OZctU.png" /></p>
-</div>
-<div class="section" id="conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values">
+</section>
+<section id="conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values">
 <h3><span class="section-number">2.4.6.3. </span>Conclusion: Rare events may not be so rare. Avoid overfitting extreme values!<a class="headerlink" href="#conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="finding-a-best-fit">
+</section>
+</section>
+<section id="finding-a-best-fit">
 <h2><span class="section-number">2.4.7. </span>Finding a best fit<a class="headerlink" href="#finding-a-best-fit" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1313,16 +1331,16 @@ T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1
 <li><p>Suppose we want to improve the model. Where should we go from here?</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="exercises">
+</section>
+<section id="exercises">
 <h2><span class="section-number">2.4.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>This notebook attempted to fit a first-order model of a heater/sensor assembly to experimental data. In the course of the fit, estimates were derived for parameters <span class="math notranslate nohighlight">\(\alpha\)</span>, P1, <span class="math notranslate nohighlight">\(U_a\)</span>, and <span class="math notranslate nohighlight">\(C_p\)</span>. From these parameter values, estimate a time constant.</p></li>
 <li><p>Apply the techniques outlined in Section 2.2 for the estimation of time constants from experimental data. How does that value compare to the calculation in the first question?</p></li>
 <li><p>It’s not always possible to wait for a system to reach steady state. Create a new function, <code class="docutils literal notranslate"><span class="pre">compare3</span></code>, that introduces a third unknown parameter representing an initial condition different for <span class="math notranslate nohighlight">\(T'_1(0)\)</span> that is different from zero.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

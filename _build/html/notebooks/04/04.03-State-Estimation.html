@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.3. State Estimation &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="4.4. Lab Assignment 5: State Estimation" href="04.04-Lab-Assigment-State-Estimation.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -879,10 +897,10 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="state-estimation">
+  <section class="tex2jax_ignore mathjax_ignore" id="state-estimation">
 <h1><span class="section-number">4.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">¶</a></h1>
 <p>This notebook outlines state estimation using the TCLab hardware.</p>
-<div class="section" id="output-feedback-control">
+<section id="output-feedback-control">
 <h2><span class="section-number">4.3.1. </span>Output Feedback Control<a class="headerlink" href="#output-feedback-control" title="Permalink to this headline">¶</a></h2>
 <p>Let’s begin our investigations by considering the single loop control problem for a single heater/sensor assembly in the Temperature Control Lab. First we define a setpoint function that we’ll be using throughout the notebook.</p>
 <div class="cell docutils container">
@@ -959,8 +977,8 @@
 <img alt="../../_images/04.03-State-Estimation_6_2.png" src="../../_images/04.03-State-Estimation_6_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="the-trouble-with-output-feedback">
+</section>
+<section id="the-trouble-with-output-feedback">
 <h2><span class="section-number">4.3.2. </span>The Trouble with Output Feedback<a class="headerlink" href="#the-trouble-with-output-feedback" title="Permalink to this headline">¶</a></h2>
 <p>So how did we do? Let’s look at the response of the measured sensor temperature and heater input.</p>
 <div class="cell docutils container">
@@ -982,30 +1000,30 @@
 </div>
 <p>As shown, the controller does a reasonably good job of controlling the sensor temperature. But if the goal is to control heater temperature, then there is no assuronce the controller has accomplished that objective.</p>
 <p>In the context of control, the control variable (CV) is heater temperature, the measured process variable (PV) is the sensor temperature, and we haven’t yet established the relationship between them.</p>
-</div>
-<div class="section" id="heater-sensor-model">
+</section>
+<section id="heater-sensor-model">
 <h2><span class="section-number">4.3.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this headline">¶</a></h2>
 <p>In chapter two we explored various models for describing the response of the heater/sensor assemblies to heater inputs. For heater/sensor assembly 1 we developed the following model</p>
-<div class="amsmath math notranslate nohighlight" id="equation-345fbf6d-b7d5-4e28-8765-439cb343e0b3">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-345fbf6d-b7d5-4e28-8765-439cb343e0b3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-61b210a1-5742-4a37-988a-05ef02682713">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-61b210a1-5742-4a37-988a-05ef02682713" title="Permalink to this equation">¶</a></span>\[\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, <span class="math notranslate nohighlight">\(U_a\)</span> is the heat transfer coefficient characterizing the exchange of heat with the surroundings, and <span class="math notranslate nohighlight">\(U_b\)</span> is a heat transfer coefficient between the heater and sensor.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-522f4ab1-f160-4cec-881e-34aab2926c79">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-522f4ab1-f160-4cec-881e-34aab2926c79" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-befe8245-5f62-46f6-b9ce-1e36e2d3d1bd">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-befe8245-5f62-46f6-b9ce-1e36e2d3d1bd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>Where measured temperature, that is, the temperature recorded by the Arduino, <span class="math notranslate nohighlight">\(T_1\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[T_1 = T_{S,1}\]</div>
-</div>
-<div class="section" id="converting-to-a-state-space-model">
+</section>
+<section id="converting-to-a-state-space-model">
 <h2><span class="section-number">4.3.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a89f208-60fd-497b-9812-d9bfa72af1c8">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-4a89f208-60fd-497b-9812-d9bfa72af1c8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bf5fedf1-f004-4522-a7aa-bd8ee7a13acd">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-bf5fedf1-f004-4522-a7aa-bd8ee7a13acd" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
@@ -1029,8 +1047,8 @@ B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
 C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <p>By common convention, in state-space models the vector <span class="math notranslate nohighlight">\(x\)</span> contains all variables representing the <strong>state</strong> of the system. The input vector <span class="math notranslate nohighlight">\(u\)</span> is reserved for all manipulated variables (MV’s), and the input vector <span class="math notranslate nohighlight">\(d\)</span> for all disturbance variables (DV’s). The vector <span class="math notranslate nohighlight">\(y\)</span> holds all measured process variables (PV’s).</p>
 <p><img alt="" src="../../_images/FeedbackControlDiagram2.png" /></p>
-</div>
-<div class="section" id="model-predictions">
+</section>
+<section id="model-predictions">
 <h2><span class="section-number">4.3.5. </span>Model Predictions<a class="headerlink" href="#model-predictions" title="Permalink to this headline">¶</a></h2>
 <p>For a sufficiently small time step, the change in state is approximated to first-order by</p>
 <div class="math notranslate nohighlight">
@@ -1137,8 +1155,8 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-trouble-with-model-predictions">
+</section>
+<section id="the-trouble-with-model-predictions">
 <h2><span class="section-number">4.3.6. </span>The Trouble with Model Predictions<a class="headerlink" href="#the-trouble-with-model-predictions" title="Permalink to this headline">¶</a></h2>
 <p>So far what we’re doing is interesting, but with no real consequence for control. All we are doing is passing input information along to the model so that it can operate in parallel with our actual hardware.</p>
 <div class="cell docutils container">
@@ -1181,7 +1199,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 </div>
-<div class="section" id="issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature">
+<section id="issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature">
 <h3><span class="section-number">4.3.6.1. </span>Issue 1: Heater temperature is markedly different from the sensor temperature.<a class="headerlink" href="#issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature" title="Permalink to this headline">¶</a></h3>
 <p>Let’s first compare the setpoint to the heater temperature predicted by the model.</p>
 <div class="cell docutils container">
@@ -1215,8 +1233,8 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <p>We see that the heater temperature predicted by the model is substantially different from the desired setpoint. Using the measured temperature as a proxy for heater temperature turns out not to work for applications requiring precise temperature control.</p>
-</div>
-<div class="section" id="issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures">
+</section>
+<section id="issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures">
 <h3><span class="section-number">4.3.6.2. </span>Issue 2: The model may not be an accurate predictor of temperatures.<a class="headerlink" href="#issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures" title="Permalink to this headline">¶</a></h3>
 <p>Next, let’s compare the actual temperature measurements to the sensor temperature predicted by the model.</p>
 <div class="cell docutils container">
@@ -1250,9 +1268,9 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <p>We see is a notable difference between the sensor temperature predicted by the model and the actual measurement.</p>
-</div>
-</div>
-<div class="section" id="incorporating-measurements">
+</section>
+</section>
+<section id="incorporating-measurements">
 <h2><span class="section-number">4.3.7. </span>Incorporating Measurements<a class="headerlink" href="#incorporating-measurements" title="Permalink to this headline">¶</a></h2>
 <p>As this example has made clear, we need a notation that distinguishes the actual state of the physical system from our best estimate of that state. We will use <span class="math notranslate nohighlight">\(\hat{x}\)</span> to denote our best estimate of <span class="math notranslate nohighlight">\(x\)</span>, and use <span class="math notranslate nohighlight">\(\hat{y}\)</span> to denote the measurement that would result from <span class="math notranslate nohighlight">\(\hat{x}\)</span>. We can write two systems of equations corresponding to the dynamics of the actual process and to a model of the process.</p>
 <ul class="simple">
@@ -1301,7 +1319,7 @@ y &amp; = C x
 \implies \frac{de}{dt} &amp; = (A - LC) e + B_d(\hat{d} - d) 
 \end{align*}\]</div>
 <p>The choice of <span class="math notranslate nohighlight">\(L\)</span> determines observer performance. What we seek is a matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A - LC\)</span> results in error <span class="math notranslate nohighlight">\(e\)</span> that quickly decays to zero.</p>
-<div class="section" id="fun-with-eigenvalues">
+<section id="fun-with-eigenvalues">
 <h3><span class="section-number">4.3.7.1. </span>Fun with Eigenvalues<a class="headerlink" href="#fun-with-eigenvalues" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1335,8 +1353,8 @@ y &amp; = C x
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="model-prediction-measurement-correction">
+</section>
+<section id="model-prediction-measurement-correction">
 <h3><span class="section-number">4.3.7.2. </span>Model Prediction / Measurement Correction<a class="headerlink" href="#model-prediction-measurement-correction" title="Permalink to this headline">¶</a></h3>
 <p>Making the substitution <span class="math notranslate nohighlight">\(\hat{y} = C\hat{x}\)</span>, the observer equation becomes</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1486,9 +1504,9 @@ y &amp; = C x
 <img alt="../../_images/04.03-State-Estimation_36_1.png" src="../../_images/04.03-State-Estimation_36_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="state-estimation-and-closed-loop-relay-control">
+</section>
+</section>
+<section id="state-estimation-and-closed-loop-relay-control">
 <h2><span class="section-number">4.3.8. </span>State Estimation and Closed-Loop Relay Control<a class="headerlink" href="#state-estimation-and-closed-loop-relay-control" title="Permalink to this headline">¶</a></h2>
 <p>Zounds!!  We now have an estimator that locks on to the measured value of the sensor temperature.</p>
 <p>Now, if we really trust our model, let’s take it a step further and control the estimated heater temperature. The following cell replaaces the temperature measurement in the relay feedback using estimated heater temperature. Measurements are still be used, but for estimation raather than directly in the controller feedback.</p>
@@ -1548,8 +1566,8 @@ y &amp; = C x
 <img alt="../../_images/04.03-State-Estimation_40_0.png" src="../../_images/04.03-State-Estimation_40_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

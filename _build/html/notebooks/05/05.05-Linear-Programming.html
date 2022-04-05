@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.5. Linear Programming &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5.6. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -771,7 +789,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-programming">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-programming">
 <h1><span class="section-number">5.5. </span>Linear Programming<a class="headerlink" href="#linear-programming" title="Permalink to this headline">¶</a></h1>
 <p>Linear programming is the minimization (or maximization) of a linear objective subject to linear constraints. There are several widely adopted schemes for representing linear programming problems. Here we adopt a scheme corresponding where the linear objective is written in terms of decision variables <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_N\)</span> as</p>
 <div class="math notranslate nohighlight">
@@ -789,7 +807,7 @@ x_i  \geq 0 &amp; \qquad i=1,\ldots,N\quad\mbox{lower bounds on decision variabl
 \sum_{j=1}^N a^{eq}_{ij}x_j = b^{eq}_i &amp; \qquad i=1,\ldots,M_{eq}\quad\mbox{equality constraints}\\
 \end{align}
 \end{split}\]</div>
-<div class="section" id="matrix-vector-format">
+<section id="matrix-vector-format">
 <h2><span class="section-number">5.5.1. </span>Matrix/Vector format<a class="headerlink" href="#matrix-vector-format" title="Permalink to this headline">¶</a></h2>
 <p>The notation can be simplified by adopting a matrix/vector formulation where</p>
 <div class="math notranslate nohighlight">
@@ -807,8 +825,8 @@ A_{eq} x = b_{eq}
 \end{align}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(A_{ub}, b_{ub}\)</span>, and <span class="math notranslate nohighlight">\(A_{eq}, b_{eq}\)</span>, are vectors and matrices of coefficients constructed from the linear expressions given above.</p>
-</div>
-<div class="section" id="example-19-3-refinery-blending-problem">
+</section>
+<section id="example-19-3-refinery-blending-problem">
 <h2><span class="section-number">5.5.2. </span>Example 19.3: Refinery Blending Problem<a class="headerlink" href="#example-19-3-refinery-blending-problem" title="Permalink to this headline">¶</a></h2>
 <p>The decision variables are</p>
 <table class="colwidths-auto table">
@@ -958,8 +976,8 @@ x[ 6] =  2001.0 bbl/day
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.2. Simulation and Open-Loop Optimal Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="6.3. Predictive Control" href="06.03-Predictive-Control.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -883,12 +901,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="simulation-and-open-loop-optimal-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="simulation-and-open-loop-optimal-control">
 <h1><span class="section-number">6.2. </span>Simulation and Open-Loop Optimal Control<a class="headerlink" href="#simulation-and-open-loop-optimal-control" title="Permalink to this headline">¶</a></h1>
 <p>This notebook demonstrates the use of CVXPY for the simulation and computation of open-loop optimal control. The notebook includes a lab exercise.</p>
-<div class="section" id="heater-model">
+<section id="heater-model">
 <h2><span class="section-number">6.2.1. </span>Heater Model<a class="headerlink" href="#heater-model" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="model">
+<section id="model">
 <h3><span class="section-number">6.2.1.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
 <p>We will use the two-state model for a single heater/sensor assembly for the calculations that follow.</p>
 <div class="math notranslate nohighlight">
@@ -924,8 +942,8 @@ B_u = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix}
 B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
 \qquad
 C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
-</div>
-<div class="section" id="parameter-values">
+</section>
+<section id="parameter-values">
 <h3><span class="section-number">6.2.1.2. </span>Parameter Values<a class="headerlink" href="#parameter-values" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -952,12 +970,12 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="the-control-problem">
+</section>
+</section>
+<section id="the-control-problem">
 <h2><span class="section-number">6.2.2. </span>The Control Problem<a class="headerlink" href="#the-control-problem" title="Permalink to this headline">¶</a></h2>
 <p>For the purposes of this notebook, the control problem is to find a control policy <span class="math notranslate nohighlight">\(u(t)\)</span> for the interval <span class="math notranslate nohighlight">\(0 \leq t \leq t_f\)</span> which causes the output <span class="math notranslate nohighlight">\(y(t)\)</span> to track a desired setpoint or reference tracjectory <span class="math notranslate nohighlight">\(r(t)\)</span>.</p>
-<div class="section" id="reference-tractory">
+<section id="reference-tractory">
 <h3><span class="section-number">6.2.2.1. </span>Reference Tractory<a class="headerlink" href="#reference-tractory" title="Permalink to this headline">¶</a></h3>
 <p>The reference trajectory is a sequence of ramp/soak intervals.  Python function <code class="docutils literal notranslate"><span class="pre">r(t)</span></code> uses <code class="docutils literal notranslate"><span class="pre">numpy.interp</span></code> to compute values of the reference trajectory at any point in time.</p>
 <div class="cell docutils container">
@@ -989,8 +1007,8 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <img alt="../_images/06.02-Simulation-and-Open-Loop-Optimal-Control_7_0.png" src="../_images/06.02-Simulation-and-Open-Loop-Optimal-Control_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="guessing-a-solution">
+</section>
+<section id="guessing-a-solution">
 <h3><span class="section-number">6.2.2.2. </span>Guessing a Solution<a class="headerlink" href="#guessing-a-solution" title="Permalink to this headline">¶</a></h3>
 <p>So what should <span class="math notranslate nohighlight">\(u(t)\)</span> be?</p>
 <p>The next cell defines process inputs <span class="math notranslate nohighlight">\(d(t)\)</span> and <span class="math notranslate nohighlight">\(u(t)\)</span>. For this disturbance, the model parameters given above, do you think this control policy will cause <span class="math notranslate nohighlight">\(y(t)\)</span> to be close to the reference trajectory?</p>
@@ -1025,9 +1043,9 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <img alt="../_images/06.02-Simulation-and-Open-Loop-Optimal-Control_9_0.png" src="../_images/06.02-Simulation-and-Open-Loop-Optimal-Control_9_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="simulation">
+</section>
+</section>
+<section id="simulation">
 <h2><span class="section-number">6.2.3. </span>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see how well our initial guess at a control strategy will work for us subject to initial conditions</p>
 <div class="math notranslate nohighlight">
@@ -1082,8 +1100,8 @@ T_S(t_0) &amp; = T_{amb}
 <p><strong>Study Question:</strong> Evaluate how well this control policy performed. Keep in mind that the objective is for <span class="math notranslate nohighlight">\(T_S\)</span> to track the reference input (i.e., the setpoint) as closely as possible. Did the controller achieve the desired steady-state? What about the prior ramp and soak periods?</p>
 <p><strong>Study Question:</strong> Edit the cells above to change <span class="math notranslate nohighlight">\(u(t)\)</span> in to produce a response closer to the target. Make at least 3 attempts. What changes did you make, and were you able to get a better result.</p>
 <p><strong>Study Question:</strong> What criteria could you use to determine if one control policy was better than another? Give at least three examples of possible criteria.</p>
-<hr></div>
-<div class="section" id="feedforward-optimal-control">
+<hr></section>
+<section id="feedforward-optimal-control">
 <h2><span class="section-number">6.2.4. </span>Feedforward Optimal Control<a class="headerlink" href="#feedforward-optimal-control" title="Permalink to this headline">¶</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
@@ -1162,11 +1180,11 @@ T_S(t_0) &amp; = T_{amb}
 <p>where <span class="math notranslate nohighlight">\(\dot{u}_{max}\)</span> is the maximum rate of change. Add these rate constraints to the problem above. Specify that the maximum power cannot change more than  1% per second.</p>
 <p>How does that change the response?</p>
 <p><strong>Study Question:</strong> Change the objective so that the goal is to guide the heater (insteady of the sensor) temperature to the reference trajectory. How does the control policy change? Explain what you observe.</p>
-<hr></div>
-<div class="section" id="lab-assignment-8">
+<hr></section>
+<section id="lab-assignment-8">
 <h2><span class="section-number">6.2.5. </span>Lab Assignment 8<a class="headerlink" href="#lab-assignment-8" title="Permalink to this headline">¶</a></h2>
 <p>The goal of this lab assignment is to extend the calculations shown above to the case of the four-state models with two manipulable inputs and independent setpoint functions for <span class="math notranslate nohighlight">\(T_{S,1}\)</span> and <span class="math notranslate nohighlight">\(T_{S,2}\)</span>.</p>
-<div class="section" id="exercise-1">
+<section id="exercise-1">
 <h3><span class="section-number">6.2.5.1. </span>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <p>In a new cell, create reference inputs for sensor temperatures <span class="math notranslate nohighlight">\(T_{S,1}\)</span> and <span class="math notranslate nohighlight">\(T_{S,2}\)</span>. The new reference trajectories should</p>
 <ul class="simple">
@@ -1174,17 +1192,17 @@ T_S(t_0) &amp; = T_{amb}
 <li><p>Use the same ramp/soak specifications as above for <span class="math notranslate nohighlight">\(T_{S,1}\)</span></p></li>
 <li><p>For <span class="math notranslate nohighlight">\(T_{S,2}\)</span>, delay the ramp by 100 seconds, and set the soak temperature to 45C. The high temperature soak period should remain the same. The slopes of the ramps should remain the same. Plot your results.</p></li>
 </ul>
-</div>
-<div class="section" id="exercise-2">
+</section>
+<section id="exercise-2">
 <h3><span class="section-number">6.2.5.2. </span>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h3>
 <p>Set up and solve for the heater control policies minimizing the sum of least squares between the sensor temperatures and reference trajectories. Create functions U1(t) and U2(t) that interpolate the solutions for u1(t) and u2(t) for any value of t. Plot the results.</p>
-</div>
-<div class="section" id="exercise-3">
+</section>
+<section id="exercise-3">
 <h3><span class="section-number">6.2.5.3. </span>Exercise 3<a class="headerlink" href="#exercise-3" title="Permalink to this headline">¶</a></h3>
 <p>Apply the functions U1(t) and U2(t) to your hardware and compare the measured sensor temperatures to those predicted in Exercise 2. How did you do?</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

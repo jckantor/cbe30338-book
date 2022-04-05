@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.4. Batch Chemical Process &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7.5. Simulating Queuing Systems" href="07.05-Queuing-Systems-and-Poisson-Processes.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -831,9 +849,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="batch-chemical-process">
+  <section class="tex2jax_ignore mathjax_ignore" id="batch-chemical-process">
 <h1><span class="section-number">7.4. </span>Batch Chemical Process<a class="headerlink" href="#batch-chemical-process" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="problem-statement">
+<section id="problem-statement">
 <h2><span class="section-number">7.4.1. </span>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
 <p>Schultheisz, Daniel, and Jude T. Sommerfeld. “Discrete-Event Simulation in Chemical Engineering.” Chemical Engineering Education 22.2 (1988): 98-102.</p>
 <p><img alt="Batch Process" src="../_images/BatchProcess.png" /></p>
@@ -841,8 +859,8 @@
 </pre></div>
 </div>
 <p>You have been hired by the client as a consulting engineer. Prepare a SimPy simulation of this process to deliver to the client. The delivery should include functions to report the key performance indicators, visualize the results of the simulation, and to conduct ‘what-if’ studies to determine ways to improve process performance.</p>
-</div>
-<div class="section" id="analysis">
+</section>
+<section id="analysis">
 <h2><span class="section-number">7.4.2. </span>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>What is the purpose of the simulation? What question needs to be answered? In thinking about this, carefully consider what has been requested, what other questions are relevant to improving system performance.</p></li>
@@ -850,8 +868,8 @@
 <li><p>What simulation objects should be created for this application?</p></li>
 <li><p>What classes of shared resources will be used in this model?</p></li>
 </ol>
-</div>
-<div class="section" id="simpy-shared-resources">
+</section>
+<section id="simpy-shared-resources">
 <h2><span class="section-number">7.4.3. </span>Simpy Shared Resources<a class="headerlink" href="#simpy-shared-resources" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong><a class="reference external" href="https://simpy.readthedocs.io/en/latest/api_reference/simpy.resources.html#module-simpy.resources.resource">Resources</a>:</strong> Models resources that are shared among mulitple processes. There is no distinction among items. You request use of a resource and then wait on availability. When the resource becomes available, you continue your process. As some point you can release the resource for use by other processes. You can specify the number of resources available, monitor the number in use, and there are provisions to assign prioriity for processes and to preempt lower priority processes. Useful if you don’t need to distinguish which item is in use.</p></li>
@@ -859,8 +877,8 @@
 <li><p><strong><a class="reference external" href="https://simpy.readthedocs.io/en/latest/api_reference/simpy.resources.html#module-simpy.resources.store">Stores</a>:</strong> Models the production and consumption of objects. The objects don’t have to be the same, and can be represented by arbitrary Python objects.  Good for queues where objects must be treated as individual items. You can specify capacity, and used <code class="docutils literal notranslate"><span class="pre">.put()</span></code> and <code class="docutils literal notranslate"><span class="pre">.get()</span></code> to access items. You can get a list of items in the queue with <code class="docutils literal notranslate"><span class="pre">.items()</span></code>. By default, queues operate on a first-in first-out (FIFO) protocol, but other protocols can be implemented using <code class="docutils literal notranslate"><span class="pre">FilterStore</span></code> or <code class="docutils literal notranslate"><span class="pre">PriorityStore</span></code>.</p></li>
 </ul>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">Stores</span></code> to model the various order and equipment queues in this process.</p>
-</div>
-<div class="section" id="generating-customer-orders">
+</section>
+<section id="generating-customer-orders">
 <h2><span class="section-number">7.4.4. </span>Generating Customer Orders<a class="headerlink" href="#generating-customer-orders" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>… a small, single-product batch chemical plant has three identical reactors in parallel, followed by a single storage tank and a batch still. <strong>Customer orders (batches) to be filled (which begin with processing in the reactor) occur every 115 <span class="math notranslate nohighlight">\(\pm\)</span> 30 minutes, uniformly distributed.</strong> The reaction time in a given reactor iis 335 <span class="math notranslate nohighlight">\(\pm\)</span> 60 minutes, and the distillation time in the still is 110 <span class="math notranslate nohighlight">\(\pm\)</span> 25 minutes, both times uniformly distributed. The holding capacity of the storage tank is exactly one batch. Hence, the storage tank must be empty for a given reactor to discharge its batch; if not, the reactor cannot begin processing a new batch until the storage tank becomes empty. <strong>The simulation is to be run for 100 batches. The model should have the capability to collect waiting line statistics for the queue immediately upstream of the reactor.</strong></p>
@@ -942,8 +960,8 @@
 <img alt="../_images/07.04-Project-Batch-Chemical-Process_7_1.png" src="../_images/07.04-Project-Batch-Chemical-Process_7_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="order-processor">
+</section>
+<section id="order-processor">
 <h2><span class="section-number">7.4.5. </span>Order Processor<a class="headerlink" href="#order-processor" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>… a small, single-product batch chemical plant has three identical reactors in parallel, followed by a single storage tank and a batch still. Customer orders (batches) to be filled (which begin with processing in the reactor) occur every 115 <span class="math notranslate nohighlight">\(\pm\)</span> 30 minutes, uniformly distributed. <strong>The reaction time in a given reactor iis 335 <span class="math notranslate nohighlight">\(\pm\)</span> 60 minutes,</strong> and the distillation time in the still is 110 <span class="math notranslate nohighlight">\(\pm\)</span> 25 minutes, both times uniformly distributed. <strong>The holding capacity of the storage tank is exactly one batch. Hence, the storage tank must be empty for a given reactor to discharge its batch; if not, the reactor cannot begin processing a new batch until the storage tank becomes empty.</strong> The simulation is to be run for 100 batches. The model should have the capability to collect waiting line statistics for the queue immediately upstream of the reactor.</p>
@@ -1115,8 +1133,8 @@
 <img alt="../_images/07.04-Project-Batch-Chemical-Process_13_1.png" src="../_images/07.04-Project-Batch-Chemical-Process_13_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2><span class="section-number">7.4.6. </span>Analysis<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>To facilitate analysis, we do some post-processing of the simulation data. Here we subtract the start time for each order from all of the other data to track the progress of orders through the process.</p>
 <p>Most, but not all, runs of the simulation show elapsed times that increase for later arriving orders. In statistical terms, this is an example of “non-stationary” behavior. In other words, waiting times within the process are increasinig over time. This is highly undesireable behavior indicating the presence of a process “bottleneck”.</p>
@@ -1135,8 +1153,8 @@
 <img alt="../_images/07.04-Project-Batch-Chemical-Process_15_1.png" src="../_images/07.04-Project-Batch-Chemical-Process_15_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="completed-model">
+</section>
+<section id="completed-model">
 <h2><span class="section-number">7.4.7. </span>Completed Model<a class="headerlink" href="#completed-model" title="Permalink to this headline">¶</a></h2>
 <p>To facilitate “what-if” analyses, we consolidate the code into a single function performiing all required computations. A UI could be added if this were a project to be delivered to client.</p>
 <div class="cell docutils container">
@@ -1226,8 +1244,8 @@ dtype: float64
 <img alt="../_images/07.04-Project-Batch-Chemical-Process_17_2.png" src="../_images/07.04-Project-Batch-Chemical-Process_17_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="tuning-the-process">
+</section>
+<section id="tuning-the-process">
 <h2><span class="section-number">7.4.8. </span>Tuning the process<a class="headerlink" href="#tuning-the-process" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1251,8 +1269,8 @@ dtype: float64
 <img alt="../_images/07.04-Project-Batch-Chemical-Process_19_2.png" src="../_images/07.04-Project-Batch-Chemical-Process_19_2.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

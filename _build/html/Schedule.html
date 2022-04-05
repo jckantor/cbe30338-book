@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>CBE 30338/32338 Schedule &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
@@ -37,17 +38,19 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -345,6 +348,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="notebooks/05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -867,9 +885,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="cbe-30338-32338-schedule">
+  <section class="tex2jax_ignore mathjax_ignore" id="cbe-30338-32338-schedule">
 <h1>CBE 30338/32338 Schedule<a class="headerlink" href="#cbe-30338-32338-schedule" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="week-1-jan-11-jan-14">
+<section id="week-1-jan-11-jan-14">
 <h2>Week 1: Jan 11 - Jan 14<a class="headerlink" href="#week-1-jan-11-jan-14" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -912,8 +930,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-2-jan-18-jan-20">
+</section>
+<section id="week-2-jan-18-jan-20">
 <h2>Week 2: Jan 18 - Jan 20<a class="headerlink" href="#week-2-jan-18-jan-20" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -949,8 +967,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-3-jan-25-jan-28">
+</section>
+<section id="week-3-jan-25-jan-28">
 <h2>Week 3: Jan 25 - Jan 28<a class="headerlink" href="#week-3-jan-25-jan-28" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -993,8 +1011,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-4-feb-1-feb-4">
+</section>
+<section id="week-4-feb-1-feb-4">
 <h2>Week 4: Feb 1 - Feb 4<a class="headerlink" href="#week-4-feb-1-feb-4" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1037,8 +1055,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-5-feb-8-feb-11">
+</section>
+<section id="week-5-feb-8-feb-11">
 <h2>Week 5: Feb 8 - Feb 11<a class="headerlink" href="#week-5-feb-8-feb-11" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1081,8 +1099,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-6-feb-15-feb-18">
+</section>
+<section id="week-6-feb-15-feb-18">
 <h2>Week 6: Feb 15 - Feb 18<a class="headerlink" href="#week-6-feb-15-feb-18" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1125,8 +1143,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-7-feb-22-feb-25">
+</section>
+<section id="week-7-feb-22-feb-25">
 <h2>Week 7: Feb 22 - Feb 25<a class="headerlink" href="#week-7-feb-22-feb-25" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1169,8 +1187,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-8-mar-1-mar-3">
+</section>
+<section id="week-8-mar-1-mar-3">
 <h2>Week 8: Mar 1 - Mar 3<a class="headerlink" href="#week-8-mar-1-mar-3" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1206,8 +1224,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-9-mar-15-mar-18">
+</section>
+<section id="week-9-mar-15-mar-18">
 <h2>Week 9: Mar 15 - Mar 18<a class="headerlink" href="#week-9-mar-15-mar-18" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1250,8 +1268,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-10-mar-22-mar-25">
+</section>
+<section id="week-10-mar-22-mar-25">
 <h2>Week 10: Mar 22 - Mar 25<a class="headerlink" href="#week-10-mar-22-mar-25" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1294,8 +1312,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-11-mar-29-apr-1">
+</section>
+<section id="week-11-mar-29-apr-1">
 <h2>Week 11: Mar 29 - Apr 1<a class="headerlink" href="#week-11-mar-29-apr-1" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1338,8 +1356,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-12-apr-5-apr-8">
+</section>
+<section id="week-12-apr-5-apr-8">
 <h2>Week 12: Apr 5 - Apr 8<a class="headerlink" href="#week-12-apr-5-apr-8" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1382,8 +1400,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-13-apr-12-apr-14">
+</section>
+<section id="week-13-apr-12-apr-14">
 <h2>Week 13: Apr 12 - Apr 14<a class="headerlink" href="#week-13-apr-12-apr-14" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1419,8 +1437,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="week-14-apr-19-apr-21">
+</section>
+<section id="week-14-apr-19-apr-21">
 <h2>Week 14: Apr 19 - Apr 21<a class="headerlink" href="#week-14-apr-19-apr-21" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table">
 <thead>
@@ -1456,8 +1474,8 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

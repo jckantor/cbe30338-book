@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.5. Second and Higher Order models &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -37,20 +38,22 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.6. Fed-Batch Bioreactor" href="02.06-Fed-Batch-Bioreactor.html" />
@@ -347,6 +350,21 @@
    <li class="toctree-l2">
     <a class="reference internal" href="05/05.99-Pyomo-Examples.html">
      5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-Knapsack.html">
+     5.9. Adding Logical Decisions to our Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="milk-pooling.html">
+     5.10. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -829,9 +847,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="second-and-higher-order-models">
+  <section class="tex2jax_ignore mathjax_ignore" id="second-and-higher-order-models">
 <h1><span class="section-number">2.5. </span>Second and Higher Order models<a class="headerlink" href="#second-and-higher-order-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="step-test">
+<section id="step-test">
 <h2><span class="section-number">2.5.1. </span>Step Test<a class="headerlink" href="#step-test" title="Permalink to this headline">¶</a></h2>
 <p>Using a Temperature Control Lab device initially at steady state at ambient room temperature, the following device settings were used to induce a step response in <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
 <table class="colwidths-auto table">
@@ -871,10 +889,10 @@
 <img alt="../_images/02.05-Second-Order_2_2.png" src="../_images/02.05-Second-Order_2_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="two-state-model">
+</section>
+<section id="two-state-model">
 <h2><span class="section-number">2.5.2. </span>Two-State Model<a class="headerlink" href="#two-state-model" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="dynamics-of-the-heater-sensor-system">
+<section id="dynamics-of-the-heater-sensor-system">
 <h3><span class="section-number">2.5.2.1. </span>Dynamics of the Heater/Sensor System<a class="headerlink" href="#dynamics-of-the-heater-sensor-system" title="Permalink to this headline">¶</a></h3>
 <p>For this model we no longer assume  the heater and sensor are at the same temperature. To account for differing temperatures, we introduce <span class="math notranslate nohighlight">\(T_{H,1}\)</span> to denote the temperature of heater one and <span class="math notranslate nohighlight">\(T_{S,1}\)</span> to denote the temperature of the corresponding sensor. We further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is dominated by the heat sink attached to the heater.</p>
 <p>This motivates a model</p>
@@ -1058,8 +1076,8 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 </div></div><img alt="../_images/02.05-Second-Order_4_1.png" src="../_images/02.05-Second-Order_4_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="least-squares-model-fitting">
+</section>
+<section id="least-squares-model-fitting">
 <h3><span class="section-number">2.5.2.2. </span>“Least Squares” Model Fitting<a class="headerlink" href="#least-squares-model-fitting" title="Permalink to this headline">¶</a></h3>
 <p>Fitting a model to data is a basic task in engineering, science, business, and a foundation of modern data sciences. For engineers the goal is to validate hypotheses about how a device works, then to enable simulation and design. In the data science model fitting may be almost completely empirical using black box models to develop predictive models of complex systems.</p>
 <p>In this case we wish to find values for a small number of parameters that cause a model to replicate a measured response. One common measure of fit is the sum of sum of squares of residual difference between the model and data. For residuals modeled as independent and identically distributed random variables from a Gaussian distribution, minimizing the sum of squares has a strong theoretical foundation. So strong, in fact, the term “least squares” has become synonomous with model fitting and regression.</p>
@@ -1105,12 +1123,12 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <li><p>How much of difference does it make it estimated model parameters?</p></li>
 </ol>
 </div>
-</div>
-</div>
-<div class="section" id="fourth-order-multi-input-multi-output-model">
+</section>
+</section>
+<section id="fourth-order-multi-input-multi-output-model">
 <h2><span class="section-number">2.5.3. </span>Fourth-Order Multi-Input Multi-Output Model<a class="headerlink" href="#fourth-order-multi-input-multi-output-model" title="Permalink to this headline">¶</a></h2>
 <p>The next step in the evolution of our model is to incorporate the second heater/sensor assembly. Even with only heat applied to</p>
-<div class="section" id="model-derivation">
+<section id="model-derivation">
 <h3><span class="section-number">2.5.3.1. </span>Model derivation<a class="headerlink" href="#model-derivation" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1129,8 +1147,8 @@ T_1 &amp; = T_{S,1} \\
 T_2 &amp; = T_{S,2}
 \end{align}
 \end{split}\]</div>
-</div>
-<div class="section" id="standard-form">
+</section>
+<section id="standard-form">
 <h3><span class="section-number">2.5.3.2. </span>Standard form<a class="headerlink" href="#standard-form" title="Permalink to this headline">¶</a></h3>
 <p>Normalize the derivatives to get in proper form for <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>.</p>
 <div class="math notranslate nohighlight">
@@ -1240,9 +1258,9 @@ T_2 &amp; = T_{S,2}
 <img alt="../_images/02.05-Second-Order_13_2.png" src="../_images/02.05-Second-Order_13_2.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
