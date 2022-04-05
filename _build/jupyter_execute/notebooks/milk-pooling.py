@@ -102,7 +102,7 @@ display(remote_suppliers)
 # 
 # where the notation $(l,c)\ \in\ L\times C$ indicates a summation over the cross-product of two sets. A useful interpretation is that $(l,c)\ \in\ L\times C$ describes all ways of delivering milk from $l$ to $c$. Each term $(\text{price}_c - \text{cost}_l)$ is then the profit earned by delivering one unit of milk from $l\in L$ to $c\in C$.
 # 
-# The amount of milk delivered to each customer $c\in C$ can not exceed the demand.
+# The amount of milk delivered to each customer $c\in C$ can not exceed customer demand.
 # 
 # $$
 # \begin{align*}
@@ -231,8 +231,8 @@ display(X)
 # 
 # $$
 # \begin{align*}
-# \text{Profit} & = \sum_{l,c} (\text{price}_c - \text{cost}_l) x_{l,c}
-# + \sum_{c} \text{price}_c y_{c} - \sum_{r} \text{cost}_r z_{r}
+# \text{Profit} & = \sum_{(l,c)\ \in\ L \times C} (\text{price}_c - \text{cost}_l) x_{l,c}
+# + \sum_{c\in C} \text{price}_c y_{c} - \sum_{r\in R} \text{cost}_r z_{r}
 # \end{align*}
 # $$
 # 
@@ -252,11 +252,11 @@ display(X)
 # \end{align*}
 # $$
 # 
-# The milk fat composition of the pool, $f$, is given by
+# The milk fat composition of the pool, $f$, is given by averaging contributions from the remote farms.
 # 
 # $$
 # \begin{align*}
-# \sum_{l}\text{conc}_{l} z_{l}  & = \underbrace{f \sum_{c} y_{c}}_{\text{bilinear}}
+# \sum_{r\in R}\text{conc}_{r} z_{r}  & = \underbrace{f \sum_{c\in C} y_{c}}_{\text{bilinear}}
 # \end{align*}
 # $$
 # 
@@ -264,7 +264,7 @@ display(X)
 # 
 # $$
 # \begin{align*}
-# \underbrace{f y_{c}}_{\text{bilinear}}  + \sum_{l,c} x_{l,c} \text{conc}_{l} 
+# \underbrace{f y_{c}}_{\text{bilinear}}  + \sum_{(l,c)\ \in\ L \times C} x_{l,c} \text{conc}_{l} 
 # & \geq \text{conc}_{c} (\sum_{l\in L} x_{l, c} + y_{c})
 # & \forall c \in C
 # \end{align*}

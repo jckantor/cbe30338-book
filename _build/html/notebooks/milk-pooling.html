@@ -1046,7 +1046,7 @@ const thebe_selector_output = ".output, .cell_output"
 \end{align*}
 \]</div>
 <p>where the notation <span class="math notranslate nohighlight">\((l,c)\ \in\ L\times C\)</span> indicates a summation over the cross-product of two sets. A useful interpretation is that <span class="math notranslate nohighlight">\((l,c)\ \in\ L\times C\)</span> describes all ways of delivering milk from <span class="math notranslate nohighlight">\(l\)</span> to <span class="math notranslate nohighlight">\(c\)</span>. Each term <span class="math notranslate nohighlight">\((\text{price}_c - \text{cost}_l)\)</span> is then the profit earned by delivering one unit of milk from <span class="math notranslate nohighlight">\(l\in L\)</span> to <span class="math notranslate nohighlight">\(c\in C\)</span>.</p>
-<p>The amount of milk delivered to each customer <span class="math notranslate nohighlight">\(c\in C\)</span> can not exceed the demand.</p>
+<p>The amount of milk delivered to each customer <span class="math notranslate nohighlight">\(c\in C\)</span> can not exceed customer demand.</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
@@ -1303,8 +1303,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-\text{Profit} &amp; = \sum_{l,c} (\text{price}_c - \text{cost}_l) x_{l,c}
-+ \sum_{c} \text{price}_c y_{c} - \sum_{r} \text{cost}_r z_{r}
+\text{Profit} &amp; = \sum_{(l,c)\ \in\ L \times C} (\text{price}_c - \text{cost}_l) x_{l,c}
++ \sum_{c\in C} \text{price}_c y_{c} - \sum_{r\in R} \text{cost}_r z_{r}
 \end{align*}
 \]</div>
 <p>where additional terms are included for the cost of raw milk included in the pool, and customer revenue earned from use of the pool. The product delivered to each customer can not exceed demand.</p>
@@ -1321,18 +1321,18 @@ const thebe_selector_output = ".output, .cell_output"
 \sum_{r\in R}z_{r} &amp; = \sum_{c\in C} y_{c} \\
 \end{align*}
 \end{split}\]</div>
-<p>The milk fat composition of the pool, <span class="math notranslate nohighlight">\(f\)</span>, is given by</p>
+<p>The milk fat composition of the pool, <span class="math notranslate nohighlight">\(f\)</span>, is given by averaging contributions from the remote farms.</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-\sum_{l}\text{conc}_{l} z_{l}  &amp; = \underbrace{f \sum_{c} y_{c}}_{\text{bilinear}}
+\sum_{r\in R}\text{conc}_{r} z_{r}  &amp; = \underbrace{f \sum_{c\in C} y_{c}}_{\text{bilinear}}
 \end{align*}
 \]</div>
 <p>Finally, the minimum milk fat required by each customer <span class="math notranslate nohighlight">\(c\in C\)</span> satisfies a blending constraint.</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-\underbrace{f y_{c}}_{\text{bilinear}}  + \sum_{l,c} x_{l,c} \text{conc}_{l} 
+\underbrace{f y_{c}}_{\text{bilinear}}  + \sum_{(l,c)\ \in\ L \times C} x_{l,c} \text{conc}_{l} 
 &amp; \geq \text{conc}_{c} (\sum_{l\in L} x_{l, c} + y_{c})
 &amp; \forall c \in C
 \end{align*}
