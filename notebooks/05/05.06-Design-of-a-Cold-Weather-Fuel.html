@@ -362,6 +362,11 @@ const thebe_selector_output = ".output, .cell_output"
      5.9. Adding Logical Decisions to our Models
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../milk-pooling.html">
+     5.10. Pooling and Blending
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -823,8 +828,8 @@ const thebe_selector_output = ".output, .cell_output"
 <section id="data">
 <h2><span class="section-number">5.6.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>The following data was collected for potential fuels commonly available at hardware and home improvement stores. The data consists of price ($/gal.) and parameters to predict vapor pressure using the Antoine equation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ffcda38a-b33f-4d3b-a1c0-c4038521f7eb">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-ffcda38a-b33f-4d3b-a1c0-c4038521f7eb" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ec1739e8-6ac0-415a-8192-e8cde0faa825">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-ec1739e8-6ac0-415a-8192-e8cde0faa825" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \log_{10}P^{vap}_{s}(T) &amp; = A_s - \frac{B_s}{T + C_s}
 \end{align}\]</div>
 <p>where the subscript <span class="math notranslate nohighlight">\(s\)</span> refers to species, temperature <span class="math notranslate nohighlight">\(T\)</span> is in units of degrees Celcius, and pressure <span class="math notranslate nohighlight">\(P\)</span> is in units of mmHg. The additional information for molecular weight and specific gravity will be needed to present the final results in volume fraction.</p>
@@ -903,19 +908,19 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">5.6.4. </span>Optimization Model<a class="headerlink" href="#optimization-model" title="Permalink to this headline">¶</a></h2>
 <p>The first optimization model is to create a mixture that maximizes the vapor pressure at -10°C while having a vapor pressure less than or equal to denatured alcohol at 30°C and above.</p>
 <p>The decision variables in the optimization model correspond to <span class="math notranslate nohighlight">\(x_s\)</span>, the mole fraction of each species <span class="math notranslate nohighlight">\(s \in S\)</span> from the set of available species <span class="math notranslate nohighlight">\(S\)</span>. By definition, the mole fractions must satisfy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-38a7cc60-d427-4a85-b14c-5d09c4c30d00">
-<span class="eqno">(5.7)<a class="headerlink" href="#equation-38a7cc60-d427-4a85-b14c-5d09c4c30d00" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-26bed3ae-89b6-4b2e-9c75-046f09ecfcfb">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-26bed3ae-89b6-4b2e-9c75-046f09ecfcfb" title="Permalink to this equation">¶</a></span>\[\begin{align}
 x_s &amp; \geq 0 &amp; \forall s\in S \\
 \sum_{s\in S} x_s &amp; = 1
 \end{align}\]</div>
 <p>The objective is to maximize the vapor pressure at low temperatures, say -10°C, while maintaing a vapor pressure less than or equal to denatured alcohol at 30°C. Using Raoult’s law for ideal mixtures,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-35c82c35-dad4-4521-8dd9-4c66f2065181">
-<span class="eqno">(5.8)<a class="headerlink" href="#equation-35c82c35-dad4-4521-8dd9-4c66f2065181" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1e86d5d2-e35a-4b68-961c-b12225bee585">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-1e86d5d2-e35a-4b68-961c-b12225bee585" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \max_{x_s} \sum_{s\in S} x_s P^{vap}_s(-10°C) \\
 \end{align}\]</div>
 <p>subject to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7aaf6f32-395a-4811-a162-25d204c606a8">
-<span class="eqno">(5.9)<a class="headerlink" href="#equation-7aaf6f32-395a-4811-a162-25d204c606a8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4196e5bd-fdfd-48e2-b577-3839f64ced7c">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-4196e5bd-fdfd-48e2-b577-3839f64ced7c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \sum_{s\in S} x_s P^{vap}_s(30°C) &amp; \leq P^{vap}_{denatured\ alcohol}(30°C) \\
 \end{align}\]</div>
 <p>This optimization model is implemented in Pyomo in the following cell.</p>
