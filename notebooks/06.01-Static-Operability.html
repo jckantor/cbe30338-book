@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.1. Static Operability &#8212; CBE 30338 Chemical Process Control</title>
+    <title>6.2. Static Operability &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.2. Simulation and Open-Loop Optimal Control" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html" />
-    <link rel="prev" title="6. Predictive Control" href="06.00-Predictive-Control.html" />
+    <link rel="next" title="6.3. Simulation and Open-Loop Optimal Control" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html" />
+    <link rel="prev" title="6.1. Simulation and Optimal Control in Pharmacokinetics" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -379,29 +379,34 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.1. Static Operability
+     6.2. Static Operability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
-     6.2. Simulation and Open-Loop Optimal Control
+     6.3. Simulation and Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.03-Predictive-Control.html">
-     6.3. Predictive Control
+     6.4. Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.04-Implementing-Predictive-Control.html">
-     6.4. Implementing Predictive Control
+     6.5. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.05-Quiz-Review.html">
-     6.5. Quiz Review for Chapters 5 and 6
+     6.6. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
@@ -417,7 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="06.01a-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
@@ -742,66 +747,66 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space-model">
-   6.1.1. State Space Model
+   6.2.1. State Space Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state-operability">
-   6.1.2. Steady State Operability
+   6.2.2. Steady State Operability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state-model">
-   6.1.3. Steady State Model
+   6.2.3. Steady State Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-input-constraints">
-     6.1.3.1. Steady-State input constraints
+     6.2.3.1. Steady-State input constraints
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-output-constraints">
-     6.1.3.2. Steady-State output constraints
+     6.2.3.2. Steady-State output constraints
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-setpoint-targets-or-ranges">
-     6.1.3.3. Steady-State setpoint targets or ranges
+     6.2.3.3. Steady-State setpoint targets or ranges
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cvxpy-solution">
-   6.1.4. CVXPY Solution
+   6.2.4. CVXPY Solution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#imports">
-     6.1.4.1. Imports
+     6.2.4.1. Imports
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-parameters">
-     6.1.4.2. Model Parameters
+     6.2.4.2. Model Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cvxpy-model">
-     6.1.4.3. CVXPY Model
+     6.2.4.3. CVXPY Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab-assigment-7">
-   6.1.5. Lab Assigment 7
+   6.2.5. Lab Assigment 7
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     6.1.5.1. Exercise 1.
+     6.2.5.1. Exercise 1.
     </a>
    </li>
   </ul>
@@ -828,66 +833,66 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#state-space-model">
-   6.1.1. State Space Model
+   6.2.1. State Space Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state-operability">
-   6.1.2. Steady State Operability
+   6.2.2. Steady State Operability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#steady-state-model">
-   6.1.3. Steady State Model
+   6.2.3. Steady State Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-input-constraints">
-     6.1.3.1. Steady-State input constraints
+     6.2.3.1. Steady-State input constraints
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-output-constraints">
-     6.1.3.2. Steady-State output constraints
+     6.2.3.2. Steady-State output constraints
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steady-state-setpoint-targets-or-ranges">
-     6.1.3.3. Steady-State setpoint targets or ranges
+     6.2.3.3. Steady-State setpoint targets or ranges
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cvxpy-solution">
-   6.1.4. CVXPY Solution
+   6.2.4. CVXPY Solution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#imports">
-     6.1.4.1. Imports
+     6.2.4.1. Imports
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-parameters">
-     6.1.4.2. Model Parameters
+     6.2.4.2. Model Parameters
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cvxpy-model">
-     6.1.4.3. CVXPY Model
+     6.2.4.3. CVXPY Model
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab-assigment-7">
-   6.1.5. Lab Assigment 7
+   6.2.5. Lab Assigment 7
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1">
-     6.1.5.1. Exercise 1.
+     6.2.5.1. Exercise 1.
     </a>
    </li>
   </ul>
@@ -902,10 +907,10 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="static-operability">
-<h1><span class="section-number">6.1. </span>Static Operability<a class="headerlink" href="#static-operability" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.2. </span>Static Operability<a class="headerlink" href="#static-operability" title="Permalink to this headline">¶</a></h1>
 <p><strong>Static operability</strong> refers to the ability to operate a system under steady-state conditions. We are primarily interested in determining values for the manipulable inputs that acheive a desired process target, subject to all relevant operating constraints.</p>
 <section id="state-space-model">
-<h2><span class="section-number">6.1.1. </span>State Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.1. </span>State Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The state-space model for the Temperature Control Laboratory is given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -946,10 +951,10 @@ y &amp; = C x
 \end{split}\]</div>
 </section>
 <section id="steady-state-operability">
-<h2><span class="section-number">6.1.2. </span>Steady State Operability<a class="headerlink" href="#steady-state-operability" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.2. </span>Steady State Operability<a class="headerlink" href="#steady-state-operability" title="Permalink to this headline">¶</a></h2>
 </section>
 <section id="steady-state-model">
-<h2><span class="section-number">6.1.3. </span>Steady State Model<a class="headerlink" href="#steady-state-model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.3. </span>Steady State Model<a class="headerlink" href="#steady-state-model" title="Permalink to this headline">¶</a></h2>
 <p>At steady-state our becomes</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -960,7 +965,7 @@ y &amp; = C x
 \end{split}\]</div>
 <p>where the overbar <span class="math notranslate nohighlight">\(\bar{u}\)</span>, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, and <span class="math notranslate nohighlight">\(\bar{y}\)</span> denote the steady-state value of <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(y\)</span>, respectively. We assume <span class="math notranslate nohighlight">\(\bar{d}\)</span> is known.</p>
 <section id="steady-state-input-constraints">
-<h3><span class="section-number">6.1.3.1. </span>Steady-State input constraints<a class="headerlink" href="#steady-state-input-constraints" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.3.1. </span>Steady-State input constraints<a class="headerlink" href="#steady-state-input-constraints" title="Permalink to this headline">¶</a></h3>
 <p>The constraints on <span class="math notranslate nohighlight">\(\bar{u}\)</span> are given by upper and lower bounds</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -972,7 +977,7 @@ y &amp; = C x
 <p>when the values of <span class="math notranslate nohighlight">\(u_1\)</span> and <span class="math notranslate nohighlight">\(u_2\)</span> correspond to percentage of maximum power.</p>
 </section>
 <section id="steady-state-output-constraints">
-<h3><span class="section-number">6.1.3.2. </span>Steady-State output constraints<a class="headerlink" href="#steady-state-output-constraints" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.3.2. </span>Steady-State output constraints<a class="headerlink" href="#steady-state-output-constraints" title="Permalink to this headline">¶</a></h3>
 <p>We will assume there are upper limits for each of the temperature outputs</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -984,7 +989,7 @@ y &amp; = C x
 <p>when the values of <span class="math notranslate nohighlight">\(u_1\)</span> and <span class="math notranslate nohighlight">\(u_2\)</span> correspond to percentage of maximum power.</p>
 </section>
 <section id="steady-state-setpoint-targets-or-ranges">
-<h3><span class="section-number">6.1.3.3. </span>Steady-State setpoint targets or ranges<a class="headerlink" href="#steady-state-setpoint-targets-or-ranges" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.3.3. </span>Steady-State setpoint targets or ranges<a class="headerlink" href="#steady-state-setpoint-targets-or-ranges" title="Permalink to this headline">¶</a></h3>
 <p>The purpose of control is to find inputs <span class="math notranslate nohighlight">\(\bar{u}_1\)</span> and <span class="math notranslate nohighlight">\(\bar{u}_2\)</span> that cause the outputs to take on desired values. Those values could be specified as specific setpoints <span class="math notranslate nohighlight">\(\bar{r}_1^{SP}\)</span> and <span class="math notranslate nohighlight">\(\bar{r}_2^{SP}\)</span> in the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1004,9 +1009,9 @@ y &amp; = C x
 </section>
 </section>
 <section id="cvxpy-solution">
-<h2><span class="section-number">6.1.4. </span>CVXPY Solution<a class="headerlink" href="#cvxpy-solution" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.4. </span>CVXPY Solution<a class="headerlink" href="#cvxpy-solution" title="Permalink to this headline">¶</a></h2>
 <section id="imports">
-<h3><span class="section-number">6.1.4.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.4.1. </span>Imports<a class="headerlink" href="#imports" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1017,7 +1022,7 @@ y &amp; = C x
 </div>
 </section>
 <section id="model-parameters">
-<h3><span class="section-number">6.1.4.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.4.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># parameter estimates.</span>
@@ -1053,7 +1058,7 @@ y &amp; = C x
 </div>
 </section>
 <section id="cvxpy-model">
-<h3><span class="section-number">6.1.4.3. </span>CVXPY Model<a class="headerlink" href="#cvxpy-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.4.3. </span>CVXPY Model<a class="headerlink" href="#cvxpy-model" title="Permalink to this headline">¶</a></h3>
 <p>The following cell implements some, but not all, elements of the steady state analysis as a CVXPY optimization model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,9 +1116,9 @@ y = [66.67521368 39.32478634]
 </section>
 </section>
 <section id="lab-assigment-7">
-<h2><span class="section-number">6.1.5. </span>Lab Assigment 7<a class="headerlink" href="#lab-assigment-7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2.5. </span>Lab Assigment 7<a class="headerlink" href="#lab-assigment-7" title="Permalink to this headline">¶</a></h2>
 <section id="exercise-1">
-<h3><span class="section-number">6.1.5.1. </span>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2.5.1. </span>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>In the cells below, cut and paste the parameter values for matriix coefficients <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B_d\)</span>, <span class="math notranslate nohighlight">\(B_u\)</span> and <span class="math notranslate nohighlight">\(C\)</span> to match those you previously identified for your copy of the Temperature Control Lab.</p></li>
 <li><p>Using the CVXPY outline provided above, write a Python function named <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> that accepts an estimate of <span class="math notranslate nohighlight">\(T_{amb}\)</span>, and setpoints for <span class="math notranslate nohighlight">\(T1\)</span> and <span class="math notranslate nohighlight">\(T2\)</span>, and returns values for inputs <span class="math notranslate nohighlight">\(U1\)</span> and <span class="math notranslate nohighlight">\(U2\)</span>. The function should constrain inputs U1 and U2 to values between 0 and 100%, constrain all temperatures to values no greater than 60 deg C. Use the the power settings required to set <span class="math notranslate nohighlight">\(T1 = 45\)</span> and <span class="math notranslate nohighlight">\(T2 = 40\)</span>. Then create a simple event loop, and test these values on your hardware. How close was your result to the predicted value?</p></li>
@@ -1148,17 +1153,17 @@ y = [66.67521368 39.32478634]
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="06.00-Predictive-Control.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>Predictive Control</p>
+            <p class="prev-next-title"><span class="section-number">6.1. </span>Simulation and Optimal Control in Pharmacokinetics</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.2. </span>Simulation and Open-Loop Optimal Control</p>
+        <p class="prev-next-title"><span class="section-number">6.3. </span>Simulation and Open-Loop Optimal Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

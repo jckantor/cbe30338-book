@@ -380,28 +380,33 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="06.01-Static-Operability.html">
-     6.1. Static Operability
+     6.2. Static Operability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
-     6.2. Simulation and Open-Loop Optimal Control
+     6.3. Simulation and Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.03-Predictive-Control.html">
-     6.3. Predictive Control
+     6.4. Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.04-Implementing-Predictive-Control.html">
-     6.4. Implementing Predictive Control
+     6.5. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.05-Quiz-Review.html">
-     6.5. Quiz Review for Chapters 5 and 6
+     6.6. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
@@ -417,7 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="06.01a-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
@@ -1057,7 +1062,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}
-\sum_{l,c} \text{conc}_{l} x_{l,c} &amp; \geq \text{conc}_{c} \sum_{l\in L} x_{l, c} &amp; \forall c \in C
+\sum_{(l,c)\ \in\ L \times C} \text{conc}_{l} x_{l,c} &amp; \geq \text{conc}_{c} \sum_{l\in L} x_{l, c} &amp; \forall c \in C
 \end{align*}
 \]</div>
 <p>This is a standard linear blending problem.</p>
@@ -1297,8 +1302,8 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">5.10.5. </span>Option 3. Pool delivery from remote farms<a class="headerlink" href="#option-3-pool-delivery-from-remote-farms" title="Permalink to this headline">¶</a></h2>
 <p>Analysis of the first two options shows there is significant additional profit to be earned by purchasing raw milk from the remote farms. But the option requires acquiring and operating an additional truck to keep the materials separate for later blending. Blending at the remote location is also not an option because that plan, too, would require separate transport.</p>
 <p>The natural question is whether the one existing truck could transport a pool of raw milk from remote farms C and D that could be blended with raw milk from local farms A and B to meet customer requirements. The profit potential may be reduced due to pooling, but it may still be a better option than adding additional operating expense.</p>
-<p>There are a number of formulations of this problem. This analysis will use a version the “p-parameterization” where the composition of the pool is a decision variable. Here that variable will be called <span class="math notranslate nohighlight">\(f\)</span>.</p>
-<p>Other decision variables are also needed. Variable <span class="math notranslate nohighlight">\(y_c\)</span> is the amount of the pool used in the blend delivered to customer <span class="math notranslate nohighlight">\(c\in C\)</span>. Variable <span class="math notranslate nohighlight">\(z_r\)</span> is the amount of raw milk purchased from remote farm <span class="math notranslate nohighlight">\(r\)</span> and included in the pool.</p>
+<p>There are a number of formulations of this problem. This analysis will use a version of the “p-parameterization” where composition of the pool is a decision variable. Here that variable will be called <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Other decision variables are also needed. Decision variables <span class="math notranslate nohighlight">\(y_c\)</span> refer to the amount of the pool used in the blend delivered to customer <span class="math notranslate nohighlight">\(c\in C\)</span>. Variables <span class="math notranslate nohighlight">\(z_r\)</span> ar the amount of raw milk purchased from remote farm <span class="math notranslate nohighlight">\(r\)</span> and included in the pool.</p>
 <p>Again, the objective is to maximize profit</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1307,7 +1312,8 @@ const thebe_selector_output = ".output, .cell_output"
 + \sum_{c\in C} \text{price}_c y_{c} - \sum_{r\in R} \text{cost}_r z_{r}
 \end{align*}
 \]</div>
-<p>where additional terms are included for the cost of raw milk included in the pool, and customer revenue earned from use of the pool. The product delivered to each customer can not exceed demand.</p>
+<p>where additional terms are included for the cost of raw milk included in the pool, and customer revenue earned from use of the pool.</p>
+<p>The product delivered to each customer can not exceed customer demand.</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{align*}

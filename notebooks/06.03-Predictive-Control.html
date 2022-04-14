@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.3. Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
+    <title>6.5. Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.4. Implementing Predictive Control" href="06.04-Implementing-Predictive-Control.html" />
-    <link rel="prev" title="6.2. Simulation and Open-Loop Optimal Control" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html" />
+    <link rel="next" title="6.6. Implementing Predictive Control" href="06.04-Implementing-Predictive-Control.html" />
+    <link rel="prev" title="6.4. Open-Loop Optimal Control" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -380,28 +380,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="06.01-Static-Operability.html">
-     6.1. Static Operability
+     6.2. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control-Class.html">
+     6.3. Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
-     6.2. Simulation and Open-Loop Optimal Control
+     6.4. Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.3. Predictive Control
+     6.5. Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.04-Implementing-Predictive-Control.html">
-     6.4. Implementing Predictive Control
+     6.6. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.05-Quiz-Review.html">
-     6.5. Quiz Review for Chapters 5 and 6
+     6.7. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
@@ -417,7 +427,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="06.01a-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
@@ -742,27 +752,27 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
-   6.3.1. Model
+   6.5.1. Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedforward-optimal-control">
-   6.3.2. Feedforward Optimal Control
+   6.5.2. Feedforward Optimal Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions-for-predictive-control">
-   6.3.3. Assumptions for Predictive Control
+   6.5.3. Assumptions for Predictive Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tclab-event-loop">
-   6.3.4. TCLab Event Loop
+   6.5.4. TCLab Event Loop
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-need-our-predictive-controller-to-do">
-   6.3.5. What we need our predictive controller to do …
+   6.5.5. What we need our predictive controller to do …
   </a>
  </li>
 </ul>
@@ -787,27 +797,27 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
-   6.3.1. Model
+   6.5.1. Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedforward-optimal-control">
-   6.3.2. Feedforward Optimal Control
+   6.5.2. Feedforward Optimal Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions-for-predictive-control">
-   6.3.3. Assumptions for Predictive Control
+   6.5.3. Assumptions for Predictive Control
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tclab-event-loop">
-   6.3.4. TCLab Event Loop
+   6.5.4. TCLab Event Loop
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-we-need-our-predictive-controller-to-do">
-   6.3.5. What we need our predictive controller to do …
+   6.5.5. What we need our predictive controller to do …
   </a>
  </li>
 </ul>
@@ -820,9 +830,9 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="predictive-control">
-<h1><span class="section-number">6.3. </span>Predictive Control<a class="headerlink" href="#predictive-control" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.5. </span>Predictive Control<a class="headerlink" href="#predictive-control" title="Permalink to this headline">¶</a></h1>
 <section id="model">
-<h2><span class="section-number">6.3.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>We will use the two-state model for a single heater/sensor assembly for the calculations that follow.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -859,7 +869,7 @@ B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
 C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </section>
 <section id="feedforward-optimal-control">
-<h2><span class="section-number">6.3.2. </span>Feedforward Optimal Control<a class="headerlink" href="#feedforward-optimal-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.2. </span>Feedforward Optimal Control<a class="headerlink" href="#feedforward-optimal-control" title="Permalink to this headline">¶</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -983,14 +993,14 @@ T_S(t_0) &amp; = T_{amb}
 </div>
 </section>
 <section id="assumptions-for-predictive-control">
-<h2><span class="section-number">6.3.3. </span>Assumptions for Predictive Control<a class="headerlink" href="#assumptions-for-predictive-control" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.3. </span>Assumptions for Predictive Control<a class="headerlink" href="#assumptions-for-predictive-control" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Future values of the setpoint are equal to the current setpoint.</p></li>
 <li><p>Future values of the disturbance are equal to the current setpoint.</p></li>
 </ul>
 </section>
 <section id="tclab-event-loop">
-<h2><span class="section-number">6.3.4. </span>TCLab Event Loop<a class="headerlink" href="#tclab-event-loop" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.4. </span>TCLab Event Loop<a class="headerlink" href="#tclab-event-loop" title="Permalink to this headline">¶</a></h2>
 <p>Borrowing from notebook 4.6.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1078,7 +1088,7 @@ T_S(t_0) &amp; = T_{amb}
 </div>
 </section>
 <section id="what-we-need-our-predictive-controller-to-do">
-<h2><span class="section-number">6.3.5. </span>What we need our predictive controller to do …<a class="headerlink" href="#what-we-need-our-predictive-controller-to-do" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5.5. </span>What we need our predictive controller to do …<a class="headerlink" href="#what-we-need-our-predictive-controller-to-do" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Compute given current values of Th, Ts, d, and SP</p></li>
 <li><p>Compute control policy</p></li>
@@ -1197,13 +1207,13 @@ T_S(t_0) &amp; = T_{amb}
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6.2. </span>Simulation and Open-Loop Optimal Control</p>
+            <p class="prev-next-title"><span class="section-number">6.4. </span>Open-Loop Optimal Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06.04-Implementing-Predictive-Control.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.4. </span>Implementing Predictive Control</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>Implementing Predictive Control</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -380,28 +380,33 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../06.01-Static-Operability.html">
-     6.1. Static Operability
+     6.2. Static Operability
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06.02-Simulation-and-Open-Loop-Optimal-Control.html">
-     6.2. Simulation and Open-Loop Optimal Control
+     6.3. Simulation and Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06.03-Predictive-Control.html">
-     6.3. Predictive Control
+     6.4. Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06.04-Implementing-Predictive-Control.html">
-     6.4. Implementing Predictive Control
+     6.5. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../06.05-Quiz-Review.html">
-     6.5. Quiz Review for Chapters 5 and 6
+     6.6. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
@@ -417,7 +422,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="../06.01a-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
@@ -1004,14 +1009,14 @@ const thebe_selector_output = ".output, .cell_output"
 <section id="heater-sensor-model">
 <h2><span class="section-number">4.3.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this headline">¶</a></h2>
 <p>In chapter two we explored various models for describing the response of the heater/sensor assemblies to heater inputs. For heater/sensor assembly 1 we developed the following model</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61b210a1-5742-4a37-988a-05ef02682713">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-61b210a1-5742-4a37-988a-05ef02682713" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-571137e7-2add-48b6-b1de-883f28ee4568">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-571137e7-2add-48b6-b1de-883f28ee4568" title="Permalink to this equation">¶</a></span>\[\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, <span class="math notranslate nohighlight">\(U_a\)</span> is the heat transfer coefficient characterizing the exchange of heat with the surroundings, and <span class="math notranslate nohighlight">\(U_b\)</span> is a heat transfer coefficient between the heater and sensor.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-befe8245-5f62-46f6-b9ce-1e36e2d3d1bd">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-befe8245-5f62-46f6-b9ce-1e36e2d3d1bd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-363e1c0f-1384-42a1-9050-3769b6447ded">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-363e1c0f-1384-42a1-9050-3769b6447ded" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
@@ -1022,8 +1027,8 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 <section id="converting-to-a-state-space-model">
 <h2><span class="section-number">4.3.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this headline">¶</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf5fedf1-f004-4522-a7aa-bd8ee7a13acd">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-bf5fedf1-f004-4522-a7aa-bd8ee7a13acd" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-969bc821-bb85-4d97-bcbf-6c6d4d1855ec">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-969bc821-bb85-4d97-bcbf-6c6d4d1855ec" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
