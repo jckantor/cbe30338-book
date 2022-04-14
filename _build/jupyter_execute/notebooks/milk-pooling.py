@@ -114,7 +114,7 @@ display(remote_suppliers)
 # 
 # $$
 # \begin{align*}
-# \sum_{l,c} \text{conc}_{l} x_{l,c} & \geq \text{conc}_{c} \sum_{l\in L} x_{l, c} & \forall c \in C
+# \sum_{(l,c)\ \in\ L \times C} \text{conc}_{l} x_{l,c} & \geq \text{conc}_{c} \sum_{l\in L} x_{l, c} & \forall c \in C
 # \end{align*}
 # $$
 # 
@@ -223,9 +223,9 @@ display(X)
 # 
 # The natural question is whether the one existing truck could transport a pool of raw milk from remote farms C and D that could be blended with raw milk from local farms A and B to meet customer requirements. The profit potential may be reduced due to pooling, but it may still be a better option than adding additional operating expense.
 # 
-# There are a number of formulations of this problem. This analysis will use a version the "p-parameterization" where the composition of the pool is a decision variable. Here that variable will be called $f$.
+# There are a number of formulations of this problem. This analysis will use a version of the "p-parameterization" where composition of the pool is a decision variable. Here that variable will be called $f$.
 # 
-# Other decision variables are also needed. Variable $y_c$ is the amount of the pool used in the blend delivered to customer $c\in C$. Variable $z_r$ is the amount of raw milk purchased from remote farm $r$ and included in the pool.
+# Other decision variables are also needed. Decision variables $y_c$ refer to the amount of the pool used in the blend delivered to customer $c\in C$. Variables $z_r$ ar the amount of raw milk purchased from remote farm $r$ and included in the pool.
 # 
 # Again, the objective is to maximize profit
 # 
@@ -236,7 +236,9 @@ display(X)
 # \end{align*}
 # $$
 # 
-# where additional terms are included for the cost of raw milk included in the pool, and customer revenue earned from use of the pool. The product delivered to each customer can not exceed demand.
+# where additional terms are included for the cost of raw milk included in the pool, and customer revenue earned from use of the pool. 
+# 
+# The product delivered to each customer can not exceed customer demand.
 # 
 # $$
 # \begin{align*}

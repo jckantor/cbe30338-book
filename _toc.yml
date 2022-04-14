@@ -69,7 +69,9 @@ parts:
   
     - file: notebooks/06.00-Predictive-Control
       sections:
+      - file: notebooks/07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics
       - file: notebooks/06.01-Static-Operability
+      - file: notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control-Class
       - file: notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control
       - file: notebooks/06.03-Predictive-Control
       - file: notebooks/06.04-Implementing-Predictive-Control
@@ -77,7 +79,7 @@ parts:
 
     - file: notebooks/07.00-Discrete-Event-Systems
       sections:
-      - file: notebooks/07.01-Introduction-to-Simpy
+      - file: notebooks/06.01a-Introduction-to-Simpy
       - file: notebooks/07.02-Agent-Based-Models
       - file: notebooks/07.03-Chemotaxis
       - file: notebooks/07.04-Project-Batch-Chemical-Process

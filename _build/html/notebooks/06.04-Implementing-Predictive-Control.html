@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6.4. Implementing Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
+    <title>6.6. Implementing Predictive Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.5. Quiz Review for Chapters 5 and 6" href="06.05-Quiz-Review.html" />
-    <link rel="prev" title="6.3. Predictive Control" href="06.03-Predictive-Control.html" />
+    <link rel="next" title="6.7. Quiz Review for Chapters 5 and 6" href="06.05-Quiz-Review.html" />
+    <link rel="prev" title="6.5. Predictive Control" href="06.03-Predictive-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -380,28 +380,38 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="06.01-Static-Operability.html">
-     6.1. Static Operability
+     6.2. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control-Class.html">
+     6.3. Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.02-Simulation-and-Open-Loop-Optimal-Control.html">
-     6.2. Simulation and Open-Loop Optimal Control
+     6.4. Open-Loop Optimal Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.03-Predictive-Control.html">
-     6.3. Predictive Control
+     6.5. Predictive Control
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     6.4. Implementing Predictive Control
+     6.6. Implementing Predictive Control
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="06.05-Quiz-Review.html">
-     6.5. Quiz Review for Chapters 5 and 6
+     6.7. Quiz Review for Chapters 5 and 6
     </a>
    </li>
   </ul>
@@ -417,7 +427,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="07.01-Introduction-to-Simpy.html">
+    <a class="reference internal" href="06.01a-Introduction-to-Simpy.html">
      7.1. Introduction to Simpy
     </a>
    </li>
@@ -742,76 +752,76 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
-   6.4.1. Model
+   6.6.1. Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#control-objective">
-   6.4.2. Control Objective
+   6.6.2. Control Objective
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions-need-to-use-optimization-for-real-time-feedback">
-   6.4.3. Assumptions Need to Use Optimization for Real-Time Feedback
+   6.6.3. Assumptions Need to Use Optimization for Real-Time Feedback
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bare-bones-event-loop">
-   6.4.4. Bare Bones Event Loop
+   6.6.4. Bare Bones Event Loop
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#relay-control">
-     6.4.4.1. Relay Control
+     6.6.4.1. Relay Control
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#observer">
-     6.4.4.2. Observer
+     6.6.4.2. Observer
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedforward-optimization">
-   6.4.5. Feedforward Optimization
+   6.6.5. Feedforward Optimization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-predictive-controller">
-     6.4.5.1. A Predictive Controller
+     6.6.5.1. A Predictive Controller
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing-the-predictive-controller">
-   6.4.6. Testing the Predictive Controller
+   6.6.6. Testing the Predictive Controller
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab-assignment-9">
-   6.4.7. Lab Assignment 9
+   6.6.7. Lab Assignment 9
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1-improving-the-predictive-controller">
-     6.4.7.1. Exercise 1. Improving the Predictive Controller
+     6.6.7.1. Exercise 1. Improving the Predictive Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2-predictive-control-of-the-four-state-model">
-     6.4.7.2. Exercise 2. Predictive control of the four state model.
+     6.6.7.2. Exercise 2. Predictive control of the four state model.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3-putting-it-all-together">
-     6.4.7.3. Exercise 3. Putting it all together.
+     6.6.7.3. Exercise 3. Putting it all together.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-4-do-something-nice-for-yourself">
-     6.4.7.4. Exercise 4. Do something nice for yourself.
+     6.6.7.4. Exercise 4. Do something nice for yourself.
     </a>
    </li>
   </ul>
@@ -838,76 +848,76 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#model">
-   6.4.1. Model
+   6.6.1. Model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#control-objective">
-   6.4.2. Control Objective
+   6.6.2. Control Objective
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#assumptions-need-to-use-optimization-for-real-time-feedback">
-   6.4.3. Assumptions Need to Use Optimization for Real-Time Feedback
+   6.6.3. Assumptions Need to Use Optimization for Real-Time Feedback
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bare-bones-event-loop">
-   6.4.4. Bare Bones Event Loop
+   6.6.4. Bare Bones Event Loop
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#relay-control">
-     6.4.4.1. Relay Control
+     6.6.4.1. Relay Control
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#observer">
-     6.4.4.2. Observer
+     6.6.4.2. Observer
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feedforward-optimization">
-   6.4.5. Feedforward Optimization
+   6.6.5. Feedforward Optimization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-predictive-controller">
-     6.4.5.1. A Predictive Controller
+     6.6.5.1. A Predictive Controller
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#testing-the-predictive-controller">
-   6.4.6. Testing the Predictive Controller
+   6.6.6. Testing the Predictive Controller
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lab-assignment-9">
-   6.4.7. Lab Assignment 9
+   6.6.7. Lab Assignment 9
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-1-improving-the-predictive-controller">
-     6.4.7.1. Exercise 1. Improving the Predictive Controller
+     6.6.7.1. Exercise 1. Improving the Predictive Controller
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-2-predictive-control-of-the-four-state-model">
-     6.4.7.2. Exercise 2. Predictive control of the four state model.
+     6.6.7.2. Exercise 2. Predictive control of the four state model.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-3-putting-it-all-together">
-     6.4.7.3. Exercise 3. Putting it all together.
+     6.6.7.3. Exercise 3. Putting it all together.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise-4-do-something-nice-for-yourself">
-     6.4.7.4. Exercise 4. Do something nice for yourself.
+     6.6.7.4. Exercise 4. Do something nice for yourself.
     </a>
    </li>
   </ul>
@@ -922,10 +932,10 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementing-predictive-control">
-<h1><span class="section-number">6.4. </span>Implementing Predictive Control<a class="headerlink" href="#implementing-predictive-control" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6.6. </span>Implementing Predictive Control<a class="headerlink" href="#implementing-predictive-control" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this notebook is to demonstrate an implementation of predictive control.</p>
 <section id="model">
-<h2><span class="section-number">6.4.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>Once agaiin will use the two-state model for a single heater/sensor assembly to demonstrate the key elements of this notebook.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -988,7 +998,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </section>
 <section id="control-objective">
-<h2><span class="section-number">6.4.2. </span>Control Objective<a class="headerlink" href="#control-objective" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.2. </span>Control Objective<a class="headerlink" href="#control-objective" title="Permalink to this headline">¶</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1024,7 +1034,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </div>
 </section>
 <section id="assumptions-need-to-use-optimization-for-real-time-feedback">
-<h2><span class="section-number">6.4.3. </span>Assumptions Need to Use Optimization for Real-Time Feedback<a class="headerlink" href="#assumptions-need-to-use-optimization-for-real-time-feedback" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.3. </span>Assumptions Need to Use Optimization for Real-Time Feedback<a class="headerlink" href="#assumptions-need-to-use-optimization-for-real-time-feedback" title="Permalink to this headline">¶</a></h2>
 <p>Predictive control is a strategy that uses optimization for feedback control. The basic concept is to solve an optimization problem at every time step utilizing all of the information available up to that point in time. <strong>The key assumptions</strong> are:</p>
 <ol class="simple">
 <li><p>The current value of the setpoint will be held constant into the future.</p></li>
@@ -1034,11 +1044,11 @@ T_S(t_0) &amp; = T_{amb}(0)
 <p>Assumptions 1 and 2 are obviously very strong statements about the future. But in the absence of additional information, these assumptions are about the best we can expect.</p>
 </section>
 <section id="bare-bones-event-loop">
-<h2><span class="section-number">6.4.4. </span>Bare Bones Event Loop<a class="headerlink" href="#bare-bones-event-loop" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.4. </span>Bare Bones Event Loop<a class="headerlink" href="#bare-bones-event-loop" title="Permalink to this headline">¶</a></h2>
 <p>Borrowing from notebook 4.6, we start the process of implementing predictive control by starting with an implementation of a simpler strategy (relay control) that includes a state observer. With that framework in place, we will show what modifications are need to implement predictive control.</p>
 <p><em>Note: This code has been cut and pasted from earlier notebooks, but with some edits for brevity and clarity.</em></p>
 <section id="relay-control">
-<h3><span class="section-number">6.4.4.1. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.4.1. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">¶</a></h3>
 <p>The relay controller is an instance of a Python generator that is sent values of the setpoint and process variable, and yields values for a manipulated variable. Each instance of the relay controller is initialized with minimum and maximum values of the manipulated variable. Later we will be replacing the relay control with a predictive control.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,7 +1066,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </div>
 </section>
 <section id="observer">
-<h3><span class="section-number">6.4.4.2. </span>Observer<a class="headerlink" href="#observer" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.4.2. </span>Observer<a class="headerlink" href="#observer" title="Permalink to this headline">¶</a></h3>
 <p>Given current values of the manipulated input, the sensor measurement, and estimated disturbance sent from the event loop, the observer updates the state estimate</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1122,7 +1132,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </section>
 </section>
 <section id="feedforward-optimization">
-<h2><span class="section-number">6.4.5. </span>Feedforward Optimization<a class="headerlink" href="#feedforward-optimization" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.5. </span>Feedforward Optimization<a class="headerlink" href="#feedforward-optimization" title="Permalink to this headline">¶</a></h2>
 <p>As a preliminary step, we first create a CVXPY model that that computes a feedforward control policy given values for the setpoint <span class="math notranslate nohighlight">\(SP\)</span>, disturbance <span class="math notranslate nohighlight">\(T_{amb}\)</span>, and the current state. This code was cut-and-pasted from a previous notebook, with modifications to use the values <code class="docutils literal notranslate"><span class="pre">SP</span></code> and <code class="docutils literal notranslate"><span class="pre">Tamb</span></code> defined in this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1171,7 +1181,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </div>
 </div>
 <section id="a-predictive-controller">
-<h3><span class="section-number">6.4.5.1. </span>A Predictive Controller<a class="headerlink" href="#a-predictive-controller" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.5.1. </span>A Predictive Controller<a class="headerlink" href="#a-predictive-controller" title="Permalink to this headline">¶</a></h3>
 <p>The next step is to encapsulate the feedforward control computation into a generator that can be run from the event loop each time new information becomes available.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">warm_start</span></code> option tells CVXPY to use results from the prior soluton to update the current solution. Not every solver offers this feature, but when they do it can often lead to a signficant speedup of the computations.</p>
 <div class="cell docutils container">
@@ -1206,7 +1216,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </section>
 </section>
 <section id="testing-the-predictive-controller">
-<h2><span class="section-number">6.4.6. </span>Testing the Predictive Controller<a class="headerlink" href="#testing-the-predictive-controller" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.6. </span>Testing the Predictive Controller<a class="headerlink" href="#testing-the-predictive-controller" title="Permalink to this headline">¶</a></h2>
 <p>Let’s put the predictive controller to work. Note that the speedup factor the simulation has been changed. This is needed to accomodate the far more intensive calculations that are taking place at each time step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1253,9 +1263,9 @@ T_S(t_0) &amp; = T_{amb}(0)
 <p><strong>Study Question:</strong> Compare the closed-loop response of the simulation where the control policy is continually updated to the previous feedforward control calculation. List a few ways they are the similar?  List a few ways they are different.</p>
 <hr></section>
 <section id="lab-assignment-9">
-<h2><span class="section-number">6.4.7. </span>Lab Assignment 9<a class="headerlink" href="#lab-assignment-9" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6.7. </span>Lab Assignment 9<a class="headerlink" href="#lab-assignment-9" title="Permalink to this headline">¶</a></h2>
 <section id="exercise-1-improving-the-predictive-controller">
-<h3><span class="section-number">6.4.7.1. </span>Exercise 1. Improving the Predictive Controller<a class="headerlink" href="#exercise-1-improving-the-predictive-controller" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.7.1. </span>Exercise 1. Improving the Predictive Controller<a class="headerlink" href="#exercise-1-improving-the-predictive-controller" title="Permalink to this headline">¶</a></h3>
 <p>While we appear to have a working controller, there are some problems revealed by the simulation that need to be fixed before attempting to to use this on real hardware. The major issues are:</p>
 <ul class="simple">
 <li><p>The controller is sensitive to minor modeling errors. The control action makes large changes in response to small measurement errors which would not be a good thing for real hardware.</p></li>
@@ -1348,7 +1358,7 @@ T_S(t_0) &amp; = T_{amb}(0)
 </div>
 </section>
 <section id="exercise-2-predictive-control-of-the-four-state-model">
-<h3><span class="section-number">6.4.7.2. </span>Exercise 2. Predictive control of the four state model.<a class="headerlink" href="#exercise-2-predictive-control-of-the-four-state-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.7.2. </span>Exercise 2. Predictive control of the four state model.<a class="headerlink" href="#exercise-2-predictive-control-of-the-four-state-model" title="Permalink to this headline">¶</a></h3>
 <p>Using the results of the first exercise, now modify the your code to accomodate the complete four state model of the TCLab hardware.</p>
 <ol class="simple">
 <li><p>Targeting setpoints of 45 and 35 degrees for the sensor temperatures, test your results in simulation.</p></li>
@@ -1357,11 +1367,11 @@ T_S(t_0) &amp; = T_{amb}(0)
 <p>For this exercise, you only need to show the final simulation result.</p>
 </section>
 <section id="exercise-3-putting-it-all-together">
-<h3><span class="section-number">6.4.7.3. </span>Exercise 3. Putting it all together.<a class="headerlink" href="#exercise-3-putting-it-all-together" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.7.3. </span>Exercise 3. Putting it all together.<a class="headerlink" href="#exercise-3-putting-it-all-together" title="Permalink to this headline">¶</a></h3>
 <p>For the final exercise, apply the results of Exercise 2 to your actual device hardware. Run the experiment for at least 600 seconds. How did you do?</p>
 </section>
 <section id="exercise-4-do-something-nice-for-yourself">
-<h3><span class="section-number">6.4.7.4. </span>Exercise 4. Do something nice for yourself.<a class="headerlink" href="#exercise-4-do-something-nice-for-yourself" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6.7.4. </span>Exercise 4. Do something nice for yourself.<a class="headerlink" href="#exercise-4-do-something-nice-for-yourself" title="Permalink to this headline">¶</a></h3>
 <p>Congratulations on your newly minted expertise! If you got this far, then you have successfully implemented multivariable model predictive control on real hardware. That’s an outstanding accomplishment for any engineer, and gives you the conceptual and practical framework to understand many of the contemporary applications of advanced process control.</p>
 <p>If you want validation, just Google “Model predictive control of” and add a topic of interest to you.</p>
 </section>
@@ -1397,13 +1407,13 @@ T_S(t_0) &amp; = T_{amb}(0)
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6.3. </span>Predictive Control</p>
+            <p class="prev-next-title"><span class="section-number">6.5. </span>Predictive Control</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="06.05-Quiz-Review.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6.5. </span>Quiz Review for Chapters 5 and 6</p>
+        <p class="prev-next-title"><span class="section-number">6.7. </span>Quiz Review for Chapters 5 and 6</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,9 +1,16 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Simulation and Open-Loop Optimal Control
+# # Open-Loop Optimal Control
 # 
 # This notebook demonstrates the use of CVXPY for the simulation and computation of open-loop optimal control. The notebook includes a lab exercise.
+
+# In[92]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 # ## Heater Model
 
@@ -13,11 +20,320 @@
 # 
 # $$
 # \begin{align}
-# C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
-# C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
+# C^H_p\frac{dT_{H}}{dt} & = U_a(T_{amb} - T_{H}) + U_b(T_{S} - T_{H}) + \alpha P u\\
+# C^S_p\frac{dT_{S}}{dt} & = U_b(T_{H} - T_{S}) 
 # \end{align}
 # $$
+
+# In[93]:
+
+
+# parameter estimates.
+alpha = 0.00016       # watts / (units P * percent U1)
+P = 200               # P units
+Ua = 0.050            # heat transfer coefficient from heater to environment
+CpH = 2.2             # heat capacity of the heater (J/deg C)
+CpS = 1.9             # heat capacity of the sensor (J/deg C)
+Ub = 0.021            # heat transfer coefficient from heater to sensor
+Tamb = 21.0           # ambient temperature
+
+
+# ## Simulation
 # 
+# Let's establish a goal of bringing the heater temperature to 60 deg C.  Let's see how well an initial guess at a control strategy will work for us subject to initial conditions
+# 
+# $$
+# \begin{align*}
+# T_H(t_0) & = T_{amb} \\
+# T_S(t_0) & = T_{amb}
+# \end{align*}
+# $$
+
+# In[96]:
+
+
+tf = 200
+u = 50.0
+
+import pyomo.environ as pyo
+import pyomo.dae as dae
+
+m = pyo.ConcreteModel('TCLab Heater/Sensor')
+
+m.t = dae.ContinuousSet(bounds=(0, tf))
+m.Th = pyo.Var(m.t)
+m.Ts = pyo.Var(m.t)
+
+m.dTh = dae.DerivativeVar(m.Th)
+m.dTs = dae.DerivativeVar(m.Ts)
+
+@m.Constraint(m.t)
+def heater1(m, t):
+    return CpH * m.dTh[t] == Ua *(Tamb - m.Th[t]) + Ub*(m.Ts[t] - m.Th[t]) + alpha*P*u
+
+@m.Constraint(m.t)
+def sensor1(m, t):
+    return CpS * m.dTs[t] == Ub *(m.Th[t] - m.Ts[t]) 
+
+m.Th[0].fix(30.0)
+m.Ts[0].fix(30.0)
+
+pyo.TransformationFactory('dae.collocation').apply_to(m, nfe=50, wrt=m.t)
+pyo.SolverFactory('ipopt').solve(m)
+
+fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
+
+ax[0].plot(m.t, [m.Th[t]() for t in m.t], label="Th")
+ax[0].plot(m.t, [m.Ts[t]() for t in m.t], label="Ts")
+ax[0].legend()
+ax[0].set_ylabel("Temperature")
+ax[0].grid()
+
+ax[1].axhline(u, label="Power")
+ax[1].set_xlabel("Time")
+ax[1].set_ylabel("Heater Power")
+ax[1].grid()
+
+
+# ## Exercises
+# 
+# 1. How well did our guess work? Try different guesses and find a value for $u$ that results in a heater temperature close to the target of 60 deg C.
+# 
+# 2. What is the impact of simulation time? Is the value determine in question 1 an answer for the power required for a steady state of 60 deg C.
+
+# ## Control to a Target
+# 
+# 
+# How can we set a target value for $T_h$?
+# 
+# What are the 
+# 
+# * additional decision variable(s)?
+# * what are the additional constraints?
+# * what is the objective?
+# * how to modify the Pyomo model?
+# * how to modify the visualization?
+
+# In[98]:
+
+
+tf = 200
+u = 50.0
+
+# Modify this code to find a u so that Th(T_final) = 60.
+
+import pyomo.environ as pyo
+import pyomo.dae as dae
+
+m = pyo.ConcreteModel('TCLab Heater/Sensor')
+
+m.t = dae.ContinuousSet(bounds=(0, t_final))
+m.Th = pyo.Var(m.t)
+m.Ts = pyo.Var(m.t)
+
+m.dTh = dae.DerivativeVar(m.Th)
+m.dTs = dae.DerivativeVar(m.Ts)
+
+@m.Constraint(m.t)
+def heater1(m, t):
+    return CpH * m.dTh[t] == Ua *(Tamb - m.Th[t]) + Ub*(m.Ts[t] - m.Th[t]) + alpha*P*u
+
+@m.Constraint(m.t)
+def sensor1(m, t):
+    return CpS * m.dTs[t] == Ub *(m.Th[t] - m.Ts[t]) 
+
+m.Th[0].fix(30.0)
+m.Ts[0].fix(30.0)
+
+pyo.TransformationFactory('dae.collocation').apply_to(m, nfe=50, wrt=m.t)
+pyo.SolverFactory('ipopt').solve(m)
+
+fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
+
+ax[0].plot(m.t, [m.Th[t]() for t in m.t], label="Th")
+ax[0].plot(m.t, [m.Ts[t]() for t in m.t], label="Ts")
+ax[0].legend()
+ax[0].set_ylabel("Temperature")
+ax[0].grid()
+
+ax[1].axhline(u, label="Power")
+ax[1].set_xlabel("Time")
+ax[1].set_ylabel("Heater Power")
+ax[1].grid()
+
+
+# ## Optimal Control
+# 
+# Let's consider the whole approach to steady state
+# 
+# $$\min_u \int_{0}^{t_f} \|SP - T_h(t)\|^2 dt$$
+# 
+# Note that `pyomo.dae` has an `Integral` object to help with these situations.
+
+# In[99]:
+
+
+tf = 200
+u = 50.0
+
+# Modify this code to find a u so that Th(T_final) = 60.
+
+import pyomo.environ as pyo
+import pyomo.dae as dae
+
+m = pyo.ConcreteModel('TCLab Heater/Sensor')
+
+m.t = dae.ContinuousSet(bounds=(0, t_final))
+m.Th = pyo.Var(m.t)
+m.Ts = pyo.Var(m.t)
+
+m.dTh = dae.DerivativeVar(m.Th)
+m.dTs = dae.DerivativeVar(m.Ts)
+
+@m.Constraint(m.t)
+def heater1(m, t):
+    return CpH * m.dTh[t] == Ua *(Tamb - m.Th[t]) + Ub*(m.Ts[t] - m.Th[t]) + alpha*P*u
+
+@m.Constraint(m.t)
+def sensor1(m, t):
+    return CpS * m.dTs[t] == Ub *(m.Th[t] - m.Ts[t]) 
+
+m.Th[0].fix(30.0)
+m.Ts[0].fix(30.0)
+
+pyo.TransformationFactory('dae.collocation').apply_to(m, nfe=50, wrt=m.t)
+pyo.SolverFactory('ipopt').solve(m)
+
+fig, ax = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
+
+ax[0].plot(m.t, [m.Th[t]() for t in m.t], label="Th")
+ax[0].plot(m.t, [m.Ts[t]() for t in m.t], label="Ts")
+ax[0].legend()
+ax[0].set_ylabel("Temperature")
+ax[0].grid()
+
+ax[1].axhline(u, label="Power")
+ax[1].set_xlabel("Time")
+ax[1].set_ylabel("Heater Power")
+ax[1].grid()
+
+
+# ## Feedforward Optimal Control
+# 
+# An optimal control policy minimizes the differences
+# 
+# $$
+# \begin{align*}
+# \min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
+# \end{align*}
+# $$
+# 
+# subject to constraints
+# 
+# $$
+# \begin{align*}
+# C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
+# C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
+# \end{align*}
+# $$
+# 
+# initial conditions
+# 
+# $$
+# \begin{align*}
+# T_H(t_0) & = T_{amb} \\
+# T_S(t_0) & = T_{amb}
+# \end{align*}
+# $$
+# 
+# and prior knowledge of $d(t)$.
+
+# In[75]:
+
+
+
+T_final = 500
+import pyomo.environ as pyo
+import pyomo.dae as dae
+
+m = pyo.ConcreteModel('TCLab Heater/Sensor')
+
+m.t = dae.ContinuousSet(bounds=(0, T_final))
+m.Th1 = pyo.Var(m.t)
+m.Ts1 = pyo.Var(m.t)
+m.u1 = pyo.Var(m.t, bounds=(0, 50))
+
+m.dTh1 = dae.DerivativeVar(m.Th1)
+m.dTs1 = dae.DerivativeVar(m.Ts1)
+
+@m.Integral(m.t)
+def ise(m, t):
+    return (m.Th1[t] - 40.0)**2
+
+@m.Constraint(m.t)
+def heater1(m, t):
+    return CpH * m.dTh1[t] == Ua *(Tamb - m.Th1[t]) + Ub*(m.Ts1[t] - m.Th1[t]) + alpha*P1*m.u1[t]
+
+@m.Constraint(m.t)
+def sensor1(m, t):
+    return CpS * m.dTs1[t] == Ub *(m.Th1[t] - m.Ts1[t]) 
+
+m.Th1[0].fix(30.0)
+m.Ts1[0].fix(30.0)
+                           
+@m.Objective(sense=pyo.minimize)
+def objective(m):
+    return m.ise
+
+pyo.TransformationFactory('dae.collocation').apply_to(m, nfe=50, wrt=m.t)
+pyo.SolverFactory('ipopt').solve(m)
+
+fig, ax = plt.subplots(2, 1)
+
+ax[0].plot(m.t, [m.Th1[t]() for t in m.t], label="Th1")
+ax[0].plot(m.t, [m.Ts1[t]() for t in m.t], label="Ts1")
+ax[0].legend()
+ax[0].set_xlabel("Time")
+ax[0].set_ylabel("Temperature")
+ax[0].grid()
+
+ax[1].plot(m.t, [m.u1[t]() for t in m.t], label="U1")
+ax[1].grid()
+
+
+# ### Reference Tractory
+# 
+# The reference trajectory is a sequence of ramp/soak intervals.  Python function `r(t)` uses `numpy.interp` to compute values of the reference trajectory at any point in time.
+
+# In[9]:
+
+
+# time grid
+tf = 1000
+dt = 2
+n = round(tf/dt)
+t_grid = np.linspace(0, 1000, n+1)
+
+# ambient temperature
+Tamb = 21
+
+# setpoint/reference
+def r(t):
+    return np.interp(t, [0, 50, 150, 450, 550], [Tamb, Tamb, 60, 60, 35])
+
+# plot function
+fig, ax = plt.subplots(1, 1, figsize=(10, 3))
+ax.plot(t_grid, r(t_grid), label="setpoint")
+ax.set_title('setpoint')
+ax.set_ylabel('deg C')
+ax.legend()
+ax.grid(True)
+
+
+# ## The Control Problem
+# 
+# For the purposes of this notebook, the control problem is to find a control policy $u(t)$ for the interval $0 \leq t \leq t_f$ which causes the output $y(t)$ to track a desired setpoint or reference tracjectory $r(t)$.
+
 # The model is recast into linear state space form as
 # 
 # $$
@@ -46,14 +362,12 @@
 # B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
 # \qquad
 # C = \begin{bmatrix} 0 & 1 \end{bmatrix}$$
-# 
 
 # ### Parameter Values
 
 # In[35]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 import numpy as np
 import cvxpy as cp
@@ -74,84 +388,11 @@ Bd = np.array([[Ua/CpH], [0]])           # single column
 C = np.array([[0, 1]])                   # single rowe
 
 
-# ## The Control Problem
-# 
-# For the purposes of this notebook, the control problem is to find a control policy $u(t)$ for the interval $0 \leq t \leq t_f$ which causes the output $y(t)$ to track a desired setpoint or reference tracjectory $r(t)$.
-
-# ### Reference Tractory
-# 
-# The reference trajectory is a sequence of ramp/soak intervals.  Python function `r(t)` uses `numpy.interp` to compute values of the reference trajectory at any point in time.
-
-# In[37]:
-
-
-# time grid
-tf = 1000
-dt = 2
-n = round(tf/dt)
-t_grid = np.linspace(0, 1000, n+1)
-
-# ambient temperature
-Tamb = 21
-
-# setpoint/reference
-def r(t):
-    return np.interp(t, [0, 50, 150, 450, 550], [Tamb, Tamb, 60, 60, 35])
-
-# plot function
-fig, ax = plt.subplots(1, 1, figsize=(10, 3))
-ax.plot(t_grid, r(t_grid), label="setpoint")
-ax.set_title('setpoint')
-ax.set_ylabel('deg C')
-ax.legend()
-ax.grid(True)
-
-
 # ### Guessing a Solution
 # 
 # So what should $u(t)$ be?  
 # 
 # The next cell defines process inputs $d(t)$ and $u(t)$. For this disturbance, the model parameters given above, do you think this control policy will cause $y(t)$ to be close to the reference trajectory?
-
-# In[55]:
-
-
-def d(t):
-    return np.interp(t, [0, 300, 400], [Tamb, Tamb, Tamb-5])
-
-def u(t):
-    return np.interp(t, [ 0, 50, 50, 450, 450], [ 0,  0, 80,  80,  25])
-
-fig, ax = plt.subplots(3, 1, sharex=True, figsize=(10, 6))
-ax[0].plot(t, r(t))
-ax[0].set_title('setpoint')
-ax[0].set_ylabel('deg C')
-
-ax[1].plot(t, u(t))
-ax[1].set_title('heat power input')
-ax[1].set_ylabel('% of max power')
-
-ax[2].plot(t, d(t))
-ax[2].set_title('unmeasured disturbance')
-ax[2].set_ylabel('deg C')
-
-for a in ax:
-    a.grid(True)
-plt.tight_layout()
-
-
-# ## Simulation
-# 
-# Let's see how well our initial guess at a control strategy will work for us subject to initial conditions
-# 
-# $$
-# \begin{align*}
-# T_H(t_0) & = T_{amb} \\
-# T_S(t_0) & = T_{amb}
-# \end{align*}
-# $$
-# 
-# and prior specification of inputs $u(t)$ and $d(t)$.
 
 # In[56]:
 
@@ -189,6 +430,33 @@ for a in ax:
 plt.tight_layout()
 
 
+# In[55]:
+
+
+def d(t):
+    return np.interp(t, [0, 300, 400], [Tamb, Tamb, Tamb-5])
+
+def u(t):
+    return np.interp(t, [ 0, 50, 50, 450, 450], [ 0,  0, 80,  80,  25])
+
+fig, ax = plt.subplots(3, 1, sharex=True, figsize=(10, 6))
+ax[0].plot(t, r(t))
+ax[0].set_title('setpoint')
+ax[0].set_ylabel('deg C')
+
+ax[1].plot(t, u(t))
+ax[1].set_title('heat power input')
+ax[1].set_ylabel('% of max power')
+
+ax[2].plot(t, d(t))
+ax[2].set_title('unmeasured disturbance')
+ax[2].set_ylabel('deg C')
+
+for a in ax:
+    a.grid(True)
+plt.tight_layout()
+
+
 # <hr>
 # 
 # **Study Question:** Evaluate how well this control policy performed. Keep in mind that the objective is for $T_S$ to track the reference input (i.e., the setpoint) as closely as possible. Did the controller achieve the desired steady-state? What about the prior ramp and soak periods? 
@@ -198,36 +466,6 @@ plt.tight_layout()
 # **Study Question:** What criteria could you use to determine if one control policy was better than another? Give at least three examples of possible criteria.
 # 
 # <hr>
-
-# ## Feedforward Optimal Control
-# 
-# An optimal control policy minimizes the differences
-# 
-# $$
-# \begin{align*}
-# \min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
-# \end{align*}
-# $$
-# 
-# subject to constraints
-# 
-# $$
-# \begin{align*}
-# C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
-# C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
-# \end{align*}
-# $$
-# 
-# initial conditions
-# 
-# $$
-# \begin{align*}
-# T_H(t_0) & = T_{amb} \\
-# T_S(t_0) & = T_{amb}
-# \end{align*}
-# $$
-# 
-# and prior knowledge of $d(t)$.
 
 # In[61]:
 
