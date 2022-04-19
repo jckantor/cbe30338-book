@@ -4,46 +4,22 @@
 # #  Predictive Control
 # 
 
-# ## Model
-# 
-# We will use the two-state model for a single heater/sensor assembly for the calculations that follow.
-# 
-# $$
-# \begin{align}
-# C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
-# C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
-# \end{align}
-# $$
-# 
-# The model is recast into linear state space form as
-# 
-# $$
-# \begin{align}
-# \frac{dx}{dt} & = A x + B_u u + B_d d \\
-# y & = C x
-# \end{align}
-# $$
-# 
-# where
-# 
-# $$x = \begin{bmatrix} T_{H,1} \\ T_{S,1} \end{bmatrix}
-# \qquad
-# u = \begin{bmatrix} u_1 \end{bmatrix}
-# \qquad
-# d = \begin{bmatrix} T_{amb} \end{bmatrix}
-# \qquad
-# y = \begin{bmatrix} T_{S,1} \end{bmatrix}$$
-# 
-# and
-# 
-# $$A = \begin{bmatrix} -\frac{U_a+U_b}{C^H_p} & \frac{U_b}{C^H_p} \\ \frac{U_b}{C^S_p} & -\frac{U_b}{C^S_p} \end{bmatrix}
-# \qquad
-# B_u = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix}
-# \qquad
-# B_d = \begin{bmatrix} \frac{U_a}{C_p^H} \\ 0 \end{bmatrix}
-# \qquad
-# C = \begin{bmatrix} 0 & 1 \end{bmatrix}$$
-# 
+# In[68]:
+
+
+# Install Pyomo and solvers for Google Colab
+import sys
+if "google.colab" in sys.modules:
+    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/install_on_colab.py ')
+    get_ipython().run_line_magic('run', 'install_on_colab.py')
+
+
+# In[69]:
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
 
 # ## Feedforward Optimal Control
 # 
@@ -51,7 +27,7 @@
 # 
 # $$
 # \begin{align*}
-# \min_{u} \int_{t_0}^{t_f} \|T_H^{SP}(t) - T_H(t)\|^2\,dt \\
+# \min_{u} \int_{t_0}^{t_f} \|SP(t) - T_H(t)\|^2\,dt \\
 # \end{align*}
 # $$
 # 
@@ -59,108 +35,130 @@
 # 
 # $$
 # \begin{align*}
-# C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d(t)\\
-# C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H) 
+# C_p^H \frac{dT_H}{dt} & = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + \alpha P u(t)\\
+# C_p^S \frac{dT_S}{dt} & = - U_c (T_S - T_H)  \\
+# \\
+# \text{control limits}\qquad0 \leq u(t) & \leq 100.0
+# \\
+# \text{initial condition}\qquad T_H(t_0) & = T_{amb} \\
+# \text{initial condition}\qquad T_S(t_0) & = T_{amb}
 # \end{align*}
 # $$
 # 
-# initial conditions
+# Note that `pyomo.dae` has an `Integral` object to help with these situations.
 # 
-# $$
-# \begin{align*}
-# T_H(t_0) & = T_{amb} \\
-# T_S(t_0) & = T_{amb}
-# \end{align*}
-# $$
 # 
-# and prior knowledge of $d(t)$.
+# 
 
-# In[24]:
+# In[70]:
 
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-import matplotlib.pyplot as plt
-import numpy as np
-import cvxpy as cp
 
 # parameter estimates.
 alpha = 0.00016       # watts / (units P * percent U1)
-P1 = 200              # P units
-P2 = 100              # P units
+P = 200               # P units
 Ua = 0.050            # heat transfer coefficient from heater to environment
 CpH = 2.2             # heat capacity of the heater (J/deg C)
 CpS = 1.9             # heat capacity of the sensor (J/deg C)
 Ub = 0.021            # heat transfer coefficient from heater to sensor
-
-# state space model
-A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
-Bu = np.array([[alpha*P1/CpH], [0]])     # single column
-Bd = np.array([[Ua/CpH], [0]])           # single column
-C = np.array([[0, 1]])                   # single row
-
-Tamb = 20
+Tamb = 21.0           # ambient temperature
 
 
-# In[18]:
+# ## Controlling to a Reference Tractory
+# 
+# The reference trajectory is a sequence of ramp/soak intervals.  Python function `r(t)` uses `numpy.interp` to compute values of the reference trajectory at any point in time.
+
+# In[71]:
 
 
 # time grid
-tf = 800
+tf = 1000
 dt = 2
 n = round(tf/dt)
-t_grid = np.linspace(0, tf, n+1)
+t_grid = np.linspace(0, 1000, n+1)
+
+# ambient temperature
+Tamb = 21
 
 # setpoint/reference
-def r(t):
-    return np.interp(t, [0, 0, 0], [Tamb, Tamb, 60])
-
-def d(t):
-    return np.interp(t, [0], [Tamb])
+def SP(t):
+    return np.interp(t, [0, 50, 150, 450, 550], [Tamb, Tamb, 60, 60, 35])
 
 # plot function
 fig, ax = plt.subplots(1, 1, figsize=(10, 3))
-ax.plot(t_grid, r(t_grid), label="setpoint")
-ax.plot(t_grid, d(t_grid), label="disturbance")
+ax.plot(t_grid, SP(t_grid), label="setpoint")
 ax.set_title('setpoint')
 ax.set_ylabel('deg C')
 ax.legend()
 ax.grid(True)
 
 
-# In[19]:
+# In[72]:
 
 
-# add $u$ as a decision variable
-u = {t: cp.Variable(1, nonneg=True) for t in t_grid}
-x = {t: cp.Variable(2) for t in t_grid}
-y = {t: cp.Variable(1) for t in t_grid}
+import pyomo.environ as pyo
+import pyomo.dae as dae
 
-# least-squares optimization objective
-objective = cp.Minimize(sum((y[t]-r(t))**2 for t in t_grid))
+def optimal_control(Th, Ts, SP=60.0):
+    
+    tf = 300.0
 
-model = [x[t] == x[t-dt] + dt*(A@x[t-dt] + Bu@u[t-dt] + Bd@[d(t-dt)]) for t in t_grid[1:]]
-output = [y[t] == C@x[t] for t in t_grid]
-inputs = [u[t] <= 100 for t in t_grid]
-IC = [x[0] == np.array([30, Tamb])]
+    m = pyo.ConcreteModel('TCLab Heater/Sensor')
 
-problem = cp.Problem(objective,  model + IC + output + inputs)
-problem.solve()
+    m.t = dae.ContinuousSet(bounds=(0, tf))
+    m.Th = pyo.Var(m.t)
+    m.Ts = pyo.Var(m.t)
+    m.u = pyo.Var(m.t, bounds=(0, 100))
 
-# display solution
-fix, ax = plt.subplots(3, 1, figsize=(10,6), sharex=True)
-ax[0].plot(t_grid, [x[t][0].value  for t in t_grid], label="T_H")
-ax[0].plot(t_grid, [x[t][1].value  for t in t_grid], label="T_S")
-ax[0].plot(t_grid, [r(t) for t in t_grid], label="SP")
-ax[0].set_ylabel("deg C")
+    m.dTh = dae.DerivativeVar(m.Th)
+    m.dTs = dae.DerivativeVar(m.Ts)
+
+    @m.Integral(m.t)
+    def ise(m, t):
+        return (SP - m.Th[t])**2
+
+    @m.Constraint(m.t)
+    def heater(m, t):
+        return CpH * m.dTh[t] == Ua *(Tamb - m.Th[t]) + Ub*(m.Ts[t] - m.Th[t]) + alpha*P*m.u[t]
+
+    @m.Constraint(m.t)
+    def sensor(m, t):
+        return CpS * m.dTs[t] == Ub *(m.Th[t] - m.Ts[t]) 
+
+    m.Th[0].fix(Th)
+    m.Ts[0].fix(Ts)
+
+    @m.Objective(sense=pyo.minimize)
+    def objective(m):
+        return m.ise
+
+    pyo.TransformationFactory('dae.finite_difference').apply_to(m, nfe=60, wrt=m.t, scheme="FORWARD")
+    pyo.SolverFactory('ipopt').solve(m)
+    
+    return m, m.u[0]()
+
+
+# In[82]:
+
+
+Th = 30
+Ts = 30
+SP = 60
+
+m, u = optimal_control(Th, Ts, SP)
+print(u)
+
+fig, ax = plt.subplots(2, 1)
+
+ax[0].plot(m.t, [m.Th[t]() for t in m.t], label="Th1")
+ax[0].plot(m.t, [m.Ts[t]() for t in m.t], label="Ts1")
 ax[0].legend()
-ax[1].plot(t_grid, [u[t].value for t in t_grid], label="u(t)")
-ax[1].set_ylabel("% of max power")
-ax[2].plot(t_grid, [d(t) for t in t_grid], label="d(t)")
-ax[2].set_ylabel("deg C")
-for a in ax:
-    a.grid(True)
-    a.legend()
-plt.tight_layout()
+ax[0].set_xlabel("Time")
+ax[0].set_ylabel("Temperature")
+ax[0].grid()
+
+ax[1].plot(m.t, [m.u[t]() for t in m.t], label="U1")
+ax[0].legend()
+ax[1].grid()
 
 
 # ## Assumptions for Predictive Control
@@ -169,24 +167,18 @@ plt.tight_layout()
 # * Future values of the disturbance are equal to the current setpoint.
 # 
 
-# ## TCLab Event Loop
+# ## TCLab Event Loop with Relay Control
 # 
 # Borrowing from notebook 4.6.
 
-# In[61]:
+# In[84]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+t_step = 5
+tf = 300
 
 import numpy as np
 from tclab import setup, clock, Historian, Plotter
-
-Tamb = 21
-SP = 45
-
-
-# In[62]:
-
 
 # Relay Control
 def relay(MV_min, MV_max):
@@ -195,53 +187,73 @@ def relay(MV_min, MV_max):
         SP, PV = yield MV
         MV = MV_max if PV < SP else MV_min
 
-
-# In[63]:
-
-
-def tclab_observer(L, t_now=0, x_hat=[Tamb, Tamb], d_hat=[Tamb]):
-    
-    while True:
-        # yield current state, get MV for next period
-        t_next, Q, T_measured = yield x_hat
-        
-        # model prediction
-        x_predict = x_hat + (t_next - t_now)*(A@x_hat + Bu@[Q] + Bd@d_hat)
-        
-        # measurement correction
-        y = np.array([T_measured])
-        x_hat = x_predict - (t_next - t_now)*np.dot(L, np.dot(C, x_predict) - y)
-        t_now = t_next
-
-
-# In[68]:
-
-
-t_final = 300
-t_step = 2
-
 # create a controller instance
-controller = relay(0, 80)
+controller = relay(0, 100)
 U1 = next(controller)
-
-# create estimator instance
-L = np.array([[0.4], [0.2]])
-observer = tclab_observer(L)
-Th, Ts = next(observer)
 
 # execute the event loop
 TCLab = setup(connected=False, speedup=20)
 with TCLab() as lab:
     h = Historian([('SP', lambda: SP), 
                    ('T1', lambda: lab.T1), 
-                   ('Q1', lab.Q1), 
-                   ('Th', lambda: Th), 
-                   ('Ts', lambda: Ts)])
-    p = Plotter(h, t_final, layout=[['T1','Ts','Th', 'SP'], ['Q1']])
-    for t in clock(t_final, t_step):
+                   ('Q1', lab.Q1)])
+    p = Plotter(h, tf, layout=[['T1', 'SP'], ['Q1']])
+    for t in clock(tf, t_step):
         T1 = lab.T1 
-        Th, Ts = observer.send([t, U1, T1])
-        U1 = controller.send([SP, Ts])
+        U1 = controller.send([SP, T1])
+        lab.Q1(U1)
+        p.update(t)
+
+
+# In[ ]:
+
+
+t_step = 5
+tf = 300
+
+import numpy as np
+from tclab import setup, clock, Historian, Plotter
+
+# Relay Control
+def relay(MV_min, MV_max):
+    MV = MV_min
+    while True:
+        SP, PV = yield MV
+        MV = MV_max if PV < SP else MV_min
+        
+# Observer
+def tclab_model():
+    # initialize variables
+    t_now = 0
+    x_now = x_initial
+    
+    while True:
+        # yield current state, get MV for next period
+        t_next, Q = yield x_now
+        
+        # compute next state
+        u = [Q]
+        x_next = x_now + (t_next - t_now)*(np.dot(A, x_now) + np.dot(Bu, u) + np.dot(Bd, d))
+        
+        # update time and state
+        t_now = t_next
+        x_now = x_next
+
+
+# create a controller instance
+controller = relay(0, 100)
+U1 = next(controller)
+
+# execute the event loop
+TCLab = setup(connected=False, speedup=20)
+with TCLab() as lab:
+    h = Historian([('SP', lambda: SP), 
+                   ('T1', lambda: lab.T1), 
+                   ('Q1', lab.Q1)])
+    p = Plotter(h, tf, layout=[['T1', 'SP'], ['Q1']])
+    for t in clock(tf, t_step):
+        T1 = lab.T1 
+        U1 = controller.send([SP, T1])
         lab.Q1(U1)
         p.update(t)
 
