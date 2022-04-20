@@ -783,6 +783,21 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="project-gompertz-model-for-tumor-growth">
 <h1><span class="section-number">6.6. </span>Project: Gompertz Model for Tumor Growth<a class="headerlink" href="#project-gompertz-model-for-tumor-growth" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>4/19/2022.  Released to students</p></li>
+<li><p>4/20/2022.  Corrected spelling of radiation. Added preamble for Google Colab</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install Pyomo and solvers for Google Colab</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">if</span> <span class="s2">&quot;google.colab&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="o">!</span>wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/install_on_colab.py 
+    <span class="o">%</span><span class="k">run</span> install_on_colab.py
+</pre></div>
+</div>
+</div>
+</div>
 <p>For this project you will apply the modeling and dynamic optimization skills we have been learning in class to devise therapeutic strategies for treating tumors.</p>
 <p>The Gompertz model was developed in the 19th century as actuarial model for human mortality, then adapted in the 1960’s as a successful model to describe the growth of tumors. Conceptually, the model describes the growth cycle of a population of cancer cells. In practice the model is normally calibrated to represent the measured size of a tumor. Let <span class="math notranslate nohighlight">\(N\)</span> be the diameter of the tumor, then the usual form of the Gompertz model is given by</p>
 <div class="math notranslate nohighlight">
@@ -883,7 +898,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06.06-gompertz-model-project_7_0.png" src="../_images/06.06-gompertz-model-project_7_0.png" />
+<img alt="../_images/06.06-gompertz-model-project_8_0.png" src="../_images/06.06-gompertz-model-project_8_0.png" />
 </div>
 </div>
 </section>
@@ -892,7 +907,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">6.6.2. </span>Problem 2. Radiation Therapy (10pts)<a class="headerlink" href="#problem-2-radiation-therapy-10pts" title="Permalink to this headline">¶</a></h2>
 <p>Radiation therapy is a widely use therapy intervention for many solid tumors. A model for the effect of radiation is given by</p>
 <div class="math notranslate nohighlight">
-\[\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radition}\]</div>
+\[\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation}\]</div>
 <p>where the second term modifies the Gompertz growth model to include radiation effects. (<span class="math notranslate nohighlight">\(\alpha = 0.06\)</span>, <span class="math notranslate nohighlight">\(\beta = 0.006\)</span>)</p>
 <div class="math notranslate nohighlight">
 \[\alpha = 0.08\]</div>
@@ -975,7 +990,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.59860467993624
 </pre></div>
 </div>
-<img alt="../_images/06.06-gompertz-model-project_11_1.png" src="../_images/06.06-gompertz-model-project_11_1.png" />
+<img alt="../_images/06.06-gompertz-model-project_12_1.png" src="../_images/06.06-gompertz-model-project_12_1.png" />
 </div>
 </div>
 </section>
@@ -983,7 +998,7 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">6.6.3. </span>Problem 3. Combined Radiation and Chemo Therapy (20 pts)<a class="headerlink" href="#problem-3-combined-radiation-and-chemo-therapy-20-pts" title="Permalink to this headline">¶</a></h2>
 <p>Another common treatment is a combination of chemotherapy and radiation. The chemotherapy is incorporated in the model as</p>
 <div class="math notranslate nohighlight">
-\[\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radition} + \underbrace{-\gamma C(t) N}_\text{Chemotherapy}\]</div>
+\[\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation} + \underbrace{-\gamma C(t) N}_\text{Chemotherapy}\]</div>
 <p>where the parameter <span class="math notranslate nohighlight">\(\gamma = 0.01\)</span>. The chemotherapeutic agent is toxic and therefore limited to 4 units per day, and a total 100 units over 100 days. The drug as a half-life of 1 day.</p>
 <ol class="simple">
 <li><p>Using the Pyomo model below as a starting point, add additional decision variables <code class="docutils literal notranslate"><span class="pre">m.u[t]</span></code> to model the administration of the chemotherapeutic agent, and <code class="docutils literal notranslate"><span class="pre">m.C[t]</span></code> to model the blood concentration of the agent. You will need to add an additional differential equation to model the half-life of the agent in the bloodstream.</p></li>
@@ -1047,7 +1062,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">u</span><span class="p">[</span><span class="n">t</span><span class="p">]()</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">t</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;chemotherapy&#39;</span><span class="p">)</span>
+<span class="c1">#ax[2].plot(m.t, [m.u[t]() for t in m.t], label=&#39;chemotherapy&#39;)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;dose [Gr/day]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -1056,6 +1071,12 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">doseage</span><span class="p">())</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.59860467993624
+</pre></div>
+</div>
+<img alt="../_images/06.06-gompertz-model-project_14_1.png" src="../_images/06.06-gompertz-model-project_14_1.png" />
 </div>
 </div>
 <ol class="simple">
@@ -1118,7 +1139,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">354</span><span class="p">]</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]</span>
     <span class="n">m</span><span class="o">.</span><span class="n">N</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fix</span><span class="p">(</span><span class="n">N_1</span><span class="p">)</span>
     <span class="o">^</span>
 <span class="ne">SyntaxError</span>: invalid syntax
@@ -1132,14 +1153,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 Half-life = 1 day.
 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Input In [71]
-    $$\frac{dC}{dt} = -0.693 * t
-    ^
-SyntaxError: invalid syntax
 </pre></div>
 </div>
 </div>

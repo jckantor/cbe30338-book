@@ -2,6 +2,19 @@
 # coding: utf-8
 
 # # Project: Gompertz Model for Tumor Growth
+# 
+# * 4/19/2022.  Released to students
+# * 4/20/2022.  Corrected spelling of radiation. Added preamble for Google Colab
+
+# In[1]:
+
+
+# Install Pyomo and solvers for Google Colab
+import sys
+if "google.colab" in sys.modules:
+    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/install_on_colab.py ')
+    get_ipython().run_line_magic('run', 'install_on_colab.py')
+
 
 # For this project you will apply the modeling and dynamic optimization skills we have been learning in class to devise therapeutic strategies for treating tumors.
 # 
@@ -46,7 +59,7 @@
 
 # Use the following Pyomo model as a starting point for your solution.
 
-# In[388]:
+# In[2]:
 
 
 import pyomo.environ as pyo
@@ -90,7 +103,7 @@ ax[0].grid(True)
 # 
 # Radiation therapy is a widely use therapy intervention for many solid tumors. A model for the effect of radiation is given by
 # 
-# $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radition}$$
+# $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation}$$
 # 
 # where the second term modifies the Gompertz growth model to include radiation effects. ($\alpha = 0.06$, $\beta = 0.006$)
 # 
@@ -118,7 +131,7 @@ ax[0].grid(True)
 # 3. Code and implementation. (4 pts.)
 # 
 
-# In[387]:
+# In[3]:
 
 
 import pyomo.environ as pyo
@@ -178,7 +191,7 @@ print(m.doseage())
 # 
 # Another common treatment is a combination of chemotherapy and radiation. The chemotherapy is incorporated in the model as 
 # 
-# $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radition} + \underbrace{-\gamma C(t) N}_\text{Chemotherapy}$$
+# $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation} + \underbrace{-\gamma C(t) N}_\text{Chemotherapy}$$
 # 
 # where the parameter $\gamma = 0.01$. The chemotherapeutic agent is toxic and therefore limited to 4 units per day, and a total 100 units over 100 days. The drug as a half-life of 1 day.
 # 
@@ -195,7 +208,7 @@ print(m.doseage())
 # 1. 
 # 
 
-# In[ ]:
+# In[4]:
 
 
 import pyomo.environ as pyo
@@ -248,7 +261,7 @@ ax[1].set_ylabel('dose [Gr/day]')
 ax[1].set_xlabel('Days')
 ax[1].grid(True)
 
-ax[2].plot(m.t, [m.u[t]() for t in m.t], label='chemotherapy')
+#ax[2].plot(m.t, [m.u[t]() for t in m.t], label='chemotherapy')
 ax[2].set_ylabel('dose [Gr/day]')
 ax[2].set_xlabel('Days')
 ax[2].grid(True)
@@ -262,7 +275,7 @@ print(m.doseage())
 # 3. 
 # 
 
-# In[354]:
+# In[5]:
 
 
 alpha = 0.16
@@ -318,7 +331,7 @@ ax[0].plot(m.t, [m.N[t]() for t in m.t])
 ax[1].plot(m.t, [m.d[t]() for t in m.t])
 
 
-# In[71]:
+# In[ ]:
 
 
 $$\frac{dC}{dt} = -0.693 * t
@@ -334,7 +347,7 @@ Half-life = 1 day.
 
 # $$\frac{dN}{dt} = \rho N \log(K/N) - \beta_c C N - \left(\alpha d(t) + \beta d(t)^2\right)N$$
 
-# In[175]:
+# In[ ]:
 
 
 K = 30
@@ -354,6 +367,12 @@ N_t = 13.0
 # remission
 
 N_0 = 0.03
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:
