@@ -5,6 +5,8 @@
 # 
 # * 4/19/2022.  Released to students
 # * 4/20/2022.  Corrected spelling of radiation. Added preamble for Google Colab
+# * 4/20/2022.  Corrected text for alpha and beta.  alpha = 0.08, beta = 0.008
+# * 4/21/2022.  Added comments on grading for problem 3. Deleted un
 
 # In[1]:
 
@@ -105,7 +107,7 @@ ax[0].grid(True)
 # 
 # $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation}$$
 # 
-# where the second term modifies the Gompertz growth model to include radiation effects. ($\alpha = 0.06$, $\beta = 0.006$)
+# where the second term modifies the Gompertz growth model to include radiation effects. ($\alpha = 0.08$, $\beta = 0.0088$)
 # 
 # $$\alpha = 0.08$$
 # $$\beta = 0.008$$
@@ -119,16 +121,17 @@ ax[0].grid(True)
 # 1. Modify the Pyomo model below to include the $d \leq 0.8$ Gy constraint on daily dose.
 # 
 # 2. Consider a therapy horizon of 400 days. In either words or with a mathematical expression, write down an objective function in the cell below. 
-
 # 
-
 # 3. Implement and test your objective function for a patient diagnosed with Stage 2 disease.  You may need to modify and test your objective until you arrive at a relevant result. There is no "right" answer, but some answers are better than others. Will radiation therapy alone provide adequate treatment subject the constraints and given model parameters?
+
 # 
 # Your solution will be graded as follows:
 # 
 # 1. Written rationale for the choice of objective. (4 pts.)
 # 2. Correctly implemented constraints on radiation. (2 pts.)
 # 3. Code and implementation. (4 pts.)
+# 
+
 # 
 
 # In[3]:
@@ -205,10 +208,15 @@ print(m.doseage())
 # 
 # Grading:
 # 
-# 1. 
+# 1. The mathematical model developed for $C(t)$ and incorporated into Pyomo. Be careful to get the half-life right. (5 pts)
+# 2. Establishing constraints for radiation and chemotherapy (5 pts)
+# 3. Discussion and development of an objective function (5 pts)
+# 4. Pyomo modeling and simulation of results. (5 pts)
 # 
 
-# In[4]:
+# 
+
+# In[6]:
 
 
 import pyomo.environ as pyo
@@ -268,111 +276,6 @@ ax[2].grid(True)
 
 
 print(m.doseage())
-
-
-# 
-
-# 3. 
-# 
-
-# In[5]:
-
-
-alpha = 0.16
-dmax = 0.8
-tf = 400
-
-import pyomo.environ as pyo
-import pyomo.dae as dae
-import matplotlib.pyplot as plt
-
-def growth_model():
-
-    m = pyo.ConcreteModel()
-    m.t = dae.ContinuousSet(bounds=(0, tf))
-
-    m.N = pyo.Var(m.t, domain=pyo.NonNegativeReals)
-    m.d = pyo.Var(m.t, domain=pyo.NonNegativeReals, bounds=(0, dmax))
-    m.Nmax = pyo.Var()
-
-    m.dNdt = dae.DerivativeVar(m.N)
-    
-    @m.Integral(m.t)
-    def radiation(m, t):
-        return m.d[t]
-    
-    @m.Constraint()
-    def total_radition_limit(m):
-        return m.radiation <= 60.0
-    
-    @m.Constraint(m.t)
-    def negative_growth(m, t):
-        return m.N[t] <= m.N[0]
-
-    @m.Constraint(m.t)
-    def gompertz(m, t):
-        return m.dNdt[t] == rho * m.N[t] * pyo.log(K / m.N[t]) - (alpha * m.d[t] * m.N[t]
-
-    m.N[0].fix(N_1)
-    
-    @m.Objective(sense=pyo.minimize)
-    def objective(m):
-        return m.N[tf]
-
-    pyo.TransformationFactory('dae.finite_difference').apply_to(m, nfe=1000)
-    pyo.SolverFactory('ipopt').solve(m)
-    
-    return m
-
-m = growth_model()
-
-fig, ax = plt.subplots(2, 1, figsize=(12, 5))
-ax[0].plot(m.t, [m.N[t]() for t in m.t])
-ax[1].plot(m.t, [m.d[t]() for t in m.t])
-
-
-# In[ ]:
-
-
-$$\frac{dC}{dt} = -0.693 * t
-
-Half-life = 1 day.
-
-
-# In[ ]:
-
-
-
-
-
-# $$\frac{dN}{dt} = \rho N \log(K/N) - \beta_c C N - \left(\alpha d(t) + \beta d(t)^2\right)N$$
-
-# In[ ]:
-
-
-K = 30
-rho = 0.007
-
-# tumor stages
-
-N_1 = 1.66
-N_2 = 4.49
-N_3 = 5.63
-N_4 = 9.26
-
-# death condition
-
-N_t = 13.0
-
-# remission
-
-N_0 = 0.03
-
-
-# In[ ]:
-
-
-
 
 
 # In[ ]:
