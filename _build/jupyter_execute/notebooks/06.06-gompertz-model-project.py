@@ -6,17 +6,7 @@
 # * 4/19/2022.  Released to students
 # * 4/20/2022.  Corrected spelling of radiation. Added preamble for Google Colab
 # * 4/20/2022.  Corrected text for alpha and beta.  alpha = 0.08, beta = 0.008
-# * 4/21/2022.  Added comments on grading for problem 3. Deleted un
-
-# In[1]:
-
-
-# Install Pyomo and solvers for Google Colab
-import sys
-if "google.colab" in sys.modules:
-    get_ipython().system('wget -N -q https://raw.githubusercontent.com/jckantor/MO-book/main/tools/install_on_colab.py ')
-    get_ipython().run_line_magic('run', 'install_on_colab.py')
-
+# * 4/21/2022.  Added comments on grading for problem 3. Deleted unused code cells at the end of the notebook.
 
 # For this project you will apply the modeling and dynamic optimization skills we have been learning in class to devise therapeutic strategies for treating tumors.
 # 
@@ -107,7 +97,7 @@ ax[0].grid(True)
 # 
 # $$\frac{dN}{dt} = \underbrace{\rho N \left(1 - \frac{N}{K}\right)}_\text{Growth} - \underbrace{\left(\alpha d(t) + \beta d(t)^2\right)N}_\text{Radiation}$$
 # 
-# where the second term modifies the Gompertz growth model to include radiation effects. ($\alpha = 0.08$, $\beta = 0.0088$)
+# where the second term modifies the Gompertz growth model to include radiation effects. ($\alpha = 0.08$, $\beta = 0.008$)
 # 
 # $$\alpha = 0.08$$
 # $$\beta = 0.008$$
