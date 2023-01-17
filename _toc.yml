@@ -75,6 +75,7 @@ parts:
       - file: notebooks/06.03-Predictive-Control
       - file: notebooks/06.04-Implementing-Predictive-Control
       - file: notebooks/06.06-gompertz-model-project
+      - file: notebooks/06.07-time-as-decision-variable
 
 #    - file: notebooks/07.00-Discrete-Event-Systems
 #      sections:

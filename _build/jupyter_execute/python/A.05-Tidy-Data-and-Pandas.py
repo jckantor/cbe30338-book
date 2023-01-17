@@ -3,13 +3,13 @@
 
 # # Tidy Data and Pandas
 # 
-# [**Pandas**](https://pandas.pydata.org/) is the most popular and widely used Python library for data wrangling and analysis. Developed just over 10 years ago in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python. 
+# [**Pandas**](https://pandas.pydata.org/) is, by far, the most widely used Python library for data wrangling and analysis. First released in 2009 for the financial services industry, pandas is now included in all major distributions of Python. It is the mainstay for data analysis in Python. 
 # 
-# **Tidy Data** is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following "Tidy Data" principles means less time wrangling data, short and clear Python code for analysis, and more time to capture good data and gain insight..
+# **Tidy Data** is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas. Keeping data organized using "Tidy Data" principles means less time wrangling data, and results in short and clear Python code for analysis.
 # 
-# The purpose of this notebook is to get you started using Pandas with Tidy Data. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal here is to introduce just enough of the pandas library to handle routine data analysis tasks.
+# The purpose of this notebook is to get you started using Pandas and the principles of Tidy Data. In the spirit of the 80/20 rule (i.e., [Pareto principle]()), the goal here is to introduce just enough of the full-featured pandas library to handle routine data analysis tasks.
 # 
-# Some useful references:
+# Some references:
 # 
 # * [Pandas Cheat Sheet](https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf)
 # * [Tidy Data](https://vita.had.co.nz/papers/tidy-data.pdf) paper by Hadley Wickham.
@@ -22,21 +22,23 @@
 # >The KonMari Method™ is not a quick fix for a messy room or a once-in-a-while approach to tidying. 
 # It’s a chance to reset your entire life – but only if you commit to following its principles. -- Marie Kondo
 # 
-# Data acquired in process applications generally consists of repeated observation of a set of process variables. The values are usually numbers, such as temperature or pressure, but can also be strings, integers, or categorical data indicating the status of equipment or alarms.
+# Data acquired for process applications generally consist of repeated observations of a set of process variables. The values are usually numbers, such as temperature or pressure, but can also be strings, integers, or categorical data indicating the status of equipment or alarms.
 # 
 # We assume data from repeated observations is arranged in tabular form in data files. Each distinct experiment, treatment, or unit of data is located in a separate file.
 # 
+# * Each distinct experiment, treatment, or unit of data is in a separate file.
 # * Every column of a data file holds all data for a unique variable.
-# * Every row of a data file is an observation.
+# * Each row of a data file is an observation of all measured variables.
 # * Every cell contains a single value.
 # 
 # ![](https://r4ds.had.co.nz/images/tidy-1.png)
 # Figure Source: Figure 12.1 from R for Data Science (Hadley Wickham & Garrett Grolemund)
 # 
-# These assumptions are the ["Tidy Data"](https://vita.had.co.nz/papers/tidy-data.pdf) principles popularized by Hadley Wickham, and closely related to concepts underlying relational databases. 
-# Tiny Data assigns meaning to the structure of the data ffile, which significantly streamlines subsequenct coding and analysis. [Hart, et al., provide excellent contrasting examples of tidy and messy data](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005097).
+# This organization assigns meaning to the structure of the data file that greatly streamlines subsequent coding and analysis. By consistently using these principles you can reuse old code for new projects, quickly interpret data gathered by other members of a team, and more readily document your projects and reports.
 # 
-# These notes assume data is stored in data files organized using "Tiny Data" principles. If your data isn't organized like this, the procedures described by [Wickham](https://vita.had.co.nz/papers/tidy-data.pdf) may help reorgnize your data for more efficient analysis.
+# These assumptions are the basis for ["Tidy Data"](https://vita.had.co.nz/papers/tidy-data.pdf) principles popularized by Hadley Wickham, and closely related to concepts underlying relational databases.  [Hart, et al., provide excellent contrasting examples of tidy and messy data](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005097).
+# 
+# These notes below assume data is stored in data files organized using "Tiny Data" principles. If your data isn't organized like this, the procedures described by [Wickham](https://vita.had.co.nz/papers/tidy-data.pdf) will help you reorgnize your data for more efficient analysis.
 
 # ## Reading Tidy Data
 # 
@@ -212,20 +214,32 @@ df.T1.plot()
 # In[15]:
 
 
-df.plot("Time", ["T1", "T2"], style={"T1":'rx', "T2":'g'}, lw=2, ms=3, 
-        ylabel="deg C", title="TC Lab", grid=True)
+df.plot(
+    "Time",
+    ["T1", "T2"],
+    style={"T1": "rx", "T2": "g"},
+    lw=2,
+    ms=3,
+    ylabel="deg C",
+    title="TC Lab",
+    grid=True,
+)
 
 
 # In[16]:
 
 
-df.plot(x = "Time", y=["T1", "T2"], subplots=True, figsize=(10, 2), grid=True, layout=(1, 2))
+df.plot(
+    x="Time", y=["T1", "T2"], subplots=True, figsize=(10, 2), grid=True, layout=(1, 2)
+)
 
 
 # In[17]:
 
 
-df[(df.Time > 570) & (df.Time < 680)].plot(x="Time", y="T1", figsize=(12, 5), style={"T1":"s:"}, grid=True)
+df[(df.Time > 570) & (df.Time < 680)].plot(
+    x="Time", y="T1", figsize=(12, 5), style={"T1": "s:"}, grid=True
+)
 
 
 # ### Scatter Plots
@@ -233,7 +247,7 @@ df[(df.Time > 570) & (df.Time < 680)].plot(x="Time", y="T1", figsize=(12, 5), st
 # In[18]:
 
 
-df.plot.scatter(x = "T1", y = "T2")
+df.plot.scatter(x="T1", y="T2")
 
 
 # ### Statistical Plots
@@ -281,7 +295,9 @@ df[["T1", "T2"]].hist(bins=30, figsize=(10, 3))
 # In[20]:
 
 
-hx = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&single=true&output=csv")
+hx = pd.read_csv(
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&single=true&output=csv"
+)
 hx.head()
 
 
@@ -301,18 +317,18 @@ hx.head()
 # In[21]:
 
 
-# heat capacity of water 
-rho = 1.00                # kg / liter
-Cp = 4.18                 # kJ/ kg / deg C
+# heat capacity of water
+rho = 1.00  # kg / liter
+Cp = 4.18  # kJ/ kg / deg C
 
 # heat balances
 hx["Qh"] = rho * Cp * hx["Hot Flow (L/hr)"] * (hx["H Inlet"] - hx["H Outlet"]) / 3600
 hx["Qc"] = rho * Cp * hx["Cold Flow (L/hr)"] * (hx["C Outlet"] - hx["C Inlet"]) / 3600
-hx["Loss (%)"] = 100 * (1 - hx["Qc"]/hx["Qh"])
+hx["Loss (%)"] = 100 * (1 - hx["Qc"] / hx["Qh"])
 
 # plot
 display(hx[["Qh", "Qc", "Loss (%)"]].style.format(precision=2))
-hx.plot(y = ["Qh", "Qc"], ylim = (0, 15), grid=True, xlabel="Observation", ylabel="kW")
+hx.plot(y=["Qh", "Qc"], ylim=(0, 15), grid=True, xlabel="Observation", ylabel="kW")
 
 
 # ### Overall Heat Transfer Coefficient $UA$
@@ -337,10 +353,10 @@ hx.plot(y = ["Qh", "Qc"], ylim = (0, 15), grid=True, xlabel="Observation", ylabe
 
 dT0 = hx["H Outlet"] - hx["C Inlet"]
 dT1 = hx["H Inlet"] - hx["C Outlet"]
-hx["LMTD"] = (dT1 - dT0) / np.log(dT1/dT0)
+hx["LMTD"] = (dT1 - dT0) / np.log(dT1 / dT0)
 
-Q = (hx.Qh + hx.Qc)/2
-hx["UA"] =  Q/hx.LMTD
+Q = (hx.Qh + hx.Qc) / 2
+hx["UA"] = Q / hx.LMTD
 
 hx.plot(y="UA", xlabel="Observation", ylabel="kW/deg C", grid=True)
 
@@ -360,7 +376,9 @@ hx[["Flow Rate H", "Flow Rate C", "Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]]
 # In[24]:
 
 
-sx = hx.groupby(["Flow Rate H", "Flow Rate C"]).mean()[["Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]]
+sx = hx.groupby(["Flow Rate H", "Flow Rate C"]).mean()[
+    ["Hot Flow (L/hr)", "Cold Flow (L/hr)", "UA"]
+]
 sx
 
 
@@ -370,16 +388,18 @@ sx
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(1, 1)
-sx.sort_values("Cold Flow (L/hr)").groupby("Flow Rate H").plot(x = "Cold Flow (L/hr)", y = "UA", 
-                                                               style={"UA": 'ro-'}, ax=ax)
+sx.sort_values("Cold Flow (L/hr)").groupby("Flow Rate H").plot(
+    x="Cold Flow (L/hr)", y="UA", style={"UA": "ro-"}, ax=ax
+)
 
 
 # In[26]:
 
 
 fig, ax = plt.subplots(1, 1)
-sx.sort_values("Hot Flow (L/hr)").groupby("Flow Rate C").plot(x = "Hot Flow (L/hr)", y = "UA", 
-                                                               style={"UA": 'ro-'}, ax=ax)
+sx.sort_values("Hot Flow (L/hr)").groupby("Flow Rate C").plot(
+    x="Hot Flow (L/hr)", y="UA", style={"UA": "ro-"}, ax=ax
+)
 
 
 # ### Fitting a Model for $UA$
@@ -404,9 +424,9 @@ sx.sort_values("Hot Flow (L/hr)").groupby("Flow Rate C").plot(x = "Hot Flow (L/h
 # In[27]:
 
 
-hx["R"] = 1.0/hx["UA"]
-hx["Xh"] = hx["Hot Flow (L/hr)"]**(-0.8)
-hx["Xc"] = hx["Cold Flow (L/hr)"]**(-0.8)
+hx["R"] = 1.0 / hx["UA"]
+hx["Xh"] = hx["Hot Flow (L/hr)"] ** (-0.8)
+hx["Xc"] = hx["Cold Flow (L/hr)"] ** (-0.8)
 
 
 # In[28]:
@@ -414,7 +434,7 @@ hx["Xc"] = hx["Cold Flow (L/hr)"]**(-0.8)
 
 import statsmodels.formula.api as sm
 
-result = sm.ols(formula="R ~ Xh + Xc", data = hx).fit()
+result = sm.ols(formula="R ~ Xh + Xc", data=hx).fit()
 print(result.params)
 print(result.summary())
 
@@ -435,8 +455,8 @@ hx[["R", "R_pred", "Rt", "Rh", "Rc"]]
 # In[30]:
 
 
-hx["UA_pred"] = 1/hx["R_pred"]
-hx.plot(y = ["UA", "UA_pred"], grid=True, title="Heat Transfer Coefficient")
+hx["UA_pred"] = 1 / hx["R_pred"]
+hx.plot(y=["UA", "UA_pred"], grid=True, title="Heat Transfer Coefficient")
 
 
 # ## Concluding Remarks
