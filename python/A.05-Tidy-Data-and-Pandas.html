@@ -1,15 +1,16 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tidy Data and Pandas &#8212; CBE 30338 Chemical Process Control</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,33 +20,31 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -59,13 +58,27 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Coding Controllers with Python Generators" href="A.10-Coding-Controllers-with-Python-Generators.html" />
     <link rel="prev" title="Python Tutorials" href="A.00-Python-Tutorials.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,14 +108,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../Readme.html">
-   CBE 30338 Chemical Process Control
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Readme.html">
+                    CBE 30338 Chemical Process Control
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Course Information
  </span>
@@ -409,6 +424,11 @@ const thebe_selector_output = ".output, .cell_output"
      6.6. Project: Gompertz Model for Tumor Growth
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.07-time-as-decision-variable.html">
+     6.7. Time as a Decision Variable
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -602,112 +622,227 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python/A.05-Tidy-Data-and-Pandas.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/jckantor/cbe30338-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fpython/A.05-Tidy-Data-and-Pandas.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/python/A.05-Tidy-Data-and-Pandas.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/python/A.05-Tidy-Data-and-Pandas.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/python/A.05-Tidy-Data-and-Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/python/A.05-Tidy-Data-and-Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/cbe30338-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Fpython/A.05-Tidy-Data-and-Pandas.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python/A.05-Tidy-Data-and-Pandas.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tidy-data">
    Tidy Data
@@ -826,12 +961,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Tidy Data and Pandas</h1>
@@ -966,15 +1100,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tidy-data-and-pandas">
-<h1>Tidy Data and Pandas<a class="headerlink" href="#tidy-data-and-pandas" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://pandas.pydata.org/"><strong>Pandas</strong></a> is the most popular and widely used Python library for data wrangling and analysis. Developed just over 10 years ago in the financial services industry, pandas is now included in all major distributions of Python and has become a mainstay for doing data analysis in Python.</p>
-<p><strong>Tidy Data</strong> is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas.   Keeping data organized following “Tidy Data” principles means less time wrangling data, short and clear Python code for analysis, and more time to capture good data and gain insight..</p>
-<p>The purpose of this notebook is to get you started using Pandas with Tidy Data. Pandas is a full featured library capable of handling complex applications. In the spirit of the 80/20 rule (i.e., <span class="xref myst">Pareto principle</span>), the goal here is to introduce just enough of the pandas library to handle routine data analysis tasks.</p>
-<p>Some useful references:</p>
+<h1>Tidy Data and Pandas<a class="headerlink" href="#tidy-data-and-pandas" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://pandas.pydata.org/"><strong>Pandas</strong></a> is, by far, the most widely used Python library for data wrangling and analysis. First released in 2009 for the financial services industry, pandas is now included in all major distributions of Python. It is the mainstay for data analysis in Python.</p>
+<p><strong>Tidy Data</strong> is a small set a of core principles to streamline analysis and coding by organizing data into tables with a simple and standardized structure. Tidy Data is highly intuitive and well suited to Pandas. Keeping data organized using “Tidy Data” principles means less time wrangling data, and results in short and clear Python code for analysis.</p>
+<p>The purpose of this notebook is to get you started using Pandas and the principles of Tidy Data. In the spirit of the 80/20 rule (i.e., <span class="xref myst">Pareto principle</span>), the goal here is to introduce just enough of the full-featured pandas library to handle routine data analysis tasks.</p>
+<p>Some references:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Pandas Cheat Sheet</a></p></li>
 <li><p><a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy Data</a> paper by Hadley Wickham.</p></li>
@@ -983,29 +1118,30 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="https://towardsdatascience.com/advanced-pandas-plots-e2347a33d576">Create Stunning Visualizations With Pandas Dataframes in One Line of Code</a> Blog post describing more complex visualizations and libraries based on pandas dataframes.</p></li>
 </ul>
 <section id="tidy-data">
-<h2>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this headline">¶</a></h2>
+<h2>Tidy Data<a class="headerlink" href="#tidy-data" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>The KonMari Method™ is not a quick fix for a messy room or a once-in-a-while approach to tidying.
 It’s a chance to reset your entire life – but only if you commit to following its principles. – Marie Kondo</p>
 </div></blockquote>
-<p>Data acquired in process applications generally consists of repeated observation of a set of process variables. The values are usually numbers, such as temperature or pressure, but can also be strings, integers, or categorical data indicating the status of equipment or alarms.</p>
+<p>Data acquired for process applications generally consist of repeated observations of a set of process variables. The values are usually numbers, such as temperature or pressure, but can also be strings, integers, or categorical data indicating the status of equipment or alarms.</p>
 <p>We assume data from repeated observations is arranged in tabular form in data files. Each distinct experiment, treatment, or unit of data is located in a separate file.</p>
 <ul class="simple">
+<li><p>Each distinct experiment, treatment, or unit of data is in a separate file.</p></li>
 <li><p>Every column of a data file holds all data for a unique variable.</p></li>
-<li><p>Every row of a data file is an observation.</p></li>
+<li><p>Each row of a data file is an observation of all measured variables.</p></li>
 <li><p>Every cell contains a single value.</p></li>
 </ul>
 <p><img alt="" src="https://r4ds.had.co.nz/images/tidy-1.png" />
 Figure Source: Figure 12.1 from R for Data Science (Hadley Wickham &amp; Garrett Grolemund)</p>
-<p>These assumptions are the <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">“Tidy Data”</a> principles popularized by Hadley Wickham, and closely related to concepts underlying relational databases.
-Tiny Data assigns meaning to the structure of the data ffile, which significantly streamlines subsequenct coding and analysis. <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005097">Hart, et al., provide excellent contrasting examples of tidy and messy data</a>.</p>
-<p>These notes assume data is stored in data files organized using “Tiny Data” principles. If your data isn’t organized like this, the procedures described by <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Wickham</a> may help reorgnize your data for more efficient analysis.</p>
+<p>This organization assigns meaning to the structure of the data file that greatly streamlines subsequent coding and analysis. By consistently using these principles you can reuse old code for new projects, quickly interpret data gathered by other members of a team, and more readily document your projects and reports.</p>
+<p>These assumptions are the basis for <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">“Tidy Data”</a> principles popularized by Hadley Wickham, and closely related to concepts underlying relational databases.  <a class="reference external" href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005097">Hart, et al., provide excellent contrasting examples of tidy and messy data</a>.</p>
+<p>These notes below assume data is stored in data files organized using “Tiny Data” principles. If your data isn’t organized like this, the procedures described by <a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Wickham</a> will help you reorgnize your data for more efficient analysis.</p>
 </section>
 <section id="reading-tidy-data">
-<h2>Reading Tidy Data<a class="headerlink" href="#reading-tidy-data" title="Permalink to this headline">¶</a></h2>
+<h2>Reading Tidy Data<a class="headerlink" href="#reading-tidy-data" title="Permalink to this heading">#</a></h2>
 <p>The first We proceed assuming data is organized by Tidy Data principles, each data set corresponding to an experiment or other clearly defined collection of observations.</p>
 <section id="from-csv-files">
-<h3>From .csv files<a class="headerlink" href="#from-csv-files" title="Permalink to this headline">¶</a></h3>
+<h3>From .csv files<a class="headerlink" href="#from-csv-files" title="Permalink to this heading">#</a></h3>
 <p>For files stored in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format, a pandas <strong>DataFrame</strong> object is created with the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html"><code class="docutils literal notranslate"><span class="pre">read_csv(data_file)</span></code></a>. <code class="docutils literal notranslate"><span class="pre">data_file</span></code> is a string containing a url or the name of a local file. <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> function has many optional arguments, but for simple cases the path to the data file is often enough to do the job.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1139,7 +1275,7 @@ Tiny Data assigns meaning to the structure of the data ffile, which significantl
 </div>
 </section>
 <section id="from-google-sheets">
-<h3>From Google Sheets<a class="headerlink" href="#from-google-sheets" title="Permalink to this headline">¶</a></h3>
+<h3>From Google Sheets<a class="headerlink" href="#from-google-sheets" title="Permalink to this heading">#</a></h3>
 <p>Google sheets are a convenient to collect and share data. There is a complete API and libraries to enable full, authenticated, read/write access to Google Sheets.</p>
 <p>But if the data is not confidential and can be temporarilty published to the web for public access, then it takes just a few steps and one line of Python to read the data as pandas DataFrame.</p>
 <p>The first step is publish the sheet to the web. In Google Sheets, select “File &gt; Share &gt; Publish to the Web”.</p>
@@ -1507,7 +1643,7 @@ Tiny Data assigns meaning to the structure of the data ffile, which significantl
 </div>
 </section>
 <section id="from-python">
-<h3>From Python<a class="headerlink" href="#from-python" title="Permalink to this headline">¶</a></h3>
+<h3>From Python<a class="headerlink" href="#from-python" title="Permalink to this heading">#</a></h3>
 <p>Pandas dataframes can be created directly in Python. Here we demonstrate use of a Python dictionary to create a dataframe with data for variables computed as numpy arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1621,7 +1757,7 @@ Tiny Data assigns meaning to the structure of the data ffile, which significantl
 </section>
 </section>
 <section id="accessing-data">
-<h2>Accessing Data<a class="headerlink" href="#accessing-data" title="Permalink to this headline">¶</a></h2>
+<h2>Accessing Data<a class="headerlink" href="#accessing-data" title="Permalink to this heading">#</a></h2>
 <p>The core object in pandas is the <strong>DataFrame</strong>. For “Tidy Data”, a DataFrame will be collection of columns, each column containing observations of a single, unique variable. Each row is one observation of all variables.</p>
 <p>The <strong>index</strong> assigns a unique label to each row/observation.</p>
 <div class="cell docutils container">
@@ -1885,10 +2021,10 @@ Name: 3, dtype: float64
 </div>
 </section>
 <section id="visualizing-data">
-<h2>Visualizing Data<a class="headerlink" href="#visualizing-data" title="Permalink to this headline">¶</a></h2>
+<h2>Visualizing Data<a class="headerlink" href="#visualizing-data" title="Permalink to this heading">#</a></h2>
 <p>Pandas provides convenient tools for displaying data in tabular and graphical formats.</p>
 <section id="tabular-display">
-<h3>Tabular Display<a class="headerlink" href="#tabular-display" title="Permalink to this headline">¶</a></h3>
+<h3>Tabular Display<a class="headerlink" href="#tabular-display" title="Permalink to this heading">#</a></h3>
 <p>The quickest way to display a dataframe as a table is with <code class="docutils literal notranslate"><span class="pre">display()</span></code>. Additional styling and formating options are available through a dataframe’s <code class="docutils literal notranslate"><span class="pre">.style</span></code> property.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2173,7 +2309,7 @@ Name: 3, dtype: float64
 </div>
 </section>
 <section id="plotting">
-<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h3>
+<h3>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h3>
 <p>An extensive variety of plots can be constructed using a dataframe’s <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method. Many of the usual Matploblib plotting commands can be accessed through options passed to <code class="docutils literal notranslate"><span class="pre">.plot()</span></code>. For many routine applications, a single call of a dataframe’s <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method can replace many lines of Python code using Matplotlib.</p>
 <p>For example, to plot all observations for a single variable.</p>
 <div class="cell docutils container">
@@ -2192,8 +2328,16 @@ Name: 3, dtype: float64
 <p>The <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method will often be used to plot one or more variables on the vertical ‘y’ axis as a function of another variable on the horizontal ‘x’ axes. Additional options specify line styles, grid, labels, titles, and much more.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span><span class="s1">&#39;rx&#39;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">},</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;TC Lab&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s2">&quot;Time&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span> <span class="s2">&quot;rx&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">:</span> <span class="s2">&quot;g&quot;</span><span class="p">},</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;TC Lab&quot;</span><span class="p">,</span>
+    <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2206,7 +2350,9 @@ Name: 3, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2220,7 +2366,9 @@ Name: 3, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&gt;</span> <span class="mi">570</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span><span class="s2">&quot;s:&quot;</span><span class="p">},</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&gt;</span> <span class="mi">570</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Time</span> <span class="o">&lt;</span> <span class="mi">680</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T1&quot;</span><span class="p">:</span> <span class="s2">&quot;s:&quot;</span><span class="p">},</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2233,10 +2381,10 @@ Name: 3, dtype: float64
 </div>
 </section>
 <section id="scatter-plots">
-<h3>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h3>
+<h3>Scatter Plots<a class="headerlink" href="#scatter-plots" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;T2&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;T2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2249,7 +2397,7 @@ Name: 3, dtype: float64
 </div>
 </section>
 <section id="statistical-plots">
-<h3>Statistical Plots<a class="headerlink" href="#statistical-plots" title="Permalink to this headline">¶</a></h3>
+<h3>Statistical Plots<a class="headerlink" href="#statistical-plots" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -2267,12 +2415,12 @@ Name: 3, dtype: float64
 </section>
 </section>
 <section id="case-study-analysis-of-a-double-pipe-heat-exchanger">
-<h2>Case Study: Analysis of a Double Pipe Heat Exchanger<a class="headerlink" href="#case-study-analysis-of-a-double-pipe-heat-exchanger" title="Permalink to this headline">¶</a></h2>
+<h2>Case Study: Analysis of a Double Pipe Heat Exchanger<a class="headerlink" href="#case-study-analysis-of-a-double-pipe-heat-exchanger" title="Permalink to this heading">#</a></h2>
 <p>A stalwart of undergraduate chemical engineering laboratories is study of a double-pipe heat exchanger in counter-current flow. In this case, a student group collected multiple measurements of flow and temperature data from a heat exchanger with sensors configured as shown in the following diagram. (Note: The diagram shows co-current flow. The data was collected with the valves configured for counter-current flow of the hot stream.)</p>
 <p><img alt="" src="https://www.gunt.de/images/datasheet/1495/WL-315C-Comparison-of-various-heat-exchangers-gunt-1495-zeichnung_einzelheit_2.jpg" />
 Source: <a class="reference external" href="https://www.gunt.de/en/products/comparison-of-various-heat-exchangers/060.315C0/wl315c/glct-1:pa-148:pr-1495">Gunt WL315C Product Description</a></p>
 <section id="id1">
-<h3>Tidy Data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Tidy Data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>The student group designed a series of experiments measuring the performance of the heat exchanger to high (H), medium (M), and low (L) flowrates for both the hot and cold streams — a total of nine flowrate combinations. For each combination they reported data for three repeated observations. <a class="reference external" href="https://docs.google.com/spreadsheets/d/1wuJq3B4z0tmTIsRpm5zZUP-PBBxT6OpuJKeBlQcQ4Z0/edit?usp=sharing">A portion of their data is available on Google Sheets</a>. From this data they intend to compute the overall heat transfer coefficient <span class="math notranslate nohighlight">\(UA\)</span>, and attempt to fit a regression model for the heat transfer coefficients as a function of the flowrates.</p>
 <p>A screenshot of the data collected by the students is given below.</p>
 <p><img alt="" src="../_images/pandas-google-sheets-4.png" /></p>
@@ -2294,11 +2442,13 @@ Source: <a class="reference external" href="https://www.gunt.de/en/products/comp
 </div>
 </section>
 <section id="reading-data">
-<h3>Reading Data<a class="headerlink" href="#reading-data" title="Permalink to this headline">¶</a></h3>
+<h3>Reading Data<a class="headerlink" href="#reading-data" title="Permalink to this heading">#</a></h3>
 <p>The raw data was copied to a new sheet in the same Google Sheets file, edited to conform with Tidy Data, and a link created using the procedures outlined above for reading data from Google Sheets. The data is read in the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&amp;single=true&amp;output=csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://docs.google.com/spreadsheets/d/e/2PACX-1vSNUCEFMaGZ-y18p-AnDoImEeenMLbRxXBABwFNeP8I3xiUejolPJx-kr4aUywD0szRel81Kftr8J0R/pub?gid=865146464&amp;single=true&amp;output=csv&quot;</span>
+<span class="p">)</span>
 <span class="n">hx</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2406,7 +2556,7 @@ Source: <a class="reference external" href="https://www.gunt.de/en/products/comp
 </div>
 </section>
 <section id="energy-balances">
-<h3>Energy Balances<a class="headerlink" href="#energy-balances" title="Permalink to this headline">¶</a></h3>
+<h3>Energy Balances<a class="headerlink" href="#energy-balances" title="Permalink to this heading">#</a></h3>
 <p>The first step in this analysis is to verify the energy balance.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -2418,177 +2568,177 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <p>The next cell creates two new calculated variables in the dataframe for <span class="math notranslate nohighlight">\(Q_h\)</span> and <span class="math notranslate nohighlight">\(Q_c\)</span>, and uses the pandas plotting facility to visualize the results. This calculation takes advantage of the “one variable per column” rule of Tidy Data which enables calculations for all observations to be done in a single line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># heat capacity of water </span>
-<span class="n">rho</span> <span class="o">=</span> <span class="mf">1.00</span>                <span class="c1"># kg / liter</span>
-<span class="n">Cp</span> <span class="o">=</span> <span class="mf">4.18</span>                 <span class="c1"># kJ/ kg / deg C</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># heat capacity of water</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1.00</span>  <span class="c1"># kg / liter</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mf">4.18</span>  <span class="c1"># kJ/ kg / deg C</span>
 
 <span class="c1"># heat balances</span>
 <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">Cp</span> <span class="o">*</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Inlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Outlet&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">3600</span>
 <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rho</span> <span class="o">*</span> <span class="n">Cp</span> <span class="o">*</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Outlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Inlet&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">3600</span>
-<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Loss (%)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qc&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">])</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Loss (%)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qc&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">])</span>
 
 <span class="c1"># plot</span>
 <span class="n">display</span><span class="p">(</span><span class="n">hx</span><span class="p">[[</span><span class="s2">&quot;Qh&quot;</span><span class="p">,</span> <span class="s2">&quot;Qc&quot;</span><span class="p">,</span> <span class="s2">&quot;Loss (%)&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">,</span> <span class="s2">&quot;Qc&quot;</span><span class="p">],</span> <span class="n">ylim</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Observation&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;kW&quot;</span><span class="p">)</span>
+<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Qh&quot;</span><span class="p">,</span> <span class="s2">&quot;Qc&quot;</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Observation&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;kW&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_13c85_">
+<table id="T_7f427">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >Qh</th>
-      <th class="col_heading level0 col1" >Qc</th>
-      <th class="col_heading level0 col2" >Loss (%)</th>
+      <th id="T_7f427_level0_col0" class="col_heading level0 col0" >Qh</th>
+      <th id="T_7f427_level0_col1" class="col_heading level0 col1" >Qc</th>
+      <th id="T_7f427_level0_col2" class="col_heading level0 col2" >Loss (%)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_13c85_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_13c85_row0_col0" class="data row0 col0" >14.44</td>
-      <td id="T_13c85_row0_col1" class="data row0 col1" >14.18</td>
-      <td id="T_13c85_row0_col2" class="data row0 col2" >1.81</td>
+      <th id="T_7f427_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_7f427_row0_col0" class="data row0 col0" >14.44</td>
+      <td id="T_7f427_row0_col1" class="data row0 col1" >14.18</td>
+      <td id="T_7f427_row0_col2" class="data row0 col2" >1.81</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_13c85_row1_col0" class="data row1 col0" >14.44</td>
-      <td id="T_13c85_row1_col1" class="data row1 col1" >14.27</td>
-      <td id="T_13c85_row1_col2" class="data row1 col2" >1.17</td>
+      <th id="T_7f427_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_7f427_row1_col0" class="data row1 col0" >14.44</td>
+      <td id="T_7f427_row1_col1" class="data row1 col1" >14.27</td>
+      <td id="T_7f427_row1_col2" class="data row1 col2" >1.17</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_13c85_row2_col0" class="data row2 col0" >14.44</td>
-      <td id="T_13c85_row2_col1" class="data row2 col1" >14.27</td>
-      <td id="T_13c85_row2_col2" class="data row2 col2" >1.17</td>
+      <th id="T_7f427_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_7f427_row2_col0" class="data row2 col0" >14.44</td>
+      <td id="T_7f427_row2_col1" class="data row2 col1" >14.27</td>
+      <td id="T_7f427_row2_col2" class="data row2 col2" >1.17</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_13c85_row3_col0" class="data row3 col0" >11.32</td>
-      <td id="T_13c85_row3_col1" class="data row3 col1" >11.35</td>
-      <td id="T_13c85_row3_col2" class="data row3 col2" >-0.30</td>
+      <th id="T_7f427_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_7f427_row3_col0" class="data row3 col0" >11.32</td>
+      <td id="T_7f427_row3_col1" class="data row3 col1" >11.35</td>
+      <td id="T_7f427_row3_col2" class="data row3 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_13c85_row4_col0" class="data row4 col0" >11.32</td>
-      <td id="T_13c85_row4_col1" class="data row4 col1" >11.35</td>
-      <td id="T_13c85_row4_col2" class="data row4 col2" >-0.30</td>
+      <th id="T_7f427_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_7f427_row4_col0" class="data row4 col0" >11.32</td>
+      <td id="T_7f427_row4_col1" class="data row4 col1" >11.35</td>
+      <td id="T_7f427_row4_col2" class="data row4 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_13c85_row5_col0" class="data row5 col0" >11.32</td>
-      <td id="T_13c85_row5_col1" class="data row5 col1" >11.35</td>
-      <td id="T_13c85_row5_col2" class="data row5 col2" >-0.30</td>
+      <th id="T_7f427_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_7f427_row5_col0" class="data row5 col0" >11.32</td>
+      <td id="T_7f427_row5_col1" class="data row5 col1" >11.35</td>
+      <td id="T_7f427_row5_col2" class="data row5 col2" >-0.30</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_13c85_row6_col0" class="data row6 col0" >6.46</td>
-      <td id="T_13c85_row6_col1" class="data row6 col1" >6.11</td>
-      <td id="T_13c85_row6_col2" class="data row6 col2" >5.41</td>
+      <th id="T_7f427_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_7f427_row6_col0" class="data row6 col0" >6.46</td>
+      <td id="T_7f427_row6_col1" class="data row6 col1" >6.11</td>
+      <td id="T_7f427_row6_col2" class="data row6 col2" >5.41</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_13c85_row7_col0" class="data row7 col0" >6.46</td>
-      <td id="T_13c85_row7_col1" class="data row7 col1" >6.09</td>
-      <td id="T_13c85_row7_col2" class="data row7 col2" >5.77</td>
+      <th id="T_7f427_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_7f427_row7_col0" class="data row7 col0" >6.46</td>
+      <td id="T_7f427_row7_col1" class="data row7 col1" >6.09</td>
+      <td id="T_7f427_row7_col2" class="data row7 col2" >5.77</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_13c85_row8_col0" class="data row8 col0" >6.46</td>
-      <td id="T_13c85_row8_col1" class="data row8 col1" >6.09</td>
-      <td id="T_13c85_row8_col2" class="data row8 col2" >5.77</td>
+      <th id="T_7f427_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_7f427_row8_col0" class="data row8 col0" >6.46</td>
+      <td id="T_7f427_row8_col1" class="data row8 col1" >6.09</td>
+      <td id="T_7f427_row8_col2" class="data row8 col2" >5.77</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row9" class="row_heading level0 row9" >9</th>
-      <td id="T_13c85_row9_col0" class="data row9 col0" >12.79</td>
-      <td id="T_13c85_row9_col1" class="data row9 col1" >12.55</td>
-      <td id="T_13c85_row9_col2" class="data row9 col2" >1.85</td>
+      <th id="T_7f427_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_7f427_row9_col0" class="data row9 col0" >12.79</td>
+      <td id="T_7f427_row9_col1" class="data row9 col1" >12.55</td>
+      <td id="T_7f427_row9_col2" class="data row9 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row10" class="row_heading level0 row10" >10</th>
-      <td id="T_13c85_row10_col0" class="data row10 col0" >12.79</td>
-      <td id="T_13c85_row10_col1" class="data row10 col1" >12.55</td>
-      <td id="T_13c85_row10_col2" class="data row10 col2" >1.85</td>
+      <th id="T_7f427_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_7f427_row10_col0" class="data row10 col0" >12.79</td>
+      <td id="T_7f427_row10_col1" class="data row10 col1" >12.55</td>
+      <td id="T_7f427_row10_col2" class="data row10 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row11" class="row_heading level0 row11" >11</th>
-      <td id="T_13c85_row11_col0" class="data row11 col0" >12.79</td>
-      <td id="T_13c85_row11_col1" class="data row11 col1" >12.55</td>
-      <td id="T_13c85_row11_col2" class="data row11 col2" >1.85</td>
+      <th id="T_7f427_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_7f427_row11_col0" class="data row11 col0" >12.79</td>
+      <td id="T_7f427_row11_col1" class="data row11 col1" >12.55</td>
+      <td id="T_7f427_row11_col2" class="data row11 col2" >1.85</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row12" class="row_heading level0 row12" >12</th>
-      <td id="T_13c85_row12_col0" class="data row12 col0" >10.33</td>
-      <td id="T_13c85_row12_col1" class="data row12 col1" >9.89</td>
-      <td id="T_13c85_row12_col2" class="data row12 col2" >4.32</td>
+      <th id="T_7f427_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_7f427_row12_col0" class="data row12 col0" >10.33</td>
+      <td id="T_7f427_row12_col1" class="data row12 col1" >9.89</td>
+      <td id="T_7f427_row12_col2" class="data row12 col2" >4.32</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row13" class="row_heading level0 row13" >13</th>
-      <td id="T_13c85_row13_col0" class="data row13 col0" >10.33</td>
-      <td id="T_13c85_row13_col1" class="data row13 col1" >9.95</td>
-      <td id="T_13c85_row13_col2" class="data row13 col2" >3.76</td>
+      <th id="T_7f427_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_7f427_row13_col0" class="data row13 col0" >10.33</td>
+      <td id="T_7f427_row13_col1" class="data row13 col1" >9.95</td>
+      <td id="T_7f427_row13_col2" class="data row13 col2" >3.76</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row14" class="row_heading level0 row14" >14</th>
-      <td id="T_13c85_row14_col0" class="data row14 col0" >10.28</td>
-      <td id="T_13c85_row14_col1" class="data row14 col1" >9.95</td>
-      <td id="T_13c85_row14_col2" class="data row14 col2" >3.21</td>
+      <th id="T_7f427_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_7f427_row14_col0" class="data row14 col0" >10.28</td>
+      <td id="T_7f427_row14_col1" class="data row14 col1" >9.95</td>
+      <td id="T_7f427_row14_col2" class="data row14 col2" >3.21</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row15" class="row_heading level0 row15" >15</th>
-      <td id="T_13c85_row15_col0" class="data row15 col0" >6.06</td>
-      <td id="T_13c85_row15_col1" class="data row15 col1" >5.80</td>
-      <td id="T_13c85_row15_col2" class="data row15 col2" >4.33</td>
+      <th id="T_7f427_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_7f427_row15_col0" class="data row15 col0" >6.06</td>
+      <td id="T_7f427_row15_col1" class="data row15 col1" >5.80</td>
+      <td id="T_7f427_row15_col2" class="data row15 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row16" class="row_heading level0 row16" >16</th>
-      <td id="T_13c85_row16_col0" class="data row16 col0" >6.06</td>
-      <td id="T_13c85_row16_col1" class="data row16 col1" >5.80</td>
-      <td id="T_13c85_row16_col2" class="data row16 col2" >4.33</td>
+      <th id="T_7f427_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_7f427_row16_col0" class="data row16 col0" >6.06</td>
+      <td id="T_7f427_row16_col1" class="data row16 col1" >5.80</td>
+      <td id="T_7f427_row16_col2" class="data row16 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row17" class="row_heading level0 row17" >17</th>
-      <td id="T_13c85_row17_col0" class="data row17 col0" >6.06</td>
-      <td id="T_13c85_row17_col1" class="data row17 col1" >5.80</td>
-      <td id="T_13c85_row17_col2" class="data row17 col2" >4.33</td>
+      <th id="T_7f427_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_7f427_row17_col0" class="data row17 col0" >6.06</td>
+      <td id="T_7f427_row17_col1" class="data row17 col1" >5.80</td>
+      <td id="T_7f427_row17_col2" class="data row17 col2" >4.33</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row18" class="row_heading level0 row18" >18</th>
-      <td id="T_13c85_row18_col0" class="data row18 col0" >7.09</td>
-      <td id="T_13c85_row18_col1" class="data row18 col1" >7.25</td>
-      <td id="T_13c85_row18_col2" class="data row18 col2" >-2.27</td>
+      <th id="T_7f427_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_7f427_row18_col0" class="data row18 col0" >7.09</td>
+      <td id="T_7f427_row18_col1" class="data row18 col1" >7.25</td>
+      <td id="T_7f427_row18_col2" class="data row18 col2" >-2.27</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row19" class="row_heading level0 row19" >19</th>
-      <td id="T_13c85_row19_col0" class="data row19 col0" >7.12</td>
-      <td id="T_13c85_row19_col1" class="data row19 col1" >7.25</td>
-      <td id="T_13c85_row19_col2" class="data row19 col2" >-1.93</td>
+      <th id="T_7f427_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_7f427_row19_col0" class="data row19 col0" >7.12</td>
+      <td id="T_7f427_row19_col1" class="data row19 col1" >7.25</td>
+      <td id="T_7f427_row19_col2" class="data row19 col2" >-1.93</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row20" class="row_heading level0 row20" >20</th>
-      <td id="T_13c85_row20_col0" class="data row20 col0" >7.12</td>
-      <td id="T_13c85_row20_col1" class="data row20 col1" >7.25</td>
-      <td id="T_13c85_row20_col2" class="data row20 col2" >-1.93</td>
+      <th id="T_7f427_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_7f427_row20_col0" class="data row20 col0" >7.12</td>
+      <td id="T_7f427_row20_col1" class="data row20 col1" >7.25</td>
+      <td id="T_7f427_row20_col2" class="data row20 col2" >-1.93</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row21" class="row_heading level0 row21" >21</th>
-      <td id="T_13c85_row21_col0" class="data row21 col0" >6.28</td>
-      <td id="T_13c85_row21_col1" class="data row21 col1" >6.33</td>
-      <td id="T_13c85_row21_col2" class="data row21 col2" >-0.81</td>
+      <th id="T_7f427_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_7f427_row21_col0" class="data row21 col0" >6.28</td>
+      <td id="T_7f427_row21_col1" class="data row21 col1" >6.33</td>
+      <td id="T_7f427_row21_col2" class="data row21 col2" >-0.81</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row22" class="row_heading level0 row22" >22</th>
-      <td id="T_13c85_row22_col0" class="data row22 col0" >6.28</td>
-      <td id="T_13c85_row22_col1" class="data row22 col1" >6.33</td>
-      <td id="T_13c85_row22_col2" class="data row22 col2" >-0.81</td>
+      <th id="T_7f427_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_7f427_row22_col0" class="data row22 col0" >6.28</td>
+      <td id="T_7f427_row22_col1" class="data row22 col1" >6.33</td>
+      <td id="T_7f427_row22_col2" class="data row22 col2" >-0.81</td>
     </tr>
     <tr>
-      <th id="T_13c85_level0_row23" class="row_heading level0 row23" >23</th>
-      <td id="T_13c85_row23_col0" class="data row23 col0" >6.28</td>
-      <td id="T_13c85_row23_col1" class="data row23 col1" >6.33</td>
-      <td id="T_13c85_row23_col2" class="data row23 col2" >-0.81</td>
+      <th id="T_7f427_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_7f427_row23_col0" class="data row23 col0" >6.28</td>
+      <td id="T_7f427_row23_col1" class="data row23 col1" >6.33</td>
+      <td id="T_7f427_row23_col2" class="data row23 col2" >-0.81</td>
     </tr>
   </tbody>
 </table>
@@ -2600,7 +2750,7 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 </div>
 </section>
 <section id="overall-heat-transfer-coefficient-ua">
-<h3>Overall Heat Transfer Coefficient <span class="math notranslate nohighlight">\(UA\)</span><a class="headerlink" href="#overall-heat-transfer-coefficient-ua" title="Permalink to this headline">¶</a></h3>
+<h3>Overall Heat Transfer Coefficient <span class="math notranslate nohighlight">\(UA\)</span><a class="headerlink" href="#overall-heat-transfer-coefficient-ua" title="Permalink to this heading">#</a></h3>
 <p>The performance of a counter-current heat exchanger is given the relationship</p>
 <div class="math notranslate nohighlight">
 \[Q = U A \Delta T_{lm} \]</div>
@@ -2618,10 +2768,10 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dT0</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Outlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Inlet&quot;</span><span class="p">]</span>
 <span class="n">dT1</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;H Inlet&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;C Outlet&quot;</span><span class="p">]</span>
-<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;LMTD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dT1</span> <span class="o">-</span> <span class="n">dT0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dT1</span><span class="o">/</span><span class="n">dT0</span><span class="p">)</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;LMTD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dT1</span> <span class="o">-</span> <span class="n">dT0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dT1</span> <span class="o">/</span> <span class="n">dT0</span><span class="p">)</span>
 
-<span class="n">Q</span> <span class="o">=</span> <span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">Qh</span> <span class="o">+</span> <span class="n">hx</span><span class="o">.</span><span class="n">Qc</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">Q</span><span class="o">/</span><span class="n">hx</span><span class="o">.</span><span class="n">LMTD</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">Qh</span> <span class="o">+</span> <span class="n">hx</span><span class="o">.</span><span class="n">Qc</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">hx</span><span class="o">.</span><span class="n">LMTD</span>
 
 <span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Observation&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;kW/deg C&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -2636,7 +2786,7 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 </div>
 </section>
 <section id="how-does-ua-depend-on-flowrates">
-<h3>How does <span class="math notranslate nohighlight">\(UA\)</span> depend on flowrates?<a class="headerlink" href="#how-does-ua-depend-on-flowrates" title="Permalink to this headline">¶</a></h3>
+<h3>How does <span class="math notranslate nohighlight">\(UA\)</span> depend on flowrates?<a class="headerlink" href="#how-does-ua-depend-on-flowrates" title="Permalink to this heading">#</a></h3>
 <p>The data clearly demonstrate that the heat transfer coefficient in the double pipe heat exchanger depends on flowrates of both the cold and hot liquid streams. We can see this by inspecting the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2870,7 +3020,9 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <p>The replicated measurements provide an opportunity to compute averages. Here we use the pandas <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> function to group observations and compute means. The data will be used to plot results, so we’ll save the results of these calculations as a new dataframe for reuse.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sx</span> <span class="o">=</span> <span class="n">hx</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Flow Rate H&quot;</span><span class="p">,</span> <span class="s2">&quot;Flow Rate C&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">,</span> <span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">,</span> <span class="s2">&quot;UA&quot;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sx</span> <span class="o">=</span> <span class="n">hx</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Flow Rate H&quot;</span><span class="p">,</span> <span class="s2">&quot;Flow Rate C&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span>
+    <span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">,</span> <span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">,</span> <span class="s2">&quot;UA&quot;</span><span class="p">]</span>
+<span class="p">]</span>
 <span class="n">sx</span>
 </pre></div>
 </div>
@@ -2968,8 +3120,9 @@ Q_c &amp; = \dot{q}_c \rho C_p (T_{c,out} - T_{c, in})
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sx</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Flow Rate H&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;UA&quot;</span><span class="p">,</span> 
-                                                               <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;UA&quot;</span><span class="p">:</span> <span class="s1">&#39;ro-&#39;</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">sx</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Flow Rate H&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;UA&quot;</span><span class="p">:</span> <span class="s2">&quot;ro-&quot;</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2987,8 +3140,9 @@ dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sx</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Flow Rate C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;UA&quot;</span><span class="p">,</span> 
-                                                               <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;UA&quot;</span><span class="p">:</span> <span class="s1">&#39;ro-&#39;</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">sx</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Flow Rate C&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;UA&quot;</span><span class="p">:</span> <span class="s2">&quot;ro-&quot;</span><span class="p">},</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3005,7 +3159,7 @@ dtype: object
 </div>
 </section>
 <section id="fitting-a-model-for-ua">
-<h3>Fitting a Model for <span class="math notranslate nohighlight">\(UA\)</span><a class="headerlink" href="#fitting-a-model-for-ua" title="Permalink to this headline">¶</a></h3>
+<h3>Fitting a Model for <span class="math notranslate nohighlight">\(UA\)</span><a class="headerlink" href="#fitting-a-model-for-ua" title="Permalink to this heading">#</a></h3>
 <p>For a series of transport mechanisms, the overall heat transfer coefficient</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{UA} = \frac{1}{U_hA} + \frac{1}{U_{tubeA}} + \frac{1}{U_cA}\]</div>
@@ -3019,9 +3173,9 @@ dtype: object
 <p>This suggests a linear regression for <span class="math notranslate nohighlight">\(R = \frac{1}{UA}\)</span> in terms of <span class="math notranslate nohighlight">\(X_h = \dot{q}_h^{-0.8}\)</span> and <span class="math notranslate nohighlight">\(X_c  = \dot{q}_c^{-0.8}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span>
-<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Xh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Xc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">]</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Xh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Hot Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Xc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;Cold Flow (L/hr)&quot;</span><span class="p">]</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3030,7 +3184,7 @@ dtype: object
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">sm</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;R ~ Xh + Xc&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">hx</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;R ~ Xh + Xc&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hx</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>
@@ -3046,8 +3200,8 @@ dtype: float64
 Dep. Variable:                      R   R-squared:                       0.997
 Model:                            OLS   Adj. R-squared:                  0.997
 Method:                 Least Squares   F-statistic:                     3711.
-Date:                Fri, 11 Feb 2022   Prob (F-statistic):           1.70e-27
-Time:                        09:19:36   Log-Likelihood:                 44.929
+Date:                Tue, 17 May 2022   Prob (F-statistic):           1.70e-27
+Time:                        12:14:59   Log-Likelihood:                 44.929
 No. Observations:                  24   AIC:                            -83.86
 Df Residuals:                      21   BIC:                            -80.32
 Df Model:                           2                                         
@@ -3307,11 +3461,11 @@ Notes:
 </div>
 </section>
 <section id="comparison-of-model-to-experimental-data">
-<h3>Comparison of Model to Experimental Data<a class="headerlink" href="#comparison-of-model-to-experimental-data" title="Permalink to this headline">¶</a></h3>
+<h3>Comparison of Model to Experimental Data<a class="headerlink" href="#comparison-of-model-to-experimental-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA_pred&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;R_pred&quot;</span><span class="p">]</span>
-<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="s2">&quot;UA_pred&quot;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Heat Transfer Coefficient&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hx</span><span class="p">[</span><span class="s2">&quot;UA_pred&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">hx</span><span class="p">[</span><span class="s2">&quot;R_pred&quot;</span><span class="p">]</span>
+<span class="n">hx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;UA&quot;</span><span class="p">,</span> <span class="s2">&quot;UA_pred&quot;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Heat Transfer Coefficient&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3325,7 +3479,7 @@ Notes:
 </section>
 </section>
 <section id="concluding-remarks">
-<h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this headline">¶</a></h2>
+<h2>Concluding Remarks<a class="headerlink" href="#concluding-remarks" title="Permalink to this heading">#</a></h2>
 <p>Learning Pandas and data analysis is like learning to ride a bicycle. Once you have the enough knowledge to get going, the next steps are about practice and learning by doing.</p>
 <p>This notobook provides basic knowledge to the use of pandas for data analysis for engineering applications. With Tidy Data principles, data analysis can be streamlined and intuitive. The next steps are to put these tools work on your data analaysis tasks, and explore other elements of the pandas library that can be useful in your work.</p>
 </section>
@@ -3353,9 +3507,11 @@ Notes:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="A.00-Python-Tutorials.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -3371,24 +3527,28 @@ Notes:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Jeffrey Kantor<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
