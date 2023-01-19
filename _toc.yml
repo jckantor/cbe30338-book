@@ -21,8 +21,8 @@ parts:
       
     - file: notebooks/02.00-Process-Modeling
       sections:
-      - file: notebooks/02.01-Properties-of-Scalar-First-Order-Linear-Systems
-      - file: notebooks/02.02-One-Compartment-Pharmacokinetics
+      - file: notebooks/02.01-One-Compartment-Pharmacokinetics
+      - file: notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems
       - file: notebooks/02.03-First-Order-Model-for-a-Single-Heater
       - file: notebooks/02.04-Fitting-a-Model-to-Data
       - file: notebooks/02.05-Second-Order
