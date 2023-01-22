@@ -4,12 +4,12 @@ This is a collection of class materials for CBE 303338 Chemical Process Control 
 
 These materials are maintained and archived at [https://github.com/jckantor/cbe30338-book](https://github.com/jckantor/cbe30338-book).
 
-## Course Schedule
+## Course Outline
 
 | Weeks | Unit |
 | :--: | :-- |
-| 1 | Introductions to the Course, Process Control, and TC Lab |
-| 2 - 4 | Modeling |
+| 1 | Introductions to the Course and TC Lab |
+| 1 - 4 | Modeling |
 | 5 - 6 | Feedback Control |
 | 7 - 8 | Process Analytics |
 | 9 - 10 | Optimization |

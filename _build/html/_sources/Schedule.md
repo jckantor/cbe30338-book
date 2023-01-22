@@ -1,136 +1,129 @@
 # CBE 30338/32338 Schedule
 
-## Week 1
+## Locations
 
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Jan 17 | Tue | Class | Course organization and Introduction to Process Control | | **Order TCLab**|
-| Jan 18 | Wed | Office Hours | | | |
-| Jan 19 | Thu | Class | Modeling Case Study: Pharmacokinetics  | | HW Assignment 1 |
-| Jan 20 | Fri | -- | | | |
-
-## Week 2
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Jan 24 | Tue | Class | First Order Linear Systems | Section 2.1 |  |
-| Jan 25 | Wed | Office Hours | | | |
-| Jan 26 | Thu | Class | Introduction to the Temperature Control Laboratory | Section 2.2   |                 |
-| Jan 27 | Fri | Lab 1 | Coding a Simple Thermostat | | Lab Assignment 1 |
-
-## Week 3
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Jan 31 | Tue | Class | Modeling Case Study: Temperature Control Lab | Section 2.3 | |
-| Feb 1 | Wed | Office Hours |                                   |               |                  |
-| Feb 2 | Thu | Class | Second Order Systems  | Section 2.4   |                  |
-| Feb 3 | Fri | Lab 2 | Empirical Model Identification| | Lab Assignment 2 |
-
-## Week 4
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Feb 7 | Tue   | Class        | Modeling: Fitting Higher Order Models | Section 2.5          |                 |
-| Feb 8 | Wed   | Office Hours |                                       |                      |                 |
-| Feb 9 | Thu   | Class        | Modeling: Reactor Modeling            | Sections 2.6 and 2.7 | HW Assignment 2 |
-| Feb 10 | Fri | Lab 3 | PID Control and Variants | | Lab Assignment 3 |
-
-## Week 5
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Feb 14  | Tue   | Class        | Setpoints, Disturbances, Servo and Regulation Problems |               |                  |
-| Feb 15 | Wed   | Office Hours |                                                        |               |                  |
-| Feb 16 | Thu   | Class        | P, PI, and PID Control, and Tuning                     |               |                  |
-| Feb 17 | Fri | -- | JPW Weekend | | |
-
-## Week 6
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Feb 21 | Tue   | Class        | Implementation: Bumpless Transfer and Integral Windup |               | No Assignment |
-| Feb 22 | Wed   | Office Hours |                                                              |               |                     |
-| Feb 23 | Thu   | Class        | Cascade Control                                              |               |                     |
-| Feb 24 | Fri  | Lab 4 | State Space Model Identification | | Lab Assignment 4 |
-
-## Week 7
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Feb 28 | Tue   | Class        | Historians, Open Loop Estimation      |               |                  |
-| Mar 1 | Wed   | Office Hours |                                       |               |                  |
-| Mar 2 | Thu   | Class        | Observers and State Estimation        |               |                  |
-| Mar 3 | Fri | Lab 5 | | | Lab Assignment 5 |
-
-## Week 8
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Mar 7 | Tue   | Class        | Anomoly Detection                                        |               | Final Project Assigned |
-| Mar 8 | Wed   | Office Hours |                                                          |               |                        |
-| Mar 9 | Thu   | Class        | State Estimation: Environmental and Medical Applications |               |                        |
-| Mar 3 | Fri | -- | (Spring Break) | | |
-
-## Week 9
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Mar 21 | Tue   | Class        | Linear Production Models  |               | Project Proposal Due |
-| Mar 22 | Wed   | Office Hours | Project Reviews           |               |                      |
-| Mar 23 | Thu   | Class        | Linear Blending Problems  |               |                      |
-| Mar 24 | Fri | Lab 6 | |               |                      |
-
-## Week 10
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Mar 28 | Tue   | Class        | Static Operability     |               |                  |
-| Mar 29 | Wed   | Office Hours | Project Reviews        |               |                  |
-| Mar 30 | Thu   | Class        | Dynamic Optimization   |               |                  |
-| Mar 31 | Fri  | Lab 7 | | | |
-
-## Week 11
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Apr 4 | Tue   | Class        | Simulation and Open-Loop Optimal Control |               |                  |
-| Apr 5 | Wed   | Office Hours | Project Reviews                          |               |                  |
-| Apr 6 | Thu   | Class        | Predictive Control                       |               |                  |
-| Apr 7  | Fri   | -- | (Good Friday) | | |
-
-## Week 12
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Apr 11 | Tue   | Class        | Implementing Predictive Control |               | Project Progress Report Due |
-| Apr 12 | Wed   | Office Hours |                                 |               |                             |
-| Apr 13 | Thu   | Class        | Predictive Control Case Study   |               |                             |
-| Apr 14 | Fri   | Lab | Project Review Time | | |
-
-## Week 13
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Apr 18 | Tue   | Class        | Agent Based Models                   |               |              |
-| Apr 19 | Wed   | Office Hours |                                      |               |              |
-| Apr 20 | Thu   | Class        | Queuing and Batch Chemcial Processes |               |              |
-| Apr 21 | Fri   | Lab | Project Review Time            |               |                             |
-
-## Week 14
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| Apr 25 | Tue   | Class        | |               |              |
-| Apr 26 | Wed   | Office Hours |                               |               |              |
-| Apr 27 | Thu   | Class        | Student Project Presentations |               |              |
-| Apr 28 | Fri   | -- | -- | | |
-## Week 15
-
-| | Day | Activity | Topic | Pre-reading | Assignment|
-|:-- |:-- |:-- |:-- |:-- |:-- |
-| May 2 | Tue   | Class        | Student Project Presentations |               |              |
-| May 3  | Wed   | Office Hours | | ||
+| | | | 
+| :-- | :-- | :-- |
+| Classes | Tues/Thurs 12:30 - 1:45 PM | 129 DeBartolo Hall
+| Labs    | Section 1: Fri 11:35 AM - 12:25 PM <br> Section 2: Fri 12:50 PM - 1:40 PM | A68 Fitzpatrick Hall
+| Virtual Office Hours | Wed 2:00 PM - 3:30 PM <br> or by appointment | [Zoom](https://notredame.zoom.us/j/93569381181?pwd=Uk5EeUM2TU9OdDFMR0xiRlk4MUo1UT09)
+| In-person Office Hours | by appointment | 257 Nieuwland Hall | 
 
 
-## Final Exam:  May 11, 10:30 AM - 12:30 PM
+## Assignments
+
+All submissions should be directed to Canvas.
+
+| Deadline | Description |
+| :-- | :-- |
+| Fri, Jan 20 | [Order Temperature Control Lab](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) <br> (no submission required) |
+| Thur, Jan 26 | [Homework 1](assignments/hw-01.ipynb)
+| Tues, Mar 21 | Project Proposal
+| Wed, Mar 29 <br> Wed, Apr 5 | Project Reviews
+| Tues, Apr 11 | Project Progress Report
+| Thur, May 11 | Final Project Report
+
+## Completed
+
+| Day | Activity | Materials |
+|:-- |:-- |:-- |
+| **Week 1**
+| Tue, Jan 17 | Class: Course organization and Introduction to Process Control | Syllabus <br> Schedule <br> Section 1.1 & 1.2 |
+| Wed, Jan 18 | Office Hours 
+| Thur, Jan 19 | Class: Modeling Case Study: Pharmacokinetics  | Section 2.1 <br> [Homework 1](assignments/hw-01.ipynb) |
+| Fri, Jan 20 | -- *no lab* --
+
+## Planned
+
+Planned activities are subject to change.
+
+| Day | Activity | Materials |
+|:-- |:-- |:-- |
+|
+| **Week 2**
+| Tue, Jan 24 | Class: First Order Linear Systems | Section 2.1
+| Wed, Jan 25 | Office Hours 
+| Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | Section 2.2
+| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | Lab Assignment 1
+|
+| **Week 3**
+| Tue, Jan 31 | Class: Modeling the Temperature Control Lab | Section 2.3
+| Wed, Feb 1 | Office Hours
+| Thur, Feb 2 | Class: Second Order Systems | Section 2.4
+| Fri, Feb 3 | Lab 2: Empirical Model Identification| Lab Assignment 2
+|
+| **Week 4**
+| Tue, Feb 7 | Class: Fitting Higher Order Models | Section 2.5  
+| Wed, Feb 8 | Office Hours
+| Thur, Feb 9 | Class: Reactor Modeling | Sections 2.6 and 2.7 <br> HW Assignment 2
+| Feb 10 | Lab 3: PID Control and Variants | Lab Assignment 3
+|
+| **Week 5**
+| Tue, Feb 14  | Class: Setpoints, Disturbances, Servo and Regulation Problems
+| Wed, Feb 15 | Office Hours
+| Thur, Feb 16 | Class: P, PI, and PID Control, and Tuning
+| Fri, Feb 17 | -- *no lab: JPW Weekend* --
+|
+| **Week 6**
+| Tue, Feb 21 | Class: Bumpless Transfer and Integral Windup
+| Wed, Feb 22 | Office Hours
+| Thur, Feb 23 | Class: Cascade Control
+| Fri, Feb 24 | Lab 4: State Space Model Identification | Lab Assignment 4
+|
+| **Week 7**
+| Tue, Feb 28 | Class: Historians, Open Loop Estimation
+| Wed, Mar 1 | Office Hours
+| Thur, Mar 2 | Class: Observers and State Estimation 
+| Fri, Mar 3 | Lab 5 | Lab Assignment 5
+|
+| **Week 8**
+| Tue, Mar 7 | Class: Anomoly Detection | Final Project Assigned
+| Wed, Mar 8 | Office Hours
+| Thur, Mar 9 | Class: Environmental and Medical Applications of State Estimation
+| Fri, Mar 3 | -- *no lab: Spring Break* --
+|
+| | **Spring Break**
+|
+| **Week 9**
+| Tue, Mar 21 | Class: Linear Production Models
+| Wed, Mar 22 | Office Hours: Project Reviews
+| Thur, Mar 23 | Class: Linear Blending Problems
+| Fri, Mar 24 | Lab 6
+|
+| **Week 10**
+| Tue, Mar 28 | Class: Static Operability
+| Wed, Mar 29 | Office Hours: Project Reviews
+| Thur, Mar 30 | Class: Dynamic Optimization
+| Fri, Mar 31 | Lab 7 
+|
+| **Week 11**
+| Tue, Apr 4 | Class: Simulation and Open-Loop Optimal Control
+| Wed, Apr 5 | Office Hours: Project Reviews
+| Thur, Apr 6 | Class: Predictive Control
+| Fri, Apr 7 | -- *no lab: Good Friday* --
+|
+| **Week 12**
+| Tue, Apr 11 | Class: Implementing Predictive Control
+| Wed, Apr 12 | Office Hours
+| Thur, Apr 13 | Class: Predictive Control Case Study
+| Fri, Apr 14 | Lab: Project Review Time
+|
+| **Week 13**
+| Tue, Apr 18 | Class: Agent Based Models
+| Wed, Apr 19 | Office Hours
+| Thur, Apr 20 | Class: Queuing and Batch Chemical Processes
+| Fri, Apr 21 | Lab: Project Review Time
+|
+| **Week 14**
+| Tue, Apr 25 | Class: 
+| Wed, Apr 26 | Office Hours
+| Thur, Apr 27 | Class: Student Project Presentations
+| Fri, Apr 28 | -- *no lab* --
+|
+| **Week 15**
+| Tue, May 2 | Class: Student Project Presentations
+| Wed, May 3 | Office Hours
+|
+| **Week 16**
+| Thur, May 11 | **Final Exam: 10:30 AM - 12:30 PM**
+

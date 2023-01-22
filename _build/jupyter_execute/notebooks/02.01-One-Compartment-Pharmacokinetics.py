@@ -235,7 +235,7 @@ plt.savefig('./figures/Pharmaockinetics1.png')
 # 
 # The `cross_mbc` event occurs when (1) the value of $C(t)$ is equal to MBC and (2) crossing the MBC threshold in a negative going direction. Here's how to translate these conditions into Python code for use by `solve_ivp`.
 
-# In[90]:
+# In[6]:
 
 
 def cross_mbc(t, y):
@@ -248,7 +248,7 @@ cross_mbc.direction = -1
 
 # The `cross_mic` event is defined analogously to `cross_mbc`, but with an additional specification that terminates the simulation when the event occurs.
 
-# In[91]:
+# In[7]:
 
 
 def cross_mic(t, y):
@@ -261,7 +261,7 @@ cross_mic.terminal = True
 
 # The simulation is created by packing all of the event objects into a list and passing that list to `solve_ivp` as an argument named `events`. 
 
-# In[92]:
+# In[8]:
 
 
 # specify time span and evaluation points
@@ -283,7 +283,7 @@ print(soln)
 
 # The solution object now constaints lists named `t_events` and `y_events`. Each list contains one array for each event object. Each of those arrays contain the time and values of every occurance of the corresponding event object. 
 
-# In[105]:
+# In[9]:
 
 
 ax = plotConcentration(soln)
@@ -322,7 +322,7 @@ ax.text(t_mic, C_mic + 1, f"t = {t_mic[0]:.2f}", ha="center")
 # 
 # Before doing a simulation, we will write a Python function for $u(t)$. 
 
-# In[93]:
+# In[10]:
 
 
 # parameter values
@@ -341,7 +341,7 @@ def u(t):
 
 # This code cell demonstrates the use of a list comprehension to apply a function to each value in a list.
 
-# In[94]:
+# In[11]:
 
 
 # visualization
@@ -356,7 +356,7 @@ ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 # For this simulation we add both `cross_mbc` and `cross_mic` events, but without specifying termination.
 
-# In[104]:
+# In[12]:
 
 
 # specify time span and evaluation points
@@ -398,7 +398,7 @@ os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics2.png')
 
 
-# Let's compare our results to a typical experimental result {cite}`Levison:2009ww`.
+# Let's compare our results to a [typical experimental result](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3675903/pdf/nihms-475924.pdf) {cite}`Levison:2009ww`.
 # 
 # | | |
 # | :-: | :-: |
@@ -418,7 +418,7 @@ plt.savefig('./figures/Pharmaockinetics2.png')
 # 
 # We consider the case of repetitive dosing where a new dose is administered every $t_{dose}$ hours. A simple Python "trick" for this calculation is the `%` operator which returns the remainder following division. This is a useful tool whenever you need to functions that repeat in time.
 
-# In[108]:
+# In[13]:
 
 
 # parameter values
@@ -431,7 +431,7 @@ def u(t):
     return Udose/dt if t % tdose <= dt else 0
 
 
-# In[116]:
+# In[14]:
 
 
 # visualization
@@ -446,7 +446,7 @@ ax.set_title('Dosing function u(t) for of total dose {0} mg'.format(Udose))
 
 # The dosing function $u(t)$ is now applied to the simulation of drug concentration in the blood plasma. A fourth argument is added to `odeint(deriv, Cinitial, t, tcrit=t)` indicating that special care must be used for every time step. This is needed in order to get a high fidelity simulation that accounts for the rapidly varying values of $u(t)$.
 
-# In[117]:
+# In[15]:
 
 
 # specify time span and evaluation points
@@ -472,7 +472,7 @@ print(soln.t_events)
 # 
 # The fix is to specify the `max_step` option for the solver. `max_step` sets the maximum step size for the solver. As a rule of thumb, your simulations should always specify a `max_step` shorter than the minimum feature in the input sequence. In this case we specify a `max_step` of 0.1 hr which is short enough to not miss detail in $u(t)$.
 
-# In[118]:
+# In[16]:
 
 
 # specify time span and evaluation points
@@ -494,7 +494,7 @@ plt.savefig('./figures/Pharmaockinetics4.png')
 print(soln.t_events)
 
 
-# In[140]:
+# In[17]:
 
 
 import numpy as np
@@ -550,34 +550,4 @@ for j, event in enumerate(events):
     
 os.makedirs("figures", exist_ok=True)
 plt.savefig('./figures/Pharmaockinetics5.png')
-
-
-# ## Exercises
-
-# :::{admonition} Exercise 1
-# 
-# The purpose of the dosing regime is to maintain the plasma concentration above the MBC level for at least 96 hours. Assuming that each dose is 64 mg, modify the simulation and find a value of $t_{dose}$ that satisfies the MBC objective for a 96 hour period.  Show a plot concentration versus time, and include Python code to compute the total amount of antibiotic administered for the whole treatment.
-# 
-# :::
-
-# In[ ]:
-
-
-
-
-
-# :::{admonition} Exercise 2
-# 
-# Consider a continous antibiotic injection at a constant rate designed to maintain the plasma concentration at minimum bactricidal level. Your solution should proceed in three steps:
-# 
-# 1. First, by hand, set up and solve the steady state equation to find the desired constant dosage rate. 
-# 2. Modify the Python function for $u(t)$ to simulate the desired flowrate.
-# 3. Verify your result by repeating the above simulation using your function for $u(t)$. 
-# 
-# :::
-
-# In[ ]:
-
-
-
 

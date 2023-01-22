@@ -7,9 +7,15 @@ root: Readme
 parts:
   - caption: Course Information
     chapters:
-    - file: Syllabus
-    - file: Schedule
-
+    - file: syllabus.md
+    - file: schedule.md
+    
+  - caption: Assignments
+    chapters:
+    - file: assignments/00-assignments.md
+      sections:
+      - file: assignments/hw-01.ipynb
+    
   - caption: Topical Materials
     numbered: true
     chapters:
