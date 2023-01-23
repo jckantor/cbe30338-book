@@ -7,8 +7,8 @@ root: Readme
 parts:
   - caption: Course Information
     chapters:
-    - file: syllabus.md
-    - file: schedule.md
+    - file: Syllabus.md
+    - file: Schedule.md
     
   - caption: Assignments
     chapters:
