@@ -18,11 +18,11 @@ All submissions should be directed to Canvas.
 | :-- | :-- |
 | Fri, Jan 20 | [Order Temperature Control Lab](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) <br> (no submission required) |
 | Mon, Jan 30 | [Homework 1](assignments/hw-01.ipynb)
-| Thu, Feb 2 | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
-| Tues, Mar 21 | Project Proposal
-| Wed, Mar 29 <br> Wed, Apr 5 | Project Reviews
-| Tues, Apr 11 | Project Progress Report
-| Thur, May 11 | Final Project Report
+<!-- | Thu, Feb 2 | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html) -->
+<!-- | Tues, Mar 21 | Project Proposal -->
+<!-- | Wed, Mar 29 <br> Wed, Apr 5 | Project Reviews -->
+<!-- | Tues, Apr 11 | Project Progress Report -->
+<!-- | Thur, May 11 | Final Project Report -->
 
 ## Completed
 
