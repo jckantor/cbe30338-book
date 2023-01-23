@@ -17,7 +17,8 @@ All submissions should be directed to Canvas.
 | Deadline | Description |
 | :-- | :-- |
 | Fri, Jan 20 | [Order Temperature Control Lab](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) <br> (no submission required) |
-| Thur, Jan 26 | [Homework 1](assignments/hw-01.ipynb)
+| Mon, Jan 30 | [Homework 1](assignments/hw-01.ipynb)
+| Thu, Feb 2 | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
 | Tues, Mar 21 | Project Proposal
 | Wed, Mar 29 <br> Wed, Apr 5 | Project Reviews
 | Tues, Apr 11 | Project Progress Report
@@ -35,7 +36,7 @@ All submissions should be directed to Canvas.
 
 ## Planned
 
-Planned activities are subject to change.
+Planned activities are subject to change. Assignment deadlines will be added as they are assigned.
 
 | Day | Activity | Materials |
 |:-- |:-- |:-- |
@@ -44,7 +45,7 @@ Planned activities are subject to change.
 | Tue, Jan 24 | Class: First Order Linear Systems | Section 2.1
 | Wed, Jan 25 | Office Hours 
 | Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | Section 2.2
-| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | Lab Assignment 1
+| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
 |
 | **Week 3**
 | Tue, Jan 31 | Class: Modeling the Temperature Control Lab | Section 2.3
