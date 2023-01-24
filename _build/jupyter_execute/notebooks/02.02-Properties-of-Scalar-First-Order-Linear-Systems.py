@@ -2,32 +2,84 @@
 # coding: utf-8
 
 # # First-Order Linear Systems
-
-# ## First order linear systems
 # 
-# A simple, generic model for a first-order linear system with one state $x$ and and input $u$ can be represented by a block diagram
+# This notebook covers the following topics:
+# 
+# * Review the mathematics of first-order linear differential equations.
+# * Define time-constant and steady-state gain for input/output systems.
+# * Describe **standard representations** for first order systems including **state-space** and **gain/time-constant**.
+# 
+# **Learning Goals**
+# 
+# After completing this notebook, a student will be able to manipulate first-order models to
+# 
+# 1. Identify inputs and output variables, and model parameters.
+# 2. Identify units of inputs, outputs, and parameters.
+# 3. Change units.
+# 4. Compute steady-state gain and time constant.
+# 5. Convert first order models to different standard representations.
+# 6. Visually estimate steady-state gain and time constant from inspection of step response data.
+# 7. Quantitatively fit a first order model to step response data and evaluate the quality of the fit.
+# 
+# 
+
+# ## State-Space
+
+# The time-varying **input** $u(t)$ is a time-varying **input** causing changes in the state $x$. The differential equation
+# 
+# $$\frac{dx}{dt} = ax + bu(t)$$
+# 
+# models the cause-and-effect relationship between $u(t)$ and $x(t)$. $a$ and $b$ are constant coefficients.  Given an **initial condition** $x(t_0)$ and the input $u(t)$ starting at $t_0$, solution of this differential equation gives the value of $x(t)$ at all later times $t > t_0$.
+# 
+# We will refer to this form as the **state-space model**. A state space model will always isolate the first order derivatives on the left-hand side of the equation a coefficient of one.
+
+# :::{admonition} Example: Bank account.
+# 
+# Consider a bank account with balance $W$, savings rate $s(t)$, and interest rate $r$. 
+# 
+# $$\frac{dW}{dt} = r W + s(t)$$
+# 
+# 1. What are typical values and units of $r$?
+# 2. What are the units of $t$? 
+# 3. Comparing to the state-space model, what are the values of $a$ and $b$?
+# 
+# :::
+
+# :::{admonition} Example: A cooling cup of coffee.
+# 
+# Consider a cup of coffee of volume $V$, mass specific heat transfer coefficient $C_p$, heat transfer coefficient $U$, area $A$, and ambient temperature $T_{amb}$.
+# 
+# $$\rho V C_p \frac{dT}{dt} = UA(T_{amb} - T)$$
+# 
+# Rewrite this in the standard form. What are $a$ and $b$?
+# 
+# :::
+
+# :::{admonition} Exercise
+# 
+# The differential equation describing the pharmacokinetic model of the last section was given by 
+# 
+# $$\frac{dC}{dt} = \frac{1}{V}u(t) - \frac{Q}{V}C$$
+# 
+# Review the definitions of $C(t)$, $V$, $Q$, and $u(t)$ and complete the following table
+# 
+# | Generic model | Pharmacokinetic model | Description
+# | :--: | :--: | :--
+# | $x = $ | | 
+# | $u(t) = $ | | 
+# | $a = $ | | 
+# | $b = $ | |
+# 
+# :::
+
+# ## Input/Output Systems
+
+# A generic model for a first-order linear system with one state $x$ and and input $u(t)$ can be represented by a block diagram
 # 
 # $$u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)$$
 # 
-# where $a$ and $b$ are constant coefficients. Depending on the application, the time-varying **state variable** $x(t)$ might refer to level, temperature, pressure, or composition.
 # 
-# The time-varying **input** $u(t)$ is a time-varying **input** causing changes in the state. The differential equation
-# 
-# $$\frac{dx}{dt} = ax + bu$$
-# 
-# models the cause-and-effect relationship between $u(t)$ and $x(t)$. Given an **initial condition** $x(t_0)$ and the input $u(t)$ starting at $t_0$, solution of this differential equation gives the value of $x(t)$ at all later times $t > t_0$.
-# 
-# Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as **time-constant** and **gain**. These concepts are critical to your understanding of process control.
-# 
-# The learning goals for this notebook are:
-# 
-# 1. Review the mathematics of first-order linear differential equations.
-# 1. Define time-constant and steady-state gain for input/output systems.
-# 1. Show several different **standard representations** for first order systems including **state-space** and **gain/time-constant**.
-
-# ## Steady-State
-# 
-# The steady-state of a system refers to a constant value of the state variable achieved when the input is set to at a constant value $\bar{u}$. The steady-state is defined by 
+# The **steady-state** of a system refers to a constant value of the state variable achieved when the input is set to at a constant value $\bar{u}$. The steady-state is defined by 
 # 
 # $$\bar{x} = \lim_{t\rightarrow\infty} x(t)$$
 # 
@@ -35,11 +87,7 @@
 # 
 # $$\frac{d\bar{x}}{dt} = 0$$
 # 
-# which provides an equation to define the relationship between the steady input and the steady state.
-
-# ## Gain
-# 
-# When applied to our model of a first-order linear system,
+# which provides an equation to define the relationship between the steady input and the steady state. When applied to our model of a first-order linear system,
 # 
 # $$0 = a \bar{x} + b \bar{u} \implies \bar{x} = -\frac{b}{a}\bar{u}$$
 # 
@@ -47,7 +95,7 @@
 # 
 # $$\bar{x} = K \bar{u} \qquad\text{where}\qquad K = -\frac{b}{a}$$
 # 
-# In process applications $K$ will have units in many process applications. For example, if $x$ denotes concentration of a chemical species in mg/liter and $u$ denotes a input flow in units of mg/hour, the units of $K$ are hours/liter. 
+# $K$ will have units for most process applications. For example, if $x$ denotes concentration of a chemical species in mg/liter and $u$ denotes a input flow in units of mg/hour, the units of $K$ are hours/liter. 
 # 
 
 # :::{admonition} Example
@@ -62,6 +110,7 @@
 # * b. What are the units of the $a$ and $b$ coeffients?
 # * c. What is value and units of the steady-state gain? 
 # * d. What is the maximum speed of the car?
+# * e. Rewrite the state space equation using metric units of km/hour.
 # 
 # Work out the answers before attempting any simulations.
 # 
@@ -97,7 +146,9 @@ ax.plot([ua, ub, ub], [K*ua, K*ua, K*ub], "r--", 2)
 ax.text(ub, K*ua, f"K = {K:4.2f} mph/% throttle", va="top")
 
 
-# In electrical engineering circuit analysis, $x$ and $u$ typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain $K$ will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.
+# ## Be careful with units!
+# 
+# In electrical engineering circuit analysis, $x$ and $u$ typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain $K$ will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.
 # 
 # ***For this course, values of gain $K$ should always specify units.***
 
@@ -445,7 +496,7 @@ ax.grid(True)
 # 
 # We started with a scalar, linear first-order system in the form
 # 
-# $$\frac{dx}{dt} = a x + b u$$
+# $$\fbox{$\frac{dx}{dt} = a x + b u$}$$
 # 
 # We found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant $\tau$ and gain $K$.
 # 
@@ -456,7 +507,7 @@ ax.grid(True)
 # 
 # Obviously, once $K$ and $tau$ are estimated, values for $a$ and $b$ are easily computed. But sometimes it is more transparent simply to write the linear system using $K$ and $\tau$ directly, as
 # 
-# $$\tau\frac{dx}{dt} = -x + K u$$
+# $$\fbox{$\tau\frac{dx}{dt} = -x + K u$}$$
 # 
 # What is useful about this form is that the gain and time constant are immediately known from coefficients in the model.
 
@@ -510,3 +561,5 @@ ax.grid(True)
 
 
 
+
+# Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as **time-constant** and **gain**. These concepts are critical to your understanding of process control.
