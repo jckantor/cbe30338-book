@@ -22,12 +22,8 @@
 # 1. First, by hand, set up and solve the steady state equation to find the desired constant dosage rate. 
 # 2. Modify the Python function for $u(t)$ to simulate the desired flowrate.
 # 3. Verify your result by repeating the above simulation using your function for $u(t)$. 
-
-# In[ ]:
-
-
-
-
+# 
+# Use the same parameter values as Problem 1.
 
 # In[ ]:
 
