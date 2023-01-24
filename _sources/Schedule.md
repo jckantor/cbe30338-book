@@ -28,11 +28,18 @@ All submissions should be directed to Canvas.
 
 | Day | Activity | Materials |
 |:-- |:-- |:-- |
+|
 | **Week 1**
 | Tue, Jan 17 | Class: Course organization and Introduction to Process Control | Syllabus <br> Schedule <br> Section 1.1 & 1.2 |
 | Wed, Jan 18 | Office Hours 
 | Thur, Jan 19 | Class: Modeling Case Study: Pharmacokinetics  | Section 2.1 <br> [Homework 1](assignments/hw-01.ipynb) |
 | Fri, Jan 20 | -- *no lab* --
+|
+| **Week 2**
+| Tue, Jan 24 | Class: First Order Linear Systems | Section 2.2
+| Wed, Jan 25 | Office Hours 
+| Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | Section 2.3 <br> Homework 2
+| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
 
 ## Planned
 
@@ -40,12 +47,6 @@ Planned activities are subject to change. Assignment deadlines will be added as 
 
 | Day | Activity | Materials |
 |:-- |:-- |:-- |
-|
-| **Week 2**
-| Tue, Jan 24 | Class: First Order Linear Systems | Section 2.1
-| Wed, Jan 25 | Office Hours 
-| Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | Section 2.2
-| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
 |
 | **Week 3**
 | Tue, Jan 31 | Class: Modeling the Temperature Control Lab | Section 2.3

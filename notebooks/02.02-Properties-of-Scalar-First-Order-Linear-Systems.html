@@ -868,18 +868,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   2.2.1. First order linear systems
+  <a class="reference internal nav-link" href="#state-space">
+   2.2.1. State-Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steady-state">
-   2.2.2. Steady-State
+  <a class="reference internal nav-link" href="#input-output-systems">
+   2.2.2. Input/Output Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gain">
-   2.2.3. Gain
+  <a class="reference internal nav-link" href="#be-careful-with-units">
+   2.2.3. Be careful with units!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -946,18 +946,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   2.2.1. First order linear systems
+  <a class="reference internal nav-link" href="#state-space">
+   2.2.1. State-Space
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#steady-state">
-   2.2.2. Steady-State
+  <a class="reference internal nav-link" href="#input-output-systems">
+   2.2.2. Input/Output Systems
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gain">
-   2.2.3. Gain
+  <a class="reference internal nav-link" href="#be-careful-with-units">
+   2.2.3. Be careful with units!
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1016,43 +1016,100 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="first-order-linear-systems">
 <h1><span class="section-number">2.2. </span>First-Order Linear Systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this heading">#</a></h1>
-<section id="id1">
-<h2><span class="section-number">2.2.1. </span>First order linear systems<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>A simple, generic model for a first-order linear system with one state <span class="math notranslate nohighlight">\(x\)</span> and and input <span class="math notranslate nohighlight">\(u\)</span> can be represented by a block diagram</p>
-<div class="math notranslate nohighlight">
-\[u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)\]</div>
-<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant coefficients. Depending on the application, the time-varying <strong>state variable</strong> <span class="math notranslate nohighlight">\(x(t)\)</span> might refer to level, temperature, pressure, or composition.</p>
-<p>The time-varying <strong>input</strong> <span class="math notranslate nohighlight">\(u(t)\)</span> is a time-varying <strong>input</strong> causing changes in the state. The differential equation</p>
-<div class="math notranslate nohighlight">
-\[\frac{dx}{dt} = ax + bu\]</div>
-<p>models the cause-and-effect relationship between <span class="math notranslate nohighlight">\(u(t)\)</span> and <span class="math notranslate nohighlight">\(x(t)\)</span>. Given an <strong>initial condition</strong> <span class="math notranslate nohighlight">\(x(t_0)\)</span> and the input <span class="math notranslate nohighlight">\(u(t)\)</span> starting at <span class="math notranslate nohighlight">\(t_0\)</span>, solution of this differential equation gives the value of <span class="math notranslate nohighlight">\(x(t)\)</span> at all later times <span class="math notranslate nohighlight">\(t &gt; t_0\)</span>.</p>
-<p>Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as <strong>time-constant</strong> and <strong>gain</strong>. These concepts are critical to your understanding of process control.</p>
-<p>The learning goals for this notebook are:</p>
-<ol class="simple">
+<p>This notebook covers the following topics:</p>
+<ul class="simple">
 <li><p>Review the mathematics of first-order linear differential equations.</p></li>
 <li><p>Define time-constant and steady-state gain for input/output systems.</p></li>
-<li><p>Show several different <strong>standard representations</strong> for first order systems including <strong>state-space</strong> and <strong>gain/time-constant</strong>.</p></li>
+<li><p>Describe <strong>standard representations</strong> for first order systems including <strong>state-space</strong> and <strong>gain/time-constant</strong>.</p></li>
+</ul>
+<p><strong>Learning Goals</strong></p>
+<p>After completing this notebook, a student will be able to manipulate first-order models to</p>
+<ol class="simple">
+<li><p>Identify inputs and output variables, and model parameters.</p></li>
+<li><p>Identify units of inputs, outputs, and parameters.</p></li>
+<li><p>Change units.</p></li>
+<li><p>Compute steady-state gain and time constant.</p></li>
+<li><p>Convert first order models to different standard representations.</p></li>
+<li><p>Visually estimate steady-state gain and time constant from inspection of step response data.</p></li>
+<li><p>Quantitatively fit a first order model to step response data and evaluate the quality of the fit.</p></li>
 </ol>
+<section id="state-space">
+<h2><span class="section-number">2.2.1. </span>State-Space<a class="headerlink" href="#state-space" title="Permalink to this heading">#</a></h2>
+<p>The time-varying <strong>input</strong> <span class="math notranslate nohighlight">\(u(t)\)</span> is a time-varying <strong>input</strong> causing changes in the state <span class="math notranslate nohighlight">\(x\)</span>. The differential equation</p>
+<div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = ax + bu(t)\]</div>
+<p>models the cause-and-effect relationship between <span class="math notranslate nohighlight">\(u(t)\)</span> and <span class="math notranslate nohighlight">\(x(t)\)</span>. <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constant coefficients.  Given an <strong>initial condition</strong> <span class="math notranslate nohighlight">\(x(t_0)\)</span> and the input <span class="math notranslate nohighlight">\(u(t)\)</span> starting at <span class="math notranslate nohighlight">\(t_0\)</span>, solution of this differential equation gives the value of <span class="math notranslate nohighlight">\(x(t)\)</span> at all later times <span class="math notranslate nohighlight">\(t &gt; t_0\)</span>.</p>
+<p>We will refer to this form as the <strong>state-space model</strong>. A state space model will always isolate the first order derivatives on the left-hand side of the equation a coefficient of one.</p>
+<div class="admonition-example-bank-account admonition">
+<p class="admonition-title">Example: Bank account.</p>
+<p>Consider a bank account with balance <span class="math notranslate nohighlight">\(W\)</span>, savings rate <span class="math notranslate nohighlight">\(s(t)\)</span>, and interest rate <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\frac{dW}{dt} = r W + s(t)\]</div>
+<ol class="simple">
+<li><p>What are typical values and units of <span class="math notranslate nohighlight">\(r\)</span>?</p></li>
+<li><p>What are the units of <span class="math notranslate nohighlight">\(t\)</span>?</p></li>
+<li><p>Comparing to the state-space model, what are the values of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>?</p></li>
+</ol>
+</div>
+<div class="admonition-example-a-cooling-cup-of-coffee admonition">
+<p class="admonition-title">Example: A cooling cup of coffee.</p>
+<p>Consider a cup of coffee of volume <span class="math notranslate nohighlight">\(V\)</span>, mass specific heat transfer coefficient <span class="math notranslate nohighlight">\(C_p\)</span>, heat transfer coefficient <span class="math notranslate nohighlight">\(U\)</span>, area <span class="math notranslate nohighlight">\(A\)</span>, and ambient temperature <span class="math notranslate nohighlight">\(T_{amb}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\rho V C_p \frac{dT}{dt} = UA(T_{amb} - T)\]</div>
+<p>Rewrite this in the standard form. What are <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>?</p>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>The differential equation describing the pharmacokinetic model of the last section was given by</p>
+<div class="math notranslate nohighlight">
+\[\frac{dC}{dt} = \frac{1}{V}u(t) - \frac{Q}{V}C\]</div>
+<p>Review the definitions of <span class="math notranslate nohighlight">\(C(t)\)</span>, <span class="math notranslate nohighlight">\(V\)</span>, <span class="math notranslate nohighlight">\(Q\)</span>, and <span class="math notranslate nohighlight">\(u(t)\)</span> and complete the following table</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-align:center"><p>Generic model</p></th>
+<th class="head text-align:center"><p>Pharmacokinetic model</p></th>
+<th class="head text-align:left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(x = \)</span></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(u(t) = \)</span></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(a = \)</span></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><span class="math notranslate nohighlight">\(b = \)</span></p></td>
+<td class="text-align:center"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
-<section id="steady-state">
-<h2><span class="section-number">2.2.2. </span>Steady-State<a class="headerlink" href="#steady-state" title="Permalink to this heading">#</a></h2>
-<p>The steady-state of a system refers to a constant value of the state variable achieved when the input is set to at a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>. The steady-state is defined by</p>
+<section id="input-output-systems">
+<h2><span class="section-number">2.2.2. </span>Input/Output Systems<a class="headerlink" href="#input-output-systems" title="Permalink to this heading">#</a></h2>
+<p>A generic model for a first-order linear system with one state <span class="math notranslate nohighlight">\(x\)</span> and and input <span class="math notranslate nohighlight">\(u(t)\)</span> can be represented by a block diagram</p>
+<div class="math notranslate nohighlight">
+\[u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)\]</div>
+<p>The <strong>steady-state</strong> of a system refers to a constant value of the state variable achieved when the input is set to at a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>. The steady-state is defined by</p>
 <div class="math notranslate nohighlight">
 \[\bar{x} = \lim_{t\rightarrow\infty} x(t)\]</div>
 <p>The state is steady if the state variable is not changing, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\frac{d\bar{x}}{dt} = 0\]</div>
-<p>which provides an equation to define the relationship between the steady input and the steady state.</p>
-</section>
-<section id="gain">
-<h2><span class="section-number">2.2.3. </span>Gain<a class="headerlink" href="#gain" title="Permalink to this heading">#</a></h2>
-<p>When applied to our model of a first-order linear system,</p>
+<p>which provides an equation to define the relationship between the steady input and the steady state. When applied to our model of a first-order linear system,</p>
 <div class="math notranslate nohighlight">
 \[0 = a \bar{x} + b \bar{u} \implies \bar{x} = -\frac{b}{a}\bar{u}\]</div>
 <p>The value <span class="math notranslate nohighlight">\(-\frac{b}{a}\)</span> is called the <strong>gain</strong> which is a coefficient describing the value of the steady state <span class="math notranslate nohighlight">\(\bar{x}\)</span> as a multiple of the steady input <span class="math notranslate nohighlight">\(\bar{u}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\bar{x} = K \bar{u} \qquad\text{where}\qquad K = -\frac{b}{a}\]</div>
-<p>In process applications <span class="math notranslate nohighlight">\(K\)</span> will have units in many process applications. For example, if <span class="math notranslate nohighlight">\(x\)</span> denotes concentration of a chemical species in mg/liter and <span class="math notranslate nohighlight">\(u\)</span> denotes a input flow in units of mg/hour, the units of <span class="math notranslate nohighlight">\(K\)</span> are hours/liter.</p>
+<p><span class="math notranslate nohighlight">\(K\)</span> will have units for most process applications. For example, if <span class="math notranslate nohighlight">\(x\)</span> denotes concentration of a chemical species in mg/liter and <span class="math notranslate nohighlight">\(u\)</span> denotes a input flow in units of mg/hour, the units of <span class="math notranslate nohighlight">\(K\)</span> are hours/liter.</p>
 <div class="admonition-example admonition">
 <p class="admonition-title">Example</p>
 <p>Suppose the speed of a car, <span class="math notranslate nohighlight">\(x\)</span>, in response to a throttle position <span class="math notranslate nohighlight">\(u\)</span> has been found to satisfy the equation</p>
@@ -1064,6 +1121,7 @@ title="Print to PDF"
 <li><p>b. What are the units of the <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> coeffients?</p></li>
 <li><p>c. What is value and units of the steady-state gain?</p></li>
 <li><p>d. What is the maximum speed of the car?</p></li>
+<li><p>e. Rewrite the state space equation using metric units of km/hour.</p></li>
 </ul>
 <p>Work out the answers before attempting any simulations.</p>
 </div>
@@ -1101,10 +1159,13 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(60, 32.0, &#39;K = 0.80 mph/% throttle&#39;)
 </pre></div>
 </div>
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_5_1.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_5_1.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_1.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_1.png" />
 </div>
 </div>
-<p>In electrical engineering circuit analysis, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines, with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.</p>
+</section>
+<section id="be-careful-with-units">
+<h2><span class="section-number">2.2.3. </span>Be careful with units!<a class="headerlink" href="#be-careful-with-units" title="Permalink to this heading">#</a></h2>
+<p>In electrical engineering circuit analysis, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.</p>
 <p><em><strong>For this course, values of gain <span class="math notranslate nohighlight">\(K\)</span> should always specify units.</strong></em></p>
 </section>
 <section id="dynamic-response">
@@ -1166,7 +1227,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_11_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_11_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
 </div>
 </div>
 </section>
@@ -1255,7 +1316,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
 </div>
 </div>
 <section id="half-life">
@@ -1304,7 +1365,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_17_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" />
 </div>
 </div>
 <div class="admonition-example-cont admonition">
@@ -1343,7 +1404,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_23_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_23_0.png" />
 </div>
 </div>
 </section>
@@ -1366,7 +1427,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_21_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_25_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_25_0.png" />
 </div>
 </div>
 <p>This function is easily adapted to create a step function of arbitrary size, offset, and location in time.</p>
@@ -1396,7 +1457,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_24_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_28_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_28_0.png" />
 </div>
 </div>
 </section>
@@ -1463,7 +1524,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_26_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_26_0.png" />
+<img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_30_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_30_0.png" />
 </div>
 </div>
 </section>
@@ -1471,7 +1532,7 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <h2><span class="section-number">2.2.7. </span>Gain, time-constant form for a first-order linear system<a class="headerlink" href="#gain-time-constant-form-for-a-first-order-linear-system" title="Permalink to this heading">#</a></h2>
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
-\[\frac{dx}{dt} = a x + b u\]</div>
+\[\fbox{$\frac{dx}{dt} = a x + b u$}\]</div>
 <p>We found two key parameters that describe the behavior of this systems in terms that can be easily indentified from a plot of the step response, the time constant <span class="math notranslate nohighlight">\(\tau\)</span> and gain <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -1480,7 +1541,7 @@ K &amp; = - \frac{b}{a}
 \end{align*}\end{split}\]</div>
 <p>Obviously, once <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(tau\)</span> are estimated, values for <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are easily computed. But sometimes it is more transparent simply to write the linear system using <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span> directly, as</p>
 <div class="math notranslate nohighlight">
-\[\tau\frac{dx}{dt} = -x + K u\]</div>
+\[\fbox{$\tau\frac{dx}{dt} = -x + K u$}\]</div>
 <p>What is useful about this form is that the gain and time constant are immediately known from coefficients in the model.</p>
 </section>
 <section id="exercises">
@@ -1513,6 +1574,7 @@ K &amp; = - \frac{b}{a}
 <p class="admonition-title">Exercise 5</p>
 <p>Prepare a simulation of the model you have created for the biosensor.</p>
 </div>
+<p>Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as <strong>time-constant</strong> and <strong>gain</strong>. These concepts are critical to your understanding of process control.</p>
 </section>
 </section>
 
