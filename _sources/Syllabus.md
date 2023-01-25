@@ -34,7 +34,7 @@ Students completing this course will be able to …
 
 **Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 129
 
-**Virtual Office Hours:** Wednesdays, 2:00 PM - 3:30 pm. Password-protected Zoom links for scheduled virtual office hours are located in [Canvas](https://canvas.nd.edu/courses/42595) under the "Zoom" tab in the left-hand margin. If you can't make that time, send an email with some times convenient for you and I'll send you a Zoom invitation.
+**Virtual Office Hours:** Wednesdays, 2:00 PM - 3:30 pm. The password-protected Zoom links for scheduled virtual office hours is [https://notredame.zoom.us/j/93569381181?pwd=Uk5EeUM2TU9OdDFMR0xiRlk4MUo1UT09](https://notredame.zoom.us/j/93569381181?pwd=Uk5EeUM2TU9OdDFMR0xiRlk4MUo1UT09). If you can't make the scheduled time, send me an email with some times convenient for you and I will send you a Zoom invitation.
 
 **Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
