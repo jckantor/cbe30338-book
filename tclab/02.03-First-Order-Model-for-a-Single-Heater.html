@@ -1,0 +1,1364 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1.5. First Order Model for a Single Heater &#8212; CBE 30338 Chemical Process Control</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Empirical Model Identification" href="02.00-Empirical-Model-Identification.html" />
+    <link rel="prev" title="1.4. Step Testing" href="02.01-Step-Testing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CBE 30338 Chemical Process Control</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Readme.html">
+                    CBE 30338 Chemical Process Control
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Course Information
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Syllabus.html">
+   CBE 30338/32338 Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Schedule.html">
+   CBE 30338/32338 Schedule
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../assignments/00-assignments.html">
+   CBE 30338 Assignments
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../assignments/hw-01.html">
+     Homework 1
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Topical Materials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/01.00-What-is-Process-Control.html">
+   1. What is Process Control?
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.01-What-is-Feedback.html">
+     1.1. What is Feedback?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/01.02-Elements-of-Feedback-Control.html">
+     1.2. Elements of Process Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/02.00-Process-Modeling.html">
+   2. Process Modeling
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.01-One-Compartment-Pharmacokinetics.html">
+     2.1. One Compartment Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems.html">
+     2.2. First-Order Linear Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.03-First-Order-Model-for-a-Single-Heater.html">
+     2.3. First Order Model for a Single Heater
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.04-Fitting-a-Model-to-Data.html">
+     2.4. Fitting a Model to Experimental Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
+     2.5. Second and Higher Order models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.06-Fed-Batch-Bioreactor.html">
+     2.6. Fed-Batch Bioreactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.07-Exothermic-CSTR.html">
+     2.7. Exothermic Continuous Stirred Tank Reactor
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
+     2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/03.00-Feedback-Control.html">
+   3. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.01-Case-Study-Thermal-Cycling-PCR.html">
+     3.1. Case Study: Thermal Cycling for PCR
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.02-Setpoints.html">
+     3.2. Setpoints
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.03-Setpoints-Thermal-Cycler.html">
+     3.3. Case Study: PCR Thermal Cycler Protocols
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.04-Relay-Control.html">
+     3.4. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.05-Implementing-Controllers.html">
+     3.5. Implementing Controllers in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.06-Proportional-Integral-Control.html">
+     3.6. Practical Proportional (P) and Proportional-Integral (PI) Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.07-Integral-Windup-and-Bumpless-Transfer.html">
+     3.7. Integral Windup and Bumpless Transfer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/03.08-Controller-Tuning.html">
+     3.8. Controller Tuning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/04/04.00-Process-Analytics.html">
+   4. Process Analytics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.01-Learning-Goals.html">
+     4.1. Learning Goals
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.02-Process-Historians.html">
+     4.2. Data/Process/Operational Historian
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.03-State-Estimation.html">
+     4.3. State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.04-Lab-Assigment-State-Estimation.html">
+     4.4. Lab Assignment 5: State Estimation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.05-Anomaly-Detection.html">
+     4.5. Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.06-Lab-Assignment-Anomaly-Detection.html">
+     4.6. Lab Assignment 6: Anomaly Detection
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.07-Observer-Synthesis-LMI.html">
+     4.7. Observer Synthesis using Linear Matrix Inequalities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.08-Envrironmental-Application.html">
+     4.8. Application of Luenberger Observers to Environmental Modeling of Rivers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/04/04.09-Study-Questions.html">
+     4.9. Study Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/05/05.00-Optimization.html">
+   5. Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.01-Linear-Production-Model.html">
+     5.1. Linear Production Model
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.02-Linear-Blending-Problem.html">
+     5.2. Linear Blending Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.03-Homework_2.html">
+     5.3. Homework Assignment 2: Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.04-Gasoline-Blending.html">
+     5.4. Gasoline Blending
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.05-Linear-Programming.html">
+     5.5. Linear Programming
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel.html">
+     5.6. Design of a Cold Weather Fuel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/05/05.99-Pyomo-Examples.html">
+     5.7. Pyomo Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../CBE30338-EV-Example.html">
+     5.8. Recharging Strategy for an Electric Vehicle
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/milk-pooling.html">
+     5.9. Pooling and Blending
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/06.00-Predictive-Control.html">
+   6. Predictive Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/07.01-Simulation-and-Optimal-Control-in-Pharmacokinetics.html">
+     6.1. Simulation and Optimal Control in Pharmacokinetics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.01-Static-Operability.html">
+     6.2. Static Operability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.02-Simulation-and-Open-Loop-Optimal-Control.html">
+     6.3. Open-Loop Optimal Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.03-Predictive-Control.html">
+     6.4. Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.04-Implementing-Predictive-Control.html">
+     6.5. Implementing Predictive Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.06-gompertz-model-project.html">
+     6.6. Project: Gompertz Model for Tumor Growth
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/06.07-time-as-decision-variable.html">
+     6.7. Time as a Decision Variable
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks/08.00-Projects.html">
+   7. Projects
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/08.01-Project-Ideas.html">
+     7.1. Project Ideas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks/09.00-Bibliography.html">
+   8. References
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Control Laboratory
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01.00-TCLab.html">
+   1. The Temperature Control Laboratory
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
+     1.2. Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.03-Using-TCLab.html">
+     1.3. Using TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.01-Step-Testing.html">
+     1.4. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.5. First Order Model for a Single Heater
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
+   2. Empirical Model Identification
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
+     2.1. Fitting Step Test Data to Empirical Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   3. Estimating Model Parameters
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
+     3.1. Assignment: Model Identification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="04.00-Feedback-Control.html">
+   4. Feedback Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Relay-Control.html">
+     4.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
+     4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+     4.3. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-State-Estimation.html">
+   5. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
+     5.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   6. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   7. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
+     7.1. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
+     7.2. Simulation, Control, and Estimation using Pyomo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
+   Python Tutorials
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.05-Tidy-Data-and-Pandas.html">
+     Tidy Data and Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.10-Coding-Controllers-with-Python-Generators.html">
+     Coding Controllers with Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.11-Modular-Approach-to-Simulation-using-Python-Generators.html">
+     Modular Simulation using Python Generators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../python/A.30-Animation-in-Jupyter-Notebooks.html">
+     Animation in Jupyter Notebooks
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/02.03-First-Order-Model-for-a-Single-Heater.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/tclab/02.03-First-Order-Model-for-a-Single-Heater.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jckantor/cbe30338-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/02.03-First-Order-Model-for-a-Single-Heater.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tclab/02.03-First-Order-Model-for-a-Single-Heater.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-order-lumped-model-for-heater-sensor-device">
+   1.5.1. First-order lumped model for heater/sensor device.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state">
+     1.5.1.1. Steady State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-previously-saved-experimental-data">
+   1.5.2. Loading previously saved experimental data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deviation-variables">
+     1.5.2.1. Deviation Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-order-linear-differential-equations">
+     1.5.2.2. First Order Linear Differential Equations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#steady-state-response">
+       1.5.2.2.1. Steady State Response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transient-response">
+       1.5.2.2.2. Transient Response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#apply-to-model-equation">
+       1.5.2.2.3. Apply to Model Equation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-analytical-solution">
+     1.5.2.3. Plotting the Analytical Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matching-the-model-to-experimental-data">
+   1.5.3. Matching the Model to Experimental Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-this-solution-make-sense">
+     1.5.3.1. Does this solution make sense?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>First Order Model for a Single Heater</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-order-lumped-model-for-heater-sensor-device">
+   1.5.1. First-order lumped model for heater/sensor device.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steady-state">
+     1.5.1.1. Steady State
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-previously-saved-experimental-data">
+   1.5.2. Loading previously saved experimental data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deviation-variables">
+     1.5.2.1. Deviation Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-order-linear-differential-equations">
+     1.5.2.2. First Order Linear Differential Equations
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#steady-state-response">
+       1.5.2.2.1. Steady State Response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#transient-response">
+       1.5.2.2.2. Transient Response
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#apply-to-model-equation">
+       1.5.2.2.3. Apply to Model Equation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-analytical-solution">
+     1.5.2.3. Plotting the Analytical Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matching-the-model-to-experimental-data">
+   1.5.3. Matching the Model to Experimental Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#does-this-solution-make-sense">
+     1.5.3.1. Does this solution make sense?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="first-order-model-for-a-single-heater">
+<h1><span class="section-number">1.5. </span>First Order Model for a Single Heater<a class="headerlink" href="#first-order-model-for-a-single-heater" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../_images/arduino_comsol1.png" /></p>
+<p>Mathematical modeling is an integral part of process control. The models come in many forms, ranging from the barest of information about a process to sophisticated simulation involving millions of computational nodes.</p>
+<p>Our purpose here is to demonstrate certain basic approaches that will provide with insight about the qualitative nature of process dynamics, how to construct simple models from first-principles understanding of the processes, and how to develop models in those circumstances when its not possible to start from first principles.</p>
+<p>Our first example will be the Temperature Control Laboratory.</p>
+<ul class="simple">
+<li><p>First-order lumped model for a single heater/sensor device.</p></li>
+<li><p>Interacting first-order models for the dual heater/sensor.</p></li>
+<li><p>Second-order model for a single heater/sensor device.</p></li>
+<li><p>Interacting second-order model for the dual heater/sensor.</p></li>
+</ul>
+<section id="first-order-lumped-model-for-heater-sensor-device">
+<h2><span class="section-number">1.5.1. </span>First-order lumped model for heater/sensor device.<a class="headerlink" href="#first-order-lumped-model-for-heater-sensor-device" title="Permalink to this heading">#</a></h2>
+<p>We’ll be begin by writing a model for one of the heater/sensor pairs. We will assume the whole heater/sensor pair is at single uniform temperature <span class="math notranslate nohighlight">\(T_1\)</span>. Then we write a dynamic energy balance</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9dfa9c99-64f3-4def-ba38-ecbb19dfaa13">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-9dfa9c99-64f3-4def-ba38-ecbb19dfaa13" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + P_1u_1 \\
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_1\)</span> is the combined temperature of heater/sensor one, <span class="math notranslate nohighlight">\(T_{amb}\)</span> is the ambient temperature of the surroundings, and <span class="math notranslate nohighlight">\(u_1\)</span> is a fraction of the maximum heater power <span class="math notranslate nohighlight">\(P_1\)</span> being applied. The key parameters are the total heat capacity <span class="math notranslate nohighlight">\(C_p\)</span> and the overall heat transfer coefficient with surroundings <span class="math notranslate nohighlight">\(U_a\)</span>.</p>
+<section id="steady-state">
+<h3><span class="section-number">1.5.1.1. </span>Steady State<a class="headerlink" href="#steady-state" title="Permalink to this heading">#</a></h3>
+<p>We’ll begin our analysis by investigating the steady-state response of this system to a steady-state input <span class="math notranslate nohighlight">\(\bar{u}_{1}\)</span>.  At steady-state all variables are constant so <span class="math notranslate nohighlight">\(\frac{dT_1}{dt} = 0\)</span>, which leaves</p>
+<div class="amsmath math notranslate nohighlight" id="equation-03752ba7-5a92-42be-bb7e-6317c5ec8bb5">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-03752ba7-5a92-42be-bb7e-6317c5ec8bb5" title="Permalink to this equation">#</a></span>\[\begin{align}
+0 = U_a(T_{amb} - \bar{T}_1) + P_1\bar{u}_{1}
+\end{align}\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(\bar{T}_{1}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\bar{T}_{1} = T_{amb} + \frac{P_1}{U_a}\bar{u}_{1}\]</div>
+<p>Next we’ll load some experimental data that you can use to estimate the value of <span class="math notranslate nohighlight">\(U_a\)</span>.</p>
+</section>
+</section>
+<section id="loading-previously-saved-experimental-data">
+<h2><span class="section-number">1.5.2. </span>Loading previously saved experimental data<a class="headerlink" href="#loading-previously-saved-experimental-data" title="Permalink to this heading">#</a></h2>
+<p>Previously a step test was performed in which the temperature control laboratory was initially at steady state at an ambient temperature of 21°C. The power to heater 1 was set to 50% for <span class="math notranslate nohighlight">\(P_1\)</span> = 4.0 watts. Temperature <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> were recorded every second for a period of 800 seconds.</p>
+<p>The data is in a file named “Step_Test_Data.csv”. The following cell will attempt to read the data from the course github repository and store in a local file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jckantor/CBE30338/master/notebooks/TCLab/Step_Test_Data.csv&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Step_Test_Data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If that fails to work, then manually download the dat from this link <a class="reference external" href="https://github.com/jckantor/CBE30338/blob/master/notebooks/TCLab/Step_Test_Data.csv">https://github.com/jckantor/CBE30338/blob/master/notebooks/TCLab/Step_Test_Data.csv</a> and save to the same directory as this notebook before proceeding.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">T1</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">T2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;temperture 1 / °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;TCLab Step Test Data for P1 = 4.0 watts, u1 = 0.5&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;T1&#39;</span><span class="p">,</span><span class="s1">&#39;T2&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.03-First-Order-Model-for-a-Single-Heater_7_0.png" src="../_images/02.03-First-Order-Model-for-a-Single-Heater_7_0.png" />
+</div>
+</div>
+<p><strong>Exercise:</strong>  From this step test data and the steady-state analysis described above, estimate the value of <span class="math notranslate nohighlight">\(U_a\)</span>.</p>
+<section id="deviation-variables">
+<h3><span class="section-number">1.5.2.1. </span>Deviation Variables<a class="headerlink" href="#deviation-variables" title="Permalink to this heading">#</a></h3>
+<p>In examining the response of the temperature control laboratory, we see the temperature is a deviation from ambient temperature, i.e.,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9b593c87-d123-40b3-ae50-d96eb247e694">
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-9b593c87-d123-40b3-ae50-d96eb247e694" title="Permalink to this equation">#</a></span>\[\begin{align}
+T_1' = T_1 - T_{amb}
+\end{align}\]</div>
+<p>For process control purposes, we are often interested in the deviation of a process variable from a nominal value. In this case the choice of deviation variable is clearly obvious which is designated <span class="math notranslate nohighlight">\(T_1'\)</span>. From the steady state equation we see</p>
+<div class="amsmath math notranslate nohighlight" id="equation-75bc2a6c-b2dd-4f62-87ed-c26d68ca8dcd">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-75bc2a6c-b2dd-4f62-87ed-c26d68ca8dcd" title="Permalink to this equation">#</a></span>\[\begin{align}
+\bar{T}_1' = \bar{T}_1 - T_{amb} = \frac{P_1}{U_a}\bar{u}_1
+\end{align}\]</div>
+<p>which is a somewhat simpler expression.</p>
+<p>Let’s see what happens to the transient model. Substituting <span class="math notranslate nohighlight">\(T_1 = T_{amb} + T_1'\)</span> into the differential equation gives</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0d4322f0-7127-435c-b7e3-64e40b83c2d0">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-0d4322f0-7127-435c-b7e3-64e40b83c2d0" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_p\frac{d(T_{amb}+T_1')}{dt} &amp; = U_a(T_{amb} - (T_{amb} + T_1')) + P_1u_1
+\end{align}\]</div>
+<p>Expanding these terms</p>
+<div class="amsmath math notranslate nohighlight" id="equation-50a35ace-e5dc-49e3-84c9-4e3eb55080c4">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-50a35ace-e5dc-49e3-84c9-4e3eb55080c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_p\underbrace{\frac{dT_{amb}}{dt}}_{0} + C_p\frac{dT_1'}{dt} &amp; = U_a(\underbrace{T_{amb} - T_{amb}}_{0} - T_1') + P_1u_1
+\end{align}\]</div>
+<p>we see several terms drop out. The derivative of any constant is zero, and see a cancelation on the right hand side, leaving</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3e52e9ac-a14a-4f1f-9fda-130cc92bab85">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-3e52e9ac-a14a-4f1f-9fda-130cc92bab85" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + P_1u_1
+\end{align}\]</div>
+<p>One last manipulation will bring this model into a commonly used standard form</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8e93abc7-1069-4f57-8478-b0c6e5aeb2de">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-8e93abc7-1069-4f57-8478-b0c6e5aeb2de" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{dT_1'}{dt} &amp; = - \frac{U_a}{C_p}T_1' + \frac{P_1}{C_p}u_1
+\end{align}\]</div>
+<p>Now let’s recall some facts about first order differential equations.</p>
+</section>
+<section id="first-order-linear-differential-equations">
+<h3><span class="section-number">1.5.2.2. </span>First Order Linear Differential Equations<a class="headerlink" href="#first-order-linear-differential-equations" title="Permalink to this heading">#</a></h3>
+<p>A standard form for a single differential equation is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5c08b8ab-21a0-43f9-b1f4-4249ce726a82">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-5c08b8ab-21a0-43f9-b1f4-4249ce726a82" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{dx}{dt} &amp; = ax + bu
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are model constants, <span class="math notranslate nohighlight">\(x\)</span> is the dependent variable, and <span class="math notranslate nohighlight">\(u\)</span> is an exogeneous input.</p>
+<section id="steady-state-response">
+<h4><span class="section-number">1.5.2.2.1. </span>Steady State Response<a class="headerlink" href="#steady-state-response" title="Permalink to this heading">#</a></h4>
+<p>For a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>, the steady state response <span class="math notranslate nohighlight">\(\bar{x}\)</span> is given by solution to the equation</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f0af0cb3-1862-4718-a525-0b5c85a24860">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-f0af0cb3-1862-4718-a525-0b5c85a24860" title="Permalink to this equation">#</a></span>\[\begin{align}
+0 &amp; = a\bar{x} + b\bar{u}
+\end{align}\]</div>
+<p>which is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-920adcdf-d639-49d5-80af-1ce01c568481">
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-920adcdf-d639-49d5-80af-1ce01c568481" title="Permalink to this equation">#</a></span>\[\begin{align}
+\bar{x} &amp; = -\frac{b}{a} \bar{u}
+\end{align}\]</div>
+</section>
+<section id="transient-response">
+<h4><span class="section-number">1.5.2.2.2. </span>Transient Response<a class="headerlink" href="#transient-response" title="Permalink to this heading">#</a></h4>
+<p>The transient response is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ea94f0a7-cfe9-4bca-b33e-800309e92eef">
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-ea94f0a7-cfe9-4bca-b33e-800309e92eef" title="Permalink to this equation">#</a></span>\[\begin{align}
+x(t) &amp; = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
+\end{align}\]</div>
+<p>which is an exact, analytical solution.</p>
+</section>
+<section id="apply-to-model-equation">
+<h4><span class="section-number">1.5.2.2.3. </span>Apply to Model Equation<a class="headerlink" href="#apply-to-model-equation" title="Permalink to this heading">#</a></h4>
+<p>We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83dbb647-24b5-4742-9bea-fbdb1726b3be">
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-83dbb647-24b5-4742-9bea-fbdb1726b3be" title="Permalink to this equation">#</a></span>\[\begin{align}
+T_1' \sim x \\
+-\frac{U_a}{C_p} \sim a \\
+\frac{P_1}{C_p} \sim b \\
+u_1 \sim u
+\end{align}\]</div>
+<p>Substituting these terms into the standard solution we confirm the steady-state solution found above, and provides a solution for the transient response of the deviation variables.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-32217900-c4c0-4b23-aebb-0a17da970432">
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-32217900-c4c0-4b23-aebb-0a17da970432" title="Permalink to this equation">#</a></span>\[\begin{align}
+\bar{x} = -\frac{b}{a}\bar{u} \qquad &amp; \Rightarrow \qquad \bar{T}_{1}' = \frac{P_1}{U_a}\bar{u}_{1} \\
+x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad &amp; \Rightarrow \qquad
+T_1'(t) = \frac{P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
+\end{align}\]</div>
+</section>
+</section>
+<section id="plotting-the-analytical-solution">
+<h3><span class="section-number">1.5.2.3. </span>Plotting the Analytical Solution<a class="headerlink" href="#plotting-the-analytical-solution" title="Permalink to this heading">#</a></h3>
+<p>The following cell demonstrates use of these results to plot the transient response for a particular choice of model parameters.</p>
+<p>The steady state analysis provided an estimate for the gross heat transfer coefficient <span class="math notranslate nohighlight">\(U_a\)</span>. Rerun this cell for different values of gross heat capacity <span class="math notranslate nohighlight">\(C_p\)</span>. Try to find a value that at least mimics the experimental response shown above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                  <span class="c1"># basic package for numerical calculations</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>     <span class="c1"># plotting package</span>
+
+<span class="c1"># parameter values and units</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>                 <span class="c1"># watts</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.06</span>              <span class="c1"># watts/deg C</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mi">8</span>                 <span class="c1"># joules/deg C</span>
+<span class="n">u1_steadystate</span> <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># steady state value of u1 (fraction of total power)</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">21</span>         <span class="c1"># ambient temperature</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">T1_deviation_initial</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># steady state solution</span>
+<span class="n">T1_deviation_steadystate</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1_steadystate</span><span class="o">/</span><span class="n">Ua</span>
+
+<span class="c1"># compute the transient solution</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">800</span><span class="p">)</span>
+<span class="n">T1_deviation</span> <span class="o">=</span> <span class="n">T1_deviation_steadystate</span> \
+     <span class="o">+</span> <span class="p">(</span><span class="n">T1_deviation_initial</span> <span class="o">-</span> <span class="n">T1_deviation_steadystate</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ua</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1_deviation</span> <span class="o">+</span> <span class="n">T_ambient</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time / seconds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature / °C&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/02.03-First-Order-Model-for-a-Single-Heater_12_0.png" src="../_images/02.03-First-Order-Model-for-a-Single-Heater_12_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="matching-the-model-to-experimental-data">
+<h2><span class="section-number">1.5.3. </span>Matching the Model to Experimental Data<a class="headerlink" href="#matching-the-model-to-experimental-data" title="Permalink to this heading">#</a></h2>
+<p>The following cell provides an interactive tool for ‘tuning’ the model to fit the experimental data. Work with the sliders to find good choices for each of the parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Step_Test_Data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;T1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># known parameter values</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">u1_steadystate</span> <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># steady state value of u1 (fraction of total power)</span>
+<span class="n">T_ambient</span> <span class="o">=</span> <span class="mi">21</span>         <span class="c1"># ambient temperature</span>
+
+<span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Cp</span><span class="p">):</span>
+    <span class="n">T1_deviation_initial</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">T1_deviation_steadystate</span> <span class="o">=</span> <span class="n">P1</span><span class="o">*</span><span class="n">u1_steadystate</span><span class="o">/</span><span class="n">Ua</span>
+    <span class="n">T1_deviation</span> <span class="o">=</span> <span class="n">T1_deviation_steadystate</span> \
+         <span class="o">+</span> <span class="p">(</span><span class="n">T1_deviation_initial</span> <span class="o">-</span> <span class="n">T1_deviation_steadystate</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ua</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span>
+    <span class="n">T1_model</span> <span class="o">=</span> <span class="n">T1_deviation</span> <span class="o">+</span> <span class="n">T_ambient</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">T1_model</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time / seconds&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;temperture / °C&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="s1">&#39;Sum of errors = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">T1_model</span><span class="o">-</span><span class="n">T1</span><span class="p">),</span><span class="mi">2</span><span class="p">))))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="s1">&#39;Ua = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Ua</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="s1">&#39;Cp = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">Cp</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">compare</span><span class="p">,</span> <span class="n">Ua</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.10</span><span class="p">,</span><span class="mf">0.001</span><span class="p">),</span> <span class="n">Cp</span><span class="o">=</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">11.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "0dee00c8602e4c47bf9b9461170fc321", "version_major": 2, "version_minor": 0}
+</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.compare(Ua, Cp)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> Determine values for <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(C_p\)</span>.</p>
+<p><strong>Exercise:</strong> The sum of absolute errors is shown on the chart. Try to find values of <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(C_p\)</span> that minimize this error criterion. In your opinion, is that the best choice of model parameters? Why or why not?</p>
+<section id="does-this-solution-make-sense">
+<h3><span class="section-number">1.5.3.1. </span>Does this solution make sense?<a class="headerlink" href="#does-this-solution-make-sense" title="Permalink to this heading">#</a></h3>
+<p>The parameter values in the above plot were chosen to (at least roughly) reproduce the measured response of temperature control laboratory. The value used for the heat capacity was <span class="math notranslate nohighlight">\(C_p = 7\)</span> watts/degC. Is this reasonable?</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_capacity">specific heat capacity for solids</a> is typically has values in the range of 0.2 to 0.9 watts/degC/gram. Using a value of 0.9 that is typical of aluminum and plastics used for electronic products, the estimated mass of the heater/sensor pair would be</p>
+<div class="math notranslate nohighlight">
+\[ m \approx \frac{7 \mbox{ watts/degC}}{0.9 \mbox{ watts/degC/grams}} \approx 8 \mbox{ grams}\]</div>
+<p>Does that seem reasonable?</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tclab"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="02.01-Step-Testing.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.4. </span>Step Testing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="02.00-Empirical-Model-Identification.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Empirical Model Identification</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Jeffrey Kantor<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
