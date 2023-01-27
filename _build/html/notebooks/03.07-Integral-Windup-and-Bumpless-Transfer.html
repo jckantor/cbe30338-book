@@ -397,13 +397,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../CBE30338-Knapsack.html">
-     5.9. Adding Logical Decisions to our Models
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="milk-pooling.html">
-     5.10. Pooling and Blending
+     5.9. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -501,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../tclab/01.02-Troubleshooting-TCLab.html">
-     1.2. Troubleshooting TCLab
+     1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
@@ -510,23 +505,40 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/01.04-Assignment-Thermostat-Control.html">
-     1.4. Assignment: Thermostat Control
+    <a class="reference internal" href="../tclab/02.01-Step-Testing.html">
+     1.4. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/02.03-First-Order-Model-for-a-Single-Heater.html">
+     1.5. First Order Model for a Single Heater
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../tclab/02.00-Empirical-Model-Identification.html">
    2. Empirical Model Identification
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
+     2.1. Fitting Step Test Data to Empirical Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../tclab/03.00-Estimating-Model-Parameters.html">
    3. Estimating Model Parameters
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -542,8 +554,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tclab/04.00-Feedback-Control.html">
    4. Feedback Control
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -558,14 +570,19 @@ const thebe_selector_output = ".output, .cell_output"
      4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../tclab/01.04-Assignment-Thermostat-Control.html">
+     4.3. Assignment: Thermostat Control
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../tclab/05.00-State-Estimation.html">
    5. State Estimation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -586,8 +603,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
    7. Predictive Control and Real Time Optimization
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -615,8 +632,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
    Python Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -1117,13 +1134,13 @@ Setpoint Variable. A desired value for process variable (PV). The job of the con
 <section id="pi-control">
 <h2><span class="section-number">3.7.4. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this heading">#</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-667ca151-89a6-44ec-95d1-f4f2b40a7a1d">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-667ca151-89a6-44ec-95d1-f4f2b40a7a1d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2fc19a08-d68f-40b6-8e59-c46206c6f326">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-2fc19a08-d68f-40b6-8e59-c46206c6f326" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint, and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-491ae48b-9405-4676-9a7e-32c7144a7e07">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-491ae48b-9405-4676-9a7e-32c7144a7e07" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be30f4e6-fa07-4060-9ac2-274376329382">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-be30f4e6-fa07-4060-9ac2-274376329382" title="Permalink to this equation">#</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -1214,8 +1231,8 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3859879a-6731-4442-b5b9-eeb8afd23db3">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-3859879a-6731-4442-b5b9-eeb8afd23db3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c801eb60-3220-4bb2-a5ee-501b74bb9f56">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-c801eb60-3220-4bb2-a5ee-501b74bb9f56" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
@@ -1225,12 +1242,12 @@ MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 <section id="anti-reset-windup-type-1">
 <h3><span class="section-number">3.7.5.1. </span>Anti-reset windup - Type 1<a class="headerlink" href="#anti-reset-windup-type-1" title="Permalink to this heading">#</a></h3>
 <p>There several common strategies for avoiding integral (eset) windup. The first of these should be part of any practical implementation. The technique is to limit computed values of manipulated variable to the range of values that can be implemented. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5024dca0-2a0d-455b-bb34-72d70b94ef45">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-5024dca0-2a0d-455b-bb34-72d70b94ef45" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-23d846fa-851e-4bdf-a13e-d3e24d5179d0">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-23d846fa-851e-4bdf-a13e-d3e24d5179d0" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-c4968afb-f06e-406d-9eb2-c23b13e2aa31">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-c4968afb-f06e-406d-9eb2-c23b13e2aa31" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-312c2af8-34ed-4cd1-a3b5-a53a3fb6920d">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-312c2af8-34ed-4cd1-a3b5-a53a3fb6920d" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1449,13 +1466,13 @@ TCLab Model disconnected successfully.
 </ul>
 <section id="id1">
 <h3><span class="section-number">3.7.7.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-e139182f-e099-4867-a140-c0f00fa43257">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-e139182f-e099-4867-a140-c0f00fa43257" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-87f590c2-86bf-44f9-b6e9-3df5bacd3099">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-87f590c2-86bf-44f9-b6e9-3df5bacd3099" title="Permalink to this equation">#</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-82eeab48-f60b-4806-b610-1e9035b9e13e">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-82eeab48-f60b-4806-b610-1e9035b9e13e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-03aea9f8-0827-467a-8596-c03ff1b2623a">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-03aea9f8-0827-467a-8596-c03ff1b2623a" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">

@@ -397,13 +397,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../CBE30338-Knapsack.html">
-     5.9. Adding Logical Decisions to our Models
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../milk-pooling.html">
-     5.10. Pooling and Blending
+     5.9. Pooling and Blending
     </a>
    </li>
   </ul>
@@ -501,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../tclab/01.02-Troubleshooting-TCLab.html">
-     1.2. Troubleshooting TCLab
+     1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
@@ -510,23 +505,40 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/01.04-Assignment-Thermostat-Control.html">
-     1.4. Assignment: Thermostat Control
+    <a class="reference internal" href="../../tclab/02.01-Step-Testing.html">
+     1.4. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/02.03-First-Order-Model-for-a-Single-Heater.html">
+     1.5. First Order Model for a Single Heater
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../tclab/02.00-Empirical-Model-Identification.html">
    2. Empirical Model Identification
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
+     2.1. Fitting Step Test Data to Empirical Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../tclab/03.00-Estimating-Model-Parameters.html">
    3. Estimating Model Parameters
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -542,8 +554,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../tclab/04.00-Feedback-Control.html">
    4. Feedback Control
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -558,14 +570,19 @@ const thebe_selector_output = ".output, .cell_output"
      4.2. Lab Assignment 4: Relay Control
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../tclab/01.04-Assignment-Thermostat-Control.html">
+     4.3. Assignment: Thermostat Control
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../tclab/05.00-State-Estimation.html">
    5. State Estimation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -586,8 +603,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../tclab/07.00-Predictive-Control-and-Real-Time-Optimization.html">
    7. Predictive Control and Real Time Optimization
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -615,8 +632,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../python/A.00-Python-Tutorials.html">
    Python Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -922,29 +939,29 @@ title="Print to PDF"
 <section id="model">
 <h2><span class="section-number">4.8.1. </span>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h2>
 <p>The Streeter-Phelps model for oxygen in a river or stream is given by the pair of linear differential equations</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22f70d65-fc68-4d36-8145-87fa03d6cc46">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-22f70d65-fc68-4d36-8145-87fa03d6cc46" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de342c86-28ec-45d8-a6ce-2bfd1c39a1c7">
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-de342c86-28ec-45d8-a6ce-2bfd1c39a1c7" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx_1}{dt} &amp; = -\frac{k_1}{U} x_2 + \frac{k_2}{U}(D_s - x_1) \\
 \frac{dx_2}{dt} &amp; = -\frac{k_1}{U} x_2
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x_1\)</span> is dissolved oxygen (DO) and <span class="math notranslate nohighlight">\(x_2\)</span> is biological oxygen demand (BOD).  Rate constant <span class="math notranslate nohighlight">\(k_1\)</span> is the BOD removal rate, <span class="math notranslate nohighlight">\(k_2\)</span> is the re-areation rate, and <span class="math notranslate nohighlight">\(D_s\)</span> is the oxygen saturation level which, for this problem, is a disturbance variable. No manipulations to this system are possible.</p>
 <p>For environmental monitoring, dissolved oxygen can be measured in the field with a low-cost sensor. BOD, however, cannot be measured in the field.</p>
 <p>Our standard model for a state-space system is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8a0a9ac0-7cdd-454b-9b8b-d4a56d44ce86">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-8a0a9ac0-7cdd-454b-9b8b-d4a56d44ce86" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b6cf3e9e-6b8a-4edc-b226-7e0556426253">
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-b6cf3e9e-6b8a-4edc-b226-7e0556426253" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_d d + B_u u\\
 y &amp; = C x
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> contains the states, <span class="math notranslate nohighlight">\(d\)</span> contains the disturbances, and <span class="math notranslate nohighlight">\(u\)</span> contains the manipulable inputs.</p>
 <p>Parameter values are <span class="math notranslate nohighlight">\(k_1 = 0.3\ \text{day}^{-1}\)</span>, <span class="math notranslate nohighlight">\(k_2 = 0.06\ \text{day}^{-1}\)</span>, and <span class="math notranslate nohighlight">\(U = 1\)</span>. A typical value of Ds = 16 mg/liter. For these values the state space model becomes</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6281e06-76ec-4dab-b2b0-f54eb89fc034">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-f6281e06-76ec-4dab-b2b0-f54eb89fc034" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eb3807b2-2081-4577-b64d-0a4b0df533fd">
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-eb3807b2-2081-4577-b64d-0a4b0df533fd" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_d d + B_u u\\
 y &amp; = C x
 \end{align}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-875a1754-a5b0-4b1c-8d80-4aa82edcdcfa">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-875a1754-a5b0-4b1c-8d80-4aa82edcdcfa" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fbae3b05-ee89-45e0-ae55-9aec941f7eaa">
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-fbae3b05-ee89-45e0-ae55-9aec941f7eaa" title="Permalink to this equation">#</a></span>\[\begin{align}
 A &amp; = \begin{bmatrix} -0.06 &amp; -0.3 \\0 &amp; -0.3\end{bmatrix}
 \qquad
 B_d = \begin{bmatrix} 0.06 \\ 0 \end{bmatrix} \\
@@ -954,8 +971,8 @@ C &amp; = \begin{bmatrix} 1 &amp; 0 \end{bmatrix}
 <ul class="simple">
 <li><p><strong>Model Prediction:</strong> Use the model to update the state to the next time step, i.e., <span class="math notranslate nohighlight">\(\hat{x}_{k-1} \rightarrow \hat{x}_{k}^{pred}\)</span> with the equation</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-d152c382-fcdb-44da-96ab-ec1cc9fca596">
-<span class="eqno">(4.8)<a class="headerlink" href="#equation-d152c382-fcdb-44da-96ab-ec1cc9fca596" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-abcdaed2-86f5-453c-9019-6828ddd96ec3">
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-abcdaed2-86f5-453c-9019-6828ddd96ec3" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{x}_k^{pred} &amp; = \hat{x}_{k-1} + (t_k - t_{k-1}) ( A \hat{x}_{k-1} + B_u u_{k-1} + B_d \hat{d}_{k-1}) \\
 \hat{y}_k^{pred} &amp; = C \hat{x}_k^{pred}
 \end{align}\]</div>

@@ -11,7 +11,7 @@
 # 
 # 1. Connect the Arduino to your laptop with the USB data cable. You will need to USB-C to USB-A adapter if your laptop is equipped with USB-C only.
 # 
-# 1. Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. **Note: The temperature control shield requires its own power supply. There are two places where the power connector will fit. It's important to be sure it is plugged into the shield, not the Arduino.**
+# 1. Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. **Note: The temperature control shield requires its own power supply. Be sure the power supply it is plugged into the shield, not the Arduino.**
 # 
 # TCLab requires the one-time installation of custom firmware on an Arduino device. The firmware is normally preinstalled when you receive the device. But if necessary, the firmware and instructions for installation are available from the [TCLab-Sketch repository](https://github.com/jckantor/TCLab-sketch).
 # 
@@ -20,7 +20,7 @@
 
 # ### Requirements
 # 
-# The tclab library must run locally on your laptop to access the USB port. A Python development system, such as [Anaconda](https://www.anaconda.com/products/individual) needs to be installed on your laptop prior to installing tclab.
+# The tclab library must run locally on your laptop to access the USB port. A Python development system, such as [Anaconda](https://www.anaconda.com/products/individual) needs to be installed on your laptop prior to installing tclab. **tclab cannot access the USB port when run Google Colab.**
 
 # ### How the software is organized
 # 
@@ -53,7 +53,7 @@
 # 
 # Alternatively, the installation can be performed from within a Jupyter/Python notebook with the command
 
-# In[ ]:
+# In[3]:
 
 
 get_ipython().system('pip install tclab')
@@ -61,8 +61,18 @@ get_ipython().system('pip install tclab')
 
 # There are occasional updates to the library. These can be installed by appending a ` --upgrade` to the above commands and demonstrated in the next cell.
 
-# In[ ]:
+# In[4]:
 
 
 get_ipython().system('pip install tclab --upgrade')
+
+
+# ### Google Colab
+# 
+# The tclab library will install and can be run in off-line mode on Google Colab and can be run in off-line mode. **Note, however, the USB port is not accessible from Google Colab, so the attached Arduino and shield can not be run from Google Colab.**
+
+# In[ ]:
+
+
+
 

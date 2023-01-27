@@ -2,6 +2,8 @@
 # coding: utf-8
 
 # # Using TCLab
+# 
+# The following cells demonstrate the use of the TCLab hardware. Open a new Jupyter notebook on your laptop, connect the TCLab hardware to the USB port of your laptop, then create and run cells as you follow along in this notebook.
 
 # ## Creating a TCLab instance
 #     
@@ -14,7 +16,7 @@
 # 
 # TCLab() attempts to find a device connected to a serial port and return a connection. An error is generated if no device is found.  The connection must be closed when no longer in use.
 
-# In[1]:
+# In[10]:
 
 
 from tclab import TCLab
@@ -28,7 +30,7 @@ lab.close()
 # 
 # The following cell demonstrates the  process, and uses the tclab `LED()` function to flash the LED on the Temperature Control Lab for a period of 10 seconds at a 100% brightness level. 
 
-# In[2]:
+# In[11]:
 
 
 from tclab import TCLab
@@ -42,7 +44,7 @@ lab.close()
 # 
 # The Python `with` statement provides a convenient means of setting up and closing a connection to the Temperature Control Laboratory. In particular, the with statement establishes a context where a tclab instance is created, assigned to a variable, and automatically closed upon completion. The `with` statement is the preferred way to connect the Temperature Control Laboratory for most uses.
 
-# In[3]:
+# In[12]:
 
 
 from tclab import TCLab
@@ -60,7 +62,7 @@ with TCLab() as lab:
 # 
 # Note that `lab.T1` and `lab.T2` are read-only properties. Attempt to assign a value will return a Python error.
 
-# In[4]:
+# In[13]:
 
 
 from tclab import TCLab
@@ -93,7 +95,7 @@ with TCLab() as lab:
 # 
 # The default values for `.P1` and `.P2` were chosen to avoid unnecessarily high temperatures, and to include an asymmetric response between the two heaters.
 
-# In[ ]:
+# In[14]:
 
 
 from tclab import TCLab
@@ -120,7 +122,7 @@ with TCLab() as lab:
 #     
 # The LED on the temperature control laboratory will turns bright when either heater is on. Closing the TCLab instance turns the heaters off.
 
-# In[ ]:
+# In[15]:
 
 
 from tclab import TCLab
@@ -155,7 +157,7 @@ with TCLab() as lab:
 # 
 # Alternatively, the percentage of maximum power delivered to the heaters can be set by assigning value to the `.U1` and `.U2` attributes of a `TCLab` instances. Getting the value of `.U1` and `.U2` retrieves the current settings.
 
-# In[ ]:
+# In[16]:
 
 
 lab = TCLab()
@@ -174,7 +176,7 @@ lab.close()
 # 
 # The `tclab` module includes `clock` for synchronizing calculations with real time.  `clock(t_period, t_step)` generates a sequence of evenly spaced time step over a period`t_period` seconds that are `t_step` seconds apart. If `t_step` is omitted then the default time step is set to 1 second.
 
-# In[ ]:
+# In[17]:
 
 
 from tclab import clock
@@ -187,7 +189,7 @@ for t in clock(t_period, t_step):
 
 # There are some considerations to keep in mind when using `clock`. Most important, by its nature Python is not a real-time environment. `clock` makes a best effort to stay in sync with evenly spaced ticks of the real time clock. If, for some reason, the loop falls behind the real time clock, then the generator will skip over the event to get back in sync with the real time clock. Thus the total number of iterations may be less than expected. This behavior is demonstrated in the following cell.
 
-# In[10]:
+# In[18]:
 
 
 from tclab import TCLab, clock
@@ -208,7 +210,7 @@ for t in clock(t_period, t_step):
 # 
 # The following cell demonstrates use of `clock` to perform a short experiment. 
 
-# In[11]:
+# In[19]:
 
 
 from tclab import TCLab, clock
@@ -245,7 +247,7 @@ with TCLab() as lab:
 # 
 # To demonstrate, the following cell logs 10 seconds of data with time varying power level applied to heater 1. When the experiment is over, `h.to_csv` saves the data to a file that be imported in python or a spreadsheet application.
 
-# In[12]:
+# In[20]:
 
 
 from tclab import TCLab, clock, Historian
@@ -261,7 +263,7 @@ h.to_csv('data.csv')
 
 # Once saved, data can be read and plotted using the [Pandas Data Analysis Library](https://pandas.pydata.org/) as demonstrated in this cell.
 
-# In[13]:
+# In[21]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -286,7 +288,7 @@ data[['Q1', 'Q2']].plot(grid=True)
 #     
 # The following example shows how this works.
 
-# In[14]:
+# In[22]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -308,7 +310,7 @@ h.to_csv('data.csv')
 # 
 # The `tclab` library includes a simulation capability. This is useful for circumstances when it isn't possible to access the hardware.  The followinig cell demonstrated the use of `setup` to use the library in simulation mode. The argument `connected` is set to `True` if the hardware is connected, otherwise `False`. Simulation mode allows the use of the `speedup` parameter to run experiments at some multiple of real time. 
 
-# In[15]:
+# In[23]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -327,11 +329,17 @@ with TCLab() as lab:
 
 # ## Running Diagnostics
 
-# In[16]:
+# In[24]:
 
 
 import tclab
 
 print("Version = ", tclab.__version__)
 tclab.diagnose()
+
+
+# In[ ]:
+
+
+
 

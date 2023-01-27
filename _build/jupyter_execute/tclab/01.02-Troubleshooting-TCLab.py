@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Troubleshooting TCLab
+# # Testing and Troubleshooting TCLab
+# 
+# To test and troubleshoot problems with TCLab, download this notebook to your laptop and run the following cells. 
 
 # ## Testing
 # 
@@ -10,8 +12,10 @@
 # Run these cells. If the any of unit tests fail, comments within the unit test code may help determine the reason for the failure.
 
 # ### Installing ipytest
+# 
+# The following cell will install, if needed, a copy of the `ipytest` library. This cell will produce no output.
 
-# In[1]:
+# In[6]:
 
 
 try:
@@ -25,9 +29,9 @@ ipytest.autoconfig()
 
 # ### Software testing
 # 
-# The following tetsts check for installation and operation the tclab library.
+# Run the following tests to check for correct installation of the `tclab` library. These tests do not require the `tclab` hardware to be connected. If either of these tests fail, try reinstalling the `tclab` library.
 
-# In[2]:
+# In[8]:
 
 
 get_ipython().run_cell_magic('ipytest', '--verbosity=1', '\n# Verify tclab has been installed and is accessible by the Python kernal.\n    \ndef test_tclab_install():\n    from tclab import TCLab, clock, Historian, Plotter\n    \n# Verify that TCLab can be run offline (i.e., without access to hardware).\n\ndef test_tclab_offline():\n    from tclab import setup\n    TCLab = setup(connected=False, speedup=20)\n    with TCLab() as lab:\n        pass')
@@ -35,19 +39,26 @@ get_ipython().run_cell_magic('ipytest', '--verbosity=1', '\n# Verify tclab has b
 
 # ### Hardware testing
 # 
-# The following tests check for connectivity and operation of the Temperature Control Lab hardware. The Temperature Control Lab must be connected to pass these tests.
+# The following tests require the `tclab` hardware to be connected to your laptop. The tests check for connectivity and operation of the hardware. The Temperature Control Lab must be connected to pass these tests. The tests check for
+# 
+# 1. Verify we are not trying to attach hardware to Google Colab. 
+# 2. Verify we can open a connection to the Arduino. If this fails, try detaching the Arduino, then restarting the Python kernel, and reattaching the Arduino.
+# 3. Test to be sure we are running a recent version of the TCLab firmware on the Arduino. If this fails you need to update the Arduino firmware.
+# 
+# 
+# 
 
-# In[68]:
+# In[10]:
 
 
-get_ipython().run_cell_magic('ipytest', '--verbosity=1', '\n# TCLab cannot access the Arduino if it is run remotely on Google Colab. This is a common\n# error since notebooks are so easy to open in Google Colab. The following test fails if\n# the test is run on Google Colab.\n\ndef test_not_google_colab():\n    import sys\n    assert not "google.colab" in sys.modules\n\n# Verify that a connection an be opened to the Arduino.\n\ndef test_tclab_connect():\n    from tclab import TCLab, clock, Historian, Plotter\n    lab = TCLab()\n    lab.close()\n    \n# Verify tclab-sketch firmware version number is 2.0.1 or greater\n\ndef test_tclab_firmware_version():\n    import packaging\n    from tclab import TCLab\n    with TCLab() as lab:\n        vers = re.search(r\'\\s*([\\d.]+)\', lab.version).group(1)\n    assert packaging.version.parse(vers) >= packaging.version.parse("2.0.1")')
+get_ipython().run_cell_magic('ipytest', '--verbosity=1', '\n# TCLab cannot access the Arduino if it is run remotely on Google Colab. This is a common\n# error since notebooks are so easy to open in Google Colab. The following test fails if\n# the test is run on Google Colab.\n\ndef test_not_google_colab():\n    import sys\n    assert not "google.colab" in sys.modules\n\n# Verify that a connection an be opened to the Arduino.\n\ndef test_tclab_connect():\n    from tclab import TCLab, clock, Historian, Plotter\n    lab = TCLab()\n    lab.close()\n    \n# Verify tclab-sketch firmware version number is 2.0.1 or greater\n\ndef test_tclab_firmware_version():\n    import packaging\n    import re\n    from tclab import TCLab\n    with TCLab() as lab:\n        vers = re.search(r\'\\s*([\\d.]+)\', lab.version).group(1)\n    assert packaging.version.parse(vers) >= packaging.version.parse("2.0.1")')
 
 
 # ### Visual test
 
 # If all of the above tests pass, then the following code fragment should turn on the LED at 50% level for 10 seconds.
 
-# In[46]:
+# In[11]:
 
 
 from tclab import TCLab
