@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
-     1.2. Troubleshooting TCLab
+     1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
@@ -1054,16 +1054,16 @@ title="Print to PDF"
 <section id="first-order-lumped-model-for-heater-sensor-device">
 <h2><span class="section-number">1.5.1. </span>First-order lumped model for heater/sensor device.<a class="headerlink" href="#first-order-lumped-model-for-heater-sensor-device" title="Permalink to this heading">#</a></h2>
 <p>We’ll be begin by writing a model for one of the heater/sensor pairs. We will assume the whole heater/sensor pair is at single uniform temperature <span class="math notranslate nohighlight">\(T_1\)</span>. Then we write a dynamic energy balance</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9dfa9c99-64f3-4def-ba38-ecbb19dfaa13">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-9dfa9c99-64f3-4def-ba38-ecbb19dfaa13" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d7dd4a42-6aff-4079-ba2e-565553b7580f">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-d7dd4a42-6aff-4079-ba2e-565553b7580f" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + P_1u_1 \\
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(T_1\)</span> is the combined temperature of heater/sensor one, <span class="math notranslate nohighlight">\(T_{amb}\)</span> is the ambient temperature of the surroundings, and <span class="math notranslate nohighlight">\(u_1\)</span> is a fraction of the maximum heater power <span class="math notranslate nohighlight">\(P_1\)</span> being applied. The key parameters are the total heat capacity <span class="math notranslate nohighlight">\(C_p\)</span> and the overall heat transfer coefficient with surroundings <span class="math notranslate nohighlight">\(U_a\)</span>.</p>
 <section id="steady-state">
 <h3><span class="section-number">1.5.1.1. </span>Steady State<a class="headerlink" href="#steady-state" title="Permalink to this heading">#</a></h3>
 <p>We’ll begin our analysis by investigating the steady-state response of this system to a steady-state input <span class="math notranslate nohighlight">\(\bar{u}_{1}\)</span>.  At steady-state all variables are constant so <span class="math notranslate nohighlight">\(\frac{dT_1}{dt} = 0\)</span>, which leaves</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03752ba7-5a92-42be-bb7e-6317c5ec8bb5">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-03752ba7-5a92-42be-bb7e-6317c5ec8bb5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bd655a12-87b4-41dc-80f8-4b191de3cdb8">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-bd655a12-87b4-41dc-80f8-4b191de3cdb8" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 = U_a(T_{amb} - \bar{T}_1) + P_1\bar{u}_{1}
 \end{align}\]</div>
 <p>Solving for <span class="math notranslate nohighlight">\(\bar{T}_{1}\)</span></p>
@@ -1114,34 +1114,34 @@ C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + P_1u_1 \\
 <section id="deviation-variables">
 <h3><span class="section-number">1.5.2.1. </span>Deviation Variables<a class="headerlink" href="#deviation-variables" title="Permalink to this heading">#</a></h3>
 <p>In examining the response of the temperature control laboratory, we see the temperature is a deviation from ambient temperature, i.e.,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b593c87-d123-40b3-ae50-d96eb247e694">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-9b593c87-d123-40b3-ae50-d96eb247e694" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4d5af6ce-b234-4c3e-9d1d-f679f797ec48">
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-4d5af6ce-b234-4c3e-9d1d-f679f797ec48" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_1' = T_1 - T_{amb}
 \end{align}\]</div>
 <p>For process control purposes, we are often interested in the deviation of a process variable from a nominal value. In this case the choice of deviation variable is clearly obvious which is designated <span class="math notranslate nohighlight">\(T_1'\)</span>. From the steady state equation we see</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75bc2a6c-b2dd-4f62-87ed-c26d68ca8dcd">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-75bc2a6c-b2dd-4f62-87ed-c26d68ca8dcd" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-23e886a2-55fa-4030-b853-29415cdc7892">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-23e886a2-55fa-4030-b853-29415cdc7892" title="Permalink to this equation">#</a></span>\[\begin{align}
 \bar{T}_1' = \bar{T}_1 - T_{amb} = \frac{P_1}{U_a}\bar{u}_1
 \end{align}\]</div>
 <p>which is a somewhat simpler expression.</p>
 <p>Let’s see what happens to the transient model. Substituting <span class="math notranslate nohighlight">\(T_1 = T_{amb} + T_1'\)</span> into the differential equation gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d4322f0-7127-435c-b7e3-64e40b83c2d0">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-0d4322f0-7127-435c-b7e3-64e40b83c2d0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8b222f6b-9112-4b28-aa0f-1e2edce4cffd">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-8b222f6b-9112-4b28-aa0f-1e2edce4cffd" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_p\frac{d(T_{amb}+T_1')}{dt} &amp; = U_a(T_{amb} - (T_{amb} + T_1')) + P_1u_1
 \end{align}\]</div>
 <p>Expanding these terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50a35ace-e5dc-49e3-84c9-4e3eb55080c4">
-<span class="eqno">(1.6)<a class="headerlink" href="#equation-50a35ace-e5dc-49e3-84c9-4e3eb55080c4" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9d32724b-8a4a-4858-93f8-a995c440d3d7">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-9d32724b-8a4a-4858-93f8-a995c440d3d7" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_p\underbrace{\frac{dT_{amb}}{dt}}_{0} + C_p\frac{dT_1'}{dt} &amp; = U_a(\underbrace{T_{amb} - T_{amb}}_{0} - T_1') + P_1u_1
 \end{align}\]</div>
 <p>we see several terms drop out. The derivative of any constant is zero, and see a cancelation on the right hand side, leaving</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e52e9ac-a14a-4f1f-9fda-130cc92bab85">
-<span class="eqno">(1.7)<a class="headerlink" href="#equation-3e52e9ac-a14a-4f1f-9fda-130cc92bab85" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-fe951219-db2b-4022-9c7c-0909743bcb67">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-fe951219-db2b-4022-9c7c-0909743bcb67" title="Permalink to this equation">#</a></span>\[\begin{align}
 C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + P_1u_1
 \end{align}\]</div>
 <p>One last manipulation will bring this model into a commonly used standard form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8e93abc7-1069-4f57-8478-b0c6e5aeb2de">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-8e93abc7-1069-4f57-8478-b0c6e5aeb2de" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-53401afb-6199-42a7-8e86-0e2c380d5f2c">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-53401afb-6199-42a7-8e86-0e2c380d5f2c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dT_1'}{dt} &amp; = - \frac{U_a}{C_p}T_1' + \frac{P_1}{C_p}u_1
 \end{align}\]</div>
 <p>Now let’s recall some facts about first order differential equations.</p>
@@ -1149,29 +1149,29 @@ C_p\frac{dT_1'}{dt} &amp; = - U_aT_1' + P_1u_1
 <section id="first-order-linear-differential-equations">
 <h3><span class="section-number">1.5.2.2. </span>First Order Linear Differential Equations<a class="headerlink" href="#first-order-linear-differential-equations" title="Permalink to this heading">#</a></h3>
 <p>A standard form for a single differential equation is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c08b8ab-21a0-43f9-b1f4-4249ce726a82">
-<span class="eqno">(1.9)<a class="headerlink" href="#equation-5c08b8ab-21a0-43f9-b1f4-4249ce726a82" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d4f68806-61f2-4e48-a43a-e83ba22728c4">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-d4f68806-61f2-4e48-a43a-e83ba22728c4" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = ax + bu
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are model constants, <span class="math notranslate nohighlight">\(x\)</span> is the dependent variable, and <span class="math notranslate nohighlight">\(u\)</span> is an exogeneous input.</p>
 <section id="steady-state-response">
 <h4><span class="section-number">1.5.2.2.1. </span>Steady State Response<a class="headerlink" href="#steady-state-response" title="Permalink to this heading">#</a></h4>
 <p>For a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>, the steady state response <span class="math notranslate nohighlight">\(\bar{x}\)</span> is given by solution to the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0af0cb3-1862-4718-a525-0b5c85a24860">
-<span class="eqno">(1.10)<a class="headerlink" href="#equation-f0af0cb3-1862-4718-a525-0b5c85a24860" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-907af34e-b2e8-4413-809f-e08a5cbfa3a1">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-907af34e-b2e8-4413-809f-e08a5cbfa3a1" title="Permalink to this equation">#</a></span>\[\begin{align}
 0 &amp; = a\bar{x} + b\bar{u}
 \end{align}\]</div>
 <p>which is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-920adcdf-d639-49d5-80af-1ce01c568481">
-<span class="eqno">(1.11)<a class="headerlink" href="#equation-920adcdf-d639-49d5-80af-1ce01c568481" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-03a4638b-967b-497f-86a8-99141f226cf4">
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-03a4638b-967b-497f-86a8-99141f226cf4" title="Permalink to this equation">#</a></span>\[\begin{align}
 \bar{x} &amp; = -\frac{b}{a} \bar{u}
 \end{align}\]</div>
 </section>
 <section id="transient-response">
 <h4><span class="section-number">1.5.2.2.2. </span>Transient Response<a class="headerlink" href="#transient-response" title="Permalink to this heading">#</a></h4>
 <p>The transient response is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea94f0a7-cfe9-4bca-b33e-800309e92eef">
-<span class="eqno">(1.12)<a class="headerlink" href="#equation-ea94f0a7-cfe9-4bca-b33e-800309e92eef" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a8d1778a-dd0d-40b9-9220-be3adcf79fc4">
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-a8d1778a-dd0d-40b9-9220-be3adcf79fc4" title="Permalink to this equation">#</a></span>\[\begin{align}
 x(t) &amp; = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
 \end{align}\]</div>
 <p>which is an exact, analytical solution.</p>
@@ -1179,16 +1179,16 @@ x(t) &amp; = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
 <section id="apply-to-model-equation">
 <h4><span class="section-number">1.5.2.2.3. </span>Apply to Model Equation<a class="headerlink" href="#apply-to-model-equation" title="Permalink to this heading">#</a></h4>
 <p>We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83dbb647-24b5-4742-9bea-fbdb1726b3be">
-<span class="eqno">(1.13)<a class="headerlink" href="#equation-83dbb647-24b5-4742-9bea-fbdb1726b3be" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f5eba27-99ec-43c4-9218-4e24ed2598d9">
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-0f5eba27-99ec-43c4-9218-4e24ed2598d9" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_1' \sim x \\
 -\frac{U_a}{C_p} \sim a \\
 \frac{P_1}{C_p} \sim b \\
 u_1 \sim u
 \end{align}\]</div>
 <p>Substituting these terms into the standard solution we confirm the steady-state solution found above, and provides a solution for the transient response of the deviation variables.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32217900-c4c0-4b23-aebb-0a17da970432">
-<span class="eqno">(1.14)<a class="headerlink" href="#equation-32217900-c4c0-4b23-aebb-0a17da970432" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-55cb4ee6-5ecd-48b4-bb60-2cb2869445af">
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-55cb4ee6-5ecd-48b4-bb60-2cb2869445af" title="Permalink to this equation">#</a></span>\[\begin{align}
 \bar{x} = -\frac{b}{a}\bar{u} \qquad &amp; \Rightarrow \qquad \bar{T}_{1}' = \frac{P_1}{U_a}\bar{u}_{1} \\
 x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad &amp; \Rightarrow \qquad
 T_1'(t) = \frac{P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}

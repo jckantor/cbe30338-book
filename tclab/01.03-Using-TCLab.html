@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.4. Assignment: Thermostat Control" href="01.04-Assignment-Thermostat-Control.html" />
-    <link rel="prev" title="1.2. Troubleshooting TCLab" href="01.02-Troubleshooting-TCLab.html" />
+    <link rel="next" title="1.4. Step Testing" href="02.01-Step-Testing.html" />
+    <link rel="prev" title="1.2. Testing and Troubleshooting TCLab" href="01.02-Troubleshooting-TCLab.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -496,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
-     1.2. Troubleshooting TCLab
+     1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -505,8 +505,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
-     1.4. Assignment: Thermostat Control
+    <a class="reference internal" href="02.01-Step-Testing.html">
+     1.4. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     1.5. First Order Model for a Single Heater
     </a>
    </li>
   </ul>
@@ -522,18 +527,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="02.01-Step-Testing.html">
-     2.1. Step Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
-     2.2. Fitting Step Test Data to Empirical Models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
-     2.3. First Order Model for a Single Heater
+     2.1. Fitting Step Test Data to Empirical Models
     </a>
    </li>
   </ul>
@@ -573,6 +568,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
      4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+     4.3. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
@@ -1183,6 +1183,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="using-tclab">
 <h1><span class="section-number">1.3. </span>Using TCLab<a class="headerlink" href="#using-tclab" title="Permalink to this heading">#</a></h1>
+<p>The following cells demonstrate the use of the TCLab hardware. Open a new Jupyter notebook on your laptop, connect the TCLab hardware to the USB port of your laptop, then create and run cells as you follow along in this notebook.</p>
 <section id="creating-a-tclab-instance">
 <h2><span class="section-number">1.3.1. </span>Creating a TCLab instance<a class="headerlink" href="#creating-a-tclab-instance" title="Permalink to this heading">#</a></h2>
 <p>Once installed, the <code class="docutils literal notranslate"><span class="pre">tclab</span></code> package can be imported into Python and an instance created with the Python statements</p>
@@ -1205,7 +1206,7 @@ lab.close()
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
-Arduino Leonardo connected on port /dev/cu.usbmodem144101 at 115200 baud.
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 TCLab disconnected successfully.
 </pre></div>
@@ -1228,7 +1229,7 @@ TCLab disconnected successfully.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
-Arduino Leonardo connected on port /dev/cu.usbmodem144101 at 115200 baud.
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 TCLab disconnected successfully.
 </pre></div>
@@ -1250,7 +1251,7 @@ TCLab disconnected successfully.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
-Arduino Leonardo connected on port /dev/cu.usbmodem144101 at 115200 baud.
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 TCLab disconnected successfully.
 </pre></div>
@@ -1280,10 +1281,10 @@ T2 = lab.T2
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
-Arduino Leonardo connected on port /dev/cu.usbmodem144101 at 115200 baud.
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
-Temperature 1: 21.22 C
-Temperature 2: 20.45 C
+Temperature 1: 22.83 C
+Temperature 2: 21.86 C
 TCLab disconnected successfully.
 </pre></div>
 </div>
@@ -1316,6 +1317,16 @@ lab.P2 = 100
     <span class="n">P2</span> <span class="o">=</span> <span class="n">lab</span><span class="o">.</span><span class="n">P2</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The maximum power of heater 1 is set to </span><span class="si">{</span><span class="n">P1</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> corresponding to </span><span class="si">{</span><span class="n">P1</span><span class="o">*</span><span class="mf">0.0145</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> watts.&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The maximum power of heater 1 is set to </span><span class="si">{</span><span class="n">P2</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> corresponding to </span><span class="si">{</span><span class="n">P2</span><span class="o">*</span><span class="mf">0.0145</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> watts.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
+TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
+The maximum power of heater 1 is set to 200 corresponding to 2.90 watts.
+The maximum power of heater 1 is set to 100 corresponding to 1.45 watts.
+TCLab disconnected successfully.
 </pre></div>
 </div>
 </div>
@@ -1366,6 +1377,24 @@ Q2 = lab.Q2()
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
+TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
+Starting Temperature 1: 22.83 C
+Starting Temperature 2: 21.86 C
+Set Heater 1: 100.0 %
+Set Heater 2: 100.0 %
+Heat for 30 seconds
+Turn Heaters Off
+Set Heater 1: 0.0 %
+Set Heater 2: 0.0 %
+Final Temperature 1: 26.38 C
+Final Temperature 2: 24.12 C
+TCLab disconnected successfully.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="setting-heater-power-with-u1-and-u2">
@@ -1386,6 +1415,17 @@ Q2 = lab.Q2()
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
+TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
+Setting power levels on heaters 1 and 2
+Current power level on Heater 1 is:  50.0 %
+Current power level on Heater 1 is:  25.0 %
+TCLab disconnected successfully.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1400,6 +1440,14 @@ Q2 = lab.Q2()
 <span class="n">t_step</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">t_period</span><span class="p">,</span> <span class="n">t_step</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;sec.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 sec.
+2.0 sec.
+4.0 sec.
+6.01 sec.
 </pre></div>
 </div>
 </div>
@@ -1457,32 +1505,32 @@ Q2 = lab.Q2()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.9
-Arduino Leonardo connected on port /dev/cu.usbmodem14401 at 115200 baud.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 Set Heater 1 to 100.0 %
 Set Heater 2 to 100.0 %
-  0.0 sec:  T1 = 34.8 C   T2 = 31.0 C
-  1.0 sec:  T1 = 34.8 C   T2 = 31.6 C
-  2.0 sec:  T1 = 34.8 C   T2 = 31.6 C
-  3.0 sec:  T1 = 34.9 C   T2 = 31.2 C
-  4.0 sec:  T1 = 35.0 C   T2 = 31.4 C
-  5.0 sec:  T1 = 35.1 C   T2 = 31.6 C
-  6.0 sec:  T1 = 35.1 C   T2 = 32.0 C
-  7.0 sec:  T1 = 35.2 C   T2 = 32.0 C
-  8.0 sec:  T1 = 35.3 C   T2 = 31.6 C
-  9.0 sec:  T1 = 35.4 C   T2 = 31.8 C
- 10.0 sec:  T1 = 35.4 C   T2 = 32.0 C
- 11.0 sec:  T1 = 35.7 C   T2 = 32.4 C
- 12.0 sec:  T1 = 35.7 C   T2 = 32.4 C
- 13.0 sec:  T1 = 35.9 C   T2 = 32.4 C
- 14.0 sec:  T1 = 36.0 C   T2 = 32.5 C
- 15.0 sec:  T1 = 36.1 C   T2 = 32.3 C
- 16.0 sec:  T1 = 36.4 C   T2 = 32.3 C
- 17.0 sec:  T1 = 36.4 C   T2 = 32.8 C
- 18.0 sec:  T1 = 36.7 C   T2 = 33.0 C
- 19.0 sec:  T1 = 36.9 C   T2 = 33.0 C
- 20.0 sec:  T1 = 37.0 C   T2 = 32.8 C
+  0.0 sec:  T1 = 29.3 C   T2 = 26.8 C
+  1.0 sec:  T1 = 29.3 C   T2 = 26.8 C
+  2.0 sec:  T1 = 29.3 C   T2 = 27.1 C
+  3.0 sec:  T1 = 29.3 C   T2 = 27.0 C
+  4.0 sec:  T1 = 29.2 C   T2 = 27.1 C
+  5.0 sec:  T1 = 29.3 C   T2 = 27.1 C
+  6.0 sec:  T1 = 29.3 C   T2 = 26.8 C
+  7.0 sec:  T1 = 29.3 C   T2 = 26.8 C
+  8.0 sec:  T1 = 29.3 C   T2 = 26.9 C
+  9.0 sec:  T1 = 29.3 C   T2 = 27.2 C
+ 10.0 sec:  T1 = 29.3 C   T2 = 27.1 C
+ 11.0 sec:  T1 = 29.3 C   T2 = 27.1 C
+ 12.0 sec:  T1 = 29.6 C   T2 = 27.1 C
+ 13.0 sec:  T1 = 29.6 C   T2 = 27.2 C
+ 14.0 sec:  T1 = 29.6 C   T2 = 27.3 C
+ 15.0 sec:  T1 = 29.7 C   T2 = 27.5 C
+ 16.0 sec:  T1 = 29.9 C   T2 = 27.7 C
+ 17.0 sec:  T1 = 29.9 C   T2 = 27.7 C
+ 18.0 sec:  T1 = 30.2 C   T2 = 27.4 C
+ 19.0 sec:  T1 = 30.2 C   T2 = 27.9 C
+ 20.0 sec:  T1 = 30.6 C   T2 = 28.0 C
 TCLab disconnected successfully.
 </pre></div>
 </div>
@@ -1519,8 +1567,8 @@ h = Historian(lab.sources)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.9
-Arduino Leonardo connected on port /dev/cu.usbmodem14401 at 115200 baud.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 TCLab disconnected successfully.
 </pre></div>
@@ -1543,17 +1591,17 @@ TCLab disconnected successfully.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Time      T1      T2     Q1   Q2
 Time                                    
-0.00    0.00  37.979  33.306  100.0  0.0
-1.00    1.00  38.301  33.467  100.0  0.0
-2.01    2.01  38.397  33.467  100.0  0.0
-3.01    3.01  38.623  33.757  100.0  0.0
-4.00    4.00  38.784  33.789  100.0  0.0
-5.00    5.00  38.945  33.821  100.0  0.0
-6.00    6.00  39.268  34.111    0.0  0.0
-7.00    7.00  39.268  34.111    0.0  0.0
-8.00    8.00  39.461  34.111    0.0  0.0
-9.00    9.00  39.590  34.144    0.0  0.0
-10.00  10.00  39.687  34.208    0.0  0.0
+0.00    0.00  33.692  29.857  100.0  0.0
+1.00    1.00  33.789  29.922  100.0  0.0
+2.00    2.00  33.757  29.922  100.0  0.0
+3.01    3.01  33.789  29.922  100.0  0.0
+4.00    4.00  33.789  29.890  100.0  0.0
+5.00    5.00  34.111  29.922  100.0  0.0
+6.00    6.00  34.111  29.922    0.0  0.0
+7.00    7.00  34.111  29.922    0.0  0.0
+8.00    8.00  34.176  30.051    0.0  0.0
+9.00    9.00  34.434  30.212    0.0  0.0
+10.00  10.00  34.434  30.212    0.0  0.0
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
@@ -1643,28 +1691,28 @@ p = Plotter(h)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Version =  0.4.9
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Version =  0.4.10dev
 
 Checking connection
 -------------------
 Looking for Arduino on any port...
-Arduino Leonardo found on port /dev/cu.usbmodem14401
+Arduino Leonardo found on port /dev/cu.usbmodem143101
 
 Testing TCLab object in debug mode
 ----------------------------------
-TCLab version 0.4.9
+TCLab version 0.4.10dev
 Sent: &quot;Q1 0&quot;
 Return: &quot;0.000&quot;
 Sent: &quot;VER&quot;
 Return: &quot;TCLab Firmware 2.0.1 Arduino Leonardo/Micro&quot;
-Arduino Leonardo connected on port /dev/cu.usbmodem14401 at 115200 baud.
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 Sent: &quot;Q2 0&quot;
 Return: &quot;0.000&quot;
 Reading temperature
 Sent: &quot;T1&quot;
-Return: &quot;42.200&quot;
-42.2
+Return: &quot;35.078&quot;
+35.078
 Sent: &quot;Q1 0&quot;
 Return: &quot;0.000&quot;
 Sent: &quot;Q2 0&quot;
@@ -1675,14 +1723,14 @@ TCLab disconnected successfully.
 
 Testing TCLab functions
 -----------------------
-TCLab version 0.4.9
-Arduino Leonardo connected on port /dev/cu.usbmodem14401 at 115200 baud.
+TCLab version 0.4.10dev
+Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
 TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
 Testing LED. Should turn on for 10 seconds.
 Countdown: 0  
 
 Reading temperatures
-T1 = 41.201 °C, T2 = 35.723 °C
+T1 = 34.434 °C, T2 = 29.277 °C
 
 Writing fractional value to heaters...
 We wrote Q1 = 0.5, and read back Q1 = 0.5
@@ -1690,8 +1738,8 @@ We wrote Q1 = 0.5, and read back Q1 = 0.5
 We will now turn on the heaters, wait 30 seconds and see if the temperatures have gone up. 
 Countdown: 0   
 
-T1 started a 41.201 °C and went to 43.264 °C
-T2 started a 35.723 °C and went to 38.204 °C
+T1 started a 34.434 °C and went to 36.689 °C
+T2 started a 29.277 °C and went to 31.92 °C
 
 
 Throughput check
@@ -1740,13 +1788,13 @@ Diagnostics complete
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.2. </span>Troubleshooting TCLab</p>
+            <p class="prev-next-title"><span class="section-number">1.2. </span>Testing and Troubleshooting TCLab</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="01.04-Assignment-Thermostat-Control.html" title="next page">
+    <a class='right-next' id="next-link" href="02.01-Step-Testing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.4. </span>Assignment: Thermostat Control</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Step Testing</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

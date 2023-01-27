@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.2. Troubleshooting TCLab" href="01.02-Troubleshooting-TCLab.html" />
+    <link rel="next" title="1.2. Testing and Troubleshooting TCLab" href="01.02-Troubleshooting-TCLab.html" />
     <link rel="prev" title="1. The Temperature Control Laboratory" href="01.00-TCLab.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
@@ -494,7 +494,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
-     1.2. Troubleshooting TCLab
+     1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
@@ -503,8 +503,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
-     1.4. Assignment: Thermostat Control
+    <a class="reference internal" href="02.01-Step-Testing.html">
+     1.4. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
+     1.5. First Order Model for a Single Heater
     </a>
    </li>
   </ul>
@@ -520,18 +525,8 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="02.01-Step-Testing.html">
-     2.1. Step Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
-     2.2. Fitting Step Test Data to Empirical Models
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
-     2.3. First Order Model for a Single Heater
+     2.1. Fitting Step Test Data to Empirical Models
     </a>
    </li>
   </ul>
@@ -571,6 +566,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
      4.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
+     4.3. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
@@ -907,6 +907,11 @@ title="Print to PDF"
      1.1.2.3. Installing the tclab library
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     1.1.2.4. Google Colab
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -953,6 +958,11 @@ title="Print to PDF"
      1.1.2.3. Installing the tclab library
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     1.1.2.4. Google Colab
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -973,7 +983,7 @@ title="Print to PDF"
 <ol class="simple">
 <li><p>Insert the temperature control shield into the Arduino module. This will fit together in only one way. Squeeze the modules together until the shield is fully seated.</p></li>
 <li><p>Connect the Arduino to your laptop with the USB data cable. You will need to USB-C to USB-A adapter if your laptop is equipped with USB-C only.</p></li>
-<li><p>Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. <strong>Note: The temperature control shield requires its own power supply. There are two places where the power connector will fit. It’s important to be sure it is plugged into the shield, not the Arduino.</strong></p></li>
+<li><p>Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. <strong>Note: The temperature control shield requires its own power supply. Be sure the power supply it is plugged into the shield, not the Arduino.</strong></p></li>
 </ol>
 <p>TCLab requires the one-time installation of custom firmware on an Arduino device. The firmware is normally preinstalled when you receive the device. But if necessary, the firmware and instructions for installation are available from the <a class="reference external" href="https://github.com/jckantor/TCLab-sketch">TCLab-Sketch repository</a>.</p>
 </section>
@@ -981,7 +991,7 @@ title="Print to PDF"
 <h2><span class="section-number">1.1.2. </span>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this heading">#</a></h2>
 <section id="requirements">
 <h3><span class="section-number">1.1.2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
-<p>The tclab library must run locally on your laptop to access the USB port. A Python development system, such as <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> needs to be installed on your laptop prior to installing tclab.</p>
+<p>The tclab library must run locally on your laptop to access the USB port. A Python development system, such as <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> needs to be installed on your laptop prior to installing tclab. <strong>tclab cannot access the USB port when run Google Colab.</strong></p>
 </section>
 <section id="how-the-software-is-organized">
 <h3><span class="section-number">1.1.2.2. </span>How the software is organized<a class="headerlink" href="#how-the-software-is-organized" title="Permalink to this heading">#</a></h3>
@@ -1017,7 +1027,7 @@ The hardware platform for the Temperature Control Laboratory. The Python tools a
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tclab in /Users/jeff/Google Drive/GitHub/TCLab (0.4.10.dev0)
-Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3.8/site-packages (from tclab) (3.5)
+Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3.9/site-packages (from tclab) (3.5)
 </pre></div>
 </div>
 </div>
@@ -1031,11 +1041,15 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tclab in /Users/jeff/Google Drive/GitHub/TCLab (0.4.10.dev0)
-Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3.8/site-packages (from tclab) (3.5)
+Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3.9/site-packages (from tclab) (3.5)
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="google-colab">
+<h3><span class="section-number">1.1.2.4. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
+<p>The tclab library will install and can be run in off-line mode on Google Colab and can be run in off-line mode. <strong>Note, however, the USB port is not accessible from Google Colab, so the attached Arduino and shield can not be run from Google Colab.</strong></p>
 </section>
 </section>
 </section>
@@ -1077,7 +1091,7 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
     <a class='right-next' id="next-link" href="01.02-Troubleshooting-TCLab.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.2. </span>Troubleshooting TCLab</p>
+        <p class="prev-next-title"><span class="section-number">1.2. </span>Testing and Troubleshooting TCLab</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
