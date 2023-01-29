@@ -4,9 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>1.4. Step Testing &#8212; CBE 30338 Chemical Process Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2. Lab Assignment 1: Step Test of a First-Order System &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +50,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.5. First Order Model for a Single Heater" href="02.03-First-Order-Model-for-a-Single-Heater.html" />
-    <link rel="prev" title="1.3. Using TCLab" href="01.03-Using-TCLab.html" />
+    <link rel="next" title="3. Empirical Model Identification" href="02.00-Empirical-Model-Identification.html" />
+    <link rel="prev" title="2.1. Step Testing" href="01.01-step-testing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -477,63 +478,58 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="01.00-TCLab.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="00.00-tclab.html">
    1. The Temperature Control Laboratory
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00.01-setting-up-tclab.html">
+     1.1. Setting up TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00.02-troubleshooting-tclab.html">
+     1.2. Testing and Troubleshooting TCLab
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="00.03-using-tclab.html">
+     1.3. Python Coding for TCLab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="01.00-step-testing.html">
+   2. Step Testing
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
-     1.1. Setting up TCLab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
-     1.2. Testing and Troubleshooting TCLab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Using-TCLab.html">
-     1.3. Using TCLab
+    <a class="reference internal" href="01.01-step-testing.html">
+     2.1. Step Testing
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.4. Step Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
-     1.5. First Order Model for a Single Heater
+     2.2. Lab Assignment 1: Step Test of a First-Order System
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
-   2. Empirical Model Identification
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
-     2.1. Fitting Step Test Data to Empirical Models
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
-   3. Estimating Model Parameters
+   3. Empirical Model Identification
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -542,15 +538,15 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
-     3.1. Assignment: Model Identification
+    <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
+     3.1. Fitting Step Test Data to Empirical Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="04.00-Feedback-Control.html">
-   4. Feedback Control
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   4. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -559,25 +555,15 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Relay-Control.html">
-     4.1. Relay Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
-     4.2. Lab Assignment 4: Relay Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
-     4.3. Assignment: Thermostat Control
+    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
+     4.1. Assignment: Model Identification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05.00-State-Estimation.html">
-   5. State Estimation
+  <a class="reference internal" href="04.00-Feedback-Control.html">
+   5. Feedback Control
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -586,20 +572,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
-     5.2. Open and Closed Loop Estimation
+    <a class="reference internal" href="04.01-Relay-Control.html">
+     5.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
+     5.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
+     5.3. Assignment: Thermostat Control
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06.00-Optimal-Control.html">
-   6. Optimization
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
-   7. Predictive Control and Real Time Optimization
+  <a class="reference internal" href="05.00-State-Estimation.html">
+   6. State Estimation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
   <label for="toctree-checkbox-14">
@@ -608,13 +599,35 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
+     6.2. Open and Closed Loop Estimation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06.00-Optimal-Control.html">
+   7. Optimization
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
+   8. Predictive Control and Real Time Optimization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
-     7.1. Simulation, Control, and Estimation using Pyomo
+     8.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt.html">
-     7.2. Simulation, Control, and Estimation using Pyomo
+     8.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
   </ul>
@@ -630,8 +643,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
    Python Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -717,7 +730,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/02.01-Step-Testing.ipynb"
+        <a href="https://mybinder.org/v2/gh/jckantor/cbe30338-book/main?urlpath=lab/tree/tclab/01.02-first-order-model-for-a-single-heater.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -735,7 +748,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/tclab/02.01-Step-Testing.ipynb"
+        <a href="https://colab.research.google.com/github/jckantor/cbe30338-book/blob/main/tclab/01.02-first-order-model-for-a-single-heater.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -795,7 +808,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/02.01-Step-Testing.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/jckantor/cbe30338-book/issues/new?title=Issue%20on%20page%20%2Ftclab/01.02-first-order-model-for-a-single-heater.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -823,7 +836,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/tclab/02.01-Step-Testing.ipynb"
+        <a href="../_sources/tclab/01.02-first-order-model-for-a-single-heater.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -883,31 +896,31 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#executing-the-step-test">
-   1.4.1. Executing the Step Test
+  <a class="reference internal nav-link" href="#background-and-starter-code">
+   2.2.1. Background and Starter Code
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-an-initial-steady-state">
-     1.4.1.1. Verify an Initial Steady State
+    <a class="reference internal nav-link" href="#first-order-lumped-model-for-heater-sensor-device">
+     2.2.1.1. First-order lumped model for heater/sensor device.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conduct-the-experiment">
-     1.4.1.2. Conduct the Experiment
+    <a class="reference internal nav-link" href="#reading-previously-saved-experimental-data">
+     2.2.1.2. Reading previously saved experimental data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-the-experimental-data">
-     1.4.1.3. Verify the Experimental Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-the-data-file">
-     1.4.1.4. Verify the Data File
+    <a class="reference internal nav-link" href="#analytical-solution-for-a-step-test">
+     2.2.1.3. Analytical Solution for a Step Test
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-assignment">
+   2.2.2. Lab Assignment
+  </a>
  </li>
 </ul>
 
@@ -918,7 +931,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Step Testing</h1>
+                <h1>Lab Assignment 1: Step Test of a First-Order System</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -929,31 +942,31 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#executing-the-step-test">
-   1.4.1. Executing the Step Test
+  <a class="reference internal nav-link" href="#background-and-starter-code">
+   2.2.1. Background and Starter Code
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-an-initial-steady-state">
-     1.4.1.1. Verify an Initial Steady State
+    <a class="reference internal nav-link" href="#first-order-lumped-model-for-heater-sensor-device">
+     2.2.1.1. First-order lumped model for heater/sensor device.
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conduct-the-experiment">
-     1.4.1.2. Conduct the Experiment
+    <a class="reference internal nav-link" href="#reading-previously-saved-experimental-data">
+     2.2.1.2. Reading previously saved experimental data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-the-experimental-data">
-     1.4.1.3. Verify the Experimental Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#verify-the-data-file">
-     1.4.1.4. Verify the Data File
+    <a class="reference internal nav-link" href="#analytical-solution-for-a-step-test">
+     2.2.1.3. Analytical Solution for a Step Test
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lab-assignment">
+   2.2.2. Lab Assignment
+  </a>
  </li>
 </ul>
 
@@ -965,206 +978,60 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="step-testing">
-<h1><span class="section-number">1.4. </span>Step Testing<a class="headerlink" href="#step-testing" title="Permalink to this heading">#</a></h1>
-<p>This notebook guides you through the steps necessary to perform a simple step test of a heater/sensor unit on the Temperature Contnrol Lab.</p>
-<p>Download this notebook to your laptop, then run these cells to capture step test data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">TCLab</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-1-step-test-of-a-first-order-system">
+<h1><span class="section-number">2.2. </span>Lab Assignment 1: Step Test of a First-Order System<a class="headerlink" href="#lab-assignment-1-step-test-of-a-first-order-system" title="Permalink to this heading">#</a></h1>
+<p>This notebook outlines a process for fitting a first-order model of a heater/sensor assembly to data taken during a step test. The learning goals for this notebook are:</p>
+<ul class="simple">
+<li><p>Read and plot a previously saved step test data using the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> library.</p></li>
+<li><p>By inspection, identify the gain and dominant time constant of the step test.</p></li>
+<li><p>Simulate the response of a first-order model to step test.</p></li>
+<li><p>Through iteration, adjust model parameters to fit the first order model to step test data.</p></li>
+<li><p>Understand the relationship of model parameters to gain and time constant.</p></li>
+<li><p>Determine if a first-order model provides an adequate description of the observed response.</p></li>
+</ul>
+<div class="section" id="background-and-starter-code">
+<h2><span class="section-number">2.2.1. </span>Background and Starter Code<a class="headerlink" href="#background-and-starter-code" title="Permalink to this heading">#</a></h2>
+<div class="section" id="first-order-lumped-model-for-heater-sensor-device">
+<h3><span class="section-number">2.2.1.1. </span>First-order lumped model for heater/sensor device.<a class="headerlink" href="#first-order-lumped-model-for-heater-sensor-device" title="Permalink to this heading">#</a></h3>
+<p>We have previously developed a first-order model for one heater/sensor pair on the temperature control lab device.  An energy balance gives</p>
+<div class="amsmath math notranslate nohighlight" id="equation-24e4dbda-16bb-4911-837c-0cc0d6381a8a">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-24e4dbda-16bb-4911-837c-0cc0d6381a8a" title="Permalink to this equation">#</a></span>\[\begin{align}
+C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + \alpha P_1u_1 \\
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T_1\)</span> is the average temperature of heater/sensor one, <span class="math notranslate nohighlight">\(T_{amb}\)</span> is the ambient temperature of the surroundings. The unknown parameters are the heat capacity <span class="math notranslate nohighlight">\(C_p\)</span> and the heat transfer coefficient <span class="math notranslate nohighlight">\(U_a\)</span>.</p>
+<p>The parameters describing the heat input are as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is a system calibration constant  The measured value of <span class="math notranslate nohighlight">\(\alpha\)</span> is 0.16 milliwatts per unit of <span class="math notranslate nohighlight">\(P_1\)</span> per percent.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P_1\)</span> is a constant integer value in the range 0 to 255 that controls the operating range of heater 1. It is set using the <code class="docutils literal notranslate"><span class="pre">tclab</span></code> library.</p></li>
+<li><p><span class="math notranslate nohighlight">\(u_1\)</span> is a floating point value in the range 0 to 100 that specify the percentage of available power for heater 1.</p></li>
+</ul>
+<p>For example, if <span class="math notranslate nohighlight">\(P_1 = 255\)</span> and <span class="math notranslate nohighlight">\(u_1 = 100\)</span>, then the total applied power is</p>
+<div class="math notranslate nohighlight">
+\[\alpha_1 P_1 u_1 = 0.16 \times 200 \times 50 = 4080\ \text{milliwatts} = 4.08\ \text{watts}\]</div>
 </div>
-</div>
-</div>
-<section id="executing-the-step-test">
-<h2><span class="section-number">1.4.1. </span>Executing the Step Test<a class="headerlink" href="#executing-the-step-test" title="Permalink to this heading">#</a></h2>
-<section id="verify-an-initial-steady-state">
-<h3><span class="section-number">1.4.1.1. </span>Verify an Initial Steady State<a class="headerlink" href="#verify-an-initial-steady-state" title="Permalink to this heading">#</a></h3>
-<p><strong>Don’t start a step test without first letting the device come to an initial steady state!</strong></p>
-<p>A step test assumes the system is initially at steady state. In the case of the Temperature Control Lab, the initial steady with no power input would be room temperature. It generally takes 10 minutes or more to reach steady state. We’ll do a measurement to confirm the initial temperature. Repeat this until you are sure you are at an initial steady state.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lab</span> <span class="o">=</span> <span class="n">TCLab</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">,</span> <span class="n">lab</span><span class="o">.</span><span class="n">T1</span><span class="p">)</span>
-<span class="n">lab</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab version 0.4.10dev
-Arduino Leonardo connected on port /dev/cu.usbmodem143101 at 115200 baud.
-TCLab Firmware 2.0.1 Arduino Leonardo/Micro.
-23.154 23.154
-TCLab disconnected successfully.
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="conduct-the-experiment">
-<h3><span class="section-number">1.4.1.2. </span>Conduct the Experiment<a class="headerlink" href="#conduct-the-experiment" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># experimental parameters</span>
-<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
-<span class="n">Q1</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">tfinal</span> <span class="o">=</span> <span class="mi">600</span>
-
-<span class="c1"># perform experiment</span>
-<span class="k">with</span> <span class="n">TCLab</span><span class="p">()</span> <span class="k">as</span> <span class="n">lab</span><span class="p">:</span>
-    <span class="n">lab</span><span class="o">.</span><span class="n">P1</span> <span class="o">=</span> <span class="n">P1</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">Historian</span><span class="p">(</span><span class="n">lab</span><span class="o">.</span><span class="n">sources</span><span class="p">)</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">)</span>
-    <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">Q1</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">tfinal</span><span class="p">):</span>
-        <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/02.01-Step-Testing_5_0.png" src="../_images/02.01-Step-Testing_5_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TCLab disconnected successfully.
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">z3t28j296f98jdp1vqyplkz00000gn</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_26229</span><span class="o">/</span><span class="mf">1996149352.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">lab</span><span class="o">.</span><span class="n">Q1</span><span class="p">(</span><span class="n">Q1</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">clock</span><span class="p">(</span><span class="n">tfinal</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-<span class="nn">~/Google Drive/GitHub/TCLab/tclab/labtime.py</span> in <span class="ni">clock</span><span class="nt">(period, step, tol, adaptive)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>                            <span class="s1">&#39;(</span><span class="si">{:.2f}</span><span class="s1"> too long). Consider increasing step.&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>                 <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">elapsed</span><span class="p">,</span> <span class="n">elapsed</span><span class="o">-</span><span class="n">step</span><span class="p">))</span>
-<span class="ne">--&gt; </span><span class="mi">109</span>         <span class="n">labtime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">step</span> <span class="o">-</span> <span class="p">(</span><span class="n">labtime</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">%</span> <span class="n">step</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">now</span> <span class="o">=</span> <span class="n">labtime</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">~/Google Drive/GitHub/TCLab/tclab/labtime.py</span> in <span class="ni">sleep</span><span class="nt">(self, delay)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>         <span class="bp">self</span><span class="o">.</span><span class="n">lastsleep</span> <span class="o">=</span> <span class="n">delay</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_running</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">41</span>             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rate</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>             <span class="k">raise</span> <span class="ne">RuntimeWarning</span><span class="p">(</span><span class="s2">&quot;sleep is not valid when labtime is stopped.&quot;</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-<img alt="../_images/02.01-Step-Testing_5_3.png" src="../_images/02.01-Step-Testing_5_3.png" />
-</div>
-</div>
-</section>
-<section id="verify-the-experimental-data">
-<h3><span class="section-number">1.4.1.3. </span>Verify the Experimental Data<a class="headerlink" href="#verify-the-experimental-data" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="verify-the-data-file">
-<h3><span class="section-number">1.4.1.4. </span>Verify the Data File<a class="headerlink" href="#verify-the-data-file" title="Permalink to this heading">#</a></h3>
+<div class="section" id="reading-previously-saved-experimental-data">
+<h3><span class="section-number">2.2.1.2. </span>Reading previously saved experimental data<a class="headerlink" href="#reading-previously-saved-experimental-data" title="Permalink to this heading">#</a></h3>
+<p>A step test was performed where the temperature control laboratory was initially at steady state at ambient temperature. The heater range <span class="math notranslate nohighlight">\(P_1\)</span> was set to 200, then  heater 1 was set to 50% of full range with <span class="math notranslate nohighlight">\(\bar{u}_1 = 50\)</span>. Temperatures <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span> were recorded for 800 seconds. The has been saved to the course Github repository where it can be located with the url</p>
+<p><span class="xref myst">https://raw.githubusercontent.com/jckantor/CBE30338-book/main/tclab/data/tclab-data.csv</span></p>
+<p>The following cell reads the step test data using the <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> library. The data is stored in a Pandas DataFrame called <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/02.01-Step-Testing_9_1.png" src="../_images/02.01-Step-Testing_9_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="c1"># parameter values</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>T1</th>
-      <th>T2</th>
-      <th>Q1</th>
-      <th>Q2</th>
-    </tr>
-    <tr>
-      <th>Time</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0.0</th>
-      <td>30.244</td>
-      <td>25.732</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>30.244</td>
-      <td>25.668</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2.0</th>
-      <td>30.212</td>
-      <td>25.732</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>3.0</th>
-      <td>30.051</td>
-      <td>25.732</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>4.0</th>
-      <td>29.986</td>
-      <td>25.668</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="c1"># file location</span>
+<span class="n">github_repo</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jckantor/CBE30338-book/main/&quot;</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;tclab/data/tclab-data.csv&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">github_repo</span> <span class="o">+</span> <span class="n">file_path</span>
+
+<span class="c1"># read file</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+
+<span class="c1"># display the step test data</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1202,47 +1069,227 @@ TCLab disconnected successfully.
   </thead>
   <tbody>
     <tr>
-      <th>33.0</th>
-      <td>31.146</td>
-      <td>25.539</td>
+      <th>0.00</th>
+      <td>23.81</td>
+      <td>23.48</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>34.0</th>
-      <td>31.211</td>
-      <td>25.539</td>
+      <th>1.00</th>
+      <td>23.81</td>
+      <td>23.48</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>35.0</th>
-      <td>31.211</td>
-      <td>25.604</td>
+      <th>2.00</th>
+      <td>23.81</td>
+      <td>23.48</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>36.0</th>
-      <td>31.243</td>
-      <td>25.571</td>
+      <th>3.00</th>
+      <td>23.81</td>
+      <td>23.48</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>37.0</th>
-      <td>31.501</td>
-      <td>25.636</td>
+      <th>4.01</th>
+      <td>23.81</td>
+      <td>23.48</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>796.00</th>
+      <td>54.75</td>
+      <td>34.44</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>797.00</th>
+      <td>54.75</td>
+      <td>34.44</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>798.01</th>
+      <td>54.75</td>
+      <td>34.76</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>799.00</th>
+      <td>54.75</td>
+      <td>34.76</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>800.00</th>
+      <td>54.75</td>
+      <td>34.76</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
+<p>800 rows × 4 columns</p>
 </div></div></div>
 </div>
-</section>
-</section>
-</section>
+<p>Next we plot the data using the <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> method associated with every Pandas DataFrame. The Pandas plot method provides a concise and intuitive means of plotting data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> 
+          <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">P1</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">U1</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">,</span> 
+          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">,</span> 
+          <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+         <span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;Q2&quot;</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">P1</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">U1</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">,</span>
+          <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">,</span> 
+          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f full range&quot;</span><span class="p">,</span> 
+          <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
+          <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+         <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;P1=200, U1=50&#39;}, xlabel=&#39;seconds&#39;, ylabel=&#39;% of full range&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/01.02-first-order-model-for-a-single-heater_6_1.png" src="../_images/01.02-first-order-model-for-a-single-heater_6_1.png" />
+<img alt="../_images/01.02-first-order-model-for-a-single-heater_6_2.png" src="../_images/01.02-first-order-model-for-a-single-heater_6_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="analytical-solution-for-a-step-test">
+<h3><span class="section-number">2.2.1.3. </span>Analytical Solution for a Step Test<a class="headerlink" href="#analytical-solution-for-a-step-test" title="Permalink to this heading">#</a></h3>
+<p>The goal of this assignment is to fit a first-order model to the step test. The strategy we use will be use an analytical solution for a first-order model subject to a step change in the input. Then, by trail-and-error, find a set of model parameters that provide a good fit to the experimental data.</p>
+<p>We start with a first-order model written in gain/time-constant form</p>
+<div class="math notranslate nohighlight">
+\[\tau\frac{dx}{dt} = -x + K \bar{u}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x = T_1 - T_{amb}\)</span> and the <span class="math notranslate nohighlight">\(\bar{u}\)</span> is a constant value for the input <span class="math notranslate nohighlight">\(u_1(t)\)</span>. The analytical solution consists of two parts</p>
+<div class="math notranslate nohighlight">
+\[x(t) = \underbrace{x_0e^{-t/\tau}}_{\text{initial condition }x_0} + \underbrace{(1 - e^{-t/\tau}) K \bar{u}}_{\text{input }\bar{u}}\]</div>
+<p>The solution depends on three parameters:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_0\)</span>: initial condition</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span>: steady-state gain</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span>: time constant</p></li>
+</ul>
+<p>The initial condition <span class="math notranslate nohighlight">\(x_0 = 0\)</span> if the step test starts at steady-state. In that case there are two parameters to fit, <span class="math notranslate nohighlight">\(K\)</span> and <span class="math notranslate nohighlight">\(\tau\)</span>. The following cell demonstrates the calculation and plotting of the analytical solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># estimate parameter values</span>
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">23</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">0.66</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="mi">180</span>
+
+<span class="c1"># known input</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1"># compute analytical solution</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tau</span><span class="p">))</span><span class="o">*</span><span class="n">K</span><span class="o">*</span><span class="n">U1</span>
+
+<span class="c1"># plotting solution for T1</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">T_amb</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;T1 predicted&quot;</span><span class="p">,</span> <span class="s2">&quot;T1 measured&quot;</span><span class="p">])</span>
+
+<span class="c1"># dress up the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x0</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">K</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">tau</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;deg C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/01.02-first-order-model-for-a-single-heater_8_0.png" src="../_images/01.02-first-order-model-for-a-single-heater_8_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="lab-assignment">
+<h2><span class="section-number">2.2.2. </span>Lab Assignment<a class="headerlink" href="#lab-assignment" title="Permalink to this heading">#</a></h2>
+<p>The lab assignment is to conduct a step test of the Temperature Control Lab, and then to fit the results to a first order model of a heater/sensor assembly.</p>
+<div class="admonition-task-1 admonition">
+<p class="admonition-title">Task 1.</p>
+<p>Create a new Jupyter notebook to document the results of your step test and model fitting experiment.</p>
+<ul class="simple">
+<li><p>Begin the notebook with an appropriate title, description, and any information that would be required to reproduce the experiment.</p></li>
+<li><p>Create a cell to read the data you saved from your step test experiment. Plot the data as outlined above.</p></li>
+<li><p>Inspecting the plot for <span class="math notranslate nohighlight">\(T_1\)</span>, estimate the</p>
+<ul>
+<li><p>gain,</p></li>
+<li><p>time constant</p></li>
+<li><p>ambient temperature</p></li>
+</ul>
+</li>
+</ul>
+<p>Write your estimates in a clearly labeled markdown cell.</p>
+</div>
+<div class="admonition-task-2 admonition">
+<p class="admonition-title">Task 2.</p>
+<p>Following the starter code presented above, create a new cell to plot an analytical solution for the step response of a first-order model in gain/time constant form. Use your estimates of gain, time constant, initial condition, and the input. On the same plot, overlay a plot of the experimental data. Adjust parameter values until you get the a good fit of the model to the experimental data.</p>
+<p>Note that you may need to also adjust values of the ambient temperature and initial condition to fit the model.</p>
+<p>Report</p>
+<ul class="simple">
+<li><p>gain</p></li>
+<li><p>time constant</p></li>
+<li><p>ambient temperature</p></li>
+<li><p>initial condition</p></li>
+</ul>
+</div>
+<div class="admonition-task-3 admonition">
+<p class="admonition-title">Task 3.</p>
+<p>A first-order model in gain/time constant form is given by</p>
+<div class="math notranslate nohighlight">
+\[\tau\frac{dx}{dt} = - x + K u \]</div>
+<p>Where <span class="math notranslate nohighlight">\(x\)</span> is the state variable. Again letting <span class="math notranslate nohighlight">\(x = T_1 - T_{amb}\)</span> and <span class="math notranslate nohighlight">\(u = u_1\)</span>  Comparing this model of a first order system to the model given up for the heater/sensor assembly.</p>
+<ul class="simple">
+<li><p>Derive expressions for the parameters <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(K\)</span> in terms of <span class="math notranslate nohighlight">\(C_p\)</span>, <span class="math notranslate nohighlight">\(U_a\)</span>, <span class="math notranslate nohighlight">\(\alpha\)</span>, and <span class="math notranslate nohighlight">\(P_1\)</span>.</p></li>
+<li><p>Assume <span class="math notranslate nohighlight">\(\alpha = 0.16\)</span> milliwatts per unit of <span class="math notranslate nohighlight">\(P1\)</span> per percent. Solve for estimates of <span class="math notranslate nohighlight">\(C_p\)</span> and <span class="math notranslate nohighlight">\(U_a\)</span>.</p></li>
+</ul>
+</div>
+<div class="admonition-task-4 admonition">
+<p class="admonition-title">Task 4. </p>
+<p>In a new markdown cell, discuss issues you would face in writing a Python function to automatically fit the model of the heater/sensor assembly to step test data. Your discussion should include the following considerations:</p>
+<ul class="simple">
+<li><p>How can you measure the quality of fit?</p></li>
+<li><p>How should one handle bad measurements?</p></li>
+<li><p>What parameters should be fit?</p></li>
+<li><p>How can you estimate uncertainty in the estimates of <span class="math notranslate nohighlight">\(C_p\)</span> and <span class="math notranslate nohighlight">\(U_a\)</span>?</p></li>
+<li><p>Is it possible to estimate <span class="math notranslate nohighlight">\(U_a\)</span> from a steady state experiment?</p></li>
+<li><p>Is is possible to estimate <span class="math notranslate nohighlight">\(C_p\)</span> from a steady state experiment?</p></li>
+</ul>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1271,17 +1318,17 @@ TCLab disconnected successfully.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="01.03-Using-TCLab.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="01.01-step-testing.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">1.3. </span>Using TCLab</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>Step Testing</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02.03-First-Order-Model-for-a-Single-Heater.html" title="next page">
+    <a class='right-next' id="next-link" href="02.00-Empirical-Model-Identification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">1.5. </span>First Order Model for a Single Heater</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Empirical Model Identification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
