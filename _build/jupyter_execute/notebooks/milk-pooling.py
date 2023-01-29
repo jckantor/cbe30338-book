@@ -13,7 +13,7 @@ if "google.colab" in sys.modules:
     get_ipython().run_line_magic('run', 'install_on_colab.py')
 
 
-# ### Bibliographic Notes
+# ## Bibliographic Notes
 # 
 # The pooling and blending is a large scale and high value problem in the process and refining industries. The prototypical examples are the pooling and blending crude oils to meet the feed stock constraints of refineries, and the pooling of refinery products for pipeline delivery to distribution facilities where products are blended for retail sale.
 # 

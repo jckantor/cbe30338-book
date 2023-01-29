@@ -4,9 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>7.2. Simulation, Control, and Estimation using Pyomo &#8212; CBE 30338 Chemical Process Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8.2. Simulation, Control, and Estimation using Pyomo &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -56,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Python Tutorials" href="../python/A.00-Python-Tutorials.html" />
-    <link rel="prev" title="7.1. Simulation, Control, and Estimation using Pyomo" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html" />
+    <link rel="prev" title="8.1. Simulation, Control, and Estimation using Pyomo" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -480,7 +479,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="01.00-TCLab.html">
+  <a class="reference internal" href="00.00-tclab.html">
    1. The Temperature Control Laboratory
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -490,35 +489,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.01-Setting-Up-TCLab.html">
+    <a class="reference internal" href="00.01-setting-up-tclab.html">
      1.1. Setting up TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.02-Troubleshooting-TCLab.html">
+    <a class="reference internal" href="00.02-troubleshooting-tclab.html">
      1.2. Testing and Troubleshooting TCLab
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="01.03-Using-TCLab.html">
-     1.3. Using TCLab
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.01-Step-Testing.html">
-     1.4. Step Testing
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="02.03-First-Order-Model-for-a-Single-Heater.html">
-     1.5. First Order Model for a Single Heater
+    <a class="reference internal" href="00.03-using-tclab.html">
+     1.3. Python Coding for TCLab
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
-   2. Empirical Model Identification
+  <a class="reference internal" href="01.00-step-testing.html">
+   2. Step Testing
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
   <label for="toctree-checkbox-10">
@@ -527,15 +516,20 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
-     2.1. Fitting Step Test Data to Empirical Models
+    <a class="reference internal" href="01.01-step-testing.html">
+     2.1. Step Testing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="01.02-first-order-model-for-a-single-heater.html">
+     2.2. Lab Assignment 1: Step Test of a First-Order System
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
-   3. Estimating Model Parameters
+  <a class="reference internal" href="02.00-Empirical-Model-Identification.html">
+   3. Empirical Model Identification
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
   <label for="toctree-checkbox-11">
@@ -544,15 +538,15 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
-     3.1. Assignment: Model Identification
+    <a class="reference internal" href="02.02-Fitting-Step-Test-Data-to-Empirical-Models.html">
+     3.1. Fitting Step Test Data to Empirical Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="04.00-Feedback-Control.html">
-   4. Feedback Control
+  <a class="reference internal" href="03.00-Estimating-Model-Parameters.html">
+   4. Estimating Model Parameters
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
   <label for="toctree-checkbox-12">
@@ -561,25 +555,15 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="04.01-Relay-Control.html">
-     4.1. Relay Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
-     4.2. Lab Assignment 4: Relay Control
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="01.04-Assignment-Thermostat-Control.html">
-     4.3. Assignment: Thermostat Control
+    <a class="reference internal" href="03.10-TCLab-Lab-2-Model-Indentification.html">
+     4.1. Assignment: Model Identification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="05.00-State-Estimation.html">
-   5. State Estimation
+  <a class="reference internal" href="04.00-Feedback-Control.html">
+   5. Feedback Control
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -588,35 +572,62 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="04.01-Relay-Control.html">
+     5.1. Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.02-Lab-Assignment-Relay-Control.html">
+     5.2. Lab Assignment 4: Relay Control
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
+     5.3. Assignment: Thermostat Control
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="05.00-State-Estimation.html">
+   6. State Estimation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="05.01-Open-and-Closed-Loop-Estimation.html">
-     5.2. Open and Closed Loop Estimation
+     6.2. Open and Closed Loop Estimation
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="06.00-Optimal-Control.html">
-   6. Optimization
+   7. Optimization
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="07.00-Predictive-Control-and-Real-Time-Optimization.html">
-   7. Predictive Control and Real Time Optimization
+   8. Predictive Control and Real Time Optimization
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html">
-     7.1. Simulation, Control, and Estimation using Pyomo
+     8.1. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.2. Simulation, Control, and Estimation using Pyomo
+     8.2. Simulation, Control, and Estimation using Pyomo
     </a>
    </li>
   </ul>
@@ -632,8 +643,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../python/A.00-Python-Tutorials.html">
    Python Tutorials
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -886,73 +897,73 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installations">
-   7.2.1. Installations
+   8.2.1. Installations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colab">
-     7.2.1.1. Google Colab
+     8.2.1.1. Google Colab
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#macos">
-     7.2.1.2. MacOS
+     8.2.1.2. MacOS
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#windows-pc">
-     7.2.1.3. Windows PC
+     8.2.1.3. Windows PC
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-information">
-   7.2.2. Process Information
+   8.2.2. Process Information
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-parameter-values">
-     7.2.2.1. Process Parameter Values
+     8.2.2.1. Process Parameter Values
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-inputs">
-     7.2.2.2. Process Inputs
+     8.2.2.2. Process Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pyomo-simulation">
-   7.2.3. Pyomo Simulation
+   8.2.3. Pyomo Simulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimal-control-with-knowledge-of-disturbances">
-   7.2.4. Optimal Control with Knowledge of Disturbances
+   8.2.4. Optimal Control with Knowledge of Disturbances
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise">
-     7.2.4.1. Exercise
+     8.2.4.1. Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimation-observation">
-   7.2.5. Estimation/Observation
+   8.2.5. Estimation/Observation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-the-observer-as-a-python-generator">
-   7.2.6. Coding the Observer as a Python Generator
+   8.2.6. Coding the Observer as a Python Generator
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-the-controller-as-a-python-generator">
-   7.2.7. Coding the Controller as a Python Generator
+   8.2.7. Coding the Controller as a Python Generator
   </a>
  </li>
 </ul>
@@ -976,73 +987,73 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#installations">
-   7.2.1. Installations
+   8.2.1. Installations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#google-colab">
-     7.2.1.1. Google Colab
+     8.2.1.1. Google Colab
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#macos">
-     7.2.1.2. MacOS
+     8.2.1.2. MacOS
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#windows-pc">
-     7.2.1.3. Windows PC
+     8.2.1.3. Windows PC
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#process-information">
-   7.2.2. Process Information
+   8.2.2. Process Information
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-parameter-values">
-     7.2.2.1. Process Parameter Values
+     8.2.2.1. Process Parameter Values
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#process-inputs">
-     7.2.2.2. Process Inputs
+     8.2.2.2. Process Inputs
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pyomo-simulation">
-   7.2.3. Pyomo Simulation
+   8.2.3. Pyomo Simulation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimal-control-with-knowledge-of-disturbances">
-   7.2.4. Optimal Control with Knowledge of Disturbances
+   8.2.4. Optimal Control with Knowledge of Disturbances
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercise">
-     7.2.4.1. Exercise
+     8.2.4.1. Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#estimation-observation">
-   7.2.5. Estimation/Observation
+   8.2.5. Estimation/Observation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-the-observer-as-a-python-generator">
-   7.2.6. Coding the Observer as a Python Generator
+   8.2.6. Coding the Observer as a Python Generator
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-the-controller-as-a-python-generator">
-   7.2.7. Coding the Controller as a Python Generator
+   8.2.7. Coding the Controller as a Python Generator
   </a>
  </li>
 </ul>
@@ -1055,18 +1066,18 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="simulation-control-and-estimation-using-pyomo">
-<h1><span class="section-number">7.2. </span>Simulation, Control, and Estimation using Pyomo<a class="headerlink" href="#simulation-control-and-estimation-using-pyomo" title="Permalink to this heading">#</a></h1>
-<section id="installations">
-<h2><span class="section-number">7.2.1. </span>Installations<a class="headerlink" href="#installations" title="Permalink to this heading">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="simulation-control-and-estimation-using-pyomo">
+<h1><span class="section-number">8.2. </span>Simulation, Control, and Estimation using Pyomo<a class="headerlink" href="#simulation-control-and-estimation-using-pyomo" title="Permalink to this heading">#</a></h1>
+<div class="section" id="installations">
+<h2><span class="section-number">8.2.1. </span>Installations<a class="headerlink" href="#installations" title="Permalink to this heading">#</a></h2>
 <p>The following instructions show how to download and install pyomo and the ipopt solver.  Execute the appropriate cell for your platform (if needed).</p>
-<section id="google-colab">
-<h3><span class="section-number">7.2.1.1. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
+<div class="section" id="google-colab">
+<h3><span class="section-number">8.2.1.1. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
-<span class="o">!</span>wget -N -q <span class="s2">&quot;https://ampl.com/dl/open/ipopt/ipopt-linux64.zip&quot;</span>
-<span class="o">!</span>unzip -o -q ipopt-linux64
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>pyomo
+<span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;https://ampl.com/dl/open/ipopt/ipopt-linux64.zip&quot;</span>
+<span class="o">!</span>unzip<span class="w"> </span>-o<span class="w"> </span>-q<span class="w"> </span>ipopt-linux64
 <span class="n">ipopt_executable</span> <span class="o">=</span> <span class="s1">&#39;/content/ipopt&#39;</span>
 </pre></div>
 </div>
@@ -1078,27 +1089,27 @@ unzip:  cannot find or open ipopt-linux64, ipopt-linux64.zip or ipopt-linux64.ZI
 </div>
 </div>
 </div>
-</section>
-<section id="macos">
-<h3><span class="section-number">7.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="macos">
+<h3><span class="section-number">8.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
-<span class="o">!</span>curl -s https://ampl.com/dl/open/ipopt/ipopt-osx.zip --output ipopt-osx.zip
-<span class="o">!</span>tar xf ipopt-osx.zip ipopt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>pyomo
+<span class="o">!</span>curl<span class="w"> </span>-s<span class="w"> </span>https://ampl.com/dl/open/ipopt/ipopt-osx.zip<span class="w"> </span>--output<span class="w"> </span>ipopt-osx.zip
+<span class="o">!</span>tar<span class="w"> </span>xf<span class="w"> </span>ipopt-osx.zip<span class="w"> </span>ipopt
 <span class="n">ipopt_executable</span> <span class="o">=</span> <span class="s2">&quot;./ipopt&quot;</span>
-<span class="o">!</span>rm ipopt-osx.zip
+<span class="o">!</span>rm<span class="w"> </span>ipopt-osx.zip
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="windows-pc">
-<h3><span class="section-number">7.2.1.3. </span>Windows PC<a class="headerlink" href="#windows-pc" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="windows-pc">
+<h3><span class="section-number">8.2.1.3. </span>Windows PC<a class="headerlink" href="#windows-pc" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c conda-forge pyomo pyomo.extras
-<span class="o">!</span>conda install -c conda-forge/label/cf201901 ipopt 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pyomo<span class="w"> </span>pyomo.extras
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge/label/cf201901<span class="w"> </span>ipopt<span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -1116,10 +1127,10 @@ Solving environment: ...working... done
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="process-information">
-<h2><span class="section-number">7.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="process-information">
+<h2><span class="section-number">8.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1127,8 +1138,8 @@ C_p^H \frac{dT_H}{dt} &amp; = U_a (T_{amb} - T_H) + U_c (T_S - T_H) + P u(t) + d
 C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H) 
 \end{align*}
 \end{split}\]</div>
-<section id="process-parameter-values">
-<h3><span class="section-number">7.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this heading">#</a></h3>
+<div class="section" id="process-parameter-values">
+<h3><span class="section-number">8.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.04</span>        <span class="c1"># power input when the system is turned</span>
@@ -1141,9 +1152,9 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 </div>
 </div>
 </div>
-</section>
-<section id="process-inputs">
-<h3><span class="section-number">7.2.2.2. </span>Process Inputs<a class="headerlink" href="#process-inputs" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="process-inputs">
+<h3><span class="section-number">8.2.2.2. </span>Process Inputs<a class="headerlink" href="#process-inputs" title="Permalink to this heading">#</a></h3>
 <p>The next cell defines some process inputs that will be used throughout the notebook to demonstrate aspects of process simulation, control, and estimation.  These are gathered in one place to make it easier to modify the notebook to test the response under different conditions. These functions are implemented using the <code class="docutils literal notranslate"><span class="pre">interp1d</span></code> from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1196,10 +1207,10 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_12_0.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_12_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="pyomo-simulation">
-<h2><span class="section-number">7.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="pyomo-simulation">
+<h2><span class="section-number">8.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this heading">#</a></h2>
 <p>Let’s see how well our initial guess at a control strategy will work for us.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1289,9 +1300,9 @@ T_S(t_0) &amp; = T_{amb}
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_14_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_14_1.png" />
 </div>
 </div>
-</section>
-<section id="optimal-control-with-knowledge-of-disturbances">
-<h2><span class="section-number">7.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="optimal-control-with-knowledge-of-disturbances">
+<h2><span class="section-number">8.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this heading">#</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1415,8 +1426,8 @@ Solution:
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_16_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_16_1.png" />
 </div>
 </div>
-<section id="exercise">
-<h3><span class="section-number">7.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<div class="section" id="exercise">
+<h3><span class="section-number">8.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1426,10 +1437,10 @@ Solution:
 \end{align*}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\dot{u}_{max}\)</span> is the maximum rate of change.</p>
-</section>
-</section>
-<section id="estimation-observation">
-<h2><span class="section-number">7.2.5. </span>Estimation/Observation<a class="headerlink" href="#estimation-observation" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="estimation-observation">
+<h2><span class="section-number">8.2.5. </span>Estimation/Observation<a class="headerlink" href="#estimation-observation" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>“… and now my watch begins …” ―The Night’s Watch oath, Game of Thrones</p>
 </div></blockquote>
@@ -1555,9 +1566,9 @@ Wall time: 718 ms
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_19_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_19_1.png" />
 </div>
 </div>
-</section>
-<section id="coding-the-observer-as-a-python-generator">
-<h2><span class="section-number">7.2.6. </span>Coding the Observer as a Python Generator<a class="headerlink" href="#coding-the-observer-as-a-python-generator" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="coding-the-observer-as-a-python-generator">
+<h2><span class="section-number">8.2.6. </span>Coding the Observer as a Python Generator<a class="headerlink" href="#coding-the-observer-as-a-python-generator" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1662,9 +1673,9 @@ Wall time: 6.29 s
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_22_1.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_22_1.png" />
 </div>
 </div>
-</section>
-<section id="coding-the-controller-as-a-python-generator">
-<h2><span class="section-number">7.2.7. </span>Coding the Controller as a Python Generator<a class="headerlink" href="#coding-the-controller-as-a-python-generator" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="coding-the-controller-as-a-python-generator">
+<h2><span class="section-number">8.2.7. </span>Coding the Controller as a Python Generator<a class="headerlink" href="#coding-the-controller-as-a-python-generator" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1837,8 +1848,8 @@ Wall time: 6.29 s
 <img alt="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_2.png" src="../_images/07.02-Optimization-Control-and-Estimation-using-Pyomo-With-Windows-ipopt_27_2.png" />
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1871,7 +1882,7 @@ Wall time: 6.29 s
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">7.1. </span>Simulation, Control, and Estimation using Pyomo</p>
+            <p class="prev-next-title"><span class="section-number">8.1. </span>Simulation, Control, and Estimation using Pyomo</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../python/A.00-Python-Tutorials.html" title="next page">

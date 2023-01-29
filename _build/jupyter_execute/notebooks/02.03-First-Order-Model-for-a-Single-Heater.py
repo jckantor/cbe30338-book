@@ -45,9 +45,7 @@
 
 # ### Energy inflow
 # 
-# The flow of energy into into the heater/sensor assembly is controlled by variable $u_1$, the percentage of maximum available power to the heater. As a safety feature to protect both the user and the equipment, the maximum power available to the heater is set by an Arduino parameter $P_1$ specified as an 8 bit integer value between 0 and 255. 
-# 
-# The actual power delivered to the heater is therefore proportional to the product $P_1u_1$
+# The flow of energy into into the heater/sensor assembly is controlled by variable $u_1$, the percentage of maximum available power to the heater. As a safety feature to protect both the user and the equipment, the maximum power available to the heater is implemented on the Arduino with a parameter $P_1$ specified as an 8 bit integer value between 0 and 255. The actual power delivered to the heater is proportional to the product $P_1 u_1$
 # 
 # $$\fbox{Rate of energy in flow} \propto P_1 u_1$$
 # 
@@ -58,9 +56,9 @@
 # 0 & \leq P_1 \leq 255 
 # \end{align*}$$
 # 
-# An experimentally parameter $\alpha$ is introduced to establish the actual power delivered in units of watts
+# A parameter $\alpha$ is needed to model the experimentally observed power delivered to the heaters in units of watts.
 # 
-# $$\fbox{Rate of energy in flow} = \alpha P_1 u_1$$
+# $$\fbox{Rate of energy in flow [watts]} = \alpha P_1 u_1$$
 
 # :::{admonition} Study Question
 # 
@@ -70,7 +68,7 @@
 
 # :::{admonition} Study Question
 # 
-# How would determine $\alpha$ experimentally? What experiments would you perform? What equipment would you need in addition to that delivered with the Temperature Control Lab? 
+# How would you determine $\alpha$ experimentally? What equipment would you need in addition to that delivered with the Temperature Control Lab? 
 # 
 # :::
 
@@ -100,7 +98,7 @@
 # 
 # :::
 
-# ### One-state model
+# ### Unsteady State Model
 # 
 # Putting these terms together in the energy balance yields a first-order model for the response of the heater/sensor assembly on the Temperature Control Laboratory.
 # 
@@ -111,20 +109,21 @@
 # $$
 # 
 
-# ## Parameter Estimation
+# ### Steady State Model
 # 
 # At steady-state
 # 
-# $$0 = U_a(T_{amb} - T_1) + \alpha P_1u_1$$
+# $$0 = U_a(T_{amb} - \bar{T}_1) + \alpha P_1\bar{u}_1$$
 # 
-# which can be solved to give
+# which gives an equation for the steady state temperature $\bar{T}_1$ as a function the steady state input $\bar{u}_1$.
 # 
-# $$T_1 = T_{amb} + \frac{\alpha}{
+# $$\bar{T}_1 = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_1$$
+# 
 # 
 
-# ### Estimating $\alpha$
+# ## Estimating $\alpha$
 # 
-# As it happens, the parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in the arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
+# The parameter $\alpha$ exhibits a mild temperature dependency due to the intrinisic properties of semiconductors. The following experiment sets to P1 to a value of 200 in the arbitrary units of the Arduino hardware, then sets U1 to 50%. The power delivered to the device is measured after reaching operating temperature. 
 
 # In[5]:
 

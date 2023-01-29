@@ -70,7 +70,6 @@ parts:
       - file: notebooks/05/05.06-Design-of-a-Cold-Weather-Fuel
       - file: notebooks/05/05.99-Pyomo-Examples
       - file: CBE30338-EV-Example
-      - file: CBE30338-Knapsack
       - file: notebooks/milk-pooling
   
     - file: notebooks/06.00-Predictive-Control
@@ -100,13 +99,16 @@ parts:
   - caption: Control Laboratory
     numbered: true
     chapters:
-    - file: tclab/01.00-TCLab
+    - file: tclab/00.00-tclab.md
       sections:
-      - file: tclab/01.01-Setting-Up-TCLab
-      - file: tclab/01.02-Troubleshooting-TCLab
-      - file: tclab/01.03-Using-TCLab
-      - file: tclab/02.01-Step-Testing
-      - file: tclab/02.03-First-Order-Model-for-a-Single-Heater
+      - file: tclab/00.01-setting-up-tclab.ipynb
+      - file: tclab/00.02-troubleshooting-tclab
+      - file: tclab/00.03-using-tclab
+      
+    - file: tclab/01.00-step-testing.md
+      sections:
+      - file: tclab/01.01-step-testing.ipynb
+      - file: tclab/01.02-first-order-model-for-a-single-heater
    
     - file: tclab/02.00-Empirical-Model-Identification
       sections:
@@ -125,7 +127,7 @@ parts:
       sections:
       - file: tclab/04.01-Relay-Control
       - file: tclab/04.02-Lab-Assignment-Relay-Control
-      - file: tclab/01.04-Assignment-Thermostat-Control
+      - file: tclab/04.04-Assignment-Thermostat-Control
 #      - file: tclab/04.03-PID_Control
 #      - file: tclab/04.10-Lab-Assignment-PID-Control
 #      - file: tclab/04.11-Lab-Assignment-PI-Control
