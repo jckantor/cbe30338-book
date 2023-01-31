@@ -2,24 +2,39 @@
 # coding: utf-8
 
 # # Fitting a Model to Experimental Data
+
+# **Learning Goals**
 # 
-# The following cell provides an interactive tool for 'tuning' the model to fit the experimental data. Work with the sliders to find good choices for each of the parameters. 
+# * This notebook demonstrates how to 'tuning' a model (i.e., find model parameters) to fit experimental data.
+
+# ## Why do we fit mathematical models to data?
+# 
+# 1. **Test our understanding of a chemical or biological process.** Karl Popper (1902-1994) was a philosopher of science who proposed empirical falsification as the foundation of the scientific method. A hypothesis can never be proven, but it can be falsified by empirical measurement. A mathematical model is a quantitative hypothesis for how a chemical or biological process behaves. Fitting a model to experimental data provides an opportunity to falsify a hypothesis.
+# 
+# 2. **Use the model for process analysis and rational design.**
+# 
+# 3. **Make quantitative predictions of system response.** This is how we will be using models for process control ... that is to use models to solve for inputs that achieve a desired behavior.
 
 # ## Step Test Data
 # 
-# **Starting with a system at steady state**, record the response of T1 to a step input of 50% power with P1 = 200.
+# **Starting at steady state**, record the response of a system to a step change in a manipulable input. In this case, we impose a step input of 50% power to the first heater of the temperature control lab, with P1 = 200.
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+# data set
+github_repo = "https://jckantor.github.io/cbe30338-2021/"
 data_file = "data/Model_Data.csv"
-data = pd.read_csv("https://jckantor.github.io/cbe30338-2021/" + data_file).set_index("Time")[1:]
-t = data.index
-T1 = data['T1'].values
+
+# read data set
+data = pd.read_csv(github_repo + data_file)
+data = data.set_index("Time")[1:]
+display(data.head())
+display(data.tail())
 
 # known parameters
 T_amb = 21             # deg C
@@ -28,24 +43,41 @@ P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
 
 # visualization
-fig, ax = plt.subplots(1, 1, figsize=(10,5))
-ax = [ax]
-ax[0].plot(t, T1, 'r', lw=2)
-ax[0].axhline(T_amb)
-ax[0].axvline(0)
+t = data.index
+fig, ax = plt.subplots(2, 1, figsize=(8, 5))
+ax[0].plot(t, data["T1"], lw=2, label="T1")
+ax[0].plot(t, data["T2"], lw=2, label="T2")
 ax[0].set_xlabel("time / seconds")
 ax[0].set_ylabel("temperture / °C")
 ax[0].set_title(f"Step Response (P1 = {P1}, U1 = {U1})")
+ax[0].legend()
 ax[0].grid(True)
+
+ax[1].plot(t, data["Q1"], lw=2, label="Q1")
+ax[1].plot(t, data["Q2"], lw=2, label="Q2")
+ax[1].set_xlabel("time / seconds")
+ax[1].set_ylabel("% of full power")
+ax[1].set_title(f"Step Response ({P1=}, {U1=})")
+ax[1].set_ylim(-10, 100)
+ax[1].legend()
+ax[1].grid(True)
+
+fig.tight_layout()
 
 
 # ## Model
 # 
 # $$\begin{align}
-# C_p\frac{dT_1'}{dt} & = - U_aT_1' + \alpha P_1u_1
+# C_p\frac{dT_1}{dt} & = U_a(T_{amb} - T_1) + \alpha P_1u_1
 # \end{align}$$
 
 # ### First Order Linear Differential Equations
+# 
+# Manipulation will bring this model into a commonly used standard form
+# 
+# $$\begin{align}
+# \frac{dT_1}{dt} & = \underbrace{- \frac{U_a}{C_p}}_a \underbrace{(T_1 - T_{amb})}_x + \underbrace{\frac{\alpha P_1}{C_p}}_b u_1
+# \end{align}$$
 # 
 # A standard form for a single differential equation is
 # 
@@ -53,16 +85,10 @@ ax[0].grid(True)
 # \frac{dx}{dt} & = ax + bu
 # \end{align}$$
 # 
-# One last manipulation will bring this model into a commonly used standard form
 # 
-# $$\begin{align}
-# \frac{dT_1'}{dt} & = \underbrace{- \frac{U_a}{C_p}}_a T_1' + \underbrace{\frac{\alpha P_1}{C_p}}_b u_1
-# \end{align}$$
-# 
-# 
-# where $a$ and $b$ are model constants, $x$ is the dependent variable, and $u$ is an exogeneous input.  
+# where $a$ and $b$ are model constants, $x$ is the dependent variable, $x$ is the state variable, and $u$ is the manipulable input.  
 
-# #### Steady State Response
+# ### Steady State Response
 # 
 # For a constant value $\bar{u}$, the steady state response $\bar{x}$ is given by solution to the equation
 # 
@@ -76,7 +102,7 @@ ax[0].grid(True)
 # \bar{x} & = -\frac{b}{a} \bar{u}
 # \end{align}$$
 
-# #### Transient Response
+# ### Transient Response
 # 
 # The transient response is given by
 # 
@@ -90,36 +116,37 @@ ax[0].grid(True)
 # 
 # We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications
 # 
-# $$\begin{align}
-# T_1' \sim x \\
-# -\frac{U_a}{C_p} \sim a \\
-# \frac{\alpha P_1}{C_p} \sim b \\
-# u_1 \sim u
-# \end{align}$$
+# $$
+# \begin{align}
+# T_1 - T_{amb} & \sim x \\
+# -\frac{U_a}{C_p} & \sim a \\
+# \frac{\alpha P_1}{C_p} & \sim b \\
+# u_1 & \sim u
+# \end{align}
+# $$
 # 
 # Substituting these terms into the standard solution we confirm the steady-state solution found above, and provides a solution for the transient response of the deviation variables.
 # 
 # $$\begin{align}
-# \bar{x} = -\frac{b}{a}\bar{u} \qquad & \Rightarrow \qquad \bar{T}_{1}' = \frac{\alpha P_1}{U_a}\bar{u}_{1} \\
+# \bar{x} = -\frac{b}{a}\bar{u} \qquad & \Rightarrow \qquad \bar{T}_{1} = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} \\
 # x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad & \Rightarrow \qquad
-# T_1'(t) = \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1'(t_0) - \frac{\alpha P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
+# T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} - \frac{\alpha P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
 # \end{align}$$
 
 # ## Plot a fit
 # 
 # Let's try a guess fit.
 
-# In[2]:
+# In[8]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-data_file = "data/Model_Data.csv"
-data = pd.read_csv("https://jckantor.github.io/cbe30338-2021/" + data_file).set_index("Time")[1:]
+# measured data
 t = data.index
-T1 = data['T1'].values
+T1 = data["T1"]
 
 # known parameters
 T_amb = 21             # deg C
@@ -132,18 +159,15 @@ Ua = 0.08              # watts/deg C
 Cp = 8                 # joules/deg C
 
 # model
-T1_dev_initial = 0
-T1_dev_ss = alpha*P1*U1/Ua
-T1_dev = T1_dev_ss + (T1_dev_initial - T1_dev_ss)*np.exp(-Ua*t/Cp)
-T1_model = T1_dev + T_amb
+T1_ss = T_amb + alpha*P1*U1/Ua
+T1_model = T1_ss + (T_amb - T1_ss)*np.exp(-Ua*t/Cp)
 
 # visualization
 fig, ax = plt.subplots(1, 1, figsize=(10,5))
 ax = [ax]
-ax[0].plot(t, T1, 'r', lw=2)
-ax[0].plot(t, T1_model, 'r--', lw=2)
-ax[0].axhline(T_amb)
-ax[0].axvline(0)
+ax[0].plot(t, T1, lw=2, label="expt")
+ax[0].plot(t, T1_model, '--', lw=2, label="model")
+ax[0].legend()
 ax[0].set_xlabel("time / seconds")
 ax[0].set_ylabel("temperture / °C")
 ax[0].set_title(f"Step Response (P1 = {P1}, U1 = {U1})")
@@ -152,17 +176,16 @@ ax[0].grid(True)
 
 # ## Improving the fit
 
-# In[11]:
+# In[15]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-data_file = "data/Model_Data.csv"
-data = pd.read_csv("https://jckantor.github.io/cbe30338-2021/" + data_file).set_index("Time")[1:]
+# measured data
 t = data.index
-T1 = data['T1'].values
+T1 = data["T1"]
 
 # known parameters
 T_amb = 21             # deg C
@@ -171,27 +194,26 @@ P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
 
 # model p
-Ua = 0.047              # watts/deg C
-Cp = 9                # joules/deg C
+Ua = 0.05              # watts/deg C
+Cp = 6                 # joules/deg C
 
 # model
-T1_dev_initial = 0
-T1_dev_ss = alpha*P1*U1/Ua
-T1_dev = T1_dev_ss + (T1_dev_initial - T1_dev_ss)*np.exp(-Ua*t/Cp)
-T1_model = T1_dev + T_amb
+T1_ss = T_amb + alpha*P1*U1/Ua
+T1_model = T1_ss + (T_amb - T1_ss)*np.exp(-Ua*t/Cp)
 
 # visualization
 fig, ax = plt.subplots(1, 1, figsize=(10,5))
 ax = [ax]
-ax[0].plot(t, T1, 'r', lw=2)
-ax[0].plot(t, T1_model, 'r--', lw=2)
-ax[0].axhline(T_amb)
-ax[0].axvline(0)
+ax[0].plot(t, T1, lw=2, label="expt")
+ax[0].plot(t, T1_model, '--', lw=2, label="model")
+ax[0].legend()
 ax[0].set_xlabel("time / seconds")
 ax[0].set_ylabel("temperture / °C")
 ax[0].set_title(f"Step Response (P1 = {P1}, U1 = {U1})")
 ax[0].grid(True)
 
+
+# How do you handle an initial condition different from $T_{amb}$?
 
 # ## Measuring the Fit
 # 
@@ -203,7 +225,7 @@ ax[0].grid(True)
 # 
 # $$SAE = \sum_n |T^{model}_1(t_k) - T^{expt}_1(t_i)|$$
 
-# In[13]:
+# In[16]:
 
 
 import numpy as np
@@ -301,7 +323,7 @@ compare([Ua, Cp], plot=True)
 
 # ## Finding a best fit
 
-# In[16]:
+# In[17]:
 
 
 from scipy.optimize import fmin
@@ -318,7 +340,7 @@ compare(p, plot=True)
 
 # Let's fit a model to the data.
 
-# In[3]:
+# In[18]:
 
 
 import numpy as np
