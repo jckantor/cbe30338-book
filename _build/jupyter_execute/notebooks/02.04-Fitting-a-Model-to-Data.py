@@ -19,7 +19,7 @@
 # 
 # **Starting at steady state**, record the response of a system to a step change in a manipulable input. In this case, we impose a step input of 50% power to the first heater of the temperature control lab, with P1 = 200.
 
-# In[2]:
+# In[23]:
 
 
 import numpy as np
@@ -32,7 +32,7 @@ data_file = "data/Model_Data.csv"
 
 # read data set
 data = pd.read_csv(github_repo + data_file)
-data = data.set_index("Time")[1:]
+data = data.set_index("Time")[0:]
 display(data.head())
 display(data.tail())
 
@@ -44,8 +44,8 @@ U1 = 50                # steady state value of u1 (percent)
 
 # visualization
 t = data.index
-fig, ax = plt.subplots(2, 1, figsize=(8, 5))
-ax[0].plot(t, data["T1"], lw=2, label="T1")
+fig, ax = plt.subplots(2, 2, figsize=(8, 5))
+ax[0, 0].plot(t, data["T1"], lw=2, label="T1")
 ax[0].plot(t, data["T2"], lw=2, label="T2")
 ax[0].set_xlabel("time / seconds")
 ax[0].set_ylabel("temperture / °C")
@@ -137,7 +137,7 @@ fig.tight_layout()
 # 
 # Let's try a guess fit.
 
-# In[8]:
+# In[32]:
 
 
 import numpy as np
@@ -155,15 +155,15 @@ P1 = 200               # P1 units
 U1 = 50                # steady state value of u1 (percent)
 
 # model p
-Ua = 0.08              # watts/deg C
-Cp = 8                 # joules/deg C
+Ua = 0.05              # watts/deg C
+Cp = 9                 # joules/deg C
 
 # model
 T1_ss = T_amb + alpha*P1*U1/Ua
 T1_model = T1_ss + (T_amb - T1_ss)*np.exp(-Ua*t/Cp)
 
 # visualization
-fig, ax = plt.subplots(1, 1, figsize=(10,5))
+fig, ax = plt.subplots(1, 1, figsize=(10, 5))
 ax = [ax]
 ax[0].plot(t, T1, lw=2, label="expt")
 ax[0].plot(t, T1_model, '--', lw=2, label="model")
@@ -225,7 +225,7 @@ ax[0].grid(True)
 # 
 # $$SAE = \sum_n |T^{model}_1(t_k) - T^{expt}_1(t_i)|$$
 
-# In[16]:
+# In[43]:
 
 
 import numpy as np
@@ -302,7 +302,7 @@ def compare(p, plot=False):
 
         plt.tight_layout()
 
-    return sae
+    return sae 
     
 compare([Ua, Cp], plot=True)
 
@@ -323,13 +323,14 @@ compare([Ua, Cp], plot=True)
 
 # ## Finding a best fit
 
-# In[17]:
+# In[44]:
 
 
 from scipy.optimize import fmin
 
 p = fmin(compare, [Ua, Cp])
 compare(p, plot=True)
+print(p)
 
 
 # In[ ]:
@@ -340,7 +341,7 @@ compare(p, plot=True)
 
 # Let's fit a model to the data.
 
-# In[18]:
+# In[42]:
 
 
 import numpy as np
