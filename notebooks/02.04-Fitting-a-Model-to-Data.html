@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Schedule.html">
-   CBE 30338/32338 Schedule
+   CBE 30338/32338 Schedule – 2023
   </a>
  </li>
 </ul>
@@ -1125,7 +1125,7 @@ title="Print to PDF"
 
 <span class="c1"># read data set</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">github_repo</span> <span class="o">+</span> <span class="n">data_file</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:]</span>
 <span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
 
@@ -1137,8 +1137,8 @@ title="Print to PDF"
 
 <span class="c1"># visualization</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T2&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time / seconds&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;temperture / °C&quot;</span><span class="p">)</span>
@@ -1193,6 +1193,13 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
+      <th>0.0</th>
+      <td>21.221</td>
+      <td>21.446</td>
+      <td>50.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
       <th>10.0</th>
       <td>21.253</td>
       <td>21.511</td>
@@ -1217,13 +1224,6 @@ title="Print to PDF"
       <th>40.0</th>
       <td>24.991</td>
       <td>21.897</td>
-      <td>50.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>50.0</th>
-      <td>26.377</td>
-      <td>22.155</td>
       <td>50.0</td>
       <td>0.0</td>
     </tr>
@@ -1298,7 +1298,19 @@ title="Print to PDF"
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../_images/02.04-Fitting-a-Model-to-Data_4_2.png" src="../_images/02.04-Fitting-a-Model-to-Data_4_2.png" />
+</div></div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">25</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T1&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">25</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;T2&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time / seconds&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;temperture / °C&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;numpy.ndarray&#39; object has no attribute &#39;plot&#39;
+</pre></div>
+</div>
+<img alt="../_images/02.04-Fitting-a-Model-to-Data_4_3.png" src="../_images/02.04-Fitting-a-Model-to-Data_4_3.png" />
 </div>
 </div>
 </div>
@@ -1385,15 +1397,15 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 <span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
 
 <span class="c1"># model p</span>
-<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.08</span>              <span class="c1"># watts/deg C</span>
-<span class="n">Cp</span> <span class="o">=</span> <span class="mi">8</span>                 <span class="c1"># joules/deg C</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
+<span class="n">Cp</span> <span class="o">=</span> <span class="mi">9</span>                 <span class="c1"># joules/deg C</span>
 
 <span class="c1"># model</span>
 <span class="n">T1_ss</span> <span class="o">=</span> <span class="n">T_amb</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">U1</span><span class="o">/</span><span class="n">Ua</span>
 <span class="n">T1_model</span> <span class="o">=</span> <span class="n">T1_ss</span> <span class="o">+</span> <span class="p">(</span><span class="n">T_amb</span> <span class="o">-</span> <span class="n">T1_ss</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ua</span><span class="o">*</span><span class="n">t</span><span class="o">/</span><span class="n">Cp</span><span class="p">)</span>
 
 <span class="c1"># visualization</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax</span><span class="p">]</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;expt&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">T1_model</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
@@ -1543,7 +1555,7 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 
         <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-    <span class="k">return</span> <span class="n">sae</span>
+    <span class="k">return</span> <span class="n">sae</span> 
     
 <span class="n">compare</span><span class="p">([</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Cp</span><span class="p">],</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -1580,6 +1592,7 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">compare</span><span class="p">,</span> <span class="p">[</span><span class="n">Ua</span><span class="p">,</span> <span class="n">Cp</span><span class="p">])</span>
 <span class="n">compare</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1588,12 +1601,10 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
          Current function value: 37.283064
          Iterations: 48
          Function evaluations: 94
+[0.04800523 8.72034542]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.28306442164941
-</pre></div>
-</div>
-<img alt="../_images/02.04-Fitting-a-Model-to-Data_19_2.png" src="../_images/02.04-Fitting-a-Model-to-Data_19_2.png" />
+<img alt="../_images/02.04-Fitting-a-Model-to-Data_19_1.png" src="../_images/02.04-Fitting-a-Model-to-Data_19_1.png" />
 </div>
 </div>
 <p>Let’s fit a model to the data.</p>

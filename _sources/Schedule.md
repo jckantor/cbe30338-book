@@ -18,7 +18,7 @@ All submissions should be directed to Canvas.
 | :-- | :-- |
 | Fri, Jan 20 | [Order Temperature Control Lab](https://www.amazon.com/TCLab-Temperature-Control-Lab/dp/B07GMFWMRY) <br> (no submission required) |
 | Mon, Jan 30 | [Homework 1](assignments/hw-01.ipynb)
-<!-- | Thu, Feb 2 | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html) -->
+| Thur, Feb 2 | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.02-first-order-model-for-a-single-heater.html)
 <!-- | Tues, Mar 21 | Project Proposal -->
 <!-- | Wed, Mar 29 <br> Wed, Apr 5 | Project Reviews -->
 <!-- | Tues, Apr 11 | Project Progress Report -->
@@ -38,8 +38,15 @@ All submissions should be directed to Canvas.
 | **Week 2**
 | Tue, Jan 24 | Class: First Order Linear Systems | Section 2.2
 | Wed, Jan 25 | Office Hours 
-| Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | Section 2.3 <br> Homework 2
-| Fri, Jan 27 | Lab 1: On/Off Control with Hysteresis | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.04-Assignment-Thermostat-Control.html)
+| Thur, Jan 26 | Class: Introduction to the Temperature Control Laboratory | [Section 2.3](https://jckantor.github.io/cbe30338-book/notebooks/02.03-First-Order-Model-for-a-Single-Heater.html) 
+| Fri, Jan 27 | Lab 1: Fitting a First Order Model | [Lab Assignment 1](https://jckantor.github.io/cbe30338-book/tclab/01.02-first-order-model-for-a-single-heater.html)
+|
+| **Week 3**
+| Tue, Jan 31 | Class: Fitting a Model to Data | [Section 2.4](https://jckantor.github.io/cbe30338-book/notebooks/02.04-Fitting-a-Model-to-Data.html)
+| Wed, Feb 1 | Office Hours
+| Thur, Feb 2 | Class: Second and Higher Order Systems | [Section 2.5](https://jckantor.github.io/cbe30338-book/notebooks/02.05-Second-Order.html)
+| Fri, Feb 3 | Lab 2: Higher Order Model Identification| Lab Assignment 2
+
 
 ## Planned
 
@@ -48,17 +55,11 @@ Planned activities are subject to change. Assignment deadlines will be added as 
 | Day | Activity | Materials |
 |:-- |:-- |:-- |
 |
-| **Week 3**
-| Tue, Jan 31 | Class: Modeling the Temperature Control Lab | Section 2.3
-| Wed, Feb 1 | Office Hours
-| Thur, Feb 2 | Class: Second Order Systems | Section 2.4
-| Fri, Feb 3 | Lab 2: Empirical Model Identification| Lab Assignment 2
-|
 | **Week 4**
 | Tue, Feb 7 | Class: Fitting Higher Order Models | Section 2.5  
 | Wed, Feb 8 | Office Hours
 | Thur, Feb 9 | Class: Reactor Modeling | Sections 2.6 and 2.7 <br> HW Assignment 2
-| Feb 10 | Lab 3: PID Control and Variants | Lab Assignment 3
+| Feb 10 | Lab 3: Feedback Control | Lab Assignment 3
 |
 | **Week 5**
 | Tue, Feb 14  | Class: Setpoints, Disturbances, Servo and Regulation Problems
