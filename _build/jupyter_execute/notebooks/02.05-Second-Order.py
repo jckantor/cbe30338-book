@@ -2,8 +2,15 @@
 # coding: utf-8
 
 # # Second and Higher Order models
+# 
+# In this notebook we will fit a higher-order state space model to the step test data. The learning goals for this notebook are to 
+# 
+# * Review the two-state model for the temperature control lab
+# * Reformulate systems of first order differential equations in state space
+# * Simulate the step response of state space models
+# * Fit a model to step test data using multiple fitting criteria.
 
-# ## Step Test
+# ## Example: Step Test Data
 # 
 # Using a Temperature Control Lab device initially at steady state at ambient room temperature, the following device settings were used to induce a step response in $T_1$ and $T_2$.  
 # 
@@ -15,15 +22,24 @@
 # 
 # The challenge is to develop a first-principles models that reproduces the system measured response shown below.
 
-# In[1]:
+# In[7]:
 
 
 import pandas as pd
 
 data_file = "https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv"
 data = pd.read_csv(data_file)
-data.plot(x = "Time", y=["T1", "T2"], figsize=(10, 3), grid=True, lw=2, ylabel="deg C")
-data.plot(x = "Time", y=["Q1", "Q2"], figsize=(10, 3), grid=True, lw=2, ylabel="%")
+data = data.set_index("Time")
+data.head()
+
+
+# The Pandas library includes a highly functional method for plotting data.
+
+# In[110]:
+
+
+data.plot(y=["T1", "T2"], figsize=(10, 3), grid=True, ylabel="deg C")
+data.plot(y=["Q1", "Q2"], figsize=(10, 3), grid=True, ylabel="% of power range", ylim=(-5, 105))
 
 
 # ## Two-State Model
@@ -41,20 +57,13 @@ data.plot(x = "Time", y=["Q1", "Q2"], figsize=(10, 3), grid=True, lw=2, ylabel="
 # \end{align}
 # $$
 # 
-# where $C^H_p$ and $C^S_p$ are the heat capacities of the heater and sensor, respectively, and $U_b$ is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.
-# 
-# $$
-# \begin{align}
-# \frac{dT_{H,1}}{dt} & = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
-# \frac{dT_{S,1}}{dt} & = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
-# \end{align}
-# $$
-# 
-# Where measured temperature, that is, the temperature recorded by the Arduino, $T_1$ is given by
+# where $C^H_p$ and $C^S_p$ are the heat capacities of the heater and sensor, respectively, and $U_b$ is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor. Where the temperature measured and recorded by the Arduino is given by
 # 
 # $$T_1 = T_{S,1}$$
+# 
+# The following cell creates a simulation of heater/sensor combination.
 
-# In[2]:
+# In[111]:
 
 
 import numpy as np
@@ -65,9 +74,6 @@ import  pandas as pd
 T_amb = 21             # deg C
 alpha = 0.00016        # watts / (units P1 * percent U1)
 P1 = 200               # P1 units
-U1 = 50                # steady state value of u1 (percent)
-P1 = 100               # P2 units
-U2 = 0                 # steady state value of u1 (percent)
 
 # adjustable parameters
 CpH = 5                # joules/deg C
@@ -75,36 +81,227 @@ CpS = 1                # joules/deg C
 Ua = 0.05              # watts/deg C
 Ub = 0.05              # watts/deg C
 
-# extract data from experiment
-t_expt = data["Time"]
+# initial conditions
+TH1 = T_amb
+TS1 = T_amb
+IC = [TH1, TS1]
 
-def tclab_model2(param):
+# input values
+U1 = 50                # steady state value of u1 (percent)
+
+# extract data from experiment
+t_expt = data.index
+
+def tclab_ode(param):
     # unpack the adjustable parameters
     CpH, CpS, Ua, Ub = param
 
     # model solution
     def deriv(t, y):
-        T1H, T1S = y
-        dT1H = (-(Ua + Ub)*T1H + Ub*T1S + alpha*P1*U1 + Ua*T_amb)/CpH
-        dT1S = Ub*(T1H - T1S)/CpS
-        return [dT1H, dT1S]
+        TH1, TS1 = y
+        dTH1 = (-Ua*(TH1 - T_amb) + Ub*(TS1 - TH1) + alpha*P1*U1)/CpH
+        dTS1 = Ub*(TH1 - TS1)/CpS
+        return [dTH1, dTS1]
 
-    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [T_amb, T_amb], t_eval=t_expt) 
+    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [TH1_IC, TS1_IC], t_eval=t_expt) 
     
     # create dataframe with predictions
     pred = pd.DataFrame(columns=["Time"])
     pred["Time"] = t_expt
+    pred = pred.set_index("Time")
+    
+    # report the model temperatures
     pred["TH1"] = soln.y[0]
     pred["TS1"] = soln.y[1]
-    pred["Q1"] = U1
+    
+    # report the prediced measurement
+    pred["T1"] = pred["TS1"]
         
     return pred
     
-pred = tclab_model2([CpH, CpS, Ua, Ub])
+pred = tclab_ode(param=[CpH, CpS, Ua, Ub])
+pred.head()
 
-ax = data["T1"].plot()
-pred[["TS1", "TH1"]].plot(ax=ax)
-pred
+
+# In[112]:
+
+
+pred.plot(y=["T1"], grid=True, lw=2, ylabel="deg C")
+
+
+# Now let's compare the predicted measurement to the actual measurement. How did we do?
+
+# In[113]:
+
+
+ax = pred.plot(y=["T1"], ylabel="deg C")
+data.plot(ax=ax, y=["T1"], grid=True)
+
+
+# ## State Space Model
+# 
+# Our two-state model for the temperature control lab is given by 
+# 
+# $$
+# \begin{align}
+# C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\\
+# C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1}) 
+# \end{align}
+# $$
+# 
+# The initial steady state is $T_{amb}$. So let's write the dependent variables as excursions from the ambient temperature.
+# 
+# $$
+# \begin{align}
+# C^H_p\frac{d(T_{H,1} - T_{amb})}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b((T_{S,1} - T_{amb}) - (T_{H,1} - T_{amb})) + \alpha P_1u_1\\
+# C^S_p\frac{d(T_{S,1} - T_{amb})}{dt} & = U_b(T_{H,1} - T_{amb}) - (T_{S,1} - T_{amb})
+# \end{align}
+# $$
+# 
+# Then divide by the heat capacities.
+# 
+# $$
+# \begin{align}
+# \frac{d(T_{H,1} - T_{amb})}{dt} & = -\frac{U_a+U_b}{C^H_p}(T_{H,1} - T_{amb}) + \frac{U_b}{C^H_p}(T_{S,1} - T_{amb}) + \frac{\alpha P_1}{C^H_p}u_1 \\
+# \frac{d(T_{S,1} - T_{amb})}{dt} & = \frac{U_b}{C^S_p}((T_{H,1} - T_{amb}) - \frac{U_b}{C^S_p} (T_{S,1} - T_{amb})) 
+# \end{align}
+# $$
+# 
+# The two-state model can be rewritten using vectors to collect the states, inputs, measurable outputs, and arrays to collect the coefficients of the differential equations. 
+# 
+# $$
+# \begin{align}
+# \frac{d}{dt}\underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x & = 
+# \underbrace{\begin{bmatrix} -\frac{U_a+U_b}{C^H_p} & \frac{U_b}{C^H_p} \\ \frac{U_b}{C^S_p} & - \frac{U_b}{C^S_p}\end{bmatrix}}_A 
+# \underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x + 
+# \underbrace{\begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix}}_B 
+# \underbrace{\begin{bmatrix} u_1 \end{bmatrix}}_u \\
+# \\
+# \underbrace{\begin{bmatrix} T_{S,1} - T_{amb} \end{bmatrix}}_y & = 
+# \underbrace{\begin{bmatrix}0 & 1 \end{bmatrix}}_C 
+# \underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x
+# \end{align}
+# $$
+# 
+# In other words, we can write the temperature control lab model as a **state-space model**
+# 
+# $$
+# \begin{align}
+# \frac{dx}{dt} & = A x + B u \\
+# y & = C x
+# \end{align}
+# $$
+# 
+# where the process variables are 
+# 
+# $$
+# \begin{align}
+# u & = \begin{bmatrix} u_1 \end{bmatrix} && \text{inputs} \\
+# \\
+# x & = \begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix} && \text{states} \\
+# \\
+# y & = \begin{bmatrix} T_{S,1} \end{bmatrix} && \text{measurements} \\
+# \end{align}
+# $$
+# 
+# and parameters are embedded in the arrays
+# 
+# $$
+# \begin{align}
+# A = \begin{bmatrix} -\frac{U_a+U_b}{C^H_p} & \frac{U|_b}{C^H_p} \\ \frac{U_b}{C^S_p} & - \frac{U_b}{C^S_p}\end{bmatrix}
+# \quad
+# B = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix} 
+# \quad
+# C = \begin{bmatrix}0 & 1 \end{bmatrix} \\
+# \end{align}
+# $$
+# 
+# By using the notation and techniques of linear algebra, **state-space models** provide a compact means of representing complex systems. This example consists of $m=1$ inputs, $n=2$ states, and $p=1$ outputs.
+
+# In[92]:
+
+
+import numpy as np
+from scipy.integrate import solve_ivp
+import  pandas as pd
+
+# known parameters
+T_amb = 21             # deg C
+alpha = 0.00016        # watts / (units P1 * percent U1)
+P1 = 200               # P1 units
+
+# adjustable parameters
+CpH = 5                # joules/deg C
+CpS = 1                # joules/deg C
+Ua = 0.05              # watts/deg C
+Ub = 0.05              # watts/deg C
+
+# array parameters
+A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
+B = np.array([[alpha*P1/CpH], [0]])
+C = np.array([[0, 1]])
+
+print(f"\n{A=}")
+print(f"\n{B=}")
+print(f"\n{C=}")
+
+
+# In[129]:
+
+
+
+# input values
+U1 = 50                # steady state value of u1 (percent)
+def u(t):
+    return np.array([U1])
+
+# extract data from experiment
+t_expt = data.index
+
+def tclab_ss(A, B, C):
+    
+    IC = [0, 0]
+
+    # model solution
+    def deriv(t, x):
+        dxdt = A @ x + B @ u(t)
+        return dxdt
+
+    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], IC, t_eval=t_expt) 
+    
+    # create dataframe with predictions
+    pred = pd.DataFrame(columns=["Time"])
+    pred["Time"] = t_expt
+    pred = pred.set_index("Time")
+    
+    # get the state variables
+    pred["x1"] = soln.y[0]
+    pred["x2"] = soln.y[1]
+    
+    # convert back to model temperatures
+    pred["TH1"] = pred["x1"] + T_amb
+    pred["TS1"] = pred["x2"] + T_amb
+    
+    # report the predicated measurement
+    pred["T1"] = pred["TS1"]
+      
+    return pred
+    
+pred = tclab_ss(A, B, C)
+
+pred.head()
+
+
+# In[130]:
+
+
+pred.plot(y=["T1"])
+
+
+# In[ ]:
+
+
+
 
 
 # ### "Least Squares" Model Fitting
@@ -117,25 +314,68 @@ pred
 # 
 # This is demonstrated below.
 
-# In[5]:
+# In[137]:
+
+
+# Try your hand at trial and error data fitting
+
+# adjustable parameters
+CpH = 6                # joules/deg C
+CpS = 1                # joules/deg C
+Ua = 0.04             # watts/deg C
+Ub = 0.05              # watts/deg C
+
+A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
+B = np.array([[alpha*P1/CpH], [0]])
+C = np.array([[0, 1]])
+
+pred = tclab_ss(A, B, C)
+ax = pred["T1"].plot()
+data["T1"].plot(ax=ax, grid=True)
+
+
+# In[139]:
+
+
+def pred_err(p):
+    
+    CpH, CpS, Ua, Ub = p
+    
+    # array parameters
+    A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
+    B = np.array([[alpha*P1/CpH], [0]])
+    C = np.array([[0, 1]])
+    
+    pred = tclab_ss(A, B, C)
+    return pred["T1"] - data["T1"]
+
+    
+pred_err([8, 1, 0.04, 0.05]).plot()
+
+
+# In[147]:
 
 
 from scipy.optimize import least_squares
 
-def fun(p):
-    pred = tclab_model2(p)
-    return pred["TS1"] - data["T1"]
-
-results = least_squares(fun,  [CpH, CpS, Ua, Ub], loss="arctan")
+results = least_squares(pred_err,  [8, 1, 0.05, 0.05], loss='cauchy')
 
 CpH, CpS, Ua, Ub = results.x
 print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}")
 
-pred = tclab_model2(results.x)
+pred_err([CpH, CpS, Ua, Ub]).plot()
 
-ax = data["T1"].plot(grid=True)
-pred[["TS1", "TH1"]].plot(ax=ax)
-(pred["TS1"] - data["T1"]).plot(grid=True)
+
+# In[148]:
+
+
+A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
+B = np.array([[alpha*P1/CpH], [0]])
+C = np.array([[0, 1]])
+
+pred = tclab_ss(A, B, C)
+ax = pred["T1"].plot()
+data["T1"].plot(ax=ax, grid=True)
 
 
 # :::{admonition} Choosing a Loss Function
