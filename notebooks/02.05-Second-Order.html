@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../Schedule.html">
-   CBE 30338/32338 Schedule – 2023
+   CBE 30338/32338 Schedule
   </a>
  </li>
 </ul>
@@ -896,8 +896,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-test">
-   2.5.1. Step Test
+  <a class="reference internal nav-link" href="#example-step-test-data">
+   2.5.1. Example: Step Test Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -910,26 +910,33 @@ title="Print to PDF"
      2.5.2.1. Dynamics of the Heater/Sensor System
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-space-model">
+   2.5.3. State Space Model
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#least-squares-model-fitting">
-     2.5.2.2. “Least Squares” Model Fitting
+     2.5.3.1. “Least Squares” Model Fitting
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fourth-order-multi-input-multi-output-model">
-   2.5.3. Fourth-Order Multi-Input Multi-Output Model
+   2.5.4. Fourth-Order Multi-Input Multi-Output Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-derivation">
-     2.5.3.1. Model derivation
+     2.5.4.1. Model derivation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-form">
-     2.5.3.2. Standard form
+     2.5.4.2. Standard form
     </a>
    </li>
   </ul>
@@ -954,8 +961,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-test">
-   2.5.1. Step Test
+  <a class="reference internal nav-link" href="#example-step-test-data">
+   2.5.1. Example: Step Test Data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -968,26 +975,33 @@ title="Print to PDF"
      2.5.2.1. Dynamics of the Heater/Sensor System
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#state-space-model">
+   2.5.3. State Space Model
+  </a>
+  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#least-squares-model-fitting">
-     2.5.2.2. “Least Squares” Model Fitting
+     2.5.3.1. “Least Squares” Model Fitting
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fourth-order-multi-input-multi-output-model">
-   2.5.3. Fourth-Order Multi-Input Multi-Output Model
+   2.5.4. Fourth-Order Multi-Input Multi-Output Model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#model-derivation">
-     2.5.3.1. Model derivation
+     2.5.4.1. Model derivation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#standard-form">
-     2.5.3.2. Standard form
+     2.5.4.2. Standard form
     </a>
    </li>
   </ul>
@@ -1004,8 +1018,15 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="second-and-higher-order-models">
 <h1><span class="section-number">2.5. </span>Second and Higher Order models<a class="headerlink" href="#second-and-higher-order-models" title="Permalink to this heading">#</a></h1>
-<div class="section" id="step-test">
-<h2><span class="section-number">2.5.1. </span>Step Test<a class="headerlink" href="#step-test" title="Permalink to this heading">#</a></h2>
+<p>In this notebook we will fit a higher-order state space model to the step test data. The learning goals for this notebook are to</p>
+<ul class="simple">
+<li><p>Review the two-state model for the temperature control lab</p></li>
+<li><p>Reformulate systems of first order differential equations in state space</p></li>
+<li><p>Simulate the step response of state space models</p></li>
+<li><p>Fit a model to step test data using multiple fitting criteria.</p></li>
+</ul>
+<div class="section" id="example-step-test-data">
+<h2><span class="section-number">2.5.1. </span>Example: Step Test Data<a class="headerlink" href="#example-step-test-data" title="Permalink to this heading">#</a></h2>
 <p>Using a Temperature Control Lab device initially at steady state at ambient room temperature, the following device settings were used to induce a step response in <span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span>.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1031,94 +1052,8 @@ title="Print to PDF"
 
 <span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/jckantor/cbe30338-book/main/notebooks/data/tclab-data-example.csv&quot;</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;Q2&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;, ylabel=&#39;%&#39;&gt;
-</pre></div>
-</div>
-<img alt="../_images/02.05-Second-Order_2_1.png" src="../_images/02.05-Second-Order_2_1.png" />
-<img alt="../_images/02.05-Second-Order_2_2.png" src="../_images/02.05-Second-Order_2_2.png" />
-</div>
-</div>
-</div>
-<div class="section" id="two-state-model">
-<h2><span class="section-number">2.5.2. </span>Two-State Model<a class="headerlink" href="#two-state-model" title="Permalink to this heading">#</a></h2>
-<div class="section" id="dynamics-of-the-heater-sensor-system">
-<h3><span class="section-number">2.5.2.1. </span>Dynamics of the Heater/Sensor System<a class="headerlink" href="#dynamics-of-the-heater-sensor-system" title="Permalink to this heading">#</a></h3>
-<p>For this model we no longer assume  the heater and sensor are at the same temperature. To account for differing temperatures, we introduce <span class="math notranslate nohighlight">\(T_{H,1}\)</span> to denote the temperature of heater one and <span class="math notranslate nohighlight">\(T_{S,1}\)</span> to denote the temperature of the corresponding sensor. We further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is dominated by the heat sink attached to the heater.</p>
-<p>This motivates a model</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\\
-C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
-\end{align}
-\end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the heat capacities of the heater and sensor, respectively, and <span class="math notranslate nohighlight">\(U_b\)</span> is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-\frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
-\frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
-\end{align}
-\end{split}\]</div>
-<p>Where measured temperature, that is, the temperature recorded by the Arduino, <span class="math notranslate nohighlight">\(T_1\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[T_1 = T_{S,1}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
-<span class="kn">import</span>  <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># known parameters</span>
-<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># deg C</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>        <span class="c1"># watts / (units P1 * percent U1)</span>
-<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>               <span class="c1"># P1 units</span>
-<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
-<span class="n">P1</span> <span class="o">=</span> <span class="mi">100</span>               <span class="c1"># P2 units</span>
-<span class="n">U2</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1"># steady state value of u1 (percent)</span>
-
-<span class="c1"># adjustable parameters</span>
-<span class="n">CpH</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># joules/deg C</span>
-<span class="n">CpS</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># joules/deg C</span>
-<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
-<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
-
-<span class="c1"># extract data from experiment</span>
-<span class="n">t_expt</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span>
-
-<span class="k">def</span> <span class="nf">tclab_model2</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
-    <span class="c1"># unpack the adjustable parameters</span>
-    <span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">param</span>
-
-    <span class="c1"># model solution</span>
-    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="n">T1H</span><span class="p">,</span> <span class="n">T1S</span> <span class="o">=</span> <span class="n">y</span>
-        <span class="n">dT1H</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">*</span><span class="n">T1H</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="n">T1S</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">U1</span> <span class="o">+</span> <span class="n">Ua</span><span class="o">*</span><span class="n">T_amb</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
-        <span class="n">dT1S</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">T1H</span> <span class="o">-</span> <span class="n">T1S</span><span class="p">)</span><span class="o">/</span><span class="n">CpS</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">dT1H</span><span class="p">,</span> <span class="n">dT1S</span><span class="p">]</span>
-
-    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_expt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_expt</span><span class="p">)],</span> <span class="p">[</span><span class="n">T_amb</span><span class="p">,</span> <span class="n">T_amb</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_expt</span><span class="p">)</span> 
-    
-    <span class="c1"># create dataframe with predictions</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">])</span>
-    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_expt</span>
-    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TH1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">U1</span>
-        
-    <span class="k">return</span> <span class="n">pred</span>
-    
-<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_model2</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">])</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">pred</span><span class="p">[[</span><span class="s2">&quot;TS1&quot;</span><span class="p">,</span> <span class="s2">&quot;TH1&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">pred</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1141,132 +1076,596 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Time</th>
-      <th>TH1</th>
-      <th>TS1</th>
+      <th>T1</th>
+      <th>T2</th>
       <th>Q1</th>
+      <th>Q2</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.00</td>
-      <td>21.000000</td>
-      <td>21.000000</td>
-      <td>50</td>
+      <th>0.00</th>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>1.00</td>
-      <td>21.158424</td>
-      <td>21.003908</td>
-      <td>50</td>
+      <th>1.00</th>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>2.01</td>
-      <td>21.315325</td>
-      <td>21.015426</td>
-      <td>50</td>
+      <th>2.01</th>
+      <td>21.543</td>
+      <td>20.898</td>
+      <td>50.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>3.01</td>
-      <td>21.467730</td>
-      <td>21.033811</td>
-      <td>50</td>
+      <th>3.01</th>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>4.00</td>
-      <td>21.615955</td>
-      <td>21.057944</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>796</th>
-      <td>796.00</td>
-      <td>36.970257</td>
-      <td>36.990333</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>797</th>
-      <td>797.01</td>
-      <td>36.970749</td>
-      <td>36.989361</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>798</th>
-      <td>798.01</td>
-      <td>36.971217</td>
-      <td>36.988470</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>799</th>
-      <td>799.00</td>
-      <td>36.971663</td>
-      <td>36.987651</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>800</th>
-      <td>800.01</td>
-      <td>36.972102</td>
-      <td>36.986876</td>
-      <td>50</td>
+      <th>4.00</th>
+      <td>21.543</td>
+      <td>20.931</td>
+      <td>50.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>801 rows × 4 columns</p>
-</div></div><img alt="../_images/02.05-Second-Order_4_1.png" src="../_images/02.05-Second-Order_4_1.png" />
+</div></div></div>
 </div>
+<p>The Pandas library includes a highly functional method for plotting data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">,</span> <span class="s2">&quot;T2&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;Q2&quot;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">% o</span><span class="s2">f power range&quot;</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">105</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;, ylabel=&#39;% of power range&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_4_1.png" src="../_images/02.05-Second-Order_4_1.png" />
+<img alt="../_images/02.05-Second-Order_4_2.png" src="../_images/02.05-Second-Order_4_2.png" />
+</div>
+</div>
+</div>
+<div class="section" id="two-state-model">
+<h2><span class="section-number">2.5.2. </span>Two-State Model<a class="headerlink" href="#two-state-model" title="Permalink to this heading">#</a></h2>
+<div class="section" id="dynamics-of-the-heater-sensor-system">
+<h3><span class="section-number">2.5.2.1. </span>Dynamics of the Heater/Sensor System<a class="headerlink" href="#dynamics-of-the-heater-sensor-system" title="Permalink to this heading">#</a></h3>
+<p>For this model we no longer assume  the heater and sensor are at the same temperature. To account for differing temperatures, we introduce <span class="math notranslate nohighlight">\(T_{H,1}\)</span> to denote the temperature of heater one and <span class="math notranslate nohighlight">\(T_{S,1}\)</span> to denote the temperature of the corresponding sensor. We further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is dominated by the heat sink attached to the heater.</p>
+<p>This motivates a model</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\\
+C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the heat capacities of the heater and sensor, respectively, and <span class="math notranslate nohighlight">\(U_b\)</span> is a new heat transfer coefficient characterizing the exchange of heat between the heater and sensor. Where the temperature measured and recorded by the Arduino is given by</p>
+<div class="math notranslate nohighlight">
+\[T_1 = T_{S,1}\]</div>
+<p>The following cell creates a simulation of heater/sensor combination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span>  <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># known parameters</span>
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># deg C</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>        <span class="c1"># watts / (units P1 * percent U1)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>               <span class="c1"># P1 units</span>
+
+<span class="c1"># adjustable parameters</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># joules/deg C</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># joules/deg C</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">TH1</span> <span class="o">=</span> <span class="n">T_amb</span>
+<span class="n">TS1</span> <span class="o">=</span> <span class="n">T_amb</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="n">TH1</span><span class="p">,</span> <span class="n">TS1</span><span class="p">]</span>
+
+<span class="c1"># input values</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
+
+<span class="c1"># extract data from experiment</span>
+<span class="n">t_expt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+
+<span class="k">def</span> <span class="nf">tclab_ode</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+    <span class="c1"># unpack the adjustable parameters</span>
+    <span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">param</span>
+
+    <span class="c1"># model solution</span>
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">TH1</span><span class="p">,</span> <span class="n">TS1</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">dTH1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ua</span><span class="o">*</span><span class="p">(</span><span class="n">TH1</span> <span class="o">-</span> <span class="n">T_amb</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">TS1</span> <span class="o">-</span> <span class="n">TH1</span><span class="p">)</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">*</span><span class="n">U1</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span>
+        <span class="n">dTS1</span> <span class="o">=</span> <span class="n">Ub</span><span class="o">*</span><span class="p">(</span><span class="n">TH1</span> <span class="o">-</span> <span class="n">TS1</span><span class="p">)</span><span class="o">/</span><span class="n">CpS</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">dTH1</span><span class="p">,</span> <span class="n">dTS1</span><span class="p">]</span>
+
+    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_expt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_expt</span><span class="p">)],</span> <span class="p">[</span><span class="n">TH1_IC</span><span class="p">,</span> <span class="n">TS1_IC</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_expt</span><span class="p">)</span> 
+    
+    <span class="c1"># create dataframe with predictions</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">])</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_expt</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># report the model temperatures</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TH1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># report the prediced measurement</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span>
+        
+    <span class="k">return</span> <span class="n">pred</span>
+    
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_ode</span><span class="p">(</span><span class="n">param</span><span class="o">=</span><span class="p">[</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">])</span>
+<span class="n">pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TH1</th>
+      <th>TS1</th>
+      <th>T1</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.00</th>
+      <td>21.000000</td>
+      <td>21.000000</td>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>1.00</th>
+      <td>21.316847</td>
+      <td>21.007816</td>
+      <td>21.007816</td>
+    </tr>
+    <tr>
+      <th>2.01</th>
+      <td>21.630650</td>
+      <td>21.030852</td>
+      <td>21.030852</td>
+    </tr>
+    <tr>
+      <th>3.01</th>
+      <td>21.935475</td>
+      <td>21.067561</td>
+      <td>21.067561</td>
+    </tr>
+    <tr>
+      <th>4.00</th>
+      <td>22.231957</td>
+      <td>21.115691</td>
+      <td>21.115691</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;, ylabel=&#39;deg C&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_7_1.png" src="../_images/02.05-Second-Order_7_1.png" />
+</div>
+</div>
+<p>Now let’s compare the predicted measurement to the actual measurement. How did we do?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;deg C&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;, ylabel=&#39;deg C&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_9_1.png" src="../_images/02.05-Second-Order_9_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="state-space-model">
+<h2><span class="section-number">2.5.3. </span>State Space Model<a class="headerlink" href="#state-space-model" title="Permalink to this heading">#</a></h2>
+<p>Our two-state model for the temperature control lab is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1u_1\\
+C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
+\end{align}
+\end{split}\]</div>
+<p>The initial steady state is <span class="math notranslate nohighlight">\(T_{amb}\)</span>. So let’s write the dependent variables as excursions from the ambient temperature.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+C^H_p\frac{d(T_{H,1} - T_{amb})}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b((T_{S,1} - T_{amb}) - (T_{H,1} - T_{amb})) + \alpha P_1u_1\\
+C^S_p\frac{d(T_{S,1} - T_{amb})}{dt} &amp; = U_b(T_{H,1} - T_{amb}) - (T_{S,1} - T_{amb})
+\end{align}
+\end{split}\]</div>
+<p>Then divide by the heat capacities.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d(T_{H,1} - T_{amb})}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}(T_{H,1} - T_{amb}) + \frac{U_b}{C^H_p}(T_{S,1} - T_{amb}) + \frac{\alpha P_1}{C^H_p}u_1 \\
+\frac{d(T_{S,1} - T_{amb})}{dt} &amp; = \frac{U_b}{C^S_p}((T_{H,1} - T_{amb}) - \frac{U_b}{C^S_p} (T_{S,1} - T_{amb})) 
+\end{align}
+\end{split}\]</div>
+<p>The two-state model can be rewritten using vectors to collect the states, inputs, measurable outputs, and arrays to collect the coefficients of the differential equations.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d}{dt}\underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x &amp; = 
+\underbrace{\begin{bmatrix} -\frac{U_a+U_b}{C^H_p} &amp; \frac{U_b}{C^H_p} \\ \frac{U_b}{C^S_p} &amp; - \frac{U_b}{C^S_p}\end{bmatrix}}_A 
+\underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x + 
+\underbrace{\begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix}}_B 
+\underbrace{\begin{bmatrix} u_1 \end{bmatrix}}_u \\
+\\
+\underbrace{\begin{bmatrix} T_{S,1} - T_{amb} \end{bmatrix}}_y &amp; = 
+\underbrace{\begin{bmatrix}0 &amp; 1 \end{bmatrix}}_C 
+\underbrace{\begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix}}_x
+\end{align}
+\end{split}\]</div>
+<p>In other words, we can write the temperature control lab model as a <strong>state-space model</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{dx}{dt} &amp; = A x + B u \\
+y &amp; = C x
+\end{align}
+\end{split}\]</div>
+<p>where the process variables are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+u &amp; = \begin{bmatrix} u_1 \end{bmatrix} &amp;&amp; \text{inputs} \\
+\\
+x &amp; = \begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix} &amp;&amp; \text{states} \\
+\\
+y &amp; = \begin{bmatrix} T_{S,1} \end{bmatrix} &amp;&amp; \text{measurements} \\
+\end{align}
+\end{split}\]</div>
+<p>and parameters are embedded in the arrays</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+A = \begin{bmatrix} -\frac{U_a+U_b}{C^H_p} &amp; \frac{U|_b}{C^H_p} \\ \frac{U_b}{C^S_p} &amp; - \frac{U_b}{C^S_p}\end{bmatrix}
+\quad
+B = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} \\ 0 \end{bmatrix} 
+\quad
+C = \begin{bmatrix}0 &amp; 1 \end{bmatrix} \\
+\end{align}
+\end{split}\]</div>
+<p>By using the notation and techniques of linear algebra, <strong>state-space models</strong> provide a compact means of representing complex systems. This example consists of <span class="math notranslate nohighlight">\(m=1\)</span> inputs, <span class="math notranslate nohighlight">\(n=2\)</span> states, and <span class="math notranslate nohighlight">\(p=1\)</span> outputs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span>  <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># known parameters</span>
+<span class="n">T_amb</span> <span class="o">=</span> <span class="mi">21</span>             <span class="c1"># deg C</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.00016</span>        <span class="c1"># watts / (units P1 * percent U1)</span>
+<span class="n">P1</span> <span class="o">=</span> <span class="mi">200</span>               <span class="c1"># P1 units</span>
+
+<span class="c1"># adjustable parameters</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mi">5</span>                <span class="c1"># joules/deg C</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># joules/deg C</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
+
+<span class="c1"># array parameters</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">A</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">B</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">C</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A=array([[-0.02,  0.01],
+       [ 0.05, -0.05]])
+
+B=array([[0.0064],
+       [0.    ]])
+
+C=array([[0, 1]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input values</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="mi">50</span>                <span class="c1"># steady state value of u1 (percent)</span>
+<span class="k">def</span> <span class="nf">u</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">U1</span><span class="p">])</span>
+
+<span class="c1"># extract data from experiment</span>
+<span class="n">t_expt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span>
+
+<span class="k">def</span> <span class="nf">tclab_ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    
+    <span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># model solution</span>
+    <span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">dxdt</span> <span class="o">=</span> <span class="n">A</span> <span class="o">@</span> <span class="n">x</span> <span class="o">+</span> <span class="n">B</span> <span class="o">@</span> <span class="n">u</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dxdt</span>
+
+    <span class="n">soln</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">t_expt</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">t_expt</span><span class="p">)],</span> <span class="n">IC</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_expt</span><span class="p">)</span> 
+    
+    <span class="c1"># create dataframe with predictions</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">])</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t_expt</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">pred</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># get the state variables</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;x1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;x2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># convert back to model temperatures</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TH1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;x1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_amb</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;x2&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">T_amb</span>
+    
+    <span class="c1"># report the predicated measurement</span>
+    <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span>
+      
+    <span class="k">return</span> <span class="n">pred</span>
+    
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="n">pred</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x1</th>
+      <th>x2</th>
+      <th>TH1</th>
+      <th>TS1</th>
+      <th>T1</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.00</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>21.000000</td>
+      <td>21.000000</td>
+      <td>21.000000</td>
+    </tr>
+    <tr>
+      <th>1.00</th>
+      <td>0.316847</td>
+      <td>0.007816</td>
+      <td>21.316847</td>
+      <td>21.007816</td>
+      <td>21.007816</td>
+    </tr>
+    <tr>
+      <th>2.01</th>
+      <td>0.630651</td>
+      <td>0.030850</td>
+      <td>21.630651</td>
+      <td>21.030850</td>
+      <td>21.030850</td>
+    </tr>
+    <tr>
+      <th>3.01</th>
+      <td>0.935462</td>
+      <td>0.067618</td>
+      <td>21.935462</td>
+      <td>21.067618</td>
+      <td>21.067618</td>
+    </tr>
+    <tr>
+      <th>4.00</th>
+      <td>1.231700</td>
+      <td>0.116765</td>
+      <td>22.231700</td>
+      <td>21.116765</td>
+      <td>21.116765</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pred</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_13_1.png" src="../_images/02.05-Second-Order_13_1.png" />
 </div>
 </div>
 <div class="section" id="least-squares-model-fitting">
-<h3><span class="section-number">2.5.2.2. </span>“Least Squares” Model Fitting<a class="headerlink" href="#least-squares-model-fitting" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.5.3.1. </span>“Least Squares” Model Fitting<a class="headerlink" href="#least-squares-model-fitting" title="Permalink to this heading">#</a></h3>
 <p>Fitting a model to data is a basic task in engineering, science, business, and a foundation of modern data sciences. For engineers the goal is to validate hypotheses about how a device works, then to enable simulation and design. In the data science model fitting may be almost completely empirical using black box models to develop predictive models of complex systems.</p>
 <p>In this case we wish to find values for a small number of parameters that cause a model to replicate a measured response. One common measure of fit is the sum of sum of squares of residual difference between the model and data. For residuals modeled as independent and identically distributed random variables from a Gaussian distribution, minimizing the sum of squares has a strong theoretical foundation. So strong, in fact, the term “least squares” has become synonomous with model fitting and regression.</p>
 <p>The SciPy library includes a well-developed function <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code></a> for this purpose. The name is a misnomoer because the function allows other common “loss” functions in addition to sum of squares. The simplest use of <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> is to provide a function that, given values for the unknown parameters, creates a vector of residuals between a model and data.</p>
 <p>This is demonstrated below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try your hand at trial and error data fitting</span>
 
-<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_model2</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+<span class="c1"># adjustable parameters</span>
+<span class="n">CpH</span> <span class="o">=</span> <span class="mi">6</span>                <span class="c1"># joules/deg C</span>
+<span class="n">CpS</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># joules/deg C</span>
+<span class="n">Ua</span> <span class="o">=</span> <span class="mf">0.04</span>             <span class="c1"># watts/deg C</span>
+<span class="n">Ub</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># watts/deg C</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span>  <span class="p">[</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">],</span> <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;arctan&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 
-<span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CpH = </span><span class="si">{</span><span class="n">CpH</span><span class="si">}</span><span class="s2">,  CpS = </span><span class="si">{</span><span class="n">CpS</span><span class="si">}</span><span class="s2">,   Ua = </span><span class="si">{</span><span class="n">Ua</span><span class="si">}</span><span class="s2">,  Ub = </span><span class="si">{</span><span class="n">Ub</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_model2</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">ax</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">pred</span><span class="p">[[</span><span class="s2">&quot;TS1&quot;</span><span class="p">,</span> <span class="s2">&quot;TH1&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s2">&quot;TS1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CpH = 5.177921648358615,  CpS = -1.6380216431560468,   Ua = 0.020923150726812344,  Ub = -0.1652745441958194
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+<img alt="../_images/02.05-Second-Order_16_1.png" src="../_images/02.05-Second-Order_16_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pred_err</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    
+    <span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">p</span>
+    
+    <span class="c1"># array parameters</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+    
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span>
+
+    
+<span class="n">pred_err</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/02.05-Second-Order_6_2.png" src="../_images/02.05-Second-Order_6_2.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_17_1.png" src="../_images/02.05-Second-Order_17_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">pred_err</span><span class="p">,</span>  <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">],</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;cauchy&#39;</span><span class="p">)</span>
+
+<span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CpH = </span><span class="si">{</span><span class="n">CpH</span><span class="si">}</span><span class="s2">,  CpS = </span><span class="si">{</span><span class="n">CpS</span><span class="si">}</span><span class="s2">,   Ua = </span><span class="si">{</span><span class="n">Ua</span><span class="si">}</span><span class="s2">,  Ub = </span><span class="si">{</span><span class="n">Ub</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">pred_err</span><span class="p">([</span><span class="n">CpH</span><span class="p">,</span> <span class="n">CpS</span><span class="p">,</span> <span class="n">Ua</span><span class="p">,</span> <span class="n">Ub</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CpH = 5.228060928587527,  CpS = 1.9896637181582368,   Ua = 0.041571036467889934,  Ub = 0.21309424723032316
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_18_2.png" src="../_images/02.05-Second-Order_18_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="p">(</span><span class="n">Ua</span> <span class="o">+</span> <span class="n">Ub</span><span class="p">)</span><span class="o">/</span><span class="n">CpH</span><span class="p">,</span> <span class="n">Ub</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">,</span> <span class="o">-</span><span class="n">Ub</span><span class="o">/</span><span class="n">CpS</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">alpha</span><span class="o">*</span><span class="n">P1</span><span class="o">/</span><span class="n">CpH</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">pred</span> <span class="o">=</span> <span class="n">tclab_ss</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s2">&quot;T1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/02.05-Second-Order_19_1.png" src="../_images/02.05-Second-Order_19_1.png" />
 </div>
 </div>
 <div class="admonition-choosing-a-loss-function admonition">
@@ -1281,10 +1680,10 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 </div>
 </div>
 <div class="section" id="fourth-order-multi-input-multi-output-model">
-<h2><span class="section-number">2.5.3. </span>Fourth-Order Multi-Input Multi-Output Model<a class="headerlink" href="#fourth-order-multi-input-multi-output-model" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.5.4. </span>Fourth-Order Multi-Input Multi-Output Model<a class="headerlink" href="#fourth-order-multi-input-multi-output-model" title="Permalink to this heading">#</a></h2>
 <p>The next step in the evolution of our model is to incorporate the second heater/sensor assembly. Even with only heat applied to</p>
 <div class="section" id="model-derivation">
-<h3><span class="section-number">2.5.3.1. </span>Model derivation<a class="headerlink" href="#model-derivation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.5.4.1. </span>Model derivation<a class="headerlink" href="#model-derivation" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1304,7 +1703,7 @@ T_2 &amp; = T_{S,2}
 \end{split}\]</div>
 </div>
 <div class="section" id="standard-form">
-<h3><span class="section-number">2.5.3.2. </span>Standard form<a class="headerlink" href="#standard-form" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.5.4.2. </span>Standard form<a class="headerlink" href="#standard-form" title="Permalink to this heading">#</a></h3>
 <p>Normalize the derivatives to get in proper form for <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1378,7 +1777,7 @@ T_2 &amp; = T_{S,2}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.05-Second-Order_11_1.png" src="../_images/02.05-Second-Order_11_1.png" />
+<img alt="../_images/02.05-Second-Order_24_1.png" src="../_images/02.05-Second-Order_24_1.png" />
 </div>
 </div>
 <p>Least squares fitting with Cauchy loss function.</p>
@@ -1410,7 +1809,7 @@ T_2 &amp; = T_{S,2}
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.05-Second-Order_13_2.png" src="../_images/02.05-Second-Order_13_2.png" />
+<img alt="../_images/02.05-Second-Order_26_2.png" src="../_images/02.05-Second-Order_26_2.png" />
 </div>
 </div>
 </div>
