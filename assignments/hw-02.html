@@ -909,13 +909,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#problem-1-convert-to-state-space">
    Problem 1. Convert to State Space
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     Answer
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-2-simulate-step-response-and-compare-to-data">
@@ -960,13 +953,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#problem-1-convert-to-state-space">
    Problem 1. Convert to State Space
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     Answer
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#problem-2-simulate-step-response-and-compare-to-data">
@@ -1064,27 +1050,6 @@ y &amp; = C x
 <p>You may do this analytical work by hand on paper and submit a scan as a separate .pdf file (You’re also welcome to submit your work as a math formatted notebook, but that is not required.)</p>
 <p><strong>(a)</strong> What are the dimensions of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>?</p>
 <p><strong>(b)</strong> Derive expressions for the matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>.</p>
-<p>{
-“tags”: [
-“remove-cell”
-]
-}</p>
-<div class="section" id="answer">
-<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align}
-A = \begin{bmatrix} -\frac{U_a+U_b+U_c}{C^H_p} &amp; \frac{U|_b}{C^H_p} &amp; \frac{U_c}{C^H_p} &amp; 0 \\ 
-\frac{U_b}{C^S_p} &amp; - \frac{U_b}{C^S_p} &amp; 0 &amp; 0 \\
-\frac{U_c}{C^H_p} &amp; 0 &amp; -\frac{U_a+U_b+U_c}{C^H_p} &amp; \frac{U_b}{C^H_p} \\
-0 &amp; 0 &amp; \frac{U_b}{C^S_p} &amp; - \frac{U_b}{C^S_p} \end{bmatrix}
-\quad
-B = \begin{bmatrix} \frac{\alpha P_1}{C^H_p} &amp; 0 \\ 0 &amp; 0 \\ 0 &amp; \frac{\alpha P_2}{C^H_p} \\ 0 &amp; 0 \end{bmatrix} 
-\quad
-C = \begin{bmatrix}0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{bmatrix} \\
-\end{align}
-\end{split}\]</div>
-</div>
 </div>
 <div class="section" id="problem-2-simulate-step-response-and-compare-to-data">
 <h2>Problem 2. Simulate Step Response and Compare to Data<a class="headerlink" href="#problem-2-simulate-step-response-and-compare-to-data" title="Permalink to this heading">#</a></h2>
@@ -1164,7 +1129,7 @@ C = \begin{bmatrix}0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \end{b
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/hw-02_6_1.png" src="../_images/hw-02_6_1.png" />
+<img alt="../_images/hw-02_5_1.png" src="../_images/hw-02_5_1.png" />
 </div>
 </div>
 </div>

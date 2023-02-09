@@ -1323,6 +1323,108 @@ title="Print to PDF"
 <p>For this choice of parameters and initial conditions, the Hare/Lynx population exhibits sustained oscillations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Hare</th>
+      <th>Lynx</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000000</td>
+      <td>20.000000</td>
+      <td>20.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.140281</td>
+      <td>21.243556</td>
+      <td>20.001376</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.280561</td>
+      <td>22.558834</td>
+      <td>20.070764</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.420842</td>
+      <td>23.937369</td>
+      <td>20.210010</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.561122</td>
+      <td>25.368007</td>
+      <td>20.420936</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>495</th>
+      <td>69.438878</td>
+      <td>1.780383</td>
+      <td>16.624267</td>
+    </tr>
+    <tr>
+      <th>496</th>
+      <td>69.579158</td>
+      <td>1.932977</td>
+      <td>15.516994</td>
+    </tr>
+    <tr>
+      <th>497</th>
+      <td>69.719439</td>
+      <td>2.118166</td>
+      <td>14.495696</td>
+    </tr>
+    <tr>
+      <th>498</th>
+      <td>69.859719</td>
+      <td>2.340825</td>
+      <td>13.555261</td>
+    </tr>
+    <tr>
+      <th>499</th>
+      <td>70.000000</td>
+      <td>2.607244</td>
+      <td>12.691044</td>
+    </tr>
+  </tbody>
+</table>
+<p>500 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Hare/Lynx Population Dynamics&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1331,7 +1433,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Hare/Lynx Population Dynamics&#39;}, xlabel=&#39;Year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.08-Hare-and-Lynx_18_1.png" src="../_images/02.08-Hare-and-Lynx_18_1.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_19_1.png" src="../_images/02.08-Hare-and-Lynx_19_1.png" />
 </div>
 </div>
 </div>
@@ -1368,7 +1470,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/02.08-Hare-and-Lynx_22_1.png" src="../_images/02.08-Hare-and-Lynx_22_1.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_23_1.png" src="../_images/02.08-Hare-and-Lynx_23_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1382,7 +1484,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x184ee1850&gt;]
 </pre></div>
 </div>
-<img alt="../_images/02.08-Hare-and-Lynx_23_1.png" src="../_images/02.08-Hare-and-Lynx_23_1.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_24_1.png" src="../_images/02.08-Hare-and-Lynx_24_1.png" />
 </div>
 </div>
 </div>
@@ -1454,7 +1556,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.08-Hare-and-Lynx_29_0.png" src="../_images/02.08-Hare-and-Lynx_29_0.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_30_0.png" src="../_images/02.08-Hare-and-Lynx_30_0.png" />
 </div>
 </div>
 <p>Visualization of the nullclines give us some insight into how the Hare and Lynx populations depend on the model parameters. Here we look at how the nullclines depend on the Hare/Lynx predation rate <span class="math notranslate nohighlight">\(a\)</span>.</p>
@@ -1471,7 +1573,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "95f09321b02e4432a3350c1c841e62d0", "version_major": 2, "version_minor": 0}
+{"model_id": "79bd0c5704a54dce88feebfb6bcf6f07", "version_major": 2, "version_minor": 0}
 </script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.sim(a=3.2)&gt;
 </pre></div>
 </div>
@@ -1504,7 +1606,7 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "d9072562252a486e80d136ad3fba69f4", "version_major": 2, "version_minor": 0}
+{"model_id": "b423874a1b98403789c65c6cce4e7e96", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </div>
@@ -1520,7 +1622,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.08-Hare-and-Lynx_39_0.png" src="../_images/02.08-Hare-and-Lynx_39_0.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_40_0.png" src="../_images/02.08-Hare-and-Lynx_40_0.png" />
 </div>
 </div>
 </div>
@@ -1534,7 +1636,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.08-Hare-and-Lynx_41_0.png" src="../_images/02.08-Hare-and-Lynx_41_0.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_42_0.png" src="../_images/02.08-Hare-and-Lynx_42_0.png" />
 </div>
 </div>
 </div>
@@ -1548,7 +1650,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/02.08-Hare-and-Lynx_43_0.png" src="../_images/02.08-Hare-and-Lynx_43_0.png" />
+<img alt="../_images/02.08-Hare-and-Lynx_44_0.png" src="../_images/02.08-Hare-and-Lynx_44_0.png" />
 </div>
 </div>
 </div>
