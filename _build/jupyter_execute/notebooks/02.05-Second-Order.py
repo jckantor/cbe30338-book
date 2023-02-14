@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Second and Higher Order models
+# # Second Order Model
 # 
 # In this notebook we will fit a higher-order state space model to the step test data. The learning goals for this notebook are to 
 # 
@@ -22,7 +22,7 @@
 # 
 # The challenge is to develop a first-principles models that reproduces the system measured response shown below.
 
-# In[7]:
+# In[198]:
 
 
 import pandas as pd
@@ -35,7 +35,7 @@ data.head()
 
 # The Pandas library includes a highly functional method for plotting data.
 
-# In[110]:
+# In[199]:
 
 
 data.plot(y=["T1", "T2"], figsize=(10, 3), grid=True, ylabel="deg C")
@@ -43,8 +43,6 @@ data.plot(y=["Q1", "Q2"], figsize=(10, 3), grid=True, ylabel="% of power range",
 
 
 # ## Two-State Model
-# 
-# ### Dynamics of the Heater/Sensor System
 # 
 # For this model we no longer assume  the heater and sensor are at the same temperature. To account for differing temperatures, we introduce $T_{H,1}$ to denote the temperature of heater one and $T_{S,1}$ to denote the temperature of the corresponding sensor. We further assume the sensor exchanges heat only with the heater, and heat transfer to the surroundings is dominated by the heat sink attached to the heater.
 # 
@@ -63,7 +61,7 @@ data.plot(y=["Q1", "Q2"], figsize=(10, 3), grid=True, ylabel="% of power range",
 # 
 # The following cell creates a simulation of heater/sensor combination.
 
-# In[111]:
+# In[200]:
 
 
 import numpy as np
@@ -103,8 +101,8 @@ def tclab_ode(param):
         dTS1 = Ub*(TH1 - TS1)/CpS
         return [dTH1, dTS1]
 
-    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [TH1_IC, TS1_IC], t_eval=t_expt) 
-    
+    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], IC, t_eval=t_expt) 
+
     # create dataframe with predictions
     pred = pd.DataFrame(columns=["Time"])
     pred["Time"] = t_expt
@@ -120,18 +118,18 @@ def tclab_ode(param):
     return pred
     
 pred = tclab_ode(param=[CpH, CpS, Ua, Ub])
-pred.head()
+pred
 
 
-# In[112]:
+# In[202]:
 
 
-pred.plot(y=["T1"], grid=True, lw=2, ylabel="deg C")
+pred["T1"].plot(grid=True, ylabel="deg C", title="Model Prediction")
 
 
 # Now let's compare the predicted measurement to the actual measurement. How did we do?
 
-# In[113]:
+# In[203]:
 
 
 ax = pred.plot(y=["T1"], ylabel="deg C")
@@ -192,7 +190,7 @@ data.plot(ax=ax, y=["T1"], grid=True)
 # \end{align}
 # $$
 # 
-# where the process variables are 
+# where the state space variables are the deviations of temperature from the ambient $T_{amb}$
 # 
 # $$
 # \begin{align}
@@ -200,7 +198,7 @@ data.plot(ax=ax, y=["T1"], grid=True)
 # \\
 # x & = \begin{bmatrix} T_{H,1} - T_{amb} \\ T_{S,1} - T_{amb} \end{bmatrix} && \text{states} \\
 # \\
-# y & = \begin{bmatrix} T_{S,1} \end{bmatrix} && \text{measurements} \\
+# y & = \begin{bmatrix} T_{S,1} - T_{amb} \end{bmatrix} && \text{measurements} \\
 # \end{align}
 # $$
 # 
@@ -217,6 +215,18 @@ data.plot(ax=ax, y=["T1"], grid=True)
 # $$
 # 
 # By using the notation and techniques of linear algebra, **state-space models** provide a compact means of representing complex systems. This example consists of $m=1$ inputs, $n=2$ states, and $p=1$ outputs.
+
+# In[174]:
+
+
+print(f"pi = {np.pi:8.3f} isn't that nice")
+
+
+# In[176]:
+
+
+print(f"{Ua=}")
+
 
 # In[92]:
 
@@ -246,7 +256,7 @@ print(f"\n{B=}")
 print(f"\n{C=}")
 
 
-# In[129]:
+# In[179]:
 
 
 
@@ -278,6 +288,8 @@ def tclab_ss(A, B, C):
     pred["x1"] = soln.y[0]
     pred["x2"] = soln.y[1]
     
+    pred["y"] = pred["x2"]
+    
     # convert back to model temperatures
     pred["TH1"] = pred["x1"] + T_amb
     pred["TS1"] = pred["x2"] + T_amb
@@ -292,19 +304,13 @@ pred = tclab_ss(A, B, C)
 pred.head()
 
 
-# In[130]:
+# In[178]:
 
 
 pred.plot(y=["T1"])
 
 
-# In[ ]:
-
-
-
-
-
-# ### "Least Squares" Model Fitting
+# ## "Least Squares" Model Fitting
 # 
 # Fitting a model to data is a basic task in engineering, science, business, and a foundation of modern data sciences. For engineers the goal is to validate hypotheses about how a device works, then to enable simulation and design. In the data science model fitting may be almost completely empirical using black box models to develop predictive models of complex systems.
 # 
@@ -314,16 +320,16 @@ pred.plot(y=["T1"])
 # 
 # This is demonstrated below.
 
-# In[137]:
+# In[185]:
 
 
 # Try your hand at trial and error data fitting
 
 # adjustable parameters
-CpH = 6                # joules/deg C
+CpH = 5                # joules/deg C
 CpS = 1                # joules/deg C
 Ua = 0.04             # watts/deg C
-Ub = 0.05              # watts/deg C
+Ub = 0.04              # watts/deg C
 
 A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
 B = np.array([[alpha*P1/CpH], [0]])
@@ -334,7 +340,7 @@ ax = pred["T1"].plot()
 data["T1"].plot(ax=ax, grid=True)
 
 
-# In[139]:
+# In[191]:
 
 
 def pred_err(p):
@@ -350,15 +356,15 @@ def pred_err(p):
     return pred["T1"] - data["T1"]
 
     
-pred_err([8, 1, 0.04, 0.05]).plot()
+pred_err([5.8, 1, 0.04, 0.045]).plot()
 
 
-# In[147]:
+# In[194]:
 
 
 from scipy.optimize import least_squares
 
-results = least_squares(pred_err,  [8, 1, 0.05, 0.05], loss='cauchy')
+results = least_squares(pred_err,  [8, 1, 0.05, 0.05], loss="cauchy")
 
 CpH, CpS, Ua, Ub = results.x
 print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}")
@@ -366,7 +372,7 @@ print(f"CpH = {CpH},  CpS = {CpS},   Ua = {Ua},  Ub = {Ub}")
 pred_err([CpH, CpS, Ua, Ub]).plot()
 
 
-# In[148]:
+# In[195]:
 
 
 A = np.array([[-(Ua + Ub)/CpH, Ub/CpH], [Ub/CpS, -Ub/CpS]])
@@ -387,127 +393,6 @@ data["T1"].plot(ax=ax, grid=True)
 # 3. How much of difference does it make it estimated model parameters?
 # 
 # :::
-
-# ## Fourth-Order Multi-Input Multi-Output Model
-# 
-# The next step in the evolution of our model is to incorporate the second heater/sensor assembly. Even with only heat applied to 
-
-# ### Model derivation
-# 
-# $$
-# \begin{align}
-# C^H_p\frac{dT_{H,1}}{dt} & = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + U_c(T_{H,2}-T_{H,1})  + \alpha P_1u_1\\
-# C^S_p\frac{dT_{S,1}}{dt} & = U_b(T_{H,1} - T_{S,1})  \\
-# C^H_p\frac{dT_{H,2}}{dt} & = U_a(T_{amb} - T_{H,2}) + U_b(T_{S,2} - T_{H,2}) + U_c(T_{H,1}-T_{H,2}) + \alpha P_2 u_2\\
-# C^S_p\frac{dT_{S,2}}{dt} & = U_b(T_{H,2} - T_{S,2}) 
-# \end{align}
-# $$
-# 
-# where
-# 
-# $$
-# \begin{align}
-# T_1 & = T_{S,1} \\
-# T_2 & = T_{S,2}
-# \end{align}
-# $$
-
-# ### Standard form
-# 
-# Normalize the derivatives to get in proper form for `solve_ivp`.
-# 
-# $$
-# \begin{align}
-# \frac{dT_{H,1}}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{U_c}{C^H_p}T_{H,2}  + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
-# \frac{dT_{S,1}}{dt} & = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1})  \\
-# \frac{dT_{H,2}}{dt} & = -(\frac{U_a+U_b+U_c}{C^H_p})T_{H,2} + \frac{U_b}{C^H_p}T_{S,2} + \frac{U_c}{C^H_p}T_{H,1}  + \frac{\alpha P_2}{C^H_p}u_2 + \frac{U_a}{C^H_p}T_{amb}\\
-# \frac{dT_{S,2}}{dt} & = \frac{U_b}{C^S_p}(T_{H,2} - T_{S,2}) 
-# \end{align}
-# $$
-# 
-# where
-# 
-# $$
-# \begin{align}
-# T_1 & = T_{S,1} \\
-# T_2 & = T_{S,2}
-# \end{align}
-# $$
-# 
-
-# In[23]:
-
-
-import numpy as np
-from scipy.integrate import solve_ivp
-
-# known parameters
-T_amb = 21             # deg C
-alpha = 0.00016        # watts / (units P1 * percent U1)
-P1 = 200               # P1 units
-U1 = 50                # steady state value of u1 (percent)
-P2 = 100               # P2 units
-U2 = 0                 # steady state value of u1 (percent)
-
-# adjustable parameters
-CpH = 5                # joules/deg C
-CpS = 1                # joules/deg C
-Ua = 0.05              # watts/deg C
-Ub = 0.05              # watts/deg C
-Uc = 0.05              # watts/deg C
-
-def tclab_model4(param):
-    # unpack the adjustable parameters
-    CpH, CpS, Ua, Ub, Uc = param  
-
-    # model solution
-    def deriv(t, y):
-        T1H, T1S, T2H, T2S= y
-        dT1H = (-(Ua + Ub + Uc)*T1H + Ub*T1S + Uc*T2H + alpha*P1*U1 + Ua*T_amb)/CpH
-        dT1S = Ub*(T1H - T1S)/CpS
-        dT2H = (-(Ua + Ub + Uc)*T2H + Ub*T2S + Uc*T1H + alpha*P2*U2 + Ua*T_amb)/CpH
-        dT2S = Ub*(T2H - T2S)/CpS
-        return [dT1H, dT1S, dT2H, dT2S]
-
-    soln = solve_ivp(deriv, [min(t_expt), max(t_expt)], [T_amb]*4, t_eval=t_expt) 
-    
-    # create dataframe with predictions
-    pred = pd.DataFrame(t_expt, columns=["Time"])
-    pred["TH1"] = soln.y[0]
-    pred["TS1"] = soln.y[1]
-    pred["TH2"] = soln.y[2]
-    pred["TS2"] = soln.y[3]
-    
-    return pred
-    
-pred = tclab_model4([CpH, CpS, Ua, Ub, Uc])
-
-ax = data.plot(x="Time", y=["T1", "T2"])
-pred.plot(x="Time", y = ["TH1", "TS1", "TH2", "TS2"], ax=ax, grid=True)
-
-
-# Least squares fitting with Cauchy loss function.
-
-# In[24]:
-
-
-from scipy.optimize import least_squares
-
-# define function to be minimized by least_squares
-def fun(p):
-    pred = tclab_model4(p)
-    return pd.concat([pred["TS1"] - data["T1"], pred["TS2"] - data["T2"]])
-
-# compute the least_squares best fit for parameters
-results = least_squares(fun,  [CpH, CpS, Ua, Ub, Uc], loss="cauchy")
-CpH, CpS, Ua, Ub, Uc = results.x
-print(f"CpH = {CpH:0.2f},  CpS = {CpS:.5f},   Ua = {Ua:.5f},  Ub = {Ub:.7f}, Uc = {Uc:.4f}")
-
-# show the new prediction with optimized parameters
-pred = tclab_model4(results.x)
-ax = data.plot(x="Time", y=["T1", "T2"], figsize=(12, 6))
-pred.plot(x="Time", y = ["TH1", "TS1", "TH2", "TS2"], ax=ax, grid=True)
-
 
 # In[ ]:
 

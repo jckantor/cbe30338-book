@@ -25,7 +25,7 @@
 # 
 # We can see the strong temperature dependence by plotting $k(T)$ versus temperature over typical operating conditions.
 
-# In[127]:
+# In[4]:
 
 
 import matplotlib.pyplot as plt
@@ -88,7 +88,7 @@ df.plot(x=0, y=1, logy=True, grid=True)
 
 # This mathematical formulation is implemented as a function `simulate_cstr` that returns a `pandas` DataFrame object. The inputs to the function is a grid of points in time for the which a solution is required, initial conditions, and values for selected operating parameters. The remaining parameters are fixed in the body of the function. With this design, all calculations within the function require no access to parameters or function defined outside of `simulate_cstr`.
 
-# In[128]:
+# In[5]:
 
 
 import pandas as pd
@@ -137,7 +137,7 @@ def simulate_cstr(t_eval, Tc=Tc, cA0=cA0, T0=T0):
 
 # We first define a visualization function that will be reused in later simulations.
 
-# In[129]:
+# In[6]:
 
 
 # time grid
@@ -153,7 +153,7 @@ df.plot(x="Time", subplots=True, title=["Concentration", "Temperature"], figsize
 # 
 # The primary means of controlling the reactoris through temperature of the cooling water jacket. The next calculations explore the effect of plus or minus change of 5 K in cooling water temperature on reactor behavior. These simulations reproduce the behavior shown in Example 2.5 SEMD.
 
-# In[130]:
+# In[7]:
 
 
 # create plot grid
@@ -175,7 +175,7 @@ fig.tight_layout()
 # 
 # Executing the following cell provides an interactive tool for exploring the relationship of cooling temperature with reactor behavior.  Use it to observe a thermal runaway, sustained osciallations, and low and high conversion steady states.
 
-# In[131]:
+# In[8]:
 
 
 import matplotlib.pyplot as plt
@@ -227,7 +227,7 @@ interact(sim, T_cooling = (290.0, 310.0), c_initial = (0.0, 1.0, 0.01), T_initia
 # 
 # The intersection of the nullclines correspond to steady states. The relative positions of the nullclines provide valuable insight into the dynamics of a nonlinear system.
 
-# In[147]:
+# In[9]:
 
 
 # plot nullclines
@@ -260,7 +260,7 @@ plot_nullclines(ax, Tc)
 # 
 # The final analysis is display the simulation in both time and phase plane coordinates. The following cell produces a 
 
-# In[155]:
+# In[10]:
 
 
 # set up figure window and axes

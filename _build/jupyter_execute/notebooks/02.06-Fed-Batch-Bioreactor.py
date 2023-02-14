@@ -134,7 +134,7 @@ df.plot(x = "Time", grid=True, lw=2, subplots=True)
 # 
 # Fermentation is process in which biomass consumes substrate to produce more biomass and by-products.
 # 
-# $$\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \rightarrow \text{Biomass (X)} + Y_{P/X}\text{Products (P)}$$
+# $$\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \stackrel{r_g(X, S)}{\longrightarrow} \text{Biomass (X)} + Y_{P/X}\text{Products (P)}$$
 # 
 # The rate $r_g(X,S)$ is the production of fresh cell biomass in units of grams/liter/hr. The volume specific growth rate is expressed as
 # 
@@ -233,7 +233,7 @@ df.plot(x = "Time", grid=True, lw=2, subplots=True)
 # $$
 # \begin{align*}
 # \frac{dX}{dt} & = - \frac{F(t)}{V} X +  r_g(X, S) \\
-# \frac{dS}{dt} & = \frac{F(t)}{V} (S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S)|\\
+# \frac{dS}{dt} & = \frac{F(t)}{V} (S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S) \\
 # \frac{dV}{dt} &  = F(t)
 # \end{align*}
 # $$

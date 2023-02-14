@@ -128,7 +128,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../Schedule.html">
-   CBE 30338/32338 Schedule – 2023
+   CBE 30338/32338 Schedule
   </a>
  </li>
 </ul>
@@ -151,6 +151,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../../assignments/hw-01.html">
      Homework 1
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../assignments/hw-02.html">
+     Homework 2
     </a>
    </li>
   </ul>
@@ -1296,8 +1301,8 @@ title="Print to PDF"
 <div class="section" id="objective">
 <h3><span class="section-number">5.4.4.1. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h3>
 <p>The objective is maximize profit, which is the difference between product revenue and stream costs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15dc52fe-1299-4942-b193-f6f395b96344">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-15dc52fe-1299-4942-b193-f6f395b96344" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4791b4a8-195c-4f80-b872-04dbe6f9ab7a">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-4791b4a8-195c-4f80-b872-04dbe6f9ab7a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \text{Price}_p \sum_{s\in S} x_{s,p}
 - \sum_{s\in S} \text{Cost}_s \sum_{p\in P} x_{s,p}\right) \\
 &amp; = \max_{x_{s,p}}\left(\sum_{p\in P}\sum_{s\in S}x_{s,p}(\text{Price}_p - \text{Cost}_s)\right)
@@ -1307,23 +1312,23 @@ title="Print to PDF"
 <h3><span class="section-number">5.4.4.2. </span>Raw Materials<a class="headerlink" href="#raw-materials" title="Permalink to this heading">#</a></h3>
 <p>The first constraints in any blending problem are normally the limits on available raw materials. Letting $\text{</p>
 <p>The blending constraint for octane can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c67cd40-b367-4686-9416-29c86d03b65f">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-2c67cd40-b367-4686-9416-29c86d03b65f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-80d2f130-76cf-4e64-891a-619373beb81e">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-80d2f130-76cf-4e64-891a-619373beb81e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{\sum_{s \in S} x_{s,p} \mbox{Octane}_s}{\sum_{s \in S} x_{s,p}} &amp; \geq \mbox{Octane}_p &amp; \forall p \in P
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mbox{Octane}_s\)</span> refers to the octane rating of stream <span class="math notranslate nohighlight">\(s\)</span>, whereas <span class="math notranslate nohighlight">\(\mbox{Octane}_p\)</span> refers to the octane rating of product <span class="math notranslate nohighlight">\(p\)</span>. Multiplying through by the denominator, and consolidating terms gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d815dcd-d727-4563-96ae-cb7c836c4513">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-8d815dcd-d727-4563-96ae-cb7c836c4513" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f42d8f84-3c6b-47fd-b3b0-afc3325c5a19">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-f42d8f84-3c6b-47fd-b3b0-afc3325c5a19" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Octane}_s - \mbox{Octane}_p\right) &amp; \geq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>The same assumptions and development apply to the benzene constraint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4df4e65b-f4ce-497d-848c-b1e1be2cd03c">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-4df4e65b-f4ce-497d-848c-b1e1be2cd03c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-532578f8-b468-430e-9854-545d8ccab5ae">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-532578f8-b468-430e-9854-545d8ccab5ae" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Benzene}_s - \mbox{Benzene}_p\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>Reid vapor pressure, however, follows a somewhat different mixing rule.  For the Reid vapor pressure we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-31198e36-fdc3-415c-a14e-6cb0a2f632d0">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-31198e36-fdc3-415c-a14e-6cb0a2f632d0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-14b934e5-aca6-4e9f-b6fb-17cb23fd4659">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-14b934e5-aca6-4e9f-b6fb-17cb23fd4659" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{min,p}^{1.25}\right) &amp; \geq  0 &amp; \forall p \in P \\
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{max,p}^{1.25}\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>

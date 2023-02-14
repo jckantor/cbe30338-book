@@ -270,7 +270,7 @@ def hare_lynx(H=20, L=20, a=3.2):
 
 # Use the `a` slider to adjust values of the Hare/Lynx interaction.  Can you indentify stable and unstable steady states?
 
-# In[18]:
+# In[14]:
 
 
 from ipywidgets import interact

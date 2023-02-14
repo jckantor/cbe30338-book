@@ -15,7 +15,8 @@ parts:
     - file: assignments/00-assignments.md
       sections:
       - file: assignments/hw-01.ipynb
-    
+      - file: assignments/hw-02.ipynb
+      
   - caption: Topical Materials
     numbered: true
     chapters:
