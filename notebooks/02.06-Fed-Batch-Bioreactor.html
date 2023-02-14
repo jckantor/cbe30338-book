@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.7. Exothermic Continuous Stirred Tank Reactor" href="02.07-Exothermic-CSTR.html" />
-    <link rel="prev" title="2.5. Second and Higher Order models" href="02.05-Second-Order.html" />
+    <link rel="prev" title="2.5. Second Order Model" href="02.05-Second-Order.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en">
     
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -1134,7 +1134,7 @@ title="Print to PDF"
 <h2><span class="section-number">2.6.3. </span>Modeling Biomass<a class="headerlink" href="#modeling-biomass" title="Permalink to this heading">#</a></h2>
 <p>Fermentation is process in which biomass consumes substrate to produce more biomass and by-products.</p>
 <div class="math notranslate nohighlight">
-\[\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \rightarrow \text{Biomass (X)} + Y_{P/X}\text{Products (P)}\]</div>
+\[\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \stackrel{r_g(X, S)}{\longrightarrow} \text{Biomass (X)} + Y_{P/X}\text{Products (P)}\]</div>
 <p>The rate <span class="math notranslate nohighlight">\(r_g(X,S)\)</span> is the production of fresh cell biomass in units of grams/liter/hr. The volume specific growth rate is expressed as</p>
 <div class="math notranslate nohighlight">
 \[r_g(X,S) = \mu(S)X\]</div>
@@ -1229,7 +1229,7 @@ title="Print to PDF"
 \[\begin{split}
 \begin{align*}
 \frac{dX}{dt} &amp; = - \frac{F(t)}{V} X +  r_g(X, S) \\
-\frac{dS}{dt} &amp; = \frac{F(t)}{V} (S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S)|\\
+\frac{dS}{dt} &amp; = \frac{F(t)}{V} (S_f - S) - \frac{1}{Y_{X/S}}r_g(X,S) \\
 \frac{dV}{dt} &amp;  = F(t)
 \end{align*}
 \end{split}\]</div>
@@ -1420,7 +1420,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2.5. </span>Second and Higher Order models</p>
+            <p class="prev-next-title"><span class="section-number">2.5. </span>Second Order Model</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="02.07-Exothermic-CSTR.html" title="next page">
