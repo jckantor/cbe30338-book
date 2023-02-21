@@ -101,7 +101,7 @@
 # 
 # $$\begin{align*}
 # \frac{dH}{dt} & = 3.2 (H - 125) - 0.8 L - 0.1 u \\
-# \frac{dL}{dt} & = 0.4 H + 0.2 L
+# \frac{dL}{dt} & = 0.2 H - 0.4 L
 # \end{align*}$$
 # 
 # where $u$ is a the loss of hare due to other predators. Rewrite this expression in state space form 
@@ -121,7 +121,7 @@
 # \end{align*}
 # $$
 # 
-# What if $H$ and $L$ are both measurable?
+# What is $C$ if both $H$ and $L$ are measurable?
 
 # ## TCLab
 # 
