@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.1. Learning Goals &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4.2. Data/Process/Operational Historian" href="04.02-Process-Historians.html" />
     <link rel="prev" title="4. Process Analytics" href="04.00-Process-Analytics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -912,10 +917,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="learning-goals">
-<h1><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h1>
-<div class="section" id="process-historians">
-<h2><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-goals">
+<h1><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h1>
+<section id="process-historians">
+<h2><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this headline">#</a></h2>
 <p><strong>Process historians</strong> are widely used throughout the process industries. The core function is to record and provide access to <strong>time series data</strong> for <strong>process tags</strong>.</p>
 <p>The tclab library includes the basic functions of a process historian implemented using <code class="docutils literal notranslate"><span class="pre">SQLite</span></code>, a widely used database for web applications and internet connected devices.</p>
 <ul class="simple">
@@ -931,9 +936,9 @@ title="Print to PDF"
 <li><p>Add a tag and a function to a list of data sources.</p></li>
 <li><p>Save data from the historian to a .csv file, then load the saved data for analysis.</p></li>
 </ul>
-</div>
-<div class="section" id="state-space-models">
-<h2><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="state-space-models">
+<h2><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">#</a></h2>
 <p>A linear state-space model is written in the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -956,9 +961,9 @@ y &amp; = C x
 <li><p>Compute eigenvalues and determine stability.</p></li>
 <li><p>Simulate the response of a state-space model to inputs and disturbances.</p></li>
 </ul>
-</div>
-<div class="section" id="state-estimation">
-<h2><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="state-estimation">
+<h2><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">#</a></h2>
 <p>State estimation is a form of real-time process analytics employed in control systems. State estimation combines process models with real-time process measurements to provide estimates of process variables that may not be directly measureable.</p>
 <p>At each time step <span class="math notranslate nohighlight">\(t_k\)</span> there are two calculations to perform:</p>
 <ul class="simple">
@@ -985,8 +990,8 @@ y &amp; = C x
 \end{align}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(d\)</span> is the unmeasured disturbance, and <span class="math notranslate nohighlight">\(\hat{d}\)</span> is an apriori estimate of <span class="math notranslate nohighlight">\(d\)</span>. If the estimate is accurate, then <span class="math notranslate nohighlight">\(d = \hat{d}\)</span>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1000,7 +1005,7 @@ y &amp; = C x
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks/04"
         },
         predefinedOutput: true

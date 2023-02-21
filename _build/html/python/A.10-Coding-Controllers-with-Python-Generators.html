@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Coding Controllers with Python Generators &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Modular Simulation using Python Generators" href="A.11-Modular-Approach-to-Simulation-using-Python-Generators.html" />
     <link rel="prev" title="Tidy Data and Pandas" href="A.05-Tidy-Data-and-Pandas.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -1007,8 +1012,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="coding-controllers-with-python-generators">
-<h1>Coding Controllers with Python Generators<a class="headerlink" href="#coding-controllers-with-python-generators" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="coding-controllers-with-python-generators">
+<h1>Coding Controllers with Python Generators<a class="headerlink" href="#coding-controllers-with-python-generators" title="Permalink to this headline">#</a></h1>
 <p>Up to this point we have been implementing simple control strategies where the manipulated variable depends only on current values of the process variable and setpoint. Relay control, for example, can be expressed mathematically as</p>
 <div class="math notranslate nohighlight">
 \[MV = Kp \times (SP - PV)\]</div>
@@ -1029,8 +1034,8 @@ title="Print to PDF"
 </ul>
 <p>Classes, in particular, are a tool for encapsulating data and functionality within a single software entity. Classes are widely used in Python programming, and should eventually become part of every Python programmer’s toolkit.</p>
 <p>As we demonstrate below, however, the Python <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement is often sufficient to write self-contained implementations of control algorithm.</p>
-<div class="section" id="python-generators-and-the-yield-statement">
-<h2>Python Generators and the Yield Statement<a class="headerlink" href="#python-generators-and-the-yield-statement" title="Permalink to this heading">#</a></h2>
+<section id="python-generators-and-the-yield-statement">
+<h2>Python Generators and the Yield Statement<a class="headerlink" href="#python-generators-and-the-yield-statement" title="Permalink to this headline">#</a></h2>
 <p>The cells below provide a very brief introduction to Python generators. More information can be found <a class="reference external" href="https://jeffknupp.com/blog/2013/04/07/improve-your-python-yield-and-generators-explained/">here</a></p>
 <p>A function incorporating a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement is used to create generators.  Like the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, <code class="docutils literal notranslate"><span class="pre">yield</span></code> says to return a value and control to the calling routine. But unlike the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement, following a <code class="docutils literal notranslate"><span class="pre">yield</span></code> the generator goes into a suspended state. On the next use it will pick up execution right where execution left off.</p>
 <p>Here’s an example produces a generator for four numbers.</p>
@@ -1131,7 +1136,7 @@ Hello, World
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proportional</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">SP</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates proportional controllers with specified gain and setpoint.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Creates proportional controllers with specified gain and setpoint.&quot;&quot;&quot;</span>
     <span class="n">MV</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">PV</span> <span class="o">=</span> <span class="k">yield</span> <span class="n">MV</span>
@@ -1175,9 +1180,9 @@ Controller 2: MV =  5
 </div>
 </div>
 <p>From a coding and maintenance perspective, this is a very useful feature. We need to create and maintain only one copy of the control algorithm.</p>
-</div>
-<div class="section" id="example-relay-control-with-hysteresis">
-<h2>Example: Relay Control with Hysteresis<a class="headerlink" href="#example-relay-control-with-hysteresis" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="example-relay-control-with-hysteresis">
+<h2>Example: Relay Control with Hysteresis<a class="headerlink" href="#example-relay-control-with-hysteresis" title="Permalink to this headline">#</a></h2>
 <p>Relay control can work well but is sensitive to measurement noise. Even a relatively small amount of measurement noise causes the manipulated variable to rapidly cycle between extreme values. Needless to say, this would be a unacceptable in large scale chemical plants.</p>
 <p>A common workaround is add a small amount of hystersis to the controller. Here’s an example from the Inkbird IB-16 controller that is typical of a commercial devices found in the food and pharaceutical industries.</p>
 <p><img src='images/Inkbird-16.png' style="float: left;padding-right:10px;"></img>
@@ -1199,8 +1204,8 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-<div class="section" id="simulation">
-<h3>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h3>
+<section id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">clock</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
@@ -1227,9 +1232,9 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="experiment">
-<h3>Experiment<a class="headerlink" href="#experiment" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="experiment">
+<h3>Experiment<a class="headerlink" href="#experiment" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">clock</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
@@ -1256,10 +1261,10 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="example-proportional-integral-control">
-<h2>Example: Proportional-Integral Control<a class="headerlink" href="#example-proportional-integral-control" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="example-proportional-integral-control">
+<h2>Example: Proportional-Integral Control<a class="headerlink" href="#example-proportional-integral-control" title="Permalink to this headline">#</a></h2>
 <p>A simple velocity form of Proportional-Integral control is an example of a controller with internal state. In velocity form,</p>
 <div class="math notranslate nohighlight">
 \[MV_{k} = MV_{k-1} + K_p (e_k - e_{k-1}) + K_iT_se_k\]</div>
@@ -1271,7 +1276,7 @@ Controller 2: MV =  5
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PI</span><span class="p">(</span><span class="n">Kp</span><span class="p">,</span> <span class="n">Ki</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Proportional Integral Control.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Proportional Integral Control.&quot;&quot;&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">e</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">MV</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1294,8 +1299,8 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h3>Simulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="id1">
+<h3>Simulation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">clock</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
@@ -1324,9 +1329,9 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3>Experiment<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id2">
+<h3>Experiment<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">clock</span><span class="p">,</span> <span class="n">setup</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
@@ -1355,9 +1360,9 @@ Controller 2: MV =  5
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1371,7 +1376,7 @@ Controller 2: MV =  5
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./python"
         },
         predefinedOutput: true

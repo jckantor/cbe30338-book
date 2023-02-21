@@ -28,7 +28,7 @@
 # 
 # The PCR protocol is a series of (time, temperature) pairs. The code in the next cell represents a protocol as a sequence of (time, temperature) pairs in a Python list. The list is constructed by concatenating subprotocols denoting the activation, cycling and extension steps in a PCR protocol
 
-# In[51]:
+# In[6]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -53,7 +53,7 @@ protocol
 # 
 # Each step in a PCR protocol consists of an initial ramp to the specified temperature, followed by a soak for the specified time and temperature. We begin the coding by demonstrating how to interpret the protocol specification as a series of ramp and soak periods.
 
-# In[52]:
+# In[7]:
 
 
 # each soak period is preceeded by a ramp
@@ -64,7 +64,7 @@ for time, temp in protocol:
 
 # The next step is to introduce a ramp rate and add variables to track the start time and temperature for each segment. We will assume all ramp rates have the same absolute value.
 
-# In[53]:
+# In[8]:
 
 
 # add varibles to track current time and temperature
@@ -85,7 +85,7 @@ for time, temp in protocol:
 # 
 # Finally, we create a two column numpy array representing the setpoint profile. The first row in the array is the starting time and temperature. Each subsequent row constains the ending time and temperature of a segment.
 
-# In[54]:
+# In[9]:
 
 
 # store the data in a list of time, temperature pairs marking the end of each period
@@ -113,7 +113,7 @@ SP_array = np.array(SP_list)
 SP_array
 
 
-# In[55]:
+# In[10]:
 
 
 fig, ax = plt.subplots(1, 1, figsize=(12, 5))

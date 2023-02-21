@@ -162,7 +162,7 @@ df.plot(x = "Time", grid=True, lw=2, subplots=True)
 # 
 # The following cell shows the results of incorporating biomass growth into the model for the fed-batch reaction.
 
-# In[1]:
+# In[4]:
 
 
 import numpy as np
@@ -194,7 +194,7 @@ def deriv(t, y):
     return [dX, dS, dV]
 
 # initial conditions
-IC = [0.0, 0.0, 1.0]
+IC = [20.0, 0.0, 1.0]
 
 # integration period
 t_final = 50
@@ -238,7 +238,7 @@ df.plot(x = "Time", grid=True, lw=2, subplots=True)
 # \end{align*}
 # $$
 
-# In[18]:
+# In[5]:
 
 
 import numpy as np
@@ -308,7 +308,7 @@ df.plot(x = "Time", grid=True, lw=2, subplots=True)
 # \frac{dV}{dt} & = F(t)
 # \end{align*}$$
 
-# In[13]:
+# In[9]:
 
 
 import numpy as np

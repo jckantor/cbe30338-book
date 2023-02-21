@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.6. Design of a Cold Weather Fuel &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.7. Pyomo Examples" href="05.99-Pyomo-Examples.html" />
     <link rel="prev" title="5.5. Linear Programming" href="05.05-Linear-Programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -979,17 +984,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="design-of-a-cold-weather-fuel">
-<h1><span class="section-number">5.6. </span>Design of a Cold Weather Fuel<a class="headerlink" href="#design-of-a-cold-weather-fuel" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="design-of-a-cold-weather-fuel">
+<h1><span class="section-number">5.6. </span>Design of a Cold Weather Fuel<a class="headerlink" href="#design-of-a-cold-weather-fuel" title="Permalink to this headline">#</a></h1>
 <p>The venerable alcohol stove has been invaluable camping accessory for generations. They are simple, reliable, and in a pinch, can be made from aluminum soda cans.</p>
 <p><img alt="" src="../../_images/alcohol_stove.jpeg" /></p>
 <p>Alcohol stoves are typically fueled with denatured alcohol. Denatured alcohol, sometimes called methylated spirits, is a generally a mixture of ethanol and other alcohols and compounds designed to make it unfit for human consumption. An MSDS description of one <a class="reference external" href="https://www.korellis.com/wordpress/wp-content/uploads/2016/05/Alcohol-Denatured.pdf">manufacturer’s product</a> describes a roughly fifity/fifty mixture of ethanol and methanol.</p>
 <p>The problem with alcohol stoves is they can be difficult to light in below freezing weather. The purpose of this notebook is to design of an alternative cold weather fuel that could be mixed from other materials commonly available from hardware or home improvement stores.</p>
-<div class="section" id="data">
-<h2><span class="section-number">5.6.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="data">
+<h2><span class="section-number">5.6.1. </span>Data<a class="headerlink" href="#data" title="Permalink to this headline">#</a></h2>
 <p>The following data was collected for potential fuels commonly available at hardware and home improvement stores. The data consists of price ($/gal.) and parameters to predict vapor pressure using the Antoine equation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6898be1-4012-4281-8ba5-487e44cd4b55">
-<span class="eqno">(5.6)<a class="headerlink" href="#equation-e6898be1-4012-4281-8ba5-487e44cd4b55" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9f9dad18-32bf-4067-893d-9a1d688359df">
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-9f9dad18-32bf-4067-893d-9a1d688359df" title="Permalink to this equation">#</a></span>\[\begin{align}
 \log_{10}P^{vap}_{s}(T) &amp; = A_s - \frac{B_s}{T + C_s}
 \end{align}\]</div>
 <p>where the subscript <span class="math notranslate nohighlight">\(s\)</span> refers to species, temperature <span class="math notranslate nohighlight">\(T\)</span> is in units of degrees Celcius, and pressure <span class="math notranslate nohighlight">\(P\)</span> is in units of mmHg. The additional information for molecular weight and specific gravity will be needed to present the final results in volume fraction.</p>
@@ -1007,9 +1012,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="denatured-alcohol">
-<h2><span class="section-number">5.6.2. </span>Denatured Alcohol<a class="headerlink" href="#denatured-alcohol" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="denatured-alcohol">
+<h2><span class="section-number">5.6.2. </span>Denatured Alcohol<a class="headerlink" href="#denatured-alcohol" title="Permalink to this headline">#</a></h2>
 <p>The first step is to determine the vapor pressure of denatured alcohol over a typical range of operating temperatures. For this we assume denatured alcohol is a 40/60 (mole fraction) mixture of ethanol and methanol.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1041,9 +1046,9 @@ title="Print to PDF"
 <img alt="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_5_1.png" src="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_5_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="cold-weather-product-requirements">
-<h2><span class="section-number">5.6.3. </span>Cold Weather Product Requirements<a class="headerlink" href="#cold-weather-product-requirements" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="cold-weather-product-requirements">
+<h2><span class="section-number">5.6.3. </span>Cold Weather Product Requirements<a class="headerlink" href="#cold-weather-product-requirements" title="Permalink to this headline">#</a></h2>
 <p>We seek a cold weather fuel with increased vapor pressure at 0°C and lower, and also provides safe and normal operation of the alcohol stove at higher operating temperatures.</p>
 <p>For this purpose, we seek a mixture of commonly available liquids with a vapor pressure of at least 22 mmHg at the lowest possible temperature, and no greater than the vapor pressure of denatured alcohol at temperatures 30°C and above.</p>
 <div class="cell docutils container">
@@ -1063,24 +1068,24 @@ title="Print to PDF"
 <img alt="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_7_0.png" src="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="optimization-model">
-<h2><span class="section-number">5.6.4. </span>Optimization Model<a class="headerlink" href="#optimization-model" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="optimization-model">
+<h2><span class="section-number">5.6.4. </span>Optimization Model<a class="headerlink" href="#optimization-model" title="Permalink to this headline">#</a></h2>
 <p>The first optimization model is to create a mixture that maximizes the vapor pressure at -10°C while having a vapor pressure less than or equal to denatured alcohol at 30°C and above.</p>
 <p>The decision variables in the optimization model correspond to <span class="math notranslate nohighlight">\(x_s\)</span>, the mole fraction of each species <span class="math notranslate nohighlight">\(s \in S\)</span> from the set of available species <span class="math notranslate nohighlight">\(S\)</span>. By definition, the mole fractions must satisfy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-537df215-cd08-45a8-9e62-0a470971e982">
-<span class="eqno">(5.7)<a class="headerlink" href="#equation-537df215-cd08-45a8-9e62-0a470971e982" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8d9e9a61-0f71-4a14-ad5d-65373335b4bd">
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-8d9e9a61-0f71-4a14-ad5d-65373335b4bd" title="Permalink to this equation">#</a></span>\[\begin{align}
 x_s &amp; \geq 0 &amp; \forall s\in S \\
 \sum_{s\in S} x_s &amp; = 1
 \end{align}\]</div>
 <p>The objective is to maximize the vapor pressure at low temperatures, say -10°C, while maintaing a vapor pressure less than or equal to denatured alcohol at 30°C. Using Raoult’s law for ideal mixtures,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-512ea684-9db3-4ddc-9f1c-66b1ea4f6162">
-<span class="eqno">(5.8)<a class="headerlink" href="#equation-512ea684-9db3-4ddc-9f1c-66b1ea4f6162" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-94f79180-5abc-4ac3-b564-a3ef4be14293">
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-94f79180-5abc-4ac3-b564-a3ef4be14293" title="Permalink to this equation">#</a></span>\[\begin{align}
 \max_{x_s} \sum_{s\in S} x_s P^{vap}_s(-10°C) \\
 \end{align}\]</div>
 <p>subject to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2cb7961f-c593-4331-a89c-592a9a365c45">
-<span class="eqno">(5.9)<a class="headerlink" href="#equation-2cb7961f-c593-4331-a89c-592a9a365c45" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-29296ddd-0251-4d40-8627-948d6fa68494">
+<span class="eqno">(5.9)<a class="headerlink" href="#equation-29296ddd-0251-4d40-8627-948d6fa68494" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s\in S} x_s P^{vap}_s(30°C) &amp; \leq P^{vap}_{denatured\ alcohol}(30°C) \\
 \end{align}\]</div>
 <p>This optimization model is implemented in Pyomo in the following cell.</p>
@@ -1127,9 +1132,9 @@ x_s &amp; \geq 0 &amp; \forall s\in S \\
 <img alt="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_9_1.png" src="../../_images/05.06-Design-of-a-Cold-Weather-Fuel_9_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="display-composition">
-<h2><span class="section-number">5.6.5. </span>Display Composition<a class="headerlink" href="#display-composition" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="display-composition">
+<h2><span class="section-number">5.6.5. </span>Display Composition<a class="headerlink" href="#display-composition" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1251,8 +1256,8 @@ x_s &amp; \geq 0 &amp; \forall s\in S \\
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1266,7 +1271,7 @@ x_s &amp; \geq 0 &amp; \forall s\in S \\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks/05"
         },
         predefinedOutput: true

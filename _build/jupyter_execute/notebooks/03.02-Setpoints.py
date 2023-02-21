@@ -21,7 +21,7 @@
 # * A **ramp** is a specified period of time over which the setpoint changes at a constant rate from a specified starting value to a specified final value.
 # * The **ramp rate** is the rate of change in a setpoint ramp. These may have positive or negative values.
 
-# In[35]:
+# In[1]:
 
 
 import numpy as np
@@ -75,7 +75,7 @@ ax.annotate("Soak/Dwell", xy=(210, 50), xytext=(210, 55), fontsize=20,
 # 
 # Here we show the points for a typical setpoint.
 
-# In[37]:
+# In[2]:
 
 
 import numpy as np
@@ -95,7 +95,7 @@ sp_profile.plot(x="Time", y="SP", style={"SP": "r."}, ms=10, ylim=(25, 80), grid
 # 
 # The Python standard libraries include 
 
-# In[27]:
+# In[3]:
 
 
 t_interp = profile["Time"]
@@ -104,7 +104,7 @@ sp_interp = profile["SP"]
 np.interp(500, t_interp, sp_interp)
 
 
-# In[39]:
+# In[4]:
 
 
 def sp(t):
@@ -115,7 +115,7 @@ def sp(t):
 sp(500)
 
 
-# In[42]:
+# In[5]:
 
 
 t = np.linspace(0, 600, 101)
@@ -128,7 +128,7 @@ ax.plot(t, sp(t), '.')
 # 
 # Python functions are frequently written to accept data, perform calculations, and return values. What may be less familiar is that functions can also return function. This is just what we neeed - a function that accepts a series of (time, value) pairs describing a setpoint profile, then returns a function that can be used to find values of the setpoint at any point in time.
 
-# In[46]:
+# In[6]:
 
 
 def create_setpoint_function(profile):
@@ -145,7 +145,32 @@ def create_setpoint_function(profile):
     return setpoint_function
 
 
-# ### Example of a setpoint function
+# In[7]:
+
+
+sp1 = create_setpoint_function(sp_profile)
+
+
+# In[10]:
+
+
+sp1(200)
+
+
+# In[15]:
+
+
+sp_profile.loc[5:6,"SP"] = [95, 95]
+sp2 = create_setpoint_function(sp_profile)
+
+
+# In[17]:
+
+
+sp1(170), sp2(170)
+
+
+# ## Example of a setpoint function
 # 
 # The following example creates a setpoint function that produces setpoints corresponding the profile described in the introduction to this notebook.
 
@@ -161,18 +186,18 @@ print(f"at time = {t:3d} setpoint = {sp(t)}")
 
 # We can use the setpoint function to create plots.
 
-# In[49]:
+# In[20]:
 
 
 import matplotlib.pyplot as plt
 
 # compute setpoint values
 t = np.linspace(0, 600, 600)
-y = sp(t)
+y = sp2(t)
 
 # create a plot
 fix, ax = plt.subplots(1, 1, figsize=(10, 5))
-ax.plot(t, y)
+ax.plot(t, sp1(t), t, sp2(t))
 ax.set_xlabel("time / seconds")
 ax.set_title("setpoint function")
 ax.grid(True)

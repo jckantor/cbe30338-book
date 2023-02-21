@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.4. Fitting a Model to Experimental Data &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -54,10 +54,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.5. Second and Higher Order models" href="02.05-Second-Order.html" />
+    <link rel="next" title="2.5. Second Order Model" href="02.05-Second-Order.html" />
     <link rel="prev" title="2.3. First Order Model for a Single Heater" href="02.03-First-Order-Model-for-a-Single-Heater.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -1101,22 +1106,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fitting-a-model-to-experimental-data">
-<h1><span class="section-number">2.4. </span>Fitting a Model to Experimental Data<a class="headerlink" href="#fitting-a-model-to-experimental-data" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="fitting-a-model-to-experimental-data">
+<h1><span class="section-number">2.4. </span>Fitting a Model to Experimental Data<a class="headerlink" href="#fitting-a-model-to-experimental-data" title="Permalink to this headline">#</a></h1>
 <p><strong>Learning Goals</strong></p>
 <ul class="simple">
 <li><p>This notebook demonstrates how to ‘tuning’ a model (i.e., find model parameters) to fit experimental data.</p></li>
 </ul>
-<div class="section" id="why-do-we-fit-mathematical-models-to-data">
-<h2><span class="section-number">2.4.1. </span>Why do we fit mathematical models to data?<a class="headerlink" href="#why-do-we-fit-mathematical-models-to-data" title="Permalink to this heading">#</a></h2>
+<section id="why-do-we-fit-mathematical-models-to-data">
+<h2><span class="section-number">2.4.1. </span>Why do we fit mathematical models to data?<a class="headerlink" href="#why-do-we-fit-mathematical-models-to-data" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p><strong>Test our understanding of a chemical or biological process.</strong> Karl Popper (1902-1994) was a philosopher of science who proposed empirical falsification as the foundation of the scientific method. A hypothesis can never be proven, but it can be falsified by empirical measurement. A mathematical model is a quantitative hypothesis for how a chemical or biological process behaves. Fitting a model to experimental data provides an opportunity to falsify a hypothesis.</p></li>
 <li><p><strong>Use the model for process analysis and rational design.</strong></p></li>
 <li><p><strong>Make quantitative predictions of system response.</strong> This is how we will be using models for process control … that is to use models to solve for inputs that achieve a desired behavior.</p></li>
 </ol>
-</div>
-<div class="section" id="step-test-data">
-<h2><span class="section-number">2.4.2. </span>Step Test Data<a class="headerlink" href="#step-test-data" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="step-test-data">
+<h2><span class="section-number">2.4.2. </span>Step Test Data<a class="headerlink" href="#step-test-data" title="Permalink to this headline">#</a></h2>
 <p><strong>Starting at steady state</strong>, record the response of a system to a step change in a manipulable input. In this case, we impose a step input of 50% power to the first heater of the temperature control lab, with P1 = 200.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1318,15 +1323,15 @@ title="Print to PDF"
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_4_3.png" src="../_images/02.04-Fitting-a-Model-to-Data_4_3.png" />
 </div>
 </div>
-</div>
-<div class="section" id="model">
-<h2><span class="section-number">2.4.3. </span>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="model">
+<h2><span class="section-number">2.4.3. </span>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + \alpha P_1u_1
 \end{align}\]</div>
-<div class="section" id="first-order-linear-differential-equations">
-<h3><span class="section-number">2.4.3.1. </span>First Order Linear Differential Equations<a class="headerlink" href="#first-order-linear-differential-equations" title="Permalink to this heading">#</a></h3>
+<section id="first-order-linear-differential-equations">
+<h3><span class="section-number">2.4.3.1. </span>First Order Linear Differential Equations<a class="headerlink" href="#first-order-linear-differential-equations" title="Permalink to this headline">#</a></h3>
 <p>Manipulation will bring this model into a commonly used standard form</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -1338,9 +1343,9 @@ C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + \alpha P_1u_1
 \frac{dx}{dt} &amp; = ax + bu
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are model constants, <span class="math notranslate nohighlight">\(x\)</span> is the dependent variable, <span class="math notranslate nohighlight">\(x\)</span> is the state variable, and <span class="math notranslate nohighlight">\(u\)</span> is the manipulable input.</p>
-</div>
-<div class="section" id="steady-state-response">
-<h3><span class="section-number">2.4.3.2. </span>Steady State Response<a class="headerlink" href="#steady-state-response" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="steady-state-response">
+<h3><span class="section-number">2.4.3.2. </span>Steady State Response<a class="headerlink" href="#steady-state-response" title="Permalink to this headline">#</a></h3>
 <p>For a constant value <span class="math notranslate nohighlight">\(\bar{u}\)</span>, the steady state response <span class="math notranslate nohighlight">\(\bar{x}\)</span> is given by solution to the equation</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
@@ -1351,17 +1356,17 @@ C_p\frac{dT_1}{dt} &amp; = U_a(T_{amb} - T_1) + \alpha P_1u_1
 \[\begin{align}
 \bar{x} &amp; = -\frac{b}{a} \bar{u}
 \end{align}\]</div>
-</div>
-<div class="section" id="transient-response">
-<h3><span class="section-number">2.4.3.3. </span>Transient Response<a class="headerlink" href="#transient-response" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="transient-response">
+<h3><span class="section-number">2.4.3.3. </span>Transient Response<a class="headerlink" href="#transient-response" title="Permalink to this headline">#</a></h3>
 <p>The transient response is given by</p>
 <div class="math notranslate nohighlight">
 \[\begin{align}
 x(t) &amp; = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)}
 \end{align}\]</div>
 <p>which is an exact, analytical solution.</p>
-<div class="section" id="apply-to-model-equation">
-<h4><span class="section-number">2.4.3.3.1. </span>Apply to Model Equation<a class="headerlink" href="#apply-to-model-equation" title="Permalink to this heading">#</a></h4>
+<section id="apply-to-model-equation">
+<h4><span class="section-number">2.4.3.3.1. </span>Apply to Model Equation<a class="headerlink" href="#apply-to-model-equation" title="Permalink to this headline">#</a></h4>
 <p>We now apply this textbook solution to the model equation. Comparing equations, we make the following identifications</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1379,11 +1384,11 @@ u_1 &amp; \sim u
 x(t) = \bar{x} + \left[x(t_0) - \bar{x}\right] e^{a(t-t_0)} \qquad &amp; \Rightarrow \qquad
 T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} - \frac{\alpha P_1}{U_a}\bar{u}_{1}\right]e^{-\frac{U_a}{C_p}(t-t_0)}
 \end{align}\end{split}\]</div>
-</div>
-</div>
-</div>
-<div class="section" id="plot-a-fit">
-<h2><span class="section-number">2.4.4. </span>Plot a fit<a class="headerlink" href="#plot-a-fit" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+</section>
+<section id="plot-a-fit">
+<h2><span class="section-number">2.4.4. </span>Plot a fit<a class="headerlink" href="#plot-a-fit" title="Permalink to this headline">#</a></h2>
 <p>Let’s try a guess fit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1426,9 +1431,9 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_11_0.png" src="../_images/02.04-Fitting-a-Model-to-Data_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="improving-the-fit">
-<h2><span class="section-number">2.4.5. </span>Improving the fit<a class="headerlink" href="#improving-the-fit" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="improving-the-fit">
+<h2><span class="section-number">2.4.5. </span>Improving the fit<a class="headerlink" href="#improving-the-fit" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1471,9 +1476,9 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 </div>
 </div>
 <p>How do you handle an initial condition different from <span class="math notranslate nohighlight">\(T_{amb}\)</span>?</p>
-</div>
-<div class="section" id="measuring-the-fit">
-<h2><span class="section-number">2.4.6. </span>Measuring the Fit<a class="headerlink" href="#measuring-the-fit" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="measuring-the-fit">
+<h2><span class="section-number">2.4.6. </span>Measuring the Fit<a class="headerlink" href="#measuring-the-fit" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Sum of Squares</p></li>
 </ul>
@@ -1573,24 +1578,24 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 <img alt="../_images/02.04-Fitting-a-Model-to-Data_16_1.png" src="../_images/02.04-Fitting-a-Model-to-Data_16_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="an-aside-the-impact-of-the-highly-improbable">
-<h2><span class="section-number">2.4.7. </span>An Aside: “The Impact of the Highly Improbable”<a class="headerlink" href="#an-aside-the-impact-of-the-highly-improbable" title="Permalink to this heading">#</a></h2>
-<div class="section" id="gaussian-or-normal-distribution">
-<h3><span class="section-number">2.4.7.1. </span>Gaussian (or Normal) Distribution<a class="headerlink" href="#gaussian-or-normal-distribution" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="an-aside-the-impact-of-the-highly-improbable">
+<h2><span class="section-number">2.4.7. </span>An Aside: “The Impact of the Highly Improbable”<a class="headerlink" href="#an-aside-the-impact-of-the-highly-improbable" title="Permalink to this headline">#</a></h2>
+<section id="gaussian-or-normal-distribution">
+<h3><span class="section-number">2.4.7.1. </span>Gaussian (or Normal) Distribution<a class="headerlink" href="#gaussian-or-normal-distribution" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/PH717-QuantCore/PH717-Module6-RandomError/Normal%20Distribution%20deviations.png" /></p>
-</div>
-<div class="section" id="heavy-tail-distributions">
-<h3><span class="section-number">2.4.7.2. </span>Heavy Tail Distributions<a class="headerlink" href="#heavy-tail-distributions" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="heavy-tail-distributions">
+<h3><span class="section-number">2.4.7.2. </span>Heavy Tail Distributions<a class="headerlink" href="#heavy-tail-distributions" title="Permalink to this headline">#</a></h3>
 <p><img alt="" src="http://www.bitsofscience.org/wordpress-3.0.1/wordpress/wp-content/uploads//extreme-weather-gaussian.jpg" /></p>
 <p><img alt="" src="https://i.stack.imgur.com/OZctU.png" /></p>
-</div>
-<div class="section" id="conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values">
-<h3><span class="section-number">2.4.7.3. </span>Conclusion: Rare events may not be so rare. Avoid overfitting extreme values!<a class="headerlink" href="#conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values" title="Permalink to this heading">#</a></h3>
-</div>
-</div>
-<div class="section" id="finding-a-best-fit">
-<h2><span class="section-number">2.4.8. </span>Finding a best fit<a class="headerlink" href="#finding-a-best-fit" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values">
+<h3><span class="section-number">2.4.7.3. </span>Conclusion: Rare events may not be so rare. Avoid overfitting extreme values!<a class="headerlink" href="#conclusion-rare-events-may-not-be-so-rare-avoid-overfitting-extreme-values" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="finding-a-best-fit">
+<h2><span class="section-number">2.4.8. </span>Finding a best fit<a class="headerlink" href="#finding-a-best-fit" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
@@ -1672,16 +1677,16 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
 <li><p>Suppose we want to improve the model. Where should we go from here?</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">2.4.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">2.4.9. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>This notebook attempted to fit a first-order model of a heater/sensor assembly to experimental data. In the course of the fit, estimates were derived for parameters <span class="math notranslate nohighlight">\(\alpha\)</span>, P1, <span class="math notranslate nohighlight">\(U_a\)</span>, and <span class="math notranslate nohighlight">\(C_p\)</span>. From these parameter values, estimate a time constant.</p></li>
 <li><p>Apply the techniques outlined in Section 2.2 for the estimation of time constants from experimental data. How does that value compare to the calculation in the first question?</p></li>
 <li><p>It’s not always possible to wait for a system to reach steady state. Create a new function, <code class="docutils literal notranslate"><span class="pre">compare3</span></code>, that introduces a third unknown parameter representing an initial condition different for <span class="math notranslate nohighlight">\(T'_1(0)\)</span> that is different from zero.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1695,7 +1700,7 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
@@ -1720,7 +1725,7 @@ T_1(t) = T_{amb} + \frac{\alpha P_1}{U_a}\bar{u}_{1} + \left[T_1(t_0) - T_{amb} 
     <a class='right-next' id="next-link" href="02.05-Second-Order.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2.5. </span>Second and Higher Order models</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>Second Order Model</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

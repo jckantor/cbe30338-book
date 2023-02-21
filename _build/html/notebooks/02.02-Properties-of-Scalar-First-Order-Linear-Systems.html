@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.2. First-Order Linear Systems &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="2.3. First Order Model for a Single Heater" href="02.03-First-Order-Model-for-a-Single-Heater.html" />
     <link rel="prev" title="2.1. One Compartment Pharmacokinetics" href="02.01-One-Compartment-Pharmacokinetics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -1047,8 +1052,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="first-order-linear-systems">
-<h1><span class="section-number">2.2. </span>First-Order Linear Systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="first-order-linear-systems">
+<h1><span class="section-number">2.2. </span>First-Order Linear Systems<a class="headerlink" href="#first-order-linear-systems" title="Permalink to this headline">#</a></h1>
 <p>This notebook covers the following topics:</p>
 <ul class="simple">
 <li><p>Review the mathematics of first-order linear differential equations.</p></li>
@@ -1066,8 +1071,8 @@ title="Print to PDF"
 <li><p>Visually estimate steady-state gain and time constant from inspection of step response data.</p></li>
 <li><p>Quantitatively fit a first order model to step response data and evaluate the quality of the fit.</p></li>
 </ol>
-<div class="section" id="state-space">
-<h2><span class="section-number">2.2.1. </span>State-Space<a class="headerlink" href="#state-space" title="Permalink to this heading">#</a></h2>
+<section id="state-space">
+<h2><span class="section-number">2.2.1. </span>State-Space<a class="headerlink" href="#state-space" title="Permalink to this headline">#</a></h2>
 <p>The time-varying <strong>input</strong> <span class="math notranslate nohighlight">\(u(t)\)</span> is a time-varying <strong>input</strong> causing changes in the state <span class="math notranslate nohighlight">\(x\)</span>. The differential equation</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = ax + bu(t)\]</div>
@@ -1124,9 +1129,9 @@ title="Print to PDF"
 </tbody>
 </table>
 </div>
-</div>
-<div class="section" id="input-output-systems">
-<h2><span class="section-number">2.2.2. </span>Input/Output Systems<a class="headerlink" href="#input-output-systems" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="input-output-systems">
+<h2><span class="section-number">2.2.2. </span>Input/Output Systems<a class="headerlink" href="#input-output-systems" title="Permalink to this headline">#</a></h2>
 <p>A generic model for a first-order linear system with one state <span class="math notranslate nohighlight">\(x\)</span> and and input <span class="math notranslate nohighlight">\(u(t)\)</span> can be represented by a block diagram</p>
 <div class="math notranslate nohighlight">
 \[u(t) \longrightarrow \fbox{$\frac{dx}{dt} = ax + bu$} \longrightarrow x(t)\]</div>
@@ -1195,14 +1200,14 @@ title="Print to PDF"
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_1.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_9_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="be-careful-with-units">
-<h2><span class="section-number">2.2.3. </span>Be careful with units!<a class="headerlink" href="#be-careful-with-units" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="be-careful-with-units">
+<h2><span class="section-number">2.2.3. </span>Be careful with units!<a class="headerlink" href="#be-careful-with-units" title="Permalink to this headline">#</a></h2>
 <p>In electrical engineering circuit analysis, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(u\)</span> typically refer to electrical potential measured in volts, or current measured in amperes. In these cases gain <span class="math notranslate nohighlight">\(K\)</span> will be dimensionless. Because of this, the issue of whether or not the gain has units can be a source of misunderstanding among engineering disciplines with potentially serious consequences. Therefore, for control applications, it is essential to carefully document units, especially when working in cross-disciplinary teams.</p>
 <p><em><strong>For this course, values of gain <span class="math notranslate nohighlight">\(K\)</span> should always specify units.</strong></em></p>
-</div>
-<div class="section" id="dynamic-response">
-<h2><span class="section-number">2.2.4. </span>Dynamic Response<a class="headerlink" href="#dynamic-response" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="dynamic-response">
+<h2><span class="section-number">2.2.4. </span>Dynamic Response<a class="headerlink" href="#dynamic-response" title="Permalink to this headline">#</a></h2>
 <p>The solution to a constant-coefficient, first-order linear differential equation with input <span class="math notranslate nohighlight">\(u(t)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1211,8 +1216,8 @@ title="Print to PDF"
 \[ x(t) = e^{a (t - t_0)}x(t_0) + \int_{t_0}^t e^{a(t-t')} b u(t') dt'\]</div>
 <p>The dynamic response of a scalar first order system is the superposition of two parts, a response to an initial condition plus a response to a non-zero input.</p>
 <p>Let’s consider each of these separately.</p>
-<div class="section" id="response-to-an-initial-condition">
-<h3><span class="section-number">2.2.4.1. </span>Response to an Initial Condition<a class="headerlink" href="#response-to-an-initial-condition" title="Permalink to this heading">#</a></h3>
+<section id="response-to-an-initial-condition">
+<h3><span class="section-number">2.2.4.1. </span>Response to an Initial Condition<a class="headerlink" href="#response-to-an-initial-condition" title="Permalink to this headline">#</a></h3>
 <p>For the case when <span class="math notranslate nohighlight">\(u(t) = 0\)</span>, the scalar first order system becomes</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = ax\]</div>
@@ -1263,10 +1268,10 @@ title="Print to PDF"
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_15_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="time-constant">
-<h2><span class="section-number">2.2.5. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="time-constant">
+<h2><span class="section-number">2.2.5. </span>Time constant<a class="headerlink" href="#time-constant" title="Permalink to this headline">#</a></h2>
 <p>The system parameter <span class="math notranslate nohighlight">\(a\)</span> has units of inverse time. There is a <strong>characteristic time constant</strong> that can be defined as</p>
 <div class="math notranslate nohighlight">
 \[\tau = -\frac{1}{a} \qquad\iff\qquad a = -\frac{1}{\tau}\]</div>
@@ -1352,8 +1357,8 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_19_0.png" />
 </div>
 </div>
-<div class="section" id="half-life">
-<h3><span class="section-number">2.2.5.1. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this heading">#</a></h3>
+<section id="half-life">
+<h3><span class="section-number">2.2.5.1. </span>Half-life<a class="headerlink" href="#half-life" title="Permalink to this headline">#</a></h3>
 <p>The characteristic time constant <span class="math notranslate nohighlight">\(\tau\)</span> defined above has a natural relationship with the parameters appearing in the problem statement and model. That time constant is equal to time <span class="math notranslate nohighlight">\(t - t_0 = \tau\)</span> necessary for the response to decay to a fraction <span class="math notranslate nohighlight">\(e^{-\frac{(t-t_0)}{\tau}} = e^{-1} = 1/e = 0.368\)</span> of the starting value.</p>
 <p>Another commonly used benchmark is to define a period of time necessary for the response to decay to 1/2 of the starting value.  This is called the <strong>half-life</strong>, or <span class="math notranslate nohighlight">\(\tau_{1/2}\)</span>. To find the relationship to <span class="math notranslate nohighlight">\(\tau\)</span>, w</p>
 <div class="math notranslate nohighlight">
@@ -1440,9 +1445,9 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_23_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_23_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="step-inputs">
-<h3><span class="section-number">2.2.5.2. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="step-inputs">
+<h3><span class="section-number">2.2.5.2. </span>Step Inputs<a class="headerlink" href="#step-inputs" title="Permalink to this headline">#</a></h3>
 <p>The <strong>Heaviside step function</strong> is a function of time that changes discontinuously from 0 to 1 at <span class="math notranslate nohighlight">\(t=0\)</span>. The <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library provides a useful implementation that is demonstrated in the following cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1493,10 +1498,10 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_28_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_28_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="response-to-a-step-input">
-<h2><span class="section-number">2.2.6. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="response-to-a-step-input">
+<h2><span class="section-number">2.2.6. </span>Response to a step input<a class="headerlink" href="#response-to-a-step-input" title="Permalink to this headline">#</a></h2>
 <p>Now let’s consider the response of a linear first order system</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt} = a x + b u\]</div>
@@ -1560,9 +1565,9 @@ z(t) &amp; = 1 - \frac{x(t)}{x(t_0)} \\
 <img alt="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_30_0.png" src="../_images/02.02-Properties-of-Scalar-First-Order-Linear-Systems_30_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="gain-time-constant-form-for-a-first-order-linear-system">
-<h2><span class="section-number">2.2.7. </span>Gain, time-constant form for a first-order linear system<a class="headerlink" href="#gain-time-constant-form-for-a-first-order-linear-system" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="gain-time-constant-form-for-a-first-order-linear-system">
+<h2><span class="section-number">2.2.7. </span>Gain, time-constant form for a first-order linear system<a class="headerlink" href="#gain-time-constant-form-for-a-first-order-linear-system" title="Permalink to this headline">#</a></h2>
 <p>We started with a scalar, linear first-order system in the form</p>
 <div class="math notranslate nohighlight">
 \[\fbox{$\frac{dx}{dt} = a x + b u$}\]</div>
@@ -1576,9 +1581,9 @@ K &amp; = - \frac{b}{a}
 <div class="math notranslate nohighlight">
 \[\fbox{$\tau\frac{dx}{dt} = -x + K u$}\]</div>
 <p>What is useful about this form is that the gain and time constant are immediately known from coefficients in the model.</p>
-</div>
-<div class="section" id="exercises">
-<h2><span class="section-number">2.2.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="exercises">
+<h2><span class="section-number">2.2.8. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
 <div class="admonition-exercise-1 admonition">
 <p class="admonition-title">Exercise 1</p>
 <p>An experiment is performed in which a car is run at constant speed on a test track, and the throttle setting is suddenly changed to zero. The recorded speed is shown in the following plot. From this plot, what is the intial condition? What is the first order time constant?</p>
@@ -1608,8 +1613,8 @@ K &amp; = - \frac{b}{a}
 <p>Prepare a simulation of the model you have created for the biosensor.</p>
 </div>
 <p>Despite the apparent simplicity, a first-order linear model captures several essential and important characteristics of the relationship between inputs and states such as <strong>time-constant</strong> and <strong>gain</strong>. These concepts are critical to your understanding of process control.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1623,7 +1628,7 @@ K &amp; = - \frac{b}{a}
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

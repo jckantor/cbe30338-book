@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6. State Estimation &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="6.2. Open and Closed Loop Estimation" href="05.01-Open-and-Closed-Loop-Estimation.html" />
     <link rel="prev" title="5.3. Assignment: Thermostat Control" href="04.04-Assignment-Thermostat-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -219,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -235,6 +235,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -937,17 +942,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="state-estimation">
-<h1><span class="section-number">6. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this heading">#</a></h1>
-<div class="section" id="reference-materials">
-<h2><span class="section-number">6.1. </span>Reference materials<a class="headerlink" href="#reference-materials" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="state-estimation">
+<h1><span class="section-number">6. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">#</a></h1>
+<section id="reference-materials">
+<h2><span class="section-number">6.1. </span>Reference materials<a class="headerlink" href="#reference-materials" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Wang, Shuo. “Kalman Filter in a Nutshell.” <em>Towards Data Science</em>, <a class="reference external" href="https://towardsdatascience.com/kalman-filter-in-a-nutshell-e66154a06862">https://towardsdatascience.com/kalman-filter-in-a-nutshell-e66154a06862</a>. Accessed 6 December 2020.</p></li>
 </ul>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -961,7 +966,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./tclab"
         },
         predefinedOutput: true
