@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>6.7. Time as a Decision Variable &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="7. Projects" href="08.00-Projects.html" />
     <link rel="prev" title="6.6. Project: Gompertz Model for Tumor Growth" href="06.06-gompertz-model-project.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -959,8 +964,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="time-as-a-decision-variable">
-<h1><span class="section-number">6.7. </span>Time as a Decision Variable<a class="headerlink" href="#time-as-a-decision-variable" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="time-as-a-decision-variable">
+<h1><span class="section-number">6.7. </span>Time as a Decision Variable<a class="headerlink" href="#time-as-a-decision-variable" title="Permalink to this headline">#</a></h1>
 <p>Time can be an important decision variable in process optimization. Questions like “when will the concentration reach peak value?”, or “how fast can this separation be done?”, or “when will the temperature reach the target value?” are situations where the time is a decision variable, or even the primary objective, for optimization.</p>
 <p>The purpose of this notebook is to demonstrate how rescaling time can be useful in problems like these. This is not a universal solution for all problems involving time, but it definitely should be part of your modeling toolkit.</p>
 <p>The example is a model for an isothermal fed-batch reactor with the liquid phase reactions</p>
@@ -1070,8 +1075,8 @@ V \frac{dC_B}{dt} &amp; = V k_1 C_A - V k_2 C_B - q(t)C_B\\
 <img alt="../_images/06.07-time-as-decision-variable_2_1.png" src="../_images/06.07-time-as-decision-variable_2_1.png" />
 </div>
 </div>
-<div class="section" id="what-is-the-objective">
-<h2><span class="section-number">6.7.1. </span>What is the objective?<a class="headerlink" href="#what-is-the-objective" title="Permalink to this heading">#</a></h2>
+<section id="what-is-the-objective">
+<h2><span class="section-number">6.7.1. </span>What is the objective?<a class="headerlink" href="#what-is-the-objective" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1095,9 +1100,9 @@ V \frac{dC_B}{dt} &amp; = V k_1 C_A - V k_2 C_B - q(t)C_B\\
 <img alt="../_images/06.07-time-as-decision-variable_4_1.png" src="../_images/06.07-time-as-decision-variable_4_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="trial-and-error">
-<h2><span class="section-number">6.7.2. </span>Trial and Error<a class="headerlink" href="#trial-and-error" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="trial-and-error">
+<h2><span class="section-number">6.7.2. </span>Trial and Error<a class="headerlink" href="#trial-and-error" title="Permalink to this headline">#</a></h2>
 <p>Let’s guess values of <span class="math notranslate nohighlight">\(t_f\)</span> to see if we can find a solution to our problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1177,9 +1182,9 @@ V \frac{dC_B}{dt} &amp; = V k_1 C_A - V k_2 C_B - q(t)C_B\\
 <img alt="../_images/06.07-time-as-decision-variable_6_1.png" src="../_images/06.07-time-as-decision-variable_6_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="rescaling-time">
-<h2><span class="section-number">6.7.3. </span>Rescaling Time<a class="headerlink" href="#rescaling-time" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="rescaling-time">
+<h2><span class="section-number">6.7.3. </span>Rescaling Time<a class="headerlink" href="#rescaling-time" title="Permalink to this headline">#</a></h2>
 <div class="math notranslate nohighlight">
 \[q(t) = \frac{V_{final} - V_{initial}}{t_f}\]</div>
 <div class="math notranslate nohighlight">
@@ -1286,8 +1291,8 @@ q &amp; = \frac{V_{final} - V_{initial}}{t_f}
 <img alt="../_images/06.07-time-as-decision-variable_8_2.png" src="../_images/06.07-time-as-decision-variable_8_2.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1301,7 +1306,7 @@ q &amp; = \frac{V_{final} - V_{initial}}{t_f}
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

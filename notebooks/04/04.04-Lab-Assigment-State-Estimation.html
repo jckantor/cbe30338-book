@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>4.4. Lab Assignment 5: State Estimation &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4.5. Anomaly Detection" href="04.05-Anomaly-Detection.html" />
     <link rel="prev" title="4.3. State Estimation" href="04.03-State-Estimation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -969,28 +974,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-5-state-estimation">
-<h1><span class="section-number">4.4. </span>Lab Assignment 5: State Estimation<a class="headerlink" href="#lab-assignment-5-state-estimation" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-assignment-5-state-estimation">
+<h1><span class="section-number">4.4. </span>Lab Assignment 5: State Estimation<a class="headerlink" href="#lab-assignment-5-state-estimation" title="Permalink to this headline">#</a></h1>
 <p>Using the notes for Secion 4.2, the goal of this lab assignment is to build a state estimator for the Temperature Control Laboratory, then use it to achieve independent control of the two heater temperatures. The project will require updating the four state model your developed for Lab Assignment 2 described in Section 2.4.</p>
-<div class="section" id="step-1-estimate-model-parameters">
-<h2><span class="section-number">4.4.1. </span>Step 1. Estimate model parameters<a class="headerlink" href="#step-1-estimate-model-parameters" title="Permalink to this heading">#</a></h2>
+<section id="step-1-estimate-model-parameters">
+<h2><span class="section-number">4.4.1. </span>Step 1. Estimate model parameters<a class="headerlink" href="#step-1-estimate-model-parameters" title="Permalink to this headline">#</a></h2>
 <p>Refer to exercise 3 from Lab Assignment 2. Write our the four state model of the Temperature Control Lab. If needed, perform the experiment described in the assignment to gather the data needed to fit all model parameters. Report the parameter values.</p>
-</div>
-<div class="section" id="step-2-create-state-space-model">
-<h2><span class="section-number">4.4.2. </span>Step 2. Create state-space model<a class="headerlink" href="#step-2-create-state-space-model" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="step-2-create-state-space-model">
+<h2><span class="section-number">4.4.2. </span>Step 2. Create state-space model<a class="headerlink" href="#step-2-create-state-space-model" title="Permalink to this headline">#</a></h2>
 <p>Using the matrix and vector formulation described in notebook 4.2, rewrite the equations for the four state model in state-space form. In a new python notebook, use the parameter values from Step 1 to numerically evaluate matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B_u\)</span>, <span class="math notranslate nohighlight">\(B_d\)</span> and <span class="math notranslate nohighlight">\(d\)</span>.  Compute the eigenvalues (they should all be negative real numbers) of <span class="math notranslate nohighlight">\(A\)</span> and report the negative inverse of the eigenvalues as time constants.</p>
-</div>
-<div class="section" id="step-3-implement-a-state-estimator">
-<h2><span class="section-number">4.4.3. </span>Step 3. Implement a state estimator<a class="headerlink" href="#step-3-implement-a-state-estimator" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="step-3-implement-a-state-estimator">
+<h2><span class="section-number">4.4.3. </span>Step 3. Implement a state estimator<a class="headerlink" href="#step-3-implement-a-state-estimator" title="Permalink to this headline">#</a></h2>
 <p>Implement a state estimate utilizing measurements T1 and T2, and inputs Q1 and Q2, to estimate the state. As an initial choice for matrix <span class="math notranslate nohighlight">\(L\)</span> use</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L = \begin{bmatrix} 0.4 &amp; 0 \\ 0.2 &amp; 0 \\ 0 &amp; 0.4 \\ 0 &amp; 0.2 \end{bmatrix}\end{split}\]</div>
-</div>
-<div class="section" id="step-4-implement-relay-control-for-the-heater-temperatures-t1h-and-t2h">
-<h2><span class="section-number">4.4.4. </span>Step 4. Implement relay control for the heater temperatures T1H and T2H<a class="headerlink" href="#step-4-implement-relay-control-for-the-heater-temperatures-t1h-and-t2h" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="step-4-implement-relay-control-for-the-heater-temperatures-t1h-and-t2h">
+<h2><span class="section-number">4.4.4. </span>Step 4. Implement relay control for the heater temperatures T1H and T2H<a class="headerlink" href="#step-4-implement-relay-control-for-the-heater-temperatures-t1h-and-t2h" title="Permalink to this headline">#</a></h2>
 <p>Using constant setpoints of 45 and 40 degrees, respectively, for temperatures <span class="math notranslate nohighlight">\(T_{1}\)</span> and <span class="math notranslate nohighlight">\(T_{2}\)</span>. At time t = 300, have the setpoints switch to 40 and 45 degrees, respectiviely. Show control performance over total of 600 seconds when using sensor measurements for relay control.  Replace the sensor measurements with observer estimates for heater temperatures <span class="math notranslate nohighlight">\(T_{H,1}\)</span> and <span class="math notranslate nohighlight">\(T_{H,2}\)</span> and repeat the test. What do you observe?</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1004,7 +1009,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks/04"
         },
         predefinedOutput: true

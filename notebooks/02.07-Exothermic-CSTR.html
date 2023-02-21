@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.7. Exothermic Continuous Stirred Tank Reactor &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="2.8. Hare and Lynx Population Dynamics" href="02.08-Hare-and-Lynx.html" />
     <link rel="prev" title="2.6. Fed-Batch Bioreactor" href="02.06-Fed-Batch-Bioreactor.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -1009,16 +1014,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="exothermic-continuous-stirred-tank-reactor">
-<h1><span class="section-number">2.7. </span>Exothermic Continuous Stirred Tank Reactor<a class="headerlink" href="#exothermic-continuous-stirred-tank-reactor" title="Permalink to this heading">#</a></h1>
-<div class="section" id="description">
-<h2><span class="section-number">2.7.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="exothermic-continuous-stirred-tank-reactor">
+<h1><span class="section-number">2.7. </span>Exothermic Continuous Stirred Tank Reactor<a class="headerlink" href="#exothermic-continuous-stirred-tank-reactor" title="Permalink to this headline">#</a></h1>
+<section id="description">
+<h2><span class="section-number">2.7.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline">#</a></h2>
 <p>This example is intended as an introduction to the nonlinear dynamics of an exothermic continuous stirred-tank reactor. The example has been studied by countless researchers and students since the pioneering work of Amundson and Aris in the 1950’s. The particular formulation and parameter values described below are taken from example 2.5 from Seborg, Edgar, Mellichamp and Doyle (SEMD).</p>
 <p><img alt="Exothermic Reactor" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Agitated_vessel.svg/500px-Agitated_vessel.svg.png" /></p>
 <p>(Diagram By <a class="reference external" href="https://commons.wikimedia.org/wiki/User:Daniele_Pugliesi">Daniele Pugliesi</a> - Own work, <a class="reference external" href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, <a class="reference external" href="https://commons.wikimedia.org/w/index.php?curid=6915706">Link</a>)</p>
-</div>
-<div class="section" id="reaction-kinetics">
-<h2><span class="section-number">2.7.2. </span>Reaction Kinetics<a class="headerlink" href="#reaction-kinetics" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="reaction-kinetics">
+<h2><span class="section-number">2.7.2. </span>Reaction Kinetics<a class="headerlink" href="#reaction-kinetics" title="Permalink to this headline">#</a></h2>
 <p>We assume the kinetics are dominated by a single first order reaction</p>
 <div class="math notranslate nohighlight">
 \[A \xrightarrow{kc_A}{} \text{Products}\]</div>
@@ -1057,9 +1062,9 @@ title="Print to PDF"
 </div>
 </div>
 <p>This graph shows the reaction rate changes by six orders of magnitude over the range of possible operating temperatures. Because an exothermic reaction releases heat faster at higher temperatures, there is a positive feedback that can potentially result in unstable process behavior.</p>
-</div>
-<div class="section" id="model-equations-and-parameter-values">
-<h2><span class="section-number">2.7.3. </span>Model Equations and Parameter Values<a class="headerlink" href="#model-equations-and-parameter-values" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="model-equations-and-parameter-values">
+<h2><span class="section-number">2.7.3. </span>Model Equations and Parameter Values<a class="headerlink" href="#model-equations-and-parameter-values" title="Permalink to this headline">#</a></h2>
 <p>The model consists of mole and energy balances on the contents of the well-mixed reactor.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1240,9 +1245,9 @@ V\frac{dc_A}{dt} &amp; = q(c_{A,f} - c_A) - Vk(T)c_A \\
 <img alt="../_images/02.07-Exothermic-CSTR_9_1.png" src="../_images/02.07-Exothermic-CSTR_9_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="effect-of-cooling-temperature">
-<h2><span class="section-number">2.7.4. </span>Effect of Cooling Temperature<a class="headerlink" href="#effect-of-cooling-temperature" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="effect-of-cooling-temperature">
+<h2><span class="section-number">2.7.4. </span>Effect of Cooling Temperature<a class="headerlink" href="#effect-of-cooling-temperature" title="Permalink to this headline">#</a></h2>
 <p>The primary means of controlling the reactoris through temperature of the cooling water jacket. The next calculations explore the effect of plus or minus change of 5 K in cooling water temperature on reactor behavior. These simulations reproduce the behavior shown in Example 2.5 SEMD.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1266,9 +1271,9 @@ V\frac{dc_A}{dt} &amp; = q(c_{A,f} - c_A) - Vk(T)c_A \\
 <img alt="../_images/02.07-Exothermic-CSTR_11_0.png" src="../_images/02.07-Exothermic-CSTR_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="interactive-simulation">
-<h2><span class="section-number">2.7.5. </span>Interactive Simulation<a class="headerlink" href="#interactive-simulation" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="interactive-simulation">
+<h2><span class="section-number">2.7.5. </span>Interactive Simulation<a class="headerlink" href="#interactive-simulation" title="Permalink to this headline">#</a></h2>
 <p>Executing the following cell provides an interactive tool for exploring the relationship of cooling temperature with reactor behavior.  Use it to observe a thermal runaway, sustained osciallations, and low and high conversion steady states.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1309,9 +1314,9 @@ V\frac{dc_A}{dt} &amp; = q(c_{A,f} - c_A) - Vk(T)c_A \\
 {"model_id": "af36bf47cb98422d901fbbe78b6b03b8", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-<div class="section" id="nullclines">
-<h2><span class="section-number">2.7.6. </span>Nullclines<a class="headerlink" href="#nullclines" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="nullclines">
+<h2><span class="section-number">2.7.6. </span>Nullclines<a class="headerlink" href="#nullclines" title="Permalink to this headline">#</a></h2>
 <p>The nullclines of two first-order differential equations are points in the phase plane for which one or the other of the two derivatives are zero.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1358,9 +1363,9 @@ V\frac{dc_A}{dt} &amp; = 0 = q(c_{A,f} - c_A) - Vk(T)c_A \\
 <img alt="../_images/02.07-Exothermic-CSTR_15_0.png" src="../_images/02.07-Exothermic-CSTR_15_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="phase-plane-analysis">
-<h2><span class="section-number">2.7.7. </span>Phase Plane Analysis<a class="headerlink" href="#phase-plane-analysis" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="phase-plane-analysis">
+<h2><span class="section-number">2.7.7. </span>Phase Plane Analysis<a class="headerlink" href="#phase-plane-analysis" title="Permalink to this headline">#</a></h2>
 <p>The final analysis is display the simulation in both time and phase plane coordinates. The following cell produces a</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1405,9 +1410,9 @@ V\frac{dc_A}{dt} &amp; = 0 = q(c_{A,f} - c_A) - Vk(T)c_A \\
 {"model_id": "b2d2b8dd828f4dfdbbc424e49bab0e5e", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-</div>
-<div class="section" id="suggested-exercises">
-<h2><span class="section-number">2.7.8. </span>Suggested Exercises<a class="headerlink" href="#suggested-exercises" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="suggested-exercises">
+<h2><span class="section-number">2.7.8. </span>Suggested Exercises<a class="headerlink" href="#suggested-exercises" title="Permalink to this headline">#</a></h2>
 <p><strong>1.</strong> Using the interactive simulation, adjust the cooling temperature over the range of values from 290K to 310K, identify the cooling water temperatures at which you observe a qualitative difference in system behavior. Try to identify the following behaviors:</p>
 <ul class="simple">
 <li><p>Stable steady state</p></li>
@@ -1416,8 +1421,8 @@ V\frac{dc_A}{dt} &amp; = 0 = q(c_{A,f} - c_A) - Vk(T)c_A \\
 </ul>
 <p><strong>2.</strong> Repeat the exercise using the phase plane simulation. Describe the underlying behaviors in light of the nullclines.</p>
 <p><strong>3.</strong> Assume the reactor is start up with a tank of reactant feed with a concentration <span class="math notranslate nohighlight">\(c_A = 1\)</span>. What is the maximum initial temperature that would avoid thermal runaway during reactor startup?</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1431,7 +1436,7 @@ V\frac{dc_A}{dt} &amp; = 0 = q(c_{A,f} - c_A) - Vk(T)c_A \\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

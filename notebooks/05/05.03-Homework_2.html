@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.3. Homework Assignment 2: Optimization &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.4. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
     <link rel="prev" title="5.2. Linear Blending Problems" href="05.02-Linear-Blending-Problem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -219,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -235,6 +235,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -971,8 +976,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="homework-assignment-2-optimization">
-<h1><span class="section-number">5.3. </span>Homework Assignment 2: Optimization<a class="headerlink" href="#homework-assignment-2-optimization" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-assignment-2-optimization">
+<h1><span class="section-number">5.3. </span>Homework Assignment 2: Optimization<a class="headerlink" href="#homework-assignment-2-optimization" title="Permalink to this headline">#</a></h1>
 <p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
 <p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
 <table class="colwidths-auto table">
@@ -1174,8 +1179,8 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
-<div class="section" id="exercise-1-getting-started">
-<h2><span class="section-number">5.3.1. </span>Exercise 1. Getting Started<a class="headerlink" href="#exercise-1-getting-started" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-getting-started">
+<h2><span class="section-number">5.3.1. </span>Exercise 1. Getting Started<a class="headerlink" href="#exercise-1-getting-started" title="Permalink to this headline">#</a></h2>
 <p>Considering just the constraint on carbon content, adapt the <code class="docutils literal notranslate"><span class="pre">blend_beer</span></code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
 <ul class="simple">
 <li><p>change the name of the function to <code class="docutils literal notranslate"><span class="pre">metal_blend</span></code>.</p></li>
@@ -1196,12 +1201,12 @@ title="Print to PDF"
 <li><p>the composition of the blend with regard to the species carbon, copper and managanese.</p></li>
 </ul>
 <p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
-<div class="section" id="solution">
-<h3><span class="section-number">5.3.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
-</div>
-</div>
-<div class="section" id="exercise-2-incorporating-constraints">
-<h2><span class="section-number">5.3.2. </span>Exercise 2. Incorporating Constraints<a class="headerlink" href="#exercise-2-incorporating-constraints" title="Permalink to this heading">#</a></h2>
+<section id="solution">
+<h3><span class="section-number">5.3.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="exercise-2-incorporating-constraints">
+<h2><span class="section-number">5.3.2. </span>Exercise 2. Incorporating Constraints<a class="headerlink" href="#exercise-2-incorporating-constraints" title="Permalink to this headline">#</a></h2>
 <p>We’ll continue this problem by incorporating all of the constraints. The constraiints include:</p>
 <ul class="simple">
 <li><p>Lower and upper bounds on the copper and manganese composition</p></li>
@@ -1209,9 +1214,9 @@ title="Print to PDF"
 </ul>
 <p>The easiest way to proceed is to copy and paste <code class="docutils literal notranslate"><span class="pre">metal_blend</span></code> into a cell below, then add constraints one at a time until all have been incorporated.</p>
 <p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
-</div>
-<div class="section" id="exercise-3-sensitivity-analysis">
-<h2><span class="section-number">5.3.3. </span>Exercise 3. Sensitivity Analysis<a class="headerlink" href="#exercise-3-sensitivity-analysis" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="exercise-3-sensitivity-analysis">
+<h2><span class="section-number">5.3.3. </span>Exercise 3. Sensitivity Analysis<a class="headerlink" href="#exercise-3-sensitivity-analysis" title="Permalink to this headline">#</a></h2>
 <p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
 <p>Using the functions you’ve created in above exercises, answer the following questions:</p>
 <ol class="simple">
@@ -1219,8 +1224,8 @@ title="Print to PDF"
 <li><p>Is there an upper limit on how much product your can provide to this customer? (Use trial and error. To the nearest 100 kg, find the maximum amount of product you can ship to the customer.) What is the unit cost now?</p></li>
 <li><p>After some negotiation, you and your customer settle on an order of 6,500 kg. Now you wish to negotiate with your suppliers for more raw material. How much money to you save for 1 additional kg of raw material “A”? Based on this, what price would you be willing to pay your supplier for additional “A”?</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1234,7 +1239,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks/05"
         },
         predefinedOutput: true

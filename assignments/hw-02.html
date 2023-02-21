@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Homework 2 &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="1. What is Process Control?" href="../notebooks/01.00-What-is-Process-Control.html" />
     <link rel="prev" title="Homework 1" href="hw-01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -979,10 +984,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="homework-2">
-<h1>Homework 2<a class="headerlink" href="#homework-2" title="Permalink to this heading">#</a></h1>
-<div class="section" id="background-fourth-order-multi-input-multi-output-model">
-<h2>Background. Fourth-Order Multi-Input Multi-Output Model<a class="headerlink" href="#background-fourth-order-multi-input-multi-output-model" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-2">
+<h1>Homework 2<a class="headerlink" href="#homework-2" title="Permalink to this headline">#</a></h1>
+<section id="background-fourth-order-multi-input-multi-output-model">
+<h2>Background. Fourth-Order Multi-Input Multi-Output Model<a class="headerlink" href="#background-fourth-order-multi-input-multi-output-model" title="Permalink to this headline">#</a></h2>
 <p>The next step in the evolution of our model for the temperature control lab is to incorporate the both heater/sensor assemblies into a unified model. The base assumptions for this model are:</p>
 <ul class="simple">
 <li><p>The two heater/sensor assemblies are identical. Values for heat capacities <span class="math notranslate nohighlight">\(C_p^H\)</span> and <span class="math notranslate nohighlight">\(C_p^S\)</span> and heat transfer coefficients <span class="math notranslate nohighlight">\(U_a\)</span> and <span class="math notranslate nohighlight">\(U_b\)</span> are the same for both assemblies.</p></li>
@@ -1025,9 +1030,9 @@ T_2 &amp; = T_{S,2}
 \end{align}
 \end{split}\]</div>
 <p>You can use this model to answer the following questions.</p>
-</div>
-<div class="section" id="problem-1-convert-to-state-space">
-<h2>Problem 1. Convert to State Space<a class="headerlink" href="#problem-1-convert-to-state-space" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="problem-1-convert-to-state-space">
+<h2>Problem 1. Convert to State Space<a class="headerlink" href="#problem-1-convert-to-state-space" title="Permalink to this headline">#</a></h2>
 <p>Following the development above, we define state space inputs <span class="math notranslate nohighlight">\(u\)</span>, states <span class="math notranslate nohighlight">\(x\)</span>, and output measurements <span class="math notranslate nohighlight">\(y\)</span> as follows:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1050,9 +1055,9 @@ y &amp; = C x
 <p>You may do this analytical work by hand on paper and submit a scan as a separate .pdf file (You’re also welcome to submit your work as a math formatted notebook, but that is not required.)</p>
 <p><strong>(a)</strong> What are the dimensions of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>?</p>
 <p><strong>(b)</strong> Derive expressions for the matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>.</p>
-</div>
-<div class="section" id="problem-2-simulate-step-response-and-compare-to-data">
-<h2>Problem 2. Simulate Step Response and Compare to Data<a class="headerlink" href="#problem-2-simulate-step-response-and-compare-to-data" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="problem-2-simulate-step-response-and-compare-to-data">
+<h2>Problem 2. Simulate Step Response and Compare to Data<a class="headerlink" href="#problem-2-simulate-step-response-and-compare-to-data" title="Permalink to this headline">#</a></h2>
 <p>The next step in model fitting is create a simulation model for the new four-state model. Below is code that will read an experimental data set, perform a simulation for a specified choice of parameters, and plot the simulated and measured responses on the same chart.</p>
 <p><strong>(a)</strong> Change the import statement to import the data you collected for your device. Adjust parameters to match the conditions (i.e, <span class="math notranslate nohighlight">\(T_{amb}\)</span> and initial conditions) corresponding to your experimental data collection.</p>
 <p><strong>(b)</strong> By trial and error, attempt to set values for the adjustable parameters to match the model to your data. Keep trying until your model matches experiment to within, say, 5 degrees. The learning goal is for you to develop some intuition about the relationship between heat capacities and the heat transfer coefficients the behavior of the device.</p>
@@ -1132,19 +1137,19 @@ y &amp; = C x
 <img alt="../_images/hw-02_5_1.png" src="../_images/hw-02_5_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="problem-3-state-space-simulation">
-<h2>Problem 3. State Space Simulation<a class="headerlink" href="#problem-3-state-space-simulation" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="problem-3-state-space-simulation">
+<h2>Problem 3. State Space Simulation<a class="headerlink" href="#problem-3-state-space-simulation" title="Permalink to this headline">#</a></h2>
 <p>Consult Section 2.5.3 of the notes to guide your work.</p>
 <p><strong>(a)</strong> Add a cell to evaluate matrices <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span>, and print the matrices.</p>
 <p><strong>(b)</strong> Open a new cell below, and copy and paste the simulation from Problemm 2, and modify the code to perform the same simulation using the state space model and matrices you derived for Problemm 1.</p>
-</div>
-<div class="section" id="problem-4-least-squares">
-<h2>Problem 4. Least Squares<a class="headerlink" href="#problem-4-least-squares" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="problem-4-least-squares">
+<h2>Problem 4. Least Squares<a class="headerlink" href="#problem-4-least-squares" title="Permalink to this headline">#</a></h2>
 <p><strong>(a)</strong> Following Section 2.5.4, use least squares regression to fit the state space simulation model to your experimental data. Use the default loss function (i.e., normal least squares). Report the values of the adjustable parameters.</p>
 <p><strong>(b)</strong> Repeat part (a) using <code class="docutils literal notranslate"><span class="pre">soft_l1</span></code>, <code class="docutils literal notranslate"><span class="pre">huber</span></code>, and <code class="docutils literal notranslate"><span class="pre">cauchy</span></code> loss functions. In your engineering judgement, which loss function gives you the best result?  (There may be no single right answer).</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1158,7 +1163,7 @@ y &amp; = C x
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./assignments"
         },
         predefinedOutput: true

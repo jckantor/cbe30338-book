@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.2. Lab Assignment 4: Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.3. Assignment: Thermostat Control" href="04.04-Assignment-Thermostat-Control.html" />
     <link rel="prev" title="5.1. Relay Control" href="04.01-Relay-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -949,15 +954,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lab-assignment-4-relay-control">
-<h1><span class="section-number">5.2. </span>Lab Assignment 4: Relay Control<a class="headerlink" href="#lab-assignment-4-relay-control" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-assignment-4-relay-control">
+<h1><span class="section-number">5.2. </span>Lab Assignment 4: Relay Control<a class="headerlink" href="#lab-assignment-4-relay-control" title="Permalink to this headline">#</a></h1>
 <p>In this lab assignment you will implement relay control for the Temperature Control Laboratory.</p>
 <ol class="simple">
 <li><p>Implement and test a relay control for the heater/sensor system</p></li>
 <li><p>Implement and test a relay control to track a complex setpoint.</p></li>
 </ol>
-<div class="section" id="exercise-1-relay-or-on-off-control">
-<h2><span class="section-number">5.2.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this heading">#</a></h2>
+<section id="exercise-1-relay-or-on-off-control">
+<h2><span class="section-number">5.2.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this headline">#</a></h2>
 <p>Create a notebook to implements a relay control for the Temperature Control Lab subject the following requirements:</p>
 <ul class="simple">
 <li><p>Simultaneous control of sensor temperatures T1 and T2 to setpoints 35 and 40 degrees, respectively. The setpoints return to 25 deg C at  t = 300.</p></li>
@@ -1018,9 +1023,9 @@ title="Print to PDF"
 <img alt="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" src="../_images/04.02-Lab-Assignment-Relay-Control_3_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="procedures">
-<h2><span class="section-number">5.2.2. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="procedures">
+<h2><span class="section-number">5.2.2. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>Begin by testing the above code on your laptop.</p></li>
 <li><p>Create a new cell, copy the code to the new cell, and extend the code to control both T1 and T2 to the desired setpoints.</p></li>
@@ -1029,8 +1034,8 @@ title="Print to PDF"
 </ol>
 <p>Apply the setpoint to T1 while maintaining T2 at a constant 30 deg C.</p>
 <p><img alt="" src="https://d29hmqxeker05q.cloudfront.net/eyJidWNrZXQiOiJpbWFnZXMuY2tiay5jb20iLCJrZXkiOiJpbWFnZXMvY2hvYzI0NDE0YzA0czAwMXNzMDAxc3NzMDA0ZzAxLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aXRob3V0RW5sYXJnZW1lbnQiOnRydWUsIndpZHRoIjo2NTEsImhlaWdodCI6NTAwLCJmaXQiOiJpbnNpZGUifSwianBlZyI6eyJxdWFsaXR5Ijo5MCwicHJvZ3Jlc3NpdmUiOnRydWV9fX0=" /></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1044,7 +1049,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./tclab"
         },
         predefinedOutput: true

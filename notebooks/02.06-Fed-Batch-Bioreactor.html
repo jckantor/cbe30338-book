@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2.6. Fed-Batch Bioreactor &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="2.7. Exothermic Continuous Stirred Tank Reactor" href="02.07-Exothermic-CSTR.html" />
     <link rel="prev" title="2.5. Second Order Model" href="02.05-Second-Order.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -993,8 +998,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="fed-batch-bioreactor">
-<h1><span class="section-number">2.6. </span>Fed-Batch Bioreactor<a class="headerlink" href="#fed-batch-bioreactor" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="fed-batch-bioreactor">
+<h1><span class="section-number">2.6. </span>Fed-Batch Bioreactor<a class="headerlink" href="#fed-batch-bioreactor" title="Permalink to this headline">#</a></h1>
 <p>Batch reactors are commonly used in the production of speciality chemicals, pharmaceuticals, and beverage and food products.</p>
 <p><img alt="" src="https://live.staticflickr.com/5129/5283264793_973c8f0bea_c.jpg" />
 <br>Source: Sanofi Pasteur, Creative Commons License</p>
@@ -1009,8 +1014,8 @@ title="Print to PDF"
 <li><p>Model variable volume dilution effects.</p></li>
 <li><p>Simulate the response of the model using Python solvers for initial value problems.</p></li>
 </ul>
-<div class="section" id="modeling-tank-volume">
-<h2><span class="section-number">2.6.1. </span>Modeling Tank Volume<a class="headerlink" href="#modeling-tank-volume" title="Permalink to this heading">#</a></h2>
+<section id="modeling-tank-volume">
+<h2><span class="section-number">2.6.1. </span>Modeling Tank Volume<a class="headerlink" href="#modeling-tank-volume" title="Permalink to this headline">#</a></h2>
 <p>The volumetric inlet flowrate to a fed-batch reactor is <span class="math notranslate nohighlight">\(F(t)\)</span>. Assuming changes in specific volume due to mixing, the volume of liquid in the reactor is given by</p>
 <div class="math notranslate nohighlight">
 \[\frac{dV}{dt} = F(t)\]</div>
@@ -1055,9 +1060,9 @@ title="Print to PDF"
 <img alt="../_images/02.06-Fed-Batch-Bioreactor_2_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_2_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="modeling-substrate-composition">
-<h2><span class="section-number">2.6.2. </span>Modeling Substrate Composition<a class="headerlink" href="#modeling-substrate-composition" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="modeling-substrate-composition">
+<h2><span class="section-number">2.6.2. </span>Modeling Substrate Composition<a class="headerlink" href="#modeling-substrate-composition" title="Permalink to this headline">#</a></h2>
 <p>The feed entering the tank carries important nutrients for the fermentation. Assume the substrate feed composition <span class="math notranslate nohighlight">\(S_f\)</span> is 10 grams/liter. Simulate the concentration in the fed-batch reactor.</p>
 <div class="math notranslate nohighlight">
 \[\frac{d(VS)}{dt} = F S_f\]</div>
@@ -1129,9 +1134,9 @@ title="Print to PDF"
 <img alt="../_images/02.06-Fed-Batch-Bioreactor_4_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_4_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="modeling-biomass">
-<h2><span class="section-number">2.6.3. </span>Modeling Biomass<a class="headerlink" href="#modeling-biomass" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="modeling-biomass">
+<h2><span class="section-number">2.6.3. </span>Modeling Biomass<a class="headerlink" href="#modeling-biomass" title="Permalink to this headline">#</a></h2>
 <p>Fermentation is process in which biomass consumes substrate to produce more biomass and by-products.</p>
 <div class="math notranslate nohighlight">
 \[\text{Biomass (X)} + \frac{1}{Y_{X/S}}\text{Substrate (S)} \stackrel{r_g(X, S)}{\longrightarrow} \text{Biomass (X)} + Y_{P/X}\text{Products (P)}\]</div>
@@ -1186,7 +1191,7 @@ title="Print to PDF"
     <span class="k">return</span> <span class="p">[</span><span class="n">dX</span><span class="p">,</span> <span class="n">dS</span><span class="p">,</span> <span class="n">dV</span><span class="p">]</span>
 
 <span class="c1"># initial conditions</span>
-<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="n">IC</span> <span class="o">=</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
 
 <span class="c1"># integration period</span>
 <span class="n">t_final</span> <span class="o">=</span> <span class="mi">50</span>
@@ -1204,8 +1209,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;,
-       &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;], dtype=object)
 </pre></div>
 </div>
 <img alt="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_6_1.png" />
@@ -1216,8 +1221,8 @@ title="Print to PDF"
 <p>At this stage the model is not complete and will give implausible simulation results. But is still important to understand what the model is doing and why the simulation results do provide the results you may expect.</p>
 <p>Before going further with this notebook, run this notebook and experiment with different initial conditions for <span class="math notranslate nohighlight">\(X\)</span>. Choose small values and see what happens. Why are the results different than one might expect of a fed-batch bioreactor?</p>
 </div>
-<div class="section" id="substrate-modeling-revisited">
-<h3><span class="section-number">2.6.3.1. </span>Substrate Modeling, revisited<a class="headerlink" href="#substrate-modeling-revisited" title="Permalink to this heading">#</a></h3>
+<section id="substrate-modeling-revisited">
+<h3><span class="section-number">2.6.3.1. </span>Substrate Modeling, revisited<a class="headerlink" href="#substrate-modeling-revisited" title="Permalink to this headline">#</a></h3>
 <p>The growth of biomass consumes substrate which serves to limit the production of biomass.  Assume the substrate is consumed is proportion to the mass of new cells formed where <span class="math notranslate nohighlight">\(Y_{X/S}\)</span> is the yield coefficient for new cells.</p>
 <div class="math notranslate nohighlight">
 \[Y_{X/S} = \frac{\mbox{mass of new cells formed}}{\mbox{mass of substrate consumed}}\]</div>
@@ -1283,16 +1288,16 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;,
-       &lt;AxesSubplot:xlabel=&#39;Time&#39;&gt;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;, &lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot: xlabel=&#39;Time&#39;&gt;], dtype=object)
 </pre></div>
 </div>
 <img alt="../_images/02.06-Fed-Batch-Bioreactor_9_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_9_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="product-modeling">
-<h3><span class="section-number">2.6.3.2. </span>Product Modeling<a class="headerlink" href="#product-modeling" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="product-modeling">
+<h3><span class="section-number">2.6.3.2. </span>Product Modeling<a class="headerlink" href="#product-modeling" title="Permalink to this headline">#</a></h3>
 <p>At this stage this is just one last consideration, modeling of the product produced by the fed-batch fermenter. For this model, the product is assumed to be a by-product of cell growth</p>
 <div class="math notranslate nohighlight">
 \[r_P(X,S) = Y_{P/X}r_g(X,S)\]</div>
@@ -1356,20 +1361,20 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot:title={&#39;center&#39;:&#39;Biomass (X)&#39;}, xlabel=&#39;Time&#39;&gt;,
-       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Product (P)&#39;}, xlabel=&#39;Time&#39;&gt;,
-       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Substrate (S)&#39;}, xlabel=&#39;Time&#39;&gt;,
-       &lt;AxesSubplot:title={&#39;center&#39;:&#39;Volume (V)&#39;}, xlabel=&#39;Time&#39;&gt;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;AxesSubplot: title={&#39;center&#39;: &#39;Biomass (X)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot: title={&#39;center&#39;: &#39;Product (P)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot: title={&#39;center&#39;: &#39;Substrate (S)&#39;}, xlabel=&#39;Time&#39;&gt;,
+       &lt;AxesSubplot: title={&#39;center&#39;: &#39;Volume (V)&#39;}, xlabel=&#39;Time&#39;&gt;],
       dtype=object)
 </pre></div>
 </div>
 <img alt="../_images/02.06-Fed-Batch-Bioreactor_11_1.png" src="../_images/02.06-Fed-Batch-Bioreactor_11_1.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="exercises-putting-the-simulation-model-to-work">
-<h2><span class="section-number">2.6.4. </span>Exercises: Putting the Simulation Model to Work<a class="headerlink" href="#exercises-putting-the-simulation-model-to-work" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="exercises-putting-the-simulation-model-to-work">
+<h2><span class="section-number">2.6.4. </span>Exercises: Putting the Simulation Model to Work<a class="headerlink" href="#exercises-putting-the-simulation-model-to-work" title="Permalink to this headline">#</a></h2>
 <p>Simulation has many uses, among them is to gain insight into operating strategies.</p>
 <div class="admonition-exercise-1 admonition">
 <p class="admonition-title">Exercise 1</p>
@@ -1386,8 +1391,8 @@ title="Print to PDF"
 \[\text{Productivity} = \frac{P \cdot V}{t_{turn-around} + t}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is time since start of the batch. Modify the dataframe to compute productivity as a function of <span class="math notranslate nohighlight">\(t\)</span>, and decide the optimal time to run the batch.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1401,7 +1406,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

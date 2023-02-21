@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Homework 1 &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Homework 2" href="hw-02.html" />
     <link rel="prev" title="CBE 30338 Assignments" href="00-assignments.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -949,19 +954,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="homework-1">
-<h1>Homework 1<a class="headerlink" href="#homework-1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="homework-1">
+<h1>Homework 1<a class="headerlink" href="#homework-1" title="Permalink to this headline">#</a></h1>
 <p><strong>Instructions:</strong> Your submission should consist of two files:</p>
 <ul class="simple">
 <li><p>File 1: A Jupyter notebook that should execute successfully on Google Colab. The notebook should produce the computational results for Problems 1 and 2. Use section headers to separate the solutions. You may cut and paste from the course notes as needed, but should be clearly indicated. Where possible, your code should be in separate cells and clearly indicated for grading purposes.</p></li>
 <li><p>File 2: A single file with a pdf scan (sorry, no jpgs – they are too difficult to read and comment) showing the solution to part one of problem 2.</p></li>
 </ul>
-<div class="section" id="problem-1">
-<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h2>
+<section id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">#</a></h2>
 <p>Referring to the notes for <a class="reference internal" href="../notebooks/02.01-One-Compartment-Pharmacokinetics.html"><span class="doc std std-doc">One Compartment Pharmacokinetics</span></a>, the purpose of the dosing regime is to maintain the plasma concentration above the MBC level for at least 96 hours. Assuming that each dose is 64 mg, ad a dosing period <span class="math notranslate nohighlight">\(dt = 1\)</span> hour, modify the simulation and find the largest value of <span class="math notranslate nohighlight">\(t_{dose}\)</span> that satisfies the MBC objective for a 96 hour period.  Show a plot concentration versus time, and include Python code to compute the total amount of antibiotic administered for the whole treatment.</p>
-</div>
-<div class="section" id="problem-2">
-<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">#</a></h2>
 <p>Consider a continous antibiotic injection at a constant rate designed to maintain the plasma concentration at minimum bactricidal level. Your solution should proceed in three steps:</p>
 <ol class="simple">
 <li><p>First, by hand, set up and solve the steady state equation to find the desired constant dosage rate.</p></li>
@@ -969,8 +974,8 @@ title="Print to PDF"
 <li><p>Verify your result by repeating the above simulation using your function for <span class="math notranslate nohighlight">\(u(t)\)</span>.</p></li>
 </ol>
 <p>Use the same parameter values as Problem 1.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -984,7 +989,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./assignments"
         },
         predefinedOutput: true

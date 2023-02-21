@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>5.5. Linear Programming &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.6. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
     <link rel="prev" title="5.4. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -949,8 +954,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-programming">
-<h1><span class="section-number">5.5. </span>Linear Programming<a class="headerlink" href="#linear-programming" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-programming">
+<h1><span class="section-number">5.5. </span>Linear Programming<a class="headerlink" href="#linear-programming" title="Permalink to this headline">#</a></h1>
 <p>Linear programming is the minimization (or maximization) of a linear objective subject to linear constraints. There are several widely adopted schemes for representing linear programming problems. Here we adopt a scheme corresponding where the linear objective is written in terms of decision variables <span class="math notranslate nohighlight">\(x_1, x_2, \ldots, x_N\)</span> as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -967,8 +972,8 @@ x_i  \geq 0 &amp; \qquad i=1,\ldots,N\quad\mbox{lower bounds on decision variabl
 \sum_{j=1}^N a^{eq}_{ij}x_j = b^{eq}_i &amp; \qquad i=1,\ldots,M_{eq}\quad\mbox{equality constraints}\\
 \end{align}
 \end{split}\]</div>
-<div class="section" id="matrix-vector-format">
-<h2><span class="section-number">5.5.1. </span>Matrix/Vector format<a class="headerlink" href="#matrix-vector-format" title="Permalink to this heading">#</a></h2>
+<section id="matrix-vector-format">
+<h2><span class="section-number">5.5.1. </span>Matrix/Vector format<a class="headerlink" href="#matrix-vector-format" title="Permalink to this headline">#</a></h2>
 <p>The notation can be simplified by adopting a matrix/vector formulation where</p>
 <div class="math notranslate nohighlight">
 \[
@@ -985,9 +990,9 @@ A_{eq} x = b_{eq}
 \end{align}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(A_{ub}, b_{ub}\)</span>, and <span class="math notranslate nohighlight">\(A_{eq}, b_{eq}\)</span>, are vectors and matrices of coefficients constructed from the linear expressions given above.</p>
-</div>
-<div class="section" id="example-19-3-refinery-blending-problem">
-<h2><span class="section-number">5.5.2. </span>Example 19.3: Refinery Blending Problem<a class="headerlink" href="#example-19-3-refinery-blending-problem" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="example-19-3-refinery-blending-problem">
+<h2><span class="section-number">5.5.2. </span>Example 19.3: Refinery Blending Problem<a class="headerlink" href="#example-19-3-refinery-blending-problem" title="Permalink to this headline">#</a></h2>
 <p>The decision variables are</p>
 <table class="colwidths-auto table">
 <thead>
@@ -1136,8 +1141,8 @@ x[ 6] =  2001.0 bbl/day
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1151,7 +1156,7 @@ x[ 6] =  2001.0 bbl/day
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks/05"
         },
         predefinedOutput: true

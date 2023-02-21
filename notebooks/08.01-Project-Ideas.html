@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>7.1. Project Ideas &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="8. References" href="09.00-Bibliography.html" />
     <link rel="prev" title="7. Projects" href="08.00-Projects.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -219,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -235,6 +235,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -910,25 +915,25 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="project-ideas">
-<h1><span class="section-number">7.1. </span>Project Ideas<a class="headerlink" href="#project-ideas" title="Permalink to this heading">#</a></h1>
-<div class="section" id="optimal-control-of-the-williams-otto-process-using-pyomo">
-<h2><span class="section-number">7.1.1. </span>Optimal Control of the Williams-Otto Process using Pyomo<a class="headerlink" href="#optimal-control-of-the-williams-otto-process-using-pyomo" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="project-ideas">
+<h1><span class="section-number">7.1. </span>Project Ideas<a class="headerlink" href="#project-ideas" title="Permalink to this headline">#</a></h1>
+<section id="optimal-control-of-the-williams-otto-process-using-pyomo">
+<h2><span class="section-number">7.1.1. </span>Optimal Control of the Williams-Otto Process using Pyomo<a class="headerlink" href="#optimal-control-of-the-williams-otto-process-using-pyomo" title="Permalink to this headline">#</a></h2>
 <p>The Williams-Otto process is a hypothetical process presented in a 1960 paper as a benchmark problem to investigate the use of advanced strategies for process control. At that time <a class="reference external" href="https://en.wikipedia.org/wiki/Theodore_J._Williams">Theodore J. Williams</a> and Robert Otto were process control engineers working at Monsanto Corporation. Williams later became a professor of engineering and director of the Purdue Laboratory for Applied Industrial Control at Purdue University.</p>
 <p>Like others in the large chemical and oil companies of the era, they were investigating whether rapidly evolving computer technology of the era could be used to automate large scale chemical operations. Their paper offered a common framework for academics and industrial partners to compare the many competing proposals for advanced control systems. Sixty years later, the Williams-Otto process continues to benchmark system for the study of process control and dynamics.</p>
 <p>The goal of this project is to produce a Python library to support the use of the Williams-Otto process in process control education. The deliverables will be a collection of Jupyter notebooks implementing the Pyomo model described in <span id="id1">[<a class="reference internal" href="09.00-Bibliography.html#id16" title="Jochen Schmid, Katrin Teichert, Moncef Chioua, Thorsten Schindler, and Michael Bortz. Simulation and optimal control of the williams-otto process using pyomo. arXiv preprint arXiv:2004.07614, 2020. URL: https://arxiv.org/pdf/2004.07614.pdf.">Schmid <em>et al.</em>, 2020</a>]</span>.</p>
-</div>
-<div class="section" id="pharmacokinetic-modeling-of-glucose-responsive-materials-for-drug-delivery">
-<h2><span class="section-number">7.1.2. </span>Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery<a class="headerlink" href="#pharmacokinetic-modeling-of-glucose-responsive-materials-for-drug-delivery" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="pharmacokinetic-modeling-of-glucose-responsive-materials-for-drug-delivery">
+<h2><span class="section-number">7.1.2. </span>Pharmacokinetic Modeling of Glucose-Responsive Materials for Drug Delivery<a class="headerlink" href="#pharmacokinetic-modeling-of-glucose-responsive-materials-for-drug-delivery" title="Permalink to this headline">#</a></h2>
 <p>Diabetes afflicts many millions of people globally and places a substantial burder on health care systems. The automated delivery of insulin with pumps has improved the quality of life for many, and when coupled with glucose sensors and feedback control, can acheive a reasonable level of control over glucose levels. But these techniques require external devices and a great deal of care for successful operation.</p>
 <p>New technologies have emerged in the form of glucose-responsive insulin for the delivery of Insulin. More recently, Prof. Matt Weber at Notre Dame has developed a glucose-responsive hydrogel for the delivery of glucagon, the enzyme antagonist to insulin. Together, these materials offer the prospect of high-fidelity control of glucose.</p>
 <p>The goal of this project is to create a simulation model to study the combined use of these technologies to regulate glucose in the human body. The interaction of multiple feedback loops is expected to constrain the design of the materials. The models will be based on recent work by Prof. Weber and the simulation models developed in other laboratories. <span id="id2">[<a class="reference internal" href="09.00-Bibliography.html#id12" title="Naveed A Bakh, Gili Bisker, Michael A Lee, Xun Gong, and Michael S Strano. Rational design of glucose-responsive insulin using pharmacokinetic modeling. Advanced Healthcare Materials, 6(22):1700601, 2017.">Bakh <em>et al.</em>, 2017</a>]</span>, <span id="id3">[<a class="reference internal" href="09.00-Bibliography.html#id13" title="Jing Fan Yang, Xun Gong, Naveed A Bakh, Kelley Carr, Nelson FB Phillips, Faramarz Ismail-Beigi, Michael A Weiss, and Michael S Strano. Connecting rodent and human pharmacokinetic models for the design and translation of glucose-responsive insulin. Diabetes, 69(8):1815–1826, 2020.">Yang <em>et al.</em>, 2020</a>]</span>,</p>
 <p>Bakh, N. A., Bisker, G., Lee, M. A., Gong, X., &amp; Strano, M. S. (2017). Rational Design of Glucose‐Responsive Insulin Using Pharmacokinetic Modeling. Advanced Healthcare Materials, 6(22), 1700601.</p>
 <p>Yang, J. F., Gong, X., Bakh, N. A., Carr, K., Phillips, N. F., Ismail-Beigi, F., … &amp; Strano, M. S. (2020). Connecting rodent and human pharmacokinetic models for the design and translation of glucose-responsive insulin. Diabetes, 69(8), 1815-1826.</p>
 <p>Jarosinski, M. A., Dhayalan, B., Rege, N., Chatterjee, D., &amp; Weiss, M. A. (2021). ‘Smart’insulin-delivery technologies and intrinsic glucose-responsive insulin analogues. Diabetologia, 64(5), 1016-1029.</p>
-</div>
-<div class="section" id="control-of-batch-cheese-production">
-<h2><span class="section-number">7.1.3. </span>Control of Batch Cheese Production<a class="headerlink" href="#control-of-batch-cheese-production" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="control-of-batch-cheese-production">
+<h2><span class="section-number">7.1.3. </span>Control of Batch Cheese Production<a class="headerlink" href="#control-of-batch-cheese-production" title="Permalink to this headline">#</a></h2>
 <p>The following project statement comes from Alex Smith (ND’18), an experienced chemical engineer working in the food industry –</p>
 <p>You are the lead process engineer at Kirby’s Processed Cheese Company. A new, cheaper, cheese supplier is being brought in to supply cheddar cheese for your processed cheese line. This new cheese can have moisture anywhere from 33% to 39% targeting 36%.</p>
 <p>Your current process for creating processed cheese is as follows. Grind the 240lb cheddar cheese blocks using an extractor. Weigh out the rest of the ingredients. Add those ingredients to the process cheese cooker and heat using direct steam injection to a temperature of 180F and hold for 60 seconds. The steam used is saturated steam at 20 psi. Assume that all the energy comes from condensing steam. The mass of condensed steam used is your condensate factor. The cheese is then sent forward to a chill roller and then to packaging.</p>
@@ -976,8 +981,8 @@ title="Print to PDF"
 <li><p>Your moisture measurements have some amount of variation around them due to the inconsistent nature of the test. For example, a piece of cheese that is in reality 36% might read as 35% on your moisture test. This test has a normal distribution with a standard deviation of 0.3% moisture. How would you adjust your program to account for this risk knowing that product outside of your moisture range will be thrown away and a total loss for the company.</p></li>
 </ol>
 <p>To answer the questions above, create a model using Pyomo (an Python optimization and equation modeling library). The model should be used to solve (1) with a steady state optimization. Solve (2) through feedforward control. The analysis of (3) is an example of chance-constrained optimization.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -991,7 +996,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

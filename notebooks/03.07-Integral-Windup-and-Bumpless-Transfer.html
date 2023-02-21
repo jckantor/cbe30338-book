@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>3.7. Integral Windup and Bumpless Transfer &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.8. Controller Tuning" href="03.08-Controller-Tuning.html" />
     <link rel="prev" title="3.6. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.06-Proportional-Integral-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -1047,8 +1052,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="integral-windup-and-bumpless-transfer">
-<h1><span class="section-number">3.7. </span>Integral Windup and Bumpless Transfer<a class="headerlink" href="#integral-windup-and-bumpless-transfer" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="integral-windup-and-bumpless-transfer">
+<h1><span class="section-number">3.7. </span>Integral Windup and Bumpless Transfer<a class="headerlink" href="#integral-windup-and-bumpless-transfer" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>“the devil is in the details” – anonymous</p>
 </div></blockquote>
@@ -1058,8 +1063,8 @@ title="Print to PDF"
 <blockquote>
 <div><p>“why me?” – the devil</p>
 </div></blockquote>
-<div class="section" id="learning-goals">
-<h2><span class="section-number">3.7.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<section id="learning-goals">
+<h2><span class="section-number">3.7.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
 <p>Up to this point we have been giving a “textbook” introduction to proportional-integral (PI) control. There is a world of difference between “textbook” and “practical”.</p>
 <ul class="simple">
 <li><p>Explain the purpose of each of the following enhancements of ‘textbook’ PI control:</p>
@@ -1080,9 +1085,9 @@ title="Print to PDF"
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="glossary">
-<h2><span class="section-number">3.7.2. </span>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="glossary">
+<h2><span class="section-number">3.7.2. </span>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">#</a></h2>
 <p>Process control is full of specialized language to describe control systems and their performance. Here are is a glossary list for this notebook.</p>
 <dl class="simple myst">
 <dt>Reset-windup (also call Integral windup)</dt><dd><p>Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these situation the error signal (PV - SP) can never return to zero which causes the integration of the error signal to “wind-up”.</p>
@@ -1142,21 +1147,21 @@ Process Variable. Generally a variable that is measured and used for feedback co
 Manipulated Variable. The variable being manipulated by the controller. Typically a flowrate using a control valve.</p>
 <p>: SP
 Setpoint Variable. A desired value for process variable (PV). The job of the controller is change MV to cause PV to become equal to SP.</p>
-</div>
-<div class="section" id="typical-p-id-diagram-for-pi-and-pid-control">
-<h2><span class="section-number">3.7.3. </span>Typical P&amp;ID Diagram for PI and PID control.<a class="headerlink" href="#typical-p-id-diagram-for-pi-and-pid-control" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="typical-p-id-diagram-for-pi-and-pid-control">
+<h2><span class="section-number">3.7.3. </span>Typical P&amp;ID Diagram for PI and PID control.<a class="headerlink" href="#typical-p-id-diagram-for-pi-and-pid-control" title="Permalink to this headline">#</a></h2>
 <p><img alt="" src="https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png" /></p>
-</div>
-<div class="section" id="pi-control">
-<h2><span class="section-number">3.7.4. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="pi-control">
+<h2><span class="section-number">3.7.4. </span>PI Control<a class="headerlink" href="#pi-control" title="Permalink to this headline">#</a></h2>
 <p>Proportional-Integral (PI) Control is velecity form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08815904-e920-4f65-8288-b55f6a7f9d1f">
-<span class="eqno">(3.10)<a class="headerlink" href="#equation-08815904-e920-4f65-8288-b55f6a7f9d1f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-86cf4b62-2486-4830-b224-7d11663f8ebb">
+<span class="eqno">(3.10)<a class="headerlink" href="#equation-86cf4b62-2486-4830-b224-7d11663f8ebb" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = MV_{k-1} - K_P (e_{k} - e_{k-1}) - \delta t K_I e_k
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(MV_0= \bar{MV}\)</span> is the initial value, and the error <span class="math notranslate nohighlight">\(e_k\)</span> is the difference between the process variable and setpoint, and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d9cab27-b783-468c-9020-47dbb792c464">
-<span class="eqno">(3.11)<a class="headerlink" href="#equation-7d9cab27-b783-468c-9020-47dbb792c464" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d6b00b07-d997-4b5e-a26d-96ced85f71b8">
+<span class="eqno">(3.11)<a class="headerlink" href="#equation-d6b00b07-d997-4b5e-a26d-96ced85f71b8" title="Permalink to this equation">#</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \end{align}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\delta t\)</span> is the time step.</p>
@@ -1227,9 +1232,9 @@ e_k &amp; = PV_k - SP_k \\
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_9_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="what-is-integral-reset-windup">
-<h2><span class="section-number">3.7.5. </span>What is Integral/Reset Windup?<a class="headerlink" href="#what-is-integral-reset-windup" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="what-is-integral-reset-windup">
+<h2><span class="section-number">3.7.5. </span>What is Integral/Reset Windup?<a class="headerlink" href="#what-is-integral-reset-windup" title="Permalink to this headline">#</a></h2>
 <p>Let’s increase the magnitude of the control gains to see if we an acheive even better control performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1247,23 +1252,23 @@ e_k &amp; = PV_k - SP_k \\
 </div>
 <hr>
 <p><strong>Study Question:</strong> Carefully exammine the results of this experiment. The PI velocity algorithm is given by an equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e57a4e8b-bcce-40f6-805d-a855b1729648">
-<span class="eqno">(3.12)<a class="headerlink" href="#equation-e57a4e8b-bcce-40f6-805d-a855b1729648" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b87ee54a-c485-4c82-988e-5f913e094650">
+<span class="eqno">(3.12)<a class="headerlink" href="#equation-b87ee54a-c485-4c82-988e-5f913e094650" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k}
 \end{align}\]</div>
 <p>Looking at the period from 0 to 100 seconds, is this equation being satisfied? Why or why not?</p>
 <p><strong>Study Question:</strong> Carefully examine the code for the PI controller. How is it possible for <span class="math notranslate nohighlight">\(MV\)</span> to be different from the actual input applied to the device?</p>
 <hr>
 <p>Integral (also called Reset) windup is a consequence the controller computing values for the manipulable input that are outside the range of feasible values. The difference is due to the presence of upper and lower bounds on the manipulated variable.</p>
-<div class="section" id="anti-reset-windup-type-1">
-<h3><span class="section-number">3.7.5.1. </span>Anti-reset windup - Type 1<a class="headerlink" href="#anti-reset-windup-type-1" title="Permalink to this heading">#</a></h3>
+<section id="anti-reset-windup-type-1">
+<h3><span class="section-number">3.7.5.1. </span>Anti-reset windup - Type 1<a class="headerlink" href="#anti-reset-windup-type-1" title="Permalink to this headline">#</a></h3>
 <p>There several common strategies for avoiding integral (eset) windup. The first of these should be part of any practical implementation. The technique is to limit computed values of manipulated variable to the range of values that can be implemented. This will avoid <span class="math notranslate nohighlight">\(MV\)</span> ‘winding up’ due to range limits.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47a6e0b5-3d14-4f58-8b85-fa5ff48488a9">
-<span class="eqno">(3.13)<a class="headerlink" href="#equation-47a6e0b5-3d14-4f58-8b85-fa5ff48488a9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-93283b6e-4e0e-4c4c-b73f-3ff5978f2fee">
+<span class="eqno">(3.13)<a class="headerlink" href="#equation-93283b6e-4e0e-4c4c-b73f-3ff5978f2fee" title="Permalink to this equation">#</a></span>\[\begin{align}
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(e_{k} - e_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-63697d75-e223-4777-bd5f-8b5f089a8b74">
-<span class="eqno">(3.14)<a class="headerlink" href="#equation-63697d75-e223-4777-bd5f-8b5f089a8b74" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e614e32b-5fe9-4388-8d9a-26be9ac19995">
+<span class="eqno">(3.14)<a class="headerlink" href="#equation-e614e32b-5fe9-4388-8d9a-26be9ac19995" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = \begin{cases}
 MV^{min} &amp; \text{if } \hat{MV}_k \leq MV^{min}\\
 \hat{MV}_k &amp; \text{if } MV^{min} \leq \hat{MV}_k \leq MV^{max}\\
@@ -1300,9 +1305,9 @@ MV^{max} &amp; \text{if}  \hat{MV_k} \geq MV^{max}
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_14_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_14_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="anti-reset-windup-type-2">
-<h3><span class="section-number">3.7.5.2. </span>Anti-reset Windup - Type 2<a class="headerlink" href="#anti-reset-windup-type-2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="anti-reset-windup-type-2">
+<h3><span class="section-number">3.7.5.2. </span>Anti-reset Windup - Type 2<a class="headerlink" href="#anti-reset-windup-type-2" title="Permalink to this headline">#</a></h3>
 <p>A more subtle form of windup occurs when the manipulated variable is subject to external interventions. This can occur when a valve stem in a process application gets stuck, an operator or user intervenes and resets a mechanical actuator, or there is some sort of system failure.</p>
 <p>For these reasons, practical control systems often include a field measurement of the manipulated variable that is fed back to the controller. The following image, for example, shows a pneumatically operated globe valve with a positioner, and with feedback of position to the central control system.</p>
 <p><a href="https://commons.wikimedia.org/wiki/File:Pl_control_valve.jpg#/media/File:Pl_control_valve.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Pl_control_valve.jpg" alt="Pl control valve.jpg" height="720" width="540"></a>
@@ -1393,9 +1398,9 @@ TCLab Model disconnected successfully.
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_22_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="anti-reset-windup-complete">
-<h3><span class="section-number">3.7.5.3. </span>Anti-reset Windup - Complete<a class="headerlink" href="#anti-reset-windup-complete" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="anti-reset-windup-complete">
+<h3><span class="section-number">3.7.5.3. </span>Anti-reset Windup - Complete<a class="headerlink" href="#anti-reset-windup-complete" title="Permalink to this headline">#</a></h3>
 <p>With these considerations in place, the following cell presents a version of the PI control algorithm incorporating both range limits and direct feedback of the manipulated variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1423,10 +1428,10 @@ TCLab Model disconnected successfully.
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_24_2.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="manual-to-auto-transition-bumpless-transfer">
-<h2><span class="section-number">3.7.6. </span>Manual to Auto Transition: Bumpless Transfer<a class="headerlink" href="#manual-to-auto-transition-bumpless-transfer" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section id="manual-to-auto-transition-bumpless-transfer">
+<h2><span class="section-number">3.7.6. </span>Manual to Auto Transition: Bumpless Transfer<a class="headerlink" href="#manual-to-auto-transition-bumpless-transfer" title="Permalink to this headline">#</a></h2>
 <p>Manual operation can be implemented by specifying the manipulated variable. We will implement this by specifying a function that specifies values of manipulated variable whenever manual conteol is in effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1473,22 +1478,22 @@ TCLab Model disconnected successfully.
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_26_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="bumpless-transfer">
-<h2><span class="section-number">3.7.7. </span>Bumpless Transfer<a class="headerlink" href="#bumpless-transfer" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="bumpless-transfer">
+<h2><span class="section-number">3.7.7. </span>Bumpless Transfer<a class="headerlink" href="#bumpless-transfer" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remove setpoint from proportional term</p></li>
 <li><p>Only the integral control term incorporates the setpoint.</p></li>
 </ul>
-<div class="section" id="id1">
-<h3><span class="section-number">3.7.7.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-216dfa07-9e41-4728-bcf8-cc4c7a5e20a3">
-<span class="eqno">(3.15)<a class="headerlink" href="#equation-216dfa07-9e41-4728-bcf8-cc4c7a5e20a3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<section id="id1">
+<h3><span class="section-number">3.7.7.1. </span>Bumpless Transfer<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<div class="amsmath math notranslate nohighlight" id="equation-f695249e-dd0b-464b-959f-ca032aef6557">
+<span class="eqno">(3.15)<a class="headerlink" href="#equation-f695249e-dd0b-464b-959f-ca032aef6557" title="Permalink to this equation">#</a></span>\[\begin{align}
 e_k &amp; = PV_k - SP_k \\
 \hat{MV}_{k} &amp; = MV_{k-1} - K_p(PV_{k} - PV_{k-1}) - \delta t K_i e_{k} 
 \end{align}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-49621296-665c-4b34-974e-8bb41a2c3d20">
-<span class="eqno">(3.16)<a class="headerlink" href="#equation-49621296-665c-4b34-974e-8bb41a2c3d20" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be0409bb-fd73-4d20-b478-e65bd753cfa1">
+<span class="eqno">(3.16)<a class="headerlink" href="#equation-be0409bb-fd73-4d20-b478-e65bd753cfa1" title="Permalink to this equation">#</a></span>\[\begin{align}
 MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -1518,9 +1523,9 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
 <img alt="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_29_2.png" src="../_images/03.07-Integral-Windup-and-Bumpless-Transfer_29_2.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1534,7 +1539,7 @@ MV_k &amp; = \max(MV^{min}, \min(MV^{max}, \hat{MV}_k)
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true

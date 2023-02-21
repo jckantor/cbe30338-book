@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.1. Setting up TCLab &#8212; CBE 30338 Chemical Process Control</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -33,7 +34,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="1.2. Testing and Troubleshooting TCLab" href="00.02-troubleshooting-tclab.html" />
     <link rel="prev" title="1. The Temperature Control Laboratory" href="00.00-tclab.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
@@ -219,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.05-Second-Order.html">
-     2.5. Second and Higher Order models
+     2.5. Second Order Model
     </a>
    </li>
    <li class="toctree-l2">
@@ -235,6 +235,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../notebooks/02.08-Hare-and-Lynx.html">
      2.8. Hare and Lynx Population Dynamics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../notebooks/02.09-Study-Guide.html">
+     2.9. Study Guide
     </a>
    </li>
   </ul>
@@ -991,10 +996,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="setting-up-tclab">
-<h1><span class="section-number">1.1. </span>Setting up TCLab<a class="headerlink" href="#setting-up-tclab" title="Permalink to this heading">#</a></h1>
-<div class="section" id="hardware-setup">
-<h2><span class="section-number">1.1.1. </span>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-tclab">
+<h1><span class="section-number">1.1. </span>Setting up TCLab<a class="headerlink" href="#setting-up-tclab" title="Permalink to this headline">#</a></h1>
+<section id="hardware-setup">
+<h2><span class="section-number">1.1.1. </span>Hardware Setup<a class="headerlink" href="#hardware-setup" title="Permalink to this headline">#</a></h2>
 <p><img alt="" src="../_images/TCLab_labelled.jpg" /></p>
 <ol class="simple">
 <li><p>Insert the temperature control shield into the Arduino module. This will fit together in only one way. Squeeze the modules together until the shield is fully seated.</p></li>
@@ -1002,15 +1007,15 @@ title="Print to PDF"
 <li><p>Plug the DC power adapter into a wall socket and connect the power cable to to the temperature control shield. <strong>Note: The temperature control shield requires its own power supply. Be sure the power supply it is plugged into the shield, not the Arduino.</strong></p></li>
 </ol>
 <p>TCLab requires the one-time installation of custom firmware on an Arduino device. The firmware is normally preinstalled when you receive the device. But if necessary, the firmware and instructions for installation are available from the <a class="reference external" href="https://github.com/jckantor/TCLab-sketch">TCLab-Sketch repository</a>.</p>
-</div>
-<div class="section" id="software-setup">
-<h2><span class="section-number">1.1.2. </span>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this heading">#</a></h2>
-<div class="section" id="requirements">
-<h3><span class="section-number">1.1.2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="software-setup">
+<h2><span class="section-number">1.1.2. </span>Software Setup<a class="headerlink" href="#software-setup" title="Permalink to this headline">#</a></h2>
+<section id="requirements">
+<h3><span class="section-number">1.1.2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">#</a></h3>
 <p>The tclab library must run locally on your laptop to access the USB port. A Python development system, such as <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> needs to be installed on your laptop prior to installing tclab. <strong>tclab cannot access the USB port when run Google Colab.</strong></p>
-</div>
-<div class="section" id="how-the-software-is-organized">
-<h3><span class="section-number">1.1.2.2. </span>How the software is organized<a class="headerlink" href="#how-the-software-is-organized" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="how-the-software-is-organized">
+<h3><span class="section-number">1.1.2.2. </span>How the software is organized<a class="headerlink" href="#how-the-software-is-organized" title="Permalink to this headline">#</a></h3>
 <p>Software for the Temperature Control Lab is organized as shown in the accompanying diagram. Note that the Python scripts must run on your laptop, not a remote server, in order to access the local USB port.</p>
 <p><img alt="" src="../_images/TCLab_overview.png" /></p>
 <p><strong><em>Jupyter notebooks and Python scripts:</em></strong>
@@ -1027,9 +1032,9 @@ The top level consists of the you code you write to implement control algorithms
 The <a class="reference external" href="https://github.com/jckantor/TCLab-sketch">TCLab-sketch</a> repository provides firmware to ensure intrisically safe operation of the Arduino board and shield. The sketch is downloaded to the Arduino using the <a class="reference external" href="https://www.arduino.cc/en/Main/Software">Arduino IDE</a>. Loading firmware to the Arduino is a one-time operation.</p>
 <p><strong><em>Arduino:</em></strong>
 The hardware platform for the Temperature Control Laboratory. The Python tools and libraries have been tested with the Arduino Leonardo boards.</p>
-</div>
-<div class="section" id="installing-the-tclab-library">
-<h3><span class="section-number">1.1.2.3. </span>Installing the tclab library<a class="headerlink" href="#installing-the-tclab-library" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="installing-the-tclab-library">
+<h3><span class="section-number">1.1.2.3. </span>Installing the tclab library<a class="headerlink" href="#installing-the-tclab-library" title="Permalink to this headline">#</a></h3>
 <p>The tclab library is installed from a terminal window (MacOS) or command window (PC) with the command</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install tclab
 </pre></div>
@@ -1037,7 +1042,7 @@ The hardware platform for the Temperature Control Laboratory. The Python tools a
 <p>Alternatively, the installation can be performed from within a Jupyter/Python notebook with the command</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tclab
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install tclab
 </pre></div>
 </div>
 </div>
@@ -1051,7 +1056,7 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
 <p>There are occasional updates to the library. These can be installed by appending a <code class="docutils literal notranslate"> <span class="pre">--upgrade</span></code> to the above commands and demonstrated in the next cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tclab<span class="w"> </span>--upgrade
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install tclab --upgrade
 </pre></div>
 </div>
 </div>
@@ -1062,13 +1067,13 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="google-colab">
-<h3><span class="section-number">1.1.2.4. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="google-colab">
+<h3><span class="section-number">1.1.2.4. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h3>
 <p>The tclab library will install and can be run in off-line mode on Google Colab and can be run in off-line mode. <strong>Note, however, the USB port is not accessible from Google Colab, so the attached Arduino and shield can not be run from Google Colab.</strong></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1082,7 +1087,7 @@ Requirement already satisfied: pyserial in /Users/jeff/opt/anaconda3/lib/python3
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./tclab"
         },
         predefinedOutput: true
