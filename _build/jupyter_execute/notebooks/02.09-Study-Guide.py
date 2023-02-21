@@ -114,10 +114,18 @@
 # 
 # Suppose $H$ is measurable. What is $C$ for the model
 # 
-# $$\begin{align*}
+# $$
+# \begin{align*}
 # \frac{dx}{dt}  & = A x + B u \\
-# y & = $$
+# y & = C x
+# \end{align*}
+# $$
 # 
+# What if $H$ and $L$ are both measurable?
+
+# ## TCLab
+# 
+# Review your projects. Be sure you can relate the parameters $U_a$, $U_b$, $U_c$ and heat capacities to observable behaviors. 
 
 # In[ ]:
 
