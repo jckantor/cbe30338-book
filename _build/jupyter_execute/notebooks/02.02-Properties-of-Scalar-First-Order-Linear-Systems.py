@@ -178,9 +178,9 @@ ax.text(ub, K*ua, f"K = {K:4.2f} mph/% throttle", va="top")
 # 
 # There are three important cases:
 # 
-# * $a \leq 0$: **exponential decay** to zero.
+# * $a < 0$: **exponential decay** to zero.
 # * $a = 0$: x(t) **constant** with a value $x(t_0)$
-# * $a \geq 0$: **exponential increase** to either $+\infty$ or $-\infty$, depending on the sign of $a$.
+# * $a > 0$: **exponential increase** to either $+\infty$ or $-\infty$, depending on the sign of $a$.
 
 # :::{admonition} Example (cont.)
 # 
