@@ -129,7 +129,6 @@ parts:
       sections:
       - file: tclab/04.01-Relay-Control
       - file: tclab/04.02-Lab-Assignment-Relay-Control
-      - file: tclab/04.04-Assignment-Thermostat-Control
 #      - file: tclab/04.03-PID_Control
 #      - file: tclab/04.10-Lab-Assignment-PID-Control
 #      - file: tclab/04.11-Lab-Assignment-PI-Control
