@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4.1. Learning Goals &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4.2. Data/Process/Operational Historian" href="04.02-Process-Historians.html" />
     <link rel="prev" title="4. Process Analytics" href="04.00-Process-Analytics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -918,9 +914,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="learning-goals">
-<h1><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h1>
 <section id="process-historians">
-<h2><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.1. </span>Process Historians<a class="headerlink" href="#process-historians" title="Permalink to this heading">#</a></h2>
 <p><strong>Process historians</strong> are widely used throughout the process industries. The core function is to record and provide access to <strong>time series data</strong> for <strong>process tags</strong>.</p>
 <p>The tclab library includes the basic functions of a process historian implemented using <code class="docutils literal notranslate"><span class="pre">SQLite</span></code>, a widely used database for web applications and internet connected devices.</p>
 <ul class="simple">
@@ -938,7 +934,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="state-space-models">
-<h2><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.2. </span>State-Space Models<a class="headerlink" href="#state-space-models" title="Permalink to this heading">#</a></h2>
 <p>A linear state-space model is written in the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -963,7 +959,7 @@ y &amp; = C x
 </ul>
 </section>
 <section id="state-estimation">
-<h2><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.1.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this heading">#</a></h2>
 <p>State estimation is a form of real-time process analytics employed in control systems. State estimation combines process models with real-time process measurements to provide estimates of process variables that may not be directly measureable.</p>
 <p>At each time step <span class="math notranslate nohighlight">\(t_k\)</span> there are two calculations to perform:</p>
 <ul class="simple">

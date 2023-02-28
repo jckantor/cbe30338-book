@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5.2. Lab Assignment 4: Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -54,10 +55,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.3. Assignment: Thermostat Control" href="04.04-Assignment-Thermostat-Control.html" />
+    <link rel="next" title="6. State Estimation" href="05.00-State-Estimation.html" />
     <link rel="prev" title="5.1. Relay Control" href="04.01-Relay-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -955,14 +951,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lab-assignment-4-relay-control">
-<h1><span class="section-number">5.2. </span>Lab Assignment 4: Relay Control<a class="headerlink" href="#lab-assignment-4-relay-control" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.2. </span>Lab Assignment 4: Relay Control<a class="headerlink" href="#lab-assignment-4-relay-control" title="Permalink to this heading">#</a></h1>
 <p>In this lab assignment you will implement relay control for the Temperature Control Laboratory.</p>
 <ol class="simple">
 <li><p>Implement and test a relay control for the heater/sensor system</p></li>
 <li><p>Implement and test a relay control to track a complex setpoint.</p></li>
 </ol>
 <section id="exercise-1-relay-or-on-off-control">
-<h2><span class="section-number">5.2.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.1. </span>Exercise 1. Relay (or On-Off) control<a class="headerlink" href="#exercise-1-relay-or-on-off-control" title="Permalink to this heading">#</a></h2>
 <p>Create a notebook to implements a relay control for the Temperature Control Lab subject the following requirements:</p>
 <ul class="simple">
 <li><p>Simultaneous control of sensor temperatures T1 and T2 to setpoints 35 and 40 degrees, respectively. The setpoints return to 25 deg C at  t = 300.</p></li>
@@ -1025,7 +1021,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="procedures">
-<h2><span class="section-number">5.2.2. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.2. </span>Procedures<a class="headerlink" href="#procedures" title="Permalink to this heading">#</a></h2>
 <ol class="simple">
 <li><p>Begin by testing the above code on your laptop.</p></li>
 <li><p>Create a new cell, copy the code to the new cell, and extend the code to control both T1 and T2 to the desired setpoints.</p></li>
@@ -1071,10 +1067,10 @@ title="Print to PDF"
             <p class="prev-next-title"><span class="section-number">5.1. </span>Relay Control</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="04.04-Assignment-Thermostat-Control.html" title="next page">
+    <a class='right-next' id="next-link" href="05.00-State-Estimation.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">5.3. </span>Assignment: Thermostat Control</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>State Estimation</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

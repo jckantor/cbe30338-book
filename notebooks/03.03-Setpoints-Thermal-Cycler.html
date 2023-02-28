@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.3. Case Study: PCR Thermal Cycler Protocols &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.4. Relay Control" href="03.04-Relay-Control.html" />
     <link rel="prev" title="3.2. Setpoints" href="03.02-Setpoints.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -589,11 +590,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -993,7 +989,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="case-study-pcr-thermal-cycler-protocols">
-<h1><span class="section-number">3.3. </span>Case Study: PCR Thermal Cycler Protocols<a class="headerlink" href="#case-study-pcr-thermal-cycler-protocols" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.3. </span>Case Study: PCR Thermal Cycler Protocols<a class="headerlink" href="#case-study-pcr-thermal-cycler-protocols" title="Permalink to this heading">#</a></h1>
 <p>The goal of this next section is to create a function that returns the value of a setpoint profile for a PCR thermal cycler. We’ll break this into a series of steps:</p>
 <ul class="simple">
 <li><p>Specify a PCR protocol</p></li>
@@ -1002,7 +998,7 @@ title="Print to PDF"
 <li><p>Create a function that returns a setpoint function.</p></li>
 </ul>
 <section id="typcial-pcr-thermal-cycler-protocols">
-<h2><span class="section-number">3.3.1. </span>Typcial PCR thermal cycler protocols<a class="headerlink" href="#typcial-pcr-thermal-cycler-protocols" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.1. </span>Typcial PCR thermal cycler protocols<a class="headerlink" href="#typcial-pcr-thermal-cycler-protocols" title="Permalink to this heading">#</a></h2>
 <p>Here’s an example of a PCR thermal cycler protocol:</p>
 <ul class="simple">
 <li><p>Activation of polymerase: 95°C, 15 min</p></li>
@@ -1019,7 +1015,7 @@ title="Print to PDF"
 <p>The details of these protocols vary depending on the nature of the test, the reagents used, and the type of detection that will be employed. In real-time PCR, the number of cycling steps will end once a positive result is obtained.</p>
 </section>
 <section id="representing-pcr-protocols-in-python">
-<h2><span class="section-number">3.3.2. </span>Representing PCR protocols in Python<a class="headerlink" href="#representing-pcr-protocols-in-python" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.2. </span>Representing PCR protocols in Python<a class="headerlink" href="#representing-pcr-protocols-in-python" title="Permalink to this heading">#</a></h2>
 <p>The PCR protocol is a series of (time, temperature) pairs. The code in the next cell represents a protocol as a sequence of (time, temperature) pairs in a Python list. The list is constructed by concatenating subprotocols denoting the activation, cycling and extension steps in a PCR protocol</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,7 +1063,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="converting-to-ramp-soak-specifications">
-<h2><span class="section-number">3.3.3. </span>Converting to ramp, soak specifications<a class="headerlink" href="#converting-to-ramp-soak-specifications" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.3. </span>Converting to ramp, soak specifications<a class="headerlink" href="#converting-to-ramp-soak-specifications" title="Permalink to this heading">#</a></h2>
 <p>Each step in a PCR protocol consists of an initial ramp to the specified temperature, followed by a soak for the specified time and temperature. We begin the coding by demonstrating how to interpret the protocol specification as a series of ramp and soak periods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1180,7 +1176,7 @@ Time - 2024.0: Soak at 30C for 0 seconds
 </div>
 </section>
 <section id="finding-the-start-and-finish-of-each-segment">
-<h2><span class="section-number">3.3.4. </span>Finding the start and finish of each segment<a class="headerlink" href="#finding-the-start-and-finish-of-each-segment" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.4. </span>Finding the start and finish of each segment<a class="headerlink" href="#finding-the-start-and-finish-of-each-segment" title="Permalink to this heading">#</a></h2>
 <p>Finally, we create a two column numpy array representing the setpoint profile. The first row in the array is the starting time and temperature. Each subsequent row constains the ending time and temperature of a segment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1268,7 +1264,7 @@ Time - 2024.0: Soak at 30C for 0 seconds
 </div>
 </section>
 <section id="finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment">
-<h2><span class="section-number">3.3.5. </span>Finding the setpoint function by interpolating the start and end of each segment<a class="headerlink" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.5. </span>Finding the setpoint function by interpolating the start and end of each segment<a class="headerlink" href="#finding-the-setpoint-function-by-interpolating-the-start-and-end-of-each-segment" title="Permalink to this heading">#</a></h2>
 <p>To implement control algorithms we will need to find values of the setpoint function at arbitrary points in time, not just at the start and finish of ramp or soak periods. The standard numpy library includes a linear interpolation function <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.interp.html"><code class="docutils literal notranslate"><span class="pre">numpy.interp</span></code></a> well suited to this purpose.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1294,7 +1290,7 @@ Time - 2024.0: Soak at 30C for 0 seconds
 </div>
 </section>
 <section id="creating-a-setpoint-function-for-pcr-thermal-cycler">
-<h2><span class="section-number">3.3.6. </span>Creating a setpoint function for PCR thermal cycler<a class="headerlink" href="#creating-a-setpoint-function-for-pcr-thermal-cycler" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.3.6. </span>Creating a setpoint function for PCR thermal cycler<a class="headerlink" href="#creating-a-setpoint-function-for-pcr-thermal-cycler" title="Permalink to this heading">#</a></h2>
 <p>The last step is to put all of these steps together to create a function that generates a setpoint function. This is an example of a very powerful coding technique of <a class="reference external" href="https://realpython.com/inner-functions-what-are-they-good-for/">nested functions</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

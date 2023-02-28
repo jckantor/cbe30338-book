@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6.2. Open and Closed Loop Estimation &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="7. Optimization" href="06.00-Optimal-Control.html" />
     <link rel="prev" title="6. State Estimation" href="05.00-State-Estimation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -1019,7 +1015,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="open-and-closed-loop-estimation">
-<h1><span class="section-number">6.2. </span>Open and Closed Loop Estimation<a class="headerlink" href="#open-and-closed-loop-estimation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.2. </span>Open and Closed Loop Estimation<a class="headerlink" href="#open-and-closed-loop-estimation" title="Permalink to this heading">#</a></h1>
 <p>This notebook outlines three experiments to be performed using the TCLab hardware. This first cell imports necessary libraries, defines a relay control as a Python generator, and a temperature setpoint corresponding to a ramp/soak cycle.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,13 +1050,13 @@ title="Print to PDF"
 </div>
 </div>
 <section id="experiment-1-open-loop-state-estimation-and-relay-control">
-<h2><span class="section-number">6.2.1. </span>Experiment 1. Open-Loop State Estimation and Relay Control<a class="headerlink" href="#experiment-1-open-loop-state-estimation-and-relay-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.1. </span>Experiment 1. Open-Loop State Estimation and Relay Control<a class="headerlink" href="#experiment-1-open-loop-state-estimation-and-relay-control" title="Permalink to this heading">#</a></h2>
 <p>In this first experiment, use a closed loop estimator and relay control to cause the heater to track a desired temperature setpoint. Perform the following tasks:</p>
 <p><strong>a.</strong>) This code was cut and paste from Thursday’s lecture. Adjust the setup to interface with the lab device rather than simuation. Modify the parameters to reflect the model you previously fit to the TCLab hardware.</p>
 <p><strong>b.</strong>) When you run the experiment, keep the Arduino/TCLab device carefully shielded from any air currents. For example, you might use the plastic lab kit as a shield.</p>
 <p><strong>c.</strong>) Describe what you see. Does the controller track the setpoint?  Does the controller reject disturbances?  Explain why this system displays the behavior you’re seeing.</p>
 <section id="open-loop-estimation">
-<h3><span class="section-number">6.2.1.1. </span>Open Loop Estimation<a class="headerlink" href="#open-loop-estimation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.1.1. </span>Open Loop Estimation<a class="headerlink" href="#open-loop-estimation" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1103,7 +1099,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="event-loop">
-<h3><span class="section-number">6.2.1.2. </span>Event Loop<a class="headerlink" href="#event-loop" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.1.2. </span>Event Loop<a class="headerlink" href="#event-loop" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tclab</span> <span class="kn">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">clock</span><span class="p">,</span> <span class="n">Historian</span><span class="p">,</span> <span class="n">Plotter</span>
@@ -1147,7 +1143,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="experiment-2-closed-loop-state-estimation-and-relay-control">
-<h2><span class="section-number">6.2.2. </span>Experiment 2. Closed-Loop State Estimation and Relay Control<a class="headerlink" href="#experiment-2-closed-loop-state-estimation-and-relay-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.2. </span>Experiment 2. Closed-Loop State Estimation and Relay Control<a class="headerlink" href="#experiment-2-closed-loop-state-estimation-and-relay-control" title="Permalink to this heading">#</a></h2>
 <p>In the second experiment, use a closed loop estimator and relay control to cause the heater to track a desired temperature setpoint.</p>
 <p>Before performing the experiment, you will need to determine suitable values for the observer gain <span class="math notranslate nohighlight">\(L\)</span>.  <span class="math notranslate nohighlight">\(L\)</span> is a matrix consisting of two rows and one column.  You need to choose the values in <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A-LC\)</span> is stable and has acceptable time constants. For this experiment we will use a pole placement technique to determine <span class="math notranslate nohighlight">\(L\)</span>.</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1157,7 +1153,7 @@ L &amp; = \begin{bmatrix} ? \\ ? \end{bmatrix}
 <p><strong>a.</strong>) Before starting the experiment, compute the eigenvalues and corresponding time constants of <span class="math notranslate nohighlight">\(A\)</span> and of <span class="math notranslate nohighlight">\(A-LC\)</span>.</p>
 <p><strong>b.</strong>) Then repeat the same tasks for Experiment 1, but this time use a closed-loop estimator. In your answers, be sure to describe how the results of this experiment differ from the first, and explain why.</p>
 <section id="review-of-closed-loop-estimation">
-<h3><span class="section-number">6.2.2.1. </span>Review of Closed Loop Estimation<a class="headerlink" href="#review-of-closed-loop-estimation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.1. </span>Review of Closed Loop Estimation<a class="headerlink" href="#review-of-closed-loop-estimation" title="Permalink to this heading">#</a></h3>
 <p>Examining the results, we see the predicted heater temperature appears to track the desired setpoint, but the sensor temperature is off the mark. This could be due several factors, most likely model error.</p>
 <p>Process</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1198,7 +1194,7 @@ y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \\
 <p>The choice of <span class="math notranslate nohighlight">\(L\)</span> determines observer performance.</p>
 </section>
 <section id="choosing-l">
-<h3><span class="section-number">6.2.2.2. </span>Choosing <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#choosing-l" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">6.2.2.2. </span>Choosing <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#choosing-l" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1333,7 +1329,7 @@ y - \hat{y} &amp; = C x + Du - C\hat{x} - Du \\
 </section>
 </section>
 <section id="question">
-<h2><span class="section-number">6.2.3. </span>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.3. </span>Question<a class="headerlink" href="#question" title="Permalink to this heading">#</a></h2>
 <p>Be sure to review the code given above to understand how this code is working. Then, in the cells below, implement a proportional controller with a proportional control gain Kp = 0.8. Test the controller in simulation mode.</p>
 </section>
 </section>

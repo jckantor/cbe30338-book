@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>1.2. Elements of Process Control &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="2. Process Modeling" href="02.00-Process-Modeling.html" />
     <link rel="prev" title="1.1. What is Feedback?" href="01.01-What-is-Feedback.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -589,11 +590,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1031,13 +1027,13 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="elements-of-process-control">
-<h1><span class="section-number">1.2. </span>Elements of Process Control<a class="headerlink" href="#elements-of-process-control" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.2. </span>Elements of Process Control<a class="headerlink" href="#elements-of-process-control" title="Permalink to this heading">#</a></h1>
 <section id="feedback-control">
-<h2><span class="section-number">1.2.1. </span>Feedback Control<a class="headerlink" href="#feedback-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.1. </span>Feedback Control<a class="headerlink" href="#feedback-control" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../_images/FeedbackControlDiagram.png" /></p>
 </section>
 <section id="system-variables">
-<h2><span class="section-number">1.2.2. </span>System Variables<a class="headerlink" href="#system-variables" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.2. </span>System Variables<a class="headerlink" href="#system-variables" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>DV: Disturbance Variables</strong>: External variables that impose changes on the system under study.</p></li>
 <li><p><strong>MV: Manipulated Variables</strong>: Variables that can be manipulated in order to acheive a desired response.</p></li>
@@ -1048,14 +1044,14 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="controllers">
-<h2><span class="section-number">1.2.3. </span>Controllers<a class="headerlink" href="#controllers" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.3. </span>Controllers<a class="headerlink" href="#controllers" title="Permalink to this heading">#</a></h2>
 <p><img alt="" src="../_images/PID_controllers.jpg" /></p>
 </section>
 <section id="sensors">
-<h2><span class="section-number">1.2.4. </span>Sensors<a class="headerlink" href="#sensors" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.4. </span>Sensors<a class="headerlink" href="#sensors" title="Permalink to this heading">#</a></h2>
 <p>There are only two methods to determine if a process is operating properly. The most direct method is to directly measure the variables of interest. If you’re trying to control the temperature of a process stream, then a direct measurement of temperature is likely the most effective</p>
 <section id="the-big-four">
-<h3><span class="section-number">1.2.4.1. </span>The “Big Four”<a class="headerlink" href="#the-big-four" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.4.1. </span>The “Big Four”<a class="headerlink" href="#the-big-four" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Thermocouples</p></li>
 </ul>
@@ -1071,7 +1067,7 @@ title="Print to PDF"
 <p>Flow</p>
 </section>
 <section id="a-cast-of-thousands">
-<h3><span class="section-number">1.2.4.2. </span>A “Cast of Thousands”<a class="headerlink" href="#a-cast-of-thousands" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.4.2. </span>A “Cast of Thousands”<a class="headerlink" href="#a-cast-of-thousands" title="Permalink to this heading">#</a></h3>
 <p>Position</p>
 <p>Composition</p>
 <p>Humidity</p>
@@ -1080,16 +1076,16 @@ title="Print to PDF"
 </section>
 </section>
 <section id="actuators">
-<h2><span class="section-number">1.2.5. </span>Actuators<a class="headerlink" href="#actuators" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">1.2.5. </span>Actuators<a class="headerlink" href="#actuators" title="Permalink to this heading">#</a></h2>
 <section id="control-valves">
-<h3><span class="section-number">1.2.5.1. </span>Control Valves<a class="headerlink" href="#control-valves" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.5.1. </span>Control Valves<a class="headerlink" href="#control-valves" title="Permalink to this heading">#</a></h3>
 <p>Solenoid Valves (On/Off)</p>
 <p><img alt="" src="../_images/solenoid_valve.jpg" /></p>
 <p>Proportional Control Valves</p>
 <p><img alt="" src="../_images/control_valve.jpg" /></p>
 </section>
 <section id="pumps">
-<h3><span class="section-number">1.2.5.2. </span>Pumps<a class="headerlink" href="#pumps" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">1.2.5.2. </span>Pumps<a class="headerlink" href="#pumps" title="Permalink to this heading">#</a></h3>
 <p><img alt="" src="../_images/pump2.jpg" /></p>
 <p><img alt="" src="../_images/pump.jpg" /></p>
 <p>Heaters</p>

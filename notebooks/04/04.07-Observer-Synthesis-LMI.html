@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4.7. Observer Synthesis using Linear Matrix Inequalities &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4.8. Application of Luenberger Observers to Environmental Modeling of Rivers" href="04.08-Envrironmental-Application.html" />
     <link rel="prev" title="4.6. Lab Assignment 6: Anomaly Detection" href="04.06-Lab-Assignment-Anomaly-Detection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1011,10 +1007,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="observer-synthesis-using-linear-matrix-inequalities">
-<h1><span class="section-number">4.7. </span>Observer Synthesis using Linear Matrix Inequalities<a class="headerlink" href="#observer-synthesis-using-linear-matrix-inequalities" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.7. </span>Observer Synthesis using Linear Matrix Inequalities<a class="headerlink" href="#observer-synthesis-using-linear-matrix-inequalities" title="Permalink to this heading">#</a></h1>
 <p>Note: This is an advanced topic</p>
 <section id="references">
-<h2><span class="section-number">4.7.1. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.1. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ol class="simple">
 <li><p>Charkabarty, Ankush. <a class="reference external" href="https://engineering.utsa.edu/ataha/wp-content/uploads/sites/38/2017/10/EE5243_Module10.pdf">“Guest Lecture: Exploiting Linear Matrix Inequalities In
 Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
@@ -1023,10 +1019,10 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 </ol>
 </section>
 <section id="model-parameters">
-<h2><span class="section-number">4.7.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.2. </span>Model Parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="lyapunov-design">
-<h2><span class="section-number">4.7.3. </span>Lyapunov Design<a class="headerlink" href="#lyapunov-design" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.3. </span>Lyapunov Design<a class="headerlink" href="#lyapunov-design" title="Permalink to this heading">#</a></h2>
 <p>Assuming no modeling error and ignoring disturbance inputs, the observer dynamics are described by</p>
 <div class="math notranslate nohighlight">
 \[\frac{de}{dt} = (A - LC)e\]</div>
@@ -1065,7 +1061,7 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 \[P \succ I\]</div>
 </section>
 <section id="cvxpy">
-<h2><span class="section-number">4.7.4. </span>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.4. </span>CVXPY<a class="headerlink" href="#cvxpy" title="Permalink to this heading">#</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install cvxpy
 </pre></div>
 </div>
@@ -1130,7 +1126,7 @@ Control Systems Design”</a>. (2015). Retrieved 29 March 2021.</p></li>
 </div>
 </section>
 <section id="cal-h-2-optimal-state-estimation">
-<h2><span class="section-number">4.7.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.5. </span><span class="math notranslate nohighlight">\(\cal{H}_2\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-2-optimal-state-estimation" title="Permalink to this heading">#</a></h2>
 <p>Let’s now consider performance metrics for the observer. In particular, we assume our system is of the form</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1264,7 +1260,7 @@ Tr(Z) &amp; &lt; \nu
 </div>
 </section>
 <section id="cal-h-infty-optimal-state-estimation">
-<h2><span class="section-number">4.7.6. </span><span class="math notranslate nohighlight">\(\cal{H}_{\infty}\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-infty-optimal-state-estimation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.7.6. </span><span class="math notranslate nohighlight">\(\cal{H}_{\infty}\)</span> Optimal State Estimation<a class="headerlink" href="#cal-h-infty-optimal-state-estimation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

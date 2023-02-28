@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.5. Implementing Controllers in Python &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.6. Practical Proportional (P) and Proportional-Integral (PI) Control" href="03.06-Proportional-Integral-Control.html" />
     <link rel="prev" title="3.4. Relay Control" href="03.04-Relay-Control.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1009,7 +1005,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="implementing-controllers-in-python">
-<h1><span class="section-number">3.5. </span>Implementing Controllers in Python<a class="headerlink" href="#implementing-controllers-in-python" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.5. </span>Implementing Controllers in Python<a class="headerlink" href="#implementing-controllers-in-python" title="Permalink to this heading">#</a></h1>
 <p>One of the challenges we will face is implementing complex control algorithms within the real-time event loop. Up to this point we have been doing the control calculations directly inside the event loop. This can work well for simple applications, like relay control for a single control variable. But for more complex algorithms and applications, this becomes completely unworkable. Placing the code for complex control algorithms directly in the event loop makes puts an undue burden on the coder to maintain all details of controller and system operation.</p>
 <p>What we seek are coding techniques that can encapusulate control algorithms into separate, self-contained blocks of code where they can be developed, tested, and deployed. This notebook introduces three techniques for implementing controllers in testable, modular fashion:</p>
 <ul class="simple">
@@ -1023,7 +1019,7 @@ title="Print to PDF"
 <p>Finally, Python classes provide even more flexibility by allowing the use of object oriented programming. This is more overhead than is required from simple control algorithms, but are key to the robust implementation of more complex systems.</p>
 <p>This notebook demonstrates these three different approaches to controller implementation. A reader new to Python coding may wish to limit their attention to the first two, nested functions and generators, and leave the more involved aspects of object-oriented coding the Python classes for a later time.</p>
 <section id="the-problem-with-coding-controllers-as-simple-functions">
-<h2><span class="section-number">3.5.1. </span>The problem with coding controllers as simple functions<a class="headerlink" href="#the-problem-with-coding-controllers-as-simple-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5.1. </span>The problem with coding controllers as simple functions<a class="headerlink" href="#the-problem-with-coding-controllers-as-simple-functions" title="Permalink to this heading">#</a></h2>
 <p>A function performing the duty of the controller does the calculations necessary to compute a new value of the manipulated variable, <span class="math notranslate nohighlight">\(MV_k\)</span>. For relay control with a deadzone, for example, the value of <span class="math notranslate nohighlight">\(MV_k\)</span> is given</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1099,7 +1095,7 @@ MV_{k} &amp; = \begin{cases}
 <p>This tight couplineg of the controller implementation, information management, and process operation would present very difficult challenges for the design and maintenance of control systems.</p>
 </section>
 <section id="what-we-seek-in-a-controller-implementation">
-<h2><span class="section-number">3.5.2. </span>What we seek in a controller implementation<a class="headerlink" href="#what-we-seek-in-a-controller-implementation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5.2. </span>What we seek in a controller implementation<a class="headerlink" href="#what-we-seek-in-a-controller-implementation" title="Permalink to this heading">#</a></h2>
 <p>What we seek in controller implementations are features facilitating the coding and maintenance of complex control systems and algorithms. Ideally, the code would “encapulate” the controllers such that:</p>
 <ul class="simple">
 <li><p>Multiple instances of generic control algorithms can be created, each with unique parameter values.</p></li>
@@ -1109,9 +1105,9 @@ MV_{k} &amp; = \begin{cases}
 <p>By separating controller implementations from the event loop, we create a more flexible, maintainable, and testable framework for process control.</p>
 </section>
 <section id="implementing-relay-control-as-a-python-generator">
-<h2><span class="section-number">3.5.3. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.5.3. </span>Implementing relay control as a Python generator<a class="headerlink" href="#implementing-relay-control-as-a-python-generator" title="Permalink to this heading">#</a></h2>
 <section id="what-is-a-python-generator">
-<h3><span class="section-number">3.5.3.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3.1. </span>What is a Python generator?<a class="headerlink" href="#what-is-a-python-generator" title="Permalink to this heading">#</a></h3>
 <p>To implement process control, we need functions that can receive new measurements of pocess variables and then return updated values for the manipulaed variables. Python generators creates functions which can return multiple values.</p>
 <p>Let’s break down what this means by starting with ordinary Python functions. Values are returned from Python functions with the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement. When the return statement is encountered the function is done. All local information is lost. The function starts from scratch each time it is called  retaining no information from prior use. Moreover, there is no way to communcate with the function after it is called.</p>
 <div class="cell docutils container">
@@ -1142,7 +1138,7 @@ MV_{k} &amp; = \begin{cases}
 </ul>
 </section>
 <section id="simple-examples-of-python-generators">
-<h3><span class="section-number">3.5.3.2. </span>Simple examples of Python generators<a class="headerlink" href="#simple-examples-of-python-generators" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3.2. </span>Simple examples of Python generators<a class="headerlink" href="#simple-examples-of-python-generators" title="Permalink to this heading">#</a></h3>
 <p>Values are returned from generators with a <code class="docutils literal notranslate"><span class="pre">yield</span></code> statement. But what makes a generator different is that operation can be restarted to produce values from more <code class="docutils literal notranslate"><span class="pre">yield</span></code> statements. (Functions are ‘one and done’, generators come back for another season.)</p>
 <p>Because generators can be called multiple times, there are some extra details involved with their use:</p>
 <ul class="simple">
@@ -1241,7 +1237,7 @@ for k in range(0, 2):
 </div>
 </section>
 <section id="sending-information-to-a-python-generator">
-<h3><span class="section-number">3.5.3.3. </span>Sending information to a Python generator.<a class="headerlink" href="#sending-information-to-a-python-generator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3.3. </span>Sending information to a Python generator.<a class="headerlink" href="#sending-information-to-a-python-generator" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_dog</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -1325,7 +1321,7 @@ Rover says fetch 4
 </div>
 </section>
 <section id="coding-a-relay-controller-as-a-python-generator">
-<h3><span class="section-number">3.5.3.4. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.5.3.4. </span>Coding a relay controller as a Python generator<a class="headerlink" href="#coding-a-relay-controller-as-a-python-generator" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Relay</span><span class="p">(</span><span class="n">MV_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">MV_max</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>

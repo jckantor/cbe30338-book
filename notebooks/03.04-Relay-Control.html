@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.4. Relay Control &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.5. Implementing Controllers in Python" href="03.05-Implementing-Controllers.html" />
     <link rel="prev" title="3.3. Case Study: PCR Thermal Cycler Protocols" href="03.03-Setpoints-Thermal-Cycler.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -955,9 +951,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="relay-control">
-<h1><span class="section-number">3.4. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.4. </span>Relay Control<a class="headerlink" href="#relay-control" title="Permalink to this heading">#</a></h1>
 <section id="relay-control-for-the-temperature-control-lab">
-<h2><span class="section-number">3.4.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4.1. </span>Relay Control for the Temperature Control Lab<a class="headerlink" href="#relay-control-for-the-temperature-control-lab" title="Permalink to this heading">#</a></h2>
 <p>Relay control is perhaps the simplest form of feedback control that comes to mind for controlling common heaters. This is the on/off control familiar from home thermostats, air conditioners, and other devices where the manipulated variable is in either an “on” state or an “off” state.</p>
 <p>The following code implements relay control for temperature T1 on the Temperature Control Lab. At each time step <span class="math notranslate nohighlight">\(t_k\)</span>, the value of</p>
 <div class="math notranslate nohighlight">
@@ -1009,7 +1005,7 @@ U_{k} &amp; = \begin{cases}
 </div>
 </section>
 <section id="relay-control-with-deadzone-hysteresis-or-deadtime">
-<h2><span class="section-number">3.4.2. </span>Relay Control with Deadzone (Hysteresis) or Deadtime<a class="headerlink" href="#relay-control-with-deadzone-hysteresis-or-deadtime" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.4.2. </span>Relay Control with Deadzone (Hysteresis) or Deadtime<a class="headerlink" href="#relay-control-with-deadzone-hysteresis-or-deadtime" title="Permalink to this heading">#</a></h2>
 <p>One of the issues with simple relay control is the potential for ‘chattering’ where the manipulated variable (in this case heater power) exhibits periods of rapid on-and-off switching. This can be caused by systems that are highly response to control inputs, or where sensor measurements carry significant noise.</p>
 <p>There are several simple and highly effective solutions to the problem of chattering.</p>
 <ul class="simple">

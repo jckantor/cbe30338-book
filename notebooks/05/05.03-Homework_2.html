@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5.3. Homework Assignment 2: Optimization &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.4. Gasoline Blending" href="05.04-Gasoline-Blending.html" />
     <link rel="prev" title="5.2. Linear Blending Problems" href="05.02-Linear-Blending-Problem.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -589,11 +590,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -977,18 +973,18 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="homework-assignment-2-optimization">
-<h1><span class="section-number">5.3. </span>Homework Assignment 2: Optimization<a class="headerlink" href="#homework-assignment-2-optimization" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.3. </span>Homework Assignment 2: Optimization<a class="headerlink" href="#homework-assignment-2-optimization" title="Permalink to this heading">#</a></h1>
 <p>Homework assigment 4 is intended to develop your skills in creating linear programming models. The lecture notes (notebook 5.2) will provide with a starting point for the following exercises. The problem data has been changed to provide a more meaningful example for sensitivity analysis.</p>
 <p>You have been placed in charge of a metals reuse operation. A collection of raw materials are available with key parameters given in the following table.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>material</p></th>
-<th class="text-align:center head"><p>% carbon (C)</p></th>
-<th class="text-align:center head"><p>% copper (Cu)</p></th>
-<th class="text-align:center head"><p>% manganese (Mn)</p></th>
-<th class="text-align:center head"><p>amount (kg)</p></th>
-<th class="text-align:center head"><p>cost ($/kg)</p></th>
-<th class="text-align:left head"><p>type</p></th>
+<tr class="row-odd"><th class="head text-align:center"><p>material</p></th>
+<th class="head text-align:center"><p>% carbon (C)</p></th>
+<th class="head text-align:center"><p>% copper (Cu)</p></th>
+<th class="head text-align:center"><p>% manganese (Mn)</p></th>
+<th class="head text-align:center"><p>amount (kg)</p></th>
+<th class="head text-align:center"><p>cost ($/kg)</p></th>
+<th class="head text-align:left"><p>type</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1051,11 +1047,11 @@ title="Print to PDF"
 </tbody>
 </table>
 <p>A customer has requested 5000 kg of mix satisfying these  specifications:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>Component</p></th>
-<th class="text-align:center head"><p>min %</p></th>
-<th class="text-align:center head"><p>max %</p></th>
+<tr class="row-odd"><th class="head text-align:center"><p>Component</p></th>
+<th class="head text-align:center"><p>min %</p></th>
+<th class="head text-align:center"><p>max %</p></th>
 </tr>
 </thead>
 <tbody>
@@ -1180,7 +1176,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <section id="exercise-1-getting-started">
-<h2><span class="section-number">5.3.1. </span>Exercise 1. Getting Started<a class="headerlink" href="#exercise-1-getting-started" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3.1. </span>Exercise 1. Getting Started<a class="headerlink" href="#exercise-1-getting-started" title="Permalink to this heading">#</a></h2>
 <p>Considering just the constraint on carbon content, adapt the <code class="docutils literal notranslate"><span class="pre">blend_beer</span></code> function from notebook 5.2 to find a minimum cost blend raw materials that yield 5000 kg of product with a carbon content between 2.0 and 3.0%. For this first exercise you can ignore the bounds on the available amount of each raw material.</p>
 <ul class="simple">
 <li><p>change the name of the function to <code class="docutils literal notranslate"><span class="pre">metal_blend</span></code>.</p></li>
@@ -1202,11 +1198,11 @@ title="Print to PDF"
 </ul>
 <p>You may find it convenient to write a function for this purpose that can be used in the following exercise.</p>
 <section id="solution">
-<h3><span class="section-number">5.3.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.3.1.1. </span>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 <section id="exercise-2-incorporating-constraints">
-<h2><span class="section-number">5.3.2. </span>Exercise 2. Incorporating Constraints<a class="headerlink" href="#exercise-2-incorporating-constraints" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3.2. </span>Exercise 2. Incorporating Constraints<a class="headerlink" href="#exercise-2-incorporating-constraints" title="Permalink to this heading">#</a></h2>
 <p>We’ll continue this problem by incorporating all of the constraints. The constraiints include:</p>
 <ul class="simple">
 <li><p>Lower and upper bounds on the copper and manganese composition</p></li>
@@ -1216,7 +1212,7 @@ title="Print to PDF"
 <p>What is the minimum price you would need to charge in $/kg to produce 5,000 kg of requested product?</p>
 </section>
 <section id="exercise-3-sensitivity-analysis">
-<h2><span class="section-number">5.3.3. </span>Exercise 3. Sensitivity Analysis<a class="headerlink" href="#exercise-3-sensitivity-analysis" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3.3. </span>Exercise 3. Sensitivity Analysis<a class="headerlink" href="#exercise-3-sensitivity-analysis" title="Permalink to this heading">#</a></h2>
 <p>One of the important reasons to create optimization models is to understand the value of the raw materials that are available to you, and how to adjust operations to accomodate changing requirements. The is commonly referred to as <strong>sensitivity analysis</strong>.</p>
 <p>Using the functions you’ve created in above exercises, answer the following questions:</p>
 <ol class="simple">

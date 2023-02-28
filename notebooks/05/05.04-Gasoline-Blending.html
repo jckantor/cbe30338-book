@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5.4. Gasoline Blending &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.5. Linear Programming" href="05.05-Linear-Programming.html" />
     <link rel="prev" title="5.3. Homework Assignment 2: Optimization" href="05.03-Homework_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1063,7 +1059,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gasoline-blending">
-<h1><span class="section-number">5.4. </span>Gasoline Blending<a class="headerlink" href="#gasoline-blending" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.4. </span>Gasoline Blending<a class="headerlink" href="#gasoline-blending" title="Permalink to this heading">#</a></h1>
 <p>** THIS WILL BE REVISED IN CLASS 3/22 (spill over to 3/24) **</p>
 <p>The task is to determine the most profitable blend of gasoline products from given set of refinery streams.</p>
 <p><img alt="" src="https://www.researchgate.net/profile/Jeffrey-Kelly-2/publication/260356707/figure/fig4/AS:267835926642706&#64;1440868469487/Typical-gasoline-blending-system-Color-figure-can-be-viewed-in-the-online-issue-which_W640.jpg" /></p>
@@ -1090,7 +1086,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="gasoline-product-specifications">
-<h2><span class="section-number">5.4.1. </span>Gasoline Product Specifications<a class="headerlink" href="#gasoline-product-specifications" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.1. </span>Gasoline Product Specifications<a class="headerlink" href="#gasoline-product-specifications" title="Permalink to this heading">#</a></h2>
 <p>The gasoline products include regular and premium gasoline. In addition to the current price, the specifications include</p>
 <ul class="simple">
 <li><p><strong>octane</strong> the minimum road octane number.  Road octane is the computed as the average of the Research Octane Number (RON) and Motor Octane Number (MON).</p></li>
@@ -1157,7 +1153,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="stream-specifications">
-<h2><span class="section-number">5.4.2. </span>Stream Specifications<a class="headerlink" href="#stream-specifications" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.2. </span>Stream Specifications<a class="headerlink" href="#stream-specifications" title="Permalink to this heading">#</a></h2>
 <p>A typical refinery produces many intermediate streams that can be incorporated in a blended gasoline product. Here we provide data on seven streams that include:</p>
 <ul class="simple">
 <li><p><strong>Butane</strong> n-butane is a C4 product stream produced from the light components of the crude being processed by the refinery. Butane is a highly volatile of gasoline.</p></li>
@@ -1292,7 +1288,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="questions-we-want-to-answer">
-<h2><span class="section-number">5.4.3. </span>Questions we want to Answer<a class="headerlink" href="#questions-we-want-to-answer" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.3. </span>Questions we want to Answer<a class="headerlink" href="#questions-we-want-to-answer" title="Permalink to this heading">#</a></h2>
 <ol class="simple">
 <li><p>What is the maximum profit possible using the current product specifications and available streams?</p></li>
 <li><p>What are the marginal values of each blending stream? That is, how much would you be willing to pay for each additional gallon of the blending streams?</p></li>
@@ -1301,39 +1297,39 @@ title="Print to PDF"
 </ol>
 </section>
 <section id="blending-model">
-<h2><span class="section-number">5.4.4. </span>Blending Model<a class="headerlink" href="#blending-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.4. </span>Blending Model<a class="headerlink" href="#blending-model" title="Permalink to this heading">#</a></h2>
 <p>This simplified blending model assumes the product attributes can be computed as linear volume weighted averages of the component properties. Let the decision variable <span class="math notranslate nohighlight">\(x_{s,p} \geq 0\)</span> be the volume, in gallons, of blending component <span class="math notranslate nohighlight">\(s \in S\)</span> used in the final product <span class="math notranslate nohighlight">\(p \in P\)</span>.</p>
 <section id="objective">
-<h3><span class="section-number">5.4.4.1. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.4.4.1. </span>Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h3>
 <p>The objective is maximize profit, which is the difference between product revenue and stream costs.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-72479838-7d0c-4165-89a6-f6fd82944827">
-<span class="eqno">(5.1)<a class="headerlink" href="#equation-72479838-7d0c-4165-89a6-f6fd82944827" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3aa2f791-5db9-4f96-b3b0-0cf7ab4720b2">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-3aa2f791-5db9-4f96-b3b0-0cf7ab4720b2" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mbox{profit} &amp; = \max_{x_{s,p}}\left( \sum_{p\in P} \text{Price}_p \sum_{s\in S} x_{s,p}
 - \sum_{s\in S} \text{Cost}_s \sum_{p\in P} x_{s,p}\right) \\
 &amp; = \max_{x_{s,p}}\left(\sum_{p\in P}\sum_{s\in S}x_{s,p}(\text{Price}_p - \text{Cost}_s)\right)
 \end{align}\]</div>
 </section>
 <section id="raw-materials">
-<h3><span class="section-number">5.4.4.2. </span>Raw Materials<a class="headerlink" href="#raw-materials" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.4.4.2. </span>Raw Materials<a class="headerlink" href="#raw-materials" title="Permalink to this heading">#</a></h3>
 <p>The first constraints in any blending problem are normally the limits on available raw materials. Letting $\text{</p>
 <p>The blending constraint for octane can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ca709f96-809b-46d5-9b96-575155655992">
-<span class="eqno">(5.2)<a class="headerlink" href="#equation-ca709f96-809b-46d5-9b96-575155655992" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c4e03a76-e1d0-4369-b199-543da89b388d">
+<span class="eqno">(5.2)<a class="headerlink" href="#equation-c4e03a76-e1d0-4369-b199-543da89b388d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{\sum_{s \in S} x_{s,p} \mbox{Octane}_s}{\sum_{s \in S} x_{s,p}} &amp; \geq \mbox{Octane}_p &amp; \forall p \in P
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mbox{Octane}_s\)</span> refers to the octane rating of stream <span class="math notranslate nohighlight">\(s\)</span>, whereas <span class="math notranslate nohighlight">\(\mbox{Octane}_p\)</span> refers to the octane rating of product <span class="math notranslate nohighlight">\(p\)</span>. Multiplying through by the denominator, and consolidating terms gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eca39af7-9bf2-4f27-aad5-3d7123324559">
-<span class="eqno">(5.3)<a class="headerlink" href="#equation-eca39af7-9bf2-4f27-aad5-3d7123324559" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-133967e8-ce29-4b36-8f29-91162e32afba">
+<span class="eqno">(5.3)<a class="headerlink" href="#equation-133967e8-ce29-4b36-8f29-91162e32afba" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Octane}_s - \mbox{Octane}_p\right) &amp; \geq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>The same assumptions and development apply to the benzene constraint</p>
-<div class="amsmath math notranslate nohighlight" id="equation-237e522c-ed91-47af-920d-d7faf9c742f7">
-<span class="eqno">(5.4)<a class="headerlink" href="#equation-237e522c-ed91-47af-920d-d7faf9c742f7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-00607005-1f27-411a-8539-0b964f92dfaf">
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-00607005-1f27-411a-8539-0b964f92dfaf" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{Benzene}_s - \mbox{Benzene}_p\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
 <p>Reid vapor pressure, however, follows a somewhat different mixing rule.  For the Reid vapor pressure we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3cd8464d-b849-45c2-b9ff-5db7ec2a15ad">
-<span class="eqno">(5.5)<a class="headerlink" href="#equation-3cd8464d-b849-45c2-b9ff-5db7ec2a15ad" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de8ee964-a623-4882-a2bc-f0e51f352521">
+<span class="eqno">(5.5)<a class="headerlink" href="#equation-de8ee964-a623-4882-a2bc-f0e51f352521" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{min,p}^{1.25}\right) &amp; \geq  0 &amp; \forall p \in P \\
 \sum_{s \in S} x_{s,p}\left(\mbox{RVP}_s^{1.25} - \mbox{RVP}_{max,p}^{1.25}\right) &amp; \leq  0 &amp; \forall p \in P
 \end{align}\]</div>
@@ -1500,9 +1496,9 @@ Profit = 27.5 cents per gallon.
 </section>
 </section>
 <section id="display-results">
-<h2><span class="section-number">5.4.5. </span>Display Results<a class="headerlink" href="#display-results" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.5. </span>Display Results<a class="headerlink" href="#display-results" title="Permalink to this heading">#</a></h2>
 <section id="results-for-each-stream">
-<h3><span class="section-number">5.4.5.1. </span>Results for each Stream<a class="headerlink" href="#results-for-each-stream" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.4.5.1. </span>Results for each Stream<a class="headerlink" href="#results-for-each-stream" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stream_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -1532,7 +1528,7 @@ Alkylate          0.0  40000.0  40000.0    40000.0             0.0
 </div>
 </section>
 <section id="results-for-each-product">
-<h3><span class="section-number">5.4.5.2. </span>Results for each Product<a class="headerlink" href="#results-for-each-product" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.4.5.2. </span>Results for each Product<a class="headerlink" href="#results-for-each-product" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">product_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -1559,7 +1555,7 @@ Premium  114250.0    91.0  10.6      0.7
 </section>
 </section>
 <section id="exercise-1">
-<h2><span class="section-number">5.4.6. </span>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.6. </span>Exercise 1.<a class="headerlink" href="#exercise-1" title="Permalink to this heading">#</a></h2>
 <p>The marketing team says there is an opportunity to create a mid-grade gasoline product with a road octane number of 89 that would sell for $2.82/gallon, and with all other specifications the same. Could an additional profit be created?</p>
 <p>Create a new cell (or cells) below to compute a solution to this exercise.</p>
 <div class="cell docutils container">
@@ -1685,7 +1681,7 @@ Profit = 44.7 cents per gallon.
 </div>
 </section>
 <section id="exercise-2">
-<h2><span class="section-number">5.4.7. </span>Exercise 2.<a class="headerlink" href="#exercise-2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.7. </span>Exercise 2.<a class="headerlink" href="#exercise-2" title="Permalink to this heading">#</a></h2>
 <p>New environmental regulations have reduced the allowable benzene levels from 1.1 vol% to 0.62 vol%, and the maximum Reid vapor pressure from 15.0 to 9.0.</p>
 <p>Compared to the base case (i.e., without the midgrade product), how does this change profitability?</p>
 <div class="cell docutils container">
@@ -1808,7 +1804,7 @@ Profit = 32.4 cents per gallon.
 </div>
 </section>
 <section id="exercise-3">
-<h2><span class="section-number">5.4.8. </span>Exercise 3.<a class="headerlink" href="#exercise-3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.8. </span>Exercise 3.<a class="headerlink" href="#exercise-3" title="Permalink to this heading">#</a></h2>
 <p>Given the new product specifications in Exercise 2, let’s consider using different refinery streams. In place of Reformate, the refinery could produce Reformate LB. (That is, one or the other of the two streams could be 60000 gallons per day, but not both).  Same for LSR and Reformate.  How should the refinery be operated to maximize profitability?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
