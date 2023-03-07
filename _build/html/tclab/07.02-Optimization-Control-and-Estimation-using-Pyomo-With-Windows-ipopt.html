@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>8.2. Simulation, Control, and Estimation using Pyomo &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Python Tutorials" href="../python/A.00-Python-Tutorials.html" />
     <link rel="prev" title="8.1. Simulation, Control, and Estimation using Pyomo" href="07.01-Optimization-Control-and-Estimation-using-Pyomo.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1077,12 +1073,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="simulation-control-and-estimation-using-pyomo">
-<h1><span class="section-number">8.2. </span>Simulation, Control, and Estimation using Pyomo<a class="headerlink" href="#simulation-control-and-estimation-using-pyomo" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8.2. </span>Simulation, Control, and Estimation using Pyomo<a class="headerlink" href="#simulation-control-and-estimation-using-pyomo" title="Permalink to this heading">#</a></h1>
 <section id="installations">
-<h2><span class="section-number">8.2.1. </span>Installations<a class="headerlink" href="#installations" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.1. </span>Installations<a class="headerlink" href="#installations" title="Permalink to this heading">#</a></h2>
 <p>The following instructions show how to download and install pyomo and the ipopt solver.  Execute the appropriate cell for your platform (if needed).</p>
 <section id="google-colab">
-<h3><span class="section-number">8.2.1.1. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.1.1. </span>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
@@ -1101,7 +1097,7 @@ unzip:  cannot find or open ipopt-linux64, ipopt-linux64.zip or ipopt-linux64.ZI
 </div>
 </section>
 <section id="macos">
-<h3><span class="section-number">8.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.1.2. </span>MacOS<a class="headerlink" href="#macos" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q pyomo
@@ -1115,7 +1111,7 @@ unzip:  cannot find or open ipopt-linux64, ipopt-linux64.zip or ipopt-linux64.ZI
 </div>
 </section>
 <section id="windows-pc">
-<h3><span class="section-number">8.2.1.3. </span>Windows PC<a class="headerlink" href="#windows-pc" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.1.3. </span>Windows PC<a class="headerlink" href="#windows-pc" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>conda install -c conda-forge pyomo pyomo.extras
@@ -1140,7 +1136,7 @@ Solving environment: ...working... done
 </section>
 </section>
 <section id="process-information">
-<h2><span class="section-number">8.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.2. </span>Process Information<a class="headerlink" href="#process-information" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1149,7 +1145,7 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 \end{align*}
 \end{split}\]</div>
 <section id="process-parameter-values">
-<h3><span class="section-number">8.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2.1. </span>Process Parameter Values<a class="headerlink" href="#process-parameter-values" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="mf">0.04</span>        <span class="c1"># power input when the system is turned</span>
@@ -1164,7 +1160,7 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 </div>
 </section>
 <section id="process-inputs">
-<h3><span class="section-number">8.2.2.2. </span>Process Inputs<a class="headerlink" href="#process-inputs" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.2.2. </span>Process Inputs<a class="headerlink" href="#process-inputs" title="Permalink to this heading">#</a></h3>
 <p>The next cell defines some process inputs that will be used throughout the notebook to demonstrate aspects of process simulation, control, and estimation.  These are gathered in one place to make it easier to modify the notebook to test the response under different conditions. These functions are implemented using the <code class="docutils literal notranslate"><span class="pre">interp1d</span></code> from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1220,7 +1216,7 @@ C_p^S \frac{dT_S}{dt} &amp; = - U_c (T_S - T_H)
 </section>
 </section>
 <section id="pyomo-simulation">
-<h2><span class="section-number">8.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.3. </span>Pyomo Simulation<a class="headerlink" href="#pyomo-simulation" title="Permalink to this heading">#</a></h2>
 <p>Let’s see how well our initial guess at a control strategy will work for us.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1312,7 +1308,7 @@ T_S(t_0) &amp; = T_{amb}
 </div>
 </section>
 <section id="optimal-control-with-knowledge-of-disturbances">
-<h2><span class="section-number">8.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.4. </span>Optimal Control with Knowledge of Disturbances<a class="headerlink" href="#optimal-control-with-knowledge-of-disturbances" title="Permalink to this heading">#</a></h2>
 <p>An optimal control policy minimizes the differences</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1437,7 +1433,7 @@ Solution:
 </div>
 </div>
 <section id="exercise">
-<h3><span class="section-number">8.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">8.2.4.1. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>The optimal control computed above requires rapid changes in power level. In process systems where control action requires movement of a valve stem position, there are often limits on how fast the manipulated variable can change. Modify the model to include differential inequalities that limit the time rate of change of control.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1450,7 +1446,7 @@ Solution:
 </section>
 </section>
 <section id="estimation-observation">
-<h2><span class="section-number">8.2.5. </span>Estimation/Observation<a class="headerlink" href="#estimation-observation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.5. </span>Estimation/Observation<a class="headerlink" href="#estimation-observation" title="Permalink to this heading">#</a></h2>
 <blockquote>
 <div><p>“… and now my watch begins …” ―The Night’s Watch oath, Game of Thrones</p>
 </div></blockquote>
@@ -1578,7 +1574,7 @@ Wall time: 718 ms
 </div>
 </section>
 <section id="coding-the-observer-as-a-python-generator">
-<h2><span class="section-number">8.2.6. </span>Coding the Observer as a Python Generator<a class="headerlink" href="#coding-the-observer-as-a-python-generator" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.6. </span>Coding the Observer as a Python Generator<a class="headerlink" href="#coding-the-observer-as-a-python-generator" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1685,7 +1681,7 @@ Wall time: 6.29 s
 </div>
 </section>
 <section id="coding-the-controller-as-a-python-generator">
-<h2><span class="section-number">8.2.7. </span>Coding the Controller as a Python Generator<a class="headerlink" href="#coding-the-controller-as-a-python-generator" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.2.7. </span>Coding the Controller as a Python Generator<a class="headerlink" href="#coding-the-controller-as-a-python-generator" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>

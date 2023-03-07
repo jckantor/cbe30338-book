@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5.9. Pooling and Blending &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="6. Predictive Control" href="06.00-Predictive-Control.html" />
     <link rel="prev" title="5.8. Recharging Strategy for an Electric Vehicle" href="../CBE30338-EV-Example.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -995,7 +991,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pooling-and-blending">
-<h1><span class="section-number">5.9. </span>Pooling and Blending<a class="headerlink" href="#pooling-and-blending" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.9. </span>Pooling and Blending<a class="headerlink" href="#pooling-and-blending" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Pyomo and solvers for Google Colab</span>
@@ -1008,7 +1004,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="bibliographic-notes">
-<h2><span class="section-number">5.9.1. </span>Bibliographic Notes<a class="headerlink" href="#bibliographic-notes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.1. </span>Bibliographic Notes<a class="headerlink" href="#bibliographic-notes" title="Permalink to this heading">#</a></h2>
 <p>The pooling and blending is a large scale and high value problem in the process and refining industries. The prototypical examples are the pooling and blending crude oils to meet the feed stock constraints of refineries, and the pooling of refinery products for pipeline delivery to distribution facilities where products are blended for retail sale.</p>
 <p>Haverly (1978) is a commonly cited small benchmark problem for the pooling and blending of sulfurous fuels.</p>
 <blockquote>
@@ -1032,7 +1028,7 @@ title="Print to PDF"
 <p>Applications for pooling and blending are probably underappreciated. In particular, what role might pooling and blending problems have in projects like the World Food Programme (WFP)?</p>
 </section>
 <section id="example-pooling-milk-for-wholesale-blending-and-distribution">
-<h2><span class="section-number">5.9.2. </span>Example: Pooling Milk for Wholesale Blending and Distribution<a class="headerlink" href="#example-pooling-milk-for-wholesale-blending-and-distribution" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.2. </span>Example: Pooling Milk for Wholesale Blending and Distribution<a class="headerlink" href="#example-pooling-milk-for-wholesale-blending-and-distribution" title="Permalink to this heading">#</a></h2>
 <p>A bulk distributor supplies several customers with deliveries of raw milk purchased from local farms. The deliveries may be blended to meet the minimum required milk fat content specified by each customer.</p>
 <p>The distributor has found lower cost sources of raw milk from several farms located a long distance away. The distant farms produce grades of milk that may be blended with local sources. The distributor, however, has just one truck available to transport raw milk from the distant farms to the blending facility. Therefore any milk purchased from the distant farms would be pooled for transport to the blending station.</p>
 <p>The situation is illustrated in the following diagram where the arrows show the flow and blending of milk supplies.</p>
@@ -1201,7 +1197,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="option-1-business-as-usual">
-<h2><span class="section-number">5.9.3. </span>Option 1. Business as usual<a class="headerlink" href="#option-1-business-as-usual" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.3. </span>Option 1. Business as usual<a class="headerlink" href="#option-1-business-as-usual" title="Permalink to this heading">#</a></h2>
 <p>Business as usual for the milk distributor is to blend supplies from the two local farms to meet customer requirements. Let <span class="math notranslate nohighlight">\(L\)</span> designate the set of local suppliers, and let <span class="math notranslate nohighlight">\(C\)</span> designate the set of customers. The decision variable <span class="math notranslate nohighlight">\(x_{l, c}\)</span> is the amount of milk from local supplier <span class="math notranslate nohighlight">\(l\in L\)</span> mixed into the blend for customer <span class="math notranslate nohighlight">\(c\in C\)</span>.</p>
 <p>The distributor’s objectives is to maximize profit</p>
 <div class="math notranslate nohighlight">
@@ -1336,7 +1332,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="option-2-buy-an-additional-truck">
-<h2><span class="section-number">5.9.4. </span>Option 2. Buy an additional truck<a class="headerlink" href="#option-2-buy-an-additional-truck" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.4. </span>Option 2. Buy an additional truck<a class="headerlink" href="#option-2-buy-an-additional-truck" title="Permalink to this heading">#</a></h2>
 <p>The current profit earned is 58,200 using only local suppliers. Before considering pooling, however, the distributor may wish to know the maximum profit potential that could be earned if the remote suppliers could be blended as if they were local suppliers. This would require acquiring and operating a separate transport for each remote supplier, so it is worth knowing if the additional profit earned would justify the additional expense.</p>
 <p>The model used above applies by extending the set of suppliers to include both local and remote farms. The required changes are noted in the cell below.</p>
 <div class="cell docutils container">
@@ -1459,7 +1455,7 @@ title="Print to PDF"
 <p>The calculations show that purchasing raw milk from the remote farms can significantly increases profits. The blending plan, however, requires transporting 4,618 units of raw milk from farms C, and additional 3,882 units of raw milk from farm C.  The plan does not allow pooling these sources prior to transport, otherwise they would somehow need to be “unblended” to meet the minimum quality requirement for customer A.</p>
 </section>
 <section id="option-3-pool-delivery-from-remote-farms">
-<h2><span class="section-number">5.9.5. </span>Option 3. Pool delivery from remote farms<a class="headerlink" href="#option-3-pool-delivery-from-remote-farms" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.5. </span>Option 3. Pool delivery from remote farms<a class="headerlink" href="#option-3-pool-delivery-from-remote-farms" title="Permalink to this heading">#</a></h2>
 <p>Analysis of the first two options shows there is significant additional profit to be earned by purchasing raw milk from the remote farms. But the option requires acquiring and operating an additional truck to keep the materials separate for later blending. Blending at the remote location is also not an option because that plan, too, would require separate transport.</p>
 <p>The natural question is whether the one existing truck could transport a pool of raw milk from remote farms C and D that could be blended with raw milk from local farms A and B to meet customer requirements. The profit potential may be reduced due to pooling, but it may still be a better option than adding additional operating expense.</p>
 <p>There are a number of formulations of this problem. This analysis will use a version of the “p-parameterization” where composition of the pool is a decision variable. Here that variable will be called <span class="math notranslate nohighlight">\(f\)</span>.</p>
@@ -1587,7 +1583,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="exercise">
-<h2><span class="section-number">5.9.6. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.9.6. </span>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <ol class="simple">
 <li><p>Rather than scan values of <span class="math notranslate nohighlight">\(f\)</span> to look for an optimum, revise the Pyomo model to find the optimum value. This will be a nonlinear optimization, and a challenging one at that.  Try using ‘gurobi_direct’ and ‘ipopt’ solvers to find a solution. Did you find a solver that could solve this nonlinear problem?</p></li>
 <li><p>The above analysis assumed unlimited transport. The truck turns out to have a limit of 4,000 units of milk. Write the mathematical constraint necessary to introduce that limit into the model. Then add that constraint to the Pyomo model and discuss the impact on profit.</p></li>

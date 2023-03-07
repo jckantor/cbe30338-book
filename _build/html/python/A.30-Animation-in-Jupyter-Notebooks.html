@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Animation in Jupyter Notebooks &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -54,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Modular Simulation using Python Generators" href="A.11-Modular-Approach-to-Simulation-using-Python-Generators.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -588,11 +589,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1016,21 +1012,21 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="animation-in-jupyter-notebooks">
-<h1>Animation in Jupyter Notebooks<a class="headerlink" href="#animation-in-jupyter-notebooks" title="Permalink to this headline">#</a></h1>
+<h1>Animation in Jupyter Notebooks<a class="headerlink" href="#animation-in-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Animation features are built into the Python matplotlib library and available through Jupyter notebooks. Unfortunately, however, the documentation is not particularly robust. This short notebook provides simple demonstrations of using animiation for the visualization of simulation results.</p>
 <p>The resulting animations are html video files embedded within the Jupyter notebook. The videos can be viewed in any modern web browser. Since they don’t require an active Python kernal, the animations can be seen when the even when notebook is viewed as a static HTML web page.</p>
 <p>The techniques used below come from blog postings <a class="reference external" href="https://jakevdp.github.io/blog/2013/02/16/animating-the-lorentz-system-in-3d/">Animating the Lorenz System in 3D</a> and <a class="reference external" href="http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/">Embedding Matplotlib Animations in Jupyter Notebooks</a>.</p>
 </section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
 <p>You should be able to view the animations with any modern web browser. However, to create animiations using the following cells you will need to install a video codec. By default matplotlib is configured to use ffmpeg. You find instructions on installing ffmpeg <a class="reference external" href="https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg">here</a>.</p>
 </section>
 <section id="step-by-step-approach-to-animation-with-matplotlib">
-<h2>Step-by-Step Approach to Animation with Matplotlib<a class="headerlink" href="#step-by-step-approach-to-animation-with-matplotlib" title="Permalink to this headline">#</a></h2>
+<h2>Step-by-Step Approach to Animation with Matplotlib<a class="headerlink" href="#step-by-step-approach-to-animation-with-matplotlib" title="Permalink to this heading">#</a></h2>
 <section id="step-1-create-the-background-frame">
-<h3>Step 1. Create the background frame.<a class="headerlink" href="#step-1-create-the-background-frame" title="Permalink to this headline">#</a></h3>
+<h3>Step 1. Create the background frame.<a class="headerlink" href="#step-1-create-the-background-frame" title="Permalink to this heading">#</a></h3>
 <p>The following cell creates a background frame for the animation. These are standard matplotlib graphics commands, but where we have kept a reference to the resulting objects. The objects include <code class="docutils literal notranslate"><span class="pre">fig</span></code> for the figure object, <code class="docutils literal notranslate"><span class="pre">ax1</span></code> and <code class="docutils literal notranslate"><span class="pre">ax2</span></code> for each of the two plotting axes, and then <code class="docutils literal notranslate"><span class="pre">txt_title</span></code>, <code class="docutils literal notranslate"><span class="pre">line1</span></code>, <code class="docutils literal notranslate"><span class="pre">line2</span></code>, <code class="docutils literal notranslate"><span class="pre">pt1</span></code>, and <code class="docutils literal notranslate"><span class="pre">line3</span></code> for graphical elements that will be updated in each frame of the animation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1076,7 +1072,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-2-define-a-function-to-draw-each-frame">
-<h3>Step 2. Define a function to draw each frame<a class="headerlink" href="#step-2-define-a-function-to-draw-each-frame" title="Permalink to this headline">#</a></h3>
+<h3>Step 2. Define a function to draw each frame<a class="headerlink" href="#step-2-define-a-function-to-draw-each-frame" title="Permalink to this heading">#</a></h3>
 <p>The animiation function is a function you define to draw individual frames in the animation. The variable <code class="docutils literal notranslate"><span class="pre">n</span></code> will be the frame number.  The function draws the frame by resetting the data values for the global objects <code class="docutils literal notranslate"><span class="pre">txt_title</span></code>, <code class="docutils literal notranslate"><span class="pre">line1</span></code>, <code class="docutils literal notranslate"><span class="pre">line2</span></code>, <code class="docutils literal notranslate"><span class="pre">pt1</span></code>, and <code class="docutils literal notranslate"><span class="pre">line3</span></code> that were defined above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1097,7 +1093,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-3-create-the-animation-object">
-<h3>Step 3. Create the Animation Object<a class="headerlink" href="#step-3-create-the-animation-object" title="Permalink to this headline">#</a></h3>
+<h3>Step 3. Create the Animation Object<a class="headerlink" href="#step-3-create-the-animation-object" title="Permalink to this heading">#</a></h3>
 <p>The animation class includes a function <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> that incorporations a user-specified function to update the figure for each frame of the animation. The result is an animation object which is subsequently called to actually produce the desired animation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1111,7 +1107,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="step-4-render-the-animation">
-<h3>Step 4. Render the Animation<a class="headerlink" href="#step-4-render-the-animation" title="Permalink to this headline">#</a></h3>
+<h3>Step 4. Render the Animation<a class="headerlink" href="#step-4-render-the-animation" title="Permalink to this heading">#</a></h3>
 <p>The final step is to actually render and display the desired animation. This is the compute-intensive step in the procedure. The next cell imports <code class="docutils literal notranslate"><span class="pre">HTML</span></code> which is used to display a HTML elements created in a python script. The animation is rendered to html5 video with the <code class="docutils literal notranslate"><span class="pre">to_html5_video()</span></code> function and then displayed with <code class="docutils literal notranslate"><span class="pre">HTML()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3833,7 +3829,7 @@ MDA=
 </section>
 </section>
 <section id="example-phase-plane-animation-for-an-exothermic-stirred-tank-reactor">
-<h2>Example: Phase Plane Animation for an Exothermic Stirred-Tank Reactor<a class="headerlink" href="#example-phase-plane-animation-for-an-exothermic-stirred-tank-reactor" title="Permalink to this headline">#</a></h2>
+<h2>Example: Phase Plane Animation for an Exothermic Stirred-Tank Reactor<a class="headerlink" href="#example-phase-plane-animation-for-an-exothermic-stirred-tank-reactor" title="Permalink to this heading">#</a></h2>
 <p>This is more complex example that demonstrates the complex dynamics of an exothermic continuous stirred-tank reactor when operated with an unstable steady state. The computational strategy is to compute solutions to the dynamical model for a set of initial conditions, then step through the solutions simulataneously to draw frames in the animation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

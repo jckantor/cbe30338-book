@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4.3. State Estimation &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4.4. Lab Assignment 5: State Estimation" href="04.04-Lab-Assigment-State-Estimation.html" />
     <link rel="prev" title="4.2. Data/Process/Operational Historian" href="04.02-Process-Historians.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1063,10 +1059,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="state-estimation">
-<h1><span class="section-number">4.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.3. </span>State Estimation<a class="headerlink" href="#state-estimation" title="Permalink to this heading">#</a></h1>
 <p>This notebook outlines state estimation using the TCLab hardware.</p>
 <section id="output-feedback-control">
-<h2><span class="section-number">4.3.1. </span>Output Feedback Control<a class="headerlink" href="#output-feedback-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.1. </span>Output Feedback Control<a class="headerlink" href="#output-feedback-control" title="Permalink to this heading">#</a></h2>
 <p>Let’s begin our investigations by considering the single loop control problem for a single heater/sensor assembly in the Temperature Control Lab. First we define a setpoint function that we’ll be using throughout the notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1144,7 +1140,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="the-trouble-with-output-feedback">
-<h2><span class="section-number">4.3.2. </span>The Trouble with Output Feedback<a class="headerlink" href="#the-trouble-with-output-feedback" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.2. </span>The Trouble with Output Feedback<a class="headerlink" href="#the-trouble-with-output-feedback" title="Permalink to this heading">#</a></h2>
 <p>So how did we do? Let’s look at the response of the measured sensor temperature and heater input.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1167,16 +1163,16 @@ title="Print to PDF"
 <p>In the context of control, the control variable (CV) is heater temperature, the measured process variable (PV) is the sensor temperature, and we haven’t yet established the relationship between them.</p>
 </section>
 <section id="heater-sensor-model">
-<h2><span class="section-number">4.3.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.3. </span>Heater/Sensor Model<a class="headerlink" href="#heater-sensor-model" title="Permalink to this heading">#</a></h2>
 <p>In chapter two we explored various models for describing the response of the heater/sensor assemblies to heater inputs. For heater/sensor assembly 1 we developed the following model</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ab203f4-b041-46aa-bdda-373cec49fb61">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-0ab203f4-b041-46aa-bdda-373cec49fb61" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-46a4d986-aba1-4021-b13d-e5afcb7eb41b">
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-46a4d986-aba1-4021-b13d-e5afcb7eb41b" title="Permalink to this equation">#</a></span>\[\begin{align}
 C^H_p\frac{dT_{H,1}}{dt} &amp; = U_a(T_{amb} - T_{H,1}) + U_b(T_{S,1} - T_{H,1}) + \alpha P_1 u_1\\
 C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(C^H_p\)</span> and <span class="math notranslate nohighlight">\(C^S_p\)</span> are the gross heat capacities of the heater and sensor, respectively, <span class="math notranslate nohighlight">\(U_a\)</span> is the heat transfer coefficient characterizing the exchange of heat with the surroundings, and <span class="math notranslate nohighlight">\(U_b\)</span> is a heat transfer coefficient between the heater and sensor.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5049cd24-47aa-41b2-b344-11b5fdf544cc">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-5049cd24-47aa-41b2-b344-11b5fdf544cc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2c90cd94-1bb0-4cef-bd5a-e49e2f563580">
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-2c90cd94-1bb0-4cef-bd5a-e49e2f563580" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dT_{H,1}}{dt} &amp; = -\frac{U_a+U_b}{C^H_p}T_{H,1} + \frac{U_b}{C^H_p}T_{S,1} + \frac{\alpha P_1}{C^H_p}u_1 + \frac{U_a}{C^H_p}T_{amb}\\
 \frac{dT_{S,1}}{dt} &amp; = \frac{U_b}{C^S_p}(T_{H,1} - T_{S,1}) 
 \end{align}\]</div>
@@ -1185,10 +1181,10 @@ C^S_p\frac{dT_{S,1}}{dt} &amp; = U_b(T_{H,1} - T_{S,1})
 \[T_1 = T_{S,1}\]</div>
 </section>
 <section id="converting-to-a-state-space-model">
-<h2><span class="section-number">4.3.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.4. </span>Converting to a State-Space Model<a class="headerlink" href="#converting-to-a-state-space-model" title="Permalink to this heading">#</a></h2>
 <p>The same model can be written in a <strong>state-space</strong> matrix/vector format:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3db6ca1b-b2c7-4b6a-b289-8b3490a3654f">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-3db6ca1b-b2c7-4b6a-b289-8b3490a3654f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-88239163-5970-4c4e-8562-58e620d1bb84">
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-88239163-5970-4c4e-8562-58e620d1bb84" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} &amp; = A x + B_u u + B_d d \\
 y &amp; = C x
 \end{align}\]</div>
@@ -1214,7 +1210,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <p><img alt="" src="../../_images/FeedbackControlDiagram2.png" /></p>
 </section>
 <section id="model-predictions">
-<h2><span class="section-number">4.3.5. </span>Model Predictions<a class="headerlink" href="#model-predictions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.5. </span>Model Predictions<a class="headerlink" href="#model-predictions" title="Permalink to this heading">#</a></h2>
 <p>For a sufficiently small time step, the change in state is approximated to first-order by</p>
 <div class="math notranslate nohighlight">
 \[\frac{dx}{dt}\bigg\rvert_{k-1} \approx \frac{x_{k} - x_{k-1}}{t_k - t_{k-1}}\]</div>
@@ -1322,7 +1318,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </section>
 <section id="the-trouble-with-model-predictions">
-<h2><span class="section-number">4.3.6. </span>The Trouble with Model Predictions<a class="headerlink" href="#the-trouble-with-model-predictions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.6. </span>The Trouble with Model Predictions<a class="headerlink" href="#the-trouble-with-model-predictions" title="Permalink to this heading">#</a></h2>
 <p>So far what we’re doing is interesting, but with no real consequence for control. All we are doing is passing input information along to the model so that it can operate in parallel with our actual hardware.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1365,7 +1361,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </div>
 </div>
 <section id="issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature">
-<h3><span class="section-number">4.3.6.1. </span>Issue 1: Heater temperature is markedly different from the sensor temperature.<a class="headerlink" href="#issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.6.1. </span>Issue 1: Heater temperature is markedly different from the sensor temperature.<a class="headerlink" href="#issue-1-heater-temperature-is-markedly-different-from-the-sensor-temperature" title="Permalink to this heading">#</a></h3>
 <p>Let’s first compare the setpoint to the heater temperature predicted by the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1400,7 +1396,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 <p>We see that the heater temperature predicted by the model is substantially different from the desired setpoint. Using the measured temperature as a proxy for heater temperature turns out not to work for applications requiring precise temperature control.</p>
 </section>
 <section id="issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures">
-<h3><span class="section-number">4.3.6.2. </span>Issue 2: The model may not be an accurate predictor of temperatures.<a class="headerlink" href="#issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.6.2. </span>Issue 2: The model may not be an accurate predictor of temperatures.<a class="headerlink" href="#issue-2-the-model-may-not-be-an-accurate-predictor-of-temperatures" title="Permalink to this heading">#</a></h3>
 <p>Next, let’s compare the actual temperature measurements to the sensor temperature predicted by the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1436,7 +1432,7 @@ C = \begin{bmatrix} 0 &amp; 1 \end{bmatrix}\end{split}\]</div>
 </section>
 </section>
 <section id="incorporating-measurements">
-<h2><span class="section-number">4.3.7. </span>Incorporating Measurements<a class="headerlink" href="#incorporating-measurements" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.7. </span>Incorporating Measurements<a class="headerlink" href="#incorporating-measurements" title="Permalink to this heading">#</a></h2>
 <p>As this example has made clear, we need a notation that distinguishes the actual state of the physical system from our best estimate of that state. We will use <span class="math notranslate nohighlight">\(\hat{x}\)</span> to denote our best estimate of <span class="math notranslate nohighlight">\(x\)</span>, and use <span class="math notranslate nohighlight">\(\hat{y}\)</span> to denote the measurement that would result from <span class="math notranslate nohighlight">\(\hat{x}\)</span>. We can write two systems of equations corresponding to the dynamics of the actual process and to a model of the process.</p>
 <ul class="simple">
 <li><p><strong>Process</strong></p></li>
@@ -1485,7 +1481,7 @@ y &amp; = C x
 \end{align*}\]</div>
 <p>The choice of <span class="math notranslate nohighlight">\(L\)</span> determines observer performance. What we seek is a matrix <span class="math notranslate nohighlight">\(L\)</span> such that <span class="math notranslate nohighlight">\(A - LC\)</span> results in error <span class="math notranslate nohighlight">\(e\)</span> that quickly decays to zero.</p>
 <section id="fun-with-eigenvalues">
-<h3><span class="section-number">4.3.7.1. </span>Fun with Eigenvalues<a class="headerlink" href="#fun-with-eigenvalues" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.7.1. </span>Fun with Eigenvalues<a class="headerlink" href="#fun-with-eigenvalues" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1520,7 +1516,7 @@ y &amp; = C x
 </div>
 </section>
 <section id="model-prediction-measurement-correction">
-<h3><span class="section-number">4.3.7.2. </span>Model Prediction / Measurement Correction<a class="headerlink" href="#model-prediction-measurement-correction" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">4.3.7.2. </span>Model Prediction / Measurement Correction<a class="headerlink" href="#model-prediction-measurement-correction" title="Permalink to this heading">#</a></h3>
 <p>Making the substitution <span class="math notranslate nohighlight">\(\hat{y} = C\hat{x}\)</span>, the observer equation becomes</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -1672,7 +1668,7 @@ y &amp; = C x
 </section>
 </section>
 <section id="state-estimation-and-closed-loop-relay-control">
-<h2><span class="section-number">4.3.8. </span>State Estimation and Closed-Loop Relay Control<a class="headerlink" href="#state-estimation-and-closed-loop-relay-control" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.3.8. </span>State Estimation and Closed-Loop Relay Control<a class="headerlink" href="#state-estimation-and-closed-loop-relay-control" title="Permalink to this heading">#</a></h2>
 <p>Zounds!!  We now have an estimator that locks on to the measured value of the sensor temperature.</p>
 <p>Now, if we really trust our model, let’s take it a step further and control the estimated heater temperature. The following cell replaaces the temperature measurement in the relay feedback using estimated heater temperature. Measurements are still be used, but for estimation raather than directly in the controller feedback.</p>
 <div class="cell docutils container">

@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.1. Fitting Step Test Data to Empirical Models &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="4. Estimating Model Parameters" href="03.00-Estimating-Model-Parameters.html" />
     <link rel="prev" title="3. Empirical Model Identification" href="02.00-Empirical-Model-Identification.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1019,9 +1015,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="fitting-step-test-data-to-empirical-models">
-<h1><span class="section-number">3.1. </span>Fitting Step Test Data to Empirical Models<a class="headerlink" href="#fitting-step-test-data-to-empirical-models" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Fitting Step Test Data to Empirical Models<a class="headerlink" href="#fitting-step-test-data-to-empirical-models" title="Permalink to this heading">#</a></h1>
 <section id="read-the-data-file">
-<h2><span class="section-number">3.1.1. </span>Read the Data File<a class="headerlink" href="#read-the-data-file" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.1. </span>Read the Data File<a class="headerlink" href="#read-the-data-file" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1042,9 +1038,9 @@ title="Print to PDF"
 </div>
 </section>
 <section id="parameter-estimation">
-<h2><span class="section-number">3.1.2. </span>Parameter Estimation<a class="headerlink" href="#parameter-estimation" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.2. </span>Parameter Estimation<a class="headerlink" href="#parameter-estimation" title="Permalink to this heading">#</a></h2>
 <section id="fitting-the-step-change-data-to-a-first-order-model">
-<h3><span class="section-number">3.1.2.1. </span>Fitting the Step Change Data to a First Order Model<a class="headerlink" href="#fitting-the-step-change-data-to-a-first-order-model" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.2.1. </span>Fitting the Step Change Data to a First Order Model<a class="headerlink" href="#fitting-the-step-change-data-to-a-first-order-model" title="Permalink to this heading">#</a></h3>
 <p>For a first-order linear system initially at steady-state, the response to a step input change at <span class="math notranslate nohighlight">\(t=0\)</span> is given by</p>
 <div class="math notranslate nohighlight">
 \[y(t) = y(0) + K(1 - e^{-t/\tau}) \Delta U\]</div>
@@ -1054,7 +1050,7 @@ title="Print to PDF"
 <p>the following cells provide initial estimates for the steady state gain <span class="math notranslate nohighlight">\(K_1\)</span> and time constant <span class="math notranslate nohighlight">\(\tau_1\)</span>.</p>
 </section>
 <section id="reading-saved-data">
-<h3><span class="section-number">3.1.2.2. </span>Reading Saved Data<a class="headerlink" href="#reading-saved-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.2.2. </span>Reading Saved Data<a class="headerlink" href="#reading-saved-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Q1&#39;</span><span class="p">,</span><span class="s1">&#39;T1&#39;</span><span class="p">,</span><span class="s1">&#39;T2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grid</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1070,7 +1066,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="estimating-gain-and-time-constant">
-<h3><span class="section-number">3.1.2.3. </span>Estimating Gain and Time Constant<a class="headerlink" href="#estimating-gain-and-time-constant" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.2.3. </span>Estimating Gain and Time Constant<a class="headerlink" href="#estimating-gain-and-time-constant" title="Permalink to this heading">#</a></h3>
 <p>In the limit <span class="math notranslate nohighlight">\(t\rightarrow\infty\)</span> the first order model becomes</p>
 <div class="math notranslate nohighlight">
 \[T_1(\infty) = T_1(0) + K_1\Delta Q_1\]</div>
@@ -1146,7 +1142,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="first-order-plus-dead-time">
-<h2><span class="section-number">3.1.3. </span>First Order plus Dead Time<a class="headerlink" href="#first-order-plus-dead-time" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.3. </span>First Order plus Dead Time<a class="headerlink" href="#first-order-plus-dead-time" title="Permalink to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[T_1(t) = T_1(0) + K (1-e^\frac{t-\theta}{\tau}) Q_{step}\]</div>
 <div class="cell docutils container">
@@ -1198,7 +1194,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="second-order">
-<h2><span class="section-number">3.1.4. </span>Second Order<a class="headerlink" href="#second-order" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.4. </span>Second Order<a class="headerlink" href="#second-order" title="Permalink to this heading">#</a></h2>
 <p>SEMD Eqn. 5-48</p>
 <div class="math notranslate nohighlight">
 \[T_1(t) = T_1(0) + K\left(1 - \frac{\tau_1 e^{-t/\tau_1} - \tau_2 e^{-t/\tau_2}}{\tau_1 - \tau_2}\right)Q_1(t)\]</div>
@@ -1251,7 +1247,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="fitting-a-second-order-model-by-least-squares">
-<h2><span class="section-number">3.1.5. </span>Fitting a Second Order Model by Least Squares<a class="headerlink" href="#fitting-a-second-order-model-by-least-squares" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.5. </span>Fitting a Second Order Model by Least Squares<a class="headerlink" href="#fitting-a-second-order-model-by-least-squares" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>

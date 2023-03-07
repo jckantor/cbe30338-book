@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5.7. Pyomo Examples &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="5.8. Recharging Strategy for an Electric Vehicle" href="../../CBE30338-EV-Example.html" />
     <link rel="prev" title="5.6. Design of a Cold Weather Fuel" href="05.06-Design-of-a-Cold-Weather-Fuel.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -589,11 +590,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -983,9 +979,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pyomo-examples">
-<h1><span class="section-number">5.7. </span>Pyomo Examples<a class="headerlink" href="#pyomo-examples" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.7. </span>Pyomo Examples<a class="headerlink" href="#pyomo-examples" title="Permalink to this heading">#</a></h1>
 <section id="pyomo-model">
-<h2><span class="section-number">5.7.1. </span>Pyomo Model<a class="headerlink" href="#pyomo-model" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7.1. </span>Pyomo Model<a class="headerlink" href="#pyomo-model" title="Permalink to this heading">#</a></h2>
 <p>A Pyomo implementation of this blending model is shown in the next cell. The model is contained within a Python function so that it can be more easily reused for additional calculations, or eventually for use by the process operator.</p>
 <p>Note that the pyomo library has been imported with the prefix <code class="docutils literal notranslate"><span class="pre">pyomo</span></code>. This is good programming practive to avoid namespace collisions with problem data.</p>
 <div class="cell docutils container">
@@ -1062,7 +1058,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="example-nonlinear-optimization-of-series-reaction-in-a-continuous-stirred-tank-reactor">
-<h2><span class="section-number">5.7.2. </span>Example: Nonlinear Optimization  of Series Reaction in a Continuous Stirred Tank Reactor<a class="headerlink" href="#example-nonlinear-optimization-of-series-reaction-in-a-continuous-stirred-tank-reactor" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7.2. </span>Example: Nonlinear Optimization  of Series Reaction in a Continuous Stirred Tank Reactor<a class="headerlink" href="#example-nonlinear-optimization-of-series-reaction-in-a-continuous-stirred-tank-reactor" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -1119,7 +1115,7 @@ Productivity =  8.541019662483748 moles per minute.
 </div>
 </section>
 <section id="example-19-3-linear-programming-refinery">
-<h2><span class="section-number">5.7.3. </span>Example 19.3: Linear Programming Refinery<a class="headerlink" href="#example-19-3-linear-programming-refinery" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7.3. </span>Example 19.3: Linear Programming Refinery<a class="headerlink" href="#example-19-3-linear-programming-refinery" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1396,7 +1392,7 @@ http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-
 </div>
 </section>
 <section id="example-making-change">
-<h2><span class="section-number">5.7.4. </span>Example: Making Change<a class="headerlink" href="#example-making-change" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7.4. </span>Example: Making Change<a class="headerlink" href="#example-making-change" title="Permalink to this heading">#</a></h2>
 <p>One of the important modeling features of Pyomo is the ability to index variables and constraints. The</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1430,7 +1426,7 @@ http://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-
 </div>
 </section>
 <section id="example-linear-production-model-with-constraints-with-duals">
-<h2><span class="section-number">5.7.5. </span>Example: Linear Production Model with Constraints with Duals<a class="headerlink" href="#example-linear-production-model-with-constraints-with-duals" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.7.5. </span>Example: Linear Production Model with Constraints with Duals<a class="headerlink" href="#example-linear-production-model-with-constraints-with-duals" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>

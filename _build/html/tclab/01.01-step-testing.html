@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>2.1. Step Testing &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -55,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="2.2. Lab Assignment 1: Step Test of a First-Order System" href="01.02-first-order-model-for-a-single-heater.html" />
     <link rel="prev" title="2. Step Testing" href="01.00-step-testing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -589,11 +590,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -987,7 +983,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="step-testing">
-<h1><span class="section-number">2.1. </span>Step Testing<a class="headerlink" href="#step-testing" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.1. </span>Step Testing<a class="headerlink" href="#step-testing" title="Permalink to this heading">#</a></h1>
 <p>This notebook guides you through the steps necessary to perform a simple step test of a heater/sensor unit on the Temperature Contnrol Lab.</p>
 <p>Download this notebook to your laptop, then run these cells to capture step test data.</p>
 <div class="cell docutils container">
@@ -1001,9 +997,9 @@ title="Print to PDF"
 </div>
 </div>
 <section id="executing-the-step-test">
-<h2><span class="section-number">2.1.1. </span>Executing the Step Test<a class="headerlink" href="#executing-the-step-test" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.1. </span>Executing the Step Test<a class="headerlink" href="#executing-the-step-test" title="Permalink to this heading">#</a></h2>
 <section id="verify-an-initial-steady-state">
-<h3><span class="section-number">2.1.1.1. </span>Verify an Initial Steady State<a class="headerlink" href="#verify-an-initial-steady-state" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.1.1. </span>Verify an Initial Steady State<a class="headerlink" href="#verify-an-initial-steady-state" title="Permalink to this heading">#</a></h3>
 <p><strong>Don’t start a step test without first letting the device come to an initial steady state!</strong></p>
 <p>A step test assumes the system is initially at steady state. In the case of the Temperature Control Lab, the initial steady with no power input would be room temperature. It generally takes 10 minutes or more to reach steady state. We’ll do a measurement to confirm the initial temperature. Repeat this until you are sure you are at an initial steady state.</p>
 <div class="cell docutils container">
@@ -1026,7 +1022,7 @@ TCLab disconnected successfully.
 </div>
 </section>
 <section id="conduct-the-experiment">
-<h3><span class="section-number">2.1.1.2. </span>Conduct the Experiment<a class="headerlink" href="#conduct-the-experiment" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.1.2. </span>Conduct the Experiment<a class="headerlink" href="#conduct-the-experiment" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># experimental parameters</span>
@@ -1079,7 +1075,7 @@ TCLab disconnected successfully.
 </div>
 </section>
 <section id="verify-the-experimental-data">
-<h3><span class="section-number">2.1.1.3. </span>Verify the Experimental Data<a class="headerlink" href="#verify-the-experimental-data" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.1.3. </span>Verify the Experimental Data<a class="headerlink" href="#verify-the-experimental-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data.csv&quot;</span><span class="p">)</span>
@@ -1089,7 +1085,7 @@ TCLab disconnected successfully.
 </div>
 </section>
 <section id="verify-the-data-file">
-<h3><span class="section-number">2.1.1.4. </span>Verify the Data File<a class="headerlink" href="#verify-the-data-file" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">2.1.1.4. </span>Verify the Data File<a class="headerlink" href="#verify-the-data-file" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>

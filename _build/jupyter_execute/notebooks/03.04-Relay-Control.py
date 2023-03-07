@@ -22,7 +22,7 @@
 # 
 # Relay control can be implemented as a single line of code in the standard clock-driven loop of the Temperature Control Lab.
 
-# In[1]:
+# In[2]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -90,7 +90,7 @@ with TCLab() as lab:
 # 
 # The following code implements relay control with hystersis. 
 
-# In[2]:
+# In[3]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')

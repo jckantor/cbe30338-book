@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.2. Setpoints &#8212; CBE 30338 Chemical Process Control</title>
     
@@ -34,6 +34,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.3. Case Study: PCR Thermal Cycler Protocols" href="03.03-Setpoints-Thermal-Cycler.html" />
     <link rel="prev" title="3.1. Case Study: Thermal Cycling for PCR" href="03.01-Case-Study-Thermal-Cycling-PCR.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
+    <meta name="docsearch:language" content="en">
     
 
     <!-- Google Analytics -->
@@ -591,11 +592,6 @@ const thebe_selector_output = ".output, .cell_output"
      5.2. Lab Assignment 4: Relay Control
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tclab/04.04-Assignment-Thermostat-Control.html">
-     5.3. Assignment: Thermostat Control
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -1013,10 +1009,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="setpoints">
-<h1><span class="section-number">3.2. </span>Setpoints<a class="headerlink" href="#setpoints" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.2. </span>Setpoints<a class="headerlink" href="#setpoints" title="Permalink to this heading">#</a></h1>
 <p>Setpoints are functions of time that establish target values for key control variables. This notebook describes typical nomenclature used in describing setpoint functions, and shows how to creatd setpoint functions in Python.</p>
 <section id="setpoint-profiles">
-<h2><span class="section-number">3.2.1. </span>Setpoint profiles<a class="headerlink" href="#setpoint-profiles" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.1. </span>Setpoint profiles<a class="headerlink" href="#setpoint-profiles" title="Permalink to this heading">#</a></h2>
 <p>Example descriptions from commercial vendors:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.west-cs.com/news/understanding-setpoint-ramping-and-rampsoak-temperature-control/">West Control Solutions: Understanding Setpoint Ramping and Ramp/Soak Temperature Control</a></p></li>
@@ -1076,11 +1072,11 @@ title="Print to PDF"
 <p><strong>Study Question:</strong> Modify the data in the above example to remove the step. Replace it with a single raamp from the initial condition to the soak period that begins at t=170 at a temperature of 170C.</p>
 <hr></section>
 <section id="creating-setpoint-functions">
-<h2><span class="section-number">3.2.2. </span>Creating setpoint functions<a class="headerlink" href="#creating-setpoint-functions" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.2. </span>Creating setpoint functions<a class="headerlink" href="#creating-setpoint-functions" title="Permalink to this heading">#</a></h2>
 <p>For feedback control we would like functions that return the value of a setpoint for any point in time. Functions are in the form <span class="math notranslate nohighlight">\(SP_1(t)\)</span> and <span class="math notranslate nohighlight">\(SP_2(t)\)</span>, for example, are straightfoward to use inside in control applications.</p>
 <p>In the section we show how to write a function that accepts points defining a piecewise linear setpoint profile, then produce a function to compute the setpoint for any point in time.</p>
 <section id="specifying-piecewise-linear-setpoint-profiles">
-<h3><span class="section-number">3.2.2.1. </span>Specifying piecewise linear setpoint profiles<a class="headerlink" href="#specifying-piecewise-linear-setpoint-profiles" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.2.2.1. </span>Specifying piecewise linear setpoint profiles<a class="headerlink" href="#specifying-piecewise-linear-setpoint-profiles" title="Permalink to this heading">#</a></h3>
 <p>Describiing the setpoint as a series of a step/ramp/soak periods naturally leads a piecewise linear function. The start and end of each line segment are spceified by (time, value) pairs. Ordering these points into a list provides a straightforward specification of the setpoint,</p>
 <p>Here we show the points for a typical setpoint.</p>
 <div class="cell docutils container">
@@ -1119,7 +1115,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="interpolation">
-<h3><span class="section-number">3.2.2.2. </span>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.2.2.2. </span>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this heading">#</a></h3>
 <p>Interpolation is a method to fill in points between known values of a function. Here we will use linear interpolation to create a continuous setpoint function given “breakpoint”.</p>
 <p>The Python standard libraries include</p>
 <div class="cell docutils container">
@@ -1180,7 +1176,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="a-functon-to-create-functions">
-<h3><span class="section-number">3.2.2.3. </span>A functon to create functions<a class="headerlink" href="#a-functon-to-create-functions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.2.2.3. </span>A functon to create functions<a class="headerlink" href="#a-functon-to-create-functions" title="Permalink to this heading">#</a></h3>
 <p>Python functions are frequently written to accept data, perform calculations, and return values. What may be less familiar is that functions can also return function. This is just what we neeed - a function that accepts a series of (time, value) pairs describing a setpoint profile, then returns a function that can be used to find values of the setpoint at any point in time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1242,7 +1238,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="example-of-a-setpoint-function">
-<h2><span class="section-number">3.2.3. </span>Example of a setpoint function<a class="headerlink" href="#example-of-a-setpoint-function" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.3. </span>Example of a setpoint function<a class="headerlink" href="#example-of-a-setpoint-function" title="Permalink to this heading">#</a></h2>
 <p>The following example creates a setpoint function that produces setpoints corresponding the profile described in the introduction to this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1283,7 +1279,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="creating-multiple-setpoint-functions">
-<h3><span class="section-number">3.2.3.1. </span>Creating multiple setpoint functions<a class="headerlink" href="#creating-multiple-setpoint-functions" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.2.3.1. </span>Creating multiple setpoint functions<a class="headerlink" href="#creating-multiple-setpoint-functions" title="Permalink to this heading">#</a></h3>
 <p>The next cell demonstrates the use of <code class="docutils literal notranslate"><span class="pre">create_setpoint_function</span></code> to create multiple independent setpoint functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

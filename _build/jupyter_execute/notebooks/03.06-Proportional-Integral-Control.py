@@ -21,17 +21,18 @@
 
 # ## Negative Feedback
 # 
-# **Negative feedback** is the core principle underpinining process control.  Negative feedback suppresses deviations from the setpoint assuming the proportional gain is positive and the process exhibits a positive-going response from a positive change in the manipulated variable. If the process variable grows above the setpoint then the manipulated variable is decreased. If the process variable falls below the setpoint then the manipulated variable is increased.
+# **Negative feedback** is the core principle underpinning process control.  Negative feedback suppresses deviations from the setpoint. If the process variable grows above the setpoint then the manipulated variable is decreased. If the process variable falls below the setpoint then the manipulated variable is increased.
 # 
-# If the system exhibits a negative-going response to a postive change in the manipiulated variable, then the sign of the proportional gain must also be negative to assure negative feedback control.
-# 
-# ![](http://4.bp.blogspot.com/-ZKMZhvwDJ2o/UM3-y4BDIqI/AAAAAAAAAbM/PIsa1XpziNg/s1600/fbl+glucose.gif)
+# If the system exhibits a negative-going response to a positive change in the manipulated variable, then the sign of the proportional gain must be negative to assure negative feedback control.
 # 
 # **Positive feedback** is encountered in social, economic, and biological systems where there is a desire to amplify a desirable outcome. Positive feedback can induce good behaviors, result in 'virtuous' cycles of innovation and development, or wealth creation. But in most hard engineering situations, the immediate objective is to cause a variable to track a setpoint for which negative feedback is enabling technology
 # 
 # <hr>
 # 
-# **Study Question:** Describe the two types of negative feedback taking place in the glucose/insulin/glucagon system diagrammed above. 
+# **Study Question:** Describe the two types of negative feedback taking place in the glucose/insulin/glucagon system diagrammed below. 
+# 
+# ![](http://4.bp.blogspot.com/-ZKMZhvwDJ2o/UM3-y4BDIqI/AAAAAAAAAbM/PIsa1XpziNg/s1600/fbl+glucose.gif)
+# 
 # 
 # **Study Question:** Why are two feedback loops necessary in this biological system? Can you think of an analogy for temperature control of the Temperature Control Lab?
 # 
@@ -41,11 +42,55 @@
 # 
 # <hr>
 
-# ## Proportional Control
+# ## Nomenclature
+# 
+# In this notebook we will refer to control signals with a generic nomenclature common to the process control industry.
+# 
+# ![](./figures/FeedbackControlDiagram.png)
+# 
+# * **CV**: Control variables. A variable that is the subject of control. For example, a product composition.
+# * **PV**: Process variables. A variable that can be measured. Sometimes the same as the control variable, often different but closely related to a CV.  For example, pressure or temperature of a binary mixture at phase equilibrium may be a proxy for composition.
+# * **MV**: Manipulated variables. Variables that can be manipulated by the control system, such as flow via a valve position, or power input to heater.
+# * **DV**: Disturbance variables. All of the exogeneous inputs that can affect our system of interest.
+# * **SP**: Setpoints. Desired values for the control variables.
 
-# ### Description
+# ## Typical P&ID Diagram for PI and PID control.
+# 
+# ![](https://cdn.instrumentationtools.com/wp-content/uploads/2020/01/Identify-Process-Variables-in-PID.png)
+
+# ## Time-Out for Engineering History
+# 
+# Proportional control, and its variations, have a long history of implementation in both ancient and modern technologies.
+# 
+# ### Origins of PID Control
+# 
+# #### Boulton and Watt Steam Engine
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/SteamEngine_Boulton%26Watt_1784.png/1280px-SteamEngine_Boulton%26Watt_1784.png)
+# 
+# [Video demonstrating how a mechanical governor works.](https://youtu.be/B01LgS8S5C8?t=42)
+# 
+# #### Ship Autopilot - First PID application
+# 
+# ![](https://owaysonline.com/wp-content/uploads/Block-Diagram-of-Ships-Auto-Pilot.png)
+# 
+# ### Implementations
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Nozzle_and_flapper_proportional_controller.png/1280px-Nozzle_and_flapper_proportional_controller.png)
+# 
+# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Smart_current_loop_positioner.png/1024px-Smart_current_loop_positioner.png?1645118511583)
+# 
+# A collection of [PID controllers you can buy on Amazon](https://www.amazon.com/pid-controller/s?k=pid+controller) for home and commercial use: 
+# 
+# 
+
+# ### Formulation of Proportional Control
 # 
 # **Proportional control** adjusts the manipulated variable in proportion to the error between the setpoint and measured process variable.
+# 
+# $$MV(t) = \bar{MV} - K_P(PV(t) - SP(t))$$
+# 
+# When measurements and actions take place at discrete points in time
 # 
 # $$\begin{align}
 # MV_k & = \bar{MV} - K_P(PV_k - SP_k)
@@ -75,120 +120,114 @@
 # 
 # In subsequent notebooks we will see how $\bar{MV}$ is used when building advanced control implementations.
 
-# ### Implementation
+# ### Proportional Control Implementation
 # 
 # Using the Python `yield` statement, n instance of a proportional controller is created by specifying the gain $K_P$, upper and lower bounds on the manipulated variable, and the offset value $\bar{MV}$.
 
-# In[64]:
+# In[ ]:
 
 
-def PI(Kp, Ki, t_step, MV_bar=0):
+# proportional control
+def P(Kp, MV_bar=0):
+    
+    # initialize MV ... must do this so the first use returns a useful value
     MV = MV_bar
-    e_prev = 0
+    
+    # run indefinitely
     while True:
+        
+        # yield MV to calling program. Then pause and wait for updates to SP aand PV
         SP, PV = yield MV
+        
+        # compute error signal
         e = PV - SP
-        MV = MV - Kp*(e - e_prev) - t_step*Ki*e
+        
+        # compute new value of the manipulated variable
+        MV = MV_bar - Kp*e
+        
+        # limit the manipulated variable to the feasible range of values
         MV = max(0, min(100, MV))
-        e_prev = e
 
 
-# In[65]:
+# The benefits of using the `yield` statement is that we can use the same code to create multiple instances of controller, each with it's own parameters and state. The communication between the main event loop and a controller instance is illustrated in this diagram:
+# 
+# ![](https://jckantor.github.io/cbe30338-2021/figures/controller-coroutine.png)
+# 
+# The following cells demonstrate performance of the controller when subject to a step change in setpoint and a disturbance input.
+
+# ### Testing Setpoint and Disturbance Reponses
+# 
+# We'll test the controller using the following inputs:
+# 
+# * At time 20, the setpoint will switch from 25C to 40C.
+# * At time 200, the second heater will turn at 100% power to introduce a disturbance.
+# 
+# Let's see how proportional control works when applied to the Temperature Control Laboratory. For this simulation we set $\bar{MV} = 0$ and $K_p = 3.0$.
+
+# In[ ]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
 
 TCLab = setup(connected=False, speedup=10)
 
+# create functions to simulate setpoints and disturbance variables
 def SP(t):
     return 40 if t >= 20 else 25
 
 def DV(t):
     return 100 if t >= 200 else 0
 
+# create a controller instance
+controller = P(3)
+
+# simulation duration and sampling time
 t_final = 600
 t_step = 2
 
-controller = PI(3, 0.2, t_step)
-
 with TCLab() as lab:
 
+    # intialize historian and plotting
     sources = [["T1", lambda: lab.T1],
                ["SP1", lambda: SP(t)],
-               ["E1", lambda: lab.T1 - SP(t)],
-               ["Q1", lab.Q1]]
-    
+               ["Q1", lab.Q1],
+               ["DV", lambda: DV(t)]]
     h = Historian(sources)
-    p = Plotter(h, t_final, layout=[["T1", "SP1"], ["E1"], ["Q1"]])
+    p = Plotter(h, t_final, layout=[["T1", "SP1"], ["Q1"], ["DV"]])
     
-    lab.P1 = 200
-    lab.P2 = 255
-    lab.Q1(next(controller))
-
-    # event loop
-    for t in clock(t_final, t_step):
-        T1 = lab.T1
-        U1 = controller.send((SP(t), T1))
-        lab.Q1(U1)
-        lab.Q2(DV(t))
-        p.update(t)
-
-
-# In[ ]:
-
-
-lab.
-
-
-# ### Testing with Disturbance Inputs
-
-# Let's see how proportional control works when applied to the Temperature Control Laboratory. For this simulation we set $\bar{MV} = 0$ and $K_p = 3.0$.
-
-# In[23]:
-
-
-from tclab import TCLab, clock, Historian, Plotter, setup
-TCLab = setup(connected=False, speedup=60)
-
-def SP(t):
-    return 40 if t >= 20 else 0
-
-def DV(t):
-    return 100 if t>= 220 else 0
-
-controller = P(3.0)
-
-t_final = 600
-t_step = 2
-
-with TCLab() as lab:
-    sources = [("T1", lambda: lab.T1),
-               ("Q1", lab.Q1),
-               ("DV", lab.Q2),
-               ("SP1", lambda: SP(t))]
-    h = Historian(sources)
-    layout = [["T1", "SP1"], ["Q1"], ["DV"]]
-    p = Plotter(h, t_final, layout=layout)
-    
-    # initialize manipulated variable
+    # initialize maximum power for both heaters
     lab.P1 = 200
     lab.P2 = 200
-    lab.Q1(next(controller))
+    
+    # initialize the controller
+    U1 = next(controller)
+    lab.Q1(U1)
+    lab.Q2(DV(0))
 
     # event loop
     for t in clock(t_final, t_step):
+        
+        # get measurement of process variable T1
         T1 = lab.T1
+        
+        # send current setpoint and PV to controller
         U1 = controller.send((SP(t), T1))
+        
+        # update manipulated variable
         lab.Q1(U1)
+        
+        # simulate disturbance
         lab.Q2(DV(t))
-        p.update(t)    
+        
+        # update the historian
+        p.update(t)
 
 
 # For systems without significant time delay and with properly chosen parameters, proportional control can achieve a fast response to changes in setpoint. Note, however, the steady state may be different than the desired setpoint, sometimes unacceptably different. This steady-state error a short-coming of purely proportional control.
 
 # <hr>
 # 
-# **Study Question:** Did the proportional control acheive the setpoint? Did proportional control reject the disturbance? How serious is the problem?
+# **Study Question:** For this simulation, did the proportional control achieve the setpoint? Did proportional control reject the disturbance? How serious is the problem?
 # 
 # <hr>
 
@@ -207,38 +246,13 @@ with TCLab() as lab:
 # 1. Increase $K_P$. This leads to increasing oscillations and relay-like behavior of the manipulated variable.
 # 2. Find a perfect initial estimate for $\bar{MV}$. If we could do this, we wouldn't need feedback control.
 # 
-# A persistent steady-state offset is most significant shortcoming of proportional-only control.
+# **A persistent steady-state offset is most significant shortcoming of proportional-only control.**
 
 # <hr>
 # 
 # **Study Question:** Test the simulation for values of $K_p$ that are twice as large, and half as large as demonstrated above. What do you notice about the steady-state error between the desired setpoint and the measured process variable?
 # 
 # <hr>
-
-# ## History Time-Out
-# 
-# 
-# Boulton and Watt Steam Engine
-# 
-# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/SteamEngine_Boulton%26Watt_1784.png/1280px-SteamEngine_Boulton%26Watt_1784.png)
-# 
-# [Governor](https://youtu.be/B01LgS8S5C8?t=42)
-# 
-# PID Control
-# 
-# ![](https://owaysonline.com/wp-content/uploads/Block-Diagram-of-Ships-Auto-Pilot.png)
-# 
-# Pneumatic Control
-# 
-# ![](https://forumautomation.com/uploads/default/original/2X/8/80d57597e66ff4a5dae1243f91e0bf8c9e1d0dcb.png)
-# 
-# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Pneumatische_regelaar.jpg/640px-Pneumatische_regelaar.jpg)
-# 
-# ![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Smart_current_loop_positioner.png/1024px-Smart_current_loop_positioner.png?1645118511583)
-# 
-# ![](https://www.amazon.com/pid-controller/s?k=pid+controller)
-# 
-# 
 
 # ## Proportional-Integral (PI) Control
 
@@ -297,7 +311,7 @@ with TCLab() as lab:
 # 
 # with $MV_0 = \bar{MV}$. Let's see how this works.
 
-# In[60]:
+# In[20]:
 
 
 def PI(Kp, Ki, MV_bar=0):
@@ -307,25 +321,26 @@ def PI(Kp, Ki, MV_bar=0):
         SP, PV = yield MV
         e = PV - SP
         MV = MV - Kp*(e - e_prev) - t_step*Ki*e
+        MV = max(0, min(100, MV))
         e_prev = e
         
 
 
-# In[30]:
+# In[21]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
 TCLab = setup(connected=False, speedup=60)
 
 def SP(t):
-    return 60 if t >= 20 else 0
+    return 40 if t >= 20 else 25
 
 def DV(t):
-    return 100 if t>= 220 else 0
+    return 100 if t>= 200 else 0
 
 controller = PI(3, 0.2)
 
-t_final = 450
+t_final = 600
 t_step = 2
 
 with TCLab() as lab:
@@ -340,7 +355,9 @@ with TCLab() as lab:
     # initialize manipulated variable
     lab.P1 = 200
     lab.P2 = 200
-    lab.Q1(next(controller))
+    
+    U1 = next(controller)
+    lab.Q1(U1)
 
     # event loop
     for t in clock(t_final, t_step):
