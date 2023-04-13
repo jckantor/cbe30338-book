@@ -6,8 +6,6 @@
 # > "the devil is in the details" -- anonymous
 # 
 # > "and everything is detail" -- military expression
-# 
-# > "why me?" -- the devil
 
 # ## Learning Goals
 # 
@@ -22,44 +20,51 @@
 #          * What is bumpless transfer?
 #          * Manual to Auto transition
 
-# ## Glossary
+# ## Glossary of terms
 # 
-# Process control is full of specialized language to describe control systems and their performance. Here are is a glossary list for this notebook.
+# Process control is full of specialized jargon for describing control systems and their performance. Here are some terms relevant to PID control.
+# 
+# :::{glossary}
+# 
+# P&ID 
+#   Piping and Instrumentation Diagrams showing type and placement of sensors, controllers, actuators, and other instruments used in process control. A typical encoding is given XY where 
+# 
+#   | X | Variable |
+#   | :---: | :---: |
+#   | F | Flow |
+#   | L | Level |
+#   | P | Pressure | 
+#   | T | Temperature |
+# 
+#   | Y | Instrument Type |
+#   | :---: | :---: |
+#   | T | Transmitter |
+#   | G | Gauge |
+#   | I | Indicator |
+#   | IC | Indicating Controller |
+#   
+# PID
+#   Proportional-Integral-Derivative Control
+# 
+# PV
+#   Process Variable. Generally a variable that is measured and used for feedback control. Typical examples are flow, level, pressure, and temperature, but may include composition, displacement, and many other variable types.
+# 
+# MV
+#   Manipulated Variable. The variable being manipulated by the controller. Typically a flowrate using a control valve.
+# 
+# SP
+#   Setpoint Variable. A desired value for process variable (PV). The job of the controller is change MV to cause PV to become equal to SP.
 # 
 # Reset-windup (also call Integral windup)
-# : Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these situation the error signal (PV - SP) can never return to zero which causes the integration of the error signal to "wind-up".
+#   Reset-Windup refers to changes in the manipulated variable (MV) caused by specifying an infeasible setpoint. An example would be a setpoint of 120 degrees C for a heater that can reach a maximum temperature of only 100 deg C, or a setpoint of 10 deg C below ambient temperature when no cooling is available. In these situation the error signal (PV - SP) can never return to zero which causes the integration of the error signal to "wind-up".
 # 
 # Anti-reset-windup
-# : A modification to the standard PI and PID control algorithms to (1) avoid out-of range values of the manipulated variables (MV), and (2) incorporate field measurements of the manipulated variable. Anti-reset-windup avoids infeasible values of the manipulated variable due to infeasible setpoints or situations where the actuator is not responding to inputs.
+#   A modification to the standard PI and PID control algorithms to (1) avoid out-of range values of the manipulated variables (MV), and (2) incorporate field measurements of the manipulated variable. Anti-reset-windup avoids infeasible values of the manipulated variable due to infeasible setpoints or situations where the actuator is not responding to inputs.
 # 
 # Bumpless transfer
-# : A modification to the standard PI and PID control algorithms to avoid sudden jumps in manipulated variable when switching from manual to automatic control. 
-# 
-# P&ID Diagrams
-# : Diagrams showing type and placement of sensors, controllers, actuators, and other instruments used in process control. A typical encoding is given XY where 
-# 
-# | X | Variable |
-# | :---: | :---: |
-# | F | Flow |
-# | L | Level |
-# | P | Pressure | 
-# | T | Temperature |
-# 
-# | Y | Instrument Type |
-# | :---: | :---: |
-# | T | Transmitter |
-# | G | Gauge |
-# | I | Indicator |
-# | IC | Indicating Controller |
-# 
-# : PV
-# Process Variable. Generally a variable that is measured and used for feedback control. Typical examples are flow, level, pressure, and temperature, but may include composition, displacement, and many other variable types.
-# 
-# : MV
-# Manipulated Variable. The variable being manipulated by the controller. Typically a flowrate using a control valve.
-# 
-# : SP
-# Setpoint Variable. A desired value for process variable (PV). The job of the controller is change MV to cause PV to become equal to SP.
+#   A modification to the standard PI and PID control algorithms to avoid sudden jumps in manipulated variable when switching from manual to automatic control. 
+#   
+# :::
 
 # ## Typical P&ID Diagram for PI and PID control.
 # 

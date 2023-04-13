@@ -124,7 +124,7 @@
 # 
 # Using the Python `yield` statement, n instance of a proportional controller is created by specifying the gain $K_P$, upper and lower bounds on the manipulated variable, and the offset value $\bar{MV}$.
 
-# In[ ]:
+# In[24]:
 
 
 # proportional control
@@ -136,6 +136,9 @@ def P(Kp, MV_bar=0):
     # run indefinitely
     while True:
         
+        # limit the manipulated variable to the feasible range of values
+        MV = max(0, min(100, MV))
+        
         # yield MV to calling program. Then pause and wait for updates to SP aand PV
         SP, PV = yield MV
         
@@ -143,10 +146,8 @@ def P(Kp, MV_bar=0):
         e = PV - SP
         
         # compute new value of the manipulated variable
-        MV = MV_bar - Kp*e
+        MV = MV_bar - Kp * e
         
-        # limit the manipulated variable to the feasible range of values
-        MV = max(0, min(100, MV))
 
 
 # The benefits of using the `yield` statement is that we can use the same code to create multiple instances of controller, each with it's own parameters and state. The communication between the main event loop and a controller instance is illustrated in this diagram:
@@ -164,7 +165,7 @@ def P(Kp, MV_bar=0):
 # 
 # Let's see how proportional control works when applied to the Temperature Control Laboratory. For this simulation we set $\bar{MV} = 0$ and $K_p = 3.0$.
 
-# In[ ]:
+# In[27]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
@@ -179,7 +180,7 @@ def DV(t):
     return 100 if t >= 200 else 0
 
 # create a controller instance
-controller = P(3)
+controller = P(100)
 
 # simulation duration and sampling time
 t_final = 600
@@ -311,7 +312,7 @@ with TCLab() as lab:
 # 
 # with $MV_0 = \bar{MV}$. Let's see how this works.
 
-# In[20]:
+# In[28]:
 
 
 def PI(Kp, Ki, MV_bar=0):
@@ -326,7 +327,7 @@ def PI(Kp, Ki, MV_bar=0):
         
 
 
-# In[21]:
+# In[29]:
 
 
 from tclab import TCLab, clock, Historian, Plotter, setup
