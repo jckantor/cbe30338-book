@@ -21,14 +21,16 @@ Dynamic modeling, data analytics, optimization, and control are essential to mod
 
 ## Installing Conda
 
+Start Here:
+* Install anaconda: https://www.anaconda.com/
+* Create new conda environment: `conda create -n controls python=3.10`
+* Activate new environemnt: `conda activate controls`
+
 Extra Steps for Website Contributors (e.g., instructor, TAs):
 * Install Jupyter Book: `conda install -c conda-forge jupyter-book`
 * Install GHP Import (for publishing with GitHub pages): `conda install -c conda-forge ghp-import`
 
 Students:
-* Install anaconda: https://www.anaconda.com/
-* Create new conda environment: `conda create -n controls python=3.11`
-* Activate new environemnt: `conda activate controls`
 * Install Jupyter Lab: `conda install -c conda-forge jupyterlab`
 * Install Pandas, Numpy, and Matplotlib: `conda install -c anaconda pandas numpy matplotlib`
 * Install tclab: `pip install tclab`
