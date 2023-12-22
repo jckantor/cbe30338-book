@@ -1,8 +1,8 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: CBE 30338 Chemical Process Control
-author: Jeffrey Kantor
+title: CBE 30338 Data Analytics, Optimization, and Control 
+author: Jeffrey Kantor and Alexander Dowling
 logo: notebooks/figures/logo.png
 exclude_patterns: [.DS_Store, "**.ipynb_checkpoints", "**.pytest_cache"]
 
@@ -43,7 +43,7 @@ sphinx:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/jckantor/cbe30338-book  # Online location of your book
+  url: https://github.com/ndcbe/controls  # Online location of your book
   #path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
