@@ -21,6 +21,10 @@ Dynamic modeling, data analytics, optimization, and control are essential to mod
 
 ## Installing Conda
 
+Extra Steps for Website Contributors (e.g., instructor, TAs):
+* Install Jupyter Book: `conda install -c conda-forge jupyter-book`
+* Install GHP Import (for publishing with GitHub pages): `conda install -c conda-forge ghp-import`
+
 Students:
 * Install anaconda: https://www.anaconda.com/
 * Create new conda environment: `conda create -n controls python=3.11`
@@ -29,9 +33,7 @@ Students:
 * Install Pandas, Numpy, and Matplotlib: `conda install -c anaconda pandas numpy matplotlib`
 * Install tclab: `pip install tclab`
 
-Website Contributors (extra steps):
-* Install Jupyter Book: `conda install -c conda-forge jupyter-book`
-* Install GHP Import (for publishing with GitHub pages): `conda install -c conda-forge ghp-import`
+
 
 ## Contact Us
 
