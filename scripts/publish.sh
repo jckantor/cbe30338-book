@@ -7,4 +7,4 @@ mkdir ./_build/html/_images
 # jb build ../cbe30338-book/
 jb build ../controls/
 ghp-import -n -p -f _build/html 
-jb clean ../data-and-computing/
+jb clean ../controls/
