@@ -19,6 +19,20 @@ Dynamic modeling, data analytics, optimization, and control are essential to mod
 | 13 | Discrete Event Systems |
 | 14 | Student Project Presentations |
 
-## How To Contribute
+## Installing Conda
+
+Students:
+* Install anaconda: https://www.anaconda.com/
+* Create new conda environment: `conda create -n controls python=3.11`
+* Activate new environemnt: `conda activate controls`
+* Install Jupyter Lab: `conda install -c conda-forge jupyterlab`
+* Install Pandas, Numpy, and Matplotlib: `conda install -c anaconda pandas numpy matplotlib`
+* Install tclab: `pip install tclab`
+
+Website Contributors (extra steps):
+* Install Jupyter Book: `conda install -c conda-forge jupyter-book`
+* Install GHP Import (for publishing with GitHub pages): `conda install -c conda-forge ghp-import`
+
+## Contact Us
 
 Most of these materials were developed by [Prof. Jeffery Kantor](https://news.nd.edu/news/in-memoriam-jeffrey-kantor-former-vice-president-associate-provost-and-dean/). The repository is currently maintained by [Prof. Alexander Dowling](https://dowlinglab.nd.edu/) at [https://github.com/ndcbe/controls](https://github.com/ndcbe/controls).
