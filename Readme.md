@@ -33,6 +33,7 @@ Extra Steps for Website Contributors (e.g., instructor, TAs):
 Students:
 * Install Jupyter Lab: `conda install -c conda-forge jupyterlab`
 * Install Pandas, Numpy, and Matplotlib: `conda install -c anaconda pandas numpy matplotlib scipy`
+* Install IDAES-PSE (which includes pyomo): `conda install -c conda-forge IDAES-PSE`
 * Install tclab: `pip install tclab`
 
 
