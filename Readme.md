@@ -27,7 +27,7 @@ Start Here:
 * Activate new environemnt: `conda activate controls`
 
 Extra Steps for Website Contributors (e.g., instructor, TAs):
-* Install Jupyter Book (may take a while): `conda install -c conda-forge jupyter-book`
+* Install Jupyter Book (may take a while, solve may freeze a few times): `conda install -c conda-forge jupyter-book`
 * Install GHP Import (for publishing with GitHub pages): `conda install -c conda-forge ghp-import`
 
 Students:
