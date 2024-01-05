@@ -4,7 +4,7 @@ import re
 import os
 import shutil
 
-def process_notebook(folder_original, folder_new, filename, verbose=1):
+def process_notebook(folder_original, folder_new, filename, remove_output=False, verbose=1):
 
     ''' Remove nbgrader content from notebooks and save updated version
     
@@ -120,6 +120,15 @@ def process_notebook(folder_original, folder_new, filename, verbose=1):
             # replace media files with urls to _images
             cell.source = re.sub(MEDIA_LINK, IMAGE_LINK, cell.source)
 
+    ## Remove code output
+    # https://gist.github.com/decabyte/0ed87372774cf5d34d7e#file-nb_remove_output-py-L24
+    if remove_output:
+        for cells in nb.cells:
+            if cells['cell_type'] == 'code':
+                cells['outputs'] = []
+                cells['execution_count'] = None
+            
+
     ## Save new notebook
     output_notebook = os.path.join(folder_new, filename)
     
@@ -135,6 +144,7 @@ def process_notebook(folder_original, folder_new, filename, verbose=1):
 """
 IMPORTANT. We assume the source files are in XX-dev and the new files go into XX.
 The list below is just values for XX.
+"""
 """
 folders = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16","contrib"]
 
@@ -153,12 +163,13 @@ for fld in folders:
             
             # process the notebook!
             process_notebook(full_folder_name_original, full_folder_name_new, file, verbose=1)
-
+"""
+            
 """
 Process assignments which are in a private repo
 """
 # Loop over filenames
-full_folder_name_original = "../data-and-computing-private/notebooks/assignments/"
+full_folder_name_original = "../controls-private/notebooks/assignments/"
 full_folder_name_new = "./notebooks/assignments/"
 
 for file in sorted(os.listdir(full_folder_name_original)):
@@ -167,4 +178,4 @@ for file in sorted(os.listdir(full_folder_name_original)):
     if re.match("(.*?)\.ipynb$", file):
         
         # process the notebook!
-        process_notebook(full_folder_name_original, full_folder_name_new, file, verbose=1)
+        process_notebook(full_folder_name_original, full_folder_name_new, file, remove_output=True, verbose=1)
