@@ -52,7 +52,7 @@ def process_notebook(folder_original, folder_new, filename, remove_output=False,
     replace_code(HIDDEN_TESTS, "# Removed autograder test. You may delete this cell.")
     
     OLD_DATA_PATH = "../data/"
-    NEW_DATA_PATH = "https://raw.githubusercontent.com/ndcbe/data-and-computing/main/notebooks/data/"    
+    NEW_DATA_PATH = "https://raw.githubusercontent.com/ndcbe/controls/main/notebooks/data/"    
     replace_code(OLD_DATA_PATH, NEW_DATA_PATH)
     
     ## Replace elements in markdown cells
@@ -102,7 +102,7 @@ def process_notebook(folder_original, folder_new, filename, remove_output=False,
     # 2022-09-21: removed "!" from the beginning both of these expressions to also work on handouts (pdf) in media folder
     # 2022-09-21: the use case is the error propagation handout
     MEDIA_LINK = '\[(.*)\]\(\.\./\.\./media/(.*\..*)\)'
-    IMAGE_LINK = r'[\1](https://ndcbe.github.io/data-and-computing/_images/\2)'
+    IMAGE_LINK = r'[\1](https://ndcbe.github.io/controls/_images/\2)'
     
     for cell in nb.cells:
         if cell.cell_type == "markdown":
@@ -169,8 +169,8 @@ for fld in folders:
 Process assignments which are in a private repo
 """
 # Loop over filenames
-full_folder_name_original = "../controls-private/notebooks/assignments/"
-full_folder_name_new = "./notebooks/assignments/"
+full_folder_name_original = "../controls-private/assignments/"
+full_folder_name_new = "./assignments/" # might need to move to /notebooks/assignments to get data references to work
 
 for file in sorted(os.listdir(full_folder_name_original)):
     
