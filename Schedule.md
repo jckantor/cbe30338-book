@@ -48,4 +48,39 @@ Tuesdays and Thursdays from 9:30 - 10:45am in 136 DeBartolo Hall.
 
 | Main Topic(s) | Supplemental Material |
 | ----------- | ----------- |
-| Test | Test |
+| **Tuesday, January 16** | **Welcome** |
+| [](./notebooks/01.00-What-is-Process-Control.md) | [](./Schedule.md) |
+| [](./notebooks/01.01-What-is-Feedback.ipynb) | [](./Syllabus.md) |
+| [](./notebooks/01.02-Elements-of-Feedback-Control.ipynb) | [](./python/A.00-Python-Tutorials.md) |
+| **Thursday, January 18** | **CBE 20258 Review** |
+| [](./assignments/Homework-1.ipynb) | [Python](https://ndcbe.github.io/data-and-computing/notebooks/01/Python-Primer.html) |
+| | [Solving Nonlinear Equations](https://ndcbe.github.io/data-and-computing/notebooks/06/nonlinear_systems.html) |
+| | [Numeric Integration](https://ndcbe.github.io/data-and-computing/notebooks/07/integration.html) |
+| | [Error Propagation](https://ndcbe.github.io/data-and-computing/notebooks/12/uncertainty.html) |
+| | [Nonlinear Regression](https://ndcbe.github.io/data-and-computing/notebooks/15/advanced_regression.html) |
+| **Tuesday, January 23** | **Modeling: Linear Systems** |
+| **Thursday, January 25** | **Introduction Temperature Control Lab** |
+| **Tuesday, January 30** | **Modeling: Pharmacokinetics** |
+| **Thursday, February 1** | **Modeling: Second Order Systems** |
+| **Tuesday, February 6** | **Modeling: Temperature Control Lab** |
+| **Thursday, February 8** | **Catch-up or Model-baesd Design of Experiments** |
+| **Tuesday, February 13** | **Modeling: Reactor System** |
+| **Thursday, February 15** | **Setpoints, Disturbances, Servo and Regulation Problems**|
+| **Tuesday, February 20** | **P, PI, and PID Control** |
+| **Thursday, February 22** | **Stability Analysis** |
+| **Tuesday, February 27** | **PID Tuning** |
+| **Thursday, February 29** | **PID Implementation Details** |
+| **Tuesday, March 5** | **Optimization Modeling in Pyomo** |
+| **Thursday, March 7** | **Linear Programming Examples** |
+| **Tuesday, March 19** | **Nonlinear and Dynamic Optimization** |
+| **Thursday, March 21** | **Simulation and Open-Loop Control** |
+| **Tuesday, March 26** | **Model Predictive Control** |
+| **Thursday, March 28** | **Implementing Model Predictive Control** |
+| Tuesday, April 2 | Review Session |
+| Thursday, April 4 | Midterm Exam (in-class) |
+| Tuesday, April 9 | Project Consulations (in-class) |
+| Thursday, April 11 | Project Consulations (in-class) |
+| Tuesday, April 16 | Project Consulations (in-class) |
+| Thursday, April 18 | Project Consulations (in-class) |
+| Tuesday, April 23 | Project Presentations (in-class) |
+| Thursday, April 25 | Project Presentations (in-class) |
