@@ -9,9 +9,6 @@ parts:
     chapters:
     - file: Syllabus.md
     - file: Schedule.md
-    
-  - caption: Assignments
-    chapters:
     - file: assignments/assignments.md
       sections:
       - file: assignments/Homework-1.ipynb
