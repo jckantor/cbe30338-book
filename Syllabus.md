@@ -28,24 +28,17 @@ Students completing this course will be able to:
 
 ## Course Information
 
-TODO: Need to update links
-**Canvas link:** [SP23-CBE-30338-01 Chemical Process Control](https://canvas.nd.edu/courses/59411)
+**Canvas link:** [SP24-CBE-30338-01 Data Analytics, Optimization, and Control](https://canvas.nd.edu/courses/82955)
 
-**Dates:** January 17 - May 3, 2023
+**Dates:** January 16 - April 30, 2024
 
-**Section:** CBE 30338-01 Tuesday and  Thursdays, 12:30 - 1:45 pm, DeBartolo 129
+**Class:** CBE 30338 Tuesday and  Thursdays, 9:15 - 10:45 am, DeBartolo 136
 
-**Virtual Office Hours:** Wednesdays, 2:00 PM - 3:30 pm. The password-protected Zoom links for scheduled virtual office hours is [https://notredame.zoom.us/j/93569381181?pwd=Uk5EeUM2TU9OdDFMR0xiRlk4MUo1UT09](https://notredame.zoom.us/j/93569381181?pwd=Uk5EeUM2TU9OdDFMR0xiRlk4MUo1UT09). If you can't make the scheduled time, send me an email with some times convenient for you and I will send you a Zoom invitation.
-
-**Lab/Tutorial Sections:**  You must be registered for one of these lab/tutorial sections.
+**Lab/Tutorial:**  You must be registered for one of these lab/tutorial sections.
 * CBE 32338-01 Friday, 11:35 am - 12:25 pm, Fitzpatrick A68
 * CBE 32338-02 Friday, 12:50 am - 1:40 pm, Fitzpatrick A68
 
 Seating in A68 is limited. Pleae attend the lab session for which you are registered.
-
-**Final Exam:** Thursday, May 11 10:30 AM - 12:30 PM
-
-**Assignments, Grades, and Other Course Information**: [Canvas](https://canvas.nd.edu/courses/59411)
 
 **Prerequisites:** This course assumes knowledge of modeling and analysis with differential equations, procedural programming in Python, mass and energy balances. Students taking this course will normally have completed
 
@@ -73,9 +66,7 @@ TODO: Need to update
 
 Required notes and materials for the course are available at the Github/web repositories 
 
-TODO: update link
-
-* [jckantor/cbe30338-book](https://jckantor.github.io/cbe30338-book) 
+* [ndcbe/controls](https://ndcbe.github.io/controls/Readme.html) 
 * [jckantor/TCLab](https://github.com/jckantor/TCLab)
 
 Additional material will be taken from:
@@ -92,6 +83,7 @@ Additional supplementary materials related to process control will be distribute
 * [Resourcium](https://resourcium.org/)
 
 ## Discussion Board (Canvas) and Email Correspondance
+
 * Post your questions to the **discussion board in Canvas**
 * Instructor only: adowling@nd.edu, ''CBE 30338'' in the subject, private official matters (e.g., excused absence, testing accommodations)
 
@@ -146,11 +138,9 @@ All graphs must have labeled axes with UNITS. Likewise, all final answers need U
 
 Be sure to answer the questions asked in the assignment. When discussing results, only report the appropriate number of significant figures.
 
-**Formatting**: Your submission should include neatly written code with extensive comments, well-labeled graphs, and answers to any discussion questions. Your project submissions should be professionally formatted, like a laboratory report. Your response to discussion questions and code comments MUST be written in your own words.
+**Formatting**: Your submission should include neatly written code with extensive comments, well-labeled graphs, and answers to any discussion questions. Your project submissions should be professionally formatted, like a laboratory report. Your response to discussion questions and code comments MUST be written in your own words. Please see [coding standards](https://ndcbe.github.io/data-and-computing/notebooks/01/Pseudocode.html#python-and-commenting-guidelines).
 
-TODO: Update link
-
-**Project:** This will be graded in-depth (unlike the homework). Be sure to triple check the Python code and plotting formatting standards. We expect [publication-quality plots](../notebooks/01/Publication-Quality-Figures.ipynb) for this project.
+**Project:** This will be graded in-depth (unlike the homework). Be sure to triple check the Python code and plotting formatting standards. We expect [publication-quality plots](https://ndcbe.github.io/data-and-computing/notebooks/01/Publication-Quality-Figures.html) for this project.
 
 **Pseudocode:** Man assignments require you to write brief pseudocode. We will learn how to do this during the first week of the semester. Your pseudocode needs to reflect all your solution's main steps and logic. You do not need to rewrite your pseudocode if your final solution has different main steps or logic. Instead, you should update your pseudocode with a few notes showing the change. Rewriting the pseudocode is helpful if you find a logical mistake but get stuck making modifications. Prof. Dowling has been programming in Python for 20 years. He writes pseudocode, and so do other professional software developers.
 
