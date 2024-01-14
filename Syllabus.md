@@ -55,12 +55,25 @@ Students without this background should contact the instructor before registerin
 
 ## Instructor and Teaching Assistants
 
-TODO: Need to update
+TODO: need to update
 
-| | Prof. Alexander (Alex) Dowling | Ms. Kyla Jones | Mr. Wilson Raney|
-| ----------- | ----------- | ----------- | ----------- |
-| | ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg) | ![](https://dowlinglab.nd.edu/assets/516355/200x200/resized_portrait_grey_background.png) | ![](https://dowlinglab.nd.edu/assets/527717/200x200/wilson_raney.jpg) |
-| Office Hours | 8:45-9:15am, Tuesdays \& Thursdays in 369 Nieuwland Hall | 2pm on Thursdays in 366 Nieuwland Hall | 10am on Fridays in 366 Nieuwland Hall |
+| ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg) | [Prof. Alex Dowling]() |
+| | [Ms. Maddie Watson](https://dowlinglab.nd.edu/people/madelynn-watson/) |
+| | [Ms. Hailey Lynch](https://dowlinglab.nd.edu/people/hailey-lynch/) |
+| | [Ms. Molly Dougher](https://dowlinglab.nd.edu/people/molly-dougher/) |
+| | [Mr. Zhicheng Lu](https://dowlinglab.nd.edu/people/zhicheng-lu/) |
+
+
+## Discussion Board (Canvas) and Email Correspondance
+
+* Post your questions to the **discussion board in Canvas**
+* Instructor only: adowling@nd.edu, ''CBE 30338'' in the subject, private official matters (e.g., excused absence, testing accommodations)
+
+We encourage you to post all your questions, including your mathematical models, pseudocode, and code screenshots, to the public **discussion board in Canvas**. We are doing this for a few reasons:
+1. As professionals, you'll need to be comfortable asking questions in front of a team. We want to cultivate a positive and friendly learning environment where everyone can practice this skill during the semester.
+2. By answering questions in the public discussion board, everyone in the class can access the same information.
+3. We would like to cultivate a learning community with peer instruction; as professionals, you must answer your peers' questions.
+4. Many scientific software have online discussion boards to ask technical questions and report bugs. Using the **discussion board in Canvas** will help you develop comfort in asking questions this way.
 
 ## Required Materials
 
@@ -82,18 +95,7 @@ Additional supplementary materials related to process control will be distribute
 * [BYU Process Dynamics and Control course website](http://apmonitor.com/pdc/index.php/Main/HomePage)
 * [Resourcium](https://resourcium.org/)
 
-## Discussion Board (Canvas) and Email Correspondance
-
-* Post your questions to the **discussion board in Canvas**
-* Instructor only: adowling@nd.edu, ''CBE 30338'' in the subject, private official matters (e.g., excused absence, testing accommodations)
-
-We encourage you to post all your questions, including your mathematical models, pseudocode, and code screenshots, to the public **discussion board in Canvas**. We are doing this for a few reasons:
-1. As professionals, you'll need to be comfortable asking questions in front of a team. We want to cultivate a positive and friendly learning environment where everyone can practice this skill during the semester.
-2. By answering questions in the public discussion board, everyone in the class can access the same information.
-3. We would like to cultivate a learning community with peer instruction; as professionals, you must answer your peers' questions.
-4. Many scientific software have online discussion boards to ask technical questions and report bugs. Using the **discussion board in Canvas** will help you develop comfort in asking questions this way.
-
-## Grading Criteria
+## Assessment and Grades
 
 Grades for CBE 30338 and CBE 32338 are consolidated into a single grade assigned to CBE 30338. There is no separate grade or credit assigned for CBE 32338.
 
@@ -163,7 +165,9 @@ The following policy will apply to all assignments (homework, projects, etc.):
 
 If there is an extenuating circumstance, please email the instructor with ``CBE 30338'' in the subject. Please send your requests for extensions at least 24 hours before the deadline (unless your specific circumstance prevents this). Please briefly explain the extenuating circumstance when requesting an extension and propose an alternate deadline.
 
-## Collaboration Policy and Honor Code
+## Honor Code
+
+### Collaboration Policy
 
 You are permitted (and encouraged) to discuss solution approaches to the weekly homework assignments with classmates. However, there must be no wholesale copying or paraphrasing of code, solutions, or written discussions. You are strongly encouraged to ask questions, including posting pseudocode or code screenshots, on the discussion board on Canvas. Likewise, you may use any material posted by the instructors or your classmates in the discussion board on Canvas that you understand. Copying code from classmates or the discussion board, you do not understand is prohibited. This policy facilitates collaboration while ensuring everyone in the class has the same access. Students MAY NOT use old files and solutions for the homework assignments: you must do the problems for homework to be able to do them on the exams too.
 
@@ -180,6 +184,10 @@ The following is a non-exhaustive list of collaborative scenarios that are **PRO
 * You are working on your homework alone in the library, but two tables away, there is a group of your classmates. They work through the pseudocode on a whiteboard and do not erase it after leaving. You take a picture “just in case”. You later get stuck and frustrated. You end up copying line by line most of their pseudocode and turn this in. You have some doubts about the approach but ran out of time. The collaboration policy prohibits this because the work is not your own. Moreover, you would be unable to explain your solution approach to the TA or instructor confidently.
 * It is late at night, you are frustrated with syntax errors, and you cannot get one of the homework problems to work. You find a screenshot on Canvas of code from a classmate and an associated discussion. Desperate to finish the assignment, you adapt your code to follow the screenshot. To keep it simple, you copy line-by-line, do not change variable names, and copy some comments but skip others. You end up submitting code that looks almost identical to your classmate. You remember the instructor keeps emphasizing the comments should be in our own words to show that you understand the solution. You decide to go to bed and add those comments in the morning. You oversleep and submit the code without any comments or acknowledgments from your classmates. The collaboration policy prohibits this because you submitted work that is not your own. You should have acknowledged sources, and you can not confidently explain the solution procedure to the instructor or TA.
 * You have no prior programming experience and feel like you are falling behind. You suspect the homework takes you three times as long as your classmates. You conclude the only way you can keep up is to do the homework with a partner. They do half the assignment, and you do the other half. You then exchange solutions. The person who completes each problem then explains the answer to the partner. Each person changes the comments, adds some extra white spaces, and changes a few variable names to ensure the solutions are not identical. The collaboration policy prohibits this because each person did not make an honest effort to solve every problem on their own. Although each person either explained or had the solutions presented to them, they likely need help to defend all of their solutions to the TA or instructor. 
+
+### Artificial Intelligence Policy
+
+TODO: add policy
 
 ## Inclusiveness, Mental Health, and Disabilities
 
