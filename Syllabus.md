@@ -55,14 +55,43 @@ Students without this background should contact the instructor before registerin
 
 ## Instructor and Teaching Assistants
 
-TODO: need to update
+```{list-table}
+:header-rows: 1
+:widths: 20 20 20 20 20
 
-| ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg) | [Prof. Alex Dowling]() |
-| | [Ms. Maddie Watson](https://dowlinglab.nd.edu/people/madelynn-watson/) |
-| | [Ms. Hailey Lynch](https://dowlinglab.nd.edu/people/hailey-lynch/) |
-| | [Ms. Molly Dougher](https://dowlinglab.nd.edu/people/molly-dougher/) |
-| | [Mr. Zhicheng Lu](https://dowlinglab.nd.edu/people/zhicheng-lu/) |
+* - [Prof. Alex Dowling](https://dowlinglab.nd.edu/people/professor-alexander-w-dowling/)
+  - [Maddie Watson](https://dowlinglab.nd.edu/people/madelynn-watson/)
+  - [Hailey Lynch](https://dowlinglab.nd.edu/people/hailey-lynch/)
+  - [Molly Dougher](https://dowlinglab.nd.edu/people/molly-dougher/)
+  - [Zhicheng Lu](https://dowlinglab.nd.edu/people/zhicheng-lu/)
+* - ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg)
+  - ![](https://dowlinglab.nd.edu/assets/477606/200x200/senior_composite.png)
+  - ![](https://dowlinglab.nd.edu/assets/497694/200x200/img_3436.jpg)
+  - ![](https://dowlinglab.nd.edu/assets/496713/200x200/img_2112_3.jpeg)
+  - ![](https://dowlinglab.nd.edu/assets/552006/200x200/zhicheng.jpg)
+* - Primary Instructor
+  - Lead TA
+  - Senior TA
+  - Senior TA
+  - TA
+* - Wednesdays, 2 - 3pm, 369 NSH
+  - Thursdays, 2 - 3pm, 366 NSH
+  - (same)
+  - (same)
+  - (same)
+```
+Office hours are lists in the last row. TAs share office hours.
 
+<!---
+
+|  | [Ms. Maddie Watson](https://dowlinglab.nd.edu/people/madelynn-watson/) | [Ms. Hailey Lynch](https://dowlinglab.nd.edu/people/hailey-lynch/) | [Ms. Molly Dougher](https://dowlinglab.nd.edu/people/molly-dougher/) | [Mr. Zhicheng Lu](https://dowlinglab.nd.edu/people/zhicheng-lu/) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+|  | Lead TA | Senior TA | Senior TA | TA |
+
+
+ | Wednesdays, 2 - 3pm, 369 NSH | Span <td colspan=4> Thursdays, 2 - 3pm, 366 NSH |
+
+| ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg) |  | ![](https://dowlinglab.nd.edu/assets/497694/200x200/img_3436.jpg) | ![](https://dowlinglab.nd.edu/assets/496713/200x200/img_2112_3.jpeg) | ![](https://dowlinglab.nd.edu/assets/552006/200x200/zhicheng.jpg) | --->
 
 ## Discussion Board (Canvas) and Email Correspondance
 
