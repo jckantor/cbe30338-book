@@ -82,17 +82,6 @@ Students without this background should contact the instructor before registerin
 ```
 Office hours are lists in the last row. TAs share office hours.
 
-<!---
-
-|  | [Ms. Maddie Watson](https://dowlinglab.nd.edu/people/madelynn-watson/) | [Ms. Hailey Lynch](https://dowlinglab.nd.edu/people/hailey-lynch/) | [Ms. Molly Dougher](https://dowlinglab.nd.edu/people/molly-dougher/) | [Mr. Zhicheng Lu](https://dowlinglab.nd.edu/people/zhicheng-lu/) |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-|  | Lead TA | Senior TA | Senior TA | TA |
-
-
- | Wednesdays, 2 - 3pm, 369 NSH | Span <td colspan=4> Thursdays, 2 - 3pm, 366 NSH |
-
-| ![](https://dowlinglab.nd.edu/assets/320333/200x200/dowling_alex_sq.jpg) |  | ![](https://dowlinglab.nd.edu/assets/497694/200x200/img_3436.jpg) | ![](https://dowlinglab.nd.edu/assets/496713/200x200/img_2112_3.jpeg) | ![](https://dowlinglab.nd.edu/assets/552006/200x200/zhicheng.jpg) | --->
-
 ## Discussion Board (Canvas) and Email Correspondance
 
 * Post your questions to the **discussion board in Canvas**
