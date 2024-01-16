@@ -52,7 +52,7 @@ def process_notebook(folder_original, folder_new, filename, remove_output=False,
     replace_code(SOLUTION_CODE, "# Add your solution here")
     replace_code(HIDDEN_TESTS, "# Removed autograder test. You may delete this cell.")
     
-    OLD_DATA_PATH = "../data/"
+    OLD_DATA_PATH = "\.\./data/" # recall "\." escapes the "." character in regex
     NEW_DATA_PATH = "https://raw.githubusercontent.com/ndcbe/controls/main/notebooks/data/"    
     replace_code(OLD_DATA_PATH, NEW_DATA_PATH)
     
