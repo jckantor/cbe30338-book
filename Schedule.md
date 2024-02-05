@@ -65,15 +65,16 @@ Tuesdays and Thursdays from 9:30 - 10:45am in 136 DeBartolo Hall.
 | **Thursday, January 25** | **Modeling: Linear Systems** |
 | [](./notebooks/02.02-Properties-of-Scalar-First-Order-Linear-Systems.ipynb) | |
 | **Tuesday, January 30** | **Modeling: Temperature Control Lab** |
-| [](./notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb) | [](./notebooks/02.04-Fitting-a-Model-to-Data.ipynb) |
-| **Thursday, February 1** | **Relay Control** |
-| [](./tclab/04.01-Relay-Control.ipynb) | Get started on next class |
+| [](./notebooks/02.03-First-Order-Model-for-a-Single-Heater.ipynb) | [](./tclab/04.01-Relay-Control.ipynb) |
+[](./notebooks/02.04-Fitting-a-Model-to-Data.ipynb) |
+| **Thursday, February 1** | **Modeling: Second and Higher Order Systems** |
+| [](./notebooks/02.05-Second-Order.ipynb) | [](./notebooks/02.04-Fitting-a-Model-to-Data.ipynb) |
 | **Tuesday, February 6** | **Modeling: Second Order Systems** |
-| [](./notebooks/02.05-Second-Order.ipynb) | [](./notebooks/02.07-Exothermic-CSTR.ipynb) |
-| [](./notebooks/02.06-Fed-Batch-Bioreactor.ipynb) | [](./notebooks/02.08-Hare-and-Lynx.ipynb) |
+| [](./notebooks/02-spring-mass-damper.ipynb) | |
 | **Thursday, February 8** | **Modeling: Temperature Control Lab** |
 | [](./assignments/Lab-3-Model-Identification.ipynb) | |
-| **Tuesday, February 13** | **Modeling: Reactor System** |
+| **Tuesday, February 13** | **Modeling: More Dynamical Systems** |
+| [](./notebooks/02.07-Exothermic-CSTR.ipynb) | [](./notebooks/02.08-Hare-and-Lynx.ipynb) |
 | **Thursday, February 15** | **Setpoints, Disturbances, Servo and Regulation Problems**|
 | **Tuesday, February 20** | **P, PI, and PID Control** |
 | **Thursday, February 22** | **Stability Analysis** |
