@@ -35,6 +35,7 @@ parts:
       - file: notebooks/02.04-Fitting-a-Model-to-Data
       - file: notebooks/02.05-Second-Order
       - file: notebooks/02.06-Fed-Batch-Bioreactor
+      - file: notebooks/02-spring-mass-damper
       - file: notebooks/02.07-Exothermic-CSTR
       - file: notebooks/02.08-Hare-and-Lynx
       - file: notebooks/02.09-Study-Guide
