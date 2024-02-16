@@ -49,6 +49,8 @@ parts:
       - file: notebooks/03.05-Implementing-Controllers
       - file: notebooks/03.06-Proportional-Integral-Control
       - file: notebooks/03.07-Integral-Windup-and-Bumpless-Transfer
+      - file: notebooks/03-TCLab-P-Controller-Analysis
+      - file: notebooks/03-TCLab-PI-Controller-Analysis
       - file: notebooks/03.08-Controller-Tuning
 
     - file: notebooks/04/04.00-Process-Analytics
@@ -134,6 +136,7 @@ parts:
 #      - file: tclab/04.03-PID_Control
 #      - file: tclab/04.10-Lab-Assignment-PID-Control
 #      - file: tclab/04.11-Lab-Assignment-PI-Control
+#      - file: tclab/04.12-Lab-Assignment-PI-Control-2
       
     - file: tclab/05.00-State-Estimation
       sections:
