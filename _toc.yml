@@ -49,8 +49,8 @@ parts:
       - file: notebooks/03.05-Implementing-Controllers
       - file: notebooks/03.06-Proportional-Integral-Control
       - file: notebooks/03.07-Integral-Windup-and-Bumpless-Transfer
-      - file: notebooks/03-TCLab-P-Controller-Analysis
-      - file: notebooks/03-TCLab-PI-Controller-Analysis
+      - file: notebooks/03.08-P-Controller-Analysis
+      - file: notebooks/030.9-PI-Controller-Analysis
       - file: notebooks/03.08-Controller-Tuning
 
     - file: notebooks/04/04.00-Process-Analytics
